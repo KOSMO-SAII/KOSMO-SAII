@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.mainboardDAO;
+import saii.domain.memberDAO;
 import saii.dto.mainboardDTO;
 import saii.dto.memberDTO;
 
@@ -30,11 +31,16 @@ public class WriteController extends HttpServlet {
 		dto.setCourse_name(req.getParameter("course_name"));
 		dto.setContent(req.getParameter("content"));
 		
-		String nick = req.getSession().getAttribute("UserId").toString();
+		memberDTO memdto = new memberDTO();		
+		memberDAO memdao = new memberDAO();
+		String id = req.getSession().getAttribute("UserId").toString();
+		memdto = memdao.userinfo(id);
 		
 		// DAO를 통해 DB에 게시 내용 저장
 		mainboardDAO dao = new mainboardDAO();
-		int result = dao.insertWrite(dto, nick);
+		int result = dao.insertWrite(dto, memdto.getNickname());
+		
+		memdao.close();
 		dao.close();
 		
 		// 성공 or 실패?

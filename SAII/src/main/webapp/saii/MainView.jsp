@@ -49,8 +49,14 @@
 		</tr>
 		<tr>
 			<td id="delete" colspan="6">
-				<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit';" />
-				<input type="button" value="삭제하기" onclick="location.href='http://localhost:8081/SAII/delete';" />
+				<c:choose>
+					<c:if test="${true}">
+						<c:when test="${true}">
+							<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit';" />
+							<input type="button" value="삭제하기" onclick="location.href='http://localhost:8081/SAII/delete';" />
+						</c:when>
+					</c:if>
+				</c:choose>
 				<input type="button" value="목록보기" onclick="location.href='http://localhost:8081/SAII/mainboard';" />
 			</td>
 		</tr>

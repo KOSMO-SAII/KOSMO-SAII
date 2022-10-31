@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.mainboardDAO;
+import saii.domain.memberDAO;
 import saii.dto.mainboardDTO;
+import saii.dto.memberDTO;
 
 @WebServlet("/view")
 public class MainViewController extends HttpServlet {
@@ -22,11 +24,24 @@ public class MainViewController extends HttpServlet {
 		String m_id = req.getParameter("m_id");
 		dao.updateVisitCount(m_id);
 		mainboardDTO dto = dao.selectView(m_id);
-		dao.close();
+		
 		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
+		if(req.getSession().getAttribute("UserId") != null) {			
+			memberDTO memdto = new memberDTO();		
+			memberDAO memdao = new memberDAO();
+			String id = req.getSession().getAttribute("UserId").toString();
+			memdto = memdao.userinfo(id);
+			
+			memdao.close();
+			
+			req.setAttribute("memdto", memdto);
+		}
+		
+		dao.close();
+		
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/saii/View.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/MainView.jsp").forward(req, resp);
 	}
 }
