@@ -12,6 +12,8 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70ac00c8df7aff6f198c097d67066de1&libraries=services"></script>
 	<div class="wrap">
 		<div class="info_wrap">
+		<
+		
 		<ul id="info_list">
 			
 		</ul>
