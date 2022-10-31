@@ -73,7 +73,7 @@ function passCk(){     
 					<tr>
 						<td>${list.m_id}</td>
 						<td>${list.region}</td>
-						<td><a href="../mainboard/view.do?m_id=${list.m_id}">${list.m_title}</a></td>
+						<td><a href="http://localhost:8081/SAII/mainboard/view.do?m_id=${list.m_id}">${list.m_title}</a></td>
 						<td>${list.course_name}</td>
 						<td>${list.m_postdate}</td>
 						<td>${list.visitcount}</td>

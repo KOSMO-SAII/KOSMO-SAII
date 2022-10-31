@@ -7,7 +7,7 @@
 <title>테스트용</title>
 </head>
 <body>
-	<form method="post" action="../test">
+	<form method="post" action="http://localhost:8081/SAII/test">
 
 		<input type="hidden" name="c1"
 			value="CE7|1974266862|서울 종로구 재동 86|서울 종로구 북촌로 6-3|0507-1337-9973|카페노티드 안국|http://place.map.kakao.com/1974266862|126.98603029791168|37.57745704823158|장소1번" />

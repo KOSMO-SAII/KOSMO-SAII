@@ -24,7 +24,7 @@ public class MainViewController extends HttpServlet {
 		mainboardDTO dto = dao.selectView(m_id);
 		dao.close();
 		
-		dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
+		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
 		req.setAttribute("dto", dto);
 		req.getRequestDispatcher("/saii/View.jsp").forward(req, resp);

@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-	<form name="writeForm" method="post" action="../write">
+	<form name="writeForm" method="post" action="http://localhost:8081/SAII/write">
 		<table>
 			<tr>
 				<td>제목</td> <td colspan="3"><input type="text" name="m_title" /></td>
@@ -43,7 +43,7 @@
 			<td id="submit_button" colspan="4">
 				<input type="submit" value="작성 완료" />
 				<input type="reset" value="초기화" />
-				<input type="button" value="목록 보기" onclick="location.href='../mainboard';" />
+				<input type="button" value="목록 보기" onclick="location.href='http://localhost:8081/SAII/mainboard';" />
 			</td>
 		</table>
 	</form>
