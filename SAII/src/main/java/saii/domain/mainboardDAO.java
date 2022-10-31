@@ -65,21 +65,20 @@ public class mainboardDAO extends JDBConnect {
 		return bl;
 	}
 	
-	public List<mainboardDTO> selectListPage1(Map<String, Object> map){
+	public List<mainboardDTO> myPage_selectListPage(Map<String, Object> map){
 		List<mainboardDTO> bl = new Vector<mainboardDTO>();
+		
 		String sql = "select rownum, m_id, m_title, region, course_name, content, mb.nickname, m_postdate, visitcount, goodcount "
 				+ "from main_board mb, member m";
 		if(map.get("searchStr") != null) {
 			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
 		}else {
-			sql += " WHERE mb.nickname=m.nickname and mb.nickname='"+map.get("nick")+"'" ;
-					
+			sql += " WHERE mb.nickname=m.nickname and mb.nickname='"+map.get("nick")+"'" ;			
 		}
 		
 		try {
-			stmt = con.createStatement();
-			
-			rs = stmt.executeQuery(sql);
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
 			while(rs.next()) {
 				mainboardDTO dto = new mainboardDTO();
 				dto.setM_id(rs.getString("m_id"));

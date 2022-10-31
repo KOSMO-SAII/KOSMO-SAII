@@ -177,7 +177,7 @@ h4 {
 					<tr>
 						<td>${list.m_id}</td>
 						<td>${list.region}</td>
-						<td><a href="http://localhost:8081/SAII/mainboard/view.do?m_id=${list.m_id}">${list.m_title}</a></td>
+						<td><a href="http://localhost:8081/SAII/view?m_id=${list.m_id}">${list.m_title}</a></td>
 						<td>${list.course_name}</td>
 						<td>${list.m_postdate}</td>
 						<td>${list.visitcount}</td>
@@ -191,12 +191,14 @@ h4 {
 				</tr>
 			</c:otherwise>
 		</c:choose>
-		<!-- <tr>
+		
+		<%-- 페이징 --%>
+		<tr>
 			<td colspan="8" id="paging">
-				<c:url var="action" value="/mainboard/list.do" />
+				<c:url var="action" value="http://localhost:8081/SAII/mainboard" />
 				<c:if test="${paging.prev}">
 					<a href="${action}?page=${paging.beginPage-1}">prev</a>
-					&nbsp&nbsp
+					&nbsp;&nbsp;
 				</c:if>
 				<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" var="index">
 					<c:choose>
@@ -207,13 +209,13 @@ h4 {
 							<a href="${action}?page=${index}">${index}</a>
 						</c:otherwise>
 					</c:choose>
-					&nbsp&nbsp
+					&nbsp;&nbsp;
 				</c:forEach>
 				<c:if test="${paging.next}">
 					<a href="${action}?page=${paging.endPage+1}">next</a>
 				</c:if>
 			</td>
-		</tr> -->
+		</tr>
 	</table>
 
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>

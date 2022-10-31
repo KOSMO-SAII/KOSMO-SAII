@@ -39,7 +39,22 @@ public class myPageController extends HttpServlet{
 		map.put("nick", nick);
 		int totalCount = mdao.selectCount(map);//게시물의 갯수
 		
-		List<mainboardDTO> boardLists = mdao.selectListPage1(map);
+		// 페이징
+		Paging paging = new Paging();
+	
+		int page = 1;
+		if(req.getParameter("page") != null) {
+			page = Integer.parseInt(req.getParameter("page"));
+		}
+			
+		paging.setPage(page);
+		int count = mdao.selectCount(map);
+		paging.setTotalCount(count);
+				
+		map.put("startNum", paging.getStartNum());
+		map.put("endNum", paging.getEndNum());
+		
+		List<mainboardDTO> boardLists = mdao.myPage_selectListPage(map);
 		
 		map.put("totalCount", totalCount);
 		req.setAttribute("boardLists", boardLists);

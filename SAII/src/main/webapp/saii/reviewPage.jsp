@@ -8,7 +8,9 @@
 </head>
 <body>
 	<h1>리뷰 페이지입니다.</h1>
-	
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
+	
+	<h2>게시판</h2>
+	<a href="http://localhost:8081/SAII/review_list">게시판 목록 바로가기</a> <%-- RListController로 이동 --%> 
 </body>
 </html>

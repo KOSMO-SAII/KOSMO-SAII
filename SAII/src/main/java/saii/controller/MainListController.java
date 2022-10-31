@@ -32,6 +32,7 @@ public class MainListController extends HttpServlet {
 			map.put("searchStr", searchStr);
 		}
 		
+		// 페이징
 		Paging paging = new Paging();
 		
 		int page = 1;
