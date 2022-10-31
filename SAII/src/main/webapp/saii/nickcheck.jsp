@@ -24,7 +24,7 @@
 <body>
 	<h2>닉네임 중복확인</h2>
 	<form name="writeFrm" method="post" 
-   		action="../nickcheck" onsubmit="return nickCk(this);">
+   		action="http://localhost:8081/SAII/nickcheck" onsubmit="return nickCk(this);">
 	<table border="1" width="50%">
          <tr>
             <td>NICKNAME</td>

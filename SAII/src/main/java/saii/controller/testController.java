@@ -19,14 +19,14 @@ public class testController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("test post");
 		
+		
+		
 		courseDAO cdao = new courseDAO();
-		ArrayList<courseDTO> cdtos = new ArrayList<>();		
-		cdtos.add(cdao.toCDTO(8, req.getParameter("c1")));
-		cdtos.add(cdao.toCDTO(8, req.getParameter("c2")));
-		cdtos.add(cdao.toCDTO(8, req.getParameter("c3")));
-	
+		String[] str = req.getParameterValues("c1");		
+		ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
+		
 		cdao.insertCourse(cdtos);
-		cdao.close();
+		
 		req.getRequestDispatcher("/saii/test.jsp").forward(req, resp);
 		
 	}

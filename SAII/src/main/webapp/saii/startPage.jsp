@@ -16,6 +16,5 @@
 	<a href="http://localhost:8081/SAII/signup">회원가입</a>
 	
 	
-	<!-- 테스토용 주석 배고파 -->
 </body>
 </html>

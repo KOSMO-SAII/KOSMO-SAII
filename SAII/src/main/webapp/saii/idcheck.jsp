@@ -23,7 +23,7 @@
 <body>
 	<h2>ID 중복확인</h2>
    <form name="writeFrm" method="post" 
-   		action="../idcheck" onsubmit="return idCk(this);">
+   		action="http://localhost:8081/SAII/idcheck" onsubmit="return idCk(this);">
       <table border="1" width="90%">
          <tr>
             <td>ID</td>

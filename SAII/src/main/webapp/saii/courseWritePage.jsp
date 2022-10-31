@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>키워드로 장소검색하고 목록으로 표출하기</title>
-<!-- css연동 -->
-<link href="CSS/courseWritePage.css" rel="stylesheet" type="text/css">
+<title>코스 작성</title>
+<link href="http://localhost:8081/SAII/saii/CSS/courseWritePage.css" rel="stylesheet" type="text/css">
 
 <!-- 카카오 맵 api 불러오기 -->
 <script type="text/javascript"
@@ -15,6 +14,7 @@
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <body>
+
 	 <div class="body_wrap">
 		<div class="my">
 			<form >
@@ -85,13 +85,11 @@
 
 	</div>
 	<!-- js연동 -->
-	<script src="JS/courseWritePage.js"></script>
+	<script src="http://localhost:8081/SAII/saii/JS/courseWritePage.js"></script>
+
+	<h1>코스 작성 화면입니다.</h1>
+	
+	<a href="http://localhost:8081/SAII/home">돌아가기</a>
+
 </body>
 </html>
-	
-	
-	
-	
-	
-	
-	
