@@ -112,7 +112,7 @@
     <input type="text" name="email" value="${param.email}"><br/>
     
     <label>핸드폰번호</label>
-    <input type="text"><br/>
+    <input type="text" name="phone" value="${param.phone }"><br/>
     
     <input type="submit"  value="회원가입하기" />
     </form>
