@@ -145,7 +145,7 @@ h4 {
 	</div>
 		
 	
-		<h2>내 코스</h2>
+		<h2>내가 짠 코스</h2>
 	<form method="get">
 		<table align="center" border="1" width="100%">
 			<tr>
@@ -192,8 +192,8 @@ h4 {
 			</c:otherwise>
 		</c:choose>
 		
-		<%-- 페이징 --%>
-		<tr>
+		
+		<!-- <tr>
 			<td colspan="8" id="paging">
 				<c:url var="action" value="http://localhost:8081/SAII/mainboard" />
 				<c:if test="${paging.prev}">
@@ -216,7 +216,7 @@ h4 {
 				</c:if>
 			</td>
 		</tr>
-	</table>
+	</table> -->
 
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 </body>
