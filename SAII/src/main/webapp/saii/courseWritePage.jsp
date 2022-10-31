@@ -5,9 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>코스 작성</title>
+<link href="http://localhost:8081/SAII/saii/CSS/courseWritePage.css" rel="stylesheet" type="text/css">
+
+<!-- 카카오 맵 api 불러오기 -->
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
 </head>
+<!-- 제이쿼리 적용 -->
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <body>
-<<<<<<< HEAD
+
 	 <div class="body_wrap">
 		<div class="my">
 			<form >
@@ -78,11 +85,11 @@
 
 	</div>
 	<!-- js연동 -->
-	<script src="JS/courseWritePage.js"></script>
-=======
+	<script src="http://localhost:8081/SAII/saii/JS/courseWritePage.js"></script>
+
 	<h1>코스 작성 화면입니다.</h1>
 	
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
->>>>>>> parent of f35566a (10311030)
+
 </body>
 </html>
