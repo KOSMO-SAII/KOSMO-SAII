@@ -39,6 +39,77 @@ function passCk(){     
 		
 	</div>
 	<img src="/SAII/Storage/${dto.n_profile_img}" width="100px" height="100px" style="border-radius: 50px">
+	
+		<h2>내 코스</h2>
+	<form method="get">
+		<table align="center" border="1" width="100%">
+			<tr>
+				<td align="center">
+					<select name="searchType">
+						<option value="m_title" <c:if test="${map.searchType == 'm_title'}">selected</c:if>>제목</option>
+						<option value="content" <c:if test="${map.searchType == 'content'}">selected</c:if>>내용</option>
+					</select>
+					<input type="text" name="searchStr" value="${map.searchStr}" />
+					<input type="submit" value="검색" />
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+	<table align="center" border="1" width="100%">
+		<tr>
+			<td>번호</td>
+			<td>지역</td>
+			<td>제목</td>
+			<td>코스명</td>
+			<td>게시날짜</td>
+			<td>조회수</td>
+			<td>좋아요</td>
+		</tr>
+		<c:choose>
+			<c:when test="${not empty boardLists}">
+				<c:forEach items="${boardLists}" var="list" varStatus="stat">
+					<tr>
+						<td>${list.m_id}</td>
+						<td>${list.region}</td>
+						<td><a href="../mainboard/view.do?m_id=${list.m_id}">${list.m_title}</a></td>
+						<td>${list.course_name}</td>
+						<td>${list.m_postdate}</td>
+						<td>${list.visitcount}</td>
+						<td>${list.goodcount}</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td colspan="7">등록된 게시물이 없습니다</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+		<!-- <tr>
+			<td colspan="8" id="paging">
+				<c:url var="action" value="/mainboard/list.do" />
+				<c:if test="${paging.prev}">
+					<a href="${action}?page=${paging.beginPage-1}">prev</a>
+					&nbsp&nbsp
+				</c:if>
+				<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" var="index">
+					<c:choose>
+						<c:when test="${paging.page==index}">
+							${index}
+						</c:when>
+						<c:otherwise>
+							<a href="${action}?page=${index}">${index}</a>
+						</c:otherwise>
+					</c:choose>
+					&nbsp&nbsp
+				</c:forEach>
+				<c:if test="${paging.next}">
+					<a href="${action}?page=${paging.endPage+1}">next</a>
+				</c:if>
+			</td>
+		</tr> -->
+	</table>
 
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 </body>
