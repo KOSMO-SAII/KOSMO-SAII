@@ -63,7 +63,7 @@
 					<tr>
 						<td>${list.m_id}</td>
 						<td>${list.region}</td>
-						<td><a href="../mainboard/view.do?m_id=${list.m_id}">${list.m_title}</a></td>
+						<td><a href="http://localhost:8081/SAII/view?m_id=${list.m_id}">${list.m_title}</a></td>
 						<td>${list.course_name}</td>
 						<td>${list.nickname}</td>
 						<td>${list.m_postdate}</td>
@@ -80,10 +80,10 @@
 		</c:choose>
 		<tr>
 			<td colspan="8" id="paging">
-				<c:url var="action" value="/mainboard/list.do" />
+				<c:url var="action" value="http://localhost:8081/SAII/mainboard" />
 				<c:if test="${paging.prev}">
 					<a href="${action}?page=${paging.beginPage-1}">prev</a>
-					&nbsp&nbsp
+					&nbsp;&nbsp;
 				</c:if>
 				<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" var="index">
 					<c:choose>
@@ -94,7 +94,7 @@
 							<a href="${action}?page=${index}">${index}</a>
 						</c:otherwise>
 					</c:choose>
-					&nbsp&nbsp
+					&nbsp;&nbsp;
 				</c:forEach>
 				<c:if test="${paging.next}">
 					<a href="${action}?page=${paging.endPage+1}">next</a>
@@ -103,10 +103,10 @@
 		</tr>
 		<tr>
 			<td colspan="7">
-				<input type="button" value="로그인" onclick="location.href='../login';"/>
-				<input type="button" value="로그아웃" onclick="location.href='../logout';"/>
+				<input type="button" value="로그인" onclick="location.href='http://localhost:8081/SAII/login';"/>
+				<input type="button" value="로그아웃" onclick="location.href='http://localhost:8081/SAII/logout';"/>
 			</td>
-			<td id="writeButton"><input type="button" value="글쓰기" onclick="location.href='../mainboard/write.do';" /></td>
+			<td id="writeButton"><input type="button" value="글쓰기" onclick="location.href='http://localhost:8081/SAII/write';" /></td>
 		</tr>
 	</table>
 </body>

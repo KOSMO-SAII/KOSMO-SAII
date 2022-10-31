@@ -65,5 +65,4 @@ public class mainboardDTO {
 	public void setGoodcount(int goodcount) {
 		this.goodcount = goodcount;
 	}
-	
 }

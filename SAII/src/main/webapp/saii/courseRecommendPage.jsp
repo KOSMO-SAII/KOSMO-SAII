@@ -11,6 +11,7 @@
 	
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 	<a href="http://localhost:8081/SAII/home">추천</a>
+	<a href="http://localhost:8081/SAII/mainboard?page=1">추천게시판</a>
 	<a href="http://localhost:8081/SAII/review">리뷰</a>
 </body>
 </html>

@@ -75,7 +75,7 @@
 </head>
 <body>
 	<h2>회원가입</h2>
-	<form id="form" method="post" action="../signup" enctype="multipart/form-data" onsubmit="return check();">
+	<form id="form" method="post" action="http://localhost:8081/SAII/signup" enctype="multipart/form-data" onsubmit="return check();">
 	<label>아이디 </label> 
 	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
 	<input type="button" value="중복체크" onclick="idCk(); "/> <br/>
