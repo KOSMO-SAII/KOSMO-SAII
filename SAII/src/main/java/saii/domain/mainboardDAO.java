@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
+
 import saii.controller.JDBConnect;
 import saii.dto.mainboardDTO;
+import saii.dto.memberDTO;
 
 public class mainboardDAO extends JDBConnect {
 	public mainboardDAO() {
@@ -139,21 +142,44 @@ public class mainboardDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public int insertWrite(mainboardDTO dto) { // 로그인기능 미완성으로 인해 닉네임은 임시로 설정해둠
+	public int insertWrite(mainboardDTO dto, String nickname) {
 		int rs = 0;
 		String sql = "insert into main_board(m_id, m_title, region, course_name, content, nickname, visitcount, goodcount)"
-				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, 'temp_nickname', 0, 0)";
+				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, ?, 0, 0)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getM_title());
 			psmt.setString(2, dto.getRegion());
 			psmt.setString(3, dto.getCourse_name());
 			psmt.setString(4, dto.getContent());
+			psmt.setString(5, nickname);
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println("게시물 입력 중 예외");
 			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	public int updateWrite(mainboardDTO dto, String nickname) {
+		int rs = 0;
+		String sql = "update main_board set m_title = ?, region = ?, course_name = ?, content = ? where m_id = ?;";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getM_title());
+			psmt.setString(2, dto.getRegion());
+			psmt.setString(3, dto.getCourse_name());
+			psmt.setString(4, dto.getContent());
+			psmt.setString(5, nickname);
+			rs = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("게시물 입력 중 예외");
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public void delete() {
+		
 	}
 }
