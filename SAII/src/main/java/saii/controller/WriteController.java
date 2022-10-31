@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import saii.domain.mainboardDAO;
 import saii.dto.mainboardDTO;
 
-@WebServlet("/mainboard/write.do")
+@WebServlet("/write")
 public class WriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		req.getRequestDispatcher("/Write.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/Write.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -36,9 +36,9 @@ public class WriteController extends HttpServlet {
 		
 		// 성공 or 실패?
 		if(result == 1) { // 글쓰기 성공
-			resp.sendRedirect("../mainboard/list.do");
+			resp.sendRedirect("../mainboard");
 		}else { // 글쓰기 실패
-			resp.sendRedirect("../mainboard/write.do");
+			resp.sendRedirect("../write");
 		}
 	}
 }

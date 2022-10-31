@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import saii.domain.mainboardDAO;
 import saii.dto.mainboardDTO;
 
-@WebServlet("/mainboard/view.do")
+@WebServlet("/view")
 public class MainViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -24,9 +24,9 @@ public class MainViewController extends HttpServlet {
 		mainboardDTO dto = dao.selectView(m_id);
 		dao.close();
 		
-		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
+		dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/View.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/View.jsp").forward(req, resp);
 	}
 }
