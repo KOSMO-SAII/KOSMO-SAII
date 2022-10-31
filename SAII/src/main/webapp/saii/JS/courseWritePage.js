@@ -607,7 +607,7 @@ function closeOverlay() {
 var mymarkers=[];
 
 //내가 저장한 핀 리스트에 부여할 넘버 및 
-var num=1;
+var num=0;
 
 //내가 저장한 핀 실행 메서드1
  function saveMyPin(){
@@ -630,7 +630,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 	
 	//핀은 최대 7개까지 고정 가능
-	if(num<7){
+	if(num<6){
 		//마커이미지 생성
 		var imageSrc = 'img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
@@ -688,6 +688,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 		var mymarkerOb={
 			mymarker:mymarker,
 			myoverlay:myoverlay,
+			data:data,
 			id:myplaceinfo.placeid
 		}
 		mymarkers.push(mymarkerOb);
@@ -706,12 +707,14 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 }
 //임시 
+//임시 데이타
+var data={};
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){
 	//db에 전달할 정보
-	var data= place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
-				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|";	
+	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
+				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|"}
 	
 	var li=document.createElement('li');	
 	li.innerHTML=
@@ -728,16 +731,17 @@ function addMySchedule(place){
             '            </div>' + 
             '            <div class="close"  title="닫기"></div>' + 
             '        </div>' + 
-            '		 <input type="hidden" class="data" name="data" value="'+data+'">'+
+            '		 <input type="hidden" class="data" name="data" value="">'+
             '		 <button type="button" class="memobtn" >메모'+
-            '		 </button>'
-            '		<div class="hiddenOrigindata" >'+data
-            '		</div>'+   
+            '		 </button>' 
             '    	</div>' + 
             '	 </div>';
   
 	var ul =document.getElementById('My_List');
 	ul.appendChild(li);
+	
+	//임시
+	$('.info .data')[num].defaultValue=mymarkers[num].data.data
 	
 	num+=1;
 	
@@ -897,31 +901,46 @@ function makeline(){
 //메모 내용 담는 배열
 var memos=[];
 
+//임시
+var index;
 //메모 박스 출력
 function memobox(event){
-	console.log("실행")
+	
 	//none 클래스 삭제
 	var e = event.target.parentElement.parentElement;
+	//console.log(e)
 	$('#memobox').removeClass('none');
 	
+	 index=$(e).index()
+	//console.log(index);
+	//console.log($(e).index());
 	//title 부여
-	var text=$('.info .title')[$(e).index()].innerText
+	var text=$('.info .title')[index].innerText;
 	$('#memobox .title').text(text);
 	
-
 }
+
 //메모 박스 숨기기
 $('#memobox .close').click(function(){
 	$('#memobox').addClass('none');
 })
 
-//메모 저장
-$('.savememobtn').click(function(){
-	//리스트 input value값 불러오기
-	var value=$('.info .hiddenOrigindata')[0].defaultValue
-	console.log($('.info .hiddenOrigindata')[0]);
-	console.log($('#memobox textarea')[0].value);
-	//var memo=$('#memobox .memo')[0]
-	//$('.info .data')[0].defaultValue = value+'안녕';
-	
-})
+//메모 저장 수정필요
+	$('.savememobtn').click(function(){
+		//초기화
+		$('.info .data')[index].defaultValue="";
+		console.log($('.info .data')[index]);
+		console.log($('.info .data')[index].defaultValu);
+		//리스트 input value값 불러오기
+		var value=mymarkers[index].data.data;
+		//console.log(index);
+		//console.log(e);
+		//console.log($(e).index());
+		//텍스트 에어이라 입력 값
+		var memo=$('#memobox textarea')[0].value
+		console.log(value+memo);
+		//input value에 메모내용 값 추가
+		$('.info .data')[index].defaultValue = value+memo;
+		console.log($('.info .data')[index].defaultValue)
+		
+	})

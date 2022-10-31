@@ -1,7 +1,9 @@
 package saii.domain;
 
+import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import saii.controller.JDBConnect;
 import saii.dto.courseDTO;
@@ -22,7 +24,14 @@ public class courseDAO extends JDBConnect {
 		for (String s : str) {
 			String[] data = s.split("\\|");
 			System.out.println("tocdto " + s + "\t");
-
+//			System.out.println(Arrays.toString(data));
+//			System.out.println(data[0]);
+//			
+//			if(data.length<10) {
+//				System.out.println("9");
+//			}else if(data.length==10) {
+//				System.out.println("10");
+//			}
 			cdto.setOrder(order++);
 			cdto.setCategory(data[0]);
 			cdto.setAddress_id(data[1]);
@@ -33,7 +42,10 @@ public class courseDAO extends JDBConnect {
 			cdto.setPlace_url(data[6]);
 			cdto.setX(data[7]);
 			cdto.setY(data[8]);
-			//cdto.setMemo(data[9]);
+			if(data.length==10) {
+				cdto.setMemo(data[9]);
+				
+			}
 			
 			cdtos.add(cdto);
 			
