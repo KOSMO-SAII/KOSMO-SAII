@@ -12,28 +12,35 @@ public class courseDAO extends JDBConnect {
 		super();
 	}
 
-	public courseDTO toCDTO(int order, String str) {
+	public ArrayList<courseDTO> toCDTO(String[] str) {
 
+		ArrayList<courseDTO> cdtos = new ArrayList<>();
 		courseDTO cdto = new courseDTO();
-		String[] data = str.split("\\|");
+		int order = 1;
+		System.out.println(str);
+		
+		for (String s : str) {
+			String[] data = s.split("\\|");
+			System.out.println("tocdto " + s + "\t");
 
-		for (String s : data) {
-			System.out.println(s + "\t");
+			cdto.setOrder(order++);
+			cdto.setCategory(data[0]);
+			cdto.setAddress_id(data[1]);
+			cdto.setAddress_name(data[2]);
+			cdto.setRoad_address_name(data[3]);
+			cdto.setPhone_number(data[4]);
+			cdto.setPlace_name(data[5]);
+			cdto.setPlace_url(data[6]);
+			cdto.setX(data[7]);
+			cdto.setY(data[8]);
+			cdto.setMemo(data[9]);
+			
+			cdtos.add(cdto);
+			
+			cdto = new courseDTO();
 		}
 
-		cdto.setOrder(order);
-		cdto.setCategory(data[0]);
-		cdto.setAddress_id(data[1]);
-		cdto.setAddress_name(data[2]);
-		cdto.setRoad_address_name(data[3]);
-		cdto.setPhone_number(data[4]);
-		cdto.setPlace_name(data[5]);
-		cdto.setPlace_url(data[6]);
-		cdto.setX(data[7]);
-		cdto.setY(data[8]);
-		cdto.setMemo(data[9]);
-
-		return cdto;
+		return cdtos;
 	}
 	// 1 2 3 4 5 6 7 8 9 10 11
 	// 코스아이디,코스순서,카테고리,주소아이디,주소,도로명주소,전화번호,장소이름,홈페이지,x,y,메모
@@ -41,19 +48,19 @@ public class courseDAO extends JDBConnect {
 	public void insertCourse(ArrayList<courseDTO> cdtos) {
 
 		String front = "INSERT INTO COURSE_DATA(COURSE_ID, COURSE_ORDER, CATEGORY, ADDRESS_ID, ADDRESS_NAME, ROAD_ADDRESS_NAME, PHONENUMBER, PLACE_NAME, PLACE_URL, X, Y, MEMO)"
-					+ " VALUES(";
+				+ " VALUES(";
 		String start = "COURSE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
 		String end = "COURSE_SEQ.CURRVAL,?,?,?,?,?,?,?,?,?,?,?)";
-		
-		String query = front+start;
+
+		String query = front + start;
 
 		for (courseDTO cdto : cdtos) {
-			insertData(query,cdto);
-			query = front+end;
+			insertData(query, cdto);
+			query = front + end;
 		}
 	}
 
-	public void insertData(String query,courseDTO cdto) {
+	public void insertData(String query, courseDTO cdto) {
 
 		try {
 			psmt = con.prepareStatement(query);
