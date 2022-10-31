@@ -103,8 +103,16 @@
 		</tr>
 		<tr>
 			<td colspan="7">
-				<input type="button" value="로그인" onclick="location.href='http://localhost:8081/SAII/login';"/>
-				<input type="button" value="로그아웃" onclick="location.href='http://localhost:8081/SAII/logout';"/>
+				<c:choose>
+					<c:when test="${sessionScope.UserId ne null}">
+						<input type="button" value="로그아웃" onclick="location.href='http://localhost:8081/SAII/logout';"/>
+					</c:when>
+					<c:otherwise>
+						<input type="button" value="로그인" onclick="location.href='http://localhost:8081/SAII/login';"/>
+					</c:otherwise>
+				</c:choose>
+				<input type="button" value="돌아가기" onclick="location.href='http://localhost:8081/SAII/course_recommend';"/>
+				<input type="button" value="처음화면" onclick="location.href='http://localhost:8081/SAII/home';"/>
 			</td>
 			<td id="writeButton"><input type="button" value="글쓰기" onclick="location.href='http://localhost:8081/SAII/write';" /></td>
 		</tr>
