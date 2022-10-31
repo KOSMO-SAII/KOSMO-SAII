@@ -33,7 +33,7 @@ public class courseDAO extends JDBConnect {
 			cdto.setPlace_url(data[6]);
 			cdto.setX(data[7]);
 			cdto.setY(data[8]);
-			cdto.setMemo(data[9]);
+			//cdto.setMemo(data[9]);
 			
 			cdtos.add(cdto);
 			

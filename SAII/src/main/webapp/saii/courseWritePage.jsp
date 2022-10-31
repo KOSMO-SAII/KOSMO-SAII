@@ -14,17 +14,19 @@
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <body>
-
 	 <div class="body_wrap">
 		<div class="my">
-			<form >
+			<form action="../test" method="post" >
 			<ul id="My_List">
-							
+			
 			</ul>
 			</form>
+			<div id="btnbox">
 			<button onclick="check();">확인</button>
 			<button onclick="hide();">숨기기</button>
 			<a href="http://localhost:8081/SAII/home">돌아가기</a>
+			<input type="submit" ></input>
+			</div>
 		</div>
 		<div class="map_wrap">
 			<div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -35,7 +37,7 @@
 					<div>
 						<form onsubmit="searchPlaces(); return false;">
 							키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
-							<button type="submit">검색하기</button>
+							<button class="searchbtn" type="submit">검색하기</button>
 						</form>
 					</div>
 				</div>
@@ -81,15 +83,18 @@
 				</div>
 			</div>
 		</div>
-
-
+		<div id="memobox" class="none">
+		
+			<div class="title">
+			</div>
+				<div class="close memo"  title="닫기"></div>
+			<textarea class="memo"></textarea>
+			<button class="savememobtn" type="button">저장</button>
+		
+		</div>
+		
 	</div>
 	<!-- js연동 -->
 	<script src="http://localhost:8081/SAII/saii/JS/courseWritePage.js"></script>
-
-	<h1>코스 작성 화면입니다.</h1>
-	
-	<a href="http://localhost:8081/SAII/home">돌아가기</a>
-
 </body>
 </html>

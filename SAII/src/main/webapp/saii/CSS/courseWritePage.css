@@ -2,8 +2,12 @@
 /* 메인 css*/
 html,body,.map_wrap {height: 100%;}
 form{height: 100%;}
-.body_wrap{ height: 100%; display: flex;}
-.my{width: 20%;}
+.body_wrap{ height: 100%; display: flex; }
+.my{width: 20%; position: relative; overflow: scroll;  height: 100%}
+#btnbox{position: absolute; bottom: 10px;}
+form{ height: 90%;}
+
+
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -47,7 +51,7 @@ form{height: 100%;}
 
 
 /* 좌측 마이 스케쥴 사이드 바 css*/
-#My_List{list-style-type: none; padding: 0px; height: 100%;}
+#My_List{list-style-type: none; padding: 0px; height: 90%;}
 #My_List li{  margin-bottom: 5px; position: relative; }
 #My_List li .info .close {position: absolute;bottom: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 
@@ -86,7 +90,8 @@ form{height: 100%;}
 	overflow: hidden;
 }
 #arrow2 { position: absolute; bottom: 80px; left: -12px; cursor: pointer;
-			}
+		}
+		
 /* 마커 클릭시 나타나는 오버레이 css*/
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;
 			z-index: 2;}
@@ -106,4 +111,19 @@ form{height: 100%;}
     .info .link {color: #5085BB;}
     .info .button{width: 30%; position: absolute;bottom: 10px;right: 10px;}
     
-    
+ /* 메모저장 박스 css */ 
+ .none{display: none;}
+ .memobtn{position: absolute; bottom: 10px; right: 10px}
+ #memobox{border: 1px solid black; border-radius: 5px; position: absolute; 
+ 	top: 50%;    left: 50%;
+ 	width: 30%; height:30%;
+ 	z-index:3;
+ 	background:white;
+    transform: translate(-50%, -50%);
+   
+  	}
+.memo{ resize: none; width: 95%;height: 70%; border: none;}
+#memobox textarea:focus{outline: none;}
+#memobox button{width: 30%; position: absolute;bottom: 10px;right: 10px;}
+ #memobox .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png'); cursor: pointer;}
+#memobox .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}  	

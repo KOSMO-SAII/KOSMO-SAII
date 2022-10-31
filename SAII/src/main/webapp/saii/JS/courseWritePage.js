@@ -3,11 +3,11 @@ src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK
 
 //==검색 사이드 바 드롭다운
 let subToggle=true;
-	$('button').click(function(){
+	$('.searchbtn').click(function(){
 		var menu=document.getElementById('menu_wrap');
 		if(subToggle){
 		//console.log(menu);
-		menu.style.height='100%';
+		menu.style.height='90%';
 		//console.log($('#menu_wrap'));
 		//console.log($('#menu_wrap').style);
 		$('#arrow').text("▲")
@@ -18,7 +18,7 @@ let subToggle=true;
 	$('#arrow').click(function() {
 		var menu=document.getElementById('menu_wrap');
 		if(subToggle){
-		menu.style.height='100%';
+		menu.style.height='90%';
 		$('#arrow').text("▲")
 		subToggle=!subToggle;
 		}else{
@@ -305,7 +305,11 @@ function searcAddOverLay(marker,places){
 		placeAddress:places.address_name   ,
 		placePhone:places.phone  ,
 		placeUrl:places.place_url ,
-		placeid:places.id
+		placeid:places.id,
+		
+		placeCategoryCode:places.category_group_code,
+		placex:places.x,
+		placey:places.y
 	};
 	
 	//오버레이에 표시할 정보 
@@ -423,6 +427,7 @@ for(var i=0;i<li.length;i++){
 			}else if(e.id==currCategory){
 				currCategory='';
 				removeMarkerCategory();
+				 closeOverlay();
 			}
 		}else if(e.localName=='span'){
 			var p = e.parentElement;
@@ -433,6 +438,7 @@ for(var i=0;i<li.length;i++){
 			}else if(p.id==currCategory){
 				currCategory='';
 				removeMarkerCategory();
+				 closeOverlay();
 			}
 
 		}		
@@ -531,10 +537,7 @@ var myplace;
 var myplaceinfo;
 
 //오버레이 정보 생성 및 표시
-function addOverLay(markerc,place){
-	//임시
-	//console.log(place);
-	
+function addOverLay(markerc,place){	
 	 myplace = {
 		placex:place.x,
 		placey:place.y,
@@ -553,6 +556,8 @@ function addOverLay(markerc,place){
 		placex:place.x,
 		placey:place.y
 	};
+	//console.log(place.phone)
+	
 	//오버레이에 표시할 정보 
 	var content = '<div class="wrap">' + 
             '    <div class="info">' + 
@@ -700,17 +705,18 @@ function rsaveMyPin(myplace,myplaceinfo){
 		check();
 	}
 }
+//임시 
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){
 	//db에 전달할 정보
 	var data= place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
-				+place.Phone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|";	
+				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|";	
 	
 	var li=document.createElement('li');	
 	li.innerHTML=
             '    <div class="info">' + 
-            '        <div class="title">' + 
+            '       <div class="title">' + 
                         			place.placeName + 
             '        </div>' + 
             '        <div class="body">' + 
@@ -722,10 +728,13 @@ function addMySchedule(place){
             '            </div>' + 
             '            <div class="close"  title="닫기"></div>' + 
             '        </div>' + 
-            '		 <textarea style="display: none;">'+data+
-            '		 </textarea>'
-            '    </div>' +    
-            '</div>';
+            '		 <input type="hidden" class="data" name="data" value="'+data+'">'+
+            '		 <button type="button" class="memobtn" >메모'+
+            '		 </button>'
+            '		<div class="hiddenOrigindata" >'+data
+            '		</div>'+   
+            '    	</div>' + 
+            '	 </div>';
   
 	var ul =document.getElementById('My_List');
 	ul.appendChild(li);
@@ -739,9 +748,12 @@ function addMySchedule(place){
 	
 	//생성한 리스트에 마우스 오버시 화면 이동(임시)
 	$('#My_List li .title').mouseover(function(event){
-		
 		hoverevent(event);
-		
+	})
+	
+	//임시, 메모버튼클릭시 메모저장 박스 출력
+	$('.memobtn').click(function(event){
+		memobox(event);
 	})
 }
 
@@ -880,3 +892,36 @@ function makeline(){
 		polyline.setPath(path);
 	}
 }
+
+//===========임시 메모
+//메모 내용 담는 배열
+var memos=[];
+
+//메모 박스 출력
+function memobox(event){
+	console.log("실행")
+	//none 클래스 삭제
+	var e = event.target.parentElement.parentElement;
+	$('#memobox').removeClass('none');
+	
+	//title 부여
+	var text=$('.info .title')[$(e).index()].innerText
+	$('#memobox .title').text(text);
+	
+
+}
+//메모 박스 숨기기
+$('#memobox .close').click(function(){
+	$('#memobox').addClass('none');
+})
+
+//메모 저장
+$('.savememobtn').click(function(){
+	//리스트 input value값 불러오기
+	var value=$('.info .hiddenOrigindata')[0].defaultValue
+	console.log($('.info .hiddenOrigindata')[0]);
+	console.log($('#memobox textarea')[0].value);
+	//var memo=$('#memobox .memo')[0]
+	//$('.info .data')[0].defaultValue = value+'안녕';
+	
+})

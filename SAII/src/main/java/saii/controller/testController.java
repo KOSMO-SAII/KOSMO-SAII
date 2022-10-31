@@ -22,7 +22,7 @@ public class testController extends HttpServlet {
 		
 		
 		courseDAO cdao = new courseDAO();
-		String[] str = req.getParameterValues("c1");		
+		String[] str = req.getParameterValues("data");		
 		ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 		
 		cdao.insertCourse(cdtos);
