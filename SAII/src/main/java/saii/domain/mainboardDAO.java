@@ -74,15 +74,17 @@ public class mainboardDAO extends JDBConnect {
 		String sql = "select rownum, m_id, m_title, region, course_name, content, mb.nickname, m_postdate, visitcount, goodcount "
 				+ "from main_board mb, member m";
 		if(map.get("searchStr") != null) {
-			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'"
+					+ "and mb.nickname=m.nickname and mb.nickname='"+map.get("nick")+"'";
 		}else {
 			sql += " WHERE mb.nickname=m.nickname and mb.nickname='"+map.get("nick")+"'" ;			
 		}
 		
 		try {
-			psmt = con.prepareStatement(sql);
-			rs = psmt.executeQuery();
+			stmt = con.createStatement();
+			rs =stmt.executeQuery(sql);
 			while(rs.next()) {
+				System.out.println("1");
 				mainboardDTO dto = new mainboardDTO();
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
