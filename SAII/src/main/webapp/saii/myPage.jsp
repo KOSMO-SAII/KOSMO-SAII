@@ -14,16 +14,6 @@ function passCk(){     
 	}
 </script>
 <style>
-@font-face {
-    font-family: 'Humanbumsuk';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-	font-family: font-family: 'Humanbumsuk';
-}
 
 tr>td:first-child {
 	text-align: right
@@ -35,7 +25,7 @@ body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password
 	border:0;
 	font-size: 15px;
 	border-radius: 10px;
-	background-color: rgb(233, 233, 233);
+	background-color: rgb(255, 249, 227);
 	vertical-align: middle;
 }
 h4 {
@@ -43,18 +33,22 @@ h4 {
 }
 #firsttable {
 	width: 300px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgb(255, 243, 200);
 	border-radius: 20px
 }
 #edit {
 	position: absolute;
-	left: 52%;
+	left: 49%;
 	top: 65px;
-	border-radius: 3px;
 	border: 0px;
-	background-color: black;
-	color: white;
 	height: 30px;
+	background-color: #FF6600;
+	color: white;
+	cursor: pointer;
+	padding: 6px 18px;
+	border-radius: 5px;
+	font-size: 15px;
+	
 }
 
 #profile{
@@ -73,6 +67,8 @@ h4 {
 	cursor: pointer;
 	padding: 6px 25px;
 	border-radius: 5px;
+	display:inline-block;
+	width: 100px
 }
 #sub{
 	display: none;
@@ -85,7 +81,10 @@ h4 {
 	cursor: pointer;
 	padding: 6px 25px;
 	border-radius: 5px;
+	display:inline-block;
+	width: 100px
 }
+
 
 </style>
 </head>
@@ -134,7 +133,7 @@ h4 {
 		</tr>
 	</table>
 	<div id="profile" align="center">
-	<img src="/SAII/Storage/${dto.n_profile_img}" width="100px" height="100px" style="border-radius: 50px">
+	<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
 	<form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${dto.id}">
 		<label class="input_file_button" for="filebutton">파일선택</label>
@@ -191,6 +190,7 @@ h4 {
 				</tr>
 			</c:otherwise>
 		</c:choose>
+	</table>
 		
 		
 		<!-- <tr>

@@ -37,6 +37,8 @@ public class myPageController extends HttpServlet{
 		}
 		String nick = dto.getNickname();
 		map.put("nick", nick);
+		System.out.println(nick);
+		System.out.println(map.get("nick"));
 		int totalCount = mdao.selectCount(map);//게시물의 갯수
 		
 		// 페이징
