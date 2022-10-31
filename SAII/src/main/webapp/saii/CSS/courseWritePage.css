@@ -2,14 +2,14 @@
 /* 메인 css*/
 html,body,.map_wrap {height: 100%;}
 form{height: 100%;}
-
 .body_wrap{ height: 100%; display: flex;}
 .my{width: 20%;}
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative; width:80%;  } /* height:500px; , width:100%; */
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;
+			height:10%;  list-style:none;  overflow:hidden;  transition:height ease-out 1s 0s;	}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
@@ -43,6 +43,8 @@ form{height: 100%;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
+#arrow{ position: absolute; bottom: 5px; left: 125px; cursor: pointer;}
+
 
 /* 좌측 마이 스케쥴 사이드 바 css*/
 #My_List{list-style-type: none; padding: 0px; height: 100%;}
@@ -50,15 +52,14 @@ form{height: 100%;}
 #My_List li .info .close {position: absolute;bottom: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 
 /* 화면 우측 상단 카테고리 목록 css*/
-#category {position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;
-	padding: 0px 0px 0px 0px;}
-#category li {float:left;list-style: none;width:50px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
+/*#category {position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;
+	padding: 0px 0px 0px 0px;}*/
+#category li,#category2 li {float:left;list-style: none;width:50px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
-#category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
-#category li:last-child{margin-right:0;border-right:0;}
-#category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
-#category li .category_bg {background: url(../img/category.png) no-repeat; display: block;}
-
+#category li:hover, #category2 li:hover{background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
+#category li:last-child, #category2 li:last-child{margin-right:0;border-right:0;}
+#category li span,#category2 li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
+#category li .category_bg, #category2 li .category_bg {background: url(../img/category.png) no-repeat; display: block;}
 #category li .bank {width: 43px; height: 50px; background-position: -58px -5px;}
 #category li .mart { width: 43px;    height: 50px;    background-position: -5px -125px;} 
 #category li .pharmacy {  width: 43px;    height: 50px;    background-position: -5px -5px;}
@@ -66,15 +67,26 @@ form{height: 100%;}
 #category li .cafe { width: 43px;    height: 50px;    background-position: -111px -65px;}
 #category li .store {width: 43px;    height: 50px;    background-position: -164px -125px;}
 #category li .park {width: 43px;    height: 50px;    background-position: -164px -5px;}    
-#category li .subway {width: 43px;    height: 50px;    background-position: -164px -65px;} 
-#category li .culture { width: 43px;    height: 50px;    background-position: -111px -5px;}
-#category li .tourism {  width: 43px;    height: 50px;    background-position: -5px -185px;}
-#category li .lodgment { width: 43px;    height: 50px;   background-position: -58px -65px;} 
-#category li .food { width: 43px;    height: 50px;    background-position: -111px -125px;} 
-#category li .hospital { width: 43px;    height: 50px;    background-position: -5px -65px;} 
+#category2 li .subway {width: 43px;    height: 50px;    background-position: -164px -65px;} 
+#category2 li .culture { width: 43px;    height: 50px;    background-position: -111px -5px;}
+#category2 li .tourism {  width: 43px;    height: 50px;    background-position: -5px -185px;}
+#category2 li .lodgment { width: 43px;    height: 50px;   background-position: -58px -65px;} 
+#category2 li .food { width: 43px;    height: 50px;    background-position: -111px -125px;} 
+#category2 li .hospital { width: 43px;    height: 50px;    background-position: -5px -65px;} 
 #category li.on .category_bg {background-position-x:-46px;}
 .background_on{background: #ffe6e6;}
 
+#box{position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff; z-index: 2;
+	padding: 0px 0px 0px 0px;
+	border: 1px solid black;
+	width: 10px; height: 164px;
+}
+#category-box{
+	display:none;
+	overflow: hidden;
+}
+#arrow2 { position: absolute; bottom: 80px; left: -12px; cursor: pointer;
+			}
 /* 마커 클릭시 나타나는 오버레이 css*/
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;
 			z-index: 2;}

@@ -1,6 +1,50 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
 
+//==검색 사이드 바 드롭다운
+let subToggle=true;
+	$('button').click(function(){
+		var menu=document.getElementById('menu_wrap');
+		if(subToggle){
+		//console.log(menu);
+		menu.style.height='100%';
+		//console.log($('#menu_wrap'));
+		//console.log($('#menu_wrap').style);
+		$('#arrow').text("▲")
+		}
+		subToggle=!subToggle;
+	})
+	
+	$('#arrow').click(function() {
+		var menu=document.getElementById('menu_wrap');
+		if(subToggle){
+		menu.style.height='100%';
+		$('#arrow').text("▲")
+		subToggle=!subToggle;
+		}else{
+			menu.style.height='10%';
+			$('#arrow').text("▼")
+		subToggle=!subToggle;
+		}
+	})
+
+let subToggle2=true;
+	$('#arrow2').click(function() {
+		var box=document.getElementById('box');
+		var ctbox=document.getElementById('category-box');
+		if(subToggle2){
+		box.style.width='364px';
+		$('#category-box').css('display', 'block');
+		$('#arrow2').text("▶")
+		subToggle2=!subToggle2;
+		}else{
+			box.style.width='10px';
+			$('#category-box').css('display', 'block');
+			$('#arrow2').text("◀")
+		subToggle2=!subToggle2;
+		}
+	})
+//==========이하 지도 api부분
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -300,6 +344,7 @@ function searcAddOverLay(marker,places){
 //검색 결과 핀 저장
 function saveMySearchPin(){
 	rsaveMyPin(mysplace,mysplaceinfo);
+
 }
 
 //검색 결과 핀 저장(현재 안쓰임 삭제 예정)
@@ -353,12 +398,13 @@ var markersc=[];
 var markerscId=[];
 
 //카테고리 요소 선택
-var li = document.querySelectorAll('#category li');
-
+var li = document.querySelectorAll('#category-box li');
+	console.log(li)
 //현재 카테고리명 담는 변수
 var currCategory= '';
 
 for(var i=0;i<li.length;i++){
+
 	//우측상단 카테고리에 클릭 이벤트 생성
 	li[i].addEventListener('click',function(event){
 		var e = event.target;
@@ -561,6 +607,7 @@ var num=1;
 //내가 저장한 핀 실행 메서드1
  function saveMyPin(){
 	rsaveMyPin(myplace,myplaceinfo);
+	
 }
 
 //내가 저장한 핀 실행 메서드2
