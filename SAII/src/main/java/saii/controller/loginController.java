@@ -39,7 +39,8 @@ public class loginController extends HttpServlet{
 		System.out.println(dto.getId());
 		if(dto.getId()!=null) {
 			session.setAttribute("UserId", dto.getId());
-			session.setAttribute("UserName", dto.getName());			
+			session.setAttribute("UserName", dto.getName());
+			session.setAttribute("nickname", dto.getNickname());
 			
 			resp.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = resp.getWriter();
