@@ -5,11 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 화면</title>
+<title>회원가입 입력</title>
 <style>
 	#form {width: 400px; margin:auto; padding:30px}
-
+	h2 { text-align: center; margin: 30px 0 30px 0;}
+	input { vertical-align: 5px;}
+	label { vertical-align: 5px;}
+	a {vertical-align: 5px;}
+	select {vertical-align: 5px;}
 </style>
+
+
+
 <script>
 
 	//생년월일 받기
@@ -48,7 +55,7 @@
 			return false;
 		}
 		window.name = "parentForm";            
-		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+		nickWin = window.open("nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				"width=200, height=200, resizable = no, scrollbars = no");
 	}
 	
@@ -59,7 +66,7 @@
 			return false;
 		}
 		window.name = "parentForm";            
-		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+		idWin = window.open("idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
 				"width=200, height=200, resizable = no, scrollbars = no");
 
 	}
@@ -68,30 +75,48 @@
 </head>
 <body>
 	<h2>회원가입</h2>
-	<form id="form" method="post" action="http://localhost:8081/SAII/signup" enctype="multipart/form-data" onsubmit="return check();">
-	아이디  <input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
-			<input type="button" value="중복체크" onclick="idCk();"/> <br/>
-    비밀번호  <input type="password" name="pw" placeholder="영문,숫자로 8~15자" value="${param.pw}"/><br/>
-    비밀번호 재확인  <input type="password" name="pw2" value="${param.pw2}"/><br/>
-    닉네임  <input type="text" id="usernickname" name="nickname" placeholder="입력하세요" value="${param.nickname}"/>
-    		<input type="button" value="중복체크" onclick="nickCk();"/> <br/>
-    이름  <input type="text" name="name" placeholder="한글만 입력 가능합니다." value="${param.name1}"/><br/>
-    성별  <input type="radio" name="sex" value="여자" checked/>여자
-    	<input type="radio" name="sex" value="남자" />남자<br/> 
-    생년월일 
-    <select name="yy" id="year" ></select>년
-	<select name="mm" id="month" ></select>월
-	<select name="dd" id="day" ></select>일<br/>
-    프로필 <input type="file" name="pick" /><br/>
-    주소 <input type="text" name="address" value="${param.address}"> <br/>
-    이메일 <input type="text" name="email" value="${param.email}"><br/>
-    <input type="submit" value="회원가입하기" />
+	<form id="form" method="post" action="../signup" enctype="multipart/form-data" onsubmit="return check();">
+	<label>아이디 </label> 
+	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
+	<input type="button" value="중복체크" onclick="idCk(); "/> <br/>
+	
+	<label>비밀번호</label>
+	<input type="password" name="pw" placeholder="영문,숫자로 8~15자" value="${param.pw}" ><br/>
+	
+	<label>비밀번호 재확인</label>
+	<input type="password" name="pw2" value="${param.pw2}"/><br/>
+    
+    <label>닉네임</label>  
+    <input type="text" id="usernickname" name="nickname" placeholder="입력하세요" value="${param.nickname}"/>
+    <input type="button" value="중복체크" onclick="nickCk();"/> <br/>
+    
+    <label>이름</label>  
+    <input type="text" name="name" placeholder="한글만 입력 가능합니다." value="${param.name1}"/><br/>
+    
+    <label>성별</label>  
+    <input type="radio" name="sex" value="여자" checked/><a>여자</a>
+    <input type="radio" name="sex" value="남자" /><a>남자</a><br/> 
+    
+    <label>생년월일</label> 
+    <select name="yy" id="year" ></select><a>년</a>
+	<select name="mm" id="month" ></select><a>월</a>
+	<select name="dd" id="day" ></select><a>일</a><br/>
+    
+    <label>프로필</label> 
+    <input type="file" name="pick" /><br/>
+    
+    <label>주소</label> 
+    <input type="text" name="address" value="${param.address}"> <br/>
+    
+    <label>이메일</label> 
+    <input type="text" name="email" value="${param.email}"><br/>
+    
+    <label>핸드폰번호</label>
+    <input type="text"><br/>
+    
+    <input type="submit"  value="회원가입하기" />
     </form>
     
-
-	<br/><br/>
-	<a href="http://localhost:8081/SAII/login">돌아가기</a><br/>
-	<a href="http://localhost:8081/SAII/home">시작 화면</a>
-<script src="../JS/memAct.js"></script>
+<script src="memAct.js"></script>
 </body>
 </html>
