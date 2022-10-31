@@ -714,7 +714,8 @@ var data={};
 function addMySchedule(place){
 	//db에 전달할 정보
 	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
-				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|"}
+				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|",
+						memo:""}
 	
 	var li=document.createElement('li');	
 	li.innerHTML=
@@ -740,7 +741,7 @@ function addMySchedule(place){
 	var ul =document.getElementById('My_List');
 	ul.appendChild(li);
 	
-	//임시
+	
 	$('.info .data')[num].defaultValue=mymarkers[num].data.data
 	
 	num+=1;
@@ -912,12 +913,15 @@ function memobox(event){
 	$('#memobox').removeClass('none');
 	
 	 index=$(e).index()
+	 
 	//console.log(index);
 	//console.log($(e).index());
+	
 	//title 부여
 	var text=$('.info .title')[index].innerText;
 	$('#memobox .title').text(text);
 	
+	$('#memobox textarea')[0].value=mymarkers[index].data.memo;
 }
 
 //메모 박스 숨기기
@@ -938,7 +942,10 @@ $('#memobox .close').click(function(){
 		//console.log($(e).index());
 		//텍스트 에어이라 입력 값
 		var memo=$('#memobox textarea')[0].value
-		console.log(value+memo);
+		
+		mymarkers[index].data.memo=memo;
+		
+		//console.log(value+memo);
 		//input value에 메모내용 값 추가
 		$('.info .data')[index].defaultValue = value+memo;
 		console.log($('.info .data')[index].defaultValue)
