@@ -153,6 +153,7 @@ public class memberDAO extends JDBConnect {
 				dto.setId(rs.getString("id"));
 				dto.setPw(rs.getString("pw"));
 				dto.setName(rs.getString("name"));
+				dto.setNickname(rs.getString("nickname"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
