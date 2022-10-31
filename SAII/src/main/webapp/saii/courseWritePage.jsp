@@ -42,37 +42,44 @@
 				<hr>
 				<ul id="placesList"></ul>
 				<div id="pagination"></div>
+				<div id="arrow">▼</div>
 			</div>
 			<!-- 카테고리 목록 위치  -->
-			<ul id="category">
-				<li id="BK9" data-order="0"><span class="category_bg bank"></span>
-				은행</li>
-				<li id="MT1" data-order="1"><span class="category_bg mart"></span>
-				마트</li>
-				<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
-				약국</li>
-				<li id="OL7" data-order="3"><span class="category_bg oil"></span>
-				주유소</li>
-				<li id="CE7" data-order="4"><span class="category_bg cafe"></span>
-				카페</li>
-				<li id="CS2" data-order="5"><span class="category_bg store"></span>
-				편의점</li>
-				<li id="PK6" data-order="6"><span class="category_bg park"></span>
-				주차장</li>
-				<li id="SW8" data-order="7"><span class="category_bg subway"></span>
-				지하철역</li>
-				<li id="CT1" data-order="8"><span class="category_bg culture"></span>
-				문화시설</li>
-				<li id="AT4" data-order="9"><span class="category_bg tourism"></span>
-				관광명소</li>
-				<li id="AD5" data-order="10"><span class="category_bg lodgment"></span>
-				숙박</li>
-				<li id="FD6" data-order="11"><span class="category_bg food"></span>
-				음식점</li>
-				<li id="HP8" data-order="12"><span class="category_bg hospital"></span>
-				병원</li>
-
-			</ul>
+			<div id="box">
+				<div id="arrow2">◀</div>
+				<div id="category-box">
+				<ul id="category">
+					<li id="BK9" data-order="0"><span class="category_bg bank"></span>
+					은행</li>
+					<li id="MT1" data-order="1"><span class="category_bg mart"></span>
+					마트</li>
+					<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
+					약국</li>
+					<li id="OL7" data-order="3"><span class="category_bg oil"></span>
+					주유소</li>
+					<li id="CE7" data-order="4"><span class="category_bg cafe"></span>
+					카페</li>
+					<li id="CS2" data-order="5"><span class="category_bg store"></span>
+					편의점</li>
+					<li id="PK6" data-order="6"><span class="category_bg park"></span>
+					주차장</li>
+				</ul>
+				<ul id="category2">	
+					<li id="SW8" data-order="7"><span class="category_bg subway"></span>
+					지하철역</li>
+					<li id="CT1" data-order="8"><span class="category_bg culture"></span>
+					문화시설</li>
+					<li id="AT4" data-order="9"><span class="category_bg tourism"></span>
+					관광명소</li>
+					<li id="AD5" data-order="10"><span class="category_bg lodgment"></span>
+					숙박</li>
+					<li id="FD6" data-order="11"><span class="category_bg food"></span>
+					음식점</li>
+					<li id="HP8" data-order="12"><span class="category_bg hospital"></span>
+					병원</li>
+				</ul>
+				</div>
+			</div>
 		</div>
 
 
