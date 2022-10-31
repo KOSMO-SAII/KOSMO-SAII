@@ -65,6 +65,42 @@ public class mainboardDAO extends JDBConnect {
 		return bl;
 	}
 	
+	public List<mainboardDTO> selectListPage1(Map<String, Object> map){
+		List<mainboardDTO> bl = new Vector<mainboardDTO>();
+		String sql = "select rownum, m_id, m_title, region, course_name, content, mb.nickname, m_postdate, visitcount, goodcount "
+				+ "from main_board mb, member m";
+		if(map.get("searchStr") != null) {
+			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+		}else {
+			sql += " WHERE mb.nickname=m.nickname and mb.nickname='"+map.get("nick")+"'" ;
+					
+		}
+		
+		try {
+			stmt = con.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				mainboardDTO dto = new mainboardDTO();
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_title(rs.getString("m_title"));
+				dto.setRegion(rs.getString("region"));
+				dto.setCourse_name(rs.getString("course_name"));
+				dto.setContent(rs.getString("content"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setVisitcount(rs.getInt("visitcount"));
+				dto.setGoodcount(rs.getInt("goodcount"));
+				dto.setM_postdate(rs.getDate("m_postdate"));
+				
+				bl.add(dto);
+			}
+		}catch(Exception e) {
+			System.out.println("게시판 목록 읽기 중 에러");
+			e.printStackTrace();
+		}
+		return bl;
+	}
+	
 	public void updateVisitCount(String m_id) {
 		String sql = "update main_board "
 				   + "set visitcount = visitcount + 1 "
