@@ -84,17 +84,51 @@ function validateform(form){
 <h4>회원정보 수정</h4>
 <div>
 <form action="http://localhost:8081/SAII/mypage.edit?id=${dto.id }" method="post" id="form" onsubmit="return validateform(this)">
-<input type="submit" value="회원정보 수정" ><br>
-	아이디 : <input type="text" name="id" value="${dto.id}" readonly> <br/>
-	비밀번호 : <input type="password" name="pw" value="${dto.pw }"> <br/>
-	비밀번호 확인 : <input type="password" name="pw2" value="${dto.pw }"><br/>
-	닉네임 : <input type="text" name="nickname" value="${dto.nickname }"><br/>
-	이름 : <input type="text" name="name" value="${dto.name }" readonly><br/>
-	생일 : <input type="text" name="birthday" value="${dto.birthday }"><br/>
-	성별 : <input type="text" name="sex" value="${dto.sex }" readonly><br/>
-	전화 : <input type="text" name="phone" value="${dto.phone }" ><br/>
-	이메일 : <input type="email" name="email" value="${dto.email }"><br/>
-	주소 : <input type="text" name= "address" value="${dto.address }">
+<table>
+	<tr>
+		<td><input type="submit" value="회원정보 수정" ></td>
+	</tr>
+	<tr>
+		<td>아&nbsp이&nbsp디 : </td>
+		<td><input type="text" name="id" value="${dto.id}" readonly></td>
+	</tr>
+	<tr>
+		<td>비밀번호 : </td>
+		<td><input type="password" name="pw" value="${dto.pw }"> </td>
+	</tr>
+	<tr>
+		<td>비밀번호 확인 : </td>
+		<td><input type="password" name="pw2" value="${dto.pw }"></td>
+	<tr>
+	<tr>
+		<td>닉&nbsp네&nbsp임 : </td>
+		<td><input type="text" name="nickname" value="${dto.nickname }"></td>
+	</tr>
+	<tr>
+		<td>이&nbsp&nbsp&nbsp&nbsp&nbsp름 : </td>
+		<td><input type="text" name="name" value="${dto.name }" readonly></td>
+	</tr>
+	<tr>
+		<td>생&nbsp&nbsp&nbsp&nbsp&nbsp일 : </td>
+		<td><input type="text" name="birthday" value="${dto.birthday }"></td>
+	</tr>
+	<tr>
+		<td>성&nbsp&nbsp&nbsp&nbsp&nbsp별 : </td>
+		<td><input type="text" name="sex" value="${dto.sex }" readonly></td>
+	</tr>
+	<tr>
+		<td>전&nbsp&nbsp&nbsp&nbsp&nbsp화 : </td>
+		<td><input type="text" name="phone" value="${dto.phone }" ></td>
+	</tr>
+	<tr>
+		<td>이&nbsp메&nbsp일 : </td>
+		<td><input type="email" name="email" value="${dto.email }"></td>
+	</tr>
+	<tr>
+		<td>주&nbsp&nbsp&nbsp&nbsp&nbsp소 : </td>
+		<td><input type="text" name= "address" value="${dto.address }"></td>
+	</tr>
+</table>
 </form>
 </div>
 
