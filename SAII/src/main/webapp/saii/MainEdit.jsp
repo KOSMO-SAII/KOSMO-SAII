@@ -31,14 +31,14 @@
 	<form name="writeForm" method="post" action="http://localhost:8081/SAII/edit">
 		<table>
 			<tr>
-				<td>제목</td> <td colspan="3"><input type="text" name="m_title" /></td>
+				<td>제목</td> <td colspan="3"><input type="text" name="m_title" />${dto.m_title}</td>
 			</tr>
 			<tr>
-				<td>지역</td> <td><input type="text" name="region" /></td>
-				<td>코스명</td> <td><input type="text" name="course_name" /></td>
+				<td>지역</td> <td><input type="text" name="region" />${dto.region}</td>
+				<td>코스명</td> <td><input type="text" name="course_name" />${dto.course_name}</td>
 			</tr>
 			<tr>
-				<td id="content_td" colspan="4"><textarea name="content"></textarea></td>
+				<td id="content_td" colspan="4"><textarea name="content">${dto.content}</textarea></td>
 			</tr>
 			<td id="submit_button" colspan="4">
 				<input type="submit" value="작성 완료" />

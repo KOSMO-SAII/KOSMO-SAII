@@ -12,7 +12,7 @@ import saii.domain.mainboardDAO;
 import saii.dto.mainboardDTO;
 
 @WebServlet("/edit")
-public class EditController extends HttpServlet {
+public class MainEditController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{// 게시글 가져오기
 		mainboardDAO dao = new mainboardDAO();
