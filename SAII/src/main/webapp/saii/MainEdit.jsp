@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-	<form name="writeForm" method="post" action="http://localhost:8081/SAII/edit">
+	<form name="editForm" method="post" action="http://localhost:8081/SAII/edit">
 		<table>
 			<tr>
 				<td>제목</td> <td colspan="3"><input type="text" name="m_title" />${dto.m_title}</td>
