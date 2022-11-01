@@ -97,20 +97,20 @@
 	<!-- 댓글 목록 -->
 <div>
 	<table id="tblListComment" class="table table-bordered">
-		<c:if test="${ clist.size() == 0 }">
+		<c:if test="${ commentLists.size() == 0 }">
 			<tr>
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
 		</c:if>
-		<c:forEach items="${ clist }" var="cdto">
+		<c:forEach items="${ commentLists }" var="clist">
 			<tr>
 				<td>
-					${ cdto.cmt_content }
-					<span>${ cdto.nickname }. ${ cdto.cmt_regdate }</span>
+					${ clist.cmt_content }
+					<span>${ clist.nickname }. ${ clist.cmt_regdate }</span>
 				</td>
 				<td>
 					<input type="button" value="삭제하기" class="btn btn-default" 
-						onclick="location.href='http://localhost:8081/saii/delcomment?cmt_no=${ cdto.cmt_no }&board_no=${ dto.board_no }';"/>
+						onclick="location.href='http://localhost:8081/saii/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ clist.board_no }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
