@@ -208,6 +208,26 @@ public class reviewboardDAO extends JDBConnect {
 		return null;
 	}
 	
-	
+	public int addComment(CommentDTO dto) {
+		
+		try {
+			
+			String sql = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
+					+ " values (seq_board_num.NEXTVAL, ?, ?, default, ?)";
+			
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1, dto.getCmt_id());
+			psmt.setString(2, dto.getCmt_content());
+			psmt.setString(3, dto.getBoard_no());
+			
+			return psmt.executeUpdate(); // 성공시 1 실패시 0
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 }

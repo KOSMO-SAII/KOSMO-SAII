@@ -7,6 +7,30 @@
 <meta charset="UTF-8">
 
 <title>리뷰게시판</title>
+<style>	
+	#tblAddCommnet, #tblListComment { width: 700px; margin: 15px auto; }
+	
+	#tblAddComment { margin-top: 30px; }
+	#tblAddComment td:nth-child(1) { width: 600px; }
+	#tblAddComment td:nth-child(2) { width: 100px; }
+	
+	#tblListComment td:nth-child(1) { width: 600px; }
+	#tblListComment td:nth-child(2) { width: 100px; }
+	
+	#tblListComment td {
+		position: relative;
+		left: 0;
+		top: 0;
+	}
+	
+	#tblListComment td span {
+		position: absolute;
+		right: 10px;
+		bottom: 5px;
+		color: #AAA;
+		font-size: 11px;
+	}
+</style>
 </head>
 <body>
 	<h2>게시판 상세보기</h2>
@@ -71,16 +95,37 @@
 	</table>
 
 	<!-- 댓글 목록 -->
-	<form name="cmtList" method="post" action="${contextPath}/cmtInput">
-		<table border="1" width="90%">
-			<tr align="left">
+<div>
+	<table id="tblListComment" class="table table-bordered">
+		<c:if test="${ clist.size() == 0 }">
+			<tr>
+				<td colspan="2">댓글이 없습니다.</td>
+			</tr>
+		</c:if>
+		<c:forEach items="${ clist }" var="cdto">
+			<tr>
 				<td>
-					<input type="text" />
-					<input type="button" value="등록" />
+					${ cdto.cmt_content }
+					<span>${ cdto.nickname }. ${ cdto.cmt_regdate }</span>
+				</td>
+				<td>
+					<input type="button" value="삭제하기" class="btn btn-default" 
+						onclick="location.href='http://localhost:8081/saii/delcomment?cmt_no=${ cdto.cmt_no }&board_no=${ dto.board_no }';"/>
 				</td>
 			</tr>
+		</c:forEach>	
+	</table>
+	
+	<form method="POST" action="/saii/addcomment">
+		<table id="tblAddComment" class="table table-bordered">
+			<tr>
+				<td><input type="text" name="content" id="content" class="form-control" required placeholder="댓글을 작성하세요. "/></td>
+				<td><input type="submit" value="댓글쓰기" class="btn btn-primary" /></td>
+			</tr>
 		</table>
+		<input type="hidden" name="cmt_no" value="${ dto.cmt_no }" />
 	</form>
+</div>
 
 
 
