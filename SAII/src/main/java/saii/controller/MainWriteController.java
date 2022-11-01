@@ -19,7 +19,7 @@ import saii.dto.memberDTO;
 public class MainWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		req.getRequestDispatcher("/saii/Write.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/MainWrite.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -31,6 +31,7 @@ public class MainWriteController extends HttpServlet {
 		dto.setCourse_name(req.getParameter("course_name"));
 		dto.setContent(req.getParameter("content"));
 		
+		// DB에서 아이디로 닉네임 찾기
 		memberDTO memdto = new memberDTO();		
 		memberDAO memdao = new memberDAO();
 		String id = req.getSession().getAttribute("UserId").toString();
