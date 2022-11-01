@@ -1,10 +1,12 @@
 package saii.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import saii.controller.JDBConnect;
+import saii.dto.CommentDTO;
 import saii.dto.reviewboardDTO;
 
 
@@ -148,8 +150,9 @@ public class reviewboardDAO extends JDBConnect {
 	public int updatePost(reviewboardDTO dto) {
 		int result = 0;
 		try {
-			String query = "UPDATE REVIEW_BOARD" + " SET r_title=?, content=?, o_file=?, n_file=? "
-					+ "WHERE r_id=?";
+			String query = "UPDATE REVIEW_BOARD"
+						+ " SET r_title=?, content=?, o_file=?, n_file=? "
+						+ "WHERE r_id=?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getR_title());
 		
@@ -165,4 +168,66 @@ public class reviewboardDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public ArrayList<CommentDTO> listComment(String cmt_no) {
+		
+		try {
+			
+			// 부모글 번호를 조건으로 받기
+			String sql = "select c.*, (select nickname from member where nickname = c.nickname) as nickname "
+					+ "from comment_board c where board_no = ? order by cmt_no";
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, cmt_no);
+			
+			rs = psmt.executeQuery();
+			
+			ArrayList<CommentDTO> clist = new ArrayList<CommentDTO>();
+			
+			while ( rs.next() ) {
+				
+				CommentDTO dto = new CommentDTO();
+				
+				dto.setCmt_no(rs.getString("cmt_no"));
+				dto.setCmt_content(rs.getString("cmt_content"));
+				dto.setCmt_id(rs.getString("cmt_id"));
+				dto.setCmt_regdate(rs.getString("cmt_regdate"));
+				dto.setBoard_no(rs.getString("board_no"));
+				dto.setNickname(rs.getString("nickname"));
+				
+				clist.add(dto);
+				
+			}
+			
+			return clist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public int addComment(CommentDTO dto) {
+		
+		try {
+			
+			String sql = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
+					+ " values (seq_board_num.NEXTVAL, ?, ?, default, ?)";
+			
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1, dto.getCmt_id());
+			psmt.setString(2, dto.getCmt_content());
+			psmt.setString(3, dto.getBoard_no());
+			
+			return psmt.executeUpdate(); // 성공시 1 실패시 0
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
 }

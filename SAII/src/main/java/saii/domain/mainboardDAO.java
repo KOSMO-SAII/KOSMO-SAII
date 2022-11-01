@@ -52,8 +52,7 @@ public class mainboardDAO extends JDBConnect {
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
 				dto.setRegion(rs.getString("region"));
-				dto.setCourse_name(rs.getString("course_name"));
-				dto.setContent(rs.getString("content"));
+				dto.setCourse_id(rs.getString("course_id"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setVisitcount(rs.getInt("visitcount"));
 				dto.setGoodcount(rs.getInt("goodcount"));
@@ -71,7 +70,7 @@ public class mainboardDAO extends JDBConnect {
 	public List<mainboardDTO> myPage_selectListPage(Map<String, Object> map){
 		List<mainboardDTO> bl = new Vector<mainboardDTO>();
 		
-		String sql = "select rownum, m_id, m_title, region, course_name, content, mb.nickname, m_postdate, visitcount, goodcount "
+		String sql = "select rownum, m_id, m_title, region, course_id, mb.nickname, m_postdate, visitcount, goodcount "
 				+ "from main_board mb, member m";
 		if(map.get("searchStr") != null) {
 			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'"
@@ -89,8 +88,7 @@ public class mainboardDAO extends JDBConnect {
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
 				dto.setRegion(rs.getString("region"));
-				dto.setCourse_name(rs.getString("course_name"));
-				dto.setContent(rs.getString("content"));
+				dto.setCourse_id(rs.getString("course_id"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setVisitcount(rs.getInt("visitcount"));
 				dto.setGoodcount(rs.getInt("goodcount"));
@@ -130,8 +128,7 @@ public class mainboardDAO extends JDBConnect {
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
 				dto.setRegion(rs.getString("region"));
-				dto.setCourse_name(rs.getString("course_name"));
-				dto.setContent(rs.getString("content"));
+				dto.setCourse_id(rs.getString("course_id"));				
 				dto.setNickname(rs.getString("nickname"));
 				dto.setM_postdate(rs.getDate("m_postdate"));
 				dto.setVisitcount(rs.getInt("visitcount"));
@@ -146,15 +143,14 @@ public class mainboardDAO extends JDBConnect {
 	
 	public int insertWrite(mainboardDTO dto, String nickname) {
 		int rs = 0;
-		String sql = "insert into main_board(m_id, m_title, region, course_name, content, nickname, visitcount, goodcount)"
-				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, ?, 0, 0)";
+		String sql = "insert into main_board(m_id, m_title, region, course_id, nickname, visitcount, goodcount)"
+				   + " values(seq_mboard_num.nextval, ?, ?, ?,  ?, 0, 0)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getM_title());
 			psmt.setString(2, dto.getRegion());
-			psmt.setString(3, dto.getCourse_name());
-			psmt.setString(4, dto.getContent());
-			psmt.setString(5, nickname);
+			psmt.setString(3, dto.getCourse_id());
+			psmt.setString(4, nickname);
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println("게시물 입력 중 예외");
@@ -165,14 +161,13 @@ public class mainboardDAO extends JDBConnect {
 	
 	public int updateWrite(mainboardDTO dto, String nickname) {
 		int rs = 0;
-		String sql = "update main_board set m_title = ?, region = ?, course_name = ?, content = ? where m_id = ?;";
+		String sql = "update main_board set m_title = ?, region = ?, course_id = ?, where nickname = ?;";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getM_title());
 			psmt.setString(2, dto.getRegion());
-			psmt.setString(3, dto.getCourse_name());
-			psmt.setString(4, dto.getContent());
-			psmt.setString(5, nickname);
+			psmt.setString(3, dto.getCourse_id());
+			psmt.setString(4, nickname);
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println("게시물 수정 중 예외");

@@ -19,7 +19,7 @@
 <body>
 <h2>본인확인</h2>
 	<form name="writeFrm" method="post" action="http://localhost:8081/SAII/passcheck" onsubmit="return passCk(this);">
-	<table border="1" width="50%">
+	<table border="1" width="600px">
          <tr>
             <td>비밀번호를 입력해주세요.</td>
             <td>
