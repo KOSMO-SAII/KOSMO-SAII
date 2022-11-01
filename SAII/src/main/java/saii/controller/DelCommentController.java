@@ -15,14 +15,14 @@ import utils.AlertFunc;
 public class DelCommentController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String board_no = req.getParameter("board_no");
+		String r_id = req.getParameter("r_id");
 		String cmt_no = req.getParameter("cmt_no");
 		
 		reviewboardDAO dao = new reviewboardDAO();
 		
 		int result = dao.delComment(cmt_no);
 		if(result ==1) {
-			resp.sendRedirect("/saii//review_view?cmt_no="+board_no);
+			resp.sendRedirect("/SAII/review_view?r_id="+r_id);
 		}else {
 			AlertFunc.alertBack(resp, "댓글 삭제 실패");
 		}

@@ -172,12 +172,15 @@ public class reviewboardDAO extends JDBConnect {
 	public ArrayList<CommentDTO> listComment(String r_id) {
 		
 		try {
-			
+			System.out.println(r_id);
 			// 부모글 번호를 조건으로 받기
-			String sql = "select c.*, (select nickname from member where nickname = c.nickname) as nickname "
-					+ "from comment_board c where board_no = ? order by cmt_no";
+			String query = "select c.*, r.nickname "
+					+ "from comment_board c, review_board r "
+					+ "where board_no = r_id "
+					+ "and board_no = ? "
+					+ "order by cmt_no";
 			
-			psmt = con.prepareStatement(sql);
+			psmt = con.prepareStatement(query);
 			psmt.setString(1, r_id);
 			
 			rs = psmt.executeQuery();
@@ -189,6 +192,7 @@ public class reviewboardDAO extends JDBConnect {
 				CommentDTO dto = new CommentDTO();
 				
 				dto.setCmt_no(rs.getString("cmt_no"));
+				System.out.println(dto.getCmt_no());
 				dto.setCmt_content(rs.getString("cmt_content"));
 				dto.setCmt_id(rs.getString("cmt_id"));
 				dto.setCmt_regdate(rs.getString("cmt_regdate"));

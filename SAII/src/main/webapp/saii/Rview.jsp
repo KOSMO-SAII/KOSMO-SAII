@@ -45,7 +45,7 @@
 			<td>첨부파일</td>
 			<td><c:if test="${not empty dto.o_file }">
 					<a
-						href="http://localhost:8081/SAII/review_download.do?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
+						href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
 						${dto.o_file} </a>
 					<img src="/SAII/Storage/${dto.n_file}">
 				</c:if></td>
@@ -73,7 +73,7 @@
 	<!-- 댓글 목록 -->
 <div>
 	<table border="1" width="90%">
-		<c:if test="${ commentLists.size() == 0 }">
+		<c:if test="${empty commentLists}">
 			<tr>
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
@@ -87,7 +87,7 @@
 				</td>
 				<td>
 					<input type="button" value="삭제하기"
-						onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&board_no=${ dto.r_id }';"/>
+						onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
