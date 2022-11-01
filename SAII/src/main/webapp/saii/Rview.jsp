@@ -7,30 +7,6 @@
 <meta charset="UTF-8">
 
 <title>리뷰게시판</title>
-<style>	
-	#tblAddCommnet, #tblListComment { width: 700px; margin: 15px auto; }
-	
-	#tblAddComment { margin-top: 30px; }
-	#tblAddComment td:nth-child(1) { width: 600px; }
-	#tblAddComment td:nth-child(2) { width: 100px; }
-	
-	#tblListComment td:nth-child(1) { width: 600px; }
-	#tblListComment td:nth-child(2) { width: 100px; }
-	
-	#tblListComment td {
-		position: relative;
-		left: 0;
-		top: 0;
-	}
-	
-	#tblListComment td span {
-		position: absolute;
-		right: 10px;
-		bottom: 5px;
-		color: #AAA;
-		font-size: 11px;
-	}
-</style>
 </head>
 <body>
 	<h2>게시판 상세보기</h2>
@@ -96,7 +72,7 @@
 
 	<!-- 댓글 목록 -->
 <div>
-	<table id="tblListComment" class="table table-bordered">
+	<table border="1" width="90%">
 		<c:if test="${ commentLists.size() == 0 }">
 			<tr>
 				<td colspan="2">댓글이 없습니다.</td>
@@ -105,22 +81,27 @@
 		<c:forEach items="${ commentLists }" var="clist">
 			<tr>
 				<td>
+					<span>${ clist.nickname }</span>
+					<span>${ clist.cmt_regdate }</span>
 					${ clist.cmt_content }
-					<span>${ clist.nickname }. ${ clist.cmt_regdate }</span>
 				</td>
 				<td>
-					<input type="button" value="삭제하기" class="btn btn-default" 
-						onclick="location.href='http://localhost:8081/SAII/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ dto.r_id }';"/>
+					<input type="button" value="삭제하기"
+						onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&board_no=${ dto.r_id }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
 	</table>
 	
 	<form method="POST" action="http://localhost:8081/SAII/addComment">
-		<table id="tblAddComment" class="table table-bordered">
+		<table border="1" width="90%">
 			<tr>
-				<td><input type="text" name="cmt_content" id="cmt_content" class="form-control" required placeholder="댓글을 작성하세요. "/></td>
-				<td><input type="submit" value="댓글쓰기" class="btn btn-primary" /></td>
+				<td>
+					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
+				</td>
+				<td>
+					<input type="submit" value="댓글쓰기" />
+				</td>
 			</tr>
 		</table>
 		<input type="hidden" name="board_no" value="${ dto.r_id }" />

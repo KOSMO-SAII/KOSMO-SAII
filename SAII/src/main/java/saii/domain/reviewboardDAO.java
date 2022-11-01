@@ -169,7 +169,7 @@ public class reviewboardDAO extends JDBConnect {
 		return result;
 	}
 	
-	public ArrayList<CommentDTO> listComment(String cmt_no) {
+	public ArrayList<CommentDTO> listComment(String r_id) {
 		
 		try {
 			
@@ -178,7 +178,7 @@ public class reviewboardDAO extends JDBConnect {
 					+ "from comment_board c where board_no = ? order by cmt_no";
 			
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, cmt_no);
+			psmt.setString(1, r_id);
 			
 			rs = psmt.executeQuery();
 			
