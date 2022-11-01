@@ -56,7 +56,7 @@ public class reviewboardDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				reviewboardDTO dto = new reviewboardDTO();
-				dto.setR_id(rs.getInt("R_id"));
+				dto.setR_id(rs.getInt("r_id"));
 				dto.setR_category(rs.getString("r_category"));
 				dto.setR_title(rs.getString("r_title"));
 				dto.setContent(rs.getString("content"));
@@ -182,7 +182,7 @@ public class reviewboardDAO extends JDBConnect {
 			
 			rs = psmt.executeQuery();
 			
-			ArrayList<CommentDTO> clist = new ArrayList<CommentDTO>();
+			ArrayList<CommentDTO> commentLists = new ArrayList<CommentDTO>();
 			
 			while ( rs.next() ) {
 				
@@ -195,11 +195,11 @@ public class reviewboardDAO extends JDBConnect {
 				dto.setBoard_no(rs.getString("board_no"));
 				dto.setNickname(rs.getString("nickname"));
 				
-				clist.add(dto);
+				commentLists.add(dto);
 				
 			}
 			
-			return clist;
+			return commentLists;
 			
 		} catch (Exception e) {
 			e.printStackTrace();

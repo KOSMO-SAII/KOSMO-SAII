@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
-
 import saii.controller.JDBConnect;
 import saii.dto.mainboardDTO;
 import saii.dto.memberDTO;
@@ -171,13 +169,23 @@ public class mainboardDAO extends JDBConnect {
 			psmt.setString(4, nickname);
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("게시물 입력 중 예외");
+			System.out.println("게시물 수정 중 예외");
 			e.printStackTrace();
 		}
 		return rs;
 	}
 	
-	public void delete() {
-		
+	public int delete(String m_id) {
+		int rs = 0;
+		String sql = "delete from main_board where m_id = ?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			rs = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("게시물 삭제 중 예외");
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }
