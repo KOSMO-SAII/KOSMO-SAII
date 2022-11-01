@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.courseDAO;
+import saii.domain.mainboardDAO;
 import saii.dto.courseDTO;
 
 @WebServlet("/course_view")
@@ -32,13 +33,15 @@ public class courseViewController extends HttpServlet{
 		
 		//courseWrite페이지에서 넘어온 값이 있을 시 실행
 		if(req.getParameterValues("data")!=null) {
-		courseDAO cdao = new courseDAO();
-		String[] str = req.getParameterValues("data");
-		System.out.println(str[0]);
-		ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
-		
-		cdao.insertCourse(cdtos);
-		cdao.close();
+			courseDAO cdao = new courseDAO();
+			String[] str = req.getParameterValues("data");
+			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);			
+			cdao.insertCourse(cdtos);
+			cdao.close();
+			
+			mainboardDAO mdao = new mainboardDAO();
+			cdtos.get(0).getCourse_id();
+			
 		}
 		
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);

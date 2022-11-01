@@ -4,9 +4,8 @@ public class mainboardDTO {
 	private String m_id;
 	private String m_title;
 	private String region;
-	private String course_name;
-	private String content;
 	private String nickname;
+	private String course_id;
 	private java.sql.Date m_postdate;
 	private int visitcount;
 	private int goodcount;
@@ -28,18 +27,6 @@ public class mainboardDTO {
 	}
 	public void setRegion(String region) {
 		this.region = region;
-	}
-	public String getCourse_name() {
-		return course_name;
-	}
-	public void setCourse_name(String course_name) {
-		this.course_name = course_name;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 	public String getNickname() {
 		return nickname;
@@ -64,5 +51,11 @@ public class mainboardDTO {
 	}
 	public void setGoodcount(int goodcount) {
 		this.goodcount = goodcount;
+	}
+	public String getCourse_id() {
+		return course_id;
+	}
+	public void setCourse_id(String course_id) {
+		this.course_id = course_id;
 	}
 }
