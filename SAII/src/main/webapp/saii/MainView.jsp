@@ -51,8 +51,8 @@
 			<td id="delete" colspan="6">
 				<c:choose>
 						<c:when test="${memdto.nickname eq dto.nickname}">
-							<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit';" />
-							<input type="button" value="삭제하기" onclick="location.href='http://localhost:8081/SAII/delete';" />
+							<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit?m_id=${dto.m_id}';" />
+							<input type="button" value="삭제하기" onclick="location.href='http://localhost:8081/SAII/delete?m_id=${dto.m_id}';" />
 						</c:when>
 				</c:choose>
 				<input type="button" value="목록보기" onclick="location.href='http://localhost:8081/SAII/mainboard';" />
