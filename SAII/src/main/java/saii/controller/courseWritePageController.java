@@ -23,7 +23,7 @@ public class courseWritePageController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("/course_write doPost");
 		
 		
 		req.getRequestDispatcher("saii/test.jsp").forward(req, resp);
