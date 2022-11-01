@@ -16,9 +16,10 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
-				코스명<br/><input type="text" name="course_name"/><br/>
+			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
+				제목<br/><input type="text" name="title"/><br/>
 				지역<br/><input type="text" name="legion"/>
+				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
 				<ul id="My_List">
 				
 				</ul>

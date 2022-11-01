@@ -143,14 +143,15 @@ public class mainboardDAO extends JDBConnect {
 	
 	public int insertWrite(mainboardDTO dto, String nickname) {
 		int rs = 0;
-		String sql = "insert into main_board(m_id, m_title, region, course_id, nickname, visitcount, goodcount)"
-				   + " values(seq_mboard_num.nextval, ?, ?, ?,  ?, 0, 0)";
+		String sql = "insert into main_board(m_id, m_title, region, course_id, nickname, visitcount, goodcount, user_id)"
+				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, 0, 0, ?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getM_title());
 			psmt.setString(2, dto.getRegion());
 			psmt.setString(3, dto.getCourse_id());
 			psmt.setString(4, nickname);
+			psmt.setInt(5, 555);
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println("게시물 입력 중 예외");
