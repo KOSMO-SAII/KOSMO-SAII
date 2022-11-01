@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<td>지역</td> <td><input type="text" name="region" /></td>
-				<td>코스명</td> <td><input type="text" name="course_name" /></td>
+				<td>코스명</td> <td><input type="text" name="course_id" /></td>
 			</tr>
 			<tr>
 				<td id="content_td" colspan="4"><textarea name="content"></textarea></td>

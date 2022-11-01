@@ -7,30 +7,6 @@
 <meta charset="UTF-8">
 
 <title>리뷰게시판</title>
-<style>	
-	#tblAddCommnet, #tblListComment { width: 700px; margin: 15px auto; }
-	
-	#tblAddComment { margin-top: 30px; }
-	#tblAddComment td:nth-child(1) { width: 600px; }
-	#tblAddComment td:nth-child(2) { width: 100px; }
-	
-	#tblListComment td:nth-child(1) { width: 600px; }
-	#tblListComment td:nth-child(2) { width: 100px; }
-	
-	#tblListComment td {
-		position: relative;
-		left: 0;
-		top: 0;
-	}
-	
-	#tblListComment td span {
-		position: absolute;
-		right: 10px;
-		bottom: 5px;
-		color: #AAA;
-		font-size: 11px;
-	}
-</style>
 </head>
 <body>
 	<h2>게시판 상세보기</h2>
@@ -69,7 +45,7 @@
 			<td>첨부파일</td>
 			<td><c:if test="${not empty dto.o_file }">
 					<a
-						href="http://localhost:8081/SAII/review_download.do?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
+						href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
 						${dto.o_file} </a>
 					<img src="/SAII/Storage/${dto.n_file}">
 				</c:if></td>
@@ -96,8 +72,8 @@
 
 	<!-- 댓글 목록 -->
 <div>
-	<table id="tblListComment" class="table table-bordered">
-		<c:if test="${ commentLists.size() == 0 }">
+	<table border="1" width="90%">
+		<c:if test="${empty commentLists}">
 			<tr>
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
@@ -105,25 +81,30 @@
 		<c:forEach items="${ commentLists }" var="clist">
 			<tr>
 				<td>
+					<span>${ clist.nickname }</span>
+					<span>${ clist.cmt_regdate }</span>
 					${ clist.cmt_content }
-					<span>${ clist.nickname }. ${ clist.cmt_regdate }</span>
 				</td>
 				<td>
-					<input type="button" value="삭제하기" class="btn btn-default" 
-						onclick="location.href='http://localhost:8081/saii/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ clist.board_no }';"/>
+					<input type="button" value="삭제하기"
+						onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
 	</table>
 	
-	<form method="POST" action="/saii/addcomment">
-		<table id="tblAddComment" class="table table-bordered">
+	<form method="POST" action="http://localhost:8081/SAII/addComment">
+		<table border="1" width="90%">
 			<tr>
-				<td><input type="text" name="content" id="content" class="form-control" required placeholder="댓글을 작성하세요. "/></td>
-				<td><input type="submit" value="댓글쓰기" class="btn btn-primary" /></td>
+				<td>
+					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
+				</td>
+				<td>
+					<input type="submit" value="댓글쓰기" />
+				</td>
 			</tr>
 		</table>
-		<input type="hidden" name="cmt_no" value="${ dto.cmt_no }" />
+		<input type="hidden" name="board_no" value="${ dto.r_id }" />
 	</form>
 </div>
 

@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>코스 추천</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
 <style>
 .course-list{
     width: 735px;
@@ -46,13 +48,28 @@
         <h2>코스 추천</h2>
 
         <div class="course-list">
-            <a href="#" class="coursese">
+        	<legend>
+            <a href="http://localhost:8081/SAII/course_recommend" class="coursese">
                 <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
                 <div class="course-name">
                     코스 제목
                 </div>
                 <div class="course-co">
-                    기타 등등
+                    course_id
+                    category
+                    place_name
+                </div>
+            </a>
+            </legend>
+             <a href="#" class="coursese">
+                <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
+                <div class="course-name">
+                    코스 제목
+                </div>
+                <div class="course-co">
+                    {$param:course_id}
+                    category
+                    place_name
                 </div>
             </a>
              <a href="#" class="coursese">
@@ -61,16 +78,9 @@
                     코스 제목
                 </div>
                 <div class="course-co">
-                    기타 등등
-                </div>
-            </a>
-             <a href="#" class="coursese">
-                <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
-                <div class="course-name">
-                    코스 제목
-                </div>
-                <div class="course-co">
-                    기타 등등
+                    course_id
+                    category
+                    place_name
                 </div>
             </a>
  		</div>

@@ -75,7 +75,7 @@
 				<c:if test="${list.r_category eq 'place'}">장소</c:if>
 			</td>
 			<td align="left">
-				<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_title}</a>
+				<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_id}${list.r_title}</a>
 			</td>
 			<td>${list.nickname}</td>
 			<td>${list.r_postdate}</td>
