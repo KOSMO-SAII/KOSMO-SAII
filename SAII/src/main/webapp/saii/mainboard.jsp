@@ -64,7 +64,7 @@
 						<td>${list.m_id}</td>
 						<td>${list.region}</td>
 						<td><a href="http://localhost:8081/SAII/view?m_id=${list.m_id}">${list.m_title}</a></td>
-						<td>${list.course_name}</td>
+						<td>${list.course_id}</td>
 						<td>${list.nickname}</td>
 						<td>${list.m_postdate}</td>
 						<td>${list.visitcount}</td>

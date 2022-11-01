@@ -17,7 +17,7 @@
 	 <div class="body_wrap">
 		<div class="my">
 			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
-				코스명<br/><input type="text" name="course_name"/><br/>
+				코스넘버<br/><input type="text" name="course_id"/><br/>
 				지역<br/><input type="text" name="legion"/>
 				<ul id="My_List">
 				
