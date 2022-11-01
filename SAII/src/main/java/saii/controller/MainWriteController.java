@@ -16,7 +16,7 @@ import saii.dto.mainboardDTO;
 import saii.dto.memberDTO;
 
 @WebServlet("/write")
-public class WriteController extends HttpServlet {
+public class MainWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		req.getRequestDispatcher("/saii/Write.jsp").forward(req, resp);
