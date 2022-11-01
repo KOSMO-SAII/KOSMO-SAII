@@ -132,6 +132,5 @@ public class courseDAO extends JDBConnect {
 			e.printStackTrace();
 		}		
 		return cdtos;
-		
 	}
 }
