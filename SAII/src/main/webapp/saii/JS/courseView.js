@@ -1,61 +1,21 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
-
-//=============ajax이용
-//console.log(courseId)
-//console.log(mymarkers.length);
-
-/*
-var imageSrc = 'img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
-        imgOptions =  {
-            spriteSize : new kakao.maps.Size(45, 45), // 스프라이트 이미지의 크기
-            //spriteOrigin : new kakao.maps.Point(1409, 1033), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-            offset: new kakao.maps.Point(22, 35), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-            shape:'poly',
-            coords:'19,9,25,9,28,11,31,14,31,21,28,26,22,35,16,26,14,21,14,14,16,11'
-        },
-        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions)
-		
-		
-		//마서 생성
-		var mymarker = new kakao.maps.Marker({
-    		map: map,
-    		position: new kakao.maps.LatLng(  ),
-    		id:
-    		image:markerImage
-    		
-		});	
-
-var myoverlay=new kakao.maps.CustomOverlay({
-    				content: mycontent,
-    				map: map,
-    				position: mymarker.getPosition(),
-    				clickable:true   ,
-    				id: myplaceinfo.id
-					});
-
-var mymarkerOb={
-			mymarker:mymarker,
-			myoverlay:myoverlay,
-			data:data,
-			id:myplaceinfo.placeid
-		}
-		mymarkers.push(mymarkerOb);
-*/
+console.log(paramObjs.length);
 
 
 //==========이하 지도 api부분
 // 마커를 담을 배열입니다
-var markers = [];
+//var markers = [];
 
+//선그리기 경로 배열
 var path=[];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(paramObjs[0].Y,paramObjs[0].X), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };  
+
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
@@ -65,6 +25,222 @@ var ps = new kakao.maps.services.Places();
 
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+//=============불러온 값들의 마커,오버레이 출력
+//마커,오버레이 정보 담을 배열
+var mymarkers=[];
+
+
+for(var k=0;k<paramObjs.length;k++){
+
+	//오버레이 내용
+	var mycontent='<div class="wrap">' + 
+	            '    <div class="info">' + 
+	            '        <div class="title">' + 
+	                        			paramObjs[k].Place_name + 
+	            '            <div class="close r" onclick="overlayclose('+k+')" title="닫기"><input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'"></div>' + 
+	            '        </div>' + 
+	            '        <div class="body">' + 
+	            '            <div class="desc">' + 
+	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' + 
+	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' + 
+	            '                <div class="phone ellipsis">'+paramObjs[k].Phone_number+'</div>' + 
+	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>' + 
+	            '            </div>' + 
+	            '        </div>' + 
+	            '    </div>' +    
+	            '</div>';
+		
+	//마이 핀 이미지 생성
+	var imageSrc = 'http://localhost:8081/SAII/saii/img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+	    imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
+	    imgOptions =  {
+	        spriteSize : new kakao.maps.Size(45, 45), // 스프라이트 이미지의 크기
+	        //spriteOrigin : new kakao.maps.Point(1409, 1033), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+	        offset: new kakao.maps.Point(22, 35), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+	        shape:'poly',
+	        coords:'19,9,25,9,28,11,31,14,31,21,28,26,22,35,16,26,14,21,14,14,16,11'
+	    },
+	    markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions)
+		
+		
+	//마이 핀 마커 생성
+	var mymarker = {
+		mymarker:new kakao.maps.Marker({
+				map: map,
+				position: new kakao.maps.LatLng(paramObjs[k].Y,paramObjs[k].X),
+				image:markerImage
+			}),
+		id:paramObjs[k].address_id
+		}
+	//마이 핀 오버레이 생성
+	var myoverlay={
+			myoverlay:	new kakao.maps.CustomOverlay({
+	    				content: mycontent,
+	    				map: map,
+	    				position: mymarker.mymarker.getPosition(),
+	    				clickable:true 
+					}),
+	    	id:paramObjs[k].address_id
+			}
+	//마커,오버레이를 객체로 묶음
+	var mymarkerOb={
+				mymarker:mymarker,
+				myoverlay:myoverlay,
+				id:paramObjs[k].address_id
+			}
+	//묶은 객체를 배열에 집어 넣음
+	mymarkers.push(mymarkerOb);
+	
+	//마커,오버레이 지도에 설정
+	mymarkers[k].mymarker.mymarker.setMap(map);
+	mymarkers[k].myoverlay.myoverlay.setMap(map);
+	
+
+	
+	
+	
+	//마커 클릭시 오버레이 열기
+	for(var i=0; i< mymarkers.length;i++){
+		kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker, 'click', function(event) {
+			for(var i=0; i< mymarkers.length;i++){
+				var thisla= this.getPosition().La,
+					thisma= this.getPosition().Ma,
+					overla= mymarkers[i].myoverlay.myoverlay.getPosition().La,
+					overma= mymarkers[i].myoverlay.myoverlay.getPosition().Ma
+				if(overla==thisla&&overma==thisma){
+					mymarkers[i].myoverlay.myoverlay.setMap(map);
+					break;
+				}
+			}
+		});
+	}
+	
+	
+	//=========================== 좌측 마이 스케쥴 출력
+	var li=document.createElement('li');	
+		li.innerHTML=
+	            '    <div class="info">' + 
+	            '       <div class="title">' + 
+	                        			paramObjs[k].Place_name + 
+	            '        </div>' + 
+	            '        <div class="body">' + 
+	            '            <div class="desc">' + 
+	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' + 
+	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' + 
+	            '                <div class="phone ellipsis">'+paramObjs[k].Phone_number+'</div>' + 
+	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>' + 
+	            '            </div>' + 
+	            '		 <input type="hidden" class="data" name="data" value="">'+
+	            '		 <button type="button" class="memobtn" >메모'+
+	            '		 </button>' 
+	            '    	</div>' + 
+	            '	 </div>';
+	  
+		var ul =document.getElementById('My_List');
+		ul.appendChild(li);
+		
+		
+		//$('.info .data')[num].defaultValue=mymarkers[num].data.data
+		
+		//num+=1;
+		
+		//생성한 리스트에 마우스 오버시 화면 이동(임시)
+		$('#My_List li .title').mouseover(function(event){
+			//hoverevent(event);
+		})
+		
+		//임시, 메모버튼클릭시 메모저장 박스 출력
+		$('.memobtn').click(function(event){
+			memobox(event);
+		})
+	
+	
+	//=========== 메모
+	//인덱스 넘버 부여
+	var index;
+	
+	//메모 박스 출력
+	function memobox(event){
+		
+		//none 클래스 삭제
+		var e = event.target.parentElement.parentElement.parentElement;
+		console.log(e);
+		$('#memobox').removeClass('none');
+		 index=$(e).index()
+	
+		
+		//title 부여
+		var text=$('.info .title')[index].innerText;
+		console.log(text);
+		$('#memobox .title').text(text);
+		
+		//memo content 부여
+		if(paramObjs[index].Memo!=undefined){
+		$('#memobox textarea')[0].value=paramObjs[index].Memo;
+		}
+	}
+	
+	//메모 박스 숨기기
+	$('#memobox .close').click(function(){
+		$('#memobox').addClass('none');
+	});
+}
+
+//오버레이 닫기
+function overlayclose(j){
+	console.log(j);
+	console.log("실행")
+	
+	mymarkers[j].myoverlay.myoverlay.setMap(null);
+}
+
+//==================선 그리기(값 두개 넣어보고 하기)
+//라인 정보
+var polyline = new kakao.maps.Polyline({
+				    map: map,
+				    path:[
+						new kakao.maps.LatLng(0, 0)
+						],
+				    strokeWeight: 4,
+				    strokeColor: '#FF00FF',
+				    strokeOpacity: 0.8,
+					});
+
+//마이 핀 라인 생성
+makeline();
+
+function makeline(){
+	polyline.setMap(null);
+	if(polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0){
+		for(var i=0;i<mymarkers.length;i++){
+			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
+				la=mymarkers[i].mymarker.mymarker.getPosition().La
+			//넘겨 받은 좌표 값 설정
+			var coord = new kakao.maps.LatLng(ma, la);
+			
+			path.push(coord);
+		}
+		polyline.setPath(path);
+		//polyline.setMap(map);
+	}else{
+		path=[];
+		
+		for(var i=0;i<mymarkers.length;i++){
+			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
+				la=mymarkers[i].mymarker.mymarker.getPosition().La
+				
+			var coord = new kakao.maps.LatLng(ma, la);
+			
+			path.push(coord);	
+		}
+		polyline.setPath(path);
+	}
+}
+
+
+
+
 
 //-------------------------------------------------위는 기본 필수 코드
 //=================================================아래: 왼쪽 사이드 검색장소 핀 코드

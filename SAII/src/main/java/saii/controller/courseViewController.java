@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,11 +31,14 @@ public class courseViewController extends HttpServlet{
 		//받아온 코스 id로 db에서 값 뽑아옴
 		ArrayList<courseDTO> cdtos=cdao.getCourse(courseId);
 		
-		//System.out.println(cdtos.size());
-		//System.out.println(cdtos.get(0));
+//		System.out.println(cdtos.size());
+//		System.out.println(cdtos.get(0).getPlace_name());
+//		System.out.println(cdtos.get(1).getPlace_name());
 		
-		Map<String, String> map= new HashMap<>();
+		List<Map<String, String>> list=new Vector<Map<String,String>>();
+		
 		for(int i=0; i<cdtos.size();i++) {
+			Map<String, String> map= new HashMap<>();
 			map.put("address_id",cdtos.get(i).getAddress_id());
 			map.put("address_name",cdtos.get(i).getAddress_name());
 			map.put("category",cdtos.get(i).getCategory());
@@ -45,9 +50,17 @@ public class courseViewController extends HttpServlet{
 			map.put("Road_address_name",cdtos.get(i).getRoad_address_name());
 			map.put("X",cdtos.get(i).getX());
 			map.put("Y",cdtos.get(i).getY());
+			
+			list.add(map);
+			
 		}
-		//System.out.println(map.get("Place_name"));
-		req.setAttribute("map", map);
+//		System.out.println("==========");
+//		System.out.println(list);
+//		System.out.println(list.size());
+//		System.out.println(list.get(0).get("Place_name"));
+//		System.out.println(list.get(1).get("Place_name"));
+		req.setAttribute("List", list);
+		//req.setAttribute("num", list.size());
 		//System.out.println(req.getAttribute("map"));
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 		

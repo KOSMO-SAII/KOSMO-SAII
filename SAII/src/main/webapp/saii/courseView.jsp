@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +18,12 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../t" method="post" >
+			<form action="../course_write" method="post" >
 			<ul id="My_List">
 			
 			</ul>
 			<div id="btnbox">
-			${requestScope.num}
+			
 			<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
 			<input type="submit" value="코스 수정"></input>
 			</form>
@@ -39,11 +41,34 @@
 			</div>
 				<div class="close memo"  title="닫기"></div>
 			<textarea class="memo"></textarea>
-			<button class="savememobtn" type="button">저장</button>
+			<!-- <button class="savememobtn" type="button">저장</button>  -->
 		
 		</div>
 		
 	</div>
+	
+	<script type="text/javascript">
+		var paramObjs=[]; //장소 정보 객체 담는 배열
+	</script>
+	<c:forEach items="${requestScope.List}" var="List">
+	<script type="text/javascript">
+		//장소 정브를 반복문을 돌려서 객체에 담음
+		var paramObj={
+			address_id:"${List["address_id"]}",
+			address_name:"${List["address_name"]}",
+			category:"${List["category"]}",
+			Course_id:"${List["Course_id"]}",
+			Memo:"${List["Memo"]}",
+			Phone_number:"${List["Phone_number"]}",
+			Place_name:"${List["Place_name"]}",
+			Place_url:"${List["Place_url"]}",
+			Road_address_name:"${List["Road_address_name"]}",
+			X:"${List["X"]}",
+			Y:"${List["Y"]}",
+		}
+		paramObjs.push(paramObj)
+	</script>
+	</c:forEach>
 	<!-- js연동 -->
 	<script src="http://localhost:8081/SAII/saii/JS/courseView.js"></script>
 </body>

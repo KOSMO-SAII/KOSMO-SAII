@@ -11,7 +11,5 @@
 		<input type="submit" name="num" value="13">
 	</form>
 	
-	<!-- 테스트테스트 -->
-	
 </body>
 </html>

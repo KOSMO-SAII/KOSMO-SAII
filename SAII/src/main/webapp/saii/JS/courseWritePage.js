@@ -644,7 +644,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 	//핀은 최대 7개까지 고정 가능
 	if(num<6){
 		//마커이미지 생성
-		var imageSrc = 'img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+		var imageSrc = 'http://localhost:8081/SAII/saii/img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new kakao.maps.Size(45, 45), // 스프라이트 이미지의 크기
