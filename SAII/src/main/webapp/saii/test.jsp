@@ -7,11 +7,8 @@
 <title>테스트용</title>
 </head>
 <body>
-	<form method="post" action="http://localhost:8081/SAII/test">
-
-		
-		${c1.category }<br /> ${c2.address_id }<br /> ${c3.memo}<br />
-		<button type="submit">submmmmmmit</button>
+	<form action="../course_view" method="get">
+		<input type="submit" name="num" value="13">
 	</form>
 </body>
 </html>

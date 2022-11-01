@@ -27,8 +27,9 @@ public class testController extends HttpServlet {
 		ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 		
 		cdao.insertCourse(cdtos);
+		cdao.close();
 		
-		req.getRequestDispatcher("/saii/test.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 		
 	}
 }

@@ -1,61 +1,8 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
+//console.log(Request("name"));
 
-//코스저장 전 체크
-function coursecheck(){
-	console.log(mymarkers[0]);
-	if(mymarkers[0]==undefined){
-		alert("코스를 저장해주세요");
-		return false;
-	}else{
-		return true;
-	}
-	
-}
 
-//==검색 사이드 바 드롭다운
-let subToggle=true;
-	$('.searchbtn').click(function(){
-		var menu=document.getElementById('menu_wrap');
-		if(subToggle){
-		//console.log(menu);
-		menu.style.height='90%';
-		//console.log($('#menu_wrap'));
-		//console.log($('#menu_wrap').style);
-		$('#arrow').text("▲")
-		}
-		subToggle=!subToggle;
-	})
-	
-	$('#arrow').click(function() {
-		var menu=document.getElementById('menu_wrap');
-		if(subToggle){
-		menu.style.height='90%';
-		$('#arrow').text("▲")
-		subToggle=!subToggle;
-		}else{
-			menu.style.height='10%';
-			$('#arrow').text("▼")
-		subToggle=!subToggle;
-		}
-	})
-
-let subToggle2=true;
-	$('#arrow2').click(function() {
-		var box=document.getElementById('box');
-		var ctbox=document.getElementById('category-box');
-		if(subToggle2){
-		box.style.width='364px';
-		$('#category-box').css('display', 'block');
-		$('#arrow2').text("▶")
-		subToggle2=!subToggle2;
-		}else{
-			box.style.width='10px';
-			$('#category-box').css('display', 'block');
-			$('#arrow2').text("◀")
-		subToggle2=!subToggle2;
-		}
-	})
 //==========이하 지도 api부분
 // 마커를 담을 배열입니다
 var markers = [];
@@ -910,7 +857,7 @@ function makeline(){
 	}
 }
 
-//===========임시 메모
+//=========== 메모
 //메모 내용 담는 배열
 var memos=[];
 
@@ -941,7 +888,7 @@ $('#memobox .close').click(function(){
 	$('#memobox').addClass('none');
 })
 
-//메모 저장 수정필요
+//메모 저장 
 	$('.savememobtn').click(function(){
 		//초기화
 		$('.info .data')[index].defaultValue="";
@@ -963,3 +910,6 @@ $('#memobox .close').click(function(){
 		console.log($('.info .data')[index].defaultValue)
 		
 	})
+	
+//=======db 값 받아서 출력
+
