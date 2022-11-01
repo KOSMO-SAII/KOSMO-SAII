@@ -52,8 +52,8 @@
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
-				<!-- 회원이면, 작성자와 회원 닉네임이 같을 때만, 버튼 보임. --> <c:if
-					test="${!(empty sessionScope.UserId)}">
+				<!-- 회원이면, 작성자와 회원 닉네임이 같을 때만, 버튼 보임. -->
+				<c:if test="${!(empty sessionScope.UserId)}">
 					<c:if test="${dto.nickname == nickname}">
 						<button class="chkWriter" type="button"
 							onclick="location.href='http://localhost:8081/SAII/review_mode?mode=edit&r_id=${param.r_id}';">
