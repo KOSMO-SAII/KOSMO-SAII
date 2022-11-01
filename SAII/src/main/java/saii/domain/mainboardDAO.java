@@ -190,4 +190,36 @@ public class mainboardDAO extends JDBConnect {
 		}
 		return rs;
 	}
+	
+	public ArrayList<mainboardDTO> getRecommendData() {
+		
+		ArrayList<mainboardDTO> dtos = new ArrayList<>();
+		String sql = "SELECT * FROM MAIN_BOARD WHERE ROWNUM <= 3 ORDER BY VISITCOUNT";
+		
+		try {
+			stmt = con.createStatement();
+			rs =stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				System.out.println("1");
+				mainboardDTO dto = new mainboardDTO();
+				
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_title(rs.getString("m_title"));
+				dto.setCourse_id(rs.getString("course_id"));
+				dto.setVisitcount(rs.getInt("visitcount"));
+				
+				dtos.add(dto);
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("get recommend err");
+			e.printStackTrace();
+		}
+		
+		
+		return dtos;
+	}
+	
 }
