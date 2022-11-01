@@ -230,4 +230,29 @@ public class reviewboardDAO extends JDBConnect {
 		return 0;
 	}
 	
+	public int delComment(String cmt_no) {
+		try {
+			String query = "delete from comment_board where cmt_no = ?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, cmt_no);
+			return psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public void delAllComment(String cmt_no) {
+		try {
+			String query = "delete from comment_board where board_no=?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, cmt_no);
+			psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }

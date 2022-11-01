@@ -110,16 +110,16 @@
 				</td>
 				<td>
 					<input type="button" value="삭제하기" class="btn btn-default" 
-						onclick="location.href='http://localhost:8081/saii/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ clist.board_no }';"/>
+						onclick="location.href='http://localhost:8081/SAII/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ clist.board_no }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
 	</table>
 	
-	<form method="POST" action="/saii/addcomment">
+	<form method="POST" action="http://localhost:8081/SAII/addComment">
 		<table id="tblAddComment" class="table table-bordered">
 			<tr>
-				<td><input type="text" name="content" id="content" class="form-control" required placeholder="댓글을 작성하세요. "/></td>
+				<td><input type="text" name="cmt_content" id="cmt_content" class="form-control" required placeholder="댓글을 작성하세요. "/></td>
 				<td><input type="submit" value="댓글쓰기" class="btn btn-primary" /></td>
 			</tr>
 		</table>
