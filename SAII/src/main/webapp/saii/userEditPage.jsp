@@ -78,22 +78,64 @@ function validateform(form){
 }
 
 </script>
+<style>
+tr>td:first-child {
+	text-align: right
+}
 
+body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password] {
+	width: 180px;
+	height: 30px;
+	border:0;
+	font-size: 15px;
+	border-radius: 10px;
+	background-color: rgb(255, 249, 227);
+	vertical-align: middle;
+}
+h4 {
+	text-align: center;
+}
+#edittable {
+	position:relative;
+	top:40px;
+	width: 315px;
+	background-color: rgb(255, 243, 200);
+	border-radius: 20px;
+	box-shadow: 10px 10px 10px rgb(255,243,200),-10px -10px 10px rgb(255,243,200),-10px 10px 10px rgb(255,243,200),10px -10px 10px rgb(255,243,200);
+}
+
+#editsus{
+	position:relative;
+	top:30px;
+	background-color: #FF6600;
+	color: white;
+	cursor: pointer;
+	padding: 6px 25px;
+	border-radius: 5px;
+	display:inline-block;
+	width: 100px;
+	border: 0px;
+}
+
+
+</style>
 </head>
 <body>
 <h4>회원정보 수정</h4>
 <div>
 <form action="http://localhost:8081/SAII/mypage.edit?id=${dto.id }" method="post" id="form" onsubmit="return validateform(this)">
-<table>
+<table align="center" width="315px">
 	<tr>
-		<td><input type="submit" value="회원정보 수정" ></td>
+		<td><input type="submit" value="수정완료" id="editsus" ></td>
 	</tr>
+</table>
+<table width="50" align="center" id="edittable">
 	<tr>
-		<td>아&nbsp이&nbsp디 : </td>
+		<td>아&nbsp&nbsp&nbsp&nbsp이&nbsp&nbsp&nbsp&nbsp디 : </td>
 		<td><input type="text" name="id" value="${dto.id}" readonly></td>
 	</tr>
 	<tr>
-		<td>비밀번호 : </td>
+		<td>비&nbsp&nbsp밀&nbsp&nbsp번&nbsp&nbsp호 : </td>
 		<td><input type="password" name="pw" value="${dto.pw }"> </td>
 	</tr>
 	<tr>
@@ -101,31 +143,31 @@ function validateform(form){
 		<td><input type="password" name="pw2" value="${dto.pw }"></td>
 	<tr>
 	<tr>
-		<td>닉&nbsp네&nbsp임 : </td>
+		<td>닉&nbsp&nbsp&nbsp&nbsp네&nbsp&nbsp&nbsp&nbsp임 : </td>
 		<td><input type="text" name="nickname" value="${dto.nickname }"></td>
 	</tr>
 	<tr>
-		<td>이&nbsp&nbsp&nbsp&nbsp&nbsp름 : </td>
+		<td>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름 : </td>
 		<td><input type="text" name="name" value="${dto.name }" readonly></td>
 	</tr>
 	<tr>
-		<td>생&nbsp&nbsp&nbsp&nbsp&nbsp일 : </td>
+		<td>생&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일 : </td>
 		<td><input type="text" name="birthday" value="${dto.birthday }"></td>
 	</tr>
 	<tr>
-		<td>성&nbsp&nbsp&nbsp&nbsp&nbsp별 : </td>
+		<td>성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp별 : </td>
 		<td><input type="text" name="sex" value="${dto.sex }" readonly></td>
 	</tr>
 	<tr>
-		<td>전&nbsp&nbsp&nbsp&nbsp&nbsp화 : </td>
+		<td>전&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp화 : </td>
 		<td><input type="text" name="phone" value="${dto.phone }" ></td>
 	</tr>
 	<tr>
-		<td>이&nbsp메&nbsp일 : </td>
+		<td>이&nbsp&nbsp&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp일 : </td>
 		<td><input type="email" name="email" value="${dto.email }"></td>
 	</tr>
 	<tr>
-		<td>주&nbsp&nbsp&nbsp&nbsp&nbsp소 : </td>
+		<td>주&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp소 : </td>
 		<td><input type="text" name= "address" value="${dto.address }"></td>
 	</tr>
 </table>

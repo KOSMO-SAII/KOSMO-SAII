@@ -16,15 +16,18 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
-			<ul id="My_List">
-			
-			</ul>
-			<div id="btnbox">
-			<button type="button" onclick="check();">확인</button>
-			<button type="button" onclick="hide();">숨기기</button>
-			<a href="http://localhost:8081/SAII/home">돌아가기</a>
-			<input type="submit" value="코스 저장"></input>
+			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
+				제목<br/><input type="text" name="title"/><br/>
+				지역<br/><input type="text" name="legion"/>
+				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
+				<ul id="My_List">
+				
+				</ul>
+				<div id="btnbox">
+				<button type="button" onclick="check();">확인</button>
+				<button type="button" onclick="hide();">숨기기</button>
+				<a href="http://localhost:8081/SAII/home">돌아가기</a>
+				<input type="submit" value="코스 저장"></input>
 			</form>
 			</div>
 		</div>
