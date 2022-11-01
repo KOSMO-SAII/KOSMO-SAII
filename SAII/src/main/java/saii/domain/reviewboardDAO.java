@@ -169,7 +169,7 @@ public class reviewboardDAO extends JDBConnect {
 		return result;
 	}
 	
-	public ArrayList<CommentDTO> listComment(String cmt_no) {
+	public ArrayList<CommentDTO> listComment(String r_id) {
 		
 		try {
 			
@@ -178,7 +178,7 @@ public class reviewboardDAO extends JDBConnect {
 					+ "from comment_board c where board_no = ? order by cmt_no";
 			
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, cmt_no);
+			psmt.setString(1, r_id);
 			
 			rs = psmt.executeQuery();
 			
@@ -209,7 +209,7 @@ public class reviewboardDAO extends JDBConnect {
 	}
 	
 	public int addComment(CommentDTO dto) {
-		
+		int result = 0;
 		try {
 			
 			String sql = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
@@ -221,32 +221,33 @@ public class reviewboardDAO extends JDBConnect {
 			psmt.setString(2, dto.getCmt_content());
 			psmt.setString(3, dto.getBoard_no());
 			
-			return psmt.executeUpdate(); // 성공시 1 실패시 0
+			result = psmt.executeUpdate(); // 성공시 1 실패시 0
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return result;
 	}
 	
 	public int delComment(String cmt_no) {
+		int result = 0;
 		try {
 			String query = "delete from comment_board where cmt_no = ?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, cmt_no);
-			return psmt.executeUpdate();
+			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return result;
 	}
 	
-	public void delAllComment(String cmt_no) {
+	public void delAllComment(String r_id) {
 		try {
 			String query = "delete from comment_board where board_no=?";
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, cmt_no);
+			psmt.setString(1, r_id);
 			psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

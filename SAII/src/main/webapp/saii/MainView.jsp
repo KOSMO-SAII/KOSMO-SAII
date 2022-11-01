@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td>지역</td> <td>${dto.region}</td>
-			<td>코스명</td> <td>${dto.course_name}</td>
+			<td>코스명</td> <td>${dto.m_title}</td>
 			<td>글쓴이</td> <td>${dto.nickname}</td>
 		</tr>
 		<tr>

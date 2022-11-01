@@ -73,6 +73,7 @@ public class courseViewController extends HttpServlet{
 			String title = req.getParameter("title");
 			String region = req.getParameter("region");
 			String nickname = req.getParameter("nickname");
+			System.out.println(nickname);
 			if (title != null && title.equals(""))
 				title = nickname + "_" + cdtos.get(0).getPlace_name();
 			if (region != null && region.equals("")) {

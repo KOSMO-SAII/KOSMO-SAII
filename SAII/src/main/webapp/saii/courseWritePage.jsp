@@ -18,7 +18,7 @@
 		<div class="my">
 			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
 				제목<br/><input type="text" name="title"/><br/>
-				지역<br/><input type="text" name="legion"/>
+				지역<br/><input type="text" name="region"/>
 				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
 				<ul id="My_List">
 				
