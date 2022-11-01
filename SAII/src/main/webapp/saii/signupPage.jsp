@@ -63,7 +63,7 @@
 		}
 		window.name = "parentForm";            
 		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
-				"width=200, height=200, resizable = no, scrollbars = no");
+				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
 	}
 	
 	function idCk(){
@@ -81,7 +81,7 @@
 		}
 		window.name = "parentForm";            
 		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
-				"width=200, height=200, resizable = no, scrollbars = no");
+				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
 
 	}
 	
