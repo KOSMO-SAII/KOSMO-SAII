@@ -34,8 +34,7 @@ public class MainEditController extends HttpServlet {
 		mainboardDTO dto = new mainboardDTO();
 		dto.setM_title(req.getParameter("m_title"));
 		dto.setRegion(req.getParameter("region"));
-		dto.setCourse_name(req.getParameter("course_name"));
-		dto.setContent(req.getParameter("content"));
+		dto.setCourse_id(req.getParameter("course_id"));
 		
 		// DB에서 아이디로 닉네임 찾기
 		memberDTO memdto = new memberDTO();		
