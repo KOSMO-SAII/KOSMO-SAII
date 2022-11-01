@@ -8,13 +8,14 @@
 <title>마이페이지</title>
 <script>
 function passCk(){     
-		window.name = "parentForm";            
-		nickWin = window.open("http://localhost:8081/SAII/saii/passcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
-				"width=200, height=200, resizable = no, scrollbars = no");
+		
+		var popX = (window.screen.width /2);
+		var popY = (window.screen.height /2);
+		window.open("http://localhost:8081/SAII/saii/passcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
 	}
 </script>
 <style>
-
 tr>td:first-child {
 	text-align: right
 }
@@ -31,15 +32,13 @@ body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password
 h4 {
 	text-align: center;
 }
-#firsttable {
+#usertable {
 	width: 300px;
 	background-color: rgb(255, 243, 200);
 	border-radius: 20px
 }
 #edit {
-	position: absolute;
-	left: 49%;
-	top: 65px;
+	position: relative;
 	border: 0px;
 	height: 30px;
 	background-color: #FF6600;
@@ -87,13 +86,18 @@ h4 {
 
 
 </style>
+<link rel="stylesheet" href="CSS/mypage.css">
 </head>
 <body>
 	<h4>회원정보</h4>
 	<hr>
 	<form method="get" onsubmit="passCk()">
-	<input id="edit" type="submit" value="정보 수정하러가기" ><br> 
-	<table id="firsttable" width="50%" align="center">
+	<table align="center" width="300px">
+		<tr>
+			<td><input id="edit" type="submit" value="수정하러가기" ></td>
+		</tr>
+	</table> 
+	<table id="usertable" width="50%" align="center">
 		<tr>
 			<td>아&nbsp이&nbsp디 : </td>
 			<td><input	type="text" id="userId" name="id" value="${dto.id}" readonly></td>

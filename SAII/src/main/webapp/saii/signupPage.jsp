@@ -62,8 +62,14 @@
 			form.nickname.select();
 			return false;
 		}
+<<<<<<< HEAD
 		window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				"width=200, height=50");
+=======
+		window.name = "parentForm";            
+		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
+>>>>>>> 5aa910d241aba513e5da15de6190b54080a72b18
 	}
 	
 	function idCk(){
@@ -79,10 +85,10 @@
 			form.id.select();
 			return false;
 		}
-		
-		window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
-				"width=350px, height=200px");
-		
+		window.name = "parentForm";            
+		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
+
 
 		 
 	}

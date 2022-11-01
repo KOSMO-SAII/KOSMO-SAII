@@ -16,15 +16,17 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../test" method="post" >
-			<ul id="My_List">
-			
-			</ul>
-			<div id="btnbox">
-			<button type="button" onclick="check();">확인</button>
-			<button type="button" onclick="hide();">숨기기</button>
-			<a href="http://localhost:8081/SAII/home">돌아가기</a>
-			<input type="submit" ></input>
+			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
+				코스명<br/><input type="text" name="course_name"/><br/>
+				지역<br/><input type="text" name="legion"/>
+				<ul id="My_List">
+				
+				</ul>
+				<div id="btnbox">
+				<button type="button" onclick="check();">확인</button>
+				<button type="button" onclick="hide();">숨기기</button>
+				<a href="http://localhost:8081/SAII/home">돌아가기</a>
+				<input type="submit" value="코스 저장"></input>
 			</form>
 			</div>
 		</div>

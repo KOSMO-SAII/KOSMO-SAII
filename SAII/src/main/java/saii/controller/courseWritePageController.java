@@ -24,10 +24,7 @@ public class courseWritePageController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("course_write dopost");
-		courseDAO cdao = new courseDAO();
-		courseDTO cdto ;
-		int len = 0;
+		
 		
 		req.getRequestDispatcher("saii/test.jsp").forward(req, resp);
 	}
