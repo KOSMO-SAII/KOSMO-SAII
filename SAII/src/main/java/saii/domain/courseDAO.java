@@ -58,7 +58,7 @@ public class courseDAO extends JDBConnect {
 	// 코스아이디,코스순서,카테고리,주소아이디,주소,도로명주소,전화번호,장소이름,홈페이지,x,y,메모
 
 	public void insertCourse(ArrayList<courseDTO> cdtos) {
-
+		
 		String front = "INSERT INTO COURSE_DATA(COURSE_ID, COURSE_ORDER, CATEGORY, ADDRESS_ID, ADDRESS_NAME, ROAD_ADDRESS_NAME, PHONENUMBER, PLACE_NAME, PLACE_URL, X, Y, MEMO)"
 				+ " VALUES(";
 		String start = "COURSE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
@@ -70,10 +70,11 @@ public class courseDAO extends JDBConnect {
 			insertData(query, cdto);
 			query = front + end;
 		}
+		
 	}
 
 	public void insertData(String query, courseDTO cdto) {
-
+		
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setInt(1, cdto.getOrder());
@@ -132,5 +133,20 @@ public class courseDAO extends JDBConnect {
 			e.printStackTrace();
 		}		
 		return cdtos;
+	}
+	
+	public int getCurrentCourseId() {
+		
+		String query = "SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'COURSE_SEQ'";
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			return rs.getInt(1)-1;
+		} catch (SQLException e) {
+			System.out.println("get course id err");
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

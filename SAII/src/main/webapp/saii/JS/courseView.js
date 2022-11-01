@@ -1,6 +1,48 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
-//console.log(Request("name"));
+
+//=============ajax이용
+//console.log(courseId)
+//console.log(mymarkers.length);
+
+/*
+var imageSrc = 'img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
+        imgOptions =  {
+            spriteSize : new kakao.maps.Size(45, 45), // 스프라이트 이미지의 크기
+            //spriteOrigin : new kakao.maps.Point(1409, 1033), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new kakao.maps.Point(22, 35), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+            shape:'poly',
+            coords:'19,9,25,9,28,11,31,14,31,21,28,26,22,35,16,26,14,21,14,14,16,11'
+        },
+        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions)
+		
+		
+		//마서 생성
+		var mymarker = new kakao.maps.Marker({
+    		map: map,
+    		position: new kakao.maps.LatLng(  ),
+    		id:
+    		image:markerImage
+    		
+		});	
+
+var myoverlay=new kakao.maps.CustomOverlay({
+    				content: mycontent,
+    				map: map,
+    				position: mymarker.getPosition(),
+    				clickable:true   ,
+    				id: myplaceinfo.id
+					});
+
+var mymarkerOb={
+			mymarker:mymarker,
+			myoverlay:myoverlay,
+			data:data,
+			id:myplaceinfo.placeid
+		}
+		mymarkers.push(mymarkerOb);
+*/
 
 
 //==========이하 지도 api부분
@@ -26,7 +68,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 //-------------------------------------------------위는 기본 필수 코드
 //=================================================아래: 왼쪽 사이드 검색장소 핀 코드
-
+/*
 //키워드 저장 변수
 //var keyword ='';
 
@@ -308,26 +350,6 @@ function searcAddOverLay(marker,places){
 function saveMySearchPin(){
 	rsaveMyPin(mysplace,mysplaceinfo);
 
-}
-
-//검색 결과 핀 저장(현재 안쓰임 삭제 예정)
-function rsaveMySearchPin(mysplace,mysplaceinfo){
-	//핀은 최대 7개까지 고정 가능
-	if(num<8){
-		var mymarker = new kakao.maps.Marker({
-    		map: map,
-    		position: new kakao.maps.LatLng(mysplace.placey , mysplace.placex)
-		});
-		//?왠진 모르지만 됨
-		mymarker.setMap(null);
-		
-		mymarkers.push(mymarker);
-		//좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
-		addMySchedule(mysplaceinfo);
-	}else{
-		alert("핀은 최대 7개까지 저장 가능합니다")
-	}
-	
 }
 
 //검색 결과 오버레이 닫기 
@@ -913,3 +935,4 @@ $('#memobox .close').click(function(){
 	
 //=======db 값 받아서 출력
 
+*/
