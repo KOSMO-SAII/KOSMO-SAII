@@ -49,7 +49,7 @@
 
         <div class="course-list">
         	<legend>
-            <a href="#" class="coursese">
+            <a href="http://localhost:8081/SAII/course_recommend" class="coursese">
                 <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
                 <div class="course-name">
                     코스 제목
@@ -67,7 +67,7 @@
                     코스 제목
                 </div>
                 <div class="course-co">
-                    course_id
+                    {$param:course_id}
                     category
                     place_name
                 </div>

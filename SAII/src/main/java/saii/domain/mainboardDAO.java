@@ -1,5 +1,6 @@
 package saii.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -194,7 +195,7 @@ public class mainboardDAO extends JDBConnect {
 	public ArrayList<mainboardDTO> getRecommendData() {
 		
 		ArrayList<mainboardDTO> dtos = new ArrayList<>();
-		String sql = "SELECT * FROM MAIN_BOARD WHERE ROWNUM <= 3 ORDER BY VISITCOUNT";
+		String sql = "SELECT * FROM MAIN_BOARD WHERE ROWNUM <= 3 ORDER BY VISITCOUNT DESC";
 		
 		try {
 			stmt = con.createStatement();
@@ -210,6 +211,7 @@ public class mainboardDAO extends JDBConnect {
 				dto.setVisitcount(rs.getInt("visitcount"));
 				
 				dtos.add(dto);
+			
 			}
 			
 			

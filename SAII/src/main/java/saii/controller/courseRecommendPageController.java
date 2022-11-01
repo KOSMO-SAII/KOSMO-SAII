@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import saii.domain.courseDAO;
 import saii.domain.mainboardDAO;
 import saii.dto.mainboardDTO;
 
@@ -24,10 +25,23 @@ public class courseRecommendPageController extends HttpServlet {
 		mainboardDAO mdao = new mainboardDAO();
 		ArrayList<mainboardDTO> mdtos = mdao.getRecommendData();
 		//COURSE DAO 정보가져오기
+		courseDAO cdao = new courseDAO();
+		int i = 1;
+		for(mainboardDTO mdto : mdtos) {
+			System.out.println("코스"+ i +"번");
+			String[] names = cdao.getPlaceNames(mdto.getCourse_id()).split("_");
+			for(String n : names) {
+				System.out.println(n);
+			}
+			i++;
+		}		
 		
-		getCourse
+		
+		
 		// 각 정보 속성값에 저장하기
-				
+		String course_id = req.getParameter("course_id");
+		
+		
 		req.getRequestDispatcher("saii/courseRecommendPage.jsp").forward(req, resp);
 	}
 	

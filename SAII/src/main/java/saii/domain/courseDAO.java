@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import saii.controller.JDBConnect;
 import saii.dto.courseDTO;
+import saii.dto.mainboardDTO;
 
 public class courseDAO extends JDBConnect {
 
@@ -151,4 +152,29 @@ public class courseDAO extends JDBConnect {
 	}
 	
 	
+public String getPlaceNames(String course_id) {
+		
+		ArrayList<String> names = new ArrayList<>();
+		String result = "";
+		String sql = "SELECT PLACE_NAME FROM COURSE_DATA WHERE COURSE_ID = ? ORDER BY COURSE_ORDER";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, course_id);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				names.add(rs.getString(1));			
+			}  //값이 names에 순서대로 저장됨.
+						
+			for(String name : names) {
+				result += name + "_";
+			}			
+			
+		} catch (SQLException e) {
+			System.out.println("getPlaceName err");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
