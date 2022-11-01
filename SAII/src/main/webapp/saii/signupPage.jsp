@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>회원가입 입력</title>
 <style>
 	#form {width: 400px; margin:auto; padding:30px}
@@ -61,9 +62,14 @@
 			form.nickname.select();
 			return false;
 		}
+<<<<<<< HEAD
+		window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+				"width=200, height=50");
+=======
 		window.name = "parentForm";            
 		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
+>>>>>>> 5aa910d241aba513e5da15de6190b54080a72b18
 	}
 	
 	function idCk(){
@@ -83,6 +89,8 @@
 		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
 				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
 
+
+		 
 	}
 	
 </script>

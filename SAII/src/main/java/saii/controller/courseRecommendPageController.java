@@ -18,3 +18,6 @@ public class courseRecommendPageController extends HttpServlet {
 		req.getRequestDispatcher("saii/courseRecommendPage.jsp").forward(req, resp);
 	}
 }
+
+
+
