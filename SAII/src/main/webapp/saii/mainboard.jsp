@@ -36,7 +36,7 @@
 					<select name="searchType">
 					<option value="region" <c:if test="${map.searchType == 'region'}">selected</c:if>>지역</option>
 						<option value="m_title" <c:if test="${map.searchType == 'm_title'}">selected</c:if>>제목</option>
-						<option value="course_name" <c:if test="${map.searchType == 'course_name'}">selected</c:if>>코스명</option>
+						<option value="course_id" <c:if test="${map.searchType == 'course_id'}">selected</c:if>>코스명</option>
 						<option value="nickname" <c:if test="${map.searchType == 'nickname'}">selected</c:if>>작성자</option>
 						<option value="content" <c:if test="${map.searchType == 'content'}">selected</c:if>>내용</option>
 					</select>
@@ -117,7 +117,7 @@
 			<td id="writeButton">
 				<c:choose>
 					<c:when test="${sessionScope.UserId ne null}">
-						<input type="button" value="글쓰기" onclick="location.href='http://localhost:8081/SAII/write';" />
+						<input type="button" value="글쓰기" onclick="location.href='http://localhost:8081/SAII/course_write';" />
 					</c:when>
 					<c:otherwise></c:otherwise>
 				</c:choose>

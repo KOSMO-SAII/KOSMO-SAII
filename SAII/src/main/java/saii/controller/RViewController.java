@@ -41,9 +41,9 @@ public class RViewController extends HttpServlet {
 		String cmt_no = req.getParameter("cmt_no");
 		reviewboardDAO dao = new reviewboardDAO();
 		
-		ArrayList<CommentDTO> clist = dao.listComment(cmt_no);
+		ArrayList<CommentDTO> commentLists = dao.listComment(cmt_no);
 		
-		req.setAttribute("clist", clist);
+		req.setAttribute("commentLists", commentLists);
 		
 		req.getRequestDispatcher("/saii/Rview.jsp").forward(req, resp);
 	}

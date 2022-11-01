@@ -27,14 +27,15 @@ public class AddCommentController extends HttpServlet {
 		CommentDTO dto = new CommentDTO();
 		
 		HttpSession session = req.getSession();
+		String cmt_id = (String)session.getAttribute("UserId");
 		
-		dto.setCmt_id(session.getAttribute("cmt_id").toString());
+		dto.setCmt_id(cmt_id);
 		dto.setBoard_no(board_no);
 		dto.setCmt_content(cmt_content);
 		
 		int result = dao.addComment(dto);
 		if(result == 1) {
-			resp.sendRedirect("/saii/review_view?r_id=" + board_no);
+			resp.sendRedirect("/SAII/review_view?r_id=" + board_no);
 		}else {
 			AlertFunc.alertBack(resp,"댓글 쓰기 실패");
 		}
