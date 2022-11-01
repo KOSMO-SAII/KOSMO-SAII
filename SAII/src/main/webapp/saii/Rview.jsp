@@ -110,7 +110,7 @@
 				</td>
 				<td>
 					<input type="button" value="삭제하기" class="btn btn-default" 
-						onclick="location.href='http://localhost:8081/SAII/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ clist.board_no }';"/>
+						onclick="location.href='http://localhost:8081/SAII/delcomment?cmt_no=${ clist.cmt_no }&board_no=${ dto.r_id }';"/>
 				</td>
 			</tr>
 		</c:forEach>	
@@ -123,7 +123,7 @@
 				<td><input type="submit" value="댓글쓰기" class="btn btn-primary" /></td>
 			</tr>
 		</table>
-		<input type="hidden" name="cmt_no" value="${ dto.cmt_no }" />
+		<input type="hidden" name="board_no" value="${ dto.r_id }" />
 	</form>
 </div>
 

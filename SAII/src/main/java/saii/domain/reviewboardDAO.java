@@ -209,7 +209,7 @@ public class reviewboardDAO extends JDBConnect {
 	}
 	
 	public int addComment(CommentDTO dto) {
-		
+		int result = 0;
 		try {
 			
 			String sql = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
@@ -221,25 +221,26 @@ public class reviewboardDAO extends JDBConnect {
 			psmt.setString(2, dto.getCmt_content());
 			psmt.setString(3, dto.getBoard_no());
 			
-			return psmt.executeUpdate(); // 성공시 1 실패시 0
+			result = psmt.executeUpdate(); // 성공시 1 실패시 0
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return result;
 	}
 	
 	public int delComment(String cmt_no) {
+		int result = 0;
 		try {
 			String query = "delete from comment_board where cmt_no = ?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, cmt_no);
-			return psmt.executeUpdate();
+			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return result;
 	}
 	
 	public void delAllComment(String cmt_no) {
