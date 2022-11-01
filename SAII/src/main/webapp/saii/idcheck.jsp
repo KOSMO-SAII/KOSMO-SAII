@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +10,30 @@
 		if(form.id.value == ""){
 			alert("아이디를 입력하세요");
 			form.id.focus();
+			return false;
+		}
+		//아이디 길이 체크 (6~15자)
+		if (form.id.value.length < 6 || form.id.value.length > 15) {
+			alert("아이디를 6~15자까지 입력해주세요.")
+			form.id.focus();
+			form.id.select();
+			return false;
+		}
+		//아이디 유효성 검사 (영문소문자, 숫자만 허용)
+		for (var i = 0; i < form.id.value.length; i++) {
+			ch = form.id.value.charAt(i)
+			if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+				alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.")
+				form.id.focus();
+				form.id.select();
+				return false;
+			}
+		}
+		//아이디에 공백 사용하지 않기
+		if (form.id.value.indexOf(" ") >= 0) {
+			alert("아이디에 공백을 사용할 수 없습니다.")
+			form.id.focus();
+			form.id.select()
 			return false;
 		}
 	}

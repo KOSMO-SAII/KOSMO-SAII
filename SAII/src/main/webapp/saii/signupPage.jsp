@@ -54,6 +54,13 @@
 			form.nickname.focus();
 			return false;
 		}
+		//닉네임 길이 체크 (6~15자)
+		if (form.nickname.value.length < 2 || form.nickname.value.length > 15) {
+			alert("닉네임을 2~15자까지 입력해주세요.")
+			form.nickname.focus();
+			form.nickname.select();
+			return false;
+		}
 		window.name = "parentForm";            
 		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				"width=200, height=200, resizable = no, scrollbars = no");
@@ -63,6 +70,13 @@
 		if(form.id.value == ""){
 			alert("아이디를 입력하세요");
 			form.id.focus();
+			return false;
+		}
+		//아이디 길이 체크 (6~15자)
+		if (form.id.value.length < 6 || form.id.value.length > 15) {
+			alert("아이디를 6~15자까지 입력해주세요.")
+			form.id.focus();
+			form.id.select();
 			return false;
 		}
 		window.name = "parentForm";            
