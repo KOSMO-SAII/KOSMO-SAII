@@ -100,7 +100,8 @@ h4 {
 	top:40px;
 	width: 315px;
 	background-color: rgb(255, 243, 200);
-	border-radius: 20px
+	border-radius: 20px;
+	box-shadow: 10px 10px 10px rgb(255,243,200),-10px -10px 10px rgb(255,243,200),-10px 10px 10px rgb(255,243,200),10px -10px 10px rgb(255,243,200);
 }
 
 #editsus{
