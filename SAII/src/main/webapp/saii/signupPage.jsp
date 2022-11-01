@@ -55,7 +55,7 @@
 			return false;
 		}
 		window.name = "parentForm";            
-		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+		nickWin = window.open("nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				"width=200, height=200, resizable = no, scrollbars = no");
 	}
 	
@@ -66,7 +66,7 @@
 			return false;
 		}
 		window.name = "parentForm";            
-		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+		idWin = window.open("idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
 				"width=200, height=200, resizable = no, scrollbars = no");
 
 	}
@@ -117,6 +117,6 @@
     <input type="submit"  value="회원가입하기" />
     </form>
     
-<script src="http://localhost:8081/SAII/saii/JS/memAct.js"></script>
+<script src="memAct.js"></script>
 </body>
 </html>

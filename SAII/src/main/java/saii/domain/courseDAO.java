@@ -97,41 +97,4 @@ public class courseDAO extends JDBConnect {
 		}
 
 	}
-	
-	public ArrayList<courseDTO> getCourse(int course_id){
-		
-		ArrayList<courseDTO> cdtos = new ArrayList<>();
-		String query = "SELECT * FROM COURSE_DATA WHERE COURSE_ID = ?";
-		
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setInt(1, course_id);
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				courseDTO cdto = new courseDTO();
-
-				cdto.setCourse_id(Integer.toString(course_id));
-				cdto.setOrder(rs.getInt(2));
-				cdto.setCategory(rs.getString(3));
-				cdto.setAddress_id(rs.getString(4));
-				cdto.setAddress_name(rs.getString(5));
-				cdto.setRoad_address_name(rs.getString(6));
-				cdto.setPhone_number(rs.getString(7));
-				cdto.setPlace_name(rs.getString(8));
-				cdto.setPlace_url(rs.getString(9));
-				cdto.setX(rs.getString(10));
-				cdto.setY(rs.getString(11));
-				cdto.setMemo(rs.getString(12));
-
-				cdtos.add(cdto);
-			}
-			
-		} catch (SQLException e) {
-			System.out.println("getcourse err");
-			e.printStackTrace();
-		}		
-		return cdtos;
-		
-	}
 }
