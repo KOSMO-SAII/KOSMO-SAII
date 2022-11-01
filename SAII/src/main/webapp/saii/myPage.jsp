@@ -29,6 +29,11 @@ body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password
 h4 {
 	text-align: center;
 }
+h2 {
+	text-align: center;
+	position: relative;
+	top: -175px;
+}
 #usertable {
 	width: 300px;
 	background-color: rgb(255, 243, 200);
@@ -84,9 +89,15 @@ h4 {
 }
 #mboard{
 	position:relative;
-	height: 400px;
-	width: 80%;
-	display: inline-block;
+	height: 300px;
+	width: 818px;
+	left: 50%;
+	margin-left: -400px;
+	top: -175px;
+}
+.t1 {
+	position: relative;
+	top: -175px;
 }
 
 
@@ -153,7 +164,7 @@ h4 {
 	</div>
 <h2>내가 짠 코스</h2>
 <form action="http://localhost:8081/SAII/mypage?id=${UserId }" method="get">
-<table align="center" border="1" width="80%">
+<table class="t1" align="center" border="1" width="800px">
 	<tr>
 		<td align="center">
 			<select name="searchType">
@@ -167,10 +178,10 @@ h4 {
 </table>
 </form>
 
-<table align="center" border="1" width="80%">
+<table class="t1" align="center" border="1" width="800px">
 <colgroup>
-	<col width="10%">
-	<col width="10%">
+	<col width="5%">
+	<col width="15%">
 	<col width="30%">
 	<col width="30%">
 	<col width="10%">
@@ -186,7 +197,15 @@ h4 {
 	</tr>
 </table>
 <div style="overflow: scroll" id="mboard">
-<table align="center" border="1" width="80%">
+<table align="center" border="1" width="800px">
+<colgroup>
+	<col width="5%">
+	<col width="15%">
+	<col width="30%">
+	<col width="30%">
+	<col width="10%">
+	<col width="10%">
+</colgroup>
 	<tr>
 		<td>번호</td>
 		<td>지역</td>
