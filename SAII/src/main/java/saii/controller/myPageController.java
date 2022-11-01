@@ -5,13 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import saii.domain.mainboardDAO;
 import saii.domain.memberDAO;
@@ -26,12 +24,8 @@ public class myPageController extends HttpServlet{
 		
 		System.out.println("/mypage doGet");
 		String id = req.getParameter("id");
-		HttpSession session =req.getSession();
-		String idx = (String) session.getAttribute("UserId");
-		
-		System.out.println(idx);
 		memberDAO dao = new memberDAO();
-		memberDTO dto = dao.userinfo(idx);
+		memberDTO dto = dao.userinfo(id);
 		
 		mainboardDAO mdao = new mainboardDAO();
 		Map<String,Object> map = new HashMap<>();

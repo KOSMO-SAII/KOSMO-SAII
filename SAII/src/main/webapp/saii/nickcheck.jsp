@@ -13,16 +13,6 @@
 			form.nickname.focus();
 			return false;
 		}
-		//닉네임 길이 체크 (6~15자)
-		if (form.nickname.value.length < 2 || form.nickname.value.length > 15) {
-			alert("닉네임을 2~15자까지 입력해주세요.")
-			form.nickname.focus();
-			form.nickname.select();
-			return false;
-		}
-	}
-	
-	
 	}
 	function nicksend(){
 		opener.document.getElementById("usernickname").value = document.getElementById("nicknamechk").value;
