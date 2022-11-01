@@ -147,7 +147,15 @@ for(var k=0;k<paramObjs.length;k++){
 		
 		//생성한 리스트에 마우스 오버시 화면 이동(임시)
 		$('#My_List li .title').mouseover(function(event){
-			//hoverevent(event);
+			var li=event.target.parentElement.parentElement;
+			for(var i = 0 ;i<mymarkers.length;i++){
+				if (i==$(li).index()){
+				var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
+				//mymarkers[i].mymarker.setMap(map);
+				map.panTo(mapmove);
+				break;
+				}
+			}
 		})
 		
 		//임시, 메모버튼클릭시 메모저장 박스 출력
@@ -208,11 +216,15 @@ var polyline = new kakao.maps.Polyline({
 					});
 
 //마이 핀 라인 생성
+for(var p=0;p<mymarkers.length;p++){
+}
 makeline();
 
 function makeline(){
+	console.log("선긋기 시작")
 	polyline.setMap(null);
 	if(polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0){
+		console.log("0,0값 실행")
 		for(var i=0;i<mymarkers.length;i++){
 			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
 				la=mymarkers[i].mymarker.mymarker.getPosition().La
@@ -220,6 +232,7 @@ function makeline(){
 			var coord = new kakao.maps.LatLng(ma, la);
 			
 			path.push(coord);
+			
 		}
 		polyline.setPath(path);
 		//polyline.setMap(map);
@@ -236,6 +249,8 @@ function makeline(){
 		}
 		polyline.setPath(path);
 	}
+	polyline.setMap(map);
+	//console.log(path);
 }
 
 
