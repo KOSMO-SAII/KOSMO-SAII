@@ -62,9 +62,19 @@
 			form.nickname.select();
 			return false;
 		}
-		window.name = "parentForm";            
-		nickWin = window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
-				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
+		
+		var popupWidth = 650;
+		var popupHeight = 250;
+
+		var popupX = (window.screen.width / 2) - (popupWidth / 2);
+		// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+
+		window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+				'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+
 	}
 	
 	function idCk(){
@@ -80,9 +90,19 @@
 			form.id.select();
 			return false;
 		}
-		window.name = "parentForm";            
-		idWin = window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
-				"width=650px, height=250px, resizable=no, scrollbars=no,top=1000px,left=1000px");
+		
+		var popupWidth = 650;
+		var popupHeight = 250;
+
+		var popupX = (window.screen.width / 2) - (popupWidth / 2);
+		// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+	window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+			'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+	    
+
 
 
 		 
