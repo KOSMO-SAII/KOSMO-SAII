@@ -64,7 +64,7 @@ public class courseViewController extends HttpServlet{
 			courseDAO cdao = new courseDAO();
 			String[] str = req.getParameterValues("data");
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
-			cdao.insertCourse(cdtos); 	// 최근 코스id 받기를 어케하지
+			cdao.insertCourse(cdtos); 	
 			String course_id = Integer.toString(cdao.getCurrentCourseId());
 			cdao.close();
 			

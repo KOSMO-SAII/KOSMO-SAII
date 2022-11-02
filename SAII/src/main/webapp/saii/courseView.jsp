@@ -18,7 +18,7 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../course_write" method="post" >
+			<form action="/course_write" method="post" >
 			<ul id="My_List">
 			
 			</ul>

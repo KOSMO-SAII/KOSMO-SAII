@@ -13,17 +13,13 @@
 </head>
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-<body>
+<body>	
 	 <div class="body_wrap">
-		<div class="my">
-
-			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
-				코스넘버<br/><input type="text" name="course_id"/><br/>
-
+		<div class="my">			
 			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
 				제목<br/><input type="text" name="title"/><br/>
 
-				지역<br/><input type="text" name="legion"/>
+				지역<br/><input type="text" name="region"/>
 				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
 				<ul id="My_List">
 				
