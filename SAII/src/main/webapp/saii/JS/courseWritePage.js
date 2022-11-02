@@ -145,6 +145,7 @@ function displayPlaces(places) {
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+            
 
 		//console.log(marker);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -165,13 +166,13 @@ function displayPlaces(places) {
             //});
 
             itemEl.onmouseover =  function () {
-                displayInfomarker(marker);
+              //  displayInfomarker(marker);
                
             };
 
             itemEl.onmouseout =  function () {
 				
-				removeSearchMarker(marker);
+				//removeSearchMarker(marker);
 			
             };
         })(marker, places[i]);
@@ -199,7 +200,7 @@ function addEventClick(place){
 			scloseOverlay()
 			}
 			var n = $(this).index();
-			var placePosition = new kakao.maps.LatLng(place[n].y, place[n].x)
+			var placePosition = new kakao.maps.LatLng(place[n].y, place[n].x),
 				smarker = addMarker(placePosition);
 			displayInfowindow(smarker, place[n]);
 		})
@@ -241,9 +242,12 @@ function addMarker(position, idx, title) {
             offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
         },
         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new kakao.maps.Marker({
-            position: position, // 마커의 위치
-        });
+        marker = new kakao.maps.Marker({
+	            position: position, // 마커의 위치
+	            image:markerImage
+		        });
+        //
+    marker.setMap(map);
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 
     return marker;
@@ -291,7 +295,7 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
-    marker.setMap(map);
+    //marker.setMap(map);
     searcAddOverLay(marker,title);
 }
 function displayInfomarker(marker ) {
@@ -386,7 +390,7 @@ function rsaveMySearchPin(mysplace,mysplaceinfo){
 //검색 결과 오버레이 닫기 
 function scloseOverlay() {
     soverlay.setMap(null);  
-	smarker.setMap(null);
+	//smarker.setMap(null);
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
