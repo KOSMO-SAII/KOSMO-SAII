@@ -22,13 +22,13 @@ function id_search() {
 	 }
 
  frm.method = "post";
- frm.action = "http://localhost:8081/SAII/findId.do"; //넘어간화면
+ frm.action = "http://localhost:8081/SAII/findId.do"; //controller 주소 
  frm.submit();  
  }
 </script>
 <form name="idfindscreen" method = "POST">
 			<div class = "search-title">
-				<h3>휴대폰 본인확인</h3>
+				<h3>아이디 찾기</h3>
 			</div>
 		<section class = "form-search">
 			<div class = "find-name">
