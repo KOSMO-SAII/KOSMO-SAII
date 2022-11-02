@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>리뷰게시판</title>
 </head>
 <body>
@@ -72,6 +71,20 @@
 
 	<!-- 댓글 목록 -->
 <div>
+	<form method="POST" action="http://localhost:8081/SAII/addComment">
+		<table border="1" width="90%">
+			<tr>
+				<td>
+					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
+				</td>
+				<td>
+					<input type="submit" value="댓글쓰기" />
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="board_no" value="${ dto.r_id }" />
+	</form>
+
 	<table border="1" width="90%">
 		<c:if test="${empty commentLists}">
 			<tr>
@@ -86,38 +99,22 @@
 					${ clist.cmt_content }
 				</td>
 				<td>
-					<input type="button" value="삭제하기"
-						onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+					<c:if test="${!(empty sessionScope.UserId)}">
+						<c:if test="${clist.cmt_id == sessionScope.UserId}">
+							<input type="button" value="수정하기"
+								onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+							<input type="button" value="삭제하기"
+								onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+						</c:if>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>	
 	</table>
-	
-	<form method="POST" action="http://localhost:8081/SAII/addComment">
-		<table border="1" width="90%">
-			<tr>
-				<td>
-					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
-				</td>
-				<td>
-					<input type="submit" value="댓글쓰기" />
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="board_no" value="${ dto.r_id }" />
-	</form>
+
 </div>
 
 
-
-
-
-
-
-
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-		crossorigin="anonymous"></script>
 
 </body>
 </html>
