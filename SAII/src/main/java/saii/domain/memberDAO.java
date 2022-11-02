@@ -307,4 +307,23 @@ public class memberDAO extends JDBConnect {
 		
 		return dto.getPw();
 	}
+	
+	public int delete(String id) {
+		int result=0;
+		
+		try {
+			String query = "DELETE FROM MEMBER"
+					+ " WHERE ID=?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원탈퇴 실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
 }

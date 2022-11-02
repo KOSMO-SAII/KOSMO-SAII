@@ -86,6 +86,7 @@ h2 {
 #filebutton {
 	display: none;
 }
+
 .input_file_button{
 	position:relative;
 	top:10px;
@@ -135,7 +136,18 @@ h2 {
 	background-color: rgb(236,236,236);
 	border-radius: 10px;
 }
-
+#del {
+	display: none;
+}
+.withdraw{
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	padding: 6px 25px;
+	border-radius: 5px;
+	display:inline-block;
+	width: 100px
+}
 
 </style>
 <link rel="stylesheet" href="CSS/mypage.css">
@@ -358,39 +370,12 @@ h2 {
 	</table>
 	</div>
 </div>
-
-
-		
-	
-
-		
-		
-		<!-- <tr>
-			<td colspan="8" id="paging">
-				<c:url var="action" value="http://localhost:8081/SAII/mainboard" />
-				<c:if test="${paging.prev}">
-					<a href="${action}?page=${paging.beginPage-1}">prev</a>
-					&nbsp;&nbsp;
-				</c:if>
-				<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" var="index">
-					<c:choose>
-						<c:when test="${paging.page==index}">
-							${index}
-						</c:when>
-						<c:otherwise>
-							<a href="${action}?page=${index}">${index}</a>
-						</c:otherwise>
-					</c:choose>
-					&nbsp;&nbsp;
-				</c:forEach>
-				<c:if test="${paging.next}">
-					<a href="${action}?page=${paging.endPage+1}">next</a>
-				</c:if>
-			</td>
-		</tr>
-	</table> -->
-
-
-	<a href="http://localhost:8081/SAII/home">돌아가기</a>
+<div>
+	<form action="http://localhost:8081/SAII/withdraw">
+		<input type="submit" id="del">
+		<label class="withdraw" for="del">회원탈퇴</label>	
+	</form>
+</div>
+<a href="http://localhost:8081/SAII/home">돌아가기</a>
 </body>
 </html>
