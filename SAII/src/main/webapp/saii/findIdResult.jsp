@@ -1,6 +1,7 @@
+<%@page import="saii.domain.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="membership.MemberDAO"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -8,33 +9,21 @@
 <head>
 </head>
 <body>
-<%
- 	request.setCharacterEncoding("UTF-8");
-    String member_name = request.getParameter("member_name");
-     String member_phone = request.getParameter("member_phone");
-
-	MemberDAO dao = new MemberDAO();
- 	String id = dao.findId(member_name, member_phone); //아이디를 디비에서 가져옴..실패시 널
-
-%>
   <form name="idsearch" method="post">
-      <%
-       if (id != null) {
-      %>
-      
-      <div class = "container">
+	<c:choose>
+		<c:when test="${!empty requestScope.id }" >
+      	<div class = "container">
       	<div class = "found-success">
 	      <h4>  회원님의 아이디는 </h4>  
-	      <div class ="found-id"><%=id%></div>
+	      <div class ="found-id">${requestScope.id }</div>
 	      <h4>  입니다 </h4>
 	     </div>
 	     <div class = "found-login">
  		    <input type="button" id="btnLogin" value="로그인" onClick = 'login()'/>
        	</div>
        </div>
-      <%
-  } else {
- %>
+       	</c:when>
+ 		<c:otherwise>
         <div class = "container">
       	<div class = "found-fail">
 	      <h4>  등록된 정보가 없습니다 </h4>  
@@ -45,12 +34,12 @@
        	</div>
        </div>
        
-    <div class = "adcontainer">
-	<a href="#" ><img src = "../images/casead.png" /></a>                
-</div>   
-       <%
-  }
- %> 
+	    <div class = "adcontainer">
+          
+		</div>  
+		</c:otherwise> 
+
+ 	</c:choose>
       </form>
       </body>
 </html>

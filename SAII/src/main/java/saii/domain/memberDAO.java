@@ -259,4 +259,28 @@ public class memberDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public memberDTO findId(String member_name, String member_phone) {
+		System.out.println("findId");
+		 System.out.println(member_name);
+	     System.out.println(member_phone);
+	     memberDTO dto = new memberDTO();
+		try {
+			String query = "SELECT * FROM MEMBER WHERE NAME=? and PHONE=?";
+			
+			psmt=con.prepareStatement(query);
+			psmt.setString(1, member_name);
+			psmt.setString(2, member_phone);
+			
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString("id"));
+				dto.setPw(rs.getString("pw"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return dto;
+	}
 }
