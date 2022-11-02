@@ -20,8 +20,8 @@
 		height:500px;
 	}
 	#heart{
-		border:0px solid white;
-		background-color:white;
+		/*border:0px solid white;
+		background-color:white;*/
 	}
 	#delete{
 		text-align:right;
@@ -41,24 +41,25 @@
 		</tr>
 		<tr>
 			<td>지역</td> <td>${dto.region}</td>
-			<td>코스명</td> <td>${dto.m_title}</td>
+			<td>코스넘버</td> <td>${dto.course_id}</td>
 			<td>글쓴이</td> <td>${dto.nickname}</td>
 		</tr>
 		<tr>
 			<td>작성일</td> <td>${dto.m_postdate}</td>
 			<td>좋아요</td>
 			<td>
-				<c:if test="${memdto.nickname eq null}">
-				<c:choose>
-					<c:when test="${dto.good}=false">
-						<input id="heart" type="submit" value="🤍" /> <%-- 속이 빈 하트 --%>
-					</c:when>
-					<c:otherwise>
-						<input id="heart" type="submit" value="❤" /> <%-- 속이 찬 하트 --%>
-					</c:otherwise>
-				</c:choose>
+				<c:if test="${memdto.nickname ne null}">
+					<button type="button" id="heart">🤍</button>
+					<%--<c:choose>
+						<c:when test="${goodWhether eq false}"> 
+							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${0}'">🤍</button>--%> <%-- 속이 빈 하트 --%>
+						<%-- </c:when>
+						<c:otherwise>
+							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${1}'">❤</button>--%> <%-- 속이 찬 하트 --%>
+						<%--</c:otherwise>
+					</c:choose>--%>
 				</c:if>
-				${dto.goodcount}
+				굿카운트
 			</td>
 			<td>조회수</td> <td>${dto.visitcount}</td>
 		</tr>

@@ -117,10 +117,24 @@ public class mainboardDAO extends JDBConnect {
 		}
 	}
 	
+	public void minusVisitCount(String m_id) {
+		String sql = "update main_board "
+				   + "set visitcount = visitcount - 1 "
+				   + "where m_id = ?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public mainboardDTO selectView(String m_id) {
 		mainboardDTO dto = new mainboardDTO();
-		String sql = "select * from main_board "
-				   + "where m_id = ?";
+		String sql = "select m_id, m_title, region, course_id, nickname, m_postdate, visitcount, (select count(*) from good where m_id = ?) as goodcount "
+				   + " from main_board "
+				   + " where m_id = ? ";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, m_id);

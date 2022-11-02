@@ -26,6 +26,10 @@
 		text-align:right;
 	}
 </style>
+<script src="https://code.jquery.com/jquery-3.4.1.js"   
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   
+	crossorigin="anonymous">
+</script>
 </head>
 <body>
 	<h2>근처 데이트코스 쉽게 찾자~</h2>
@@ -51,7 +55,7 @@
 			<td>번호</td>
 			<td>지역</td>
 			<td>제목</td>
-			<td>코스명</td>
+			<td>코스넘버</td>
 			<td>작성자</td>
 			<td>게시날짜</td>
 			<td>조회수</td>

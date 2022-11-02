@@ -18,7 +18,7 @@ public class MainDeleteController extends HttpServlet {
 		mainboardDTO dto = new mainboardDTO();
 		mainboardDAO dao = new mainboardDAO();
 		
-		String m_id = req.getAttribute("m_id").toString();
+		String m_id = req.getParameter("m_id");
 		
 		int result = dao.delete(m_id);
 		

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import saii.domain.goodDAO;
 import saii.domain.mainboardDAO;
 import saii.domain.memberDAO;
+import saii.dto.goodDTO;
 import saii.dto.mainboardDTO;
 import saii.dto.memberDTO;
 
@@ -28,14 +30,21 @@ public class MainViewController extends HttpServlet {
 		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
-		if(req.getSession().getAttribute("UserId") != null) {			
+		if(req.getSession().getAttribute("UserId") != null) {
 			memberDTO memdto = new memberDTO();		
 			memberDAO memdao = new memberDAO();
 			String id = req.getSession().getAttribute("UserId").toString();
 			memdto = memdao.userinfo(id);
 			
-			memdao.close();
+			goodDTO gdto = new goodDTO();
 			
+			goodDAO gdao = new goodDAO();
+			boolean goodWhether = gdao.goodWhether(dto.getM_id(), memdto.getNickname());
+			
+			memdao.close();
+			gdao.close();
+			
+			//req.setAttribute("goodWhether", goodWhether);
 			req.setAttribute("memdto", memdto);
 		}
 		

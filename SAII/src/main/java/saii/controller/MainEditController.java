@@ -20,7 +20,6 @@ public class MainEditController extends HttpServlet {
 		mainboardDAO dao = new mainboardDAO();
 		String m_id = req.getParameter("m_id");
 		mainboardDTO dto = dao.selectView(m_id);
-		dao.close();
 		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 			
