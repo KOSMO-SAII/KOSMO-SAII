@@ -31,6 +31,9 @@
 		border:1px solid black;
 		margin:auto;
 	}
+	#good{
+		float: left;
+	}
 </style>
 </head>
 <body>
@@ -49,7 +52,7 @@
 			<td>좋아요</td>
 			<td>
 				<c:if test="${memdto.nickname ne null}">
-					<button type="button" id="heart">🤍</button>
+					<div id="good"><a href="http://localhost:8081/SAII/good"><img src="saii/img/notGood.png" alt="good" width="20px" height="20px"></a></div>
 					<%--<c:choose>
 						<c:when test="${goodWhether eq false}"> 
 							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${0}'">🤍</button>--%> <%-- 속이 빈 하트 --%>
@@ -58,8 +61,8 @@
 							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${1}'">❤</button>--%> <%-- 속이 찬 하트 --%>
 						<%--</c:otherwise>
 					</c:choose>--%>
-				</c:if>
-				굿카운트
+				</c:if>&nbsp;&nbsp;
+				${dto.goodcount}
 			</td>
 			<td>조회수</td> <td>${dto.visitcount}</td>
 		</tr>

@@ -138,6 +138,7 @@ public class mainboardDAO extends JDBConnect {
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, m_id);
+			psmt.setString(2, m_id);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				dto.setM_id(rs.getString("m_id"));
