@@ -8,6 +8,7 @@
 <title>리뷰게시판</title>
 </head>
 <body>
+<%@ include file="./top.jsp" %>
 	<h2>게시판 상세보기</h2>
 
 <form method="post" action="http://localhost:8081/SAII/review_view">
