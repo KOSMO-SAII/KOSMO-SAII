@@ -20,6 +20,7 @@
 	</div>
 </c:if>
 	<h2>목록 보기</h2>
+	${totalCount}
 	<!-- 검색 -->
 	<form method="get">
 		<table border="1" width="90%">
@@ -48,6 +49,7 @@
 		</table>
 	</form>
 		<!-- 목록 -->
+	
 	<table border="1" width="90%">
 		<tr>
 			<th>번호</th>

@@ -10,6 +10,7 @@
 <body>
 	<h2>게시판 상세보기</h2>
 
+<form method="post" action="http://localhost:8081/SAII/review_view">
 	<table border="1" width="90%">
 		<tr>
 			<td>카테고리</td>
@@ -43,8 +44,7 @@
 		<tr>
 			<td>첨부파일</td>
 			<td><c:if test="${not empty dto.o_file }">
-					<a
-						href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
+					<a href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
 						${dto.o_file} </a>
 					<img src="/SAII/Storage/${dto.n_file}">
 				</c:if></td>
@@ -68,7 +68,7 @@
 			</td>
 		</tr>
 	</table>
-
+</form>
 	<!-- 댓글 목록 -->
 <div>
 	<form method="POST" action="http://localhost:8081/SAII/addComment">
