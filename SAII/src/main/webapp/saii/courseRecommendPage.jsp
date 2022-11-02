@@ -65,7 +65,7 @@
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" value="글읽기" onclick="location.href='http:localhost:8081/SAII/course_view?num=${list[0].c_id}' "/> <br/>
+                <input type="button" value="글읽기" onclick="location.href='./course_view?num=${list[0].c_id}' "/> <br/>
                 </div>
             </a>
             
@@ -81,7 +81,7 @@
                 <c:forTokens items="${list[1].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" value="글읽기" onclick="location.href='http:localhost:8081/SAII/course_view?num=${list[1].c_id}' "/> <br/>
+                <input type="button" value="글읽기" onclick="location.href='./course_view?num=${list[1].c_id}' "/> <br/>
                 </div>
             </a>
             

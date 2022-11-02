@@ -16,7 +16,7 @@
 	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a></c:if>
 	<c:if test="${UserId==null}"><a href="http://localhost:8081/SAII/login">로그인</a></c:if>
 	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/logout">로그아웃</a></c:if>
-	<a href="http://localhost:8081/SAII/signup">회원가입</a>
+	<c:if test="${UserId==null}"><a href="http://localhost:8081/SAII/signup">회원가입</a></c:if>
 	
 	
 </body>
