@@ -113,7 +113,7 @@ public class courseViewController extends HttpServlet{
 			map.put("Memo","");
 			}
 			list.add(map);
-			System.out.println(map.entrySet());
+			//System.out.println(map.entrySet());
 		}
 		//System.out.println("===여기는 리스트");
 		//System.out.println(list);
