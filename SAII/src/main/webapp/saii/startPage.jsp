@@ -12,7 +12,7 @@
 	
 	<a href="http://localhost:8081/SAII/course_write">코스 작성 화면</a>
 	<a href="http://localhost:8081/SAII/course_recommend">코스 추천 화면</a>
-	<a href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a>
+	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a></c:if>
 	<c:if test="${UserId==null}"><a href="http://localhost:8081/SAII/login">로그인</a></c:if>
 	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/logout">로그아웃</a></c:if>
 	<a href="http://localhost:8081/SAII/signup">회원가입</a>
