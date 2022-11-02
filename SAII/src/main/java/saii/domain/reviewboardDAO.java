@@ -21,9 +21,11 @@ public class reviewboardDAO extends JDBConnect {
 		if(map.get("categoryType")!=null) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
 		}
-		if(map.get("searchStr") != null) {
-			query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		}
+		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
+	         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	    } else if(map.get("searchStr") != null) {
+	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+	    }
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -43,9 +45,11 @@ public class reviewboardDAO extends JDBConnect {
 		if(map.get("categoryType")!=null) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
 		}
-		if(map.get("searchStr") != null) {
-			query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		}
+		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
+	         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	    } else if(map.get("searchStr") != null) {
+	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+	    }
 		query += "      ORDER BY r_id DESC";
 		query += "   ) S" + ")" + "WHERE PNUM BETWEEN ? AND ?";
 
