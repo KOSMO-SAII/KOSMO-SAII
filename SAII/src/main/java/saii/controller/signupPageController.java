@@ -55,6 +55,7 @@ public class signupPageController extends HttpServlet {
 			dto.setBirthday(Date.valueOf(date));
 			dto.setO_profile_img(fileName);
 			dto.setN_profile_img(newFileName);
+			dto.setPhone(mr.getParameter("phone"));
 			dto.setAddress(mr.getParameter("address"));
 			dto.setEmail(mr.getParameter("email"));
 
