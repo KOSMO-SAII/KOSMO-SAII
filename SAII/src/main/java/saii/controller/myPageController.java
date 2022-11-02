@@ -25,7 +25,6 @@ public class myPageController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		System.out.println("/mypage doGet");
-		String id = req.getParameter("id");
 		HttpSession session =req.getSession();
 		String idx = (String) session.getAttribute("UserId");
 		

@@ -23,7 +23,7 @@
 	}
 	
 	
-	}
+	
 	function nicksend(){
 		opener.document.getElementById("usernickname").value = document.getElementById("nicknamechk").value;
 	}

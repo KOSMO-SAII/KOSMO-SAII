@@ -13,17 +13,13 @@
 </head>
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-<body>
+<body>	
 	 <div class="body_wrap">
-		<div class="my">
-
-			<form action="../course_view" method="post" onsubmit="return coursecheck()" >
-				코스넘버<br/><input type="text" name="course_id"/><br/>
-
+		<div class="my">			
 			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
 				제목<br/><input type="text" name="title"/><br/>
 
-				지역<br/><input type="text" name="legion"/>
+				지역<br/><input type="text" name="region"/>
 				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
 				<ul id="My_List">
 				
@@ -40,18 +36,20 @@
 			<div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
 			<!-- 검색 사이드바 -->
-			<div id="menu_wrap" class="bg_white">
-				<div class="option">
-					<div>
-						<form onsubmit="searchPlaces(); return false;">
-							키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
-							<button class="searchbtn" type="submit">검색하기</button>
-						</form>
+			<div id="menu_wrap_box">
+				<div id="menu_wrap" class="bg_white">
+					<div class="option">
+						<div>
+							<form onsubmit="searchPlaces(); return false;">
+								키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
+								<button class="searchbtn" type="submit">검색하기</button>
+							</form>
+						</div>
 					</div>
+					<hr>
+					<ul id="placesList"></ul>
+					<div id="pagination"></div>
 				</div>
-				<hr>
-				<ul id="placesList"></ul>
-				<div id="pagination"></div>
 				<div id="arrow">▼</div>
 			</div>
 			<!-- 카테고리 목록 위치  -->

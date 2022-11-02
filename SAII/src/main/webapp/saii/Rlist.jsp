@@ -9,17 +9,10 @@
 <title>리뷰게시판</title>
 </head>
 <body>
-<c:if test="${empty sessionScope.UserId }">
-	<div align="right">
-		<a href="http://localhost:8081/SAII/login">로그인</a>
-	</div>
-</c:if>
-<c:if test="${not empty sessionScope.UserId}">
-	<div align="right">
-		<a href="http://localhost:8081/SAII/logout">로그아웃</a>
-	</div>
-</c:if>
+<%@ include file="./top.jsp" %>
+
 	<h2>목록 보기</h2>
+	${totalCount}
 	<!-- 검색 -->
 	<form method="get">
 		<table border="1" width="90%">
@@ -40,6 +33,9 @@
 						<option value="content"
 							<c:if test="${map.searchType=='content' }">selected</c:if>>내용
 						</option>
+						<option value="both"
+                    		<c:if test="${map.searchType=='both' }">selected</c:if>>제목+내용
+                  		</option>
 					</select>
 					<input type="search" name="searchStr" value="${map.searchStr}"/>
 					<input type="submit" value="검색" />
@@ -48,6 +44,7 @@
 		</table>
 	</form>
 		<!-- 목록 -->
+	
 	<table border="1" width="90%">
 		<tr>
 			<th>번호</th>

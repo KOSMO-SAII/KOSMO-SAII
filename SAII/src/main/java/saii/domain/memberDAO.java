@@ -278,9 +278,52 @@ public class memberDAO extends JDBConnect {
 				dto.setPw(rs.getString("pw"));
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return dto;
+	}
+	
+	public String findPw(String member_id, String member_phone) {
+		System.out.println("findPW");
+		 System.out.println(member_id);
+	     System.out.println(member_phone);
+	     memberDTO dto = new memberDTO();
+		try {
+			String query = "SELECT * FROM MEMBER WHERE ID=? and PHONE=?";
+			
+			psmt=con.prepareStatement(query);
+			psmt.setString(1, member_id);
+			psmt.setString(2, member_phone);
+			
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString("id"));
+				dto.setPw(rs.getString("pw"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto.getPw();
+	}
+	
+	public int delete(String id) {
+		int result=0;
+		
+		try {
+			String query = "DELETE FROM MEMBER"
+					+ " WHERE ID=?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원탈퇴 실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+		
 	}
 }

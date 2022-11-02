@@ -21,9 +21,11 @@ public class reviewboardDAO extends JDBConnect {
 		if(map.get("categoryType")!=null) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
 		}
-		if(map.get("searchStr") != null) {
-			query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		}
+		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
+	         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	    } else if(map.get("searchStr") != null) {
+	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+	    }
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -43,9 +45,11 @@ public class reviewboardDAO extends JDBConnect {
 		if(map.get("categoryType")!=null) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
 		}
-		if(map.get("searchStr") != null) {
-			query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		}
+		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
+	         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	    } else if(map.get("searchStr") != null) {
+	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+	    }
 		query += "      ORDER BY r_id DESC";
 		query += "   ) S" + ")" + "WHERE PNUM BETWEEN ? AND ?";
 
@@ -174,11 +178,11 @@ public class reviewboardDAO extends JDBConnect {
 		try {
 			System.out.println(r_id);
 			// 부모글 번호를 조건으로 받기
-			String query = "select c.*, r.nickname "
-					+ "from comment_board c, review_board r "
-					+ "where board_no = r_id "
+			String query = "select c.*, m.nickname "
+					+ "from comment_board c, member m, review_board r "
+					+ "where board_no = r_id and m.id = cmt_id "
 					+ "and board_no = ? "
-					+ "order by cmt_no";
+					+ "order by cmt_no asc";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, r_id);

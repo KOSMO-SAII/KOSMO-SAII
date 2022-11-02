@@ -103,7 +103,7 @@ public class courseDAO extends JDBConnect {
 	public ArrayList<courseDTO> getCourse(int course_id){
 		
 		ArrayList<courseDTO> cdtos = new ArrayList<>();
-		String query = "SELECT * FROM COURSE_DATA WHERE COURSE_ID = ?";
+		String query = "SELECT * FROM COURSE_DATA WHERE COURSE_ID = ? ORDER BY COURSE_ORDER ASC";
 		
 		try {
 			psmt = con.prepareStatement(query);

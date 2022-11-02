@@ -26,5 +26,9 @@ public class DelCommentController extends HttpServlet {
 		}else {
 			AlertFunc.alertBack(resp, "댓글 삭제 실패");
 		}
+		
+		
+		
+		
 	}
 }

@@ -23,6 +23,7 @@
 	}
 </script>
 <body>
+<%@ include file="./top.jsp" %>
 <h2>수정하기(Edit)</h2>
 <form name="writeFrm" method="post"
 	enctype="multipart/form-data"

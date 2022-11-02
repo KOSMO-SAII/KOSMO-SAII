@@ -64,7 +64,7 @@ public class RListController extends HttpServlet {
       dao.close();
       
       //뷰에 전달할 값들 추가
-      String pagingStr = PagingUtil.pagingCenter(totalCount, pageSize, pageBlock, pageNum, "/review_list");
+      String pagingStr = PagingUtil.pagingCenter(totalCount, pageSize, pageBlock, pageNum, "/SAII/review_list");
       map.put("pagingStr", pagingStr);
       map.put("totalCount", totalCount);
       map.put("pageSize", pageSize);

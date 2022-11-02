@@ -11,15 +11,15 @@
 <body>
   <form name="idsearch" method="post">
 	<c:choose>
-		<c:when test="${!empty requestScope.id }" >
+		<c:when test="${!empty pw }" >
       	<div class = "container">
       	<div class = "found-success">
-	      <h4>  회원님의 아이디는 </h4>  
-	      <div class ="found-id">${requestScope.id }</div>
+	      <h4>  회원님의 비밀번호는 </h4>  
+	      <div class ="found-pw">${pw }</div>
 	      <h4>  입니다 </h4>
 	     </div>
 	     <div class = "found-login">
- 		    <input type="button" id="btnLogin" value="로그인" onClick = 'login()'/> <!--로그인 페이지로 이동-->
+ 		    <input type="button" id="btnLogin" value="로그인" onClick = 'login()'/>
        	</div>
        </div>
        	</c:when>
@@ -29,8 +29,8 @@
 	      <h4>  등록된 정보가 없습니다 </h4>  
 	     </div>
 	     <div class = "found-login">
- 		    <input type="button" id="btnback" value="다시 찾기" onClick=""/><!--아이디 찾기로 이동-->
- 		    <input type="button" id="btnjoin" value="회원가입" onClick=" "/><!--회원 가입 페이지로 이동-->
+ 		    <input type="button" id="btnback" value="다시 찾기" onClick="history.back()"/>
+ 		    <input type="button" id="btnjoin" value="회원가입" onClick="joinin()"/>
        	</div>
        </div>
        

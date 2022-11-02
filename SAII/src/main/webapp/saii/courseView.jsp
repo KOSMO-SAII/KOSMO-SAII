@@ -18,7 +18,7 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="../course_write" method="post" >
+			<form action="http://localhost:8081/SAII/course_write" method="post" >
 			<ul id="My_List">
 			
 			</ul>
@@ -57,7 +57,6 @@
 			address_id:"${List["address_id"]}",
 			address_name:"${List["address_name"]}",
 			category:"${List["category"]}",
-			Course_id:"${List["Course_id"]}",
 			Memo:"${List["Memo"]}",
 			Phone_number:"${List["Phone_number"]}",
 			Place_name:"${List["Place_name"]}",
