@@ -23,8 +23,9 @@ form{ height: 90%;}
 #menu_wrap .option button {margin-left:5px;}
 
 #menu_wrap{overflow: scroll;}
+#menu_wrap_box *{text-overflow: ellipsis; white-space: normal;}
 
-#placesList li {list-style: none;}
+#placesList li {list-style: none; }
 #placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
 #placesList .item span {display: block;margin-top:4px;}
 #placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}

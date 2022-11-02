@@ -158,7 +158,9 @@ function displayPlaces(places) {
 			
 			//리스트 클릭스 오버레이 출력
             kakao.maps.event.addListener(marker, 'click', function() {
-				soverlay.setMap(null);
+				if(soverlay!=undefined){
+					soverlay.setMap(null);
+				}
                displayInfowindow(marker, title);
                 //searchmarker=1;
                 //console.log("click");

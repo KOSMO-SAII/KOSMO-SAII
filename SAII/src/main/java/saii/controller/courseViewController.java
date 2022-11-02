@@ -31,10 +31,6 @@ public class courseViewController extends HttpServlet{
 		//받아온 코스 id로 db에서 값 뽑아옴
 		ArrayList<courseDTO> cdtos=cdao.getCourse(courseId);
 		
-//		System.out.println(cdtos.size());
-//		System.out.println(cdtos.get(0).getPlace_name());
-//		System.out.println(cdtos.get(1).getPlace_name());
-		
 		List<Map<String, String>> list=new Vector<Map<String,String>>();
 		
 		for(int i=0; i<cdtos.size();i++) {
@@ -54,14 +50,7 @@ public class courseViewController extends HttpServlet{
 			list.add(map);
 			
 		}
-//		System.out.println("==========");
-//		System.out.println(list);
-//		System.out.println(list.size());
-//		System.out.println(list.get(0).get("Place_name"));
-//		System.out.println(list.get(1).get("Place_name"));
 		req.setAttribute("List", list);
-		//req.setAttribute("num", list.size());
-		//System.out.println(req.getAttribute("map"));
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 		
 	}
