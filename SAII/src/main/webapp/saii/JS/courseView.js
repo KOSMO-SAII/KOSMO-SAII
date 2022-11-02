@@ -7,6 +7,9 @@ console.log(paramObjs.length);
 // 마커를 담을 배열입니다
 //var markers = [];
 
+//임시 전송할 데이터 담는 배열
+var datas=[];
+
 //선그리기 경로 배열
 var path=[];
 
@@ -119,6 +122,11 @@ for(var k=0;k<paramObjs.length;k++){
 	
 	//=========================== 좌측 마이 스케쥴 출력
 	var li=document.createElement('li');	
+	var	data={
+			data: paramObjs[k].category+"|"+paramObjs[k].address_id+"|"+paramObjs[k].address_name+"|"+paramObjs[k].Road_address_name+"|"
+				+paramObjs[k].Phone_number+"|"+paramObjs[k].Place_name+"|"+paramObjs[k].Place_url+"|"+paramObjs[k].X+"|"+paramObjs[k].Y+"|"+
+						paramObjs[k].Memo
+		}
 		li.innerHTML=
 	            '    <div class="info">' + 
 	            '       <div class="title">' + 
@@ -140,8 +148,8 @@ for(var k=0;k<paramObjs.length;k++){
 		var ul =document.getElementById('My_List');
 		ul.appendChild(li);
 		
-		
-		//$('.info .data')[num].defaultValue=mymarkers[num].data.data
+		datas.push(data);
+		$('.info .data')[k].defaultValue=datas[k].data
 		
 		//num+=1;
 		
