@@ -137,11 +137,17 @@ for(var k=0;k<paramObjs.length;k++){
 	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' + 
 	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' + 
 	            '                <div class="phone ellipsis">'+paramObjs[k].Phone_number+'</div>' + 
-	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>' + 
-	            '            </div>' + 
+	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>'  
+	             if(k>0){ li.innerHTML +=
+          		  '              <div><a href="https://map.kakao.com/link/to/' + paramObjs[k].Place_name + ',' + paramObjs[k].Y + ',' + paramObjs[k].X + 
+           		'                     /from/' + paramObjs[k-1].Place_name + ',' + paramObjs[k-1].Y + ',' + paramObjs[k-1].X + '"/>경로보기</a></div>' ;
+  						 }
+   							            
+		li.innerHTML +=            
+				'            </div>' + 
 	            '		 <input type="hidden" class="data" name="data" value="">'+
 	            '		 <button type="button" class="memobtn" >메모'+
-	            '		 </button>' 
+	            '		 </button>' +
 	            '    	</div>' + 
 	            '	 </div>';
 	  
@@ -149,7 +155,7 @@ for(var k=0;k<paramObjs.length;k++){
 		ul.appendChild(li);
 		
 		datas.push(data);
-		$('.info .data')[k].defaultValue=datas[k].data
+		$('.data')[k].defaultValue=datas[k].data
 		
 		//num+=1;
 		
