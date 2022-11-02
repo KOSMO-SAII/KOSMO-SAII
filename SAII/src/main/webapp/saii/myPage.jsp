@@ -141,6 +141,7 @@ h2 {
 <link rel="stylesheet" href="CSS/mypage.css">
 </head>
 <body>
+<%@ include file="./top.jsp" %>
 <h3>마이페이지</h3>
 <hr>
 <div class="div1">
