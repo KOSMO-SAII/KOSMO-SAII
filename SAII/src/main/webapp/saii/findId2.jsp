@@ -22,13 +22,13 @@ function id_search() {
 	 }
 
  frm.method = "post";
- frm.action = "findIdResult.jsp"; //넘어간화면
+ frm.action = "http://localhost:8081/SAII/findId.do"; //controller 주소 
  frm.submit();  
  }
 </script>
 <form name="idfindscreen" method = "POST">
 			<div class = "search-title">
-				<h3>휴대폰 본인확인</h3>
+				<h3>아이디 찾기</h3>
 			</div>
 		<section class = "form-search">
 			<div class = "find-name">
@@ -41,10 +41,7 @@ function id_search() {
 				<input type="text" onKeyup = "addHypen(this);" name="member_phone" class = "btn-phone" placeholder = "휴대폰번호를 '-'없이 입력">
 			</div>
 			<br>
-			<div class = "find-phone">
-				<label>이메일</label>
-				<input type="email" onKeyup = "addHypen(this);" name="email" class = "btn-email" placeholder = "saii@saii.com형식으로 입력">
-			</div>
+			
 	</section>
 	<div class ="btnSearch">
 		<input type="button" name="enter" value="찾기"  onClick="id_search()">

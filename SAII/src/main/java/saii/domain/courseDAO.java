@@ -167,14 +167,14 @@ public String getPlaceNames(String course_id) {
 			}  //값이 names에 순서대로 저장됨.
 						
 			for(String name : names) {
-				result += name + "_";
+				result += name + ",";
 			}			
 			
 		} catch (SQLException e) {
 			System.out.println("getPlaceName err");
 			e.printStackTrace();
 		}
-		
+		System.out.println(result);
 		return result;
 	}
 }
