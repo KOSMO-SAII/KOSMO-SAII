@@ -9,16 +9,8 @@
 <title>리뷰게시판</title>
 </head>
 <body>
-<c:if test="${empty sessionScope.UserId }">
-	<div align="right">
-		<a href="http://localhost:8081/SAII/login">로그인</a>
-	</div>
-</c:if>
-<c:if test="${not empty sessionScope.UserId}">
-	<div align="right">
-		<a href="http://localhost:8081/SAII/logout">로그아웃</a>
-	</div>
-</c:if>
+<%@ include file="./top.jsp" %>
+
 	<h2>목록 보기</h2>
 	${totalCount}
 	<!-- 검색 -->
