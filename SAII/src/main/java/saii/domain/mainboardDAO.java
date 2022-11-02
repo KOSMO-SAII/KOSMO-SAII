@@ -208,6 +208,7 @@ public class mainboardDAO extends JDBConnect {
 				dto.setM_title(rs.getString("m_title"));
 				dto.setCourse_id(rs.getString("course_id"));
 				dto.setVisitcount(rs.getInt("visitcount"));
+				dto.setRegion(rs.getString("region"));
 				
 				dtos.add(dto);
 			

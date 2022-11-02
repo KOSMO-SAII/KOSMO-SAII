@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,10 @@
 <title>코스 추천</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script>
+
+</script>
+
 
 <style>
 .course-list{
@@ -48,39 +53,47 @@
         <h2>코스 추천</h2>
 
         <div class="course-list">
-        	<legend>
+        	
             <a href="http://localhost:8081/SAII/course_recommend" class="coursese">
                 <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
                 <div class="course-name">
-                    코스 제목
+               	${list[0].title }
                 </div>
                 <div class="course-co">
-                    course_id
-                    category
-                    place_name
+                ${list[0].c_id}
+                ${list[0].region}
+				<c:forTokens items="${list[0].p_name}" delims="," var="name">
+                	<p><c:out value=" ${name}" /></p>
+                </c:forTokens>
                 </div>
             </a>
-            </legend>
+            
              <a href="#" class="coursese">
                 <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
                 <div class="course-name">
-                    코스 제목
+               	${list[1].title }
                 </div>
                 <div class="course-co">
-                    {$param:course_id}
-                    category
-                    place_name
+                ${list[1].c_id}
+                ${list[1].region}
+                
+                <c:forTokens items="${list[1].p_name}" delims="," var="name">
+                	<p><c:out value=" ${name}" /></p>
+                </c:forTokens>
                 </div>
             </a>
+            
              <a href="#" class="coursese">
                 <img src="https://bakey-api.codeit.kr/files/629/images/sunglasses.jpg" width="225">
                 <div class="course-name">
-                    코스 제목
+               	${list[2].title }
                 </div>
                 <div class="course-co">
-                    course_id
-                    category
-                    place_name
+                ${list[2].c_id}
+                ${list[2].region}
+                <c:forTokens items="${list[2].p_name}" delims="," var="name">
+                	<p><c:out value=" ${name}" /></p>
+                </c:forTokens>
                 </div>
             </a>
  		</div>

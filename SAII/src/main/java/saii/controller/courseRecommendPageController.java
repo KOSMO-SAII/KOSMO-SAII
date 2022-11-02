@@ -2,6 +2,10 @@ package saii.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,22 +30,19 @@ public class courseRecommendPageController extends HttpServlet {
 		ArrayList<mainboardDTO> mdtos = mdao.getRecommendData();
 		//COURSE DAO 정보가져오기
 		courseDAO cdao = new courseDAO();
-		int i = 1;
+		List<Map<String,String>> list = new Vector<Map<String, String>>();
 		for(mainboardDTO mdto : mdtos) {
-			System.out.println("코스"+ i +"번");
-			String[] names = cdao.getPlaceNames(mdto.getCourse_id()).split("_");
-			for(String n : names) {
-				System.out.println(n);
-			}
-			i++;
+			HashMap<String, String> map = new HashMap<>();
+			map.put("title", mdto.getM_title());
+			map.put("region", mdto.getRegion());
+			map.put("p_name", cdao.getPlaceNames(mdto.getCourse_id()));
+			map.put("c_id", mdto.getCourse_id());
+			
+			// 각 정보 속성값에 저장하기
+			list.add(map);
+			System.out.println(map.get("p_name"));
 		}		
-		
-		
-		
-		// 각 정보 속성값에 저장하기
-		String course_id = req.getParameter("course_id");
-		
-		
+		req.setAttribute("list", list);
 		req.getRequestDispatcher("saii/courseRecommendPage.jsp").forward(req, resp);
 	}
 	
