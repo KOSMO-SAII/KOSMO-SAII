@@ -75,7 +75,7 @@ public class courseViewController extends HttpServlet{
 			String title = req.getParameter("title");
 			String region = req.getParameter("region");
 			String nickname = req.getParameter("nickname");
-			System.out.println(nickname);
+			//System.out.println(nickname);
 			if (title != null && title.equals(""))
 				title = nickname + "_" + cdtos.get(0).getPlace_name();
 			if (region != null && region.equals("")) {
@@ -84,11 +84,41 @@ public class courseViewController extends HttpServlet{
 			}
 			mdto.setM_title(title);
 			mdto.setRegion(region);
-			System.out.println("mdao insert");
-			mdao.insertWrite(mdto,nickname);
-						
+			//System.out.println("mdao insert");
+			mdao.insertWrite(mdto,nickname);		
 		}
+		//System.out.println("==여기는 문자열 자르기");
+		List<Map<String, String>> list=new Vector<Map<String,String>>();
+		String[] datas = req.getParameterValues("data");
+		//System.out.println(Arrays.toString(datas));
+		//System.out.println(datas[0]);
 		
+		for(int k=0; k<datas.length;k++) {
+			String[] data =  datas[k].split("\\|");
+			//System.out.println(Arrays.toString(data));
+		
+			Map<String, String> map= new HashMap<>();
+			map.put("category",data[0]);
+			map.put("address_id",data[1]);
+			map.put("address_name",data[2]);
+			map.put("Road_address_name",data[3]);
+			map.put("Phone_number",data[4]);
+			map.put("Place_name",data[5]);
+			map.put("Place_url",data[6]);
+			map.put("X",data[7]);
+			map.put("Y",data[8]);
+			if(data.length==10) {
+			map.put("Memo",data[9]);
+			}else {
+			map.put("Memo","");
+			}
+			list.add(map);
+			System.out.println(map.entrySet());
+		}
+		//System.out.println("===여기는 리스트");
+		//System.out.println(list);
+		//System.out.println(list.get(0));
+		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 	}
 

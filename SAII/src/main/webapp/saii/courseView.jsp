@@ -57,7 +57,6 @@
 			address_id:"${List["address_id"]}",
 			address_name:"${List["address_name"]}",
 			category:"${List["category"]}",
-			Course_id:"${List["Course_id"]}",
 			Memo:"${List["Memo"]}",
 			Phone_number:"${List["Phone_number"]}",
 			Place_name:"${List["Place_name"]}",
