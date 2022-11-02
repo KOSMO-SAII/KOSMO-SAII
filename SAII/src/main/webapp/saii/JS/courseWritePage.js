@@ -10,13 +10,12 @@ function coursecheck(){
 	}else{
 		return true;
 	}
-	
 }
 
 //==검색 사이드 바 드롭다운
 let subToggle=true;
 	$('.searchbtn').click(function(){
-		var menu=document.getElementById('menu_wrap');
+		var menu=document.getElementById('menu_wrap_box');
 		if(subToggle){
 		//console.log(menu);
 		menu.style.height='90%';
@@ -28,7 +27,7 @@ let subToggle=true;
 	})
 	
 	$('#arrow').click(function() {
-		var menu=document.getElementById('menu_wrap');
+		var menu=document.getElementById('menu_wrap_box');
 		if(subToggle){
 		menu.style.height='90%';
 		$('#arrow').text("▲")
@@ -145,7 +144,7 @@ function displayPlaces(places) {
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-            
+            marker.setMap(map);
 
 		//console.log(marker);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -157,16 +156,18 @@ function displayPlaces(places) {
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
 			
-			//삭제 예정
-           // kakao.maps.event.addListener(marker, 'click', function() {
-                //displayInfowindow(marker, title);
+			//리스트 클릭스 오버레이 출력
+            kakao.maps.event.addListener(marker, 'click', function() {
+				soverlay.setMap(null);
+               displayInfowindow(marker, title);
                 //searchmarker=1;
                 //console.log("click");
                 //console.log(searchmarker);
-            //});
+            });
 
             itemEl.onmouseover =  function () {
-              //  displayInfomarker(marker);
+			console.log("마우스 오버")
+             hovereventlist(marker,title);
                
             };
 
@@ -192,12 +193,23 @@ function displayPlaces(places) {
 		addEventClick(places);
 }
 
+//리스트 마우스 오버시 화면 이동
+function hovereventlist(marker,position){
+	console.log("호버이벤트 실행")
+	console.log(marker.getPosition().Ma);
+	console.log(marker.getPosition().La);
+
+	var po =new kakao.maps.LatLng(marker.getPosition().Ma,marker.getPosition().La)
+	map.panTo(po)
+}
+
 //검색 목록 결과 클릭시 마커,오버레이 표시
 function addEventClick(place){
 	console.log("한번만 실행 되야함")
 		$("#placesList li").click(function(){
-			if(smarker!=null){
-			scloseOverlay()
+			console.log("리스트 클릭")
+			if(soverlay!=undefined){
+			soverlay.setMap(null);
 			}
 			var n = $(this).index();
 			var placePosition = new kakao.maps.LatLng(place[n].y, place[n].x),
@@ -247,7 +259,7 @@ function addMarker(position, idx, title) {
 	            image:markerImage
 		        });
         //
-    marker.setMap(map);
+    //marker.setMap(map);
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 
     return marker;
@@ -308,6 +320,7 @@ var mysplaceinfo ;
 
 
 //검색정보 오버레이 정보 생성 및 표시
+
 function searcAddOverLay(marker,places){
 	mysplace = {
 		placex:places.x,
