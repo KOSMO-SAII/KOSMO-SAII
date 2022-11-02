@@ -174,11 +174,11 @@ public class reviewboardDAO extends JDBConnect {
 		try {
 			System.out.println(r_id);
 			// 부모글 번호를 조건으로 받기
-			String query = "select c.*, r.nickname "
-					+ "from comment_board c, review_board r "
-					+ "where board_no = r_id "
+			String query = "select c.*, m.nickname "
+					+ "from comment_board c, member m, review_board r "
+					+ "where board_no = r_id and m.id = cmt_id "
 					+ "and board_no = ? "
-					+ "order by cmt_no";
+					+ "order by cmt_no asc";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, r_id);
