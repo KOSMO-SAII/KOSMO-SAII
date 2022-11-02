@@ -41,6 +41,9 @@
 						<option value="content"
 							<c:if test="${map.searchType=='content' }">selected</c:if>>내용
 						</option>
+						<option value="both"
+                    		<c:if test="${map.searchType=='both' }">selected</c:if>>제목+내용
+                  		</option>
 					</select>
 					<input type="search" name="searchStr" value="${map.searchStr}"/>
 					<input type="submit" value="검색" />
