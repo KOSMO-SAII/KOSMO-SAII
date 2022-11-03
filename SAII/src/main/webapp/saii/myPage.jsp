@@ -278,14 +278,6 @@ h2 {
 		<col width="10%">
 		<col width="10%">
 	</colgroup>
-		<tr>
-			<td>번호</td>
-			<td>지역</td>
-			<td>제목</td>
-			<td>게시날짜</td>
-			<td>조회수</td>
-			<td>좋아요</td>
-		</tr>
 		<c:choose>
 			<c:when test="${not empty boardLists}">
 				<c:forEach items="${boardLists}" var="list" varStatus="stat">
@@ -354,14 +346,6 @@ h2 {
 		<col width="10%">
 		<col width="10%">
 	</colgroup>
-		<tr>
-			<td>번호</td>
-			<td>지역</td>
-			<td>제목</td>
-			<td>게시날짜</td>
-			<td>조회수</td>
-			<td>좋아요</td>
-		</tr>
 		<c:choose>
 			<c:when test="${not empty boardLists}">
 				<c:forEach items="${boardLists}" var="list" varStatus="stat">

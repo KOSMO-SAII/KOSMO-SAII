@@ -38,7 +38,7 @@ public class userEditController extends HttpServlet{
 		dto.setEmail(req.getParameter("email"));
 		dto.setAddress(req.getParameter("address"));
 		dto.setId(req.getParameter("id"));
-		
+		System.out.println(dto.getAddress());
 		
 		memberDAO dao = new memberDAO();
 		int result = dao.update(dto);
