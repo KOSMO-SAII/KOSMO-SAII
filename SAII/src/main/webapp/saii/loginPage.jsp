@@ -7,6 +7,19 @@
 <link href="http://localhost:8081/chilsungsaii/CSS/LoginForm.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
+<style>
+#form {width: 400px; margin:auto; padding:30px}
+h2 { text-align: center; margin: 50px 0 10px 0;}
+input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
+									border:none; background: #FAFAFA;}
+label { vertical-align: 5px; color: #999;}
+a {vertical-align: 5px;}
+input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
+    		color: #fff; font-size: 16px; font-weight: 500; cursor: pointer;
+    		border-radius: 4px; background-color: #98dde3;}
+
+</style>
+
 </head>
 <body>
 <c:choose>
@@ -87,14 +100,23 @@
 	}
 		
 </script>
-	<form action="http://localhost:8081/SAII/login" method="post" name="LoginFrm" onsubmit="return validateForm(this);">
-		 아이디 : <input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
-		패스워드 : <input type="password" name="user_pw" value="${param.user_pw}" /><br/>
-		<input type="checkbox" id="idSaveCheck">아이디 기억하기
-		<input type="submit" value="로그인" value="${param.user_id}"><br/>
-		<a href="http://localhost:8081/chilsungsaii/IdPwCheck/findId2.jsp">[아이디 찾기]</a>
-	  	<a href=" ">[비밀번호 찾기]</a>   
+	<h2>로그인</h2>
+	<form id="form" action="http://localhost:8081/SAII/login" method="post" name="LoginFrm" onsubmit="return validateForm(this);">
+		 <label>아이디 </label>
+		 <input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
+		<label>비밀번호 </label> 
+		<input type="password" name="user_pw" value="${param.user_pw}" /><br/>
+		<input type="checkbox" id="idSaveCheck">아이디 기억하기  <br/>
+		<a href="http://localhost:8081/chilsungsaii/IdPwCheck/findId2.jsp" style="text-decoration:none">[아이디 찾기]</a>
+	  	<a href=" " style="text-decoration:none">[비밀번호 찾기]</a>   <br/>
+		<input type="submit" class="sign" value="로그인" value="${param.user_id}">
+	  	
+	 	
+	  	
+	  	
 	</form>
+	
+	
 	</c:when>
 	<c:otherwise>
 		${sessionScope.UserName}회원님, 로그인 하셨습니다
