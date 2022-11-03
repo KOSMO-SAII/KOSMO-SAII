@@ -29,6 +29,7 @@ public class MainViewController extends HttpServlet {
 		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
+		
 		if(req.getSession().getAttribute("UserId") != null) {
 			memberDTO memdto = new memberDTO();		
 			memberDAO memdao = new memberDAO();
@@ -42,7 +43,6 @@ public class MainViewController extends HttpServlet {
 			}else {
 				goodWhether = "하트아님";
 			}
-			
 			memdao.close();
 			gdao.close();
 			

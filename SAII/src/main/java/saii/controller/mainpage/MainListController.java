@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import saii.controller.Paging;
+import saii.domain.goodDAO;
 import saii.domain.mainboardDAO;
 import saii.dto.mainboardDTO;
 
@@ -23,6 +24,7 @@ public class MainListController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		// DAO 생성
 		mainboardDAO dao = new mainboardDAO();
+		goodDAO gdao = new goodDAO();
 		Map<String, Object> map = new HashMap<>();
 		
 		// 검색 옵션
