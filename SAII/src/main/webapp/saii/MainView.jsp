@@ -16,13 +16,6 @@
 		margin:auto;
 		border:1px solid black;
 	}
-	#content{
-		height:500px;
-	}
-	#heart{
-		/*border:0px solid white;
-		background-color:white;*/
-	}
 	#delete{
 		text-align:right;
 	}
@@ -32,6 +25,7 @@
 		margin:auto;
 	}
 	#good{
+		/*visibility:hidden;*/
 		float: left;
 	}
 </style>
@@ -44,16 +38,15 @@ $(function(){
 			url: "http://localhost:8081/SAII/good",
 			cache: false,
 			data: {
-				text_condition: $('#good').text(),
 				m_id: $('#m_id').text(),
 				nickname: $('#nickname').text()
 			},
 			datatype: "JSON",
 			success: function(obj){
-				if(obj.heart == "noheart"){
-					$('#good').text('이게바로하트지');				
+				if(obj.heart == "cancel"){
+					$('#good').html('<img src="saii/img/notGood.png" alt="싫어" width="20px" height="20px">');					
 				}else{
-					$('#good').text('하트아님');					
+					$('#good').html('<img src="saii/img/yesGood.png" alt="좋아" width="20px" height="20px">');
 				}
 				
 				$('#goodcount').text(obj.goodcount);
@@ -79,8 +72,17 @@ $(function(){
 			<td>좋아요</td>
 			<td>
 				<c:if test="${memdto.nickname ne null}">
-					<span id="good">${goodWhether}</span>
-				</c:if>&nbsp;&nbsp;
+					<span id="good">
+						<c:choose>
+							<c:when test="${goodWhether eq true}">
+								<img src="saii/img/yesGood.png" alt="좋아" width="20px" height="20px">
+							</c:when>
+							<c:otherwise>
+								<img src="saii/img/notGood.png" alt="싫어" width="20px" height="20px">
+							</c:otherwise>
+						</c:choose>
+					</span>
+				</c:if>
 				<span id="goodcount">${dto.goodcount}</span>
 			</td>
 			<td>조회수</td> <td>${dto.visitcount}</td>

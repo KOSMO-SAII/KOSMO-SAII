@@ -1,8 +1,59 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
 
-console.log(paramObjs[0]);
+//======수정 페이지에서 넘어온 데이터 출력
+//내가 저장한 핀 리스트에 부여할 넘버 및 
+var num=0;
 
+//내가 저장한 핀 담을 배열
+var mymarkers=[];
+
+//라인 정보
+var polyline = new kakao.maps.Polyline({
+				    map: map,
+				    path:[
+						new kakao.maps.LatLng(0, 0)
+						],
+				    strokeWeight: 4,
+				    strokeColor: '#FF00FF',
+				    strokeOpacity: 0.8,
+					});
+//라인 그리기 좌표 담는 배열					
+var path=[];
+
+
+
+//mode가 edit일때만 실행
+if(mode=="edit"){
+	console.log("수정 모드 실행")
+	
+	 console.log(paramObjs[0]);
+	 console.log(paramObjs);
+	 console.log(paramObjs.length);
+	
+ for(var j=0; j<paramObjs.length;j++){
+	var paramObj = {
+			placex:paramObjs[j].X,
+			placey:paramObjs[j].Y
+			
+		};
+	var paramObjinfo = {
+			placeName:paramObjs[j].Place_name,
+			placeRaddress:paramObjs[j].Road_address_name  ,
+			placeAddress:paramObjs[j].address_name   ,
+			placePhone:paramObjs[j].Phone_number ,
+			placeUrl:paramObjs[j].Place_url ,
+			placeid:paramObjs[j].address_id,
+			
+			placeCategoryCode:paramObjs[j].category,
+			placex:paramObjs[j].X,
+			placey:paramObjs[j].Y
+		};
+	
+	rsaveMyPin(paramObj,paramObjinfo);
+	}
+}
+//================
 //코스저장 전 체크
 function coursecheck(){
 	//console.log(mymarkers[0]);
@@ -57,11 +108,12 @@ let subToggle2=true;
 		subToggle2=!subToggle2;
 		}
 	})
+
 //==========이하 지도 api부분
 // 마커를 담을 배열입니다
 var markers = [];
 
-var path=[];
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -384,25 +436,7 @@ function saveMySearchPin(){
 
 }
 
-//검색 결과 핀 저장(현재 안쓰임 삭제 예정)
-function rsaveMySearchPin(mysplace,mysplaceinfo){
-	//핀은 최대 7개까지 고정 가능
-	if(num<8){
-		var mymarker = new kakao.maps.Marker({
-    		map: map,
-    		position: new kakao.maps.LatLng(mysplace.placey , mysplace.placex)
-		});
-		//?왠진 모르지만 됨
-		mymarker.setMap(null);
-		
-		mymarkers.push(mymarker);
-		//좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
-		addMySchedule(mysplaceinfo);
-	}else{
-		alert("핀은 최대 7개까지 저장 가능합니다")
-	}
-	
-}
+
 
 //검색 결과 오버레이 닫기 
 function scloseOverlay() {
@@ -636,11 +670,9 @@ function closeOverlay() {
 
 
 //================================왼쪽 화면에 마이 핀 정보 보이기
-//내가 저장한 핀 담을 배열
-var mymarkers=[];
 
-//내가 저장한 핀 리스트에 부여할 넘버 및 
-var num=0;
+
+
 
 //내가 저장한 핀 실행 메서드1
  function saveMyPin(){
@@ -650,6 +682,8 @@ var num=0;
 
 //내가 저장한 핀 실행 메서드2
 function rsaveMyPin(myplace,myplaceinfo){
+	console.log("rsaveMyPin 실행")
+
 	//중복체크 임시
 	if(mymarkers[0]!=undefined){
 		for(var i=0;i<mymarkers.length;i++){
@@ -717,16 +751,19 @@ function rsaveMyPin(myplace,myplaceinfo){
 		//?왠진 모르지만 됨/마커와 오버레이를 객체로 마이 핀 배열에 저장
 		mymarker.setMap(null);
 		myoverlay.setMap(null);
-
-		var mymarkerOb={
+	
+		 mymarkerOb={
 			mymarker:mymarker,
 			myoverlay:myoverlay,
 			data:data,
 			id:myplaceinfo.placeid
 		}
+		
 		mymarkers.push(mymarkerOb);
 		
-		//마이핀 라인 생성(임시)
+		console.log(mymarkers);
+		
+		//마이핀 라인 생성
 		makeline();
 		
 		//좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
@@ -745,6 +782,8 @@ var data={};
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){
+	console.log("addMySchedule실행")
+	console.log(num);
 	//db에 전달할 정보
 	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
 				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|",
@@ -800,9 +839,10 @@ function removeMySchedule(event){
 	var et= event.target;
 	var div=et.parentNode.parentNode;
 	var li=div.parentNode;
-
+	console.log($(li).index());
 	for(var i = 0 ;i<mymarkers.length;i++){
 		if (i==$(li).index()){
+			console.log("삭제완료")
 			//라인삭제
 			path.splice(i,1);
 			polyline.setPath(path);
@@ -811,12 +851,13 @@ function removeMySchedule(event){
 			mymarkers[i].mymarker.setMap(null);
 			mymarkers[i].myoverlay.setMap(null);
 			
-			mymarkers.splice(i,1);
+				mymarkers.splice(i,1);
+
 			//좌측 마이 스케쥴 삭제
 			li.remove();
+			num-=1;
 			break;
 		}
-	num-=1;
 	}
 }
 
@@ -891,21 +932,12 @@ function hide(){
 }
 
 //==================선 그리기
-//라인 정보
-var polyline = new kakao.maps.Polyline({
-				    map: map,
-				    path:[
-						new kakao.maps.LatLng(0, 0)
-						],
-				    strokeWeight: 4,
-				    strokeColor: '#FF00FF',
-				    strokeOpacity: 0.8,
-					});
+
 
 //마이 핀 라인 생성
 function makeline(){
 	polyline.setMap(null);
-	if(polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0){
+	if( polyline.getPath()[0]==undefined || polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0 ){
 		for(var i=0;i<mymarkers.length;i++){
 			var ma= mymarkers[i].mymarker.getPosition().Ma,
 				la=mymarkers[i].mymarker.getPosition().La

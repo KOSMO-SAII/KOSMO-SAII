@@ -74,39 +74,7 @@ public class courseDAO extends JDBConnect {
 		
 	}
 
-	public void updateCourse(int course_id, ArrayList<courseDTO> cdtos) {
-		
-		String query = "UPDATE COURSE_DATA SET COURSE_ORDER=?, CATEGORY=? , ADDRESS_ID=?"
-				+ "			ADDRESS_NAME=?, ROAD_ADDERSS_NAME=?, PHONENUMBER=?, PLACE_NAME=?, PLACE_URL=?,"
-				+ "			X=?, Y=?, MEMO=?, POSTDATE=SYSDATE"
-				+ "		WHERE COURSE_ID=?";
-		
-		try {
-			psmt = con.prepareStatement(query);
-			var i = 0;
-			for (courseDTO cdto : cdtos) {
-				psmt.setString(1, Integer.toString(i++));
-				psmt.setString(2, cdto.getCategory());
-				psmt.setString(3, cdto.getAddress_id());
-				psmt.setString(4, cdto.getAddress_name());
-				psmt.setString(5, cdto.getRoad_address_name());
-				psmt.setString(6, cdto.getPhone_number());
-				psmt.setString(7, cdto.getPlace_name());
-				psmt.setString(8, cdto.getPlace_url());
-				psmt.setString(9, cdto.getX());
-				psmt.setString(10, cdto.getY());
-				psmt.setString(11, cdto.getMemo());
-				psmt.setString(12, Integer.toString(course_id));
-			}
-		} catch (SQLException e) {
-			System.out.println("update course err");
-			e.printStackTrace();
-		}		
-	}
-	
-	
-	
-	public void insertData(String query, courseDTO cdto) {
+public void insertData(String query, courseDTO cdto) {
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -121,6 +89,67 @@ public class courseDAO extends JDBConnect {
 			psmt.setString(9, cdto.getX());
 			psmt.setString(10, cdto.getY());
 			psmt.setString(11, cdto.getMemo());
+
+			rs = psmt.executeQuery();
+			System.out.println("insert data end");
+
+		} catch (SQLException e) {
+			System.out.println("insert Data err");
+			e.printStackTrace();
+		}
+
+	}
+
+	public void updateCourse(int course_id, ArrayList<courseDTO> cdtos) {
+		System.out.println("업데이트 실행");
+		String del = " delete from COURSE_DATA "
+			+"	where COURSE_ID=? ";
+		
+		try {
+			psmt=con.prepareStatement(del);
+			psmt.setInt(1, course_id);
+			
+			int res = psmt.executeUpdate();
+			System.out.println("res: "+res);
+			
+			
+		}catch (Exception e) {
+			System.out.println("delete course err");
+			e.printStackTrace();
+		}
+		
+		
+		String front = "INSERT INTO COURSE_DATA(COURSE_ID, COURSE_ORDER, CATEGORY, ADDRESS_ID, ADDRESS_NAME, ROAD_ADDRESS_NAME, PHONENUMBER, PLACE_NAME, PLACE_URL, X, Y, MEMO)"
+				+ " VALUES(";
+		String start = "?,?,?,?,?,?,?,?,?,?,?,?)";
+		String end = "?,?,?,?,?,?,?,?,?,?,?,?)";
+
+		String query = front + start;
+
+		for (courseDTO cdto : cdtos) {
+			insertUpdate(query, cdto ,course_id);
+			query = front + end;
+		}
+	}
+	
+	
+	
+	public void insertUpdate(String query, courseDTO cdto, int course_id) {
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, course_id);
+			psmt.setInt(2, cdto.getOrder());
+			psmt.setString(3, cdto.getCategory());
+			psmt.setString(4, cdto.getAddress_id());
+			psmt.setString(5, cdto.getAddress_name());
+			psmt.setString(6, cdto.getRoad_address_name());
+			psmt.setString(7, cdto.getPhone_number());
+			psmt.setString(8, cdto.getPlace_name());
+			psmt.setString(9, cdto.getPlace_url());
+			psmt.setString(10, cdto.getX());
+			psmt.setString(11, cdto.getY());
+			psmt.setString(12, cdto.getMemo());
 
 			rs = psmt.executeQuery();
 			System.out.println("insert data end");

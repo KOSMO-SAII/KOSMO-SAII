@@ -36,12 +36,12 @@ public class MainViewController extends HttpServlet {
 			String id = req.getSession().getAttribute("UserId").toString();
 			memdto = memdao.userinfo(id);
 			
-			String goodWhether;
+			boolean goodWhether;
 			goodDAO gdao = new goodDAO();
 			if(gdao.goodWhether(m_id, memdto.getNickname()) == true) {
-				goodWhether = "이게바로하트지";
+				goodWhether = true;
 			}else {
-				goodWhether = "하트아님";
+				goodWhether = false;
 			}
 			memdao.close();
 			gdao.close();
