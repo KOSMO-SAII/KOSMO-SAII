@@ -10,10 +10,32 @@
 <style>
 	#form {width: 400px; margin:auto; padding:30px}
 	h2 { text-align: center; margin: 30px 0 30px 0;}
-	input { vertical-align: 5px;}
-	label { vertical-align: 5px;}
+	input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
+									border:none; background: #FAFAFA;}
+	
+	label { vertical-align: 5px; color: #999;}
 	a {vertical-align: 5px;}
-	select {vertical-align: 5px;}
+	select {vertical-align: 6px; width: 80px; height:30px;}
+	
+	.button {padding: 0; border: none; border-radius:5px;  font: inherit;
+  			color: inherit; background-color: #FFE3ED; cursor: pointer;}
+	
+	.ck-button {margin:0; border:none; overflow:visible; border-radius:0; display:inline-block;
+				vertical-align: middle; font-size: 0.8rem; line-height: 38px; text-align: center;
+    			text-decoration: none; text-transform: uppercase; transition: 0.1s; 
+    			transition-property: color, background-color, border-color;
+    			width: 60px !important; }	
+    			
+    div {padding: 0px 0px 8px 0px;}			
+    			
+    div.ckck {display: flex;}
+    
+    input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
+    		color: #fff; font-size: 16px; font-weight: 500; cursor: pointer;
+    		border-radius: 4px; background-color: #98dde3;}
+    		
+    
+	
 </style>
 
 
@@ -28,19 +50,19 @@
 	    var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate());           
 	    //년도 selectbox만들기               
 	    for(var i = 1960 ; i <= year ; i++) {
-	        $('#year').append('<option value="' + i + '">' + i + '년</option>');    
+	        $('#year').append('<option value="' + i + '">' + i + '</option> ');    
 	    }
 
 	    // 월별 selectbox 만들기            
 	    for(var i=1; i <= 12; i++) {
 	        var mm = i > 9 ? i : "0"+i ;            
-	        $('#month').append('<option value="' + mm + '">' + mm + '월</option>');    
+	        $('#month').append('<option value="' + mm + '">' + mm + '</option> ');    
 	    }
 	    
 	    // 일별 selectbox 만들기
 	    for(var i=1; i <= 31; i++) {
 	        var dd = i > 9 ? i : "0"+i ;            
-	        $('#day').append('<option value="' + dd + '">' + dd+ '일</option>');    
+	        $('#day').append('<option value="' + dd + '">' + dd+ '</option> ');    
 	    }
 	    $("#year  > option[value="+year+"]").attr("selected", "true");        
 	    $("#month  > option[value="+mon+"]").attr("selected", "true");    
@@ -113,45 +135,79 @@
 <body>
 	<h2>회원가입</h2>
 	<form id="form" method="post" action="http://localhost:8081/SAII/signup" enctype="multipart/form-data" onsubmit="return check();">
-	<label>아이디 </label> 
-	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
-	<input type="button" value="중복체크" onclick="idCk(); "/> <br/>
 	
+	<div>
+	<label>아이디 </label> 
+	<div class="ckck">
+	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
+	<button type="button" class="ck-button"  onclick="idCk(); ">확인</button> <br/>
+	<!--  <input type="button" class="button" value="중복체크" onclick="idCk(); "/> <br/>-->
+	</div>
+	</div>
+	
+	<div>
 	<label>비밀번호</label>
 	<input type="password" name="pw" placeholder="영문,숫자로 8~15자" value="${param.pw}" ><br/>
+	</div>
 	
+	<div>
 	<label>비밀번호 재확인</label>
 	<input type="password" name="pw2" value="${param.pw2}"/><br/>
+	</div>
     
+    <div>
     <label>닉네임</label>  
-    <input type="text" id="usernickname" name="nickname" placeholder="입력하세요" value="${param.nickname}"/>
-    <input type="button" value="중복체크" onclick="nickCk();"/> <br/>
+    <div class="ckck">
+	<input type="text" id="usernickname" name="nickname" placeholder="입력하세요" value="${param.nickname}"/>
+	<button type="button" class="ck-button"  onclick="nickCk();">확인</button> <br/>
+	<!--  <input type="button" value="중복체크" onclick="nickCk();"/> <br/> <br/>-->
+	</div>
+	</div>
     
-    <label>이름</label>  
+    <div>
+    <label>이름</label>  <br/>
     <input type="text" name="name" placeholder="한글만 입력 가능합니다." value="${param.name1}"/><br/>
+    </div>
     
-    <label>성별</label>  
+    <div>
+    <label>성별</label>  <br/>
     <input type="radio" name="sex" value="여자" checked/><a>여자</a>
     <input type="radio" name="sex" value="남자" /><a>남자</a><br/> 
+    </div>
     
-    <label>생년월일</label> 
+    <div>
+    <label>생년월일</label> <br/>
     <select name="yy" id="year" ></select><a>년</a>
 	<select name="mm" id="month" ></select><a>월</a>
 	<select name="dd" id="day" ></select><a>일</a><br/>
+	</div>
     
-    <label>프로필</label> 
+    <div>
+    <label>프로필</label> <br/>
     <input type="file" name="pick" /><br/>
+    </div>
     
+    <div>
     <label>주소</label> 
     <input type="text" name="address" value="${param.address}"> <br/>
+    </div>
     
+    <div>
     <label>이메일</label> 
     <input type="text" name="email" value="${param.email}"><br/>
+    </div>
     
+    <div>
     <label>핸드폰번호</label>
     <input type="text" name="phone" value="${param.phone}"><br/>
+    </div>
     
-    <input type="submit"  value="회원가입하기" />
+    <div>
+    <div >
+    <input class="sign" type="submit"  value="회원가입하기" />
+    </div>
+    </div>
+    
     </form>
     
 <script src="http://localhost:8081/SAII/saii/JS/memAct.js"></script>

@@ -5,6 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>id 중복확인 창</title>
+<style>
+#form {width: 400px; margin:auto; padding:30px}
+h2 { text-align: center;}
+
+div.ck01 {display: flex; margin:0 auto; top:50%; left:50%;}
+.button {padding: 0; border: none; border-radius:5px;  font: inherit;
+  			color: inherit; background-color: #FFE3ED; cursor: pointer;}
+input[type=text]  { vertical-align: 5px; width:400px; height:40px; display: inline-block;
+									border:none; background: #FAFAFA;}
+.ckk {margin:0; border:none; overflow:visible; border-radius:0; display:inline-block;
+				vertical-align: middle; font-size: 0.8rem; line-height: 38px; text-align: center;
+    			text-decoration: none; text-transform: uppercase; transition: 0.1s; 
+    			transition-property: color, background-color, border-color;
+    			width: 60px !important; }	
+</style>
+
 <script>
 	function idCk(form){
 		if(form.id.value == ""){
@@ -45,18 +61,20 @@
 
 <body>
 	<h2>ID 중복확인</h2>
-   <form name="writeFrm" method="post" 
+
+   
+   <form id="form" name="writeFrm" method="post" "
    		action="http://localhost:8081/SAII/idcheck" onsubmit="return idCk(this);">
-      <table border="1" width="90%">
-         <tr>
-            <td>ID</td>
-            <td>
-               <input type="text" id="Idchk" name="id" style="width:150px;" value="${param.id }"/>
-               <button type="submit" onclick="idsend()">검증하기</button>
-            </td>
-         </tr>    
-      </table>
+      
+         <div class="ck01">
+               <input type="text" id="Idchk" name="id"  value="${param.id }"/>
+               <button type="submit" class="ckk" onclick="idsend()">검증</button>
+        </div>    
+      
    </form>
+   
+	
+	
 	
 	
 </body>
