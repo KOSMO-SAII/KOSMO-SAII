@@ -24,7 +24,6 @@ public class mainCommentsDAO extends JDBConnect {
 				dto.setNickname(rs.getString("nickname"));
 				dto.setComments(rs.getString("comments"));
 				dto.setC_postdate(rs.getDate("c_postdate"));
-				dto.setM_id(rs.getString("m_id"));
 				
 				bl.add(dto);
 			}

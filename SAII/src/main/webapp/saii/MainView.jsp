@@ -114,7 +114,7 @@ $(function(){
 						<td>${c_list.nickname}</td>
 						<td colspan="2">${c_list.comments}</td>
 						<td>${c_list.c_postdate}</td>
-						<td>${c_list.m_id}</td>
+						<td><img src="saii/img/yesGood.png" alt="좋아" width="20px" height="20px">미구현</td>
 					</tr>
 				</c:forEach>
 			</c:when>
