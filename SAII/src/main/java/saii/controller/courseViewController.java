@@ -58,20 +58,20 @@ public class courseViewController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("courseview post");
-		
+		int course_id = 0;
 		//courseWrite페이지에서 넘어온 값이 있을 시 실행
 		if(req.getParameterValues("data")!=null) {
 			courseDAO cdao = new courseDAO();
 			String[] str = req.getParameterValues("data");
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 			cdao.insertCourse(cdtos); 	
-			String course_id = Integer.toString(cdao.getCurrentCourseId());
+			course_id = cdao.getCurrentCourseId();
 			cdao.close();
 			
 			mainboardDAO mdao = new mainboardDAO();
 			mainboardDTO mdto = new mainboardDTO();
 			
-			mdto.setCourse_id(course_id);
+			mdto.setCourse_id(Integer.toString(course_id));
 			String title = req.getParameter("title");
 			String region = req.getParameter("region");
 			String nickname = req.getParameter("nickname");
@@ -85,7 +85,9 @@ public class courseViewController extends HttpServlet{
 			mdto.setM_title(title);
 			mdto.setRegion(region);
 			//System.out.println("mdao insert");
-			mdao.insertWrite(mdto,nickname);		
+			mdao.insertWrite(mdto,nickname);	
+			
+			
 		}
 		//System.out.println("==여기는 문자열 자르기");
 		List<Map<String, String>> list=new Vector<Map<String,String>>();
@@ -118,6 +120,7 @@ public class courseViewController extends HttpServlet{
 		//System.out.println("===여기는 리스트");
 		//System.out.println(list);
 		//System.out.println(list.get(0));
+		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 	}

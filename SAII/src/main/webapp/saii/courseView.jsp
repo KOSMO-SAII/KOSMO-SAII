@@ -18,7 +18,7 @@
 <body>
 	 <div class="body_wrap">
 		<div class="my">
-			<form action="http://localhost:8081/SAII/course_write" method="post" >
+			<form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
 			<ul id="My_List">
 			
 			</ul>
