@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 h1 {
  text-align: center;
  text-shadow: gray;
@@ -32,8 +33,6 @@ h1 {
 	!
 	important
 	;
-	
-	
 }
 
 .py-3 {
