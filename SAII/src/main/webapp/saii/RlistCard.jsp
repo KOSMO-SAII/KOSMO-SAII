@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/ReviewBoard.css">
+<link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/ReviewBoard.css">
 </head>
 <body>
-
+<h2>리뷰 게시판</h2>
 	<!-- 검색 -->
 	<form method="get">
 		<table border="1" width="90%">
@@ -43,47 +43,41 @@
 
 <c:choose>
 	<c:when test="${empty boardLists }">
-		<tr>
-			<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
-		</tr>
+			<p align="center">등록된 게시물이 없습니다.</p>
 	</c:when>
-	<c:otherwise>
+<c:otherwise>
 	
-		<c:forEach items="${boardLists}" var="list" varStatus="stat">
-		<ul class="card-list">
-			<li class="card-item">
-				
-				<!-- <figure class="card-image" style="background-image: url("http://localhost:8081/SAII/src/main/webapp/saii/img/Doldam.jpg");">
-					<img src="img/Doldam.jpg" alt="">
-				</figure> -->
-				
-				<table class="card-desc">
-					<tr align="center">
-						<img src="./saii/img/Doldam.jpg " alt="" >
-						<td>
-							${map.totalCount-(((map.pageNum-1)*map.pageSize)+stat.index)}
-						</td>
-						<td>
-							<c:if test="${list.r_category eq 'course'}">코스</c:if>
-							<c:if test="${list.r_category eq 'place'}">장소</c:if>
-						</td>
-						<td align="left">
-							<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_id}${list.r_title}</a>
-						</td>
-						<td>${list.nickname}</td>
-						<td>${list.r_postdate}</td>
-						<td>${list.visitcount}</td>
-						<td>
-						<c:if test="${not empty list.o_file }">
-								<a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}">[${list.o_file}]</a>
-						</c:if>
-						</td>
-					</tr>
-				</table>
-			</li>
-		</ul>		
-		</c:forEach>
-	</c:otherwise>
+	<c:forEach items="${boardLists}" var="list" varStatus="stat">
+		<div class="list_wrap">
+			<ul>
+				<li class="item">
+					<img class="image" src="./saii/img/Doldam.jpg " >
+						<div class="cont">
+<!--
+	 						<p>
+								${map.totalCount-(((map.pageNum-1)*map.pageSize)+stat.index)}
+							</p>
+ -->							
+							<p>
+								<c:if test="${list.r_category eq 'course'}">코스</c:if>
+								<c:if test="${list.r_category eq 'place'}">장소</c:if>
+							</p>
+							<strong>
+								<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_id}${list.r_title}</a>
+							</strong>
+							<img src="./"><p>${list.nickname}</p>
+							<p>${list.r_postdate}</p>
+							<p>${list.visitcount}</p>
+							<c:if test="${not empty list.o_file }">
+									<a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}"></a>
+							</c:if>
+						</div>
+					
+				</li>
+			</ul>
+		</div>			
+	</c:forEach>
+</c:otherwise>
 </c:choose>	
 </body>
 </html>
