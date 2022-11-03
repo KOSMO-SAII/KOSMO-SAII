@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.signup;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,26 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.memberDAO;
 
-@WebServlet("/nickcheck")
-public class nickController extends HttpServlet {
-
+@WebServlet("/idcheck")
+public class IdController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/saii/nickcheck.jsp").forward(req, resp);
+		System.out.println("idcheck");
+		req.getRequestDispatcher("/saii/idcheck.jsp").forward(req, resp);
 	}
 	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		memberDAO dao = new memberDAO();
-		String nickname = req.getParameter("nickname");
-		boolean confirmed = dao.checkNick(nickname);
+		String id = req.getParameter("id");
+		boolean confirmed = dao.checkId(id);
 		
 		if (!confirmed) { // 중복
-			alertBack(resp, "중복된 닉네임입니다.");
+			alertBack(resp, "중복된 아이디입니다.");
 		} else { // 실행
-			alertLocation(resp, "사용할수있는 닉네임입니다.", "http://localhost:8081/SAII/saii/signupPage.jsp?nickname=" + nickname);
+			alertLocation(resp, "사용할수있는 아이디입니다.", "http://localhost:8081/SAII/saii/signupPage.jsp?id=" + id);
 		}
 
 		dao.close();
