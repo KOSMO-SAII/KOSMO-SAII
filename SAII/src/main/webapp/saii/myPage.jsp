@@ -161,11 +161,10 @@ h2 {
 	height:40px; 
 	display: inline-block;
 	border:none; 
-	background-color: black;
+	background-color: white;
 }
 
 </style>
-<link rel="stylesheet" href="CSS/mypage.css">
 </head>
 <body>
 <%@ include file="./top.jsp" %>
