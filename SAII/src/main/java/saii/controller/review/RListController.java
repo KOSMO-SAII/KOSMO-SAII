@@ -72,7 +72,7 @@ public class RListController extends HttpServlet {
       //뷰로 최종 전달
       req.setAttribute("boardLists", boardLists);
       req.setAttribute("map", map);
-      req.getRequestDispatcher("/saii/Rlist.jsp").forward(req, resp);
+      req.getRequestDispatcher("/saii/RlistCard.jsp").forward(req, resp);
    }
    
 

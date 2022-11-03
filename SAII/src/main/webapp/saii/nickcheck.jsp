@@ -20,6 +20,8 @@ input[type=text]  { vertical-align: 5px; width:400px; height:40px; display: inli
     			text-decoration: none; text-transform: uppercase; transition: 0.1s; 
     			transition-property: color, background-color, border-color;
     			width: 60px !important; }	
+
+    			
 </style>
 <script>
 	function nickCk(form){           

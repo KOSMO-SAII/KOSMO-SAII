@@ -36,15 +36,14 @@
     float:left;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 30px;
 }
 	
 
 
 .img{
     position: relative;
-    background-image: url(http://localhost:8081/SAII/saii/img/heart.jpg);                                                               
-    height: 200px;
+    background-image: url(http://localhost:8081/SAII/saii/img/her.png);                                                               
+    height: 225px;
     width: 225px;
     background-size: cover;
   }
@@ -53,7 +52,7 @@
      position: absolute;
      height: 100%;
      width: 100%;
-     background-color: rgba(0, 0, 0, 0.4);                                                                 
+     background-color: rgba(255, 0, 0, 0.05);                                                                 
      z-index:1;
   }
 
@@ -68,6 +67,19 @@
      text-align: center;
      width:100%;
   }
+  
+  h1 {display: block;
+    color: #545454;
+    word-break: break-all;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 13px;
+    text-align: center;}
+
+input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border: none;
+    		color: #fff; font-size: 10px; font-weight: 200; cursor: pointer;
+    		border-radius: 4px; background-color: #d0d0d0;}
+    			
 
 </style>
 <body>
@@ -78,7 +90,7 @@
         <h2>코스 추천</h2>
 
         <div class="course-list">
-            <a href="http://localhost:8081/SAII/course_recommend" class="coursese">
+            <a href="#" class="coursese">
              <div class="img">
         		<div class="content">
             		<h1>< ${list[0].title} ></h1>
@@ -115,7 +127,7 @@
 				<c:forTokens items="${list[2].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" value="글읽기" onclick="location.href='./course_view?num=${list[2].c_id}' "/> <br/>
+                <input type="button" class="look"  value="자세히보기" onclick="location.href='./course_view?num=${list[2].c_id}' "/> <br/>
             </a>
             </a>
  		</div>
@@ -130,5 +142,6 @@
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 	<a href="http://localhost:8081/SAII/mainboard?page=1">추천게시판</a>
 	<a href="http://localhost:8081/SAII/review">리뷰</a>
+	
 </body>
 </html>
