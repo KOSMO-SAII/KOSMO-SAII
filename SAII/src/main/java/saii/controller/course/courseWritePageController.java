@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.course;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,7 +28,8 @@ public class courseWritePageController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/course_write doPost");
-		//System.out.println("==여기는 문자열 자르기");
+				
+		
 				List<Map<String, String>> list=new Vector<Map<String,String>>();
 				String[] datas = req.getParameterValues("data");
 				//System.out.println(Arrays.toString(datas));

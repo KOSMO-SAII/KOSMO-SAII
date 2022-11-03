@@ -100,6 +100,28 @@
 		</div>
 		
 	</div>
+	
+	<script type="text/javascript">
+		var paramObjs=[]; //장소 정보 객체 담는 배열
+	</script>
+	<c:forEach items="${requestScope.List}" var="List">
+	<script type="text/javascript">
+		//장소 정브를 반복문을 돌려서 객체에 담음
+		var paramObj={
+			address_id:"${List["address_id"]}",
+			address_name:"${List["address_name"]}",
+			category:"${List["category"]}",
+			Memo:"${List["Memo"]}",
+			Phone_number:"${List["Phone_number"]}",
+			Place_name:"${List["Place_name"]}",
+			Place_url:"${List["Place_url"]}",
+			Road_address_name:"${List["Road_address_name"]}",
+			X:"${List["X"]}",
+			Y:"${List["Y"]}",
+		}
+		paramObjs.push(paramObj)
+	</script>
+	</c:forEach>
 	<!-- js연동 -->
 	<script src="http://localhost:8081/SAII/saii/JS/courseWritePage.js"></script>
 </body>
