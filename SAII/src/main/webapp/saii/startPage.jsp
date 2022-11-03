@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/main.css">
 </head>
 <body>
-	<h1>SAII</h1>
+	<h1><img id=himg src="./img/saii.png"></h1>
 	<div class="container">
 		<header
 			id="header">

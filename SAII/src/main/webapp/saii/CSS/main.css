@@ -4,8 +4,16 @@ h1 {
  text-align: center;
  text-shadow: gray;
  color:black;
- bold;
+ 
 }
+
+#himg{
+  margin-top:20px;
+  width: 120x;
+  height: 70px;
+  object-fit: cover;
+}
+		
 
 #header {
   float: right;
@@ -19,21 +27,10 @@ h1 {
   color: white;
   width:700px;
   position:relative; 
-  right:-120px;
+  right:-150px;
   padding:0;
-
 } 
-.container {
-	width : 100%;
-}
-@media ( min-width : 768px) .justify-content-md-between {
-	justify-content
-	:
-	space-between
-	!
-	important
-	;
-}
+
 
 .py-3 {
 	padding-top: 1rem !important;
@@ -134,8 +131,10 @@ li {
 }
 
 .imgbox {
-	width: 700px;
-	height: 100%;
+	width: 550px;
+	height: 400px;
+    justify-content: center;
+    margin-bottom:-600px;
 }
 
 .col-md-3 text-end{
