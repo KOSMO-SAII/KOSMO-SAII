@@ -29,6 +29,20 @@ function divshow3(){
 	document.getElementById("show3").style.display="block";
 	
 }
+function imgcg(input){
+	if(input.files && input.files[0]){
+		
+		const reader = new FileReader()
+        // 이미지가 로드가 된 경우
+        reader.onload = function(e) {
+            document.getElementById("preview").src=e.target.result;
+        };
+     	// reader가 이미지 읽도록 하기
+        reader.readAsDataURL(input.files[0]);
+	}else{
+		document.getElementById("preview").src="/SAII/Storage/${dto.n_profile_img}";
+	}
+}
 </script>
 <style>
 #show2{
@@ -209,11 +223,11 @@ h2 {
 		</tr>
 	</table>
 	<div id="profile" align="center">
-	<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
 	<form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${dto.id}">
 		<label class="input_file_button" for="filebutton">파일선택</label>
-		<input id="filebutton" type="file" name="o_profile_img"  required><br>
+		<input id="filebutton" type="file" name="o_profile_img" onchange="imgcg(this)" required><br>
 		<label class="input_submit" for="sub">프로필 변경</label>
 		<input id="sub" type="submit" value="프로필변경">
 	</form>

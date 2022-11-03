@@ -1,6 +1,7 @@
-package saii.controller;
+package saii.controller.course;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +29,12 @@ public class courseWritePageController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/course_write doPost");
-		//System.out.println("==여기는 문자열 자르기");
+				
+		
 				List<Map<String, String>> list=new Vector<Map<String,String>>();
 				String[] datas = req.getParameterValues("data");
-				//System.out.println(Arrays.toString(datas));
-				//System.out.println(datas[0]);
+				//String mode=req.getParameter("mode");
+				System.out.println(Arrays.toString(datas));
 				
 				for(int k=0; k<datas.length;k++) {
 					String[] data =  datas[k].split("\\|");
@@ -54,11 +56,10 @@ public class courseWritePageController extends HttpServlet{
 					map.put("Memo","");
 					}
 					list.add(map);
-					//System.out.println(map.entrySet());
+
 				}
-				//System.out.println("===여기는 리스트");
-				//System.out.println(list);
-				//System.out.println(list.get(0));
+				System.out.println(list);
+				//req.setAttribute("mode", mode);
 				req.setAttribute("List", list);
 				req.getRequestDispatcher("/saii/courseWritePage.jsp").forward(req, resp);
 	}

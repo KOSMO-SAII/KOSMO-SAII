@@ -1,9 +1,11 @@
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
 
+console.log(paramObjs[0]);
+
 //코스저장 전 체크
 function coursecheck(){
-	console.log(mymarkers[0]);
+	//console.log(mymarkers[0]);
 	if(mymarkers[0]==undefined){
 		alert("코스를 저장해주세요");
 		return false;
@@ -168,7 +170,7 @@ function displayPlaces(places) {
             });
 
             itemEl.onmouseover =  function () {
-			console.log("마우스 오버")
+			//console.log("마우스 오버")
              hovereventlist(marker,title);
                
             };
@@ -197,9 +199,9 @@ function displayPlaces(places) {
 
 //리스트 마우스 오버시 화면 이동
 function hovereventlist(marker,position){
-	console.log("호버이벤트 실행")
-	console.log(marker.getPosition().Ma);
-	console.log(marker.getPosition().La);
+	//console.log("호버이벤트 실행")
+	//console.log(marker.getPosition().Ma);
+	//console.log(marker.getPosition().La);
 
 	var po =new kakao.maps.LatLng(marker.getPosition().Ma,marker.getPosition().La)
 	map.panTo(po)
@@ -207,7 +209,7 @@ function hovereventlist(marker,position){
 
 //검색 목록 결과 클릭시 마커,오버레이 표시
 function addEventClick(place){
-	console.log("한번만 실행 되야함")
+	//console.log("한번만 실행 되야함")
 		$("#placesList li").click(function(){
 			console.log("리스트 클릭")
 			if(soverlay!=undefined){
