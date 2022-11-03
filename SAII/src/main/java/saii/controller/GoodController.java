@@ -18,19 +18,18 @@ import saii.dto.mainboardDTO;
 public class GoodController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		String text_condition = req.getParameter("text_condition");
 		String m_id = req.getParameter("m_id");
 		String nickname = req.getParameter("nickname");
 		
 		JSONObject jobj = new JSONObject();
 		goodDAO gdao = new goodDAO();
 		
-		if(text_condition.equals("하트아님")) {
-			gdao.pushGood(m_id, nickname);
-			jobj.put("heart", "noheart");
-		}else {
+		if(gdao.goodWhether(m_id, nickname)) {
 			gdao.cancelGood(m_id, nickname);
-			jobj.put("heart", "yesheart");
+			jobj.put("heart", "cancel");
+		}else {
+			gdao.pushGood(m_id, nickname);
+			jobj.put("heart", "push");
 		}
 
 		mainboardDAO mdao = new mainboardDAO();
