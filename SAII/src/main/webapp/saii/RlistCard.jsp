@@ -47,9 +47,9 @@
 	</c:when>
 <c:otherwise>
 	
+		<div class="ui_box">
+			<ul class="list_wrap">
 	<c:forEach items="${boardLists}" var="list" varStatus="stat">
-		<div class="list_wrap">
-			<ul>
 				<li class="item">
 					<img class="image" src="./saii/img/Doldam.jpg " >
 						<div class="cont">
@@ -62,7 +62,7 @@
 								<c:if test="${list.r_category eq 'course'}">코스</c:if>
 								<c:if test="${list.r_category eq 'place'}">장소</c:if>
 							</p>
-							<strong>
+							<strong class="title">
 								<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_id}${list.r_title}</a>
 							</strong>
 							<img src="./"><p>${list.nickname}</p>
@@ -74,9 +74,9 @@
 						</div>
 					
 				</li>
+	</c:forEach>
 			</ul>
 		</div>			
-	</c:forEach>
 </c:otherwise>
 </c:choose>	
 </body>
