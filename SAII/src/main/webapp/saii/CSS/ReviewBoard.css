@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.card-item {
+    margin-bottom: 2rem;
+}
+.card-image {
+    height: 0;
+    padding-bottom: 60%; /* 빈 공간에 하단 패딩 주어서 공간 확보 */
+    background-repeat: no-repeat; /* 이미지 반복 제거*/
+    background-position: center; /* 이미지 가운데 정렬*/
+    background-size: cover; /* 이미지가 꽉 차게*/
+}
+.card-desc {
+    padding: 1em;
+    background: white;
+}
+
+@media(min-width: 600px){
+    .card-list {
+        display: flex;
+        flex-wrap: wrap; /* 넘치는 카드 아래로 넘기기*/
+        margin: 0 -1rem; /* 카드 바깥 쪽 공간 없애기*/
+    }
+    .card-item {
+        width: 50%; /* 카드 2단 배치*/
+        padding: 0 1rem; /* 카드 사이 간격*/
+    }
+}
+@media(min-width: 1200px){
+    .card-item {
+        width: 33.33333%; /* 카드 3단 배치*/
+    }
+}
+
+.card-item {
+    display: flex; /* 부모요소에 플랙스 적용, 가로정렬 됨*/
+    flex-direction: column; /* 방향을 세로로 바꾸고*/
+    margin-bottom: 2rem;
+}
+
+.card-image {
+    height: 0;
+    padding-bottom: 60%;
+    /* background-color: lightgray; */
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: cover;*/
+}
+
+.card-desc {
+    flex: 1 1 auto; /* 자식 요소에게 플랙스 그로우 1을 적용*/
+    padding: 1em;
+    background: white;
+}
+
+.card-list-con {
+    overflow: hidden;
+}
+
+.card-item .card-desc {
+	padding: 20px;
+}
+
+.card-item .card-desc strong{
+	display: block;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+
+.card-item .card-desc p {
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+
+.card-item .card-desc a{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #eee;
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+.card-item .card-desc a:hover {
+    background: #325cb2;
+    color: #fff;
+}
