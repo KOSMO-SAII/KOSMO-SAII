@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="../course_view" method="get">
-		<input type="submit" name="num" value="19">
+		<input type="submit" name="num" value="16">
 	</form>
 	
 </body>

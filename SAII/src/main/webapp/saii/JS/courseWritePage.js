@@ -24,8 +24,32 @@ var path=[];
 //마이핀 목록 활성화
 var checkmode=0;
 
+//==========이하 지도 api부분
+// 마커를 담을 배열입니다
+var markers = [];
+
+
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places();  
+
+// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
 //mode가 edit일때만 실행
 if(mode=="edit"){
+	var po =new kakao.maps.LatLng(paramObjs[0].Y,paramObjs[0].X)
+	map.panTo(po)
+	
 	console.log("수정 모드 실행")
 	
 	 console.log(paramObjs[0]);
@@ -92,7 +116,7 @@ let subToggle=true;
 		subToggle=!subToggle;
 		}
 	})
-
+//==검색 사이드 바 드롭다운
 let subToggle2=true;
 	$('#arrow2').click(function() {
 		var box=document.getElementById('box');
@@ -104,32 +128,13 @@ let subToggle2=true;
 		subToggle2=!subToggle2;
 		}else{
 			box.style.width='10px';
-			$('#category-box').css('display', 'block');
+			$('#category-box').css('display', 'none');
 			$('#arrow2').text("◀")
 		subToggle2=!subToggle2;
 		}
 	})
 
-//==========이하 지도 api부분
-// 마커를 담을 배열입니다
-var markers = [];
 
-
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places();  
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 //-------------------------------------------------위는 기본 필수 코드
 //=================================================아래: 왼쪽 사이드 검색장소 핀 코드
@@ -717,10 +722,10 @@ function rsaveMyPin(myplace,myplaceinfo){
 					mymarker:new kakao.maps.Marker({
 			    		map: map,
 			    		position: new kakao.maps.LatLng(myplace.placey , myplace.placex),
-			    		image:markerImage
-			    		
+			    		image:markerImage,
+			    		id:myplaceinfo.placeid
 								}),
-					id:myplaceinfo.id
+					id:myplaceinfo.placeid
 					}
 		
 		//오버레이 생성
@@ -747,12 +752,14 @@ function rsaveMyPin(myplace,myplaceinfo){
 		    				content: mycontent,
 		    				map: map,
 		    				position: mymarker.mymarker.getPosition(),
-		    				clickable:true   
+		    				clickable:true ,  
+		    				id: myplaceinfo.placeid
 							}),
-					id: myplaceinfo.id
+					id: myplaceinfo.placeid
 					}
 		
-		
+		console.log(mymarker.mymarker.getPosition())
+		console.log(myoverlay.myoverlay.getPosition());
 		//?왠진 모르지만 됨/마커와 오버레이를 객체로 마이 핀 배열에 저장
 		mymarker.mymarker.setMap(null);
 		myoverlay.myoverlay.setMap(null);
@@ -853,8 +860,8 @@ function removeMySchedule(event){
 			polyline.setPath(path);
 			
 			//마커,오버레이 삭제
-			mymarkers[i].mymarker.setMap(null);
-			mymarkers[i].myoverlay.setMap(null);
+			mymarkers[i].mymarker.mymarker.setMap(null);
+			mymarkers[i].myoverlay.myoverlay.setMap(null);
 			
 				mymarkers.splice(i,1);
 
@@ -885,11 +892,22 @@ function check(){
 		//마이핀 ,마이 오버레이 생성
 		for(var i=0; i<mymarkers.length;i++){
 			mymarkers[i].mymarker.mymarker.setMap(map);
-			 kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
-				console.log(this.getPosition());
-				console.log(this)
-				addmOverlay(this);	
+			
+			(function(marker, index) {
+			
+			//리스트 클릭스 오버레이 출력
+            kakao.maps.event.addListener(marker,'click',function(){
+				console.log(marker);
+				console.log(index);
+				addmOverlay(marker,index);	
 			});	
+        	})(mymarkers[i].mymarker.mymarker, i);
+			
+			// kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
+				//console.log(this.getPosition());
+				//console.log(this)
+				//addmOverlay(this);	
+			//});	
 		}
 		//라인 생성
 		polyline.setMap(map);
@@ -903,14 +921,18 @@ function check(){
 }
 
 //마이핀 오버레이 출력
-function addmOverlay(marker){
+function addmOverlay(marker,index){
 	console.log("애드 오버레이")
 	for(var i = 0 ; i<mymarkers.length;i++){
-		console.log(marker.getPosition().La);
-		console.log(mymarkers[i].myoverlay.myoverlay.getPosition().La);
-		if(marker.getPosition().La==mymarkers[i].myoverlay.myoverlay.getPosition().La && marker.getPosition().Ma==mymarkers[i].myoverlay.myoverlay.getPosition().Ma ){
+		//console.log("===========시작")
+		//console.log(marker.Rc.x+'/'+marker.Rc.y);
+		//console.log(mymarkers[i].myoverlay.myoverlay.Rc.x+'/'+mymarkers[i].myoverlay.myoverlay.Rc.y);
+		//console.log(marker.getPosition().La+'/'+marker.getPosition().Ma);
+		//console.log(mymarkers[i].myoverlay.myoverlay.getPosition().La+'/'+mymarkers[i].myoverlay.myoverlay.getPosition().Ma);
+		//console.log("===========")
+		if(mymarkers[index].mymarker.id==mymarkers[i].myoverlay.id){
 			console.log("일치")
-			mymarkers[i].myoverlay.setMap(map);
+			mymarkers[i].myoverlay.myoverlay.setMap(map);
 			$(".info .r").click(function(event){
 			closeMyOverlay(event)	
 			});
@@ -925,7 +947,7 @@ function closeMyOverlay(event) {
 	var value=et.nextElementSibling.value;
 	for(var i=0; i<mymarkers.length;i++){
 		if(mymarkers[i].id==value){
-			mymarkers[i].myoverlay.setMap(null);
+			mymarkers[i].myoverlay.myoverlay.setMap(null);
 		}
 	}    
 }
@@ -933,8 +955,8 @@ function closeMyOverlay(event) {
 //마이핀 숨기기
 function hide(){
 	for(var i=0; i<mymarkers.length;i++){
-		mymarkers[i].mymarker.setMap(null);
-		mymarkers[i].myoverlay.setMap(null);
+		mymarkers[i].mymarker.mymarker.setMap(null);
+		mymarkers[i].myoverlay.myoverlay.setMap(null);
 		polyline.setMap(null);
 	}
 	checkmode=0;
@@ -1012,17 +1034,21 @@ $('#memobox .close').click(function(){
 		console.log($('.info .data')[index].defaultValu);
 		//리스트 input value값 불러오기
 		var value=mymarkers[index].data.data;
-		//console.log(index);
-		//console.log(e);
-		//console.log($(e).index());
+
 		//텍스트 에어이라 입력 값
 		var memo=$('#memobox textarea')[0].value
 		
 		mymarkers[index].data.memo=memo;
 		
-		//console.log(value+memo);
 		//input value에 메모내용 값 추가
 		$('.info .data')[index].defaultValue = value+memo;
 		console.log($('.info .data')[index].defaultValue)
+		
+		//메모 내용 있을시 저장 누르면 창 닫기
+		if($('#memobox textarea')[0].value==''){
+			alert("내용을 작성하세요")
+		}else{
+		$('#memobox').addClass('none');
+		}
 		
 	})

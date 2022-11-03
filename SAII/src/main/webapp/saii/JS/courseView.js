@@ -105,18 +105,17 @@ for(var k=0;k<paramObjs.length;k++){
 	
 	//마커 클릭시 오버레이 열기
 	for(var i=0; i< mymarkers.length;i++){
-		kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker, 'click', function(event) {
-			for(var i=0; i< mymarkers.length;i++){
-				var thisla= this.getPosition().La,
-					thisma= this.getPosition().Ma,
-					overla= mymarkers[i].myoverlay.myoverlay.getPosition().La,
-					overma= mymarkers[i].myoverlay.myoverlay.getPosition().Ma
-				if(overla==thisla&&overma==thisma){
-					mymarkers[i].myoverlay.myoverlay.setMap(map);
-					break;
-				}
-			}
-		});
+		
+		(function(marker, index) {
+			
+			//리스트 클릭스 오버레이 출력
+            kakao.maps.event.addListener(marker,'click',function(){
+				mymarkers[index].myoverlay.myoverlay.setMap(map);
+			});	
+        })(mymarkers[i].mymarker.mymarker, i);
+			
+		
+		
 	}
 	
 	
