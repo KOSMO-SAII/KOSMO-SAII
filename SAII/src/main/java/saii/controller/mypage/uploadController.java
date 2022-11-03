@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.mypage;
 
 import java.io.File;
 import java.io.IOException;
