@@ -186,15 +186,16 @@ for(var k=0;k<paramObjs.length;k++){
 	function memobox(event){
 		
 		//none 클래스 삭제
-		var e = event.target.parentElement.parentElement.parentElement;
-		console.log(e);
+		var e = event.target.parentElement;
+		//console.log(e);
+		//console.log($(e).index());
 		$('#memobox').removeClass('none');
 		 index=$(e).index()
 	
 		
 		//title 부여
 		var text=$('.info .title')[index].innerText;
-		console.log(text);
+		//console.log(text);
 		$('#memobox .title').text(text);
 		
 		//memo content 부여
