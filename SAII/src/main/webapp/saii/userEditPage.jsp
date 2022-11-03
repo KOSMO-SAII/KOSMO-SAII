@@ -190,7 +190,7 @@ h4 {
 	
 	<tr><td>도로명 주소 : </td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="address" value="${dto.address }" /></td></tr>
 	<tr>
-		<td><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
+		<td><input type="button" onClick="goPopup();" value="주소찾기"/></td>
 	</tr>
 </table>
 </form>
