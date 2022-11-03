@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 <body>	
 	 <div class="body_wrap">
 		<div class="my">			
-			<form action="http://localhost:8081/SAII/course_view" method="post" onsubmit="return coursecheck()" >
+			<form action="http://localhost:8081/SAII/course_view?mode=${param.mode}&c_id=${param.c_id}" method="post" onsubmit="return coursecheck()" >
 				제목<br/><input type="text" name="title"/><br/>
 
 				지역<br/><input type="text" name="region"/>
@@ -28,7 +29,14 @@
 				<button type="button" onclick="check();">확인</button>
 				<button type="button" onclick="hide();">숨기기</button>
 				<a href="http://localhost:8081/SAII/home">돌아가기</a>
-				<input type="submit" value="코스 저장"></input>
+				<c:choose>
+					<c:when test="${param.mode eq 'edit'}">
+						<input type="submit" value="코스수정"></input>
+					</c:when>
+					<c:otherwise>
+						<input type="submit" value="코스저장"></input>
+					</c:otherwise>
+				</c:choose>
 			</form>
 			</div>
 		</div>
@@ -103,6 +111,8 @@
 	
 	<script type="text/javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
+		var mode="${param.mode}"; //현재 작성 모드인지 수정 모드이지 구분
+		//console.log("${param.mode}");
 	</script>
 	<c:forEach items="${requestScope.List}" var="List">
 	<script type="text/javascript">

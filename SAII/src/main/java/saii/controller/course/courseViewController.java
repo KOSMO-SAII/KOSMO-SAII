@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.course;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,45 +59,59 @@ public class courseViewController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("courseview post");
 		int course_id = 0;
-		//courseWrite페이지에서 넘어온 값이 있을 시 실행
-		if(req.getParameterValues("data")!=null) {
+		String mode=req.getParameter("mode");
+		//System.out.println(mode); 
+		
+		//courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정 
+		if(mode.equals( "edit")) {
+			System.out.println("edit실행");	
 			courseDAO cdao = new courseDAO();
 			String[] str = req.getParameterValues("data");
+			int c_id=Integer.parseInt(req.getParameter("c_id")) ;
+			System.out.println(c_id);
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
-			cdao.insertCourse(cdtos); 	
-			course_id = cdao.getCurrentCourseId();
-			cdao.close();
+				
 			
-			mainboardDAO mdao = new mainboardDAO();
-			mainboardDTO mdto = new mainboardDTO();
-			
-			mdto.setCourse_id(Integer.toString(course_id));
-			String title = req.getParameter("title");
-			String region = req.getParameter("region");
-			String nickname = req.getParameter("nickname");
-			//System.out.println(nickname);
-			if (title != null && title.equals(""))
-				title = nickname + "_" + cdtos.get(0).getPlace_name();
-			if (region != null && region.equals("")) {
-				String[] reg = cdtos.get(0).getAddress_name().split("\\s");
-				region = reg[0] + " " + reg[1];				
+		}else {
+			//courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장 
+			System.out.println("write실행");
+			if(req.getParameterValues("data")!=null) {
+				courseDAO cdao = new courseDAO();
+				String[] str = req.getParameterValues("data");
+				ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
+				cdao.insertCourse(cdtos); 	
+				course_id = cdao.getCurrentCourseId();
+				cdao.close();
+				
+				mainboardDAO mdao = new mainboardDAO();
+				mainboardDTO mdto = new mainboardDTO();
+				
+				mdto.setCourse_id(Integer.toString(course_id));
+				String title = req.getParameter("title");
+				String region = req.getParameter("region");
+				String nickname = req.getParameter("nickname");
+				//System.out.println(nickname);
+				if (title != null && title.equals(""))
+					title = nickname + "_" + cdtos.get(0).getPlace_name();
+				if (region != null && region.equals("")) {
+					String[] reg = cdtos.get(0).getAddress_name().split("\\s");
+					region = reg[0] + " " + reg[1];				
+				}
+				mdto.setM_title(title);
+				mdto.setRegion(region);
+				//System.out.println("mdao insert");
+				mdao.insertWrite(mdto,nickname);	
+				
 			}
-			mdto.setM_title(title);
-			mdto.setRegion(region);
-			//System.out.println("mdao insert");
-			mdao.insertWrite(mdto,nickname);	
-			
-			
 		}
-		//System.out.println("==여기는 문자열 자르기");
+		
 		List<Map<String, String>> list=new Vector<Map<String,String>>();
 		String[] datas = req.getParameterValues("data");
-		//System.out.println(Arrays.toString(datas));
-		//System.out.println(datas[0]);
+	
 		
 		for(int k=0; k<datas.length;k++) {
 			String[] data =  datas[k].split("\\|");
-			//System.out.println(Arrays.toString(data));
+
 		
 			Map<String, String> map= new HashMap<>();
 			map.put("category",data[0]);
@@ -115,11 +129,9 @@ public class courseViewController extends HttpServlet{
 			map.put("Memo","");
 			}
 			list.add(map);
-			//System.out.println(map.entrySet());
+
 		}
-		//System.out.println("===여기는 리스트");
-		//System.out.println(list);
-		//System.out.println(list.get(0));
+	
 		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);

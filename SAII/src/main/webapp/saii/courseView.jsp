@@ -40,7 +40,7 @@
 			<div class="title">
 			</div>
 				<div class="close memo"  title="닫기"></div>
-			<textarea class="memo"></textarea>
+			<textarea class="memo" readonly="readonly"></textarea>
 			<!-- <button class="savememobtn" type="button">저장</button>  -->
 		
 		</div>
