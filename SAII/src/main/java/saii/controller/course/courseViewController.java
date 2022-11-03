@@ -70,7 +70,7 @@ public class courseViewController extends HttpServlet{
 			int c_id=Integer.parseInt(req.getParameter("c_id")) ;
 			System.out.println(c_id);
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
-				
+			cdao.updateCourse(c_id, cdtos);
 			
 		}else {
 			//courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장 
@@ -81,6 +81,7 @@ public class courseViewController extends HttpServlet{
 				ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 				cdao.insertCourse(cdtos); 	
 				course_id = cdao.getCurrentCourseId();
+				System.out.println(course_id);
 				cdao.close();
 				
 				mainboardDAO mdao = new mainboardDAO();
