@@ -59,11 +59,11 @@
 	<section id="tripple">
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_write"><img
-				class="imgbox" alt="코스 작성 화면" src="./img/fast.png"></a>
+				class="imgbox" alt="코스 작성 화면" src="./img/fast.png"></a><br/>코스작성
 		</div>
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_recommend"><img
-				class="imgbox" alt="코스 추천화면" src="./img/추천코스로 빠른 데이트 코스짜기.png"></a>
+				class="imgbox" alt="코스 추천화면" src="./img/her.png"></a><br/>코스추천
 		</div>
 	</section>
 
