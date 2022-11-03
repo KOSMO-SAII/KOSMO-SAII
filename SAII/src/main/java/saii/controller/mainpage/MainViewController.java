@@ -27,7 +27,6 @@ public class MainViewController extends HttpServlet {
 		dao.updateVisitCount(m_id);
 		mainboardDTO dto = dao.selectView(m_id);
 		
-		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 		
 		if(req.getSession().getAttribute("UserId") != null) {
@@ -36,15 +35,18 @@ public class MainViewController extends HttpServlet {
 			String id = req.getSession().getAttribute("UserId").toString();
 			memdto = memdao.userinfo(id);
 			
-			goodDTO gdto = new goodDTO();
-			
+			String goodWhether;
 			goodDAO gdao = new goodDAO();
-			boolean goodWhether = gdao.goodWhether(dto.getM_id(), memdto.getNickname());
+			if(gdao.goodWhether(m_id, memdto.getNickname()) == true) {
+				goodWhether = "이게바로하트지";
+			}else {
+				goodWhether = "하트아님";
+			}
 			
 			memdao.close();
 			gdao.close();
 			
-			//req.setAttribute("goodWhether", goodWhether);
+			req.setAttribute("goodWhether", goodWhether);
 			req.setAttribute("memdto", memdto);
 		}
 		

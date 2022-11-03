@@ -35,34 +35,53 @@
 		float: left;
 	}
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#good').click(function(){
+		jQuery.ajax({
+			type: "GET",
+			url: "http://localhost:8081/SAII/good",
+			cache: false,
+			data: {
+				text_condition: $('#good').text(),
+				m_id: $('#m_id').text(),
+				nickname: $('#nickname').text()
+			},
+			datatype: "JSON",
+			success: function(obj){
+				if(obj.heart == "noheart"){
+					$('#good').text('이게바로하트지');				
+				}else{
+					$('#good').text('하트아님');					
+				}
+				
+				$('#goodcount').text(obj.goodcount);
+			}
+		});
+	});
+});
+</script>
 </head>
 <body>
 	<table>
 		<tr>
-			<td>글번호 ${dto.m_id}</td>
+			<td>글번호 <span id="m_id">${dto.m_id}</span></td>
 			<td colspan="5">제목 : ${dto.m_title}</td>
 		</tr>
 		<tr>
 			<td>지역</td> <td>${dto.region}</td>
 			<td>코스넘버</td> <td>${dto.course_id}</td>
-			<td>글쓴이</td> <td>${dto.nickname}</td>
+			<td>글쓴이</td> <td><span id="nickname">${dto.nickname}</span></td>
 		</tr>
 		<tr>
 			<td>작성일</td> <td>${dto.m_postdate}</td>
 			<td>좋아요</td>
 			<td>
 				<c:if test="${memdto.nickname ne null}">
-					<div id="good"><a href="http://localhost:8081/SAII/good"><img src="saii/img/notGood.png" alt="good" width="20px" height="20px"></a></div>
-					<%--<c:choose>
-						<c:when test="${goodWhether eq false}"> 
-							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${0}'">🤍</button>--%> <%-- 속이 빈 하트 --%>
-						<%-- </c:when>
-						<c:otherwise>
-							<button type="button" id="heart" onclick="location.href='http://localhost:8081/SAII/view?m_id=${dto.m_id}&mode=${1}'">❤</button>--%> <%-- 속이 찬 하트 --%>
-						<%--</c:otherwise>
-					</c:choose>--%>
+					<span id="good">${goodWhether}</span>
 				</c:if>&nbsp;&nbsp;
-				${dto.goodcount}
+				<span id="goodcount">${dto.goodcount}</span>
 			</td>
 			<td>조회수</td> <td>${dto.visitcount}</td>
 		</tr>
