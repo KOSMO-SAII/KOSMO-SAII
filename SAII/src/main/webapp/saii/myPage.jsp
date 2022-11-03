@@ -56,15 +56,6 @@ tr>td:first-child {
 	text-align: right
 }
 
-body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password] {
-	width: 180px;
-	height: 30px;
-	border:0;
-	font-size: 15px;
-	border-radius: 10px;
-	background-color: rgb(255, 249, 227);
-	vertical-align: middle;
-}
 h3 {
 	text-align: center;
 }
@@ -72,13 +63,7 @@ h2 {
 	text-align: center;
 	position: relative;
 }
-#usertable {
-	width: 300px;
-	background-color: rgb(255, 243, 200);
-	border-radius: 20px;
-	box-shadow: 10px 10px 10px rgb(255,243,200),-10px -10px 10px rgb(255,243,200),-10px 10px 10px rgb(255,243,200),10px -10px 10px rgb(255,243,200);
-	
-}
+
 #edit {
 	position: relative;
 	border: 0px;
@@ -163,6 +148,22 @@ h2 {
 	width: 100px
 }
 
+.mylabel{
+	vertical-align: 5px; 
+	color: #999;
+}
+.mydiv{
+	padding: 0px 0px 8px 0px;
+}
+.myinput{
+	vertical-align: 5px; 
+	width:400px; 
+	height:40px; 
+	display: inline-block;
+	border:none; 
+	background-color: black;
+}
+
 </style>
 <link rel="stylesheet" href="CSS/mypage.css">
 </head>
@@ -178,6 +179,45 @@ h2 {
 <hr>
 <div id="show1" >
 	<form method="get" onsubmit="passCk()">
+	<input id="edit" type="submit" value="수정하러가기" >
+	<div class="mydiv">
+	<label class="mylabel">아이디</label>
+	<input class="myinput" type="text" id="userId" name="id" value="${dto.id}" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">비밀번호</label>
+	<input class="myinput" type="password" name="pw" value="${dto.pw }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">닉네임</label>
+	<input class="myinput" type="text" name="nickname" value="${dto.nickname }"readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">이름</label>
+	<input class="myinput" type="text" name="name"	value="${dto.name }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">생년월일</label>
+	<input class="myinput" type="Date" name="birthday" value="${dto.birthday }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">성별</label>
+	<input class="myinput" type="text" name="sex" value="${dto.sex }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">전화</label>
+	<input class="myinput" type="text" name="phone" value="${dto.phone }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">이메일</label>
+	<input class="myinput" type="email" name="email" value="${dto.email }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">주소</label>
+	<input class="myinput" type="text" name="address" value="${dto.address }"readonly>
+	</div>
+	
+	
 	<table align="center" width="300px">
 		<tr>
 			<td><input id="edit" type="submit" value="수정하러가기" ></td>
@@ -186,40 +226,40 @@ h2 {
 	<table id="usertable" width="50%" align="center">
 		<tr>
 			<td>아&nbsp이&nbsp디 : </td>
-			<td><input	type="text" id="userId" name="id" value="${dto.id}" readonly></td>
+			<td><input	class="myinput" type="text" id="userId" name="id" value="${dto.id}" readonly></td>
 		</tr>
 		</form>
 		<tr>
 			<td>비밀번호 : </td>
-			<td><input type="password" name="pw" value="${dto.pw }" readonly></td>
+			<td><input	class="myinput" type="password" name="pw" value="${dto.pw }" readonly></td>
 		</tr>
 		<tr>
 			<td>닉&nbsp네&nbsp임 : </td>
-			<td><input type="text" name="nickname" value="${dto.nickname }"readonly></td>
+			<td><input	class="myinput" type="text" name="nickname" value="${dto.nickname }"readonly></td>
 		</tr>
 		<tr>
 			<td>이&nbsp&nbsp&nbsp&nbsp&nbsp름 : </td>
-			<td><input type="text" name="name"	value="${dto.name }" readonly></td>
+			<td><input	class="myinput" type="text" name="name"	value="${dto.name }" readonly></td>
 		</tr>
 		<tr>
 			<td>생&nbsp&nbsp&nbsp&nbsp&nbsp일 : </td>
-			<td><input type="Date" name="birthday" value="${dto.birthday }" readonly></td>
+			<td><input	class="myinput" type="Date" name="birthday" value="${dto.birthday }" readonly></td>
 		</tr>
 		<tr>
 			<td>성&nbsp&nbsp&nbsp&nbsp&nbsp별 : </td>
-			<td><input type="text" name="sex" value="${dto.sex }" readonly></td>
+			<td><input	class="myinput" type="text" name="sex" value="${dto.sex }" readonly></td>
 		</tr>
 		<tr>
 			<td>전&nbsp&nbsp&nbsp&nbsp&nbsp화 : </td>
-			<td><input type="text" name="phone" value="${dto.phone }" readonly></td>
+			<td><input	class="myinput" type="text" name="phone" value="${dto.phone }" readonly></td>
 		</tr>
 		<tr>
 			<td>이&nbsp메&nbsp일 : </td>
-			<td><input type="email" name="email" value="${dto.email }" readonly></td>
+			<td><input	class="myinput" type="email" name="email" value="${dto.email }" readonly></td>
 		</tr>
 		<tr>
 			<td>주&nbsp&nbsp&nbsp&nbsp&nbsp소 : </td>
-			<td><input type="text" name="address" value="${dto.address }"readonly></td>
+			<td><input	class="myinput" type="text" name="address" value="${dto.address }"readonly></td>
 		</tr>
 	</table>
 	<div id="profile" align="center">
