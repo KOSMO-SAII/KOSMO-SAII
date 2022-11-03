@@ -36,7 +36,10 @@ public class mainboardDAO extends JDBConnect {
 	
 	public List<mainboardDTO> selectListPage(Map<String, Object> map){
 		List<mainboardDTO> bl = new Vector<mainboardDTO>();
-		String sql = "select * from (select rownum as pnum, a.* from (select * from main_board order by m_id desc) a)";
+		String sql = "select * from (select rownum as pnum, a.* "
+				+ " from (select m.m_id, m.m_title, m.region, m.course_id, m.nickname, m.m_postdate, m.visitcount, NVL(m2.cnt, 0) as goodcount "
+				+ " from main_board m, (select m_id, count(*) as cnt from good group by m_id) m2 "
+				+ " where m.m_id = m2.m_id(+) order by m_id desc) a)";
 		if(map.get("searchStr") != null) {
 			sql += " WHERE " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%' AND (pnum BETWEEN ? AND ?)";
 		}else {
@@ -55,9 +58,9 @@ public class mainboardDAO extends JDBConnect {
 				dto.setRegion(rs.getString("region"));
 				dto.setCourse_id(rs.getString("course_id"));
 				dto.setNickname(rs.getString("nickname"));
+				dto.setM_postdate(rs.getDate("m_postdate"));
 				dto.setVisitcount(rs.getInt("visitcount"));
 				dto.setGoodcount(rs.getInt("goodcount"));
-				dto.setM_postdate(rs.getDate("m_postdate"));
 				
 				bl.add(dto);
 			}
@@ -70,7 +73,7 @@ public class mainboardDAO extends JDBConnect {
 	
 	public List<mainboardDTO> myPage_selectListPage(Map<String, Object> map){
 		List<mainboardDTO> bl = new Vector<mainboardDTO>();
-		
+		goodDAO gdao = new goodDAO();
 		String sql = "select rownum, m_id, m_title, region, course_id, mb.nickname, m_postdate, visitcount, goodcount "
 				+ "from main_board mb, member m";
 		if(map.get("searchStr") != null) {
@@ -92,7 +95,6 @@ public class mainboardDAO extends JDBConnect {
 				dto.setCourse_id(rs.getString("course_id"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setVisitcount(rs.getInt("visitcount"));
-				dto.setGoodcount(rs.getInt("goodcount"));
 				dto.setM_postdate(rs.getDate("m_postdate"));
 				
 				bl.add(dto);
