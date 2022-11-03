@@ -90,7 +90,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
         <h2>코스 추천</h2>
 
         <div class="course-list">
-            <a href="http://localhost:8081/SAII/course_recommend" class="coursese">
+            <a href="#" class="coursese">
              <div class="img">
         		<div class="content">
             		<h1>< ${list[0].title} ></h1>
