@@ -15,7 +15,7 @@
 
 <style>
 .course-list{
-    width: 735px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -34,8 +34,9 @@
     text-decoration:none;
     color: black;
     float:left;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
 }
 	
 
@@ -74,13 +75,16 @@
     font-size: 24px;
     font-weight: 400;
     line-height: 13px;
-    text-align: center;}
+    text-align: center;
+   
+    margin-bottom: 40px;
+    }
 
 input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border: none;
     		color: #fff; font-size: 10px; font-weight: 200; cursor: pointer;
     		border-radius: 4px; background-color: #d0d0d0;}
     			
-
+	
 </style>
 <body>
 
@@ -90,46 +94,43 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
         <h2>코스 추천</h2>
 
         <div class="course-list">
-            <a href="#" class="coursese">
-             <div class="img">
+            <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[0].c_id}' ">
+                <div class="img">
         		<div class="content">
             		<h1>< ${list[0].title} ></h1>
-            		<h1>${list[0].region}</h1>
         			</div> 
         		<div class="img-cover"></div></div>
+            		<h1>${list[0].region}</h1>
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" value="글읽기" onclick="location.href='./course_view?num=${list[0].c_id}' "/> <br/>
             </a>
             
             
-             <a href="#" class="coursese">
+             <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[1].c_id}' ">
                 <div class="img">
         		<div class="content">
             		<h1>< ${list[1].title} ></h1>
-            		<h1>${list[1].region}</h1>
         			</div> 
         		<div class="img-cover"></div></div>
+            		<h1>${list[1].region}</h1>
 				<c:forTokens items="${list[1].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" value="글읽기" onclick="location.href='./course_view?num=${list[1].c_id}' "/> <br/>
             </a>
             
-             <a href="#" class="coursese">
+             <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
                 <div class="img">
         		<div class="content">
             		<h1>< ${list[2].title} ></h1>
-            		<h1>${list[2].region}</h1>
         			</div> 
         		<div class="img-cover"></div></div>
+            		<h1>${list[2].region}</h1>
 				<c:forTokens items="${list[2].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-                <input type="button" class="look"  value="자세히보기" onclick="location.href='./course_view?num=${list[2].c_id}' "/> <br/>
             </a>
-            </a>
+            
  		</div>
  	</div>	
 	
