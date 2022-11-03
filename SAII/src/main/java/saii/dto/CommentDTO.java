@@ -1,9 +1,11 @@
 package saii.dto;
 
+import java.sql.Date;
+
 public class CommentDTO {
 	private String cmt_no;
 	private String cmt_id;
-	private String cmt_regdate;
+	private Date cmt_regdate;
 	private String cmt_content;
 	private String board_no;
 	private String nickname;
@@ -20,10 +22,10 @@ public class CommentDTO {
 	public void setCmt_id(String cmt_id) {
 		this.cmt_id = cmt_id;
 	}
-	public String getCmt_regdate() {
+	public Date getCmt_regdate() {
 		return cmt_regdate;
 	}
-	public void setCmt_regdate(String cmt_regdate) {
+	public void setCmt_regdate(Date cmt_regdate) {
 		this.cmt_regdate = cmt_regdate;
 	}
 	public String getCmt_content() {
