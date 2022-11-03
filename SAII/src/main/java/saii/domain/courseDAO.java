@@ -74,6 +74,38 @@ public class courseDAO extends JDBConnect {
 		
 	}
 
+	public void updateCourse(int course_id, ArrayList<courseDTO> cdtos) {
+		
+		String query = "UPDATE COURSE_DATA SET COURSE_ORDER=?, CATEGORY=? , ADDRESS_ID=?"
+				+ "			ADDRESS_NAME=?, ROAD_ADDERSS_NAME=?, PHONENUMBER=?, PLACE_NAME=?, PLACE_URL=?,"
+				+ "			X=?, Y=?, MEMO=?, POSTDATE=SYSDATE"
+				+ "		WHERE COURSE_ID=?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			var i = 0;
+			for (courseDTO cdto : cdtos) {
+				psmt.setString(1, Integer.toString(i++));
+				psmt.setString(2, cdto.getCategory());
+				psmt.setString(3, cdto.getAddress_id());
+				psmt.setString(4, cdto.getAddress_name());
+				psmt.setString(5, cdto.getRoad_address_name());
+				psmt.setString(6, cdto.getPhone_number());
+				psmt.setString(7, cdto.getPlace_name());
+				psmt.setString(8, cdto.getPlace_url());
+				psmt.setString(9, cdto.getX());
+				psmt.setString(10, cdto.getY());
+				psmt.setString(11, cdto.getMemo());
+				psmt.setString(12, Integer.toString(course_id));
+			}
+		} catch (SQLException e) {
+			System.out.println("update course err");
+			e.printStackTrace();
+		}		
+	}
+	
+	
+	
 	public void insertData(String query, courseDTO cdto) {
 		
 		try {
@@ -152,7 +184,9 @@ public class courseDAO extends JDBConnect {
 	}
 	
 	
-public String getPlaceNames(String course_id) {
+	
+	
+	public String getPlaceNames(String course_id) {
 		
 		ArrayList<String> names = new ArrayList<>();
 		String result = "";

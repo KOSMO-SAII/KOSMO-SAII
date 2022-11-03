@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#form {width: 400px; margin:auto; padding:30px}
+h2 { text-align: center;}
+
+div.ck02 {display: flex; margin:0 auto; top:50%; left:50%;}
+.button {padding: 0; border: none; border-radius:5px;  font: inherit;
+  			color: inherit; background-color: #FFE3ED; cursor: pointer;}
+input[type=text]  { vertical-align: 5px; width:400px; height:40px; display: inline-block;
+									border:none; background: #FAFAFA;}
+.ckk {margin:0; border:none; overflow:visible; border-radius:0; display:inline-block;
+				vertical-align: middle; font-size: 0.8rem; line-height: 38px; text-align: center;
+    			text-decoration: none; text-transform: uppercase; transition: 0.1s; 
+    			transition-property: color, background-color, border-color;
+    			width: 60px !important; }	
+</style>
 <script>
 	function nickCk(form){           
 		if(form.nickname.value == ""){
@@ -33,17 +48,13 @@
 
 <body>
 	<h2>닉네임 중복확인</h2>
-	<form name="writeFrm" method="post" 
+	<form id="form" name="writeFrm" method="post" 
    		action="http://localhost:8081/SAII/nickcheck" onsubmit="return nickCk(this);">
-	<table border="1" width="50%">
-         <tr>
-            <td>NICKNAME</td>
-            <td>
-               <input type="text" id="nicknamechk" name="nickname" style="width:150px;" value="${param.nickname }"/>
-               <button type="submit" onclick="nicksend()">검증하기</button>
-            </td>
-         </tr>    
-      </table>
+		
+		<div class="ck02">
+               <input type="text" id="nicknamechk" name="nickname" style="width:360px;" value="${param.nickname }"/>
+               <button type="submit" class="ckk" onclick="nicksend()">검증</button>
+        </div>
  	</form>
 </body>
 </html>
