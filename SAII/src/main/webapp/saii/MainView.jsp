@@ -19,13 +19,7 @@
 	#delete{
 		text-align:right;
 	}
-	#comment{
-		width:90%;
-		border:1px solid black;
-		margin:auto;
-	}
 	#good{
-		/*visibility:hidden;*/
 		float: left;
 	}
 </style>
@@ -53,6 +47,8 @@ $(function(){
 			}
 		});
 	});
+	
+	
 });
 </script>
 </head>
@@ -99,6 +95,35 @@ $(function(){
 			</td>
 		</tr>
 	</table>
-	<div id="comment">댓글작성 <input type="text"></div>
+	<table>
+		<tr>
+			<td colspan="6">댓글작성 <textarea cols="100" rows="3" style="resize: none;"></textarea><button type="submit">작성</button></td>
+		</tr>
+		<tr>
+			<td>번호</td>
+			<td>작성자</td>
+			<td colspan="2">내용</td>
+			<td>게시날짜</td>
+			<td>좋아요</td>
+		</tr>
+		<c:choose>
+			<c:when test="${not empty mainCommentsLists}">
+				<c:forEach items="${mainCommentsLists}" var="c_list" varStatus="stat">
+					<tr>
+						<td>${c_list.c_id}</td>
+						<td>${c_list.nickname}</td>
+						<td colspan="2">${c_list.comments}</td>
+						<td>${c_list.c_postdate}</td>
+						<td>${c_list.m_id}</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td colspan="6" align="center">등록된 댓글이 없습니다</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+	</table>
 </body>
 </html>

@@ -2,6 +2,7 @@ package saii.controller.mainpage;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.goodDAO;
+import saii.domain.mainCommentsDAO;
 import saii.domain.mainboardDAO;
 import saii.domain.memberDAO;
 import saii.dto.goodDTO;
+import saii.dto.mainCommentsDTO;
 import saii.dto.mainboardDTO;
 import saii.dto.memberDTO;
 
@@ -28,7 +31,6 @@ public class MainViewController extends HttpServlet {
 		mainboardDTO dto = dao.selectView(m_id);
 		
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
-		
 		
 		if(req.getSession().getAttribute("UserId") != null) {
 			memberDTO memdto = new memberDTO();		
@@ -50,8 +52,13 @@ public class MainViewController extends HttpServlet {
 			req.setAttribute("memdto", memdto);
 		}
 		
-		dao.close();
+		mainCommentsDAO mcdao = new mainCommentsDAO();
+		List<mainCommentsDTO> mainCommentsLists = mcdao.selectComments(m_id);
 		
+		dao.close();
+		mcdao.close();
+		
+		req.setAttribute("mainCommentsLists", mainCommentsLists);
 		req.setAttribute("dto", dto);
 		req.getRequestDispatcher("/saii/MainView.jsp").forward(req, resp);
 	}
