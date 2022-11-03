@@ -199,7 +199,7 @@ public class reviewboardDAO extends JDBConnect {
 				System.out.println(dto.getCmt_no());
 				dto.setCmt_content(rs.getString("cmt_content"));
 				dto.setCmt_id(rs.getString("cmt_id"));
-				dto.setCmt_regdate(rs.getString("cmt_regdate"));
+				dto.setCmt_regdate(rs.getDate("cmt_regdate"));
 				dto.setBoard_no(rs.getString("board_no"));
 				dto.setNickname(rs.getString("nickname"));
 				
