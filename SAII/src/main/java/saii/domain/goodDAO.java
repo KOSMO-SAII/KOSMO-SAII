@@ -1,5 +1,7 @@
 package saii.domain;
 
+import java.sql.SQLException;
+
 import saii.controller.JDBConnect;
 import saii.dto.goodDTO;
 import saii.dto.mainboardDTO;

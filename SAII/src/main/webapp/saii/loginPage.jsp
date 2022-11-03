@@ -30,7 +30,7 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 				alert("아이디나 패스워드를 확인해주세요.");
 				return false;
 			}
-			if(!form.user_pw.value==" s"){
+			if(!form.user_pw.value==" "){
 				alert("아이디나 패스워드를 확인해주세요.");
 				return false;
 			}
