@@ -21,7 +21,8 @@ var polyline = new kakao.maps.Polyline({
 //라인 그리기 좌표 담는 배열					
 var path=[];
 
-
+//마이핀 목록 활성화
+var checkmode=0;
 
 //mode가 edit일때만 실행
 if(mode=="edit"){
@@ -712,13 +713,15 @@ function rsaveMyPin(myplace,myplaceinfo){
 		
 		
 		//마서 생성
-		var mymarker = new kakao.maps.Marker({
-    		map: map,
-    		position: new kakao.maps.LatLng(myplace.placey , myplace.placex),
-    		id:myplaceinfo.id,
-    		image:markerImage
-    		
-		});	
+		var mymarker = {
+					mymarker:new kakao.maps.Marker({
+			    		map: map,
+			    		position: new kakao.maps.LatLng(myplace.placey , myplace.placex),
+			    		image:markerImage
+			    		
+								}),
+					id:myplaceinfo.id
+					}
 		
 		//오버레이 생성
 		var mycontent='<div class="wrap">' + 
@@ -739,18 +742,20 @@ function rsaveMyPin(myplace,myplaceinfo){
             '    </div>' +    
             '</div>';
 		
-		var myoverlay=new kakao.maps.CustomOverlay({
-    				content: mycontent,
-    				map: map,
-    				position: mymarker.getPosition(),
-    				clickable:true   ,
-    				id: myplaceinfo.id
-					});
+		var myoverlay={
+					myoverlay:new kakao.maps.CustomOverlay({
+		    				content: mycontent,
+		    				map: map,
+		    				position: mymarker.mymarker.getPosition(),
+		    				clickable:true   
+							}),
+					id: myplaceinfo.id
+					}
 		
 		
 		//?왠진 모르지만 됨/마커와 오버레이를 객체로 마이 핀 배열에 저장
-		mymarker.setMap(null);
-		myoverlay.setMap(null);
+		mymarker.mymarker.setMap(null);
+		myoverlay.myoverlay.setMap(null);
 	
 		 mymarkerOb={
 			mymarker:mymarker,
@@ -865,23 +870,24 @@ function hoverevent(event){
 		var li=event.target.parentElement.parentElement;
 		for(var i = 0 ;i<mymarkers.length;i++){
 			if (i==$(li).index()){
-			var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.getPosition().Ma,mymarkers[i].mymarker.getPosition().La)
-			mymarkers[i].mymarker.setMap(map);
+			var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
+			mymarkers[i].mymarker.mymarker.setMap(map);
 			map.panTo(mapmove);
 			break;
 			}
 		}
 }
 //=======
-//마이핀 목록 활성화
-var checkmode=0;
+
 
 function check(){
 	if(mymarkers[0]!= undefined){
 		//마이핀 ,마이 오버레이 생성
 		for(var i=0; i<mymarkers.length;i++){
-			mymarkers[i].mymarker.setMap(map);
-			 kakao.maps.event.addListener(mymarkers[i].mymarker,'click',function(){
+			mymarkers[i].mymarker.mymarker.setMap(map);
+			 kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
+				console.log(this.getPosition());
+				console.log(this)
 				addmOverlay(this);	
 			});	
 		}
@@ -898,8 +904,12 @@ function check(){
 
 //마이핀 오버레이 출력
 function addmOverlay(marker){
+	console.log("애드 오버레이")
 	for(var i = 0 ; i<mymarkers.length;i++){
-		if(marker.Rc.x==mymarkers[i].myoverlay.Rc.x && marker.Rc.y==mymarkers[i].myoverlay.Rc.y ){
+		console.log(marker.getPosition().La);
+		console.log(mymarkers[i].myoverlay.myoverlay.getPosition().La);
+		if(marker.getPosition().La==mymarkers[i].myoverlay.myoverlay.getPosition().La && marker.getPosition().Ma==mymarkers[i].myoverlay.myoverlay.getPosition().Ma ){
+			console.log("일치")
 			mymarkers[i].myoverlay.setMap(map);
 			$(".info .r").click(function(event){
 			closeMyOverlay(event)	
@@ -939,8 +949,8 @@ function makeline(){
 	polyline.setMap(null);
 	if( polyline.getPath()[0]==undefined || polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0 ){
 		for(var i=0;i<mymarkers.length;i++){
-			var ma= mymarkers[i].mymarker.getPosition().Ma,
-				la=mymarkers[i].mymarker.getPosition().La
+			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
+				la=mymarkers[i].mymarker.mymarker.getPosition().La
 			//넘겨 받은 좌표 값 설정
 			var coord = new kakao.maps.LatLng(ma, la);
 			
@@ -952,8 +962,8 @@ function makeline(){
 		path=[];
 		
 		for(var i=0;i<mymarkers.length;i++){
-			var ma= mymarkers[i].mymarker.getPosition().Ma,
-				la=mymarkers[i].mymarker.getPosition().La
+			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
+				la=mymarkers[i].mymarker.mymarker.getPosition().La
 				
 			var coord = new kakao.maps.LatLng(ma, la);
 			
