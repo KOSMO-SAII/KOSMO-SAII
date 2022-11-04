@@ -1,12 +1,6 @@
 @charset "UTF-8";
 
 
-#form {
-	width: 400px;
-	margin: auto;
-	padding: 30px
-}
-
 h2 {
 	text-align: center;
 	margin: 50px 0 10px 0;
@@ -45,15 +39,25 @@ input.sign {
 }
 
 .button {
-	margin-top: 24px;
-	height: 45px;
-	width: 100%;
-	background: none;
-	border: none;
-	color: #fff;
-	font-size: 16px;
-	font-weight: 500;
-	cursor: pointer;
-	border-radius: 4px;
-	background-color: #98dde3;
+    margin-top: 24px;
+    height: 45px;
+    width: 45%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #98dde3;
 }
+
+.container{
+	position:absolute;
+	height:300px;
+	width:300px;
+	margin: -200px 0px 0px -200px;
+	top:50%;
+	left:50%;
+	padding: 5px;
+}	
