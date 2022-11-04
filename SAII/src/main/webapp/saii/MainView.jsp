@@ -46,13 +46,15 @@ $(function(){
 			}
 		});
 	});
-	/*
+});
+$(function(){
 	$('#comments_submit').click(function(){
 		jQuery.ajax({
 			type: "GET",
 			url: "http://localhost:8081/SAII/maincomments",
 			cache: false,
 			data: {
+				m_id: $('#m_id'),
 				comments: $('#comments').text()
 			},
 			datatype: "JSON",
@@ -60,8 +62,8 @@ $(function(){
 				
 			}
 		});
-	});*/
-});
+	});
+})
 </script>
 </head>
 <body>

@@ -3,6 +3,8 @@ package saii.domain;
 import java.util.List;
 import java.util.Vector;
 
+import javax.servlet.annotation.WebServlet;
+
 import saii.controller.JDBConnect;
 import saii.dto.mainCommentsDTO;
 
@@ -32,5 +34,22 @@ public class mainCommentsDAO extends JDBConnect {
 		}
 				
 		return bl;
+	}
+	
+	public int writeComments(mainCommentsDTO dto) {
+		int rs = 0;
+		String sql = "insert into main_comments(c_id, nickname, comments, m_id) "
+				   + "values(seq_memcomments_num.nextval(), ?, ?, ?)";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getNickname());
+			psmt.setString(2, dto.getComments());
+			psmt.setString(3, dto.getM_id());
+			rs = psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return rs;
 	}
 }
