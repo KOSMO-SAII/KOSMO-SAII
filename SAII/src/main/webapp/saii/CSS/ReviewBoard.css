@@ -6,10 +6,11 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 .list_wrap {
     width: 1000px;
     margin: 0 auto;
-    padding: 100px;
+    padding: 100px 0;
 }
 
 .list_wrap {
@@ -18,16 +19,20 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
+
 .list_wrap .item {
     display: flex;
     flex-direction: column;
-   	flex: none;
-	flex-basis: 33.33%;
-    width: 30%;
+    flex: none;
+    width: 230px;
     margin-top: 40px;
     margin-left: 5%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
 }
+
+.list_wrap .item:hover{
+   transform:scale(1.1);
+	}
 
 .list_wrap .item .image {
 	vertical-align: top;

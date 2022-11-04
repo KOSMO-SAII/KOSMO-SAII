@@ -15,9 +15,10 @@
 	<table border="1" width="90%">
 		<tr>
 			<td>카테고리</td>
-			<td><c:if test="${dto.r_category eq 'course'}">코스</c:if> <c:if
-					test="${dto.r_category eq 'place'}">장소</c:if></td>
-
+			<td>
+			<c:if test="${dto.r_category eq 'course'}">코스</c:if>
+			<c:if test="${dto.r_category eq 'place'}">장소</c:if>
+			</td>
 		</tr>
 		<colgroup>
 			<col width="15%" />
@@ -46,8 +47,7 @@
 			<td>첨부파일</td>
 			<td><c:if test="${not empty dto.o_file }">
 					<a href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
-						${dto.o_file} </a>
-					<img src="/SAII/Storage/${dto.n_file}">
+						<img src="/SAII/Storage/${dto.n_file}"></a>
 				</c:if></td>
 		</tr>
 		<tr>
