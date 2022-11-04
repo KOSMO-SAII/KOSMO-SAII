@@ -28,7 +28,8 @@ var checkmode=0;
 // 마커를 담을 배열입니다
 var markers = [];
 
-
+//임시 데이타
+var data={};
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -76,7 +77,12 @@ if(mode=="edit"){
 		};
 	
 	rsaveMyPin(paramObj,paramObjinfo);
+	
+	mymarkers[j].data.memo=paramObjs[j].Memo;
+	$('.info .data')[j].defaultValue+=mymarkers[j].data.memo
 	}
+	
+	
 }
 //================
 //코스저장 전 체크
@@ -789,8 +795,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 }
 //임시 
-//임시 데이타
-var data={};
+
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){

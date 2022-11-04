@@ -59,7 +59,11 @@ form{ height: 90%;}
 
 /* 좌측 마이 스케쥴 사이드 바 css*/
 #My_List{list-style-type: none; padding: 0px; height: 90%; overflow:auto; overflow-x:hidden}
-#My_List li{  margin-bottom: 5px; position: relative;  display: block;}
+#My_List li{      margin-bottom: 5px;
+    position: relative;
+    display: block;
+    box-shadow: 8px 5px 6px 1px black;
+    margin-bottom: 37px;}
 #My_List li .info .close {position: absolute;bottom: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 #My_List li .info .title{overflow: hidden;}
 /* 화면 우측 상단 카테고리 목록 css*/
