@@ -270,4 +270,21 @@ public class mainboardDAO extends JDBConnect {
 		return dtos;
 	}
 	
+	public int mylistcount(String nickname) {
+		int result =0;
+		String sql = "SELECT COUNT(*) FROM MAIN_BOARD WHERE NICKNAME=?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs = psmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("mylistcount err");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 }

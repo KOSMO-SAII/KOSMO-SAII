@@ -1,6 +1,8 @@
 package saii.dto.mypage;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +51,8 @@ public class myPageController extends HttpServlet{
 		System.out.println(nick);
 		System.out.println(map.get("nick"));
 		int totalCount = mdao.selectCount(map);//게시물의 갯수
+		int mylist = mdao.mylistcount(nick);
+		map.put("mylistcount", mylist);
 		
 		
 		
@@ -73,12 +77,16 @@ public class myPageController extends HttpServlet{
 		courseDAO cdao = new courseDAO();
 		List<Map<String,String>> list = new Vector<Map<String, String>>();
 		for(mainboardDTO mdto : mdtos) {
+			DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
 			HashMap<String, String> hmap = new HashMap<>();
 			hmap.put("m_title", mdto.getM_title());
 			hmap.put("region", mdto.getRegion());
 			hmap.put("p_name", cdao.getPlaceNames(mdto.getCourse_id()));
 			hmap.put("course_id", mdto.getCourse_id());
 			hmap.put("nickname", mdto.getNickname());
+			hmap.put("m_postdate", sdFormat.format(mdto.getM_postdate()));
+			hmap.put("count", Integer.toString(cdao.mylistcount(Integer.parseInt(mdto.getCourse_id()))));
 		
 			
 			// 각 정보 속성값에 저장하기

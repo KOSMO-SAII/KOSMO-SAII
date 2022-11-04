@@ -47,6 +47,9 @@ function imgcg(input){
 <style>
 #show2{
 	display: none;
+	width: 1000px;
+	position: relative;
+	margin: auto;
 }
 #show3{
 	display: none;
@@ -192,7 +195,30 @@ h2 {
 	margin:auto; 
 	padding:30px
 }
-
+.mylist{
+	position: relative;
+	margin: auto;
+	width: 500px;
+	height: 150px;
+	box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
+	outline: 5px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	
+}
+.imgdiv {
+	position: relative;
+	left: 250px;
+}
+span {
+	position: relative;
+	top: -55px;
+}
+.divdate{
+	position: absolute;
+	bottom: 2%;
+	right: 3%;
+}
 </style>
 </head>
 <body>
@@ -259,27 +285,26 @@ h2 {
 	</div>
 </div>
 <div id="show2">
-	<div>
-		<div>
-			<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
-			<span>${dto.nickname}의 작품</span>
-		</div>
-		<div>
-			<c:choose>
-				<c:when test="${not empty list }">
-					<c:forEach items="${list}" var="mlist">
-						<div>${mlist.m_title }</div>
-						<div>${mlist.region}</div>
-						<div>${mlist.p_name}</div>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<div>등록된 게시물이 없어요~</div>
-				</c:otherwise>
-			</c:choose>
-		</div>
+	<div class="imgdiv">
+		<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+		<span>${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
 	</div>
-	
+	<c:choose>
+		<c:when test="${not empty list }">
+			<c:forEach items="${list}" var="mlist">
+				<div class="mylist">
+					<div class="divtitle">${mlist.m_title }</div>
+					<div class="divregion">${mlist.region}</div>
+					<div class="divname">${mlist.p_name}</div>
+					<div class="divdate">${mlist.m_postdate}</div>
+					<div class="divcount">${mlist.count}</div>
+				</div>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<div>등록된 게시물이 없어요~</div>
+		</c:otherwise>
+	</c:choose>
 	<form action="http://localhost:8081/SAII/mypage?id=${UserId }" method="get">
 	<table class="t1" align="center" border="1" width="800px">
 		<tr>

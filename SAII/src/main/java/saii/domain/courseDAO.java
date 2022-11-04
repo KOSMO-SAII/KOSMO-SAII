@@ -240,4 +240,20 @@ public void insertData(String query, courseDTO cdto) {
 		System.out.println(result);
 		return result;
 	}
+	
+	public int mylistcount(int course_id) {
+		int result =0;
+		String sql = "SELECT COUNT(*) FROM (SELECT COURSE_ID FROM COURSE_DATA WHERE COURSE_ID=?) GROUP BY COURSE_ID ";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setInt(1, course_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("course count err");
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
