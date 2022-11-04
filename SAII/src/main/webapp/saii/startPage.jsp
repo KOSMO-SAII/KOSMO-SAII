@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/main.css">
 </head>
 <body>
-	<h1><img id=himg src="./img/saii.png"></h1>
+	<h1><img id=himg src="http://localhost:8081/SAII/saii/img/saii.png"></h1>
 	<div class="container">
 		<header
 			id="header">
@@ -58,11 +58,11 @@
 	<section id="tripple">
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_write"><img
-				class="imgbox" alt="코스 작성 화면" src="./img/fast.png"></a><br/>코스작성
+				class="imgbox" alt="코스 작성 화면" src="http://localhost:8081/SAII/saii/img/fast.png"></a><br/>코스작성
 		</div>
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_recommend"><img
-				class="imgbox" alt="코스 추천화면" src="./img/her.png"></a><br/>코스추천
+				class="imgbox" alt="코스 추천화면" src="http://localhost:8081/SAII/saii/img/her.png"></a><br/>코스추천
 		</div>
 	</section>
 
