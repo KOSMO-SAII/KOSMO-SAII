@@ -20,16 +20,17 @@
     margin-right: auto;
 }
 .course h2{   
-    font-size: 34px;
-    color: #545454;
-    margin-top:60px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 13px;
+    margin-top:20px;
     margin-bottom: 60px;
     text-align: center;
 }
 
 .coursese{
     display: block;
-    width: 225px;
+    width: 300px;
     text-align: center;
     text-decoration:none;
     color: black;
@@ -43,17 +44,16 @@
 
 .img{
     position: relative;
-    background-image: url(http://localhost:8081/SAII/saii/img/her.png);                                                               
+    background-image: url(http://localhost:8081/SAII/saii/img/jeju2.png);                                                               
     height: 225px;
-    width: 225px;
+    width: 300px;
     background-size: cover;
   }
 
   .img-cover{
      position: absolute;
      height: 100%;
-     width: 100%;
-     background-color: rgba(255, 0, 0, 0.05);                                                                 
+     width: 100%;                                                            
      z-index:1;
   }
 
@@ -72,11 +72,11 @@
   h1 {display: block;
     color: #545454;
     word-break: break-all;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
     line-height: 13px;
     text-align: center;
-   
+       font-weight: bolder;
     margin-bottom: 40px;
     }
 
@@ -98,7 +98,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
                 <div class="img">
         		<div class="content">
             		<h1>< ${list[0].title} ></h1>
-        			</div> 
+        		</div> 
         		<div class="img-cover"></div></div>
             		<h1>${list[0].region}</h1>
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
@@ -110,7 +110,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[1].c_id}' ">
                 <div class="img">
         		<div class="content">
-            		<h1>< ${list[1].title} ></h1>
+            		<h2>[ ${list[1].title} ]</h2>
         			</div> 
         		<div class="img-cover"></div></div>
             		<h1>${list[1].region}</h1>
@@ -122,9 +122,9 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
                 <div class="img">
         		<div class="content">
-            		<h1>< ${list[2].title} ></h1>
         			</div> 
-        		<div class="img-cover"></div></div>
+        		<div class="img-cover">
+            		<h1>< ${list[2].title} ></h1></div></div>
             		<h1>${list[2].region}</h1>
 				<c:forTokens items="${list[2].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
