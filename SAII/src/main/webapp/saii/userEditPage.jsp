@@ -96,6 +96,7 @@ function jusoCallBack(roadFullAddr){
 		
 }
 
+
 </script>
 <style>
 .mylabel{
@@ -187,7 +188,7 @@ h4{
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">주소 *</label><br/>
-	<input class="myinput" type="text" id="roadFullAddr"  name="address" value="${dto.address }" />
+	<input class="myinput" type="text" id="roadFullAddr"  name="address" value="${dto.address }" onClick="goPopup();" />
 	<input type="button" onClick="goPopup();" value="주소찾기"/>
 </form>
 </div>
