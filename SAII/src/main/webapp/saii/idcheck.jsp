@@ -13,7 +13,7 @@ div.ck01 {display: flex; margin:0 auto; top:50%; left:50%;}
 .button {padding: 0; border: none; border-radius:5px;  font: inherit;
   			color: inherit; background-color: #FFE3ED; cursor: pointer;}
 input[type=text]  { vertical-align: 5px; width:400px; height:40px; display: inline-block;
-									border:none; background: #FAFAFA;}
+									border:none; background: #F7F7F7;}
 .ckk {margin:0; border:none; overflow:visible; border-radius:0; display:inline-block;
 				vertical-align: middle; font-size: 0.8rem; line-height: 38px; text-align: center;
     			text-decoration: none; text-transform: uppercase; transition: 0.1s; 

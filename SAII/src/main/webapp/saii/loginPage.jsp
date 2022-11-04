@@ -11,7 +11,7 @@
 #form {width: 400px; margin:auto; padding:30px}
 h2 { text-align: center; margin: 50px 0 10px 0;}
 input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
-									border:none; background: #FAFAFA;}
+									border:none; background: #F7F7F7;}
 label { vertical-align: 5px; color: #999;}
 a {vertical-align: 5px;}
 input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
