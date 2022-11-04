@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/findIdPw.css">
 </head>
 <body>
 <script>
@@ -26,7 +27,7 @@ function id_search() {
  frm.submit();  
  }
 </script>
-<form name="idfindscreen" method = "POST">
+<form id="form" name="idfindscreen" method = "POST">
 			<div class = "search-title">
 				<h3>아이디 찾기</h3>
 			</div>
@@ -44,8 +45,8 @@ function id_search() {
 			
 	</section>
 	<div class ="btnSearch">
-		<input type="button" name="enter" value="찾기"  onClick="id_search()">
-		<input type="button" name="cancle" value="취소" onClick="history.back()">
+		<input class ="button" type="button" name="enter" value="찾기"  onClick="id_search()">
+		<input class ="button" type="button" name="cancle" value="취소" onClick="history.back()">
  	</div>
  </form>
 
