@@ -19,15 +19,15 @@
 	 <div class="body_wrap">
 		<div class="my">
 			<form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
-			<ul id="My_List">
-			
-			</ul>
-			<div id="btnbox">
-			
-			<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
-			<input type="submit" value="코스 수정"></input>
+				<ul id="My_List">
+				
+				</ul>
+				<div id="btnbox">
+				
+				<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
+				<input type="submit" value="코스 수정"></input>
+				</div>
 			</form>
-			</div>
 		</div>
 		<div class="map_wrap">
 			<div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -71,7 +71,7 @@
 	<!-- js연동 -->
 	<script src="http://localhost:8081/SAII/saii/JS/courseView.js"></script>
 
-<!--마우스 커서-->
+
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

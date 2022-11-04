@@ -37,8 +37,8 @@
 						<input type="submit" value="코스저장"></input>
 					</c:otherwise>
 				</c:choose>
+				</div>
 			</form>
-			</div>
 		</div>
 		<div class="map_wrap">
 			<div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -62,7 +62,7 @@
 			</div>
 			<!-- 카테고리 목록 위치  -->
 			<div id="box">
-				<div id="arrow2">◀</div>
+				<div id="arrow2">▶</div>
 				<div id="category-box">
 				<ul id="category">
 					<li id="BK9" data-order="0"><span class="category_bg bank"></span>
@@ -134,9 +134,5 @@
 	</c:forEach>
 	<!-- js연동 -->
 	<script src="http://localhost:8081/SAII/saii/JS/courseWritePage.js"></script>
-
-<!--마우스 커서-->
-<style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
-<a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>
 </html>
