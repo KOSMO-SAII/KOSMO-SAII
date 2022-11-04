@@ -35,7 +35,7 @@ a {
     height: 160px;
     background-color: #ddd;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+
     background-size: cover;
 }
 .list_wrap .item .cont {
@@ -64,3 +64,7 @@ a {
     background: #99D9EA;
     color: #fff;
 }
+
+/* .item:nth(3n+1) {
+	margin:0;
+} */
