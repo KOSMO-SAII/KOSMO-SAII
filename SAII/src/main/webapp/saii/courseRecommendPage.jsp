@@ -14,6 +14,14 @@
 
 
 <style>
+h3 {font-size: 40px;
+    font-weight: 400;
+    line-height: 13px;
+    margin-top:80px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-weight: bold;}
+
 .course-list{
     width: 80%;
     margin-left: auto;
@@ -23,8 +31,8 @@
     font-size: 24px;
     font-weight: 400;
     line-height: 13px;
-    margin-top:20px;
-    margin-bottom: 60px;
+    margin-top:80px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
@@ -40,7 +48,9 @@
     box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
 }
 	
-
+.coursese:hover{
+   transform:scale(1.1);
+	}
 
 .img{
     position: relative;
@@ -48,6 +58,7 @@
     height: 225px;
     width: 300px;
     background-size: cover;
+    
   }
 
   .img-cover{
@@ -56,6 +67,7 @@
      width: 100%;                                                            
      z-index:1;
   }
+  
 
   .img .content{
      position: absolute;
@@ -90,8 +102,8 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 
 	<div class="coco"></div>
 
+        <h3>코스 추천</h3>
     <div class="course">
-        <h2>코스 추천</h2>
 
         <div class="course-list">
             <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[0].c_id}' ">
@@ -110,7 +122,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[1].c_id}' ">
                 <div class="img">
         		<div class="content">
-            		<h2>[ ${list[1].title} ]</h2>
+            		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[1].title} ]</h2>
         			</div> 
         		<div class="img-cover"></div></div>
             		<h1>${list[1].region}</h1>
@@ -122,9 +134,9 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
                 <div class="img">
         		<div class="content">
+            		<h2>[ ${list[2].title} ]</h2>
         			</div> 
-        		<div class="img-cover">
-            		<h1>< ${list[2].title} ></h1></div></div>
+        		<div class="img-cover"></div></div>
             		<h1>${list[2].region}</h1>
 				<c:forTokens items="${list[2].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
