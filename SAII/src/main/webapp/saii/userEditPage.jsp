@@ -138,7 +138,9 @@ function jusoCallBack(roadFullAddr){
 h4{
 	text-align: center;
 }
-
+.focus:focus{
+	outline: 0;
+}
 
 </style>
 </head>
@@ -149,7 +151,7 @@ h4{
 	<input type="submit" value="수정완료" id="editsus" >
 	<div class="mydiv">
 	<label class="mylabel">아이디</label><br/>
-	<input class="myinput" type="text" id="userId" name="id" value="${dto.id}" readonly>
+	<input class="myinput focus" type="text" id="userId" name="id" value="${dto.id}" readonly>
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">비밀번호 *</label><br/>
@@ -165,15 +167,15 @@ h4{
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">이름</label><br/>
-	<input class="myinput" type="text" name="name"	value="${dto.name }" readonly>
+	<input class="myinput focus" type="text" name="name"	value="${dto.name }" readonly>
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">생년월일</label><br/>
-	<input class="myinput" type="Date" name="birthday" value="${dto.birthday }" >
+	<input class="myinput focus" type="Date" name="birthday" value="${dto.birthday }" readonly>
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">성별</label><br/>
-	<input class="myinput" type="text" name="sex" value="${dto.sex }" readonly>
+	<input class="myinput focus" type="text" name="sex" value="${dto.sex }" readonly>
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">전화 *</label><br/>
