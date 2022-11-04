@@ -32,8 +32,7 @@ $(function(){
 			url: "http://localhost:8081/SAII/good",
 			cache: false,
 			data: {
-				m_id: $('#m_id').text(),
-				nickname: $('#nickname').text()
+				m_id: $('#m_id').text()
 			},
 			datatype: "JSON",
 			success: function(obj){
@@ -47,8 +46,21 @@ $(function(){
 			}
 		});
 	});
-	
-	
+	/*
+	$('#comments_submit').click(function(){
+		jQuery.ajax({
+			type: "GET",
+			url: "http://localhost:8081/SAII/maincomments",
+			cache: false,
+			data: {
+				comments: $('#comments').text()
+			},
+			datatype: "JSON",
+			success: function(obj){
+				
+			}
+		});
+	});*/
 });
 </script>
 </head>
@@ -97,7 +109,7 @@ $(function(){
 	</table>
 	<table>
 		<tr>
-			<td colspan="6">댓글작성 <textarea cols="100" rows="3" style="resize: none;"></textarea><button type="submit">작성</button></td>
+			<td colspan="6">댓글작성 <textarea id="comments" cols="100" rows="3" style="resize: none;"></textarea><button id="comments_submit" type="submit">작성</button></td>
 		</tr>
 		<tr>
 			<td>번호</td>

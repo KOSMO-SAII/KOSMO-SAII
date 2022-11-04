@@ -12,23 +12,27 @@ import org.json.simple.JSONObject;
 
 import saii.domain.goodDAO;
 import saii.domain.mainboardDAO;
+import saii.domain.memberDAO;
 import saii.dto.mainboardDTO;
+import saii.dto.memberDTO;
 
 @WebServlet("/good")
 public class GoodController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		String m_id = req.getParameter("m_id");
-		String nickname = req.getParameter("nickname");
+		
+		memberDAO memdao = new memberDAO();
+		memberDTO memdto = memdao.userinfo(req.getSession().getAttribute("UserId").toString());
 		
 		JSONObject jobj = new JSONObject();
 		goodDAO gdao = new goodDAO();
 		
-		if(gdao.goodWhether(m_id, nickname)) {
-			gdao.cancelGood(m_id, nickname);
+		if(gdao.goodWhether(m_id, memdto.getNickname())) {
+			gdao.cancelGood(m_id, memdto.getNickname());
 			jobj.put("heart", "cancel");
 		}else {
-			gdao.pushGood(m_id, nickname);
+			gdao.pushGood(m_id, memdto.getNickname());
 			jobj.put("heart", "push");
 		}
 
