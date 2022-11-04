@@ -19,8 +19,8 @@
 	      <h4>  입니다 </h4>
 	     </div>
 	     <div class = "found-login">
- 		    <input type="button" id="btnLogin" value="로그인" onClick = 'login()'/>
-       	</div>
+ 		    <input type="button" id="btnLogin" value="로그인" 
+ 		    <a href="http://localhost:8081/SAII/saii/loginPage.jsp"</a>>
        </div>
        	</c:when>
  		<c:otherwise>

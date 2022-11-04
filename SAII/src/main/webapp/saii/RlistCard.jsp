@@ -43,12 +43,10 @@
 
 <c:choose>
 	<c:when test="${empty sessionScope.UserId }">
-		<button type="button"
-			onclick="dowrite()">글쓰기</button>
+		<button type="button" onclick="dowrite()">글쓰기</button>
 	</c:when>
 	<c:otherwise>
-	<button type="button"
-			onclick="location.href='http://localhost:8081/SAII/review_write';">글쓰기</button>
+		<button type="button" onclick="location.href='http://localhost:8081/SAII/review_write';">글쓰기</button>
 	</c:otherwise>
 </c:choose>
 
@@ -60,10 +58,21 @@
 	
 		<div class="ui_box">
 			<ul class="list_wrap">
-	<c:forEach items="${boardLists}" var="list" varStatus="stat">
+			<c:forEach items="${boardLists}" var="list" varStatus="stat">
+			<script>
+			console.log("ofile="+"${list.o_file}");
+			console.log("nfile="+"${list.n_file}");
+			</script>
 			<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">
 				<li class="item">
-					<img class="image" src="./saii/img/Doldam.jpg " >
+<!--	<img class="image" src="./saii/img/Doldam.jpg " >	  -->
+					<c:if test="${not empty list.o_file }">
+						<img class="image" src="C:/Users/JSJ/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SAII/Storage/${list.n_file}">
+					</c:if>
+					<c:if test="${empty list.o_file }">
+						<img class="image" src="./saii/img/Doldam.jpg " >
+					</c:if>
+
 						<div class="cont">
 <!--
 	 						<p>
@@ -94,6 +103,7 @@
 </c:choose>	
 
 <script type="text/javascript">
+//console.log("${boardLists[0].n_file}");
 function dowrite(){
 		if(!confirm('비회원 기능이 아닙니다. \n 로그인하시겠습니까?'))
 			return false;
@@ -102,6 +112,8 @@ function dowrite(){
 		}
 }
 </script>
+
+<!--마우스 커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

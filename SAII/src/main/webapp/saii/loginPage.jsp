@@ -17,7 +17,6 @@ a {vertical-align: 5px;}
 input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
     		color: #fff; font-size: 16px; font-weight: 500; cursor: pointer;
     		border-radius: 4px; background-color: #98dde3;}
-
 </style>
 
 </head>
@@ -102,13 +101,17 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 </script>
 	<h2>로그인</h2>
 	<form id="form" action="http://localhost:8081/SAII/login" method="post" name="LoginFrm" onsubmit="return validateForm(this);">
-		 <label>아이디 </label>
-		 <input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
+		<div> 
+		<label>아이디 </label>
+		<input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
+		</div>
+		<div>
 		<label>비밀번호 </label> 
 		<input type="password" name="user_pw" value="${param.user_pw}" /><br/>
+		</div>
 		<input type="checkbox" id="idSaveCheck">아이디 기억하기  <br/>
-		<a href="http://localhost:8081/chilsungsaii/IdPwCheck/findId2.jsp" style="text-decoration:none">[아이디 찾기]</a>
-	  	<a href=" " style="text-decoration:none">[비밀번호 찾기]</a>   <br/>
+		<a href="http://localhost:8081/SAII/saii/findId2.jsp" />[아이디 찾기]</a>
+	  	<a href="http://localhost:8081/SAII/saii/findPw.jsp" />[비밀번호 찾기] <br/>
 		<input type="submit" class="sign" value="로그인" value="${param.user_id}">
 	  	
 	 	

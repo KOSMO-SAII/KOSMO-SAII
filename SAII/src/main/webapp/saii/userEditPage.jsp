@@ -98,104 +98,97 @@ function jusoCallBack(roadFullAddr){
 
 </script>
 <style>
-tr>td:first-child {
-	text-align: right
+.mylabel{
+	vertical-align: 5px; 
+	color: #999;
 }
-
-body:first-child>table>input,[type=email],[type=Date],[type=text],[type=password] {
-	width: 180px;
-	height: 30px;
-	border:0;
+.mydiv{
+	padding: 0px 0px 8px 0px;
+}
+.myinput{
+	vertical-align: 5px; 
+	width:400px; 
+	height:40px; 
+	display: inline-block;
+	border:none; 
+	background-color: #F7F7F7;
+}
+#show11 {
+	position:relative;
+	width: 400px; 
+	margin:auto; 
+	padding:30px
+}
+#editsus{
+	position: relative;
 	font-size: 15px;
-	border-radius: 10px;
-	background-color: rgb(255, 249, 227);
-	vertical-align: middle;
+	margin-top: 24px; 
+	height: 30px; 
+	width: 120px; 
+	left: 283px;
+	background: none; 
+	border: none;
+    color: #fff; 
+    font-size: 16px; 
+    font-weight: 500; 
+    cursor: pointer;
+    border-radius: 4px; 
+    background-color: #98dde3;
 }
-h4 {
+h4{
 	text-align: center;
 }
-#edittable {
-	position:relative;
-	top:40px;
-	width: 315px;
-	background-color: rgb(255, 243, 200);
-	border-radius: 20px;
-	box-shadow: 10px 10px 10px rgb(255,243,200),-10px -10px 10px rgb(255,243,200),-10px 10px 10px rgb(255,243,200),10px -10px 10px rgb(255,243,200);
-}
-
-#editsus{
-	position:relative;
-	top:30px;
-	background-color: #FF6600;
-	color: white;
-	cursor: pointer;
-	padding: 6px 25px;
-	border-radius: 5px;
-	display:inline-block;
-	width: 100px;
-	border: 0px;
-}
-
 
 
 </style>
 </head>
 <body>
 <h4>회원정보 수정</h4>
-<div>
+<div id="show11">
 <form action="http://localhost:8081/SAII/mypage.edit?id=${dto.id }" method="post" id="form" onsubmit="return validateform(this)">
-<table align="center" width="315px">
-	<tr>
-		<td><input type="submit" value="수정완료" id="editsus" ></td>
-	</tr>
-</table>
-<table width="50" align="center" name="edittable" id="edittable">
-	<tr>
-		<td>아&nbsp&nbsp&nbsp&nbsp이&nbsp&nbsp&nbsp&nbsp디 : </td>
-		<td><input type="text" name="id" value="${dto.id}" readonly></td>
-	</tr>
-	<tr>
-		<td>비&nbsp&nbsp밀&nbsp&nbsp번&nbsp&nbsp호 : </td>
-		<td><input type="password" name="pw" value="${dto.pw }"> </td>
-	</tr>
-	<tr>
-		<td>비밀번호 확인 : </td>
-		<td><input type="password" name="pw2" value="${dto.pw }"></td>
-	<tr>
-	<tr>
-		<td>닉&nbsp&nbsp&nbsp&nbsp네&nbsp&nbsp&nbsp&nbsp임 : </td>
-		<td><input type="text" name="nickname" value="${dto.nickname }"></td>
-	</tr>
-	<tr>
-		<td>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름 : </td>
-		<td><input type="text" name="name" value="${dto.name }" readonly></td>
-	</tr>
-	<tr>
-		<td>생&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일 : </td>
-		<td><input type="text" name="birthday" value="${dto.birthday }"></td>
-	</tr>
-	<tr>
-		<td>성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp별 : </td>
-		<td><input type="text" name="sex" value="${dto.sex }" readonly></td>
-	</tr>
-	<tr>
-		<td>전&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp화 : </td>
-		<td><input type="text" name="phone" value="${dto.phone }" ></td>
-	</tr>
-	<tr>
-		<td>이&nbsp&nbsp&nbsp&nbsp메&nbsp&nbsp&nbsp&nbsp일 : </td>
-		<td><input type="email" name="email" value="${dto.email }"></td>
-	</tr>
-
-	
-	<tr><td>도로명 주소 : </td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="address" value="${dto.address }" /></td></tr>
-	<tr>
-		<td><input type="button" onClick="goPopup();" value="주소찾기"/></td>
-	</tr>
-</table>
+	<input type="submit" value="수정완료" id="editsus" >
+	<div class="mydiv">
+	<label class="mylabel">아이디</label><br/>
+	<input class="myinput" type="text" id="userId" name="id" value="${dto.id}" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">비밀번호 *</label><br/>
+	<input class="myinput" type="password" name="pw" value="${dto.pw }" >
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">비밀번호 확인 *</label><br/>
+	<input class="myinput" type="password" name="pw2" value="${dto.pw }" >
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">닉네임 *</label><br/>
+	<input class="myinput" type="text" name="nickname" value="${dto.nickname }">
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">이름</label><br/>
+	<input class="myinput" type="text" name="name"	value="${dto.name }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">생년월일</label><br/>
+	<input class="myinput" type="Date" name="birthday" value="${dto.birthday }" >
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">성별</label><br/>
+	<input class="myinput" type="text" name="sex" value="${dto.sex }" readonly>
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">전화 *</label><br/>
+	<input class="myinput" type="text" name="phone" value="${dto.phone }" >
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">이메일 *</label><br/>
+	<input class="myinput" type="email" name="email" value="${dto.email }" >
+	</div>
+	<div class="mydiv">
+	<label class="mylabel">주소 *</label><br/>
+	<input class="myinput" type="text" id="roadFullAddr"  name="address" value="${dto.address }" />
+	<input type="button" onClick="goPopup();" value="주소찾기"/>
 </form>
 </div>
-
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

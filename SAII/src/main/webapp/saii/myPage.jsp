@@ -68,7 +68,7 @@ h2 {
 	position: relative;
 	font-size: 15px;
 	margin-top: 24px; 
-	height: 30px; 
+	height: 38px; 
 	width: 120px; 
 	left: 283px;
 	background: none; 
@@ -96,27 +96,43 @@ h2 {
 .input_file_button{
 	position:relative;
 	top:10px;
-	background-color: #FF6600;
-	color: white;
 	cursor: pointer;
-	padding: 6px 25px;
-	border-radius: 5px;
 	display:inline-block;
-	width: 100px
+	font-size: 15px;
+	margin-top: 24px; 
+	height: 30px; 
+	width: 120px; 
+	background: none; 
+	border: none;
+    color: #fff; 
+    font-size: 16px; 
+    font-weight: 500; 
+    cursor: pointer;
+    border-radius: 4px; 
+    background-color: #98dde3;
+    padding-top: 8px;
 }
 #sub{
 	display: none;
 }
 .input_submit{
 	position:relative;
-	top:30px;
-	background-color: #FF6600;
-	color: white;
+	top:14px;
 	cursor: pointer;
-	padding: 6px 25px;
-	border-radius: 5px;
 	display:inline-block;
-	width: 100px
+	font-size: 15px;
+	margin-top: 24px; 
+	height: 30px; 
+	width: 120px; 
+	background: none; 
+	border: none;
+    color: #fff; 
+    font-size: 16px; 
+    font-weight: 500; 
+    cursor: pointer;
+    border-radius: 4px; 
+    background-color: #98dde3;
+    padding-top: 8px;
 }
 #mboard{
 	position:relative;
@@ -235,7 +251,7 @@ h2 {
 	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
 	<form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${dto.id}">
-		<label class="input_file_button" for="filebutton">파일선택</label>
+		<label class="input_file_button" for="filebutton">사진선택</label>
 		<input id="filebutton" type="file" name="o_profile_img" onchange="imgcg(this)" required><br>
 		<label class="input_submit" for="sub">프로필 변경</label>
 		<input id="sub" type="submit" value="프로필변경">
@@ -386,6 +402,7 @@ h2 {
 <a href="http://localhost:8081/SAII/home">돌아가기</a>
 
 
+<!--마우스 커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>
