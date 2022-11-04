@@ -1034,6 +1034,8 @@ $('#memobox .close').click(function(){
 
 //메모 저장 수정필요
 	$('.savememobtn').click(function(){
+		//메모 내용 있을시 저장 누르면 창 닫기
+	
 		//초기화
 		$('.info .data')[index].defaultValue="";
 		console.log($('.info .data')[index]);
@@ -1050,11 +1052,9 @@ $('#memobox .close').click(function(){
 		$('.info .data')[index].defaultValue = value+memo;
 		console.log($('.info .data')[index].defaultValue)
 		
-		//메모 내용 있을시 저장 누르면 창 닫기
-		if($('#memobox textarea')[0].value==''){
-			alert("내용을 작성하세요")
-		}else{
 		$('#memobox').addClass('none');
-		}
+		
+		
+		
 		
 	})

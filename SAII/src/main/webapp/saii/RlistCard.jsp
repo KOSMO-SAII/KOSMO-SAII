@@ -12,9 +12,9 @@
 <h2>리뷰 게시판</h2>
    <!-- 검색 -->
    <form method="get">
-      <table border="1" width="90%">
+      <table width="100%">
          <tr>
-            <td align="center">
+            <td class="search-bar" align="center">
                <select name="categoryType">
                   <option value="place"
                      <c:if test="${map.categoryType=='place' }">selected</c:if>>장소
@@ -35,7 +35,7 @@
                         </option>
                </select>
                <input type="search" name="searchStr" value="${map.searchStr}"/>
-               <input type="submit" value="검색" />
+               <input class="search-bar btn" type="submit" value="검색" />
             </td>
          </tr>
       </table>
@@ -43,10 +43,10 @@
 
 <c:choose>
    <c:when test="${empty sessionScope.UserId }">
-      <button type="button" onclick="dowrite()">글쓰기</button>
+      <button class="writeBtn" type="button" onclick="dowrite()">글쓰기</button>
    </c:when>
    <c:otherwise>
-      <button type="button" onclick="location.href='http://localhost:8081/SAII/review_write';">글쓰기</button>
+      <button class="writeBtn" type="button" onclick="location.href='http://localhost:8081/SAII/review_write';">글쓰기</button>
    </c:otherwise>
 </c:choose>
 

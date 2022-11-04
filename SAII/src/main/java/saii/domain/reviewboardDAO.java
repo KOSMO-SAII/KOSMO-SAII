@@ -196,7 +196,6 @@ public class reviewboardDAO extends JDBConnect {
 				CommentDTO dto = new CommentDTO();
 				
 				dto.setCmt_no(rs.getString("cmt_no"));
-				System.out.println(dto.getCmt_no());
 				dto.setCmt_content(rs.getString("cmt_content"));
 				dto.setCmt_id(rs.getString("cmt_id"));
 				dto.setCmt_regdate(rs.getDate("cmt_regdate"));
