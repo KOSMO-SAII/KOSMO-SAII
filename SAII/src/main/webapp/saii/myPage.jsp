@@ -206,11 +206,17 @@ h2 {
 	border-radius: 4px;
 	
 }
+.mylist:hover{
+	transform: scale(1.1) ;
+    border: 10px;
+    border-color: gray;
+    background-color: #FFF4F9;
+}
 .imgdiv {
 	position: relative;
 	left: 250px;
 }
-span {
+.spannick {
 	position: relative;
 	top: -55px;
 }
@@ -218,6 +224,34 @@ span {
 	position: absolute;
 	bottom: 2%;
 	right: 3%;
+}
+span{
+	color: #98dde3;
+}
+
+.divtitle{
+	position: absolute;
+	top: 10%;
+	left: 4%
+}
+
+.divregion{
+	position: absolute;
+	top: 10%;
+	left: 58%;
+}
+
+.divname{
+	position: absolute;
+	top: 33%;
+	left: 4%;
+}
+
+.divcount{
+	position: absolute;
+	top: 56%;
+	left: 4%;
+	
 }
 </style>
 </head>
@@ -287,17 +321,17 @@ span {
 <div id="show2">
 	<div class="imgdiv">
 		<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
-		<span>${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
+		<span class="spannick">${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
 	</div>
 	<c:choose>
 		<c:when test="${not empty list }">
 			<c:forEach items="${list}" var="mlist">
 				<div class="mylist">
-					<div class="divtitle">${mlist.m_title }</div>
-					<div class="divregion">${mlist.region}</div>
-					<div class="divname">${mlist.p_name}</div>
-					<div class="divdate">${mlist.m_postdate}</div>
-					<div class="divcount">${mlist.count}</div>
+					<div class="divtitle"><span>코스이름 </span> ${mlist.m_title }</div>
+					<div class="divregion"><span>코스지역 </span> ${mlist.region}</div>
+					<div class="divname"><span>코스경로 </span> ${mlist.p_name}</div>
+					<div class="divdate"><span>게시날짜 </span> ${mlist.m_postdate}</div>
+					<div class="divcount"><span>선택장소 </span> ${mlist.count}</div>
 				</div>
 			</c:forEach>
 		</c:when>
