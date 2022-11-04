@@ -25,11 +25,11 @@ public class courseViewController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//코스 id 받아옴
-		int courseId= Integer.parseInt( req.getParameter("num"));
+		int course_id= Integer.parseInt( req.getParameter("num"));
 		
 		courseDAO cdao= new courseDAO();
 		//받아온 코스 id로 db에서 값 뽑아옴
-		ArrayList<courseDTO> cdtos=cdao.getCourse(courseId);
+		ArrayList<courseDTO> cdtos=cdao.getCourse(course_id);
 		
 		List<Map<String, String>> list=new Vector<Map<String,String>>();
 		
@@ -50,6 +50,7 @@ public class courseViewController extends HttpServlet{
 			list.add(map);
 			
 		}
+		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
 		
@@ -67,10 +68,10 @@ public class courseViewController extends HttpServlet{
 			System.out.println("edit실행");	
 			courseDAO cdao = new courseDAO();
 			String[] str = req.getParameterValues("data");
-			int c_id=Integer.parseInt(req.getParameter("c_id")) ;
-			System.out.println(c_id);
+			 course_id=Integer.parseInt(req.getParameter("c_id")) ;
+			System.out.println("편집 모드 코스 id"+course_id);
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
-			cdao.updateCourse(c_id, cdtos);
+			cdao.updateCourse(course_id, cdtos);
 			
 		}else {
 			//courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장 
@@ -81,7 +82,7 @@ public class courseViewController extends HttpServlet{
 				ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 				cdao.insertCourse(cdtos); 	
 				course_id = cdao.getCurrentCourseId();
-				System.out.println(course_id);
+				System.out.println("작성 모드 코스 id"+course_id);
 				cdao.close();
 				
 				mainboardDAO mdao = new mainboardDAO();
