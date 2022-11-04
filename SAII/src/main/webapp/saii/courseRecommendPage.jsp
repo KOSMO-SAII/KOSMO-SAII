@@ -60,12 +60,7 @@ h3 {font-size: 40px;
     
   }
 
-  .img-cover{
-     position: absolute;
-     height: 100%;
-     width: 100%;                                                            
-     z-index:1;
-  }
+
   
 
   .img .content{
@@ -117,11 +112,12 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
         		<div class="content">
             		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[0].title} ]</h2>
         			</div> 
-        		<div class="img-cover"></div></div>
+        		</div>
             		<h1>${list[0].region}</h1>
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
+           
             </a>
             
             

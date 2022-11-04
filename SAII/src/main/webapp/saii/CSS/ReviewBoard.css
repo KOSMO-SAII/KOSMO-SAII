@@ -6,10 +6,64 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.search-bar select{
+    height: 40px;
+    vertical-align: bottom;
+    border-radius: 5px;
+
+}
+
+.search-bar input{
+    vertical-align: bottom;
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+}
+
+.search-bar option{
+	height: 20px;
+	font-size: 16px;
+
+}
+
+.search-bar .btn{
+    margin-top: 24px;
+    height: 40px;
+    width: 60px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+}
+
+.writeBtn{
+	margin-top: 24px;
+    height: 40px;
+    width: 70px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+    position: relative;
+    left: 90%;
+}
+
 .list_wrap {
     width: 1000px;
     margin: 0 auto;
-    padding: 100px;
+    padding: 100px 0;
 }
 
 .list_wrap {
@@ -18,29 +72,43 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
+
 .list_wrap .item {
     display: flex;
     flex-direction: column;
-   	flex: none;
-	flex-basis: 33.33%;
-    width: 30%;
+    flex: none;
+    width: 230px;
     margin-top: 40px;
     margin-left: 5%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
 }
+
+.list_wrap .item:hover{
+   transform:scale(1.1);
+	}
 
 .list_wrap .item .image {
 	vertical-align: top;
     width: 100%;
-    height: 160px;
+    height: 170px;
     background-color: #ddd;
     background-repeat: no-repeat;
 
     background-size: cover;
 }
 .list_wrap .item .cont {
-    padding: 20px;
+    padding: 0 10px 15px 10px;
 }
+
+.list_wrap .item .cont a{
+	padding: 0;
+	margin: 0;
+}
+
+.list_wrap .item .cont img{
+	
+}
+
 .list_wrap .item strong {
     flex: none;
     flex-basis: 40px;
@@ -53,11 +121,10 @@ a {
     letter-spacing: -1px;
 }
 .list_wrap .item a {
-    display: inline-block;
-    margin-top: 10px;
+    display: inherit;
+    margin-top: 5px;
     padding: 5px 10px;
-
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: -1px;
 }
 .list_wrap .item strong:hover {

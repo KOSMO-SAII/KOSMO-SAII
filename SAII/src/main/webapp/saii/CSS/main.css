@@ -98,12 +98,12 @@ h1 {
 }
 
 body {
-	background-color: rgb(237 207 210);
-	color: white;
-	margin: 0;
-	padding: 0;
-	font-size: 1.2em;
-	font-family: 'Hack';
+    background-color: rgb(251 251 251);
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-family: 'Hack';
 }
 
 section {

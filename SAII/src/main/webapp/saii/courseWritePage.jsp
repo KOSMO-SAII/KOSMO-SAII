@@ -8,7 +8,7 @@
 <title>코스 작성</title>
 <link href="http://localhost:8081/SAII/saii/CSS/courseWritePage.css" rel="stylesheet" type="text/css">
 
-<!-- 카카오 맵 api 불러오기 -->
+<!-- 카카오 맵 api 불러오기 ㅇㅇ -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
 </head>

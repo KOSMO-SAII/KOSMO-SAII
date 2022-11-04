@@ -189,7 +189,6 @@ h4{
 	<div class="mydiv">
 	<label class="mylabel">주소 *</label><br/>
 	<input class="myinput" type="text" id="roadFullAddr"  name="address" value="${dto.address }" onClick="goPopup();" />
-	<input type="button" onClick="goPopup();" value="주소찾기"/>
 </form>
 </div>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
