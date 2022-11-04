@@ -1,9 +1,11 @@
 package saii.dto.mypage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.mail.Session;
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import saii.controller.Paging;
+import saii.domain.courseDAO;
 import saii.domain.mainboardDAO;
 import saii.domain.memberDAO;
 import saii.dto.mainboardDTO;
@@ -47,6 +50,8 @@ public class myPageController extends HttpServlet{
 		System.out.println(map.get("nick"));
 		int totalCount = mdao.selectCount(map);//게시물의 갯수
 		
+		
+		
 		// 페이징
 		Paging paging = new Paging();
 	
@@ -64,6 +69,24 @@ public class myPageController extends HttpServlet{
 		
 		List<mainboardDTO> boardLists = mdao.myPage_selectListPage(map);
 		
+		ArrayList<mainboardDTO> mdtos = mdao.getmylist(nick);
+		courseDAO cdao = new courseDAO();
+		List<Map<String,String>> list = new Vector<Map<String, String>>();
+		for(mainboardDTO mdto : mdtos) {
+			HashMap<String, String> hmap = new HashMap<>();
+			hmap.put("m_title", mdto.getM_title());
+			hmap.put("region", mdto.getRegion());
+			hmap.put("p_name", cdao.getPlaceNames(mdto.getCourse_id()));
+			hmap.put("course_id", mdto.getCourse_id());
+			hmap.put("nickname", mdto.getNickname());
+		
+			
+			// 각 정보 속성값에 저장하기
+			list.add(hmap);
+			System.out.println(hmap.get("p_name"));
+		}		
+		
+		req.setAttribute("list", list);
 		map.put("totalCount", totalCount);
 		req.setAttribute("boardLists", boardLists);
 		req.setAttribute("map", map);

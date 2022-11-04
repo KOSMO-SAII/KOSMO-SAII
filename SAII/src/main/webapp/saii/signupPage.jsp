@@ -18,12 +18,13 @@
 	select {vertical-align: 6px; width: 80px; height:30px;}
 	
 	.button {padding: 0; border: none; border-radius:5px;  font: inherit;
-  			color: inherit; background-color: #FFE3ED; cursor: pointer;}
+  			color: inherit; background-color: #EDEDED; cursor: pointer;}
 	
 	.ck-button {margin:0; border:none; overflow:visible; border-radius:0; display:inline-block;
 				vertical-align: middle; font-size: 0.8rem; line-height: 38px; text-align: center;
     			text-decoration: none; text-transform: uppercase; transition: 0.1s; 
     			transition-property: color, background-color, border-color;
+    			background-color:#EDEDED;
     			width: 60px !important; }	
     			
     div {padding: 0px 0px 8px 0px;}			
@@ -206,7 +207,6 @@
     <div>
     <label>주소</label> 
     <input type="text" id="roadFullAddr" name="address" value="${param.address}" onClick="goPopup();"> <br/>
-    <input type="button" onClick="goPopup();" value="주소찾기"/>
     </div>
     
     <div>

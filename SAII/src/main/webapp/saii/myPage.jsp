@@ -259,7 +259,27 @@ h2 {
 	</div>
 </div>
 <div id="show2">
-	<h2>내가 짠 코스</h2>
+	<div>
+		<div>
+			<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+			<span>${dto.nickname}의 작품</span>
+		</div>
+		<div>
+			<c:choose>
+				<c:when test="${not empty list }">
+					<c:forEach items="${list}" var="mlist">
+						<div>${mlist.m_title }</div>
+						<div>${mlist.region}</div>
+						<div>${mlist.p_name}</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div>등록된 게시물이 없어요~</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
+	
 	<form action="http://localhost:8081/SAII/mypage?id=${UserId }" method="get">
 	<table class="t1" align="center" border="1" width="800px">
 		<tr>

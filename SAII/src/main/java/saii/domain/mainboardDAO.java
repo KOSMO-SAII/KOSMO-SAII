@@ -241,4 +241,33 @@ public class mainboardDAO extends JDBConnect {
 		return dtos;
 	}
 	
+	public ArrayList<mainboardDTO> getmylist(String nickname){
+		ArrayList<mainboardDTO> dtos = new ArrayList<>();
+		String sql = "SELECT * FROM MAIN_BOARD WHERE NICKNAME=? ORDER BY M_ID";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				mainboardDTO dto = new mainboardDTO();
+				
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_title(rs.getString("m_title"));
+				dto.setRegion(rs.getString("region"));
+				dto.setCourse_id(rs.getString("course_id"));				
+				dto.setNickname(rs.getString("nickname"));
+				dto.setM_postdate(rs.getDate("m_postdate"));
+				dto.setVisitcount(rs.getInt("visitcount"));
+				dto.setGoodcount(rs.getInt("goodcount"));
+				
+				dtos.add(dto);
+				}
+		} catch (Exception e) {
+			System.out.println("getmylist err");
+			e.printStackTrace();
+		}
+		return dtos;
+	}
+	
 }
