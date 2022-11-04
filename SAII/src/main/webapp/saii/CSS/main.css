@@ -29,7 +29,38 @@ h1 {
   position:relative; 
   right:-150px;
   padding:0;
-} 
+}
+
+.btn-outline-primary {
+    color: black;
+    border-color: #98dde3;
+    font-weight: bold;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #98dde3;
+    border-color: #98dde3;    
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color:rgb(91, 174, 223);
+    border-color: rgb(91, 174, 223);
+    font-weight: bold;
+}
+
+.btn-outline-primary{
+    border-color:#98dde3;
+    border-style:bold;
+    text-decoration-color:#98dde3;
+}
+
+.btn-outline-primary:hover {
+    background-color:rgb(91, 174, 223);
+    border-color:#98dde3;
+    text-decoration: underline;
+}
 
 
 .py-3 {
@@ -67,7 +98,7 @@ h1 {
 }
 
 body {
-	background-color: #EEEEEE;
+	background-color: rgb(237 207 210);
 	color: white;
 	margin: 0;
 	padding: 0;
@@ -76,7 +107,7 @@ body {
 }
 
 section {
-	background-color:rgb(207, 220, 243);
+	background-color: rgb(225 224 241);
 	padding: 30px;
 	color: white;
 	display: flex;
@@ -104,7 +135,7 @@ section {
 }
  */
 footer {
-	background-color: lightgrey;
+	background-color: rgb(223, 231, 232);
 	padding: 30px;
 	color:black;
 }
@@ -135,6 +166,11 @@ li {
 	height: 400px;
     justify-content: center;
     margin-bottom:-600px;
+    z-index: 1;
+}
+
+.imgbox:hover{
+	transform:scale(1.1);
 }
 
 .col-md-3 text-end{
