@@ -3,8 +3,8 @@
 html,body,.map_wrap {height: 100%;}
 form{height: 100%;}
 .body_wrap{ height: 100%; display: flex; }
-.my{width: 20%; position: relative; overflow: scroll;  height: 100%}
-#btnbox{position: absolute; bottom: 10px;}
+.my{width: 20%; position: relative; /* overflow: scroll; */  height: 100%}
+#btnbox{position: static; bottom: 10px; }
 form{ height: 90%;}
 
 
@@ -58,10 +58,10 @@ form{ height: 90%;}
 /*#arrow{position: fixed;  bottom: 0px; left: 125px; cursor: pointer;}*/
 
 /* 좌측 마이 스케쥴 사이드 바 css*/
-#My_List{list-style-type: none; padding: 0px; height: 90%;}
-#My_List li{  margin-bottom: 5px; position: relative; }
+#My_List{list-style-type: none; padding: 0px; height: 90%; overflow:auto; overflow-x:hidden}
+#My_List li{  margin-bottom: 5px; position: relative;  display: block;}
 #My_List li .info .close {position: absolute;bottom: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-
+#My_List li .info .title{overflow: hidden;}
 /* 화면 우측 상단 카테고리 목록 css*/
 /*#category {position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;
 	padding: 0px 0px 0px 0px;}*/
@@ -87,17 +87,41 @@ form{ height: 90%;}
 #category li.on .category_bg {background-position-x:-46px;}
 .background_on{background: #ffe6e6;}
 
-#box{position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff; z-index: 2;
-	padding: 0px 0px 0px 0px;
-	border: 1px solid black;
-	width: 10px; height: 164px;
+#box{    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 5px;
+    border: 1px solid #909090;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 40%);
+    background: #fff;
+    z-index: 2;
+    padding: 0px 0px 0px 0px;
+    /* border: 1px solid black; */
+    width: 364px;
+    height: 164px;
 }
 #category-box{
-	display:none;
+	display: block;
 	overflow: hidden;
 }
-#arrow2 { position: absolute; bottom: 80px; left: -12px; cursor: pointer;
-		}
+#arrow2 { position: absolute;
+    bottom: 54px;
+    left: -12px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* border: 1px solid black; */
+    background: #fff;
+    border-right: none;
+    z-index: 0;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #909090;
+    border-right: none;
+}
 		
 /* 마커 클릭시 나타나는 오버레이 css*/
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;

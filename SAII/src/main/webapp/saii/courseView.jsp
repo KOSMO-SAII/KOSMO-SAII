@@ -19,15 +19,15 @@
 	 <div class="body_wrap">
 		<div class="my">
 			<form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
-			<ul id="My_List">
-			
-			</ul>
-			<div id="btnbox">
-			
-			<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
-			<input type="submit" value="코스 수정"></input>
+				<ul id="My_List">
+				
+				</ul>
+				<div id="btnbox">
+				
+				<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
+				<input type="submit" value="코스 수정"></input>
+				</div>
 			</form>
-			</div>
 		</div>
 		<div class="map_wrap">
 			<div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>

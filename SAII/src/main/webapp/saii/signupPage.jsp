@@ -11,7 +11,7 @@
 	#form {width: 400px; margin:auto; padding:30px}
 	h2 { text-align: center; margin: 30px 0 30px 0;}
 	input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
-									border:none; background: #FAFAFA;}
+									border:none; background: #F7F7F7;}
 	
 	label { vertical-align: 5px; color: #999;}
 	a {vertical-align: 5px;}
@@ -205,7 +205,7 @@
     
     <div>
     <label>주소</label> 
-    <input type="text" id="roadFullAddr" name="address" value="${param.address}"> <br/>
+    <input type="text" id="roadFullAddr" name="address" value="${param.address}" onClick="goPopup();"> <br/>
     <input type="button" onClick="goPopup();" value="주소찾기"/>
     </div>
     

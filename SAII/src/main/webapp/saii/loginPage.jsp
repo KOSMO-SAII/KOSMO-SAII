@@ -11,13 +11,12 @@
 #form {width: 400px; margin:auto; padding:30px}
 h2 { text-align: center; margin: 50px 0 10px 0;}
 input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
-									border:none; background: #FAFAFA;}
+									border:none; background: #F7F7F7;}
 label { vertical-align: 5px; color: #999;}
 a {vertical-align: 5px;}
 input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
     		color: #fff; font-size: 16px; font-weight: 500; cursor: pointer;
     		border-radius: 4px; background-color: #98dde3;}
-
 </style>
 
 </head>
@@ -102,13 +101,17 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 </script>
 	<h2>로그인</h2>
 	<form id="form" action="http://localhost:8081/SAII/login" method="post" name="LoginFrm" onsubmit="return validateForm(this);">
-		 <label>아이디 </label>
-		 <input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
+		<div> 
+		<label>아이디 </label>
+		<input type="text" name="user_id" value="${param.user_id}" onclick="getCookie()"/><br/>
+		</div>
+		<div>
 		<label>비밀번호 </label> 
 		<input type="password" name="user_pw" value="${param.user_pw}" /><br/>
+		</div>
 		<input type="checkbox" id="idSaveCheck">아이디 기억하기  <br/>
-		<a href="http://localhost:8081/chilsungsaii/IdPwCheck/findId2.jsp" style="text-decoration:none">[아이디 찾기]</a>
-	  	<a href=" " style="text-decoration:none">[비밀번호 찾기]</a>   <br/>
+		<a href="http://localhost:8081/SAII/saii/findId2.jsp" />[아이디 찾기]</a>
+	  	<a href="http://localhost:8081/SAII/saii/findPw.jsp" />[비밀번호 찾기] <br/>
 		<input type="submit" class="sign" value="로그인" value="${param.user_id}">
 	  	
 	 	
@@ -125,7 +128,8 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 	</c:otherwise>
 		
 </c:choose>
-		
+
+<!--마우스 커서-->	
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

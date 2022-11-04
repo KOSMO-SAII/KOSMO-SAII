@@ -122,14 +122,14 @@ let subToggle2=true;
 		var box=document.getElementById('box');
 		var ctbox=document.getElementById('category-box');
 		if(subToggle2){
-		box.style.width='364px';
-		$('#category-box').css('display', 'block');
-		$('#arrow2').text("▶")
-		subToggle2=!subToggle2;
-		}else{
 			box.style.width='10px';
 			$('#category-box').css('display', 'none');
 			$('#arrow2').text("◀")
+		subToggle2=!subToggle2;
+		}else{
+		box.style.width='364px';
+		$('#category-box').css('display', 'block');
+		$('#arrow2').text("▶")
 		subToggle2=!subToggle2;
 		}
 	})
@@ -703,7 +703,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 	
 	//핀은 최대 7개까지 고정 가능
-	if(num<6){
+	if(num<7){
 		//마커이미지 생성
 		var imageSrc = 'http://localhost:8081/SAII/saii/img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기

@@ -14,8 +14,16 @@
 
 
 <style>
+h3 {font-size: 40px;
+    font-weight: 400;
+    line-height: 13px;
+    margin-top:80px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-weight: bold;}
+
 .course-list{
-    width: 80%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -23,8 +31,8 @@
     font-size: 24px;
     font-weight: 400;
     line-height: 13px;
-    margin-top:20px;
-    margin-bottom: 60px;
+    margin-top:80px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
@@ -35,12 +43,13 @@
     text-decoration:none;
     color: black;
     float:left;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 100px;
     box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
 }
 	
-
+.coursese:hover{
+   transform:scale(1.1);
+	}
 
 .img{
     position: relative;
@@ -48,6 +57,7 @@
     height: 225px;
     width: 300px;
     background-size: cover;
+    
   }
 
   .img-cover{
@@ -56,6 +66,7 @@
      width: 100%;                                                            
      z-index:1;
   }
+  
 
   .img .content{
      position: absolute;
@@ -83,6 +94,13 @@
 input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border: none;
     		color: #fff; font-size: 10px; font-weight: 200; cursor: pointer;
     		border-radius: 4px; background-color: #d0d0d0;}
+    		
+#abc {
+    position: absolute;
+    display: inline-block;
+    right: 2%;
+   	top:10%
+}
     			
 	
 </style>
@@ -90,15 +108,15 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 
 	<div class="coco"></div>
 
+        <h3>코스 추천</h3>
     <div class="course">
-        <h2>코스 추천</h2>
 
         <div class="course-list">
             <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[0].c_id}' ">
                 <div class="img">
         		<div class="content">
-            		<h1>< ${list[0].title} ></h1>
-        		</div> 
+            		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[0].title} ]</h2>
+        			</div> 
         		<div class="img-cover"></div></div>
             		<h1>${list[0].region}</h1>
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
@@ -110,7 +128,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[1].c_id}' ">
                 <div class="img">
         		<div class="content">
-            		<h2>[ ${list[1].title} ]</h2>
+            		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[1].title} ]</h2>
         			</div> 
         		<div class="img-cover"></div></div>
             		<h1>${list[1].region}</h1>
@@ -122,9 +140,9 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
                 <div class="img">
         		<div class="content">
+            		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[2].title} ]</h2>
         			</div> 
-        		<div class="img-cover">
-            		<h1>< ${list[2].title} ></h1></div></div>
+        		<div class="img-cover"></div></div>
             		<h1>${list[2].region}</h1>
 				<c:forTokens items="${list[2].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
@@ -134,16 +152,19 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
  		</div>
  	</div>	
 	
-	
-	
-	
-	
-	
-	
+<div id="abc">
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 	<a href="http://localhost:8081/SAII/mainboard?page=1">추천게시판</a>
 	<a href="http://localhost:8081/SAII/review">리뷰</a>
+</div>
 	
+<style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
+<a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
+</body>
+</html>
+
+
+<!--마우스 커서-->	
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

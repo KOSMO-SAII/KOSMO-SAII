@@ -166,6 +166,11 @@ li {
 	height: 400px;
     justify-content: center;
     margin-bottom:-600px;
+    z-index: 1;
+}
+
+.imgbox:hover{
+	transform:scale(1.1);
 }
 
 .col-md-3 text-end{
