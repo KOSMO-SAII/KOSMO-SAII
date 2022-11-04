@@ -50,6 +50,7 @@
 		<div class="ui_box">
 			<ul class="list_wrap">
 	<c:forEach items="${boardLists}" var="list" varStatus="stat">
+			<a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">
 				<li class="item">
 					<img class="image" src="./saii/img/Doldam.jpg " >
 						<div class="cont">
@@ -74,6 +75,7 @@
 						</div>
 					
 				</li>
+			</a>
 	</c:forEach>
 			</ul>
 		</div>			
