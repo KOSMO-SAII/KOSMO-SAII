@@ -223,10 +223,10 @@ var polyline = new kakao.maps.Polyline({
 				    map: map,
 				    path:[
 						new kakao.maps.LatLng(0, 0)
-						],
-				    strokeWeight: 4,
-				    strokeColor: '#FF00FF',
-				    strokeOpacity: 0.8,
+						],endArrow:true,
+				    strokeWeight: 6,
+				    strokeColor: '#98dde3',
+				    strokeOpacity: 1,
 					});
 
 //마이 핀 라인 생성

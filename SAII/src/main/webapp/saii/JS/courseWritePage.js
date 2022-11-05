@@ -15,9 +15,10 @@ var polyline = new kakao.maps.Polyline({
 				    path:[
 						new kakao.maps.LatLng(0, 0)
 						],
-				    strokeWeight: 4,
-				    strokeColor: '#FF00FF',
-				    strokeOpacity: 0.8,
+						endArrow:true,
+				    strokeWeight: 6,
+				    strokeColor: '#98dde3',
+				    strokeOpacity: 1,
 					});
 //라인 그리기 좌표 담는 배열					
 var path=[];
@@ -229,12 +230,15 @@ function displayPlaces(places) {
 					soverlay.setMap(null);
 				}
                displayInfowindow(marker, title);
+               
+               var placePosition = new kakao.maps.LatLng(title.y, title.x)
+               map.panTo(placePosition);
                 //searchmarker=1;
                 //console.log("click");
                 //console.log(searchmarker);
             });
 
-            itemEl.onmouseover =  function () {
+            /*itemEl.onmouseover =  function () {
 			//console.log("마우스 오버")
              hovereventlist(marker,title);
                
@@ -244,7 +248,7 @@ function displayPlaces(places) {
 				
 				//removeSearchMarker(marker);
 			
-            };
+            }; */
         })(marker, places[i]);
 
         fragment.appendChild(itemEl);
@@ -277,6 +281,7 @@ function addEventClick(place){
 	//console.log("한번만 실행 되야함")
 		$("#placesList li").click(function(){
 			console.log("리스트 클릭")
+			
 			if(soverlay!=undefined){
 			soverlay.setMap(null);
 			}
@@ -284,6 +289,9 @@ function addEventClick(place){
 			var placePosition = new kakao.maps.LatLng(place[n].y, place[n].x),
 				smarker = addMarker(placePosition);
 			displayInfowindow(smarker, place[n]);
+			
+			map.panTo(placePosition);
+			
 		})
 	
 }
@@ -518,7 +526,9 @@ for(var i=0;i<li.length;i++){
 			}else if(p.id==currCategory){
 				currCategory='';
 				removeMarkerCategory();
+				if(overlayOb!=undefined){
 				 closeOverlay();
+				 }
 			}
 
 		}		
@@ -528,7 +538,8 @@ for(var i=0;i<li.length;i++){
 
 //지도 확대,축소,이동에 따른 idle효과 등록
 function addListenr(){
-	
+	console.log("아이들 이벤트 변경")
+	console.log(currCategory)
 		if(currCategory!=''){
 			kakao.maps.event.addListener(map, 'idle',categorySearch);
 		}else if(currCategory==''){
@@ -579,6 +590,9 @@ function displayMarkerCategory(place) {
 		closeOverlay();
 	}
 	addOverLay(markerc,place);
+	
+	  var placePosition = new kakao.maps.LatLng(place.y, place.x)
+               map.panTo(placePosition);
 	});	
 	
 	
@@ -809,6 +823,7 @@ function addMySchedule(place){
 	
 	var li=document.createElement('li');	
 	li.innerHTML=
+	        '	 <input type="hidden" class="id" name="as" value="'+myplaceinfo.placeid+'">'+
             '    <div class="info">' + 
             '       <div class="title">' + 
                         			place.placeName + 
@@ -842,9 +857,15 @@ function addMySchedule(place){
 		removeMySchedule(event)	
 	});
 	
-	//생성한 리스트에 마우스 오버시 화면 이동(임시)
+	//생성한 리스트에 마우스 오버시 화면 이동
 	$('#My_List li .title').mouseover(function(event){
-		hoverevent(event);
+		var over="over"
+		hoverevent(event,over);
+	})
+	
+	$('#My_List li .title').mouseout(function(event){
+		var out="out"
+		hoverevent(event,out);
 	})
 	
 	//임시, 메모버튼클릭시 메모저장 박스 출력
@@ -858,7 +879,10 @@ function removeMySchedule(event){
 	var et= event.target;
 	var div=et.parentNode.parentNode;
 	var li=div.parentNode;
-	//console.log($(li).index());
+	console.log(li.firstElementChild);
+	console.log(li.firstElementChild.defaultValue);
+	//console.log(li.firstElementChild.defaultValue);
+	//console.log($(li).firstElementChild.defaultValue);
 	for(var i = 0 ;i<mymarkers.length;i++){
 		if (i==$(li).index()){
 			//console.log("삭제완료")
@@ -880,15 +904,32 @@ function removeMySchedule(event){
 	}
 }
 
-function hoverevent(event){
+function hoverevent(event,state){
 		var li=event.target.parentElement.parentElement;
+		var value=li.firstElementChild.defaultValue;
 		for(var i = 0 ;i<mymarkers.length;i++){
-			if (i==$(li).index()){
+			if(value==mymarkers[i].mymarker.id){
+				var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
+				map.panTo(mapmove);
+				if(state=="over"){				
+				mymarkers[i].mymarker.mymarker.setMap(map);
+				mymarkers[i].myoverlay.myoverlay.setMap(map);
+				}else if(state=="out"){
+				mymarkers[i].myoverlay.myoverlay.setMap(null);	
+					if(checkmode!=1){
+					mymarkers[i].mymarker.mymarker.setMap(null);
+					}
+				}
+
+			break;
+			}
+			
+			/*if (i==$(li).index()){
 			var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
 			mymarkers[i].mymarker.mymarker.setMap(map);
 			map.panTo(mapmove);
 			break;
-			}
+			}*/
 		}
 }
 //=======
@@ -905,12 +946,6 @@ function check(){
 			(function(marker, index) {
 				console.log("이벤트 등록");
 			
-				 kakao.maps.event.removeListener(marker,'click',function(){
-					console.log(marker);
-					console.log(index);
-					addmOverlay(marker,index);	
-				});	
-				
 				//리스트 클릭스 오버레이 출력
 	            kakao.maps.event.addListener(marker,'click',function(){
 					console.log(marker);
@@ -1011,15 +1046,19 @@ function makeline(){
 		polyline.setPath(path);
 		//polyline.setMap(map);
 	}else{
-		path=[];
+		var length=path.length;
 		
 		for(var i=0;i<mymarkers.length;i++){
+			if(i<length){
+				continue
+			}else{
 			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
 				la=mymarkers[i].mymarker.mymarker.getPosition().La
 				
 			var coord = new kakao.maps.LatLng(ma, la);
 			
-			path.push(coord);	
+			path.push(coord);
+			}	
 		}
 		polyline.setPath(path);
 	}
@@ -1122,11 +1161,13 @@ list.addEventListener('drop', (e) => {
 
 //내가 저장한 장소 배열 재설정
 function arraychange(currentItemIndex,dropItemIndex){
-	var num = mymarkers.length
-		var temp=[];
+	var num= path.length
+	var temp=[];
+		
 	//console.log(mymarkers);
 	for(var i=0;i<num;i++){
-		var my = mymarkers.shift();
+	
+		var my = path.shift();
 		//console.log(my)
 		temp.push(my)
 	}
@@ -1137,10 +1178,10 @@ function arraychange(currentItemIndex,dropItemIndex){
 			if(j==currentItemIndex){
 				continue;
 			}else if(j==dropItemIndex){
-				mymarkers.push(temp[j]);
-				mymarkers.push(temp[currentItemIndex]);
+				path.push(temp[j]);
+				path.push(temp[currentItemIndex]);
 			}else{
-				mymarkers.push(temp[j]);
+				path.push(temp[j]);
 			}
 		}
 	}else{
@@ -1148,14 +1189,14 @@ function arraychange(currentItemIndex,dropItemIndex){
 			if(j==currentItemIndex){
 				continue;
 			}else if(j==dropItemIndex){
-				mymarkers.push(temp[currentItemIndex]);
-				mymarkers.push(temp[j]);
+				path.push(temp[currentItemIndex]);
+				path.push(temp[j]);
 			}else{
-				mymarkers.push(temp[j]);
+				path.push(temp[j]);
 			}
 		}
 	}
 	//console.log(mymarkers);
-	makeline();
+	makeline(path);
 	polyline.setMap(map);
 }

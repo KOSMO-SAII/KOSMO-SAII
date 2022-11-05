@@ -48,9 +48,9 @@
 				
 				</ul>
 				<div id="btnbox">
-				<button type="button" onclick="check();">확인</button>
-				<button type="button" onclick="hide();">숨기기</button>
-				<a href="http://localhost:8081/SAII/home">돌아가기</a>
+				 <button type="button" onclick="check();">확인</button>
+				<button type="button" onclick="hide();">숨기기</button> 
+				<button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button>
 				<c:choose>
 					<c:when test="${param.mode eq 'edit'}">
 						<input type="submit" value="코스수정"></input>
