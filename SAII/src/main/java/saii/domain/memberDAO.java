@@ -36,39 +36,6 @@ public class memberDAO extends JDBConnect {
 		return applyResult;
 	}
 	
-	//파일 목록을 반환합니다.
-	public List<memberDTO> memList() {
-		List<memberDTO> fileList = new Vector<memberDTO>();
-		//쿼리문 작성
-		String query = "SELECT * FROM myfile ORDER BY id DESC";
-		try {
-			psmt = con.prepareStatement(query); //쿼리 준비
-			rs = psmt.executeQuery();
-			while(rs.next()) {   //목록 안의 파일 수만큼 반복
-				//DTO에 저장
-				memberDTO dto = new memberDTO();
-				dto.setId(rs.getString(1));
-				dto.setPw(rs.getString(2));
-				dto.setNickname(rs.getString(3));
-				dto.setName(rs.getString(4));
-				dto.setBirthday(rs.getDate(5));
-				dto.setSex(rs.getString(6));
-				dto.setPhone(rs.getString(7));
-				dto.setEmail(rs.getString(8));
-				dto.setAddress(rs.getString(9));
-				dto.setO_profile_img(rs.getString(10));
-				dto.setN_profile_img(rs.getString(11));
-				
-				fileList.add(dto);   //목록에 추가
-				
-			}
-		}catch(Exception e) {
-				System.out.println("SELECT 시 예외 발생");
-				e.printStackTrace();
-		}
-		return fileList;
-				
-	}
 	
 	public boolean checkId(String id) {
 		boolean result = false;
