@@ -218,7 +218,7 @@ h2 {
 }
 .spannick {
 	position: relative;
-	top: -55px;
+	top: -40px;
 }
 .divdate{
 	position: absolute;
@@ -256,6 +256,42 @@ span{
 }
 a {
 	color: black;
+}
+.favoimg{
+	position: relative;
+	width:70px;
+	height:70px;
+	top: 30px;
+	left: 20px;
+	
+}
+.mylist2{
+	position: relative;
+	margin: auto;
+	width: 500px;
+	height: 150px;
+	box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
+	outline: 5px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	top:-70px;
+	
+}
+.myfavo{
+	height: 160px;
+	width: 900px;
+	position: relative;
+	margin: auto;
+}
+.mylist2:hover{
+	transform: scale(1.1) ;
+    border: 10px;
+    border-color: gray;
+    background-color: #FFF4F9;
+}
+.spanimg{
+	position:relative;
+	top: 49px;
 }
 </style>
 </head>
@@ -324,30 +360,9 @@ a {
 </div>
 <div id="show2">
 	<div class="imgdiv">
-		<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+		<img src="/SAII/Storage/${dto.n_profile_img}" width="90px" height="90px" style="border-radius: 50px">
 		<span class="spannick">${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
 	</div>
-	<c:choose>
-		<c:when test="${not empty flist }">
-			<c:forEach items="${flist}" var="mlist">
-				<div class="mylist">
-					<a href="http://localhost:8081/SAII/view?m_id=${fiist.m_id }">
-						<div class="divtitle"><span>코스이름 </span> ${flist.m_title }</div>
-						<div class="divregion"><span>코스지역 </span> ${flist.region}</div>
-						<div class="divname"><span>코스경로 </span> ${flist.p_name}</div>
-						<div class="divdate"><span>게시날짜 </span> ${flist.m_postdate}</div>
-						<div class="divcount"><span>선택장소 </span> ${flist.count}</div>
-					</a>
-				</div>
-			</c:forEach>
-		</c:when>
-		<c:otherwise>
-			<div>등록된 게시물이 없어요~</div>
-		</c:otherwise>
-	</c:choose>
-</div>
-
-<div id="show3">
 	<c:choose>
 		<c:when test="${not empty list }">
 			<c:forEach items="${list}" var="mlist">
@@ -360,6 +375,31 @@ a {
 						<div class="divcount"><span>선택장소 </span> ${mlist.count}</div>
 					</a>
 				</div>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<div>등록된 게시물이 없어요~</div>
+		</c:otherwise>
+	</c:choose>
+</div>
+
+<div id="show3">
+	<c:choose>
+		<c:when test="${not empty flist }">
+			<c:forEach items="${flist}" var="flist2">
+			<div class="myfavo">
+				<img class="favoimg"src="/SAII/Storage/${flist2.profile}"  style="border-radius: 50px">
+				<br><span class="spanimg">${flist2.nickname }의 게시물</span>
+				<div class="mylist2">
+					<a href="http://localhost:8081/SAII/view?m_id=${flist2.m_id }">
+						<div class="divtitle"><span>코스이름 </span> ${flist2.m_title }</div>
+						<div class="divregion"><span>코스지역 </span> ${flist2.region}</div>
+						<div class="divname"><span>코스경로 </span> ${flist2.p_name}</div>
+						<div class="divdate"><span>게시날짜 </span> ${flist2.m_postdate}</div>
+						<div class="divcount"><span>선택장소 </span> ${flist2.count}</div>
+					</a>
+				</div>
+			</div>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>

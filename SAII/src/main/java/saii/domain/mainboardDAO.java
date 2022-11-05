@@ -270,7 +270,7 @@ public class mainboardDAO extends JDBConnect {
 	
 	public ArrayList<mainboardDTO> myfavolist(String nickname){
 		ArrayList<mainboardDTO> dto = new ArrayList<>();
-		String sql = "SELECT * FROM FROM GOOD G, MAIN_BOARD B, MEMBER M WHERE G.M_ID=B.M_ID AND B.NICKNAME=M.NICKNAME "
+		String sql = "SELECT G.M_ID,B.M_TITLE,B.REGION,B.COURSE_ID,B.NICKNAME,B.M_POSTDATE,B.VISITCOUNT FROM GOOD G, MAIN_BOARD B, MEMBER M WHERE G.M_ID=B.M_ID AND B.NICKNAME=M.NICKNAME "
 				+ "AND G.NICKNAME=?";
 		try {
 			psmt=con.prepareStatement(sql);

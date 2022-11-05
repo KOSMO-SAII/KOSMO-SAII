@@ -63,7 +63,7 @@ a {
 .list_wrap {
     width: 1000px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 20px 0 100px 0;
 }
 
 .list_wrap {
@@ -127,13 +127,16 @@ a {
     font-size: 20px;
     letter-spacing: -1px;
 }
-.list_wrap .item strong:hover {
-    background: #99D9EA;
-    color: #fff;
+.list_wrap .item .cont .title{
+	font-weight: bolder;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+	padding-bottom: 3%;
+  	
 }
 
 /* .item:nth(3n+1) {
 	margin:0;
 } */
 
-.

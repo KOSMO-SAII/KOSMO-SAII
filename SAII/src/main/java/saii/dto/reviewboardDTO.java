@@ -11,7 +11,6 @@ public class reviewboardDTO {
 	private int visitcount;
 	private String o_file;
 	private String n_file;
-	private String ccnt;
 
 	public int getR_id() {
 		return r_id;
@@ -83,14 +82,6 @@ public class reviewboardDTO {
 
 	public void setN_file(String n_file) {
 		this.n_file = n_file;
-	}
-
-	public String getCcnt() {
-		return ccnt;
-	}
-
-	public void setCcnt(String ccnt) {
-		this.ccnt = ccnt;
 	}
 
 }
