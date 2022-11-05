@@ -30,11 +30,9 @@ public class myPageController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/mypage doGet");
 		HttpSession session =req.getSession();
 		String idx = (String) session.getAttribute("UserId");
 		
-		System.out.println(idx);
 		memberDAO dao = new memberDAO();
 		memberDTO dto = dao.userinfo(idx);
 		
@@ -48,8 +46,6 @@ public class myPageController extends HttpServlet{
 		}
 		String nick = dto.getNickname();
 		map.put("nick", nick);
-		System.out.println(nick);
-		System.out.println(map.get("nick"));
 		int totalCount = mdao.selectCount(map);//게시물의 갯수
 		int mylist = mdao.mylistcount(nick);
 		map.put("mylistcount", mylist);
@@ -91,7 +87,6 @@ public class myPageController extends HttpServlet{
 			
 			// 각 정보 속성값에 저장하기
 			list.add(hmap);
-			System.out.println(hmap.get("p_name"));
 		}		
 		
 		req.setAttribute("list", list);

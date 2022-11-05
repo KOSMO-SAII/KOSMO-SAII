@@ -184,7 +184,6 @@ public class memberDAO extends JDBConnect {
 				dto.setO_profile_img(rs.getString("o_profile_img"));
 				dto.setN_profile_img(rs.getString("n_profile_img"));
 			}
-			System.out.println(dto.getId());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -251,7 +250,6 @@ public class memberDAO extends JDBConnect {
 			psmt.setString(1, dto.getO_profile_img());
 			psmt.setString(2, dto.getN_profile_img());
 			psmt.setString(3, dto.getId());
-			System.out.println(dto.getO_profile_img());
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("파일업로드 중 에러");
@@ -261,9 +259,6 @@ public class memberDAO extends JDBConnect {
 	}
 	
 	public memberDTO findId(String member_name, String member_phone) {
-		System.out.println("findId");
-		 System.out.println(member_name);
-	     System.out.println(member_phone);
 	     memberDTO dto = new memberDTO();
 		try {
 			String query = "SELECT * FROM MEMBER WHERE NAME=? and PHONE=?";
@@ -285,9 +280,6 @@ public class memberDAO extends JDBConnect {
 	}
 	
 	public String findPw(String member_id, String member_phone) {
-		System.out.println("findPW");
-		 System.out.println(member_id);
-	     System.out.println(member_phone);
 	     memberDTO dto = new memberDTO();
 		try {
 			String query = "SELECT * FROM MEMBER WHERE ID=? and PHONE=?";

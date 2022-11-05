@@ -22,7 +22,6 @@ public class signupPageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/signup doGet");
 		req.getRequestDispatcher("/saii/signup/signupPage.jsp").forward(req, resp);
 	}
 
@@ -30,7 +29,7 @@ public class signupPageController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			String saveDirectory = req.getServletContext().getRealPath("/Storage");// 저장할 디렉토리
+			String saveDirectory = req.getServletContext().getRealPath("../Storage");// 저장할 디렉토리
 			int maxPostSize = 1024 * 1000;
 			String encoding = "UTF-8";
 			// 1.MultipartRequest 객체 생성
@@ -40,7 +39,6 @@ public class signupPageController extends HttpServlet {
 			String date = mr.getParameter("yy") + "-" + mr.getParameter("mm") + "-" + mr.getParameter("dd");
 			String newFileName = date + ext;// 새로운 파일 이름("업로드 일시.확장자")
 
-			System.out.println(mr.getParameter("id") + "   " + date);
 			File oldFile = new File(saveDirectory + File.separator + fileName);
 			File newFile = new File(saveDirectory + File.separator + newFileName);
 			oldFile.renameTo(newFile);

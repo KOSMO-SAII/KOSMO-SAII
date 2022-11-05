@@ -63,24 +63,20 @@ public class courseViewController extends HttpServlet{
 		
 		//courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정 
 		if(mode.equals( "edit")) {
-			System.out.println("edit실행");	
 			courseDAO cdao = new courseDAO();
 			String[] str = req.getParameterValues("data");
 			 course_id=Integer.parseInt(req.getParameter("c_id")) ;
-			System.out.println("편집 모드 코스 id"+course_id);
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 			cdao.updateCourse(course_id, cdtos);
 			
 		}else {
 			//courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장 
-			System.out.println("write실행");
 			if(req.getParameterValues("data")!=null) {
 				courseDAO cdao = new courseDAO();
 				String[] str = req.getParameterValues("data");
 				ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 				cdao.insertCourse(cdtos); 	
 				course_id = cdao.getCurrentCourseId();
-				System.out.println("작성 모드 코스 id"+course_id);
 				cdao.close();
 				
 				mainboardDAO mdao = new mainboardDAO();
@@ -90,7 +86,6 @@ public class courseViewController extends HttpServlet{
 				String title = req.getParameter("title");
 				String region = req.getParameter("region");
 				String nickname = req.getParameter("nickname");
-				//System.out.println(nickname);
 				if (title != null && title.equals(""))
 					title = nickname + "_" + cdtos.get(0).getPlace_name();
 				if (region != null && region.equals("")) {
@@ -99,7 +94,6 @@ public class courseViewController extends HttpServlet{
 				}
 				mdto.setM_title(title);
 				mdto.setRegion(region);
-				//System.out.println("mdao insert");
 				mdao.insertWrite(mdto,nickname);	
 				
 			}

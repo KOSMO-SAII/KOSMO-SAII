@@ -30,13 +30,10 @@ public class loginController extends HttpServlet{
 		
 		String userId= req.getParameter("user_id");
 		String userPw=req.getParameter("user_pw");
-		System.out.println(userId);
-		System.out.println(userPw);
 		
 		memberDTO dto = loginService.doPost(userId,userPw);
 		
 		HttpSession session =req.getSession();
-		System.out.println(dto.getId());
 		if(dto.getId()!=null) {
 			session.setAttribute("UserId", dto.getId());
 			session.setAttribute("UserName", dto.getName());

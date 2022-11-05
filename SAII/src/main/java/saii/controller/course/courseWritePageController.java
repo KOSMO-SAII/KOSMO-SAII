@@ -30,7 +30,6 @@ public class courseWritePageController extends HttpServlet{
 		
 				List<Map<String, String>> list=new Vector<Map<String,String>>();
 				String[] datas = req.getParameterValues("data");
-				System.out.println(Arrays.toString(datas));
 				
 				for(int k=0; k<datas.length;k++) {
 					String[] data =  datas[k].split("\\|");
@@ -53,7 +52,6 @@ public class courseWritePageController extends HttpServlet{
 					list.add(map);
 
 				}
-				System.out.println(list);
 				req.setAttribute("List", list);
 				req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
 	}
