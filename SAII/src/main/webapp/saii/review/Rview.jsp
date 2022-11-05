@@ -23,19 +23,44 @@
 	text-align:right;
 	padding: 3% 0;
 }
+.container .info button{
+    height: 25px;
+    width: 130px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+    white-space: nowrap;
+}
+.container .info button:hover{
+	background-color: #99dde4;
+}
 .view-btn{
 	position: absolute;
 	right: 17%;
 	display: inline-block;
 }
-.cmt-table{
-	width: 100%;
-	position: relative;
-	padding-top: 5%;
-	
-}
+
 .cmt-container{
 	padding: 40px 15%;
+	position:relative;
+	
+}
+.cmt-table .cmt{
+	border: 1px solid #dddddd;
+}
+.cmt tr:nth-child(2n){
+	background-color: none;
+}
+.cmt tr:nth-child(2n-1){
+	background-color: #f7f7f7;
+}
+.okCmt{
+	margin: 0px;
 }
 
 </style>
@@ -105,7 +130,7 @@
 	<!-- 댓글 목록 -->
 <div class="cmt-container">
 	<form method="POST" action="http://localhost:8081/SAII/addComment">
-		<table>
+		<table class="cmt-table">
 			<tr>
 				<td>
 					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
@@ -118,30 +143,34 @@
 		<input type="hidden" name="board_no" value="${ dto.r_id }" />
 	</form>
 
-	<table>
+	<table class="cmt">
 		<c:if test="${empty commentLists}">
 			<tr>
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${ commentLists }" var="clist">
-			<tr>
-				<td>
-					<span>${ clist.nickname }</span>
-					<span>${ clist.cmt_regdate }</span>
-					${ clist.cmt_content }
-				</td>
-				<td>
-					<c:if test="${!(empty sessionScope.UserId)}">
-						<c:if test="${clist.cmt_id == sessionScope.UserId}">
-							<input type="button" value="수정"
-								onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-							<input type="button" value="삭제"
-								onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+			<div class="okCmt">
+				<tr>
+					<td>
+						<span>${ clist.nickname }</span>
+					</td>
+					<td>
+						<div>${ clist.cmt_content }</div>
+						<div style="font-size:8px; right:20%;">${ clist.cmt_regdate }</div>
+					</td>
+					<td>
+						<c:if test="${!(empty sessionScope.UserId)}">
+							<c:if test="${clist.cmt_id == sessionScope.UserId}">
+								<input type="button" value="수정"
+									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+								<input type="button" value="삭제"
+									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+							</c:if>
 						</c:if>
-					</c:if>
-				</td>
-			</tr>
+					</td>
+				</tr>
+			</div>
 		</c:forEach>	
 	</table>
 
