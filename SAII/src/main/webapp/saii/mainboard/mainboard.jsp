@@ -9,21 +9,95 @@
 <style>
 	h2{
 		text-align: center;
+		width: 80%;
+		margin: auto;
+    	margin-bottom: 50px;
+    	margin-top: 40px;
 	}
 	table{
 		width:90%;
 		margin:auto;
-		border:1px solid black;
 	}
 	tr,td{
 		margin:auto;
-		border:1px solid black;
 	}
 	#paging{
 		text-align:center;
 	}
 	#writeButton{
 		text-align:right;
+	}
+	.mainboard{
+		margin:auto;
+		width:80%;
+	}
+	input[name="search_Str"]{
+    vertical-align: bottom;
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+ 	}
+ 	input[type="submit"]{
+    height: 40px;
+    width: 70px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #98dde3;
+    position: relative;
+    vertical-align: bottom;
+    }
+    input[type="button"]{
+    height: 35px;
+    width: 80px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #98dde3;
+    position: relative;
+    vertical-align: bottom;
+    }
+    input[type="text"]{
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    }
+    select{
+    border-radius: 5px;
+    height: 40px;
+    }
+	#search_table{
+	border:none;
+	margin:auto;	
+	}
+	#search_table.children(){
+		margin:auto 50px;
+	}
+	#board_table tr:nth-child(2n){
+		background-color: none;
+	}
+	#board_table tr:nth-child(2n-1){
+		background-color: #f7f7f7;
+	}
+	a {
+	text-decoration:none;
+	color:darkblue;
+	}
+	#table_head{
+	text-align:center;
+	font-size:larger;
 	}
 </style>
 
@@ -35,8 +109,9 @@
 </head>
 <body>
 	<h2>근처 데이트코스 쉽게 찾자~</h2>
+	<div class="mainboard">
 	<form method="get">
-		<table align="center">
+		<table id="search_table" align="center">
 			<tr>
 				<td align="center">
 					<select name="searchType">
@@ -46,46 +121,44 @@
 						<option value="nickname" <c:if test="${map.searchType == 'nickname'}">selected</c:if>>작성자</option>
 						<option value="content" <c:if test="${map.searchType == 'content'}">selected</c:if>>내용</option>
 					</select>
-					<input type="searchStr" name="searchStr" value="${map.searchStr}" />
+					<input type="text" name="searchStr" value="${map.searchStr}" />
 					<input type="submit" value="검색" />
 				</td>
 			</tr>
 		</table>
 	</form>
-	<table>
-		<tr>
-			<td>번호</td>
-			<td>지역</td>
-			<td>제목</td>
-			<td>코스넘버</td>
+	<table id="board_table">
+		<tr id="table_head">
+			<td>No.</td>
 			<td>작성자</td>
-			<td>게시날짜</td>
+			<td>제목</td>
+			<td>지역</td>
 			<td>조회수</td>
 			<td>좋아요</td>
+			<td>게시일</td>
 		</tr>
 		<c:choose>
 			<c:when test="${not empty mainBoardLists}">
 				<c:forEach items="${mainBoardLists}" var="list" varStatus="stat">
 					<tr>
 						<td>${list.m_id}</td>
-						<td>${list.region}</td>
-						<td><a href="http://localhost:8081/SAII/view?m_id=${list.m_id}">${list.m_title}</a></td>
-						<td>${list.course_id}</td>
 						<td>${list.nickname}</td>
-						<td>${list.m_postdate}</td>
+						<td><a href="http://localhost:8081/SAII/view?m_id=${list.m_id}">${list.m_title}</a></td>
+						<td>${list.region}</td>
 						<td>${list.visitcount}</td>
 						<td>${list.goodcount}</td>
+						<td>${list.m_postdate}</td>
 					</tr>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="8">등록된 게시물이 없습니다</td>
+					<td colspan="7">등록된 게시물이 없습니다</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
 		<tr>
-			<td colspan="8" id="paging">
+			<td colspan="7" id="paging">
 				<c:url var="action" value="http://localhost:8081/SAII/mainboard" />
 				<c:if test="${paging.prev}">
 					<a href="${action}?page=${paging.beginPage-1}">prev</a>
@@ -107,8 +180,10 @@
 				</c:if>
 			</td>
 		</tr>
+	</table>
+	<table>
 		<tr>
-			<td colspan="7">
+			<td colspan="6">
 				<c:choose>
 					<c:when test="${sessionScope.UserId ne null}">
 						<input type="button" value="로그아웃" onclick="location.href='http://localhost:8081/SAII/logout';"/>
@@ -130,6 +205,7 @@
 			</td>
 		</tr>
 	</table>
+	</div>
 	
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>

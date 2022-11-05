@@ -30,8 +30,8 @@
 	      <h4>  등록된 정보가 없습니다 </h4>  
 	     </div>
 	     <div class = "found-login">
- 		    <input class="button" type="button" id="btnback" value="다시 찾기" onClick='location="../saii/findId2.jsp"'/><!--아이디 찾기로 이동-->
- 		    <input class="button"type="button" id="btnjoin" value="회원가입" onClick='location="../saii/signupPage.jsp"'/><!--회원 가입 페이지로 이동-->
+		    <input class="button" type="button" id="btnback" value="다시 찾기" onClick="history.back()"/>
+ 		    <input class="button" type="button" id="btnjoin" value="회원가입" onClick='location="http://localhost:8081/SAII/signup"'/>
        	</div>
        </div>
        

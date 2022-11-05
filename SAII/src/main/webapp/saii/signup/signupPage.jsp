@@ -107,12 +107,12 @@
 			return false;
 		}
 		//아이디 길이 체크 (6~15자)
-		if (form.id.value.length < 6 || form.id.value.length > 15) {
+	<%--	if (form.id.value.length < 6 || form.id.value.length > 15) {
 			alert("아이디를 6~15자까지 입력해주세요.")
 			form.id.focus();
 			form.id.select();
 			return false;
-		}
+		}  --%>
 		
 		var popupWidth = 650;
 		var popupHeight = 250;
@@ -152,13 +152,13 @@
 <body>
 	<h2>회원가입</h2>
 	<form id="form" method="post" action="http://localhost:8081/SAII/signup" enctype="multipart/form-data" onsubmit="return check();">
-	
+										<!-- signupPageController로 이동                                             memAct.js로 이동  -->
 	<div>
 	<label>아이디 </label> 
 	<div class="ckck">
 	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
 	<button type="button" class="ck-button"  onclick="idCk(); ">확인</button> <br/>
-	<!--  <input type="button" class="button" value="중복체크" onclick="idCk(); "/> <br/>-->
+											<!-- 위에 있음/ 빈칸인지 확인하고 창 열림 -->
 	</div>
 	</div>
 	

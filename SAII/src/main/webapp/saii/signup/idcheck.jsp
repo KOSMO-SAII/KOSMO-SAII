@@ -63,7 +63,7 @@ input[type=text]  { vertical-align: 5px; width:400px; height:40px; display: inli
 	<h2>ID 중복확인</h2>
 
    
-   <form id="form" name="writeFrm" method="post" "
+   <form id="form" name="writeFrm" method="post"
    		action="http://localhost:8081/SAII/idcheck" onsubmit="return idCk(this);">
       
          <div class="ck01">

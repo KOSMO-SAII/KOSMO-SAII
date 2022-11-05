@@ -31,11 +31,11 @@ h1 {
   padding:0;
 }
 
-.btn-outline-primary {
+/* .btn-outline-primary {
     color: black;
     border-color: #98dde3;
     font-weight: bold;
-}
+} */
 .btn-primary {
     color: #fff;
     background-color: #98dde3;
@@ -54,12 +54,13 @@ h1 {
     border-color:#98dde3;
     border-style:bold;
     text-decoration-color:#98dde3;
+    font-weight: bold;
 }
 
 .btn-outline-primary:hover {
     background-color:rgb(91, 174, 223);
     border-color:#98dde3;
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 
@@ -113,7 +114,7 @@ section {
 	display: flex;
 	flex-direction: row-reverse;
 	width: 100%;
-	height: 700px;
+	height: 765px;
 }
 
 .image-box {
@@ -136,7 +137,7 @@ section {
  */
 footer {
 	background-color: rgba(223, 231, 232, 0.5);
-	padding: 30px;
+	padding: 23px;
 	color:black;
 }
 
@@ -145,6 +146,7 @@ ul {
 	padding: 0;
 	list-style-type: none;
 	float: right;
+	font-size:15px;
 }
 
 li {

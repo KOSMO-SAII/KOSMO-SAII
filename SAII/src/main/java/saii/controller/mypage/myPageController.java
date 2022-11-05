@@ -88,8 +88,6 @@ public class myPageController extends HttpServlet{
 			
 			// 각 정보 속성값에 저장하기
 			list.add(hmap);
-
-			System.out.println(hmap.get("p_name"));
 		}
 		
 		ArrayList<mainboardDTO> fdtos = mdao.myfavolist(nick);
