@@ -50,8 +50,9 @@
 	position:relative;
 	
 }
-.cmt-table .cmt{
+.cmt{
 	border: 1px solid #dddddd;
+	width: 100%
 }
 .cmt tr:nth-child(2n){
 	background-color: none;
@@ -60,7 +61,15 @@
 	background-color: #f7f7f7;
 }
 .okCmt{
-	margin: 0px;
+	margin: auto;
+}
+.cmt .date{
+font-size: 8px;
+    display: block;
+    width: max-content;
+    position: relative;
+    left: 85%;
+ 	border: none;
 }
 
 </style>
@@ -150,27 +159,26 @@
 			</tr>
 		</c:if>
 		<c:forEach items="${ commentLists }" var="clist">
-			<div class="okCmt">
 				<tr>
 					<td>
 						<span>${ clist.nickname }</span>
 					</td>
 					<td>
 						<div>${ clist.cmt_content }</div>
-						<div style="font-size:8px; right:20%;">${ clist.cmt_regdate }</div>
+						<div class="cmt date">${ clist.cmt_regdate }</div>
 					</td>
-					<td>
-						<c:if test="${!(empty sessionScope.UserId)}">
-							<c:if test="${clist.cmt_id == sessionScope.UserId}">
-								<input type="button" value="수정"
+					
+					<c:if test="${!(empty sessionScope.UserId)}">
+						<c:if test="${clist.cmt_id == sessionScope.UserId}">
+							<td>
+								<input class="cmt-button" type="button" value="수정"
 									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-								<input type="button" value="삭제"
+								<input class="cmt-button" type="button" value="삭제"
 									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-							</c:if>
+							</td>
 						</c:if>
-					</td>
+					</c:if>
 				</tr>
-			</div>
 		</c:forEach>	
 	</table>
 
