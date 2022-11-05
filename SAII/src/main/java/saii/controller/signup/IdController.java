@@ -24,7 +24,7 @@ public class IdController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		memberDAO dao = new memberDAO();
 		String id = req.getParameter("id");
-		boolean confirmed = dao.checkId(id);
+		boolean confirmed = dao.checkId(id);  //checkId는 memberDAO로 이동
 		
 		if (!confirmed) { // 중복
 			alertBack(resp, "중복된 아이디입니다.");

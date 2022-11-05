@@ -50,8 +50,9 @@
 	position:relative;
 	
 }
-.cmt-table .cmt{
+.cmt{
 	border: 1px solid #dddddd;
+	width: 100%
 }
 .cmt tr:nth-child(2n){
 	background-color: none;
@@ -60,7 +61,28 @@
 	background-color: #f7f7f7;
 }
 .okCmt{
-	margin: 0px;
+	margin: auto;
+}
+.cmt_btn{
+	margin-top: 24px;
+    height: 40px;
+    width: 80px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+}
+.cmt .date{
+font-size: 8px;
+    display: block;
+    width: max-content;
+    position: relative;
+    left: 85%;
+ 	border: none;
 }
 
 </style>
@@ -136,7 +158,7 @@
 					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
 				</td>
 				<td>
-					<input type="submit" value="댓글쓰기" />
+					<input class="cmt_btn" type="submit" value="댓글쓰기" />
 				</td>
 			</tr>
 		</table>
@@ -145,32 +167,31 @@
 
 	<table class="cmt">
 		<c:if test="${empty commentLists}">
-			<tr>
+			<tr style="width: 100%;">
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${ commentLists }" var="clist">
-			<div class="okCmt">
 				<tr>
 					<td>
 						<span>${ clist.nickname }</span>
 					</td>
 					<td>
 						<div>${ clist.cmt_content }</div>
-						<div style="font-size:8px; right:20%;">${ clist.cmt_regdate }</div>
+						<div class="cmt date">${ clist.cmt_regdate }</div>
 					</td>
-					<td>
-						<c:if test="${!(empty sessionScope.UserId)}">
-							<c:if test="${clist.cmt_id == sessionScope.UserId}">
-								<input type="button" value="수정"
+					
+					<c:if test="${!(empty sessionScope.UserId)}">
+						<c:if test="${clist.cmt_id == sessionScope.UserId}">
+							<td>
+								<input class="cmt-button" type="button" value="수정"
 									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-								<input type="button" value="삭제"
+								<input class="cmt-button" type="button" value="삭제"
 									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-							</c:if>
+							</td>
 						</c:if>
-					</td>
+					</c:if>
 				</tr>
-			</div>
 		</c:forEach>	
 	</table>
 
