@@ -13,7 +13,7 @@ h2 { text-align: center; margin: 50px 0 10px 0;}
 input[type=text], input[type=password] { vertical-align: 5px; width:400px; height:40px; display: inline-block;
 									border:none; background: #F7F7F7;}
 label { vertical-align: 5px; color: #999;}
-a {vertical-align: 5px;}
+a {vertical-align: 5px; text-decoration:none;}
 input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; border: none;
     		color: #fff; font-size: 16px; font-weight: 500; cursor: pointer;
     		border-radius: 4px; background-color: #98dde3;}
