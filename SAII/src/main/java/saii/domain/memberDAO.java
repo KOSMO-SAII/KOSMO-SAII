@@ -184,7 +184,6 @@ public class memberDAO extends JDBConnect {
 				dto.setO_profile_img(rs.getString("o_profile_img"));
 				dto.setN_profile_img(rs.getString("n_profile_img"));
 			}
-			System.out.println(dto.getId());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -251,7 +250,6 @@ public class memberDAO extends JDBConnect {
 			psmt.setString(1, dto.getO_profile_img());
 			psmt.setString(2, dto.getN_profile_img());
 			psmt.setString(3, dto.getId());
-			System.out.println(dto.getO_profile_img());
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("파일업로드 중 에러");
@@ -261,9 +259,6 @@ public class memberDAO extends JDBConnect {
 	}
 	
 	public memberDTO findId(String member_name, String member_phone) {
-		System.out.println("findId");
-		 System.out.println(member_name);
-	     System.out.println(member_phone);
 	     memberDTO dto = new memberDTO();
 		try {
 			String query = "SELECT * FROM MEMBER WHERE NAME=? and PHONE=?";
@@ -285,9 +280,6 @@ public class memberDAO extends JDBConnect {
 	}
 	
 	public String findPw(String member_id, String member_phone) {
-		System.out.println("findPW");
-		 System.out.println(member_id);
-	     System.out.println(member_phone);
 	     memberDTO dto = new memberDTO();
 		try {
 			String query = "SELECT * FROM MEMBER WHERE ID=? and PHONE=?";
@@ -325,5 +317,21 @@ public class memberDAO extends JDBConnect {
 		
 		return result;
 		
+	}
+	
+	public String favoprofile(String m_id) {
+		String result="";
+		String sql = "SELECT N_PROFILE_IMG FROM MEMBER M, MAIN_BOARD B WHERE M.NICKNAME=B.NICKNAME AND B.M_ID=?";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result=rs.getString(1);
+		} catch (Exception e) {
+			System.out.println("favoprofile err");
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

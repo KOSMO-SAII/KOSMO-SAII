@@ -19,12 +19,6 @@ public class startPageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/home doget");
 		req.getRequestDispatcher("/saii/startPage.jsp").forward(req, resp);
-		
-		memberDAO mdao = new memberDAO();
-		reviewboardDAO rbdao = new reviewboardDAO();
-		mainboardDAO mbdao = new mainboardDAO();
-		courseDAO cdao = new courseDAO();
 	}
 }

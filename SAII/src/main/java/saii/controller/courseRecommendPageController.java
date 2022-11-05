@@ -23,8 +23,6 @@ public class courseRecommendPageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("course_recommend doGet");
-			
 		//MBOARD DAO 정보가져오기
 		mainboardDAO mdao = new mainboardDAO();
 		ArrayList<mainboardDTO> mdtos = mdao.getRecommendData();
@@ -40,7 +38,6 @@ public class courseRecommendPageController extends HttpServlet {
 			
 			// 각 정보 속성값에 저장하기
 			list.add(map);
-			System.out.println(map.get("p_name"));
 		}		
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("saii/courseRecommendPage.jsp").forward(req, resp);

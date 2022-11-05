@@ -87,7 +87,6 @@ public class mainboardDAO extends JDBConnect {
 			stmt = con.createStatement();
 			rs =stmt.executeQuery(sql);
 			while(rs.next()) {
-				System.out.println("1");
 				mainboardDTO dto = new mainboardDTO();
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
@@ -211,14 +210,13 @@ public class mainboardDAO extends JDBConnect {
 	public ArrayList<mainboardDTO> getRecommendData() {
 		
 		ArrayList<mainboardDTO> dtos = new ArrayList<>();
-		String sql = "SELECT * FROM MAIN_BOARD WHERE ROWNUM <= 3 ORDER BY VISITCOUNT DESC";
+		String sql = "SELECT * FROM (SELECT * FROM MAIN_BOARD ORDER BY VISITCOUNT DESC) WHERE ROWNUM <= 3";
 		
 		try {
 			stmt = con.createStatement();
 			rs =stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				System.out.println("1");
 				mainboardDTO dto = new mainboardDTO();
 				
 				dto.setM_id(rs.getString("m_id"));
@@ -241,4 +239,96 @@ public class mainboardDAO extends JDBConnect {
 		return dtos;
 	}
 	
+	public ArrayList<mainboardDTO> getmylist(String nickname){
+		ArrayList<mainboardDTO> dtos = new ArrayList<>();
+		String sql = "SELECT * FROM MAIN_BOARD WHERE NICKNAME=? ORDER BY M_ID";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				mainboardDTO dto = new mainboardDTO();
+				
+				dto.setM_id(rs.getString("m_id"));
+				dto.setM_title(rs.getString("m_title"));
+				dto.setRegion(rs.getString("region"));
+				dto.setCourse_id(rs.getString("course_id"));				
+				dto.setNickname(rs.getString("nickname"));
+				dto.setM_postdate(rs.getDate("m_postdate"));
+				dto.setVisitcount(rs.getInt("visitcount"));
+				dto.setGoodcount(rs.getInt("goodcount"));
+				
+				dtos.add(dto);
+				}
+		} catch (Exception e) {
+			System.out.println("getmylist err");
+			e.printStackTrace();
+		}
+		return dtos;
+	}
+	
+	public ArrayList<mainboardDTO> myfavolist(String nickname){
+		ArrayList<mainboardDTO> dto = new ArrayList<>();
+		String sql = "SELECT G.M_ID,B.M_TITLE,B.REGION,B.COURSE_ID,B.NICKNAME,B.M_POSTDATE,B.VISITCOUNT FROM GOOD G, MAIN_BOARD B, MEMBER M WHERE G.M_ID=B.M_ID AND B.NICKNAME=M.NICKNAME "
+				+ "AND G.NICKNAME=?";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				mainboardDTO dto2 = new mainboardDTO();
+				
+				dto2.setM_id(rs.getString("m_id"));
+				dto2.setM_title(rs.getString("m_title"));
+				dto2.setRegion(rs.getString("region"));
+				dto2.setCourse_id(rs.getString("course_id"));
+				dto2.setNickname(rs.getString("nickname"));
+				dto2.setM_postdate(rs.getDate("m_postdate"));
+				dto2.setVisitcount(rs.getInt("visitcount"));
+				
+				dto.add(dto2);
+			}
+		} catch (Exception e) {
+			System.out.println("favolist err");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	
+	public int mylistcount(String nickname) {
+		int result =0;
+		String sql = "SELECT COUNT(*) FROM MAIN_BOARD WHERE NICKNAME=?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs = psmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("mylistcount err");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public String favoprofile (String m_id) {
+		String result ="";
+		String sql = "SELECT N_PROFILE_IMG FROM MEMBER M, MAIN_BOARD B WHERE M.NICKNAME=B.NICKNAME AND B.M_ID=?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result=rs.getString(1);
+		} catch (Exception e) {
+			System.out.println("fovoprofile err");
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
 }

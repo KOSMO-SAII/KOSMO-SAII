@@ -41,7 +41,7 @@
 
 			<div class="col-md-3 text-end">
 				<c:if test="${UserId==null}">
-					<a href="http://localhost:8081/SAII/saii/loginPage.jsp?id=${UserId }"><button
+					<a href="http://localhost:8081/SAII/login"><button
 							type="button" class="btn btn-outline-primary me-2">Login</button></a>
 				</c:if>
 				<c:if test="${UserId!=null}">

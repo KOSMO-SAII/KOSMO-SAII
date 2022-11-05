@@ -22,7 +22,6 @@ public class RListController extends HttpServlet {
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
          throws ServletException, IOException {
-	   System.out.println("review_list doGet");
 	   
       //DAO 생성
       reviewboardDAO dao = new reviewboardDAO(); //
@@ -72,7 +71,7 @@ public class RListController extends HttpServlet {
       //뷰로 최종 전달
       req.setAttribute("boardLists", boardLists);
       req.setAttribute("map", map);
-      req.getRequestDispatcher("/saii/RlistCard.jsp").forward(req, resp);
+      req.getRequestDispatcher("/saii/review/RlistCard.jsp").forward(req, resp);
    }
    
 

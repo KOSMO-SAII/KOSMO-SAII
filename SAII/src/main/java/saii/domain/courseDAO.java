@@ -20,19 +20,9 @@ public class courseDAO extends JDBConnect {
 		ArrayList<courseDTO> cdtos = new ArrayList<>();
 		courseDTO cdto = new courseDTO();
 		int order = 1;
-		System.out.println(str);
 		
 		for (String s : str) {
 			String[] data = s.split("\\|");
-			System.out.println("tocdto " + s + "\t");
-//			System.out.println(Arrays.toString(data));
-//			System.out.println(data[0]);
-//			
-//			if(data.length<10) {
-//				System.out.println("9");
-//			}else if(data.length==10) {
-//				System.out.println("10");
-//			}
 			cdto.setOrder(order++);
 			cdto.setCategory(data[0]);
 			cdto.setAddress_id(data[1]);
@@ -101,7 +91,6 @@ public void insertData(String query, courseDTO cdto) {
 	}
 
 	public void updateCourse(int course_id, ArrayList<courseDTO> cdtos) {
-		System.out.println("업데이트 실행");
 		String del = " delete from COURSE_DATA "
 			+"	where COURSE_ID=? ";
 		
@@ -110,7 +99,6 @@ public void insertData(String query, courseDTO cdto) {
 			psmt.setInt(1, course_id);
 			
 			int res = psmt.executeUpdate();
-			System.out.println("res: "+res);
 			
 			
 		}catch (Exception e) {
@@ -237,7 +225,22 @@ public void insertData(String query, courseDTO cdto) {
 			System.out.println("getPlaceName err");
 			e.printStackTrace();
 		}
-		System.out.println(result);
+		return result;
+	}
+	
+	public int mylistcount(int course_id) {
+		int result =0;
+		String sql = "SELECT COUNT(*) FROM (SELECT COURSE_ID FROM COURSE_DATA WHERE COURSE_ID=?) GROUP BY COURSE_ID ";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setInt(1, course_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (Exception e) {
+			System.out.println("course count err");
+			e.printStackTrace();
+		}
 		return result;
 	}
 }

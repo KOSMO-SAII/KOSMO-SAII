@@ -37,7 +37,7 @@ public class RViewController extends HttpServlet {
 			req.setAttribute("commentLists", commentLists);
 			req.setAttribute("dto", dto);
 	
-			req.getRequestDispatcher("/saii/Rview.jsp").forward(req, resp);
+			req.getRequestDispatcher("/saii/review/Rview.jsp").forward(req, resp);
 			dao.close();
 		}
 	}

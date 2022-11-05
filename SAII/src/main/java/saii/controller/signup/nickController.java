@@ -17,7 +17,7 @@ public class nickController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/saii/nickcheck.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/signup/nickcheck.jsp").forward(req, resp);
 	}
 	
 	
@@ -30,7 +30,7 @@ public class nickController extends HttpServlet {
 		if (!confirmed) { // 중복
 			alertBack(resp, "중복된 닉네임입니다.");
 		} else { // 실행
-			alertLocation(resp, "사용할수있는 닉네임입니다.", "http://localhost:8081/SAII/saii/signupPage.jsp?nickname=" + nickname);
+			alertLocation(resp, "사용할수있는 닉네임입니다.", "http://localhost:8081/SAII/saii/signup/signupPage.jsp?nickname=" + nickname);
 		}
 
 		dao.close();

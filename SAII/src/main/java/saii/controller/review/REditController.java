@@ -25,23 +25,20 @@ public class REditController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("review_edit doGet");
 		
 		int r_id = Integer.parseInt(req.getParameter("r_id"));
 		reviewboardDAO dao = new reviewboardDAO();
 		reviewboardDTO dto = dao.selectView(r_id);
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/saii/Redit.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/review/Redit.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("review_edit doPost");
 		
 		//1. 파일 업로드 처리 ==========================
 		//업로드 디렉터리의 물리적 경로 확인
-		String saveDirectory = req.getServletContext().getRealPath("/Storage");
-		System.out.println(saveDirectory);
+		String saveDirectory = req.getServletContext().getRealPath("./Storage");
 		
 		//초기화 매개변수로 설정한 첨부 파일 최대 용량 확인
 		ServletContext application = getServletContext();

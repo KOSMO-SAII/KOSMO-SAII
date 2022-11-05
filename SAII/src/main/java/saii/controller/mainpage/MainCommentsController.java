@@ -1,6 +1,7 @@
 package saii.controller.mainpage;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,17 +27,19 @@ public class MainCommentsController extends HttpServlet {
 		memberDAO memdao = new memberDAO();
 		memberDTO memdto = memdao.userinfo(req.getSession().getAttribute("UserId").toString());
 		
-		mainCommentsDTO comdto = new mainCommentsDTO();
-		comdto.setNickname(memdto.getNickname());
-		comdto.setComments(comments);
-		comdto.setM_id(m_id);
+		mainCommentsDTO mcdto = new mainCommentsDTO();
+		mcdto.setNickname(memdto.getNickname());
+		mcdto.setComments(comments);
+		mcdto.setM_id(m_id);
 		
-		mainCommentsDAO comdao = new mainCommentsDAO();
-		comdao.writeComments(comdto);
-		jobj.put("comdto", comdto);
+		mainCommentsDAO mcdao = new mainCommentsDAO();
+		mcdao.writeComments(mcdto);
+		
+		List<mainCommentsDTO> mainCommentsLists = mcdao.selectComments(m_id);
+		jobj.put("mainCommentsLists", mainCommentsLists);
 		
 		memdao.close();
-		comdao.close();
+		mcdao.close();
 		
 		resp.setContentType("application/x-json; charset=utf-8");
 		resp.getWriter().print(jobj);

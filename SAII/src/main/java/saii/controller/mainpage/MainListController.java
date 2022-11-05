@@ -58,6 +58,6 @@ public class MainListController extends HttpServlet {
 		req.setAttribute("mainBoardLists", mainBoardLists);
 		req.setAttribute("map", map);
 		req.setAttribute("paging", paging);
-		req.getRequestDispatcher("/saii/mainboard.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/mainboard/mainboard.jsp").forward(req, resp);
 	}
 }

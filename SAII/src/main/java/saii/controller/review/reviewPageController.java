@@ -14,8 +14,7 @@ public class reviewPageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("review doget");
-		req.getRequestDispatcher("/saii/reviewPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/review/reviewPage.jsp").forward(req, resp);
 	
 	}
 }

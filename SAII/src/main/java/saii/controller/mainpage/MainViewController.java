@@ -58,8 +58,8 @@ public class MainViewController extends HttpServlet {
 		dao.close();
 		mcdao.close();
 		
-		req.setAttribute("mainCommentsLists", mainCommentsLists);
+		//req.setAttribute("mainCommentsLists", mainCommentsLists);
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/saii/MainView.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/mainboard/MainView.jsp").forward(req, resp);
 	}
 }

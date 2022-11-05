@@ -16,8 +16,7 @@ public class IdController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("idcheck");
-		req.getRequestDispatcher("/saii/idcheck.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/signup/idcheck.jsp").forward(req, resp);
 	}
 	
 	
@@ -30,7 +29,7 @@ public class IdController extends HttpServlet {
 		if (!confirmed) { // 중복
 			alertBack(resp, "중복된 아이디입니다.");
 		} else { // 실행
-			alertLocation(resp, "사용할수있는 아이디입니다.", "http://localhost:8081/SAII/saii/signupPage.jsp?id=" + id);
+			alertLocation(resp, "사용할수있는 아이디입니다.", "http://localhost:8081/SAII/saii/signup/signupPage.jsp?id=" + id);
 		}
 
 		dao.close();
