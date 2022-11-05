@@ -22,7 +22,7 @@ public class uploadController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			String saveDirectory = req.getServletContext().getRealPath("../Storage");
+			String saveDirectory = req.getServletContext().getRealPath("./Storage");
 			ServletContext application = getServletContext();
 			int maxPostSize = Integer.parseInt(application.getInitParameter("maxPostSize"));
 			String encoding = "UTF-8";
@@ -31,11 +31,9 @@ public class uploadController extends HttpServlet {
 			String ext = fileName.substring(fileName.lastIndexOf("."));
 			String date = "file" + System.currentTimeMillis();
 			String newfileName = date + ext;
-			System.out.println(mr.getParameter("id") + " " + date);
 			File oldFile = new File(saveDirectory + File.separator + fileName);
 			File newFile = new File(saveDirectory + File.separator + newfileName);
 			oldFile.renameTo(newFile);
-			System.out.println(saveDirectory);
 			memberDTO dto = new memberDTO();
 
 			dto.setId(mr.getParameter("id"));
@@ -44,7 +42,6 @@ public class uploadController extends HttpServlet {
 
 			memberDAO dao = new memberDAO();
 			int result = dao.updateFile(dto);
-			System.out.println(dto.getN_profile_img());
 			if (result != 1) {
 				System.out.println("파일업로드 실패");
 			}

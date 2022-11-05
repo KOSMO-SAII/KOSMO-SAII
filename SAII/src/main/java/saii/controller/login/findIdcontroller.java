@@ -20,8 +20,6 @@ public class findIdcontroller extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 	    String member_name = req.getParameter("member_name");
 	     String member_phone = req.getParameter("member_phone");
-	     System.out.println(member_name);
-	     System.out.println(member_phone);
 		memberDAO dao = new memberDAO();
 		
 		memberDTO dto= dao.findId(member_name, member_phone);

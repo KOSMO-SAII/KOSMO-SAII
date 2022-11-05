@@ -36,7 +36,7 @@
   </context-param>
   <context-param>
   	<param-name>maxPostSize</param-name>
-  	<param-value>10240000</param-value>
+  	<param-value>102400000</param-value>
   </context-param>
 
   

@@ -28,7 +28,6 @@ public class userEditController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String id = req.getParameter("id");
-		System.out.println(id);
 		memberDTO dto = new memberDTO();
 		
 		dto.setPw(req.getParameter("pw"));

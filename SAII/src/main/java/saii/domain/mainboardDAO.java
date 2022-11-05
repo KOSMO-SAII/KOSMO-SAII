@@ -87,7 +87,6 @@ public class mainboardDAO extends JDBConnect {
 			stmt = con.createStatement();
 			rs =stmt.executeQuery(sql);
 			while(rs.next()) {
-				System.out.println("1");
 				mainboardDTO dto = new mainboardDTO();
 				dto.setM_id(rs.getString("m_id"));
 				dto.setM_title(rs.getString("m_title"));
@@ -218,7 +217,6 @@ public class mainboardDAO extends JDBConnect {
 			rs =stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				System.out.println("1");
 				mainboardDTO dto = new mainboardDTO();
 				
 				dto.setM_id(rs.getString("m_id"));
