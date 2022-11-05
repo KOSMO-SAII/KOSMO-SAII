@@ -93,7 +93,7 @@
 	}
 	a {
 	text-decoration:none;
-	color:pink;
+	color:darkblue;
 	}
 	#table_head{
 	text-align:center;

@@ -81,7 +81,6 @@ public void insertData(String query, courseDTO cdto) {
 			psmt.setString(11, cdto.getMemo());
 
 			rs = psmt.executeQuery();
-			System.out.println("insert data end");
 
 		} catch (SQLException e) {
 			System.out.println("insert Data err");
@@ -140,7 +139,6 @@ public void insertData(String query, courseDTO cdto) {
 			psmt.setString(12, cdto.getMemo());
 
 			rs = psmt.executeQuery();
-			System.out.println("insert data end");
 
 		} catch (SQLException e) {
 			System.out.println("insert Data err");

@@ -7,14 +7,97 @@
 <meta charset="UTF-8">
 <title>게시글 상세보기</title>
 <style>
+	h2{
+		text-align: center;
+		width: 80%;
+		margin: auto;
+    	margin-bottom: 50px;
+    	margin-top: 40px;
+	}
 	table{
 		width:90%;
 		margin:auto;
-		border:1px solid black;
 	}
 	tr,td{
 		margin:auto;
-		border:1px solid black;
+	}
+	#paging{
+		text-align:center;
+	}
+	#writeButton{
+		text-align:right;
+	}
+	.mainboard{
+		margin:auto;
+		width:80%;
+	}
+	input[name="search_Str"]{
+    vertical-align: bottom;
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+ 	}
+ 	input[type="submit"]{
+    height: 40px;
+    width: 70px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #98dde3;
+    position: relative;
+    vertical-align: bottom;
+    }
+    input[type="button"]{
+    height: 35px;
+    width: 80px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #98dde3;
+    position: relative;
+    vertical-align: bottom;
+    }
+    input[type="text"]{
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    }
+    select{
+    border-radius: 5px;
+    height: 40px;
+    }
+	#search_table{
+	border:none;
+	margin:auto;	
+	}
+	#search_table.children(){
+		margin:auto 50px;
+	}
+	#board_table tr:nth-child(2n){
+		background-color: none;
+	}
+	#board_table tr:nth-child(2n-1){
+		background-color: #f7f7f7;
+	}
+	a {
+	text-decoration:none;
+	color:darkblue;
+	}
+	#table_head{
+	text-align:center;
+	font-size:larger;
 	}
 	#delete{
 		text-align:right;
@@ -27,6 +110,7 @@
 <script type="text/javascript" src="saii/JS/MainView.js"></script>
 </head>
 <body>
+	<h2>${dto.m_title}</h2>
 	<table>
 		<tr>
 			<td>글번호 <span id="m_id">${dto.m_id}</span></td>

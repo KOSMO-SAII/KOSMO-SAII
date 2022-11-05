@@ -48,6 +48,7 @@ h1 {
     background-color:rgb(91, 174, 223);
     border-color: rgb(91, 174, 223);
     font-weight: bold;
+    margin-left : 500px;
 }
 
 .btn-outline-primary{
