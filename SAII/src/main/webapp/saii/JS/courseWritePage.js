@@ -831,6 +831,7 @@ function addMySchedule(place){
 	var ul =document.getElementById('My_List');
 	ul.appendChild(li);
 	
+	li.setAttribute("draggable", "true");
 	
 	$('.info .data')[num].defaultValue=mymarkers[num].data.data
 	
@@ -869,7 +870,7 @@ function removeMySchedule(event){
 			mymarkers[i].mymarker.mymarker.setMap(null);
 			mymarkers[i].myoverlay.myoverlay.setMap(null);
 			
-				mymarkers.splice(i,1);
+			mymarkers.splice(i,1);
 
 			//좌측 마이 스케쥴 삭제
 			li.remove();
@@ -1053,8 +1054,85 @@ $('#memobox .close').click(function(){
 		console.log($('.info .data')[index].defaultValue)
 		
 		$('#memobox').addClass('none');
-		
-		
-		
-		
 	})
+//========드래그 앤 드랍
+const list = document.querySelector('#My_List');
+let currentItemIndex = null;
+let currentItem = null;
+
+list.addEventListener('dragstart', (e) => {
+  currentItem = e.target;
+  console.log("시작");
+  const listArr = [...currentItem.parentElement.children];
+  currentItemIndex = listArr.indexOf(currentItem);
+});
+
+list.addEventListener('dragover', (e) => {
+  e.preventDefault();
+});
+
+list.addEventListener('drop', (e) => {
+  e.preventDefault();
+console.log("끝");
+  var currentDropItem=e.target;
+  
+  for(currentDropItem;currentDropItem.localName!="li";currentDropItem=currentDropItem.parentElement ){
+	}
+
+  const listArr = [...currentItem.parentElement.children];
+
+  const dropItemIndex = listArr.indexOf(currentDropItem);
+
+  if (currentItemIndex < dropItemIndex) {
+   currentDropItem.after(currentItem);
+  } else {
+    currentDropItem.before(currentItem);
+  }
+  
+  //내가 저장한 장소 배열 재설정
+   if(currentItemIndex==dropItemIndex){
+	console.log("제자리 실행")
+	}else{
+  arraychange(currentItemIndex,dropItemIndex);	
+	}
+});
+
+//내가 저장한 장소 배열 재설정
+function arraychange(currentItemIndex,dropItemIndex){
+	var num = mymarkers.length
+		var temp=[];
+	console.log(mymarkers);
+	for(var i=0;i<num;i++){
+		var my = mymarkers.shift();
+		//console.log(my)
+		temp.push(my)
+	}
+		//console.log(temp)
+		//console.log(mymarkers)
+	if (currentItemIndex < dropItemIndex){
+		for(var j=0; j<num;j++){
+			if(j==currentItemIndex){
+				continue;
+			}else if(j==dropItemIndex){
+				mymarkers.push(temp[j]);
+				mymarkers.push(temp[currentItemIndex]);
+			}else{
+				mymarkers.push(temp[j]);
+			}
+		}
+	}else{
+		for(var j=0; j<num;j++){
+			if(j==currentItemIndex){
+				continue;
+			}else if(j==dropItemIndex){
+				mymarkers.push(temp[currentItemIndex]);
+				mymarkers.push(temp[j]);
+			}else{
+				mymarkers.push(temp[j]);
+			}
+		}
+	}
+	console.log(mymarkers);
+	makeline();
+	polyline.setMap(map);
+}

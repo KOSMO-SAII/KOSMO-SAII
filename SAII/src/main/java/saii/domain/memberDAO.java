@@ -318,4 +318,20 @@ public class memberDAO extends JDBConnect {
 		return result;
 		
 	}
+	
+	public String favoprofile(String m_id) {
+		String result="";
+		String sql = "SELECT N_PROFILE_IMG FROM MEMBER M, MAIN_BOARD B WHERE M.NICKNAME=B.NICKNAME AND B.M_ID=?";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result=rs.getString(1);
+		} catch (Exception e) {
+			System.out.println("favoprofile err");
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

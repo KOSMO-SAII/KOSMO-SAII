@@ -23,7 +23,7 @@ function pw_search() {
 	 }
 
  frm.method = "post";
- frm.action = "http://localhost:8081/SAII//pwcotroll.do"; //controller 주소 
+ frm.action = "http://localhost:8081/SAII/findPw.do"; //controller 주소 
  frm.submit();  
  }
 </script>

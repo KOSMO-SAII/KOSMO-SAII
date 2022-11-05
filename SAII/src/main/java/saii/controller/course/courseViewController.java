@@ -88,9 +88,9 @@ public class courseViewController extends HttpServlet{
 				String nickname = req.getParameter("nickname");
 				if (title != null && title.equals(""))
 					title = nickname + "_" + cdtos.get(0).getPlace_name();
-				if (region != null && region.equals("")) {
+				if (region.equals("없음")) {
 					String[] reg = cdtos.get(0).getAddress_name().split("\\s");
-					region = reg[0] + " " + reg[1];				
+					region = reg[0];				
 				}
 				mdto.setM_title(title);
 				mdto.setRegion(region);

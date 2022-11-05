@@ -77,6 +77,7 @@ public class myPageController extends HttpServlet{
 			
 			HashMap<String, String> hmap = new HashMap<>();
 			hmap.put("m_title", mdto.getM_title());
+			hmap.put("m_id", mdto.getM_id());
 			hmap.put("region", mdto.getRegion());
 			hmap.put("p_name", cdao.getPlaceNames(mdto.getCourse_id()));
 			hmap.put("course_id", mdto.getCourse_id());
@@ -87,8 +88,31 @@ public class myPageController extends HttpServlet{
 			
 			// 각 정보 속성값에 저장하기
 			list.add(hmap);
-		}		
+
+			System.out.println(hmap.get("p_name"));
+		}
 		
+		ArrayList<mainboardDTO> fdtos = mdao.myfavolist(nick);
+		List<Map<String,Object>> flist = new Vector<Map<String, Object>>();
+		for(mainboardDTO fdto : fdtos) {
+			HashMap<String, Object> fmap = new HashMap<>();
+			DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			fmap.put("m_id", fdto.getM_id());
+			fmap.put("m_title", fdto.getM_title());
+			fmap.put("region", fdto.getRegion());
+			fmap.put("course_id", fdto.getCourse_id());
+			fmap.put("nickname", fdto.getNickname());
+			fmap.put("m_postdate", fdto.getM_postdate());
+			fmap.put("visitcount", fdto.getVisitcount());
+			fmap.put("profile", dao.favoprofile(fdto.getM_id()));
+			fmap.put("pmane", cdao.getPlaceNames(fdto.getCourse_id()));
+			fmap.put("count", Integer.toString(cdao.mylistcount(Integer.parseInt(fdto.getCourse_id()))));
+			
+			flist.add(fmap);
+		}
+
+		req.setAttribute("flist", flist);
 		req.setAttribute("list", list);
 		map.put("totalCount", totalCount);
 		req.setAttribute("boardLists", boardLists);
