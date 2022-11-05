@@ -29,7 +29,8 @@ public class signupPageController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			String saveDirectory = req.getServletContext().getRealPath("../Storage");// 저장할 디렉토리
+			String saveDirectory = req.getServletContext().getRealPath("./Storage");// 저장할 디렉토리
+			System.out.println(saveDirectory);
 			int maxPostSize = 1024 * 1000;
 			String encoding = "UTF-8";
 			// 1.MultipartRequest 객체 생성

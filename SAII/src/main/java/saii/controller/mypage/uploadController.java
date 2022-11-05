@@ -22,7 +22,7 @@ public class uploadController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			String saveDirectory = req.getServletContext().getRealPath("../Storage");
+			String saveDirectory = req.getServletContext().getRealPath("./Storage");
 			ServletContext application = getServletContext();
 			int maxPostSize = Integer.parseInt(application.getInitParameter("maxPostSize"));
 			String encoding = "UTF-8";
