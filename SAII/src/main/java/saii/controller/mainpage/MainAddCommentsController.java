@@ -15,33 +15,36 @@ import saii.domain.mainCommentsDAO;
 import saii.domain.memberDAO;
 import saii.dto.mainCommentsDTO;
 import saii.dto.memberDTO;
+import utils.AlertFunc;
 
-@WebServlet("/maincomments")
-public class MainCommentsController extends HttpServlet {
+@WebServlet("/addMainComments")
+public class MainAddCommentsController extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		String comments = req.getParameter("comments");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		String m_id = req.getParameter("m_id");
-		JSONObject jobj = new JSONObject();
+		String comments = req.getParameter("comments");
 		
 		memberDAO memdao = new memberDAO();
 		memberDTO memdto = memdao.userinfo(req.getSession().getAttribute("UserId").toString());
 		
 		mainCommentsDTO mcdto = new mainCommentsDTO();
 		mcdto.setNickname(memdto.getNickname());
-		mcdto.setComments(comments);
 		mcdto.setM_id(m_id);
+		mcdto.setComments(comments);
 		
 		mainCommentsDAO mcdao = new mainCommentsDAO();
-		mcdao.writeComments(mcdto);
-		
-		List<mainCommentsDTO> mainCommentsLists = mcdao.selectComments(m_id);
-		jobj.put("mainCommentsLists", mainCommentsLists);
+		int result = mcdao.writeComments(mcdto);
 		
 		memdao.close();
 		mcdao.close();
 		
-		resp.setContentType("application/x-json; charset=utf-8");
-		resp.getWriter().print(jobj);
+		//req.setAttribute("list", list);
+		//req.getRequestDispatcher("/saii/mainboard/MainView.jsp").forward(req, resp);
+		
+		if(result == 1) {
+			resp.sendRedirect("http://localhost:8081/SAII/view?m_id=" + m_id);
+		}else {
+			AlertFunc.alertBack(resp,"댓글 쓰기 실패");
+		}
 	}
 }
