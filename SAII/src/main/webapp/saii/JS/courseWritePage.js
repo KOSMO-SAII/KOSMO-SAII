@@ -52,11 +52,11 @@ if(mode=="edit"){
 	var po =new kakao.maps.LatLng(paramObjs[0].Y,paramObjs[0].X)
 	map.panTo(po)
 	
-	console.log("수정 모드 실행")
+	//console.log("수정 모드 실행")
 	
-	 console.log(paramObjs[0]);
-	 console.log(paramObjs);
-	 console.log(paramObjs.length);
+	// console.log(paramObjs[0]);
+	// console.log(paramObjs);
+	// console.log(paramObjs.length);
 	
  for(var j=0; j<paramObjs.length;j++){
 	var paramObj = {
@@ -483,7 +483,7 @@ var markerscId=[];
 
 //카테고리 요소 선택
 var li = document.querySelectorAll('#category-box li');
-	console.log(li)
+	//console.log(li)
 //현재 카테고리명 담는 변수
 var currCategory= '';
 
@@ -695,14 +695,14 @@ function closeOverlay() {
 
 //내가 저장한 핀 실행 메서드2
 function rsaveMyPin(myplace,myplaceinfo){
-	console.log("rsaveMyPin 실행")
+	//console.log("rsaveMyPin 실행")
 
 	//중복체크 임시
 	if(mymarkers[0]!=undefined){
 		for(var i=0;i<mymarkers.length;i++){
 			if(mymarkers[i].id==myplaceinfo.placeid){
 				alert("같은 장소 중복 선택불가")
-				console.log("중복")
+				//console.log("중복")
 				return ;
 			}
 			
@@ -765,8 +765,8 @@ function rsaveMyPin(myplace,myplaceinfo){
 					id: myplaceinfo.placeid
 					}
 		
-		console.log(mymarker.mymarker.getPosition())
-		console.log(myoverlay.myoverlay.getPosition());
+		//console.log(mymarker.mymarker.getPosition())
+		//console.log(myoverlay.myoverlay.getPosition());
 		//?왠진 모르지만 됨/마커와 오버레이를 객체로 마이 핀 배열에 저장
 		mymarker.mymarker.setMap(null);
 		myoverlay.myoverlay.setMap(null);
@@ -780,7 +780,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 		
 		mymarkers.push(mymarkerOb);
 		
-		console.log(mymarkers);
+		//console.log(mymarkers);
 		
 		//마이핀 라인 생성
 		makeline();
@@ -800,8 +800,8 @@ function rsaveMyPin(myplace,myplaceinfo){
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){
-	console.log("addMySchedule실행")
-	console.log(num);
+	//console.log("addMySchedule실행")
+	//console.log(num);
 	//db에 전달할 정보
 	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
 				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|",
@@ -858,10 +858,10 @@ function removeMySchedule(event){
 	var et= event.target;
 	var div=et.parentNode.parentNode;
 	var li=div.parentNode;
-	console.log($(li).index());
+	//console.log($(li).index());
 	for(var i = 0 ;i<mymarkers.length;i++){
 		if (i==$(li).index()){
-			console.log("삭제완료")
+			//console.log("삭제완료")
 			//라인삭제
 			path.splice(i,1);
 			polyline.setPath(path);
@@ -900,21 +900,30 @@ function check(){
 		for(var i=0; i<mymarkers.length;i++){
 			mymarkers[i].mymarker.mymarker.setMap(map);
 			
+				
+				
 			(function(marker, index) {
+				console.log("이벤트 등록");
 			
-			//리스트 클릭스 오버레이 출력
-            kakao.maps.event.addListener(marker,'click',function(){
-				console.log(marker);
-				console.log(index);
-				addmOverlay(marker,index);	
-			});	
+				 kakao.maps.event.removeListener(marker,'click',function(){
+					console.log(marker);
+					console.log(index);
+					addmOverlay(marker,index);	
+				});	
+				
+				//리스트 클릭스 오버레이 출력
+	            kakao.maps.event.addListener(marker,'click',function(){
+					console.log(marker);
+					console.log(index);
+					addmOverlay(marker,index);	
+				});	
         	})(mymarkers[i].mymarker.mymarker, i);
 			
-			// kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
-				//console.log(this.getPosition());
-				//console.log(this)
-				//addmOverlay(this);	
-			//});	
+			/* kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
+				console.log(this.getPosition());
+				console.log(this)
+				addmOverlay(this);	
+			});	*/
 		}
 		//라인 생성
 		polyline.setMap(map);
@@ -929,7 +938,7 @@ function check(){
 
 //마이핀 오버레이 출력
 function addmOverlay(marker,index){
-	console.log("애드 오버레이")
+	//console.log("애드 오버레이")
 	for(var i = 0 ; i<mymarkers.length;i++){
 		//console.log("===========시작")
 		//console.log(marker.Rc.x+'/'+marker.Rc.y);
@@ -938,7 +947,7 @@ function addmOverlay(marker,index){
 		//console.log(mymarkers[i].myoverlay.myoverlay.getPosition().La+'/'+mymarkers[i].myoverlay.myoverlay.getPosition().Ma);
 		//console.log("===========")
 		if(mymarkers[index].mymarker.id==mymarkers[i].myoverlay.id){
-			console.log("일치")
+			//console.log("일치")
 			mymarkers[i].myoverlay.myoverlay.setMap(map);
 			$(".info .r").click(function(event){
 			closeMyOverlay(event)	
@@ -962,12 +971,26 @@ function closeMyOverlay(event) {
 //마이핀 숨기기
 function hide(){
 	for(var i=0; i<mymarkers.length;i++){
+		
+		
+		/*(function(marker, index) {
+			console.log("이벤트 삭제");
+			//리스트 클릭스 오버레이 출력
+            kakao.maps.event.removeListener(marker,'click',function(){
+				console.log(marker);
+				console.log(index);
+				addmOverlay(marker,index);	
+			});	
+        })(mymarkers[i].mymarker.mymarker, i);*/
+		
 		mymarkers[i].mymarker.mymarker.setMap(null);
 		mymarkers[i].myoverlay.myoverlay.setMap(null);
 		polyline.setMap(null);
+		
 	}
 	checkmode=0;
-
+	
+	
 }
 
 //==================선 그리기
@@ -1039,8 +1062,8 @@ $('#memobox .close').click(function(){
 	
 		//초기화
 		$('.info .data')[index].defaultValue="";
-		console.log($('.info .data')[index]);
-		console.log($('.info .data')[index].defaultValu);
+		//console.log($('.info .data')[index]);
+		//console.log($('.info .data')[index].defaultValu);
 		//리스트 input value값 불러오기
 		var value=mymarkers[index].data.data;
 
@@ -1051,7 +1074,7 @@ $('#memobox .close').click(function(){
 		
 		//input value에 메모내용 값 추가
 		$('.info .data')[index].defaultValue = value+memo;
-		console.log($('.info .data')[index].defaultValue)
+		//console.log($('.info .data')[index].defaultValue)
 		
 		$('#memobox').addClass('none');
 	})
@@ -1062,7 +1085,7 @@ let currentItem = null;
 
 list.addEventListener('dragstart', (e) => {
   currentItem = e.target;
-  console.log("시작");
+ //console.log("시작");
   const listArr = [...currentItem.parentElement.children];
   currentItemIndex = listArr.indexOf(currentItem);
 });
@@ -1073,7 +1096,7 @@ list.addEventListener('dragover', (e) => {
 
 list.addEventListener('drop', (e) => {
   e.preventDefault();
-console.log("끝");
+//console.log("끝");
   var currentDropItem=e.target;
   
   for(currentDropItem;currentDropItem.localName!="li";currentDropItem=currentDropItem.parentElement ){
@@ -1091,7 +1114,7 @@ console.log("끝");
   
   //내가 저장한 장소 배열 재설정
    if(currentItemIndex==dropItemIndex){
-	console.log("제자리 실행")
+	//console.log("제자리 실행")
 	}else{
   arraychange(currentItemIndex,dropItemIndex);	
 	}
@@ -1101,7 +1124,7 @@ console.log("끝");
 function arraychange(currentItemIndex,dropItemIndex){
 	var num = mymarkers.length
 		var temp=[];
-	console.log(mymarkers);
+	//console.log(mymarkers);
 	for(var i=0;i<num;i++){
 		var my = mymarkers.shift();
 		//console.log(my)
@@ -1132,7 +1155,7 @@ function arraychange(currentItemIndex,dropItemIndex){
 			}
 		}
 	}
-	console.log(mymarkers);
+	//console.log(mymarkers);
 	makeline();
 	polyline.setMap(map);
 }
