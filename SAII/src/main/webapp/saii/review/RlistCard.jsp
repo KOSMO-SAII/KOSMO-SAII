@@ -78,12 +78,12 @@
                         <c:if test="${list.r_category eq 'course'}">코스</c:if>
                         <c:if test="${list.r_category eq 'place'}">장소</c:if>
                      </p>
-                     <strong class="title">
-                        <a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_id}${list.r_title}</a>
-                     </strong>
-                     <img src="./"><p>${list.nickname}</p>
-                     <p>${list.r_postdate}</p>
-                     <p>${list.visitcount}</p>
+                     <p class="title">
+                        <a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_title}</a>
+                     </p>
+                     <p>작성자 ${list.nickname}</p>
+                     <p>조회수 ${list.visitcount}</p>
+                     <p align="right">${list.r_postdate}</p>
                      <c:if test="${not empty list.o_file }">
                            <a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}"></a>
                      </c:if>
