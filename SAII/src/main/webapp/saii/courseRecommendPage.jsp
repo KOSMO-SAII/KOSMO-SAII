@@ -56,7 +56,7 @@ h3 {font-size: 40px;
 
 .img{
     position: relative;
-    background-image: url(http://localhost:8081/SAII/saii/img/loc/경기.png);                                                               
+                                                                 
     height: 225px;
     width: 300px;
     background-size: cover;
@@ -111,7 +111,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 
         <div class="course-list">
             <a href="#" class="coursese" onclick="location.href='http://localhost:8081/SAII/course_view?num=${list[0].c_id}' ">
-                <div class="img">
+                <div class="img" style="background-image: url(http://localhost:8081/SAII/saii/img/loc/${list[0].region}.png);"  >
         		<div class="content">
             		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[0].title} ]</h2>
         			</div> 
@@ -124,7 +124,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
             
             
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[1].c_id}' ">
-                <div class="img">
+				<div class="img" style="background-image: url(http://localhost:8081/SAII/saii/img/loc/${list[1].region}.png);"  >
         		<div class="content">
             		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[1].title} ]</h2>
         			</div> 
@@ -138,7 +138,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
             
             
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
-                <div class="img">
+                <div class="img" style="background-image: url(http://localhost:8081/SAII/saii/img/loc/${list[2].region}.png);"  >
         		<div class="content">
             		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[2].title} ]</h2>
         			</div> 
