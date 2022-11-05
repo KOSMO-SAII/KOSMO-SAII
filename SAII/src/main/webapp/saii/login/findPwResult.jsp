@@ -20,7 +20,7 @@
 	     </div>
 	     <div class = "found-login">
  		    <input type="button" id="btnLogin" value="로그인" 
- 		    <a href="http://localhost:8081/SAII/saii/loginPage.jsp"</a>>
+ 		    onclick='location.href="http://localhost:8081/SAII/saii/login/loginPage.jsp"'/>
        </div>
        	</c:when>
  		<c:otherwise>

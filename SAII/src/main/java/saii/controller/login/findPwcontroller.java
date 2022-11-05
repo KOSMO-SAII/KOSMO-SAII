@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import saii.domain.memberDAO;
 
-@WebServlet("/pwcotroll.do")
+@WebServlet("/findPw.do")
 public class findPwcontroller extends HttpServlet{
 	
 	@Override

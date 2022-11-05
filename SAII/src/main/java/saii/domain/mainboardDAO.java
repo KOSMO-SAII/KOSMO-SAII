@@ -210,7 +210,7 @@ public class mainboardDAO extends JDBConnect {
 	public ArrayList<mainboardDTO> getRecommendData() {
 		
 		ArrayList<mainboardDTO> dtos = new ArrayList<>();
-		String sql = "SELECT * FROM MAIN_BOARD WHERE ROWNUM <= 3 ORDER BY VISITCOUNT DESC";
+		String sql = "SELECT * FROM (SELECT * FROM MAIN_BOARD ORDER BY VISITCOUNT DESC) WHERE ROWNUM <= 3";
 		
 		try {
 			stmt = con.createStatement();
