@@ -218,7 +218,7 @@ h2 {
 }
 .spannick {
 	position: relative;
-	top: -55px;
+	top: -40px;
 }
 .divdate{
 	position: absolute;
@@ -360,7 +360,7 @@ a {
 </div>
 <div id="show2">
 	<div class="imgdiv">
-		<img src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+		<img src="/SAII/Storage/${dto.n_profile_img}" width="90px" height="90px" style="border-radius: 50px">
 		<span class="spannick">${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
 	</div>
 	<c:choose>
