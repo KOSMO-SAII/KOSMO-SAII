@@ -63,6 +63,19 @@
 .okCmt{
 	margin: auto;
 }
+.cmt_btn{
+	margin-top: 24px;
+    height: 40px;
+    width: 80px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+}
 .cmt .date{
 font-size: 8px;
     display: block;
@@ -145,7 +158,7 @@ font-size: 8px;
 					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
 				</td>
 				<td>
-					<input type="submit" value="댓글쓰기" />
+					<input class="cmt_btn" type="submit" value="댓글쓰기" />
 				</td>
 			</tr>
 		</table>
@@ -154,7 +167,7 @@ font-size: 8px;
 
 	<table class="cmt">
 		<c:if test="${empty commentLists}">
-			<tr>
+			<tr style="width: 100%;">
 				<td colspan="2">댓글이 없습니다.</td>
 			</tr>
 		</c:if>
