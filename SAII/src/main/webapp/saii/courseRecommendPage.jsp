@@ -23,9 +23,8 @@ h3 {font-size: 40px;
     font-weight: bold;}
 
 .course-list{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 1100px;
+    margin: auto;
 }
 .course h2{   
     font-size: 24px;
@@ -37,15 +36,19 @@ h3 {font-size: 40px;
 }
 
 .coursese{
-    display: block;
+    display: inline-block;
     width: 300px;
     text-align: center;
     text-decoration:none;
     color: black;
     float:left;
-    margin-left: 100px;
     box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
+    margin:3%;
+    
+	
 }
+
+
 	
 .coursese:hover{
    transform:scale(1.1);
@@ -117,7 +120,6 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 				<c:forTokens items="${list[0].p_name}" delims="," var="name">
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
-           
             </a>
             
             
@@ -133,6 +135,8 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
                 </c:forTokens>
             </a>
             
+            
+            
              <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[2].c_id}' ">
                 <div class="img">
         		<div class="content">
@@ -144,7 +148,6 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
                 	<p><c:out value=" ${name}" /></p>
                 </c:forTokens>
             </a>
-            
  		</div>
  	</div>	
 	

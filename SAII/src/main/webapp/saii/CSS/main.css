@@ -135,7 +135,7 @@ section {
 }
  */
 footer {
-	background-color: rgb(223, 231, 232);
+	background-color: rgba(223, 231, 232, 0.5);
 	padding: 30px;
 	color:black;
 }
