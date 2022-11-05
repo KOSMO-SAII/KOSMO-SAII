@@ -1,4 +1,4 @@
-package saii.dto.mypage;
+package saii.controller.mypage;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -99,6 +99,6 @@ public class myPageController extends HttpServlet{
 		req.setAttribute("boardLists", boardLists);
 		req.setAttribute("map", map);
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("saii/myPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("saii/mypage/myPage.jsp").forward(req, resp);
 	}	
 }

@@ -107,7 +107,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
     <div class="course">
 
         <div class="course-list">
-            <a href="#" class="coursese" onclick="location.href='./course_view?num=${list[0].c_id}' ">
+            <a href="#" class="coursese" onclick="location.href='http://localhost:8081/SAII/course_view?num=${list[0].c_id}' ">
                 <div class="img">
         		<div class="content">
             		<h2 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">[ ${list[0].title} ]</h2>

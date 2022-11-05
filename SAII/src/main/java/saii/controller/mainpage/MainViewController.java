@@ -60,6 +60,6 @@ public class MainViewController extends HttpServlet {
 		
 		//req.setAttribute("mainCommentsLists", mainCommentsLists);
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/saii/MainView.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/mainboard/MainView.jsp").forward(req, resp);
 	}
 }

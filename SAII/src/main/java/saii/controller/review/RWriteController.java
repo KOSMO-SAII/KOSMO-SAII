@@ -24,18 +24,15 @@ public class RWriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("review_write doGet");
-		
-		req.getRequestDispatcher("/saii/Rwrite.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/review/Rwrite.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("review_write doPost");
 		
 		//1. 파일 업로드 처리 ==========================
 		//업로드 디렉터리의 물리적 경로 확인
-		String saveDirectory = req.getServletContext().getRealPath("/Storage");
+		String saveDirectory = req.getServletContext().getRealPath("../Storage");
 		System.out.println(saveDirectory);
 		//초기화 매개변수로 설정한 첨부 파일 최대 용량 확인
 		ServletContext application = getServletContext();

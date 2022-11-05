@@ -23,7 +23,7 @@ public class signupPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		System.out.println("/signup doGet");
-		req.getRequestDispatcher("/saii/signupPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/signup/signupPage.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -63,22 +63,19 @@ public class signupPageController extends HttpServlet {
 			int result = dao.insertFile(dto);
 			dao.close();
 
-			if (result == 1) {
-				System.out.println("와 파일이 드렁갔당");
-			} else {
-				System.out.println(" 저런 안들어갔당");
-			}
+			if(result != 1)
+				System.out.println("파일이 업로드 되지않았습니다.");
 
 			// 회원가입 끝, 로그인 페이지로 이동
 			resp.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = resp.getWriter();
 			out.println(
-					"<script language='javascript'>alert('회원가입을 축하합니다!!!'); location.href='http://localhost:8081/SAII/saii/loginPage.jsp';</script>");
+					"<script language='javascript'>alert('회원가입을 축하합니다!!!'); location.href='http://localhost:8081/SAII/saii/login/loginPage.jsp';</script>");
 			out.flush();
-			req.getRequestDispatcher("/saii/loginPage.jsp").include(req, resp);
+			req.getRequestDispatcher("/saii/login/loginPage.jsp").include(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("저런");
+			System.out.println("회원가입중 오류");
 		}
 	}
 }

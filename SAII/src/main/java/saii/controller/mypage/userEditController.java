@@ -1,4 +1,4 @@
-package saii.dto.mypage;
+package saii.controller.mypage;
 
 import java.io.IOException;
 
@@ -16,13 +16,12 @@ public class userEditController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("mpedit get");
 		String id = req.getParameter("id");
 		memberDAO dao = new memberDAO();
 		memberDTO dto = dao.userinfo(id);
 		
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("saii/userEditPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("saii/mypage/userEditPage.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -38,7 +37,6 @@ public class userEditController extends HttpServlet{
 		dto.setEmail(req.getParameter("email"));
 		dto.setAddress(req.getParameter("address"));
 		dto.setId(req.getParameter("id"));
-		System.out.println(dto.getAddress());
 		
 		memberDAO dao = new memberDAO();
 		int result = dao.update(dto);
@@ -47,7 +45,6 @@ public class userEditController extends HttpServlet{
 		if(result==1) { //수정 성공
 			System.out.println("수정 성공");
 			resp.sendRedirect("http://localhost:8081/SAII/mypage?id="+id);
-			System.out.println(id+"여기야");
 		}
 		else { //수정 실패
 			System.out.println("수정 실패");

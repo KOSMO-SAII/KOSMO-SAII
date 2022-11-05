@@ -24,7 +24,7 @@
 				</ul>
 				<div id="btnbox">
 				
-				<a href="http://localhost:8081/SAII/saii/startPage.jsp">메인 메뉴로 돌아가기</a>
+				<a href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a>
 				<input type="submit" value="코스 수정"></input>
 				</div>
 			</form>

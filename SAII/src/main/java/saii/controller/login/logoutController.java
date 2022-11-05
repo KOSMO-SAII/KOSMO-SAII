@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,7 @@ public class logoutController extends HttpServlet{
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		out.println(
-				"<script language='javascript'>alert('로그아웃 되었습니다.'); location.href='http://localhost:8081/SAII/saii/startPage.jsp';</script>");
+				"<script language='javascript'>alert('로그아웃 되었습니다.'); location.href='http://localhost:8081/SAII/home';</script>");
 		out.flush();		
 	}
 	

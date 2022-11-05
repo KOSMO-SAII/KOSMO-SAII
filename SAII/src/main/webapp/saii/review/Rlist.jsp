@@ -9,7 +9,7 @@
 <title>리뷰게시판</title>
 </head>
 <body>
-<%@ include file="./top.jsp" %>
+<%@ include file="../top.jsp" %>
 
 	<h2>목록 보기</h2>
 	${totalCount}

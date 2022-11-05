@@ -256,7 +256,7 @@ span{
 </style>
 </head>
 <body>
-<%@ include file="./top.jsp" %>
+<%@ include file="../top.jsp" %>
 <h3>마이페이지</h3>
 <hr>
 <div class="div1">

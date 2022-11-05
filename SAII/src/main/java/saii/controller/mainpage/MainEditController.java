@@ -24,7 +24,7 @@ public class MainEditController extends HttpServlet {
 		//dto.setContent(dto.getContent().replaceAll("/r/n", "<br/>"));
 			
 		req.setAttribute("dto", dto);
-		req.getRequestDispatcher("/saii/Edit.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/mainboard/Edit.jsp").forward(req, resp);
 	}
 	
 	@Override

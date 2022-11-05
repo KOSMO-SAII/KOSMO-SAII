@@ -1,4 +1,4 @@
-package saii.controller;
+package saii.controller.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +20,8 @@ public class loginController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/login doGet");
-		req.getRequestDispatcher("/saii/loginPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/login/loginPage.jsp").forward(req, resp);
+		
 	}
 	
 	@Override
@@ -45,11 +45,11 @@ public class loginController extends HttpServlet{
 			resp.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = resp.getWriter();
 			out.println(
-					"<script language='javascript'>alert('로그인 되었습니다.'); location.href='http://localhost:8081/SAII/saii/startPage.jsp';</script>");
+					"<script language='javascript'>alert('로그인 되었습니다.'); location.href='http://localhost:8081/SAII/home';</script>");
 			out.flush();
 		}else {
 			req.setAttribute("LoginErrMsg", "로그인 오류입니다");
-			req.getRequestDispatcher("/saii/loginPage.jsp").forward(req, resp);
+			req.getRequestDispatcher("/saii/login/loginPage.jsp").forward(req, resp);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package saii.dto.mypage;
+package saii.controller.mypage;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class uploadController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			String saveDirectory = req.getServletContext().getRealPath("/Storage");
+			String saveDirectory = req.getServletContext().getRealPath("../Storage");
 			ServletContext application = getServletContext();
 			int maxPostSize = Integer.parseInt(application.getInitParameter("maxPostSize"));
 			String encoding = "UTF-8";
@@ -45,15 +45,13 @@ public class uploadController extends HttpServlet {
 			memberDAO dao = new memberDAO();
 			int result = dao.updateFile(dto);
 			System.out.println(dto.getN_profile_img());
-			if (result == 1) {
-				System.out.println("파일이 드러가썽");
-			} else {
-				System.out.println("파일 실패ㅜ");
+			if (result != 1) {
+				System.out.println("파일업로드 실패");
 			}
 			
 			req.setAttribute("dto", dao.userinfo(dto.getId()));	
 			
-			req.getRequestDispatcher("saii/myPage.jsp").forward(req, resp);
+			req.getRequestDispatcher("saii/mypage/myPage.jsp").forward(req, resp);
 		} catch (Exception e) {
 			System.out.println("파일올리다가 실패");
 			e.printStackTrace();

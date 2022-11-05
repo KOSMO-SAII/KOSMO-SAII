@@ -23,7 +23,7 @@ public class RDownloadController extends HttpServlet{
 		
 		//파일 다운로드
 		
-		FileUtil.download(req, resp, "/Storage", n_file, o_file);
+		FileUtil.download(req, resp, "../Storage", n_file, o_file);
 		
 	}
 	

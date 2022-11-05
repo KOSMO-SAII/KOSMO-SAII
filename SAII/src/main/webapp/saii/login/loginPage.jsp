@@ -110,8 +110,9 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 		<input type="password" name="user_pw" value="${param.user_pw}" /><br/>
 		</div>
 		<input type="checkbox" id="idSaveCheck">아이디 기억하기  <br/>
-		<a href="http://localhost:8081/SAII/saii/findId2.jsp" />[아이디 찾기]</a>
-	  	<a href="http://localhost:8081/SAII/saii/findPw.jsp" />[비밀번호 찾기] <br/>
+		<a href="http://localhost:8081/SAII/saii/findId2.jsp" >[아이디 찾기]</a>
+	  	<a href="http://localhost:8081/SAII/saii/findPw.jsp" >[비밀번호 찾기]</a> <br/>
+	  	<a href="http://localhost:8081/SAII/signup">회원가입</a><br/>
 		<input type="submit" class="sign" value="로그인" value="${param.user_id}">
 	  	
 	 	

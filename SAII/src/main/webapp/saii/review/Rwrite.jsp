@@ -29,7 +29,7 @@
 </script>
 </head>
 <body>
-<%@ include file="./top.jsp" %>
+<%@ include file="../top.jsp" %>
 	<h2>파일 첨부형 게시판 - 글쓰기(Write)</h2>
 	<form name="writeFrm" method="post" enctype="multipart/form-data"
 		action="http://localhost:8081/SAII/review_write" onsubmit="return validateForm(this);">

@@ -22,23 +22,18 @@ public class courseWritePageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/course_write doGet");
-		req.getRequestDispatcher("/saii/courseWritePage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/course_write doPost");
-				
 		
 				List<Map<String, String>> list=new Vector<Map<String,String>>();
 				String[] datas = req.getParameterValues("data");
-				//String mode=req.getParameter("mode");
 				System.out.println(Arrays.toString(datas));
 				
 				for(int k=0; k<datas.length;k++) {
 					String[] data =  datas[k].split("\\|");
-					//System.out.println(Arrays.toString(data));
 				
 					Map<String, String> map= new HashMap<>();
 					map.put("category",data[0]);
@@ -59,9 +54,8 @@ public class courseWritePageController extends HttpServlet{
 
 				}
 				System.out.println(list);
-				//req.setAttribute("mode", mode);
 				req.setAttribute("List", list);
-				req.getRequestDispatcher("/saii/courseWritePage.jsp").forward(req, resp);
+				req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
 	}
 	
 	

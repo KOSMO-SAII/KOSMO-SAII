@@ -95,7 +95,7 @@
 		var popupY= (window.screen.height / 2) - (popupHeight / 2);
 		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
 
-		window.open("http://localhost:8081/SAII/saii/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
+		window.open("http://localhost:8081/SAII/saii/signup/nickcheck.jsp?nickname="+document.getElementById("usernickname").value, "chkForm", 
 				'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 
 	}
@@ -122,7 +122,7 @@
 
 		var popupY= (window.screen.height / 2) - (popupHeight / 2);
 		// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-	window.open("http://localhost:8081/SAII/saii/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+	window.open("http://localhost:8081/SAII/saii/signup/idcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
 			'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
 	    
 

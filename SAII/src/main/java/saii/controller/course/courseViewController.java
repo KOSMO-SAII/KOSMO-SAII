@@ -52,16 +52,14 @@ public class courseViewController extends HttpServlet{
 		}
 		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
-		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/course/courseView.jsp").forward(req, resp);
 		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("courseview post");
 		int course_id = 0;
 		String mode=req.getParameter("mode");
-		//System.out.println(mode); 
 		
 		//courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정 
 		if(mode.equals( "edit")) {
@@ -136,7 +134,7 @@ public class courseViewController extends HttpServlet{
 	
 		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
-		req.getRequestDispatcher("/saii/courseView.jsp").forward(req, resp);
+		req.getRequestDispatcher("/saii/course/courseView.jsp").forward(req, resp);
 	}
 
 	
