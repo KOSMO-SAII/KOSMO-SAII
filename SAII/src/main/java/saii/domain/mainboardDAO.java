@@ -270,6 +270,36 @@ public class mainboardDAO extends JDBConnect {
 		return dtos;
 	}
 	
+	public ArrayList<mainboardDTO> myfavolist(String nickname){
+		ArrayList<mainboardDTO> dto = new ArrayList<>();
+		String sql = "SELECT * FROM FROM GOOD G, MAIN_BOARD B, MEMBER M WHERE G.M_ID=B.M_ID AND B.NICKNAME=M.NICKNAME "
+				+ "AND G.NICKNAME=?";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setString(1, nickname);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				mainboardDTO dto2 = new mainboardDTO();
+				
+				dto2.setM_id(rs.getString("m_id"));
+				dto2.setM_title(rs.getString("m_title"));
+				dto2.setRegion(rs.getString("region"));
+				dto2.setCourse_id(rs.getString("course_id"));
+				dto2.setNickname(rs.getString("nickname"));
+				dto2.setM_postdate(rs.getDate("m_postdate"));
+				dto2.setVisitcount(rs.getInt("visitcount"));
+				
+				dto.add(dto2);
+			}
+		} catch (Exception e) {
+			System.out.println("favolist err");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	
 	public int mylistcount(String nickname) {
 		int result =0;
 		String sql = "SELECT COUNT(*) FROM MAIN_BOARD WHERE NICKNAME=?";
