@@ -20,7 +20,7 @@
 	      <h4>  입니다 </h4>
 	     </div>
 	     <div class = "found-login">
- 		    <input class="button" type="button" id="btnLogin" value="로그인"  onClick='location="loginPage.jsp"'/> <!--로그인 페이지로 이동-->
+ 		    <input class="button" type="button" id="btnLogin" value="로그인 하러가기" onClick='location="http://localhost:8081/SAII/saii/loginPage.jsp"'/> <!--로그인 페이지로 이동-->
        	</div>
        </div>
        	</c:when>

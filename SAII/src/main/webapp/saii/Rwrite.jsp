@@ -5,14 +5,50 @@
 <head>
 <meta charset="UTF-8">
 <title>자료실 게시판</title>
-	<style type="text/css">
-		#title{
+<style>
+/* 	#title{
 			height : 16;
 			font-family :'돋움';
 			font-size : 12;
 			text-align :center;
-		}
-	</style>
+		} */
+#header {
+	float: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	text-align: center;
+	margin-bottom: 20px;
+	text-decoration: blink;
+	font-weight: bold;
+	color: white;
+	width: 700px;
+	position: relative;
+	right: -150px;
+	padding: 0;
+}
+
+.container {
+	padding: 20px;
+	min-height: 270px;
+}
+
+h2 {
+	height: 45px;
+	padding: 0 0 0 20px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 45px;
+	background-color: #495164;
+}
+
+.button {
+	color: #fff;
+	background-color: #98dde3;
+	border-color: #98dde3;
+	font-weight: bold;
+}
+</style>
 <script type="text/javascript">
 	function validateForm(form) {	//필수 항목 입력 확인
 		if(form.r_title.value ==""){
@@ -29,14 +65,30 @@
 </script>
 </head>
 <body>
-<%@ include file="./top.jsp" %>
+
+<%-- <%@ include file="./top.jsp" %> --%>
 	<h2>파일 첨부형 게시판 - 글쓰기(Write)</h2>
+	<header id="header">
+		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+			<li><c:if test="${UserId!=null}">
+					<a href="http://localhost:8081/SAII/mypage?id=${UserId }"
+						class="nav-link px-2 link-dark">MyPage</a>
+				</c:if></li>
+			<li><a href="http://localhost:8081/SAII/saii/startPage.jsp"
+				class="nav-link px-2 link-dark">Home</a></li>
+			<li test="${UserId==null}"><a href="<!--링크입력하기 -->"
+				class="nav-link px-2 link-dark">FAQs</a></li>
+			<li test="${UserId==null}"><a href="<!--링크입력하기 -->"
+				class="nav-link px-2 link-dark">About</a></li>
+			
+		</ul>
+	</header>
 	<form name="writeFrm" method="post" enctype="multipart/form-data"
 		action="http://localhost:8081/SAII/review_write" onsubmit="return validateForm(this);">
 	<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
-	<table border="1" width="90%">
+	<table class="container" border="1" width="90%">
 
-		<tr>
+		<tr class="category" >
 			<td>카테고리</td>
 			<td>
 				<select name="r_category">
@@ -45,35 +97,33 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="title">
 			<td>제목</td>
 			<td>
 				<input type="text" name="r_title" style="width:90%;" />
 			</td>
 		</tr>
-		<tr>
+		<tr class="contents">
 			<td>내용</td>
 			<td>
 				<textarea name="content" style="width:90%;height:100px;"></textarea>
 			</td>
 		</tr>
-		<tr>
+		<tr class="attachment">
 			<td>첨부파일</td>
 			<td>
-				<input type="file" name="o_file" />
+				<input  type="file" name="o_file" /><!--css가 안먹는데....?-->
 			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<button type="submit">작성 완료</button>
-				<button type="reset">RESET</button>
-				<button type="button" onclick="location.href='http://localhost:8081/SAII/review_list';">
-					목록 바로가기
-				</button>
-			</td>
-		</tr>
+    </tr>
 	</table>
+	
+  <div class="btns">
+    <button class="button" type="submit">작성 완료</button>
+    <button class="button" type="reset">RESET</button>
+    <button class="button" type="button" onclick="location.href='http://localhost:8081/SAII/review_list';">목록 바로가기</button>
+  </div>	
 	</form>
+	
 
 
 <!--마우스 커서-->
