@@ -328,15 +328,15 @@ a {
 		<span class="spannick">${dto.nickname}님의 코스 갯수 ${map.mylistcount }</span>
 	</div>
 	<c:choose>
-		<c:when test="${not empty list }">
-			<c:forEach items="${list}" var="mlist">
+		<c:when test="${not empty flist }">
+			<c:forEach items="${flist}" var="mlist">
 				<div class="mylist">
-					<a href="http://localhost:8081/SAII/view?m_id=${miist.m_id }">
-						<div class="divtitle"><span>코스이름 </span> ${mlist.m_title }</div>
-						<div class="divregion"><span>코스지역 </span> ${mlist.region}</div>
-						<div class="divname"><span>코스경로 </span> ${mlist.p_name}</div>
-						<div class="divdate"><span>게시날짜 </span> ${mlist.m_postdate}</div>
-						<div class="divcount"><span>선택장소 </span> ${mlist.count}</div>
+					<a href="http://localhost:8081/SAII/view?m_id=${fiist.m_id }">
+						<div class="divtitle"><span>코스이름 </span> ${flist.m_title }</div>
+						<div class="divregion"><span>코스지역 </span> ${flist.region}</div>
+						<div class="divname"><span>코스경로 </span> ${flist.p_name}</div>
+						<div class="divdate"><span>게시날짜 </span> ${flist.m_postdate}</div>
+						<div class="divcount"><span>선택장소 </span> ${flist.count}</div>
 					</a>
 				</div>
 			</c:forEach>

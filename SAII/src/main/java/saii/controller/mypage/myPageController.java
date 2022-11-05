@@ -96,6 +96,7 @@ public class myPageController extends HttpServlet{
 		List<Map<String,Object>> flist = new Vector<Map<String, Object>>();
 		for(mainboardDTO fdto : fdtos) {
 			HashMap<String, Object> fmap = new HashMap<>();
+			DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 			
 			fmap.put("m_id", fdto.getM_id());
 			fmap.put("m_title", fdto.getM_title());
@@ -104,11 +105,14 @@ public class myPageController extends HttpServlet{
 			fmap.put("nickname", fdto.getNickname());
 			fmap.put("m_postdate", fdto.getM_postdate());
 			fmap.put("visitcount", fdto.getVisitcount());
+			fmap.put("profile", dao.favoprofile(fdto.getM_id()));
+			fmap.put("pmane", cdao.getPlaceNames(fdto.getCourse_id()));
+			fmap.put("count", Integer.toString(cdao.mylistcount(Integer.parseInt(fdto.getCourse_id()))));
 			
 			flist.add(fmap);
 		}
 
-	
+		req.setAttribute("flist", flist);
 		req.setAttribute("list", list);
 		map.put("totalCount", totalCount);
 		req.setAttribute("boardLists", boardLists);
