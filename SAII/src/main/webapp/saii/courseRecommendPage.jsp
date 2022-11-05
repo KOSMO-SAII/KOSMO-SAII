@@ -56,7 +56,7 @@ h3 {font-size: 40px;
 
 .img{
     position: relative;
-    background-image: url(http://localhost:8081/SAII/saii/img/jeju2.png);                                                               
+    background-image: url(http://localhost:8081/SAII/saii/img/loc/경기.png);                                                               
     height: 225px;
     width: 300px;
     background-size: cover;
@@ -154,14 +154,8 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 <div id="abc">
 	<a href="http://localhost:8081/SAII/home">돌아가기</a>
 	<a href="http://localhost:8081/SAII/mainboard?page=1">추천게시판</a>
-	<a href="http://localhost:8081/SAII/review">리뷰</a>
+	<a href="http://localhost:8081/SAII/review_list">리뷰게시판</a>
 </div>
-	
-<style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
-<a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
-</body>
-</html>
-
 
 <!--마우스 커서-->	
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>

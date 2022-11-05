@@ -69,6 +69,8 @@
 			</td>
 		</tr>
 	</table>
+	
+	
 	<table>
 		<tr>
 			<td colspan="6">댓글작성 <textarea id="comments" cols="100" rows="3" style="resize: none;"></textarea><button type="button" id="comments_submit">작성</button></td>
