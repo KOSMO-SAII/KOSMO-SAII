@@ -23,19 +23,14 @@ public class reviewboardDAO extends JDBConnect {
 		//카테고리 타입이 all이 아닐때는 카테고리 조건에 검색조건 추가 조건달기.
 		if(map.get("categoryType")!=null && (map.get("categoryType").equals("course") || map.get("categoryType").equals("place"))) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
-			if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
-		         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
-		    } else if(map.get("searchStr") != null) {
-		         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		    }
 		}else if(map.get("categoryType")!=null && map.get("categoryType").equals("all")) {
-			if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
-		         query += " WHERE (R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
-		    } else if(map.get("searchStr") != null) {
-		         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
-		    }
+			query += " WHERE r_category in ('course', 'place') ";
 		}
-
+		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
+	         query += " AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	    } else if(map.get("searchStr") != null) {
+	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
+	    }
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -52,11 +47,13 @@ public class reviewboardDAO extends JDBConnect {
 		List<reviewboardDTO> bl = new Vector<reviewboardDTO>();
 		String query = "SELECT * FROM (SELECT ROWNUM AS PNUM, S.* FROM ( "
 				+ "      SELECT * FROM REVIEW_BOARD ";
-		if(map.get("categoryType")!=null) {
+		if(map.get("categoryType")!=null && (map.get("categoryType").equals("course") || map.get("categoryType").equals("place"))) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
+		}else if(map.get("categoryType")!=null && map.get("categoryType").equals("all")) {
+			query += " WHERE r_category in ('course', 'place') ";
 		}
 		if(map.get("searchType")!=null && map.get("searchType").equals("both")) {
-	         query += "AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
+	         query += " AND(R_TITLE LIKE '%" + map.get("searchStr") + "%' OR CONTENT LIKE '%" + map.get("searchStr") + "%')";
 	    } else if(map.get("searchStr") != null) {
 	         query += " AND " + map.get("searchType") + " LIKE '%" + map.get("searchStr") + "%'";
 	    }
