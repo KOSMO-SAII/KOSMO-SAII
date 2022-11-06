@@ -34,8 +34,10 @@ function validateform(form){
    //비밀번호 길이 체크(8~15자 까지 허용)
    if (form.pw.value.length < 8 || form.pw.value.length > 15) {
       alert("비밀번호를 8~15자까지 입력해주세요.")
-      form.pw.focus();
-      form.pw.select();
+			setTimeout(function(){ 
+			document.form.pw.focus();
+			document.form.pw.select();
+			}, 10);
       return false;
    }
 
@@ -44,14 +46,20 @@ function validateform(form){
       ch = form.pw.value.charAt(j)
       if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
          alert("비밀번호는 영문 대소문자, 숫자만 입력가능합니다.")
-         form.pw.focus();
-         form.pw.select();
+			setTimeout(function(){ 
+			document.form.pw.focus();
+			document.form.pw.select();
+			}, 10);
          return false;
       }
    }
    //비밀번호 재확인
    if (!(form.pw.value == form.pw2.value)) {
       alert("비밀번호가 일치하지 않습니다.");
+		setTimeout(function(){ 
+			document.form.pw2.focus();
+			document.form.pw2.select();
+			}, 10);
       return false;
    }
 
@@ -94,6 +102,47 @@ function jusoCallBack(roadFullAddr){
 		document.getElementById("roadFullAddr").value = roadFullAddr;
 
 		
+}
+
+function passcheck(){
+   
+	if (form.pw.value.length < 8 || form.pw.value.length > 15) {
+	      alert("비밀번호를 8~15자까지 입력해주세요.")
+			setTimeout(function(){ 
+			document.form.pw.focus();
+			document.form.pw.select();
+			}, 10);
+	      return false;
+	   }
+
+   //비민번호 유효성 검사
+   for (var j = 0; j < form.pw.value.length; j++) {
+      ch = form.pw.value.charAt(j)
+      if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+         alert("비밀번호는 영문 대소문자, 숫자만 입력가능합니다.")
+			setTimeout(function(){ 
+			document.form.pw.focus();
+			document.form.pw.select();
+			}, 10);
+         return false;
+      }
+   }
+   document.getElementById("passhidden").style.display="none";
+}
+
+function passoverlap(){
+	   if (!(form.pw.value == form.pw2.value)) {
+		      alert("비밀번호가 일치하지 않습니다.");
+				setTimeout(function(){ 
+					document.form.pw2.focus();
+					document.form.pw2.select();
+					}, 10);
+		      return false;
+		   }
+	
+}
+function pshd(){
+	document.getElementById("passhidden").style.display="block";
 }
 
 
@@ -142,6 +191,12 @@ h4{
 .focus:focus{
 	outline: 0;
 }
+#passhidden{
+	display: none;
+	position: relative;
+	top: -610px;
+	left: 430px;
+}
 
 </style>
 </head>
@@ -156,11 +211,11 @@ h4{
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">비밀번호 *</label><br/>
-	<input class="myinput" type="password" name="pw" value="${dto.pw }" >
+	<input class="myinput" type="password" name="pw" value="${dto.pw }" onblur="passcheck()" onclick="pshd()">
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">비밀번호 확인 *</label><br/>
-	<input class="myinput" type="password" name="pw2" value="${dto.pw }" >
+	<input class="myinput" type="password" name="pw2" value="${dto.pw }" onblur="passoverlap()">
 	</div>
 	<div class="mydiv">
 	<label class="mylabel">닉네임 *</label><br/>
@@ -189,6 +244,8 @@ h4{
 	<div class="mydiv">
 	<label class="mylabel">주소 *</label><br/>
 	<input class="myinput" type="text" id="roadFullAddr"  name="address" value="${dto.address }" onClick="goPopup();" />
+	</div>
+	<div id="passhidden">비밀번호는 8~15사이로 입력해주세요</div>
 </form>
 </div>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
