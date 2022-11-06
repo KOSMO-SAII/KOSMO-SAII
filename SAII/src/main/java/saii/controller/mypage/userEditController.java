@@ -43,6 +43,7 @@ public class userEditController extends HttpServlet{
 		//성공 or 실패?
 		if(result==1) { //수정 성공
 			System.out.println("수정 성공");
+			System.out.println("찍혀라 얍");
 			resp.sendRedirect("http://localhost:8081/SAII/mypage?id="+id);
 		}
 		else { //수정 실패
