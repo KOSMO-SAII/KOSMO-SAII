@@ -99,8 +99,9 @@ public class reviewboardDAO extends JDBConnect {
 		return result;
 	}
 
-	public void updateVisitCount(Integer r_id) {
-		String query = "UPDATE REVIEW_BOARD SET " + " visitcount=visitcount+1 " + " WHERE r_id=?";
+	public void updateVisitCount(int r_id) {
+		String query = "UPDATE REVIEW_BOARD SET visitcount=visitcount+1 "
+					+ " WHERE r_id=?";
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setInt(1, r_id);
@@ -111,7 +112,7 @@ public class reviewboardDAO extends JDBConnect {
 		}
 	}
 
-	public reviewboardDTO selectView(Integer r_id) {
+	public reviewboardDTO selectView(int r_id) {
 		reviewboardDTO dto = new reviewboardDTO();
 		String query = "SELECT * FROM REVIEW_BOARD WHERE r_id=?";
 		try {
@@ -218,10 +219,10 @@ public class reviewboardDAO extends JDBConnect {
 		int result = 0;
 		try {
 			
-			String sql = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
+			String query = "insert into comment_board (cmt_no, cmt_id, cmt_content, cmt_regdate, board_no)"
 					+ " values (seq_board_num.NEXTVAL, ?, ?, default, ?)";
 			
-			psmt = con.prepareStatement(sql);
+			psmt = con.prepareStatement(query);
 			
 			psmt.setString(1, dto.getCmt_id());
 			psmt.setString(2, dto.getCmt_content());
@@ -233,6 +234,22 @@ public class reviewboardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	
+	public int editComment(CommentDTO dto) {
+		int result = 0;
+		try {
+			String query = "update comment_board"
+					+ " set cmt_content = ?"
+					+ " where cmt_no = ?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getCmt_content());
+			psmt.setString(2, dto.getCmt_no());
+			result = psmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 	

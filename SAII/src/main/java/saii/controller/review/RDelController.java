@@ -14,22 +14,22 @@ import saii.domain.reviewboardDAO;
 import saii.dto.reviewboardDTO;
 import utils.AlertFunc;
 
-@WebServlet("/review_mode")
-public class RModeController extends HttpServlet {
+@WebServlet("/review_delete")
+public class RDelController extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int r_id = Integer.parseInt(req.getParameter("r_id"));
-		String mode = req.getParameter("mode");
+//		String mode = req.getParameter("mode");
 		String r_d = req.getParameter("r_id");
 
 		reviewboardDAO dao = new reviewboardDAO();
 
-			if(mode.equals("edit")) {	//수정 모드
+/*			if(mode.equals("edit")) {	//수정 모드
 				resp.sendRedirect("http://localhost:8081/SAII/review_edit?r_id=" + r_id);
-			}
-			else if(mode.equals("delete")) {	//삭제 모드
-				dao = new reviewboardDAO();
+			}*/
+/*			else if(mode.equals("delete")) {	//삭제 모드
+*/				dao = new reviewboardDAO();
 				reviewboardDTO dto = dao.selectView(r_id);
 				int result = dao.deletePost(r_id);	//DB 게시물 삭제
 				
@@ -44,4 +44,4 @@ public class RModeController extends HttpServlet {
 			
 	}
 
-}
+//}

@@ -140,10 +140,10 @@ font-size: 8px;
 			<c:if test="${!(empty sessionScope.UserId)}">
 			<c:if test="${dto.nickname == nickname}">
 				<button class="chkWriter" type="button"
-					onclick="location.href='http://localhost:8081/SAII/review_mode?mode=edit&r_id=${param.r_id}';">
+					onclick="location.href='http://localhost:8081/SAII/review_edit?r_id=${param.r_id}';">
 					수정</button>
 				<button class="chkWriter" type="button"
-					onclick="location.href='http://localhost:8081/SAII/review_mode?mode=delete&r_id=${param.r_id}';">
+					onclick="location.href='http://localhost:8081/SAII/review_delete?&r_id=${param.r_id}';">
 					삭제</button>
 			</c:if>
 			</c:if>
