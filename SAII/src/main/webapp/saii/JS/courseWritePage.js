@@ -50,14 +50,11 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 //mode가 edit일때만 실행
 if(mode=="edit"){
+	
+	$('.'+region+'').attr("selected","selected");
+	
 	var po =new kakao.maps.LatLng(paramObjs[0].Y,paramObjs[0].X)
 	map.panTo(po)
-	
-	//console.log("수정 모드 실행")
-	
-	// console.log(paramObjs[0]);
-	// console.log(paramObjs);
-	// console.log(paramObjs.length);
 	
  for(var j=0; j<paramObjs.length;j++){
 	var paramObj = {
