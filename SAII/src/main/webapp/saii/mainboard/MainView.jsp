@@ -18,7 +18,15 @@
 		width:90%;
 		margin:50px auto;
 	}
-	tr,td{
+	td{
+		
+	}
+	tr{
+		width:1000px;
+		margin:auto;
+	}
+	ul{
+		width:1000px;
 		margin:auto;
 	}
 	#paging{
@@ -116,6 +124,7 @@
 
 </head>
 <body>
+<div>
 	<span id="m_id" style="display:none;">${dto.m_id}</span>
 	<table id=view_table>
 		<tr>
@@ -125,9 +134,9 @@
 			<td>작성자</td>
 			<td>${dto.nickname}</td>
 			<td>작성일</td>
-			<td>${dto.m_postdate}</td>
-			<td>조회수</td>
-			<td>${dto.visitcount}
+			<td width="50%">${dto.m_postdate}</td>
+			<td style="float:right">조회수</td>
+			<td >${dto.visitcount} </td>
 		</tr>
 		<tr>
 			<td>지역</td>
@@ -170,6 +179,8 @@
 		<c:forTokens items="${p_name}" delims="," var="name">
           	<li><c:out value=" ${name}" /></li>
         </c:forTokens>	
+        <input style="float:right" type="button" value="상세보기" onclick="location.href='http://localhost:8081/SAII/course_view?num=${dto.course_id}'"/>
+        <input style="float:right" type="button" value="리뷰작성" onclick="location.href='http://localhost:8081/SAII/review_write';"/>
     </ul>
 	</table>
 
@@ -179,7 +190,7 @@
 				<form method="POST" action="http://localhost:8081/SAII/addMainComments">
 				<input type="hidden" name="m_id" value="${dto.m_id}" />
 					<td colspan="5">
-						댓글작성 <textarea name="comments" cols="150" rows="3" style="resize: none;"></textarea>
+						댓글작성 <textarea name="comments" cols="100" rows="1" style="resize: none;"></textarea>
 					</td>
 					<td>
 						<input type="submit" value="댓글쓰기" />
@@ -215,6 +226,7 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+</div>
 <!--마우스 커서-->
 <%--마우스 커서--%>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
