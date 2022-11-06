@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자료실 게시판</title>
+<title>리뷰게시판</title>
 <style type="text/css">
 .container{
     padding: 0 15% 3% 15%;
@@ -19,12 +19,15 @@
 	text-align: center;
 	border: 1px solid #dddddd;
 }
+.colored {
+	background-color: #f7f7f7;
+}
 .container .info{
 	text-align:right;
 	padding: 3% 0;
 }
 .container .info button{
-    height: 25px;
+    height: 40px;
     width: 130px;
     background: none;
     border: none;
@@ -70,7 +73,7 @@
 </script>
 <body>
 <%@ include file="../top.jsp" %>
-<h2>수정하기(Edit)</h2>
+<h2>게시글 수정하기</h2>
 <div class="container">
 	<form name="writeFrm" method="post"
 	enctype="multipart/form-data"
@@ -89,41 +92,39 @@
 			<thead>
 				<tr>
 					<th colspan="4" style="background-color: #eeeeee; text-align: center;">
-					<c:if test="${dto.r_category eq 'course'}">코스 리뷰 보기</c:if>
-					<c:if test="${dto.r_category eq 'place'}">장소 리뷰 보기</c:if>
+					<c:if test="${dto.r_category eq 'course'}">♥ 코스 리뷰 보기 ♥</c:if>
+					<c:if test="${dto.r_category eq 'place'}">♥ 장소 리뷰 보기 ♥</c:if>
 					</th>						
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width: 20%;">제목</td>
+					<td class="colored" style="width: 20%;">제목</td>
 					<td>
-						<input type="text" name="r_title" style="width:90%;" value="${ dto.r_title }" />
+						<input type="text" name="r_title" style="width:90%;" value="${ dto.r_title }" placeholder="제목을 입력하세요." />
 					</td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td height="100">
+					<td class="colored">내용</td>
+					<td>
 						<textarea name="content" style="width:90%;height:100px;">${ dto.content }</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td>첨부파일</td>
+					<td class="colored">첨부파일</td>
 					<td>
-						<input type="file" name="o_file" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button class="write-btn" type="submit" onclick="okEdit()">작성 완료</button>
-						<button class="write-btn" type="reset">RESET</button>
+					
+						<input type="file" name="o_file" placeholder="첨부파일" />
 					</td>
 				</tr>
 			</tbody>
 		</table>		
-
+			<div align="center" style="padding-top:2%;">
+				<button class="write-btn" type="submit" onclick="okEdit()">작성 완료</button>
+				<button class="write-btn" type="reset">RESET</button>
+			</div>
 </form>
-
+</div>
 <!--마우스 커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>

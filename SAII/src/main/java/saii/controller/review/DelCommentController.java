@@ -21,7 +21,7 @@ public class DelCommentController extends HttpServlet {
 		reviewboardDAO dao = new reviewboardDAO();
 		
 		int result = dao.delComment(cmt_no);
-		if(result ==1) {
+		if(result == 1) {
 			resp.sendRedirect("/SAII/review_view?r_id="+r_id);
 		}else {
 			AlertFunc.alertBack(resp, "댓글 삭제 실패");

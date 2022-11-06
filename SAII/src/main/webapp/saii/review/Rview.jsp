@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>리뷰게시판</title>
 <style type="text/css">
+h3{ 
+	font-size: 40px;
+    font-weight: 400;
+    line-height: 13px;
+    margin-top: 80px;
+    text-align: center;
+    font-weight: bold;
+}
 .container{
     padding: 0 15% 3% 15%;
 }
@@ -18,6 +26,9 @@
 	position:relative;
 	text-align: center;
 	border: 1px solid #dddddd;
+}
+.colored {
+	background-color: #f7f7f7;
 }
 .container .info{
 	text-align:right;
@@ -92,7 +103,7 @@ font-size: 8px;
 </head>
 <body>
 <%@ include file="../top.jsp" %>
-	<h2>게시판 상세보기</h2>
+<h3 align="center">게시판 상세보기</h3>
 <div class="container">
 	<form method="post" action="http://localhost:8081/SAII/review_view">
 		<div class="container info">
@@ -106,22 +117,22 @@ font-size: 8px;
 			<thead>
 				<tr>
 					<th colspan="4" style="background-color: #eeeeee; text-align: center;">
-					<c:if test="${dto.r_category eq 'course'}">코스 리뷰 보기</c:if>
-					<c:if test="${dto.r_category eq 'place'}">장소 리뷰 보기</c:if>
+					<c:if test="${dto.r_category eq 'course'}">♥ 코스 리뷰 보기 ♥</c:if>
+					<c:if test="${dto.r_category eq 'place'}">♥ 장소 리뷰 보기 ♥</c:if>
 					</th>						
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width: 20%;">제목</td>
+					<td class="colored" style="width: 20%;">제목</td>
 					<td>${dto.r_title}</td>
 				</tr>
 				<tr>
-					<td>내용</td>
+					<td class="colored">내용</td>
 					<td height="100">${dto.content}</td>
 				</tr>
 				<tr>
-					<td>첨부파일</td>
+					<td class="colored">첨부파일</td>
 					<td><c:if test="${not empty dto.o_file }">
 							<a href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
 								<img src="/SAII/Storage/${dto.n_file}" width="30%" height="30%"></a>
@@ -167,7 +178,7 @@ font-size: 8px;
 		</c:if>
 		<c:forEach items="${ commentLists }" var="clist">
 				<tr>
-					<td>
+					<td style="width: 15%">
 						<span>${ clist.nickname }</span>
 					</td>
 					<td>

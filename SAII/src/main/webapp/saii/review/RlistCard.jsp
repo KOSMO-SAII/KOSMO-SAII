@@ -17,25 +17,25 @@
          <tr>
             <td class="search-bar" align="center">
                <select name="categoryType">
+                  <option value="all"
+                     <c:if test="${map.categoryType=='all' }">selected</c:if>>전체     
+                  </option>
                   <option value="place"
                      <c:if test="${map.categoryType=='place' }">selected</c:if>>장소
                   </option>
                   <option value="course"
                      <c:if test="${map.categoryType=='course' }">selected</c:if>>코스      
                   </option>
-                  <option value="all"
-                     <c:if test="${map.categoryType=='all' }">selected</c:if>>전체     
-                  </option>
                </select>
                <select name="searchType">
+                  <option value="both"
+                  	 <c:if test="${map.searchType=='both' }">selected</c:if>>제목+내용
+                  </option>
                   <option value="r_title"
                      <c:if test="${map.searchType=='r_title' }">selected</c:if>>제목
                   </option>
                   <option value="content"
                      <c:if test="${map.searchType=='content' }">selected</c:if>>내용
-                  </option>
-                  <option value="both"
-                          <c:if test="${map.searchType=='both' }">selected</c:if>>제목+내용
                   </option>
                </select>
                <input type="search" name="searchStr" value="${map.searchStr}"/>
