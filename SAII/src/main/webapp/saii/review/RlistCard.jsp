@@ -73,11 +73,6 @@
                </c:if>
 
                   <div class="cont">
-<!--
-                      <p>
-                        ${map.totalCount-(((map.pageNum-1)*map.pageSize)+stat.index)}
-                     </p>
- -->                     
                      <p>
                         <c:if test="${list.r_category eq 'course'}">코스</c:if>
                         <c:if test="${list.r_category eq 'place'}">장소</c:if>
@@ -92,7 +87,6 @@
                            <a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}"></a>
                      </c:if>
                   </div>
-               
             </li>
          </a>
    </c:forEach>
@@ -102,7 +96,6 @@
 </c:choose>   
 
 <script type="text/javascript">
-//console.log("${boardLists[0].n_file}");
 function dowrite(){
       if(!confirm('비회원 기능이 아닙니다. \n 로그인하시겠습니까?'))
          return false;

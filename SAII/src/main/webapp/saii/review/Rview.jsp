@@ -143,10 +143,10 @@ font-size: 8px;
 		<div class="view-btn">
 			<c:if test="${!(empty sessionScope.UserId)}">
 			<c:if test="${dto.nickname == nickname}">
-				<button class="chkWriter" type="button"
+				<button type="button"
 					onclick="location.href='http://localhost:8081/SAII/review_edit?r_id=${param.r_id}';">
 					수정</button>
-				<button class="chkWriter" type="button"
+				<button type="button"
 					onclick="delView()">
 					삭제</button>
 			</c:if>
@@ -163,7 +163,14 @@ font-size: 8px;
 					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
 				</td>
 				<td>
-					<input class="cmt_btn" type="submit" value="댓글쓰기" />
+				<c:choose>
+					<c:when test="${empty sessionScope.UserId }">
+						<input onclick="dowrite()" class="cmt_btn" type="button" value="댓글쓰기" />
+					</c:when>
+					<c:otherwise>
+						<input class="cmt_btn" type="submit" value="댓글쓰기" />
+					</c:otherwise>
+				</c:choose>
 				</td>
 			</tr>
 		</table>
@@ -179,10 +186,11 @@ font-size: 8px;
 		<c:forEach items="${ commentLists }" var="clist">
 				<tr>
 					<td style="width: 15%">
-						<span>${ clist.nickname }</span>
+						<span>${clist.cmt_no }${ clist.nickname }</span>
 					</td>
 					<td>
 						<div>${ clist.cmt_content }</div>
+						<input style="">
 						<div class="cmt date">${ clist.cmt_regdate }</div>
 					</td>
 					
@@ -191,14 +199,14 @@ font-size: 8px;
 							<td class="cmt-edit-del">
 								<input class="cmt-button" type="button" value="수정"
 									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }';"/>
-								<input class="cmt-button" type="button" value="삭제" onclick="delCmt()" />
+								<input class="cmt-button" type="button" value="삭제"
+									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';" />
 							</td>
 						</c:if>
 					</c:if>
 				</tr>
 		</c:forEach>	
 	</table>
-
 </div>
 <script type="text/javascript">
 function delView(){
@@ -208,13 +216,14 @@ function delView(){
 		location.href="http://localhost:8081/SAII/review_delete?&r_id=${param.r_id}";
 	}
 }
-function delCmt(){
-	if(!confirm('삭제 시, 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?'))
-		return false;
-	else{
-		location.href="http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }";
-	}
+function dowrite(){
+    if(!confirm('비회원 기능이 아닙니다. \n 로그인하시겠습니까?'))
+       return false;
+    else{
+       location.href="http://localhost:8081/SAII/login";
+    }
 }
+
 </script>
 
 <!--마우스 커서-->

@@ -36,7 +36,7 @@ public class RViewController extends HttpServlet {
 			ArrayList<CommentDTO> commentLists = dao.listComment(r_d);
 			req.setAttribute("commentLists", commentLists);
 			req.setAttribute("dto", dto);
-	
+			
 			req.getRequestDispatcher("/saii/review/Rview.jsp").forward(req, resp);
 			dao.close();
 		}

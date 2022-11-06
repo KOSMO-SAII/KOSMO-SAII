@@ -25,7 +25,6 @@ public class RDelController extends HttpServlet {
 
 		reviewboardDAO dao = new reviewboardDAO();
 
-		dao = new reviewboardDAO();
 		reviewboardDTO dto = dao.selectView(r_id);
 		int result = dao.deletePost(r_id);	//DB 게시물 삭제
 		

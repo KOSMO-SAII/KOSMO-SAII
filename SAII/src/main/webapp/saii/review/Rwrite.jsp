@@ -53,6 +53,11 @@ h3{
     background-color: #98dde3;
     white-space: nowrap;
 }
+.cate{
+    display: block;
+    position: relative;
+    left: 4.7%;
+}
 .write-btn{
 	height: 40px;
     width: 90px;
@@ -79,6 +84,11 @@ h3{
 </style>
 <script type="text/javascript">
 	function validateForm(form) {	//필수 항목 입력 확인
+		if(form.r_category.value ==""){
+			alert("카테고리를 선택하세요.");
+			form.r_category.focus();
+			return false;
+		}
 		if(form.r_title.value ==""){
 			alert("제목을 입력하세요.");
 			form.r_title.focus();
@@ -116,7 +126,8 @@ h3{
 			<tr>
 				<td class="colored" style="width: 20%;">카테고리</td>
 				<td>
-					<select style="align:left;" name="r_category">
+					<select class="cate" name="r_category">
+						<option selected>카테고리를 선택하세요.</option>
 						<option value="course">코스</option>
 						<option value="place">장소</option>
 					</select>
@@ -146,7 +157,6 @@ h3{
 					<button class="write-btn" type="submit">작성 완료</button>
 					<button class="write-btn" type="reset">RESET</button>
 			</div>
-
 	</form>
 </div>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
