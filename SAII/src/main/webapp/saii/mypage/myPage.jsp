@@ -53,6 +53,33 @@ function imgcg(input){
 		document.getElementById("preview").src="/SAII/Storage/${dto.n_profile_img}";
 	}
 }
+function withdrawcheck(){
+	var memberdel = confirm('정말로 탈퇴하시겠습니까?');
+	
+	if(memberdel){
+		alert('탈퇴됨');
+		return true;
+	}
+	else{
+		alert('탈퇴 안했네?');
+		return false;
+	}
+}
+
+function imgbig(){     
+	
+	var popupWidth = 400;
+	var popupHeight = 400;
+	
+	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+	
+	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+	
+		window.open("http://localhost:8081/SAII/saii/mypage/passcheck.jsp?id="+document.getElementById("userId").value, "imgbig", 
+				'width=' + popupWidth + ', height=' + popupHeight + ', resizable=no, scrollbars=no,top=' + popupY + ',left=' + popupX);
+	}
 </script>
 <style>
 #show2{
@@ -417,8 +444,8 @@ a {
 </div>
 <div>
 	<form action="http://localhost:8081/SAII/withdraw">
-		<input type="submit" id="del">
-		<label class="withdraw" for="del">회원탈퇴</label>	
+		<input type="submit" id="del" onclick="withdrawcheck()">
+		<label class="withdraw" for="del" >회원탈퇴</label>	
 	</form>
 </div>
 <a href="http://localhost:8081/SAII/home">돌아가기</a>
