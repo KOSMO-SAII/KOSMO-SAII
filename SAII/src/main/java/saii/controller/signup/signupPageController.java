@@ -31,7 +31,7 @@ public class signupPageController extends HttpServlet {
 		try {
 			String saveDirectory = req.getServletContext().getRealPath("./Storage");// 저장할 디렉토리
 			System.out.println(saveDirectory);
-			int maxPostSize = 1024 * 1000;
+			int maxPostSize = 1024 * 10000;
 			String encoding = "UTF-8";
 			// 1.MultipartRequest 객체 생성
 			MultipartRequest mr = new MultipartRequest(req, saveDirectory, maxPostSize, encoding);

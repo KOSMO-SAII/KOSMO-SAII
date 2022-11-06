@@ -16,7 +16,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
 import saii.domain.courseDAO;
+import saii.domain.mainboardDAO;
 import saii.dto.courseDTO;
+import saii.dto.mainboardDTO;
 import utils.AlertFunc;
 
 @WebServlet("/course_write")
@@ -37,6 +39,10 @@ public class courseWritePageController extends HttpServlet{
 		
 				List<Map<String, String>> list=new Vector<Map<String,String>>();
 				String[] datas = req.getParameterValues("data");
+				
+				mainboardDAO maindao= new mainboardDAO();
+				int c_id=Integer.parseInt(req.getParameter("c_id"));
+				mainboardDTO mdto=maindao.getMainboard(c_id);
 				
 				for(int k=0; k<datas.length;k++) {
 					String[] data =  datas[k].split("\\|");
@@ -59,6 +65,8 @@ public class courseWritePageController extends HttpServlet{
 					list.add(map);
 
 				}
+				req.setAttribute("title", mdto.getM_title());
+				req.setAttribute("region",mdto.getRegion());
 				req.setAttribute("List", list);
 				req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
 	}

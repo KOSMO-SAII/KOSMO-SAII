@@ -15,32 +15,40 @@
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <body>	
+<%@ include file="../top.jsp" %>
 	 <div class="body_wrap">
 		<div class="my">			
 			<form action="http://localhost:8081/SAII/course_view?mode=${param.mode}&c_id=${param.c_id}" method="post" onsubmit="return coursecheck()" >
-				제목<br/><input class="input "type="text" name="title"/><br/>
-
+				<c:choose>
+				<c:when test="${param.mode eq 'edit'}">
+				제목<br/><input class="input "type="text" name="title" value="${requestScope.title }"/><br/>
+				</c:when>
+				<c:otherwise>
+				제목<br/><input class="input "type="text" name="title" /><br/>
+				</c:otherwise>
+				</c:choose>
 				지역<br/>
+				
 				<select name="region">
-					<option value="없음">지역을 선택해주세요</option>
-					<option value="서울">서울특별시</option>
-					<option value="부산">부산광역시</option>
-					<option value="대구">대구광역시</option>
-					<option value="인천">인천광역시</option>
-					<option value="광주">광주광역시</option>
-					<option value="대전">대전광역시</option>
-					<option value="울산">울산광역시</option>
-					<option value="세종">세종특별자치시</option>
+					<option value="없음" >지역을 선택해주세요</option>
+					<option class="서울" value="서울">서울특별시</option>
+					<option class="부산" value="부산">부산광역시</option>
+					<option class="대구" value="대구">대구광역시</option>
+					<option class="인천" value="인천">인천광역시</option>
+					<option class="광주" value="광주">광주광역시</option>
+					<option class="대전" value="대전">대전광역시</option>
+					<option class="울산" value="울산">울산광역시</option>
+					<option class="세종" value="세종">세종특별자치시</option>
 					
-					<option value="경기">경기도</option>
-					<option value="강원">강원도</option>
-					<option value="충북">충청북도</option>
-					<option value="충남">충청남도</option>
-					<option value="전북">전라북도</option>
-					<option value="전남">전라남도</option>
-					<option value="경북">경상북도</option>
-					<option value="경남">경상남도</option>
-					<option value="제주">제주특별자치도</option>
+					<option class="경기" value="경기">경기도</option>
+					<option class="강원" value="강원">강원도</option>
+					<option class="충북" value="충북">충청북도</option>
+					<option class="충남" value="충남">충청남도</option>
+					<option class="전북" value="전북">전라북도</option>
+					<option class="전남" value="전남">전라남도</option>
+					<option class="경북" value="경북">경상북도</option>
+					<option class="경남" value="경남">경상남도</option>
+					<option class="제주" value="제주">제주특별자치도</option>
 				
 				</select>
 				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
@@ -133,7 +141,9 @@
 	<script type="text/javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var mode="${param.mode}"; //현재 작성 모드인지 수정 모드이지 구분
-		//console.log("${param.mode}");
+		var region="${requestScope.region }"
+		console.log(region)
+		console.log("${requestScope.title }");
 	</script>
 	<c:forEach items="${requestScope.List}" var="List">
 	<script type="text/javascript">
