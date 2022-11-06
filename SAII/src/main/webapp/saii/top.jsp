@@ -16,8 +16,9 @@
 </style>
 </head>
 <body>
+<img id=himg src="http://localhost:8081/SAII/saii/img/saii.png" width=60px; height=40px; onclick='location.href="http://localhost:8081/SAII/home"';>
 <div id="abc">
-	<a href="http://localhost:8081/SAII/home">홈으로</a>
+	<a href="javascript:window.history.back();">뒤로가기</a>
 	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a></c:if>
 	<c:if test="${UserId==null}"><a href="http://localhost:8081/SAII/login">로그인</a></c:if>
 	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/logout">로그아웃</a></c:if>

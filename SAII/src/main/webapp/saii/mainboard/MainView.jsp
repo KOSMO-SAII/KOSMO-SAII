@@ -110,7 +110,39 @@
 <script type="text/javascript" src="saii/JS/MainView.js"></script>
 </head>
 <body>
-	<h2>${dto.m_title}</h2>
+	<table>
+		<tr>
+			<th colspan='6'>${dto.m_title}</th>
+		</tr>
+		<tr>
+			<td>작성자</td>
+			<td>${dto.m_id}</td>
+			<td>작성일</td>
+			<td>${dto.m_postdate}</td>
+			<td>조회수</td>
+			<td>${dto.visitcount}
+		</tr>
+		<tr>
+			<td>지역</td>
+			<td colspan=''>${dto.region}</td>
+			<td>좋아요</td>
+			<td>
+				<c:if test="${memdto.nickname ne null}">
+					<span id="good">
+						<c:choose>
+							<c:when test="${goodWhether eq true}">
+								<img src="saii/img/yesGood.png" alt="좋아" width="20px" height="20px">
+							</c:when>
+							<c:otherwise>
+								<img src="saii/img/notGood.png" alt="싫어" width="20px" height="20px">
+							</c:otherwise>
+						</c:choose>
+					</span>
+				</c:if>
+				<span id="goodcount">${dto.goodcount}</span>
+			</td>
+		</tr>
+	</table>
 	<table>
 		<tr>
 			<td>글번호 <span id="m_id">${dto.m_id}</span></td>
@@ -153,6 +185,9 @@
 			</td>
 		</tr>
 	</table>
+
+<!--  -->
+
 	<table>
 		<c:if test="${memdto.nickname ne null}">
 			<tr>
