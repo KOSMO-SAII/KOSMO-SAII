@@ -27,6 +27,49 @@
 		}
 	}
 </script>
+<style type="text/css">
+.container{
+    padding: 0 15% 3% 15%;
+}
+.container .info p{
+	margin: 0;
+}
+.table-view{
+	width: 100%;
+	position:relative;
+	text-align: center;
+	border: 1px solid #dddddd;
+}
+.container .info{
+	text-align:right;
+	padding: 3% 0;
+}
+.container .info button{
+    height: 25px;
+    width: 130px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+    white-space: nowrap;
+}
+.write-btn{
+    height: 25px;
+    width: 80px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #98dde3;
+}
+</style>
 </head>
 <body>
 <%@ include file="../top.jsp" %>
@@ -53,7 +96,7 @@
 			<tr>
 				<td style="width: 20%;">제목</td>
 				<td>
-					<input type="text" name="r_title" style="width:90%;" />
+					<input type="text" name="r_title"" />
 				</td>
 			</tr>
 			<tr>
@@ -68,14 +111,15 @@
 					<input type="file" name="o_file" />
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button class="write-btn" type="submit">작성 완료</button>
+					<button class="write-btn" type="reset">RESET</button>
+				</td>
+			</tr>
 		</tbody>
 	</table>		
-		<tr>
-			<td colspan="2" align="center">
-				<button type="submit">작성 완료</button>
-				<button type="reset">RESET</button>
-			</td>
-		</tr>
+
 
 	</form>
 </div>
