@@ -87,6 +87,8 @@ function imgoriginalhidden(){
    top: 7%;
    transition: 2s;
    transition-timing-function: ease-in;
+   max-height: 500px;
+   max-width: 500px;
 }
 
 #show2{
@@ -248,6 +250,7 @@ h2 {
 	outline: 5px;
 	margin-bottom: 10px;
 	border-radius: 4px;
+	top: 22px;
 	
 }
 .mylist:hover{
@@ -258,7 +261,8 @@ h2 {
 }
 .imgdiv {
 	position: relative;
-	left: 250px;
+	left: 316px;
+	top: 15px;
 }
 .spannick {
 	position: relative;
@@ -305,8 +309,8 @@ a {
 	position: relative;
 	width:70px;
 	height:70px;
-	top: 30px;
-	left: 20px;
+ 	margin: auto;
+ 	top: 32px;
 	
 }
 .mylist2{
@@ -335,7 +339,17 @@ a {
 }
 .spanimg{
 	position:relative;
+
 	top: 49px;
+}
+.favodiv{
+	position: relative;
+	margin: auto;
+	height: 150px;
+	width: 240px;
+	right: 355px;
+	top: 78px;
+	text-align: center;
 }
 </style>
 </head>
@@ -413,7 +427,7 @@ a {
 					<a href="http://localhost:8081/SAII/view?m_id=${miist.m_id }">
 						<div class="divtitle"><span>코스이름 </span> ${mlist.m_title }</div>
 						<div class="divregion"><span>코스지역 </span> ${mlist.region}</div>
-						<div class="divname"><span>코스경로 </span> ${mlist.p_name}</div>
+						<div class="divname"><span>코스경로 </span> ${mlist.pname}</div>
 						<div class="divdate"><span>게시날짜 </span> ${mlist.m_postdate}</div>
 						<div class="divcount"><span>선택장소 </span> ${mlist.count}</div>
 					</a>
@@ -431,8 +445,10 @@ a {
 		<c:when test="${not empty flist }">
 			<c:forEach items="${flist}" var="flist2">
 			<div class="myfavo">
-				<img class="favoimg"src="/SAII/Storage/${flist2.profile}"  style="border-radius: 50px">
-				<br><span class="spanimg">${flist2.nickname }의 게시물</span>
+				<div class="favodiv">
+					<img class="favoimg"src="/SAII/Storage/${flist2.profile}"  style="border-radius: 50px">
+					<br><span class="spanimg">${flist2.nickname }의 게시물</span>
+				</div>
 				<div class="mylist2">
 					<a href="http://localhost:8081/SAII/view?m_id=${flist2.m_id }">
 						<div class="divtitle"><span>코스이름 </span> ${flist2.m_title }</div>
