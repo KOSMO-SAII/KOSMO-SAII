@@ -53,19 +53,18 @@ public class myPageController extends HttpServlet{
 		
 		
 		// 페이징
-		Paging paging = new Paging();
-	
-		int page = 1;
-		if(req.getParameter("page") != null) {
-			page = Integer.parseInt(req.getParameter("page"));
-		}
-			
-		paging.setPage(page);
-		int count = mdao.selectCount(map);
-		paging.setTotalCount(count);
-				
-		map.put("startNum", paging.getStartNum());
-		map.put("endNum", paging.getEndNum());
+		/*
+		 * Paging paging = new Paging();
+		 * 
+		 * int page = 1; if(req.getParameter("page") != null) { page =
+		 * Integer.parseInt(req.getParameter("page")); }
+		 * 
+		 * paging.setPage(page); int count = mdao.selectCount(map);
+		 * paging.setTotalCount(count);
+		 * 
+		 * map.put("startNum", paging.getStartNum()); map.put("endNum",
+		 * paging.getEndNum());
+		 */
 		
 		List<mainboardDTO> boardLists = mdao.myPage_selectListPage(map);
 		
@@ -104,7 +103,7 @@ public class myPageController extends HttpServlet{
 			fmap.put("m_postdate", fdto.getM_postdate());
 			fmap.put("visitcount", fdto.getVisitcount());
 			fmap.put("profile", dao.favoprofile(fdto.getM_id()));
-			fmap.put("pmane", cdao.getPlaceNames(fdto.getCourse_id()));
+			fmap.put("pname", cdao.getPlaceNames(fdto.getCourse_id()));
 			fmap.put("count", Integer.toString(cdao.mylistcount(Integer.parseInt(fdto.getCourse_id()))));
 			
 			flist.add(fmap);
