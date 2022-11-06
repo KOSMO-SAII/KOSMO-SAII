@@ -48,15 +48,14 @@
 				
 				</ul>
 				<div id="btnbox">
-				 <button type="button" onclick="check();">확인</button>
-				<button type="button" onclick="hide();">숨기기</button> 
-				<button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button>
+				 <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
+				<!-- <button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button> -->
 				<c:choose>
 					<c:when test="${param.mode eq 'edit'}">
-						<input type="submit" value="코스수정"></input>
+						<input type="submit" class="submitbtn" value="코스수정"></input>
 					</c:when>
 					<c:otherwise>
-						<input type="submit" value="코스저장"></input>
+						<input type="submit" class="submitbtn" value="코스저장"></input>
 					</c:otherwise>
 				</c:choose>
 				</div>
@@ -72,7 +71,7 @@
 						<div>
 							<form onsubmit="searchPlaces(); return false;">
 								키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
-								<button class="searchbtn" type="submit">검색하기</button>
+								<button class="searchbtn" type="submit">검색</button>
 							</form>
 						</div>
 					</div>
