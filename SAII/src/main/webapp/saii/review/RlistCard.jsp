@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/ReviewBoard.css">
 </head>
 <body>
-<h2>리뷰 게시판</h2>
+<%@ include file="../top.jsp" %>
+<h3>리뷰 게시판</h3>
    <!-- 검색 -->
    <form method="get">
       <table width="100%">
