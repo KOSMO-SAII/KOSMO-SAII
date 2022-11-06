@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import saii.domain.courseDAO;
 import saii.domain.goodDAO;
 import saii.domain.mainCommentsDAO;
 import saii.domain.mainboardDAO;
 import saii.domain.memberDAO;
+import saii.dto.courseDTO;
 import saii.dto.goodDTO;
 import saii.dto.mainCommentsDTO;
 import saii.dto.mainboardDTO;
@@ -47,10 +49,14 @@ public class MainViewController extends HttpServlet {
 			}
 			memdao.close();
 			gdao.close();
-			
+						
 			req.setAttribute("goodWhether", goodWhether);
 			req.setAttribute("memdto", memdto);
 		}
+		courseDAO cdao = new courseDAO();
+		req.setAttribute("p_name", cdao.getPlaceNames(dto.getCourse_id()));	
+		
+		
 		
 		mainCommentsDAO mcdao = new mainCommentsDAO();
 		List<mainCommentsDTO> mainCommentsLists = mcdao.selectComments(m_id);

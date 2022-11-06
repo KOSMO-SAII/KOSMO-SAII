@@ -16,6 +16,9 @@
          <tr>
             <td class="search-bar" align="center">
                <select name="categoryType">
+               	  <option value="all"
+                     <c:if test="${map.categoryType=='all' }">selected</c:if>>전체     
+                  </option>
                   <option value="place"
                      <c:if test="${map.categoryType=='place' }">selected</c:if>>장소
                   </option>

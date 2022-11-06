@@ -16,7 +16,7 @@
 	}
 	table{
 		width:90%;
-		margin:auto;
+		margin:50px auto;
 	}
 	tr,td{
 		margin:auto;
@@ -91,6 +91,11 @@
 	#board_table tr:nth-child(2n-1){
 		background-color: #f7f7f7;
 	}
+	#view_table tr td:nth-child(2n-1){
+		background-color: #f7f7f7;
+		text-align: center;
+		width: 100px;
+	}
 	a {
 	text-decoration:none;
 	color:darkblue;
@@ -108,15 +113,16 @@
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="saii/JS/MainView.js"></script>
+
 </head>
 <body>
-	<table>
+	<table id=view_table>
 		<tr>
-			<th colspan='6'>${dto.m_title}</th>
+			<th colspan='6' style="text-align:left;">${dto.m_title}</th>
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${dto.m_id}</td>
+			<td>${dto.nickname}</td>
 			<td>작성일</td>
 			<td>${dto.m_postdate}</td>
 			<td>조회수</td>
@@ -142,39 +148,11 @@
 				<span id="goodcount">${dto.goodcount}</span>
 			</td>
 		</tr>
-	</table>
-	<table>
+	
 		<tr>
-			<td>글번호 <span id="m_id">${dto.m_id}</span></td>
-			<td colspan="5">제목 : ${dto.m_title}</td>
-		</tr>
-		<tr>
-			<td>지역</td> <td>${dto.region}</td>
-			<td>코스넘버</td> <td>${dto.course_id}</td>
-			<td>글쓴이</td> <td><span id="nickname">${dto.nickname}</span></td>
-		</tr>
-		<tr>
-			<td>작성일</td> <td>${dto.m_postdate}</td>
-			<td>좋아요</td>
-			<td>
-				<c:if test="${memdto.nickname ne null}">
-					<span id="good">
-						<c:choose>
-							<c:when test="${goodWhether eq true}">
-								<img src="saii/img/yesGood.png" alt="좋아" width="20px" height="20px">
-							</c:when>
-							<c:otherwise>
-								<img src="saii/img/notGood.png" alt="싫어" width="20px" height="20px">
-							</c:otherwise>
-						</c:choose>
-					</span>
-				</c:if>
-				<span id="goodcount">${dto.goodcount}</span>
+			<td id="delete" colspan="5">
 			</td>
-			<td>조회수</td> <td>${dto.visitcount}</td>
-		</tr>
-		<tr>
-			<td id="delete" colspan="6">
+			<td>
 				<c:choose>
 					<c:when test="${memdto.nickname eq dto.nickname}">
 						<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit?m_id=${dto.m_id}';" />
@@ -186,7 +164,13 @@
 		</tr>
 	</table>
 
-<!--  -->
+	<table>
+	<ul style="width:70%; margin:auto">
+		<c:forTokens items="${p_name}" delims="," var="name">
+          	<li><c:out value=" ${name}" /></li>
+        </c:forTokens>	
+    </ul>
+	</table>
 
 	<table>
 		<c:if test="${memdto.nickname ne null}">

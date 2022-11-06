@@ -18,7 +18,7 @@
 	 <div class="body_wrap">
 		<div class="my">			
 			<form action="http://localhost:8081/SAII/course_view?mode=${param.mode}&c_id=${param.c_id}" method="post" onsubmit="return coursecheck()" >
-				제목<br/><input type="text" name="title"/><br/>
+				제목<br/><input class="input "type="text" name="title"/><br/>
 
 				지역<br/>
 				<select name="region">
