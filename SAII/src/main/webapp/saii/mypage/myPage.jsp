@@ -46,6 +46,7 @@ function imgcg(input){
         // 이미지가 로드가 된 경우
         reader.onload = function(e) {
             document.getElementById("preview").src=e.target.result;
+            document.getElementById("preview1").src=e.target.result;
         };
      	// reader가 이미지 읽도록 하기
         reader.readAsDataURL(input.files[0]);
@@ -66,22 +67,28 @@ function withdrawcheck(){
 	}
 }
 
-function imgbig(){     
-	
-	var popupWidth = 400;
-	var popupHeight = 400;
-	
-	var popupX = (window.screen.width / 2) - (popupWidth / 2);
-	// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
-	
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-	// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-	
-		window.open("http://localhost:8081/SAII/saii/mypage/passcheck.jsp?id="+document.getElementById("userId").value, "imgbig", 
-				'width=' + popupWidth + ', height=' + popupHeight + ', resizable=no, scrollbars=no,top=' + popupY + ',left=' + popupX);
+function imgoriginal(){
+	   document.getElementById("preview1").style.display="block";
 	}
+function imgoriginalhidden(){
+   document.getElementById("preview1").style.display="none";
+}
+
+
 </script>
 <style>
+#preview{
+   transition-timing-function: ease-in;
+}
+#preview1{
+   display: none;
+   z-index: 1;
+   position: absolute;
+   top: 7%;
+   transition: 2s;
+   transition-timing-function: ease-in;
+}
+
 #show2{
 	display: none;
 	width: 1000px;
@@ -383,7 +390,7 @@ a {
 	
 	</table>
 	<div id="profile" align="center">
-	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
+	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
 	<form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${dto.id}">
 		<label class="input_file_button" for="filebutton">사진선택</label>
@@ -393,6 +400,7 @@ a {
 	</form>
 	</div>
 </div>
+<img id="preview1" src="/SAII/Storage/${dto.n_profile_img}" onclick="imgoriginalhidden()">
 <div id="show2">
 	<div class="imgdiv">
 		<img src="/SAII/Storage/${dto.n_profile_img}" width="90px" height="90px" style="border-radius: 50px">
