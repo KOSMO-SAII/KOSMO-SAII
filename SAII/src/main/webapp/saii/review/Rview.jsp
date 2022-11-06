@@ -186,7 +186,7 @@ font-size: 8px;
 						<c:if test="${clist.cmt_id == sessionScope.UserId}">
 							<td class="cmt-edit-del">
 								<input class="cmt-button" type="button" value="수정"
-									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }';"/>
 								<input class="cmt-button" type="button" value="삭제" onclick="delCmt()" />
 							</td>
 						</c:if>
