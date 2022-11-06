@@ -250,6 +250,7 @@ h2 {
 	outline: 5px;
 	margin-bottom: 10px;
 	border-radius: 4px;
+	top: 22px;
 	
 }
 .mylist:hover{
@@ -260,7 +261,8 @@ h2 {
 }
 .imgdiv {
 	position: relative;
-	left: 250px;
+	left: 316px;
+	top: 15px;
 }
 .spannick {
 	position: relative;
