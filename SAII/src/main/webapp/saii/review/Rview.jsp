@@ -120,19 +120,12 @@ font-size: 8px;
 					<td>내용</td>
 					<td height="100">${dto.content}</td>
 				</tr>
-		
 				<tr>
 					<td>첨부파일</td>
 					<td><c:if test="${not empty dto.o_file }">
 							<a href="http://localhost:8081/SAII/review_download?o_file=${dto.o_file}&n_file=${dto.n_file}&r_id=${dto.r_id}">
 								<img src="/SAII/Storage/${dto.n_file}" width="30%" height="30%"></a>
 						</c:if></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="center">
-						<!-- 회원이면, 작성자와 회원 닉네임이 같을 때만, 버튼 보임. -->
-
-					</td>
 				</tr>
 			</tbody>
 		</table>
