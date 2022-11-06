@@ -142,7 +142,7 @@ let subToggle2=true;
 			$('#arrow2').text("◀")
 		subToggle2=!subToggle2;
 		}else{
-		box.style.width='364px';
+		box.style.width='357px';
 		$('#category-box').css('display', 'block');
 		$('#arrow2').text("▶")
 		subToggle2=!subToggle2;

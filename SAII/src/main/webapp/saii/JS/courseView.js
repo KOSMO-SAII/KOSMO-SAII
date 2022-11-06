@@ -39,11 +39,11 @@ for(var k=0;k<paramObjs.length;k++){
 	//오버레이 내용
 	var mycontent='<div class="wrap">' + 
 	            '    <div class="info">' + 
-	            '        <div class="title">' + 
+	            '        <div class="mapoverlay">' + 
 	                        			paramObjs[k].Place_name + 
 	            '            <div class="close r" onclick="overlayclose('+k+')" title="닫기"><input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'"></div>' + 
 	            '        </div>' + 
-	            '        <div class="body">' + 
+	            '        <div class="mapoverlaybody">' + 
 	            '            <div class="desc">' + 
 	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' + 
 	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' + 
@@ -121,12 +121,18 @@ for(var k=0;k<paramObjs.length;k++){
 	
 	//=========================== 좌측 마이 스케쥴 출력
 	var li=document.createElement('li');	
+	var div=document.createElement('div');	
+
+   							            
+	      
+	
 	var	data={
 			data: paramObjs[k].category+"|"+paramObjs[k].address_id+"|"+paramObjs[k].address_name+"|"+paramObjs[k].Road_address_name+"|"
 				+paramObjs[k].Phone_number+"|"+paramObjs[k].Place_name+"|"+paramObjs[k].Place_url+"|"+paramObjs[k].X+"|"+paramObjs[k].Y+"|"+
 						paramObjs[k].Memo
 		}
 		li.innerHTML=
+				'	 <input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'"/>'+
 	            '    <div class="info">' + 
 	            '       <div class="title">' + 
 	                        			paramObjs[k].Place_name + 
@@ -136,13 +142,7 @@ for(var k=0;k<paramObjs.length;k++){
 	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' + 
 	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' + 
 	            '                <div class="phone ellipsis">'+paramObjs[k].Phone_number+'</div>' + 
-	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>'  
-	             if(k>0){ li.innerHTML +=
-          		  '              <div><a href="https://map.kakao.com/link/to/' + paramObjs[k].Place_name + ',' + paramObjs[k].Y + ',' + paramObjs[k].X + 
-           		'                     /from/' + paramObjs[k-1].Place_name + ',' + paramObjs[k-1].Y + ',' + paramObjs[k-1].X + '"/>경로보기</a></div>' ;
-  						 }
-   							            
-		li.innerHTML +=            
+	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>'  +    
 				'            </div>' + 
 	            '		 <input type="hidden" class="data" name="data" value="">'+
 	            '		 <button type="button" class="memobtn" >메모'+
@@ -151,7 +151,14 @@ for(var k=0;k<paramObjs.length;k++){
 	            '	 </div>';
 	  
 		var ul =document.getElementById('My_List');
+		if(k>0){ 
+			div.innerHTML +=
+          		'        <div class="url"><a href="https://map.kakao.com/link/to/' + paramObjs[k].Place_name + ',' + paramObjs[k].Y + ',' + paramObjs[k].X + 
+           		'        /from/' + paramObjs[k-1].Place_name + ',' + paramObjs[k-1].Y + ',' + paramObjs[k-1].X + '"/>경로보기</a></div>' ;
+           		ul.appendChild(div);
+  				 }
 		ul.appendChild(li);
+		
 		
 		datas.push(data);
 		$('.data')[k].defaultValue=datas[k].data
@@ -161,8 +168,12 @@ for(var k=0;k<paramObjs.length;k++){
 		//생성한 리스트에 마우스 오버시 화면 이동(임시)
 		$('#My_List li .title').mouseover(function(event){
 			var li=event.target.parentElement.parentElement;
+			console.log($(li))
+			console.log(li.firstElementChild.defaultValue);
+			var val=li.firstElementChild.defaultValue
+			//console.log($('#My_List').children(li))
 			for(var i = 0 ;i<mymarkers.length;i++){
-				if (i==$(li).index()){
+				if (mymarkers[i].id==val){
 				var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
 				//mymarkers[i].mymarker.setMap(map);
 				map.panTo(mapmove);
@@ -211,8 +222,8 @@ for(var k=0;k<paramObjs.length;k++){
 
 //오버레이 닫기
 function overlayclose(j){
-	console.log(j);
-	console.log("실행")
+	//console.log(j);
+	//console.log("실행")
 	
 	mymarkers[j].myoverlay.myoverlay.setMap(null);
 }
@@ -235,10 +246,10 @@ for(var p=0;p<mymarkers.length;p++){
 makeline();
 
 function makeline(){
-	console.log("선긋기 시작")
+	//console.log("선긋기 시작")
 	polyline.setMap(null);
 	if(polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0){
-		console.log("0,0값 실행")
+		//console.log("0,0값 실행")
 		for(var i=0;i<mymarkers.length;i++){
 			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
 				la=mymarkers[i].mymarker.mymarker.getPosition().La
