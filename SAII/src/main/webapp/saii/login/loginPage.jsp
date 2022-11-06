@@ -124,7 +124,7 @@ input.sign {margin-top: 24px; height: 45px; width: 100%; background: none; borde
 	</c:when>
 	<c:otherwise>
 		${sessionScope.UserName}회원님, 로그인 하셨습니다
-		<a href="http://localhost:8081/SAII/home">[돌아가기]</a>
+		<a href="javascript:window.history.back();">[돌아가기]</a>
 		<a href="http://localhost:8081/SAII/logout">[로그아웃]</a>
 	</c:otherwise>
 		

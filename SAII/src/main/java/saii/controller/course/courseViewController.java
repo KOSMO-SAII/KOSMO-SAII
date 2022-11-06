@@ -90,7 +90,11 @@ public class courseViewController extends HttpServlet{
 					title = nickname + "_" + cdtos.get(0).getPlace_name();
 				if (region.equals("없음")) {
 					String[] reg = cdtos.get(0).getAddress_name().split("\\s");
-					region = reg[0];				
+					region = reg[0];
+					if(region.equals("세종특별자치시"))
+						region = "세종";
+					if(region.equals("제주특별자치도"))
+						region = "제주";
 				}
 				mdto.setM_title(title);
 				mdto.setRegion(region);

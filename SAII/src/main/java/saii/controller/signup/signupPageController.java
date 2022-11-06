@@ -38,7 +38,7 @@ public class signupPageController extends HttpServlet {
 			String fileName = mr.getFilesystemName("pick");
 			String ext = fileName.substring(fileName.lastIndexOf("."));
 			String date = mr.getParameter("yy") + "-" + mr.getParameter("mm") + "-" + mr.getParameter("dd");
-			String newFileName = date + ext;// 새로운 파일 이름("업로드 일시.확장자")
+			String newFileName = "file" + System.currentTimeMillis() + ext;// 새로운 파일 이름("업로드 일시.확장자")
 
 			File oldFile = new File(saveDirectory + File.separator + fileName);
 			File newFile = new File(saveDirectory + File.separator + newFileName);
@@ -69,7 +69,7 @@ public class signupPageController extends HttpServlet {
 			resp.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = resp.getWriter();
 			out.println(
-					"<script language='javascript'>alert('회원가입을 축하합니다!!!'); location.href='http://localhost:8081/SAII/saii/login/loginPage.jsp';</script>");
+					"<script language='javascript'>alert('회원가입을 축하합니다!!!'); location.href='http://localhost:8081/SAII/home;';</script>");
 			out.flush();
 			req.getRequestDispatcher("/saii/login/loginPage.jsp").include(req, resp);
 		} catch (Exception e) {
