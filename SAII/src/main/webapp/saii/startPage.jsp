@@ -58,11 +58,11 @@
 	<section id="tripple">
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_write"><img
-				class="imgbox" alt="코스 작성 화면" src="http://localhost:8081/SAII/saii/img/fast.png"></a><br/><p>코스작성</p>
+				class="imgbox" alt="코스 작성 화면" src="http://localhost:8081/SAII/saii/img/pencil.png"></a><br/><p>코스작성</p>
 		</div>
 		<div class="image-box">
 			<a href="http://localhost:8081/SAII/course_recommend"><img
-				class="imgbox" alt="코스 추천화면" src="http://localhost:8081/SAII/saii/img/her.png"></a><br/><p>코스추천</p>
+				class="imgbox" alt="코스 추천화면" src="http://localhost:8081/SAII/saii/img/recommend.png"></a><br/><p>코스추천</p>
 		</div>
 	</section>
 
