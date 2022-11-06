@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import saii.domain.courseDAO;
 import saii.domain.mainboardDAO;
@@ -24,10 +25,19 @@ public class courseViewController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//코스 id 받아옴
-		int course_id= Integer.parseInt( req.getParameter("num"));
+		System.out.println("courseViewController doget 실행");
 		
+		
+		//코스 id에 맞는 닉네임 찾기
+		int course_id= Integer.parseInt( req.getParameter("num"));
 		courseDAO cdao= new courseDAO();
+		mainboardDAO maindao= new mainboardDAO();
+		String nickname=maindao.getNickname(course_id);
+		
+		//코스 id에 맞는 글 제목,지역 찾기
+		mainboardDTO mdto=maindao.getMainboard(course_id);
+		System.out.println(mdto.getM_title());
+		System.out.println(mdto.getRegion());
 		//받아온 코스 id로 db에서 값 뽑아옴
 		ArrayList<courseDTO> cdtos=cdao.getCourse(course_id);
 		
@@ -50,7 +60,11 @@ public class courseViewController extends HttpServlet{
 			list.add(map);
 			
 		}
+		
+		req.setAttribute("title", mdto.getM_title());
+		req.setAttribute("region",mdto.getRegion());
 		req.setAttribute("c_id", course_id);
+		req.setAttribute("nickname", nickname);
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/course/courseView.jsp").forward(req, resp);
 		
@@ -60,8 +74,9 @@ public class courseViewController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int course_id = 0;
 		String mode=req.getParameter("mode");
-		String sidetitle=req.getParameter("title");
-		String sideregion=req.getParameter("region");
+		mainboardDAO maindao= new mainboardDAO();
+		
+		//mainboardDTO mdto=maindao.getMainboard(course_id);
 		
 		//courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정 
 		if(mode.equals( "edit")) {
@@ -70,6 +85,11 @@ public class courseViewController extends HttpServlet{
 			 course_id=Integer.parseInt(req.getParameter("c_id")) ;
 			ArrayList<courseDTO> cdtos = cdao.toCDTO(str);
 			cdao.updateCourse(course_id, cdtos);
+			
+			mainboardDTO mdto=maindao.getMainboard(course_id);
+
+			req.setAttribute("title", mdto.getM_title());
+			req.setAttribute("region", mdto.getRegion());
 			
 		}else {
 			//courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장 
@@ -88,6 +108,10 @@ public class courseViewController extends HttpServlet{
 				String title = req.getParameter("title");
 				String region = req.getParameter("region");
 				String nickname = req.getParameter("nickname");
+				
+//				HttpSession session= req.getSession();
+//				System.out.println(nickname);
+//				System.out.println(session.getAttribute("nickname"));
 				if (title != null && title.equals(""))
 					title = nickname + "_" + cdtos.get(0).getPlace_name();
 				if (region.equals("없음")) {
@@ -101,6 +125,9 @@ public class courseViewController extends HttpServlet{
 				mdto.setM_title(title);
 				mdto.setRegion(region);
 				mdao.insertWrite(mdto,nickname);	
+				req.setAttribute("nickname", nickname);
+				req.setAttribute("title", title);
+				req.setAttribute("region", region);
 			}
 			
 		}
@@ -131,9 +158,9 @@ public class courseViewController extends HttpServlet{
 			
 		}
 		
-		req.setAttribute("title", sidetitle);
-		req.setAttribute("region", sideregion);
+		
 		req.setAttribute("c_id", course_id);
+		
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/course/courseView.jsp").forward(req, resp);
 	}

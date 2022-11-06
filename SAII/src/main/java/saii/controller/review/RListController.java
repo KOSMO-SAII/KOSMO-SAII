@@ -22,6 +22,7 @@ public class RListController extends HttpServlet {
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
          throws ServletException, IOException {
+
 	   
       //DAO 생성
       reviewboardDAO dao = new reviewboardDAO(); //
