@@ -107,7 +107,9 @@ let subToggle=true;
 		menu.style.height='90%';
 		//console.log($('#menu_wrap'));
 		//console.log($('#menu_wrap').style);
+		$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"}); 
 		$('#arrow').text("▲")
+		//$('#arrow').attr("onclick","javascript:window.scrollTo(0,0)")
 		}
 		subToggle=!subToggle;
 	})
@@ -116,10 +118,15 @@ let subToggle=true;
 		var menu=document.getElementById('menu_wrap_box');
 		if(subToggle){
 		menu.style.height='90%';
+		$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"});
+		//$('#arrow').attr("onclick","javascript:window.scrollTo(0,0)")
 		$('#arrow').text("▲")
 		subToggle=!subToggle;
 		}else{
 			menu.style.height='10%';
+			$('#menu_wrap').scrollTop(0);
+			$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"});
+			//$('#arrow').removeAttr("onclick")
 			$('#arrow').text("▼")
 		subToggle=!subToggle;
 		}
@@ -421,11 +428,11 @@ function searcAddOverLay(marker,places){
 	//오버레이에 표시할 정보 
 	var content = '<div class="wrap">' + 
             '    <div class="info">' + 
-            '        <div class="title">' + 
+            '        <div class=" mapoverlay">' + 
                         			places.place_name + 
             '            <div class="close" onclick="scloseOverlay()" title="닫기"></div>' + 
             '        </div>' + 
-            '        <div class="body">' + 
+            '        <div class="mapoverlaybody">' + 
             '            <div class="desc">' + 
             '                <div class="ellipsis">'+places.road_address_name+'</div>' + 
             '                <div class="jibun ellipsis">'+places.address_name+'</div>' + 
@@ -511,7 +518,7 @@ for(var i=0;i<li.length;i++){
 			if(e.id!=currCategory){
 			currCategory = e.id;
 			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true}); 
-			e.style.background='#ffe6e6';
+			e.style.background='#98dde3';
 			}else if(e.id==currCategory){
 				currCategory='';
 				removeMarkerCategory();
@@ -522,7 +529,7 @@ for(var i=0;i<li.length;i++){
 			if(p.id!=currCategory){
 			currCategory = p.id;
 			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true}); 
-			p.style.background='#ffe6e6';
+			p.style.background='#98dde3';
 			}else if(p.id==currCategory){
 				currCategory='';
 				removeMarkerCategory();
@@ -564,7 +571,7 @@ function placesSearchCBCategory (data, status) {
 }
 
 	//idle 이벤트 발생시 마커가 사라질때 오버레이도 삭제
-	if(overlayOb!=null){
+	/*if(overlayOb!=null){
 		var exist=0;
 		for(var i=0;i<markerscId.length;i++){
 			if(markerscId[i]==overlayOb.id){	
@@ -575,7 +582,7 @@ function placesSearchCBCategory (data, status) {
 		if(exist==0){
 			closeOverlay();
 		}
-	}
+	}*/
 }
 
 // 지도에 마커를 표시하는 함수입니다
@@ -655,11 +662,11 @@ function addOverLay(markerc,place){
 	//오버레이에 표시할 정보 
 	var content = '<div class="wrap">' + 
             '    <div class="info">' + 
-            '        <div class="title">' + 
+            '        <div class=" mapoverlay">' + 
                         			place.place_name + 
             '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
             '        </div>' + 
-            '        <div class="body">' + 
+            '        <div class="mapoverlaybody">' + 
             '            <div class="desc">' + 
             '                <div class="ellipsis">'+place.road_address_name+'</div>' + 
             '                <div class="jibun ellipsis">'+place.address_name+'</div>' + 
@@ -752,7 +759,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 		//오버레이 생성
 		var mycontent='<div class="wrap">' + 
             '    <div class="info">' + 
-            '        <div class="title">' + 
+            '        <div class="title ">' + 
                         			myplaceinfo.placeName + 
             '            <div class="close r"  title="닫기"></div>' + 
             '			 <input type="hidden" class="hidden" value="'+myplaceinfo.placeid+'">'+
@@ -823,7 +830,7 @@ function addMySchedule(place){
 	
 	var li=document.createElement('li');	
 	li.innerHTML=
-	        '	 <input type="hidden" class="id" name="as" value="'+myplaceinfo.placeid+'">'+
+	        '	 <input type="hidden" class="id" name="as" value="'+place.placeid+'">'+
             '    <div class="info">' + 
             '       <div class="title">' + 
                         			place.placeName + 
@@ -953,22 +960,17 @@ function check(){
 					addmOverlay(marker,index);	
 				});	
         	})(mymarkers[i].mymarker.mymarker, i);
-			
-			/* kakao.maps.event.addListener(mymarkers[i].mymarker.mymarker,'click',function(){
-				console.log(this.getPosition());
-				console.log(this)
-				addmOverlay(this);	
-			});	*/
 		}
 		//라인 생성
 		polyline.setMap(map);
 		
 		checkmode=1;
+		
+		$('.check').attr("onclick","hide();");
+		$('.check').text("마이 핀 숨기기")
 	}else{
 		alert("핀을 저장해주세요");
 	}
-
-	
 }
 
 //마이핀 오버레이 출력
@@ -1024,6 +1026,9 @@ function hide(){
 		
 	}
 	checkmode=0;
+	
+	$('.check').attr("onclick","check();");
+		$('.check').text("마이 핀 보이기")
 	
 	
 }
