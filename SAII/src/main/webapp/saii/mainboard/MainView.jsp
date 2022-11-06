@@ -16,7 +16,7 @@
 	}
 	table{
 		width:90%;
-		margin:auto;
+		margin:50px auto;
 	}
 	tr,td{
 		margin:auto;
@@ -91,6 +91,11 @@
 	#board_table tr:nth-child(2n-1){
 		background-color: #f7f7f7;
 	}
+	#view_table tr td:nth-child(2n-1){
+		background-color: #f7f7f7;
+		text-align: center;
+		width: 100px;
+	}
 	a {
 	text-decoration:none;
 	color:darkblue;
@@ -111,13 +116,13 @@
 
 </head>
 <body>
-	<table>
+	<table id=view_table>
 		<tr>
-			<th colspan='6'>${dto.m_title}</th>
+			<th colspan='6' style="text-align:left;">${dto.m_title}</th>
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${dto.m_id}</td>
+			<td>${dto.nickname}</td>
 			<td>작성일</td>
 			<td>${dto.m_postdate}</td>
 			<td>조회수</td>
@@ -145,7 +150,9 @@
 		</tr>
 	
 		<tr>
-			<td id="delete" colspan="6">
+			<td id="delete" colspan="5">
+			</td>
+			<td>
 				<c:choose>
 					<c:when test="${memdto.nickname eq dto.nickname}">
 						<input type="button" value="수정하기" onclick="location.href='http://localhost:8081/SAII/edit?m_id=${dto.m_id}';" />
@@ -158,11 +165,13 @@
 	</table>
 
 	<table>
-		<c:forTokens items="${list[0].p_name}" delims="," var="name">
-          	<p><c:out value=" ${name}" /></p>
+	<ul style="width:70%; margin:auto">
+		<c:forTokens items="${p_name}" delims="," var="name">
+          	<li><c:out value=" ${name}" /></li>
         </c:forTokens>	
+    </ul>
 	</table>
-	
+
 	<table>
 		<c:if test="${memdto.nickname ne null}">
 			<tr>

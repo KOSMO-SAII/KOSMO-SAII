@@ -50,11 +50,11 @@ public class MainViewController extends HttpServlet {
 			memdao.close();
 			gdao.close();
 						
-			courseDAO cdao = new courseDAO();
-			req.setAttribute("p_name", cdao.getPlaceNames(dto.getCourse_id()));		
 			req.setAttribute("goodWhether", goodWhether);
 			req.setAttribute("memdto", memdto);
 		}
+		courseDAO cdao = new courseDAO();
+		req.setAttribute("p_name", cdao.getPlaceNames(dto.getCourse_id()));	
 		
 		
 		
