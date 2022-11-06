@@ -18,6 +18,7 @@ public class reviewboardDAO extends JDBConnect {
 	public int selectCount(Map<String, Object> map) {
 		int totalCount = 0;
 		String query = "SELECT COUNT(*) FROM REVIEW_BOARD";
+		//카테고리 타입이 코스+장소 (전체) 검색 시, 추가하기. map.get("categoryType").equals("all") 
 		if(map.get("categoryType")!=null) {
 			query += " WHERE r_category = '" + map.get("categoryType") + "'";
 		}
