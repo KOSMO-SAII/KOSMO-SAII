@@ -143,7 +143,7 @@ font-size: 8px;
 					onclick="location.href='http://localhost:8081/SAII/review_edit?r_id=${param.r_id}';">
 					수정</button>
 				<button class="chkWriter" type="button"
-					onclick="location.href='http://localhost:8081/SAII/review_delete?&r_id=${param.r_id}';">
+					onclick="delView()">
 					삭제</button>
 			</c:if>
 			</c:if>
@@ -187,8 +187,7 @@ font-size: 8px;
 							<td class="cmt-edit-del">
 								<input class="cmt-button" type="button" value="수정"
 									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
-								<input class="cmt-button" type="button" value="삭제"
-									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
+								<input class="cmt-button" type="button" value="삭제" onclick="delCmt()" />
 							</td>
 						</c:if>
 					</c:if>
@@ -197,7 +196,22 @@ font-size: 8px;
 	</table>
 
 </div>
-
+<script type="text/javascript">
+function delView(){
+	if(!confirm('삭제 시, 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?'))
+		return false;
+	else{
+		location.href="http://localhost:8081/SAII/review_delete?&r_id=${param.r_id}";
+	}
+}
+function delCmt(){
+	if(!confirm('삭제 시, 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?'))
+		return false;
+	else{
+		location.href="http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }";
+	}
+}
+</script>
 
 <!--마우스 커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
