@@ -331,4 +331,44 @@ public class mainboardDAO extends JDBConnect {
 		return result;
 		
 	}
+	
+	public String getNickname(int course_id) {
+		String result="";
+		String sql="select nickname "
+				+ "from main_board "
+				+ "where course_id=? ";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setInt(1, course_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			result=rs.getString(1);
+		}catch (Exception e) {
+			System.out.println("getNickname err");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public mainboardDTO getMainboard(int course_id) {
+		mainboardDTO mdto= new mainboardDTO();
+	
+		String sql="select m_title,region "
+				+ "from main_board "
+				+ "where course_id= ? ";
+		try {
+			psmt=con.prepareStatement(sql);
+			psmt.setInt(1, course_id);
+			rs=psmt.executeQuery();
+			rs.next();
+			mdto.setM_title(rs.getString(1)); 
+			mdto.setRegion(rs.getString(2));
+			System.out.println(mdto.getM_title());
+			System.out.println(mdto.getRegion());
+		}catch (Exception e) {
+			System.out.println("getNickname err");
+			e.printStackTrace();
+		}
+		return mdto;
+	}
 }

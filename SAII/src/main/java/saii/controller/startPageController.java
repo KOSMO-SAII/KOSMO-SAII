@@ -18,7 +18,7 @@ public class startPageController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("dfdfd");
 		req.getRequestDispatcher("/saii/startPage.jsp").forward(req, resp);
 	}
 }
