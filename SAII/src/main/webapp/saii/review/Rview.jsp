@@ -8,7 +8,7 @@
 <title>리뷰게시판</title>
 <style type="text/css">
 .container{
-	padding: 0 15%;
+    padding: 0 15% 3% 15%;
 }
 .container .info p{
 	margin: 0;
@@ -36,9 +36,7 @@
     background-color: #98dde3;
     white-space: nowrap;
 }
-.container .info button:hover{
-	background-color: #99dde4;
-}
+
 .view-btn{
 	position: absolute;
 	right: 17%;
@@ -83,6 +81,9 @@ font-size: 8px;
     position: relative;
     left: 85%;
  	border: none;
+}
+.cmt-edit-del{
+	width:6%;
 }
 
 </style>
@@ -183,7 +184,7 @@ font-size: 8px;
 					
 					<c:if test="${!(empty sessionScope.UserId)}">
 						<c:if test="${clist.cmt_id == sessionScope.UserId}">
-							<td>
+							<td class="cmt-edit-del">
 								<input class="cmt-button" type="button" value="수정"
 									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';"/>
 								<input class="cmt-button" type="button" value="삭제"

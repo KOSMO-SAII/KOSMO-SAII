@@ -15,7 +15,9 @@ public class mainCommentsDAO extends JDBConnect {
 	
 	public List<mainCommentsDTO> selectComments(String m_id){
 		List<mainCommentsDTO> bl = new Vector<mainCommentsDTO>();
-		String sql = "select * from main_comments where m_id = ? order by c_id desc";
+		String sql = "select * from (select rownum as pnum, c.* from (select * from main_comments) c "
+				   + "where m_id = ? "
+				   + "order by c_id desc)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, m_id);
@@ -39,7 +41,7 @@ public class mainCommentsDAO extends JDBConnect {
 	public int writeComments(mainCommentsDTO dto) {
 		int rs = 0;
 		String sql = "insert into main_comments(c_id, nickname, comments, m_id) "
-				   + "values(seq_memcomments_num.nextval(), ?, ?, ?)";
+				   + "values(seq_mcomments_num.nextval, ?, ?, ?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getNickname());

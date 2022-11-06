@@ -12,17 +12,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspWriter;
 
 import saii.domain.courseDAO;
 import saii.dto.courseDTO;
+import utils.AlertFunc;
 
 @WebServlet("/course_write")
 public class courseWritePageController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session= req.getSession();
+		if(session.getAttribute("UserId")!=null) {
+			req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
+		}else {
+			AlertFunc.alertLocation(resp, "작성하시려면 로그인을 해주세요", "http://localhost:8081/SAII/home");
+		}
+		
+		
 
-		req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
+		
 	}
 	
 	@Override

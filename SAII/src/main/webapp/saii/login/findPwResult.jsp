@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/findIdPw.css">
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -29,8 +30,8 @@
 	      <h4>  등록된 정보가 없습니다 </h4>  
 	     </div>
 	     <div class = "found-login">
- 		    <input type="button" id="btnback" value="다시 찾기" onClick="history.back()"/>
- 		    <input type="button" id="btnjoin" value="회원가입" onClick="joinin()"/>
+ 		    <input class="button" type="button" id="btnback" value="다시 찾기" onClick="history.back()"/>
+ 		    <input class="button" type="button" id="btnjoin" value="회원가입" onClick='location="http://localhost:8081/SAII/signup"'/>
        	</div>
        </div>
        

@@ -153,23 +153,46 @@
 			</td>
 		</tr>
 	</table>
-	
-	
 	<table>
+		<c:if test="${memdto.nickname ne null}">
+			<tr>
+				<form method="POST" action="http://localhost:8081/SAII/addMainComments">
+				<input type="hidden" name="m_id" value="${dto.m_id}" />
+					<td colspan="5">
+						댓글작성 <textarea name="comments" cols="150" rows="3" style="resize: none;"></textarea>
+					</td>
+					<td>
+						<input type="submit" value="댓글쓰기" />
+					</td>
+				</form>
+			</tr>
+		</c:if>
 		<tr>
-			<td colspan="6">댓글작성 <textarea id="comments" cols="100" rows="3" style="resize: none;"></textarea><button type="button" id="comments_submit">작성</button></td>
-		</tr>
-		<tr>
-			<td>번호</td>
 			<td>프사</td>
 			<td>작성자</td>
-			<td>내용</td>
+			<td colspan="3">내용</td>
 			<td>게시날짜</td>
-			<td>좋아요</td>
 		</tr>
-		<div id="comments"></div>
+		<c:choose>
+			<c:when test="${not empty mainCommentsLists}">
+				<c:forEach items="${mainCommentsLists}" var="c_list" varStatus="stat">
+					<tr>
+						<td>프으사아</td>
+						<td>${c_list.nickname}</td>
+						<td colspan="3">${c_list.comments}</td>
+						<td>${c_list.c_postdate}</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td colspan="6" align="center">등록된 댓글이 없습니다</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
 	</table>
-<!--마우스 커서-->	
+<!--마우스 커서-->
+<%--마우스 커서--%>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>
