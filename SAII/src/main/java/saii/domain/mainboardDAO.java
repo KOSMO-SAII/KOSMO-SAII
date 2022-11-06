@@ -160,8 +160,8 @@ public class mainboardDAO extends JDBConnect {
 	
 	public int insertWrite(mainboardDTO dto, String nickname) {
 		int rs = 0;
-		String sql = "insert into main_board(m_id, m_title, region, course_id, nickname, visitcount, goodcount)"
-				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, 0, 0)";
+		String sql = "insert into main_board(m_id, m_title, region, course_id, nickname, visitcount)"
+				   + " values(seq_mboard_num.nextval, ?, ?, ?, ?, 0)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getM_title());

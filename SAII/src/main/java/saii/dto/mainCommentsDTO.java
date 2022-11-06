@@ -8,7 +8,14 @@ public class mainCommentsDTO {
 	private String comments;
 	private Date c_postdate;
 	private String m_id;
+	private String n_profile_img;
 	
+	public String getN_profile_img() {
+		return n_profile_img;
+	}
+	public void setN_profile_img(String n_profile_img) {
+		this.n_profile_img = n_profile_img;
+	}
 	public String getC_id() {
 		return c_id;
 	}
