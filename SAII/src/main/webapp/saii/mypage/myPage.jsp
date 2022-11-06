@@ -8,8 +8,18 @@
 <title>마이페이지</title>
 <script>
 function passCk(){     
-		window.open("http://localhost:8081/SAII/saii/passcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
-				"width=650px, height=250px, resizable=no, scrollbars=no,top=380px,left=650px");
+		
+	var popupWidth = 650;
+	var popupHeight = 250;
+	
+	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+	
+	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+	// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+	
+		window.open("http://localhost:8081/SAII/saii/mypage/passcheck.jsp?id="+document.getElementById("userId").value, "chkForm", 
+				'width=' + popupWidth + ', height=' + popupHeight + ', resizable=no, scrollbars=no,top=' + popupY + ',left=' + popupX);
 	}
 function divshow1(){
 	document.getElementById("show1").style.display="block";
@@ -298,13 +308,11 @@ a {
 <body>
 <%@ include file="../top.jsp" %>
 <h3>마이페이지</h3>
-<hr>
 <div class="div1">
 	<div class="div1-1" onclick="divshow1()">내 정보</div>
 	<div class="div1-1" onclick="divshow2()">내가 만든 코스</div>
 	<div class="div1-1" onclick="divshow3()">내가 찜한 코스</div>
 </div>
-<hr>
 <div id="show1" >
 	<form method="get" onsubmit="passCk()">
 	<input id="edit" type="submit" value="수정하러가기" >
