@@ -202,8 +202,8 @@
 						<td colspan="2">${c_list.comments}</td>
 						<td>${c_list.c_postdate}</td>
 						<td>
-							<button>수정</button>
-							<button>삭제</button>
+							<input type="button" value="수정" onclick="editCmt()" style="display:none;">
+							<input type="button" value="삭제" onclick="delCmt()" style="display:none;">
 						</td>
 					</tr>
 				</c:forEach>

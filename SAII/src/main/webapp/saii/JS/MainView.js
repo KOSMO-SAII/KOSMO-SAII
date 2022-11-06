@@ -20,3 +20,11 @@ $(function(){
 		});
 	});
 });
+
+function delCmt(){
+	if(!confirm('삭제 시, 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?'))
+		return false;
+	else{
+		location.href="http://localhost:8081/SAII/deleteMainComments?c_id=${c_list.c_id}&m_id=${dto.m_id}";
+	}
+}

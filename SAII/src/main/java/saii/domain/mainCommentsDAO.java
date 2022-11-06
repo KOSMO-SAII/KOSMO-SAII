@@ -28,6 +28,7 @@ public class mainCommentsDAO extends JDBConnect {
 				dto.setNickname(rs.getString("nickname"));
 				dto.setComments(rs.getString("comments"));
 				dto.setC_postdate(rs.getDate("c_postdate"));
+				dto.setM_id(rs.getString("m_id"));
 				dto.setN_profile_img(rs.getString("n_profile_img"));
 				
 				bl.add(dto);
@@ -55,5 +56,18 @@ public class mainCommentsDAO extends JDBConnect {
 		}
 		
 		return rs;
+	}
+	
+	public int deleteComments(String c_id) {
+		int result = 0;
+		try {
+			String sql = "delete from main_comments where c_id = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, c_id);
+			result = psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
