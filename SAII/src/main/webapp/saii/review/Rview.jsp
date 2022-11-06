@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,6 +97,9 @@ font-size: 8px;
 .cmt-edit-del{
 	width:6%;
 }
+.cmteditDiv{
+	display: none;
+}
 
 </style>
 
@@ -186,19 +190,24 @@ font-size: 8px;
 		<c:forEach items="${ commentLists }" var="clist">
 				<tr>
 					<td style="width: 15%">
-						<span>${clist.cmt_no }${ clist.nickname }</span>
+						<span>${ clist.nickname }</span>
 					</td>
 					<td>
 						<div>${ clist.cmt_content }</div>
-						<input style="">
+						<form method="post" action="http://localhost:8081/SAII/editComment">
+							<div class="cmteditDiv" id="editDiv">
+								<input type="hidden" name="cmt_no" value="${cmt_no = clist.cmt_no}">
+								<input name="cmt_content" value="${cmt_content = clist.cmt_content}" type="text" placeholder="댓글을 수정하세요."/>
+								<input onclick="toggleEditDiv()" value="작성완료" type="submit"/>
+							</div>
+						</form>
 						<div class="cmt date">${ clist.cmt_regdate }</div>
 					</td>
 					
 					<c:if test="${!(empty sessionScope.UserId)}">
 						<c:if test="${clist.cmt_id == sessionScope.UserId}">
 							<td class="cmt-edit-del">
-								<input class="cmt-button" type="button" value="수정"
-									onclick="location.href='http://localhost:8081/SAII/editComment?cmt_no=${ clist.cmt_no }';"/>
+ 								<input onclick="toggleEditDiv()" class="cmt-button" type="button" value="수정"/>
 								<input class="cmt-button" type="button" value="삭제"
 									onclick="location.href='http://localhost:8081/SAII/delComment?cmt_no=${ clist.cmt_no }&r_id=${ dto.r_id }';" />
 							</td>
@@ -208,6 +217,9 @@ font-size: 8px;
 		</c:forEach>	
 	</table>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";>
+
+</script>
 <script type="text/javascript">
 function delView(){
 	if(!confirm('삭제 시, 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?'))
@@ -222,6 +234,17 @@ function dowrite(){
     else{
        location.href="http://localhost:8081/SAII/login";
     }
+}
+function toggleEditDiv(){
+	const editDiv = document.getElementById('editDiv');
+	if(editDiv.style.display !== 'none'){
+		editDiv.style.display = 'none';
+	}
+	else{
+		editDiv.style.display = 'block';
+	}
+
+	
 }
 
 </script>

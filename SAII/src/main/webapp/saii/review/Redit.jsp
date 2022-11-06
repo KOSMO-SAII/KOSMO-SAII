@@ -113,8 +113,8 @@
 				<tr>
 					<td class="colored">첨부파일</td>
 					<td>
-					
 						<input type="file" name="o_file" placeholder="첨부파일" />
+						<img src="/SAII/Storage/${dto.n_file}" width="30%" height="30%">
 					</td>
 				</tr>
 			</tbody>
