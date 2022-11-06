@@ -84,7 +84,7 @@ h3{
 </style>
 <script type="text/javascript">
 	function validateForm(form) {	//필수 항목 입력 확인
-		if(form.r_category.value ==""){
+		if(form.r_category.value =="카테고리를 선택하세요."){
 			alert("카테고리를 선택하세요.");
 			form.r_category.focus();
 			return false;

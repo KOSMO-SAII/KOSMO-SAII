@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰게시판</title>
+<title>사이</title>
 <style type="text/css">
 h3{ 
 	font-size: 40px;
@@ -55,6 +55,7 @@ h3{
 	display: inline-block;
 }
 
+
 .cmt-container{
 	padding: 40px 15%;
 	position:relative;
@@ -70,11 +71,24 @@ h3{
 .cmt tr:nth-child(2n-1){
 	background-color: #f7f7f7;
 }
+.cmt_input{
+    vertical-align: bottom;
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+}
 .okCmt{
 	margin: auto;
 }
+.cmt-table{
+	width: 100%;
+	padding-bottom: 2%;
+}
 .cmt_btn{
-	margin-top: 24px;
+	display: inline-block;
     height: 40px;
     width: 80px;
     background: none;
@@ -87,7 +101,7 @@ h3{
     background-color: #98dde3;
 }
 .cmt .date{
-font-size: 8px;
+	font-size: 8px;
     display: block;
     width: max-content;
     position: relative;
@@ -164,9 +178,9 @@ font-size: 8px;
 		<table class="cmt-table">
 			<tr>
 				<td>
-					<input type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
+					<input class="cmt_input" type="text" name="cmt_content" required placeholder="댓글을 작성하세요. "/>
 				</td>
-				<td>
+				<td align="right" width="90px">
 				<c:choose>
 					<c:when test="${empty sessionScope.UserId }">
 						<input onclick="dowrite()" class="cmt_btn" type="button" value="댓글쓰기" />
@@ -243,9 +257,8 @@ function toggleEditDiv(){
 	else{
 		editDiv.style.display = 'block';
 	}
-
-	
 }
+
 
 </script>
 

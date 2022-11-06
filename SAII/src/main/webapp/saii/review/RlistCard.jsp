@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>사이</title>
 <link rel="stylesheet" href="http://localhost:8081/SAII/saii/CSS/ReviewBoard.css">
 </head>
 <body>

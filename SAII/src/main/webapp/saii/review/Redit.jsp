@@ -5,8 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰게시판</title>
+<title>사이</title>
 <style type="text/css">
+h3{ 
+	font-size: 30px;
+    font-weight: 400;
+    line-height: 13px;
+    margin-top: 80px;
+    text-align: center;
+    font-weight: bold;
+}
 .container{
     padding: 0 15% 3% 15%;
 }
@@ -73,7 +81,7 @@
 </script>
 <body>
 <%@ include file="../top.jsp" %>
-<h2>게시글 수정하기</h2>
+<h3>리뷰 수정</h3>
 <div class="container">
 	<form name="writeFrm" method="post"
 	enctype="multipart/form-data"
