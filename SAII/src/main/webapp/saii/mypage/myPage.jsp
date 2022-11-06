@@ -437,7 +437,7 @@ a {
 					<a href="http://localhost:8081/SAII/view?m_id=${flist2.m_id }">
 						<div class="divtitle"><span>코스이름 </span> ${flist2.m_title }</div>
 						<div class="divregion"><span>코스지역 </span> ${flist2.region}</div>
-						<div class="divname"><span>코스경로 </span> ${flist2.p_name}</div>
+						<div class="divname"><span>코스경로 </span> ${flist2.pname}</div>
 						<div class="divdate"><span>게시날짜 </span> ${flist2.m_postdate}</div>
 						<div class="divcount"><span>선택장소 </span> ${flist2.count}</div>
 					</a>
