@@ -66,7 +66,7 @@ function withdrawcheck(){
 	}
 }
 
-function imgbig(){
+function imgbig(){     
 	
 	var popupWidth = 400;
 	var popupHeight = 400;
@@ -79,27 +79,9 @@ function imgbig(){
 	
 		window.open("http://localhost:8081/SAII/saii/mypage/passcheck.jsp?id="+document.getElementById("userId").value, "imgbig", 
 				'width=' + popupWidth + ', height=' + popupHeight + ', resizable=no, scrollbars=no,top=' + popupY + ',left=' + popupX);
-}
-function imgoriginal(){
-	document.getElementById("preview1").style.display="block";
-}
-function imgoriginalhidden(){
-	document.getElementById("preview1").style.display="none";
-}
-	
+	}
 </script>
 <style>
-#preview{
-	transition-timing-function: ease-in;
-}
-#preview1{
-	display: none;
-	z-index: 1;
-	position: absolute;
-	top: 0%;
-	transition: 2s;
-	transition-timing-function: ease-in;
-}
 #show2{
 	display: none;
 	width: 1000px;
@@ -399,8 +381,9 @@ a {
 	</div>
 	</form>
 	
+	</table>
 	<div id="profile" align="center">
-	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
+	<img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px">
 	<form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${dto.id}">
 		<label class="input_file_button" for="filebutton">사진선택</label>
@@ -410,7 +393,6 @@ a {
 	</form>
 	</div>
 </div>
-	<img id="preview1" src="/SAII/Storage/${dto.n_profile_img}" onclick="imgoriginalhidden()">
 <div id="show2">
 	<div class="imgdiv">
 		<img src="/SAII/Storage/${dto.n_profile_img}" width="90px" height="90px" style="border-radius: 50px">

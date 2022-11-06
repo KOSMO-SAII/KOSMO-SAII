@@ -13,29 +13,15 @@
 	right: 2%;
 	
 }
-.top_btn{
-	font-size: 15px;
-	margin-top: 24px; 
-	height: 30px; 
-	width: 120px; 
-	border: none;
-    color: #fff; 
-    font-size: 16px; 
-    font-weight: 500; 
-    border-radius: 4px; 
-    background-color: #98dde3;
-    text-decoration: none;
-    padding: 5px;
-}
 </style>
 </head>
 <body>
 <img id=himg src="http://localhost:8081/SAII/saii/img/saii.png" width=60px; height=40px; onclick='location.href="http://localhost:8081/SAII/home"';>
 <div id="abc">
-	<a class="top_btn" href="javascript:window.history.back();">뒤로가기</a>
-	<c:if test="${UserId!=null}"><a class="top_btn"  href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a></c:if>
-	<c:if test="${UserId==null}"><a class="top_btn" href="http://localhost:8081/SAII/login">로그인</a></c:if>
-	<c:if test="${UserId!=null}"><a class="top_btn" href="http://localhost:8081/SAII/logout">로그아웃</a></c:if>
+	<a href="javascript:window.history.back();">뒤로가기</a>
+	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/mypage?id=${UserId }">마이 페이지</a></c:if>
+	<c:if test="${UserId==null}"><a href="http://localhost:8081/SAII/login">로그인</a></c:if>
+	<c:if test="${UserId!=null}"><a href="http://localhost:8081/SAII/logout">로그아웃</a></c:if>
 </div>
 
 
