@@ -31,15 +31,13 @@ public class MainAddCommentsController extends HttpServlet {
 		mcdto.setNickname(memdto.getNickname());
 		mcdto.setM_id(m_id);
 		mcdto.setComments(comments);
+		mcdto.setN_profile_img(memdto.getN_profile_img());
 		
 		mainCommentsDAO mcdao = new mainCommentsDAO();
 		int result = mcdao.writeComments(mcdto);
 		
 		memdao.close();
 		mcdao.close();
-		
-		//req.setAttribute("list", list);
-		//req.getRequestDispatcher("/saii/mainboard/MainView.jsp").forward(req, resp);
 		
 		if(result == 1) {
 			resp.sendRedirect("http://localhost:8081/SAII/view?m_id=" + m_id);

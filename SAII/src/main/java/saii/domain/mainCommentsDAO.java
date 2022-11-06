@@ -28,25 +28,27 @@ public class mainCommentsDAO extends JDBConnect {
 				dto.setNickname(rs.getString("nickname"));
 				dto.setComments(rs.getString("comments"));
 				dto.setC_postdate(rs.getDate("c_postdate"));
+				dto.setN_profile_img(rs.getString("n_profile_img"));
 				
 				bl.add(dto);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-				
+		
 		return bl;
 	}
 	
 	public int writeComments(mainCommentsDTO dto) {
 		int rs = 0;
-		String sql = "insert into main_comments(c_id, nickname, comments, m_id) "
-				   + "values(seq_mcomments_num.nextval, ?, ?, ?)";
+		String sql = "insert into main_comments(c_id, nickname, comments, m_id, n_profile_img) "
+				   + "values(seq_mcomments_num.nextval, ?, ?, ?, ?)";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getNickname());
 			psmt.setString(2, dto.getComments());
 			psmt.setString(3, dto.getM_id());
+			psmt.setString(4, dto.getN_profile_img());
 			rs = psmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

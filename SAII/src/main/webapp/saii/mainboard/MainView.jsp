@@ -212,7 +212,7 @@
 			<c:when test="${not empty mainCommentsLists}">
 				<c:forEach items="${mainCommentsLists}" var="c_list" varStatus="stat">
 					<tr>
-						<td>프으사아</td>
+						<td><img src="/SAII/Storage/${c_list.n_profile_img}" alt="왜안나옴?" width="50px" height="50px" style="border-radius: 50px"></td>
 						<td>${c_list.nickname}</td>
 						<td colspan="3">${c_list.comments}</td>
 						<td>${c_list.c_postdate}</td>
