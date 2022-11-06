@@ -108,21 +108,24 @@
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="saii/JS/MainView.js"></script>
+
 </head>
 <body>
-	<h2>${dto.m_title}</h2>
 	<table>
 		<tr>
-			<td>글번호 <span id="m_id">${dto.m_id}</span></td>
-			<td colspan="5">제목 : ${dto.m_title}</td>
+			<th colspan='6'>${dto.m_title}</th>
 		</tr>
 		<tr>
-			<td>지역</td> <td>${dto.region}</td>
-			<td>코스넘버</td> <td>${dto.course_id}</td>
-			<td>글쓴이</td> <td><span id="nickname">${dto.nickname}</span></td>
+			<td>작성자</td>
+			<td>${dto.m_id}</td>
+			<td>작성일</td>
+			<td>${dto.m_postdate}</td>
+			<td>조회수</td>
+			<td>${dto.visitcount}
 		</tr>
 		<tr>
-			<td>작성일</td> <td>${dto.m_postdate}</td>
+			<td>지역</td>
+			<td colspan=''>${dto.region}</td>
 			<td>좋아요</td>
 			<td>
 				<c:if test="${memdto.nickname ne null}">
@@ -139,8 +142,8 @@
 				</c:if>
 				<span id="goodcount">${dto.goodcount}</span>
 			</td>
-			<td>조회수</td> <td>${dto.visitcount}</td>
 		</tr>
+	
 		<tr>
 			<td id="delete" colspan="6">
 				<c:choose>
@@ -153,6 +156,13 @@
 			</td>
 		</tr>
 	</table>
+
+	<table>
+		<c:forTokens items="${list[0].p_name}" delims="," var="name">
+          	<p><c:out value=" ${name}" /></p>
+        </c:forTokens>	
+	</table>
+	
 	<table>
 		<c:if test="${memdto.nickname ne null}">
 			<tr>

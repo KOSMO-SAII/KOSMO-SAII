@@ -19,13 +19,20 @@
 	 <div class="body_wrap">
 		<div class="my">
 			<form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
+				<div class="sidebar">제목:
+					<div id="sidebartitle">${requestScope.title }</div>
+				</div>
+
+				<div class="sidebar">지역:
+					<div id="sidebarregion">${requestScope.region }</div>
+				</div>
 				<ul id="My_List">
 				
 				</ul>
 				<div id="btnbox">
 				
-				<a href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a>
-				<input type="submit" value="코스 수정"></input>
+				<a class="submitbtna" href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a>
+				<input type="submit" class="submitbtn" value="코스 수정"></input>
 				</div>
 			</form>
 		</div>

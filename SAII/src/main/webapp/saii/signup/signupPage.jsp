@@ -73,7 +73,7 @@
 	
 	 
 	function nickCk(){           
-		if(form.nickname.value == ""){
+		/* if(form.nickname.value == ""){
 			alert("닉네임을 입력하세요");
 			form.nickname.focus();
 			return false;
@@ -85,7 +85,7 @@
 			form.nickname.select();
 			return false;
 		}
-		
+		 */
 		var popupWidth = 650;
 		var popupHeight = 250;
 
@@ -101,11 +101,11 @@
 	}
 	
 	function idCk(){
-		if(form.id.value == ""){
+		/* if(form.id.value == ""){
 			alert("아이디를 입력하세요");
 			form.id.focus();
 			return false;
-		}
+		} */
 		//아이디 길이 체크 (6~15자)
 	<%--	if (form.id.value.length < 6 || form.id.value.length > 15) {
 			alert("아이디를 6~15자까지 입력해주세요.")
@@ -156,7 +156,7 @@
 	<div>
 	<label>아이디 </label> 
 	<div class="ckck">
-	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" value="${param.id}" />
+	<input type="text" id="userId" name="id"  placeholder="영문,숫자로 6~15자" onclick="idCk(); " value="${param.id}" />
 	<button type="button" class="ck-button"  onclick="idCk(); ">확인</button> <br/>
 											<!-- 위에 있음/ 빈칸인지 확인하고 창 열림 -->
 	</div>
@@ -175,7 +175,7 @@
     <div>
     <label>닉네임</label>  
     <div class="ckck">
-	<input type="text" id="usernickname" name="nickname" placeholder="입력하세요" value="${param.nickname}"/>
+	<input type="text" id="usernickname" name="nickname" placeholder="입력하세요"  onclick="nickCk();" value="${param.nickname}"/>
 	<button type="button" class="ck-button"  onclick="nickCk();">확인</button> <br/>
 	<!--  <input type="button" value="중복체크" onclick="nickCk();"/> <br/> <br/>-->
 	</div>

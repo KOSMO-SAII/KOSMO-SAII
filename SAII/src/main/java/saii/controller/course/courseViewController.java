@@ -60,6 +60,8 @@ public class courseViewController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int course_id = 0;
 		String mode=req.getParameter("mode");
+		String sidetitle=req.getParameter("title");
+		String sideregion=req.getParameter("region");
 		
 		//courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정 
 		if(mode.equals( "edit")) {
@@ -90,23 +92,26 @@ public class courseViewController extends HttpServlet{
 					title = nickname + "_" + cdtos.get(0).getPlace_name();
 				if (region.equals("없음")) {
 					String[] reg = cdtos.get(0).getAddress_name().split("\\s");
-					region = reg[0];				
+					region = reg[0];
+					if(region.equals("세종특별자치시"))
+						region = "세종";
+					if(region.equals("제주특별자치도"))
+						region = "제주";				
 				}
 				mdto.setM_title(title);
 				mdto.setRegion(region);
 				mdao.insertWrite(mdto,nickname);	
-				
 			}
+			
 		}
-		
 		List<Map<String, String>> list=new Vector<Map<String,String>>();
 		String[] datas = req.getParameterValues("data");
-	
+		
 		
 		for(int k=0; k<datas.length;k++) {
 			String[] data =  datas[k].split("\\|");
-
-		
+			
+			
 			Map<String, String> map= new HashMap<>();
 			map.put("category",data[0]);
 			map.put("address_id",data[1]);
@@ -118,14 +123,16 @@ public class courseViewController extends HttpServlet{
 			map.put("X",data[7]);
 			map.put("Y",data[8]);
 			if(data.length==10) {
-			map.put("Memo",data[9]);
+				map.put("Memo",data[9]);
 			}else {
-			map.put("Memo","");
+				map.put("Memo","");
 			}
 			list.add(map);
-
+			
 		}
-	
+		
+		req.setAttribute("title", sidetitle);
+		req.setAttribute("region", sideregion);
 		req.setAttribute("c_id", course_id);
 		req.setAttribute("List", list);
 		req.getRequestDispatcher("/saii/course/courseView.jsp").forward(req, resp);

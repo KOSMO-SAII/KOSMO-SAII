@@ -28,12 +28,8 @@ public class courseWritePageController extends HttpServlet{
 		if(session.getAttribute("UserId")!=null) {
 			req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
 		}else {
-			AlertFunc.alertLocation(resp, "작성하시려면 로그인을 해주세요", "http://localhost:8081/SAII/home");
+			AlertFunc.alertLocation(resp, "작성하시려면 로그인을 해주세요", "http://localhost:8081/SAII/login");
 		}
-		
-		
-
-		
 	}
 	
 	@Override

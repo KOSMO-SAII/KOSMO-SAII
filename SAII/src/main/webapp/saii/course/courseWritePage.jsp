@@ -18,7 +18,7 @@
 	 <div class="body_wrap">
 		<div class="my">			
 			<form action="http://localhost:8081/SAII/course_view?mode=${param.mode}&c_id=${param.c_id}" method="post" onsubmit="return coursecheck()" >
-				제목<br/><input type="text" name="title"/><br/>
+				제목<br/><input class="input "type="text" name="title"/><br/>
 
 				지역<br/>
 				<select name="region">
@@ -40,7 +40,7 @@
 					<option value="전남">전라남도</option>
 					<option value="경북">경상북도</option>
 					<option value="경남">경상남도</option>
-					<option value="제주">제주도</option>
+					<option value="제주">제주특별자치도</option>
 				
 				</select>
 				<input type="hidden" name="nickname" value="${sessionScope.nickname}" />
@@ -48,15 +48,14 @@
 				
 				</ul>
 				<div id="btnbox">
-				 <button type="button" onclick="check();">확인</button>
-				<button type="button" onclick="hide();">숨기기</button> 
-				<button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button>
+				 <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
+				<!-- <button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button> -->
 				<c:choose>
 					<c:when test="${param.mode eq 'edit'}">
-						<input type="submit" value="코스수정"></input>
+						<input type="submit" class="submitbtn" value="코스수정"></input>
 					</c:when>
 					<c:otherwise>
-						<input type="submit" value="코스저장"></input>
+						<input type="submit" class="submitbtn" value="코스저장"></input>
 					</c:otherwise>
 				</c:choose>
 				</div>
@@ -72,7 +71,7 @@
 						<div>
 							<form onsubmit="searchPlaces(); return false;">
 								키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
-								<button class="searchbtn" type="submit">검색하기</button>
+								<button class="searchbtn" type="submit">검색</button>
 							</form>
 						</div>
 					</div>
