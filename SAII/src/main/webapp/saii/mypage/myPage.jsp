@@ -443,8 +443,8 @@ a {
 	</c:choose>
 </div>
 <div>
-	<form action="http://localhost:8081/SAII/withdraw">
-		<input type="submit" id="del" onclick="withdrawcheck()">
+	<form action="http://localhost:8081/SAII/withdraw" onsubmit="return withdrawcheck()">
+		<input type="submit" id="del" >
 		<label class="withdraw" for="del" >회원탈퇴</label>	
 	</form>
 </div>

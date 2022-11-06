@@ -16,6 +16,7 @@
 <!-- 제이쿼리 적용 -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <body>
+	<%@ include file="../top.jsp" %>
 	 <div class="body_wrap">
 		<div class="my">
 			<form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
@@ -31,8 +32,11 @@
 				</ul>
 				<div id="btnbox">
 				
-				<a class="submitbtna" href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a>
+				<!-- <a class="submitbtna" href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a> -->
+				<c:if test="${requestScope.nickname==sessionScope.nickname || param.mode == 'edit'}">
 				<input type="submit" class="submitbtn" value="코스 수정"></input>
+				</c:if>
+				
 				</div>
 			</form>
 		</div>
@@ -56,6 +60,12 @@
 	
 	<script type="text/javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
+		 //console.log("이건")
+		 //console.log("뭐지")
+		 console.log("${requestScope.title}")
+		 console.log("${requestScope.region}")
+		//console.log(${param.mode == "edit"}) 
+		//console.log(${requestScope.nickname==sessionScope.nickname})
 	</script>
 	<c:forEach items="${requestScope.List}" var="List">
 	<script type="text/javascript">
