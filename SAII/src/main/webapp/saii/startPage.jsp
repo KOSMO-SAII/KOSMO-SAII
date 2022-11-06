@@ -71,7 +71,6 @@
 		<ul>
 			<li>대표전화:070-000-0000 /</li>
 			<li>대표이메일:saiIcustomer@saii.co.kr</li>
-			</br>
 		</ul>
 	</footer>
 	

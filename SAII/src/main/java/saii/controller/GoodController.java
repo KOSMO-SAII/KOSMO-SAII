@@ -33,8 +33,9 @@ public class GoodController extends HttpServlet {
 			jobj.put("heart", "cancel");
 		}else {
 			gdao.pushGood(m_id, memdto.getNickname());
-			jobj.put("heart", "push");
+			jobj.put("heart", "");
 		}
+		System.out.println(memdto.getNickname());
 
 		mainboardDAO mdao = new mainboardDAO();
 		mainboardDTO mdto = mdao.selectView(m_id);

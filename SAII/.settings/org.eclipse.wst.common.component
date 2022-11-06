@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
             
-<<<<<<< HEAD
-    
-    <wb-module deploy-name="SAII">
-                        
-        
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                        
-        
-        <property name="context-root" value="SAII"/>
-                        
-        
-        <property name="java-output-path" value="/SAII/build/classes"/>
-                    
-    
-=======
     
     <wb-module deploy-name="SAII">
                         
@@ -29,7 +14,6 @@
         <property name="java-output-path" value="/SAII/build/classes"/>
                     
     
->>>>>>> 2b0386b201e53b511bb287b2c6bc4608aec5884b
     </wb-module>
         
 

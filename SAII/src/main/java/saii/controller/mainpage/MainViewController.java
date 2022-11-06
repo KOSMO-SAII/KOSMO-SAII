@@ -54,9 +54,6 @@ public class MainViewController extends HttpServlet {
 			req.setAttribute("memdto", memdto);
 		}
 		courseDAO cdao = new courseDAO();
-		req.setAttribute("p_name", cdao.getPlaceNames(dto.getCourse_id()));	
-		
-		
 		
 		mainCommentsDAO mcdao = new mainCommentsDAO();
 		List<mainCommentsDTO> mainCommentsLists = mcdao.selectComments(m_id);
@@ -64,6 +61,7 @@ public class MainViewController extends HttpServlet {
 		dao.close();
 		mcdao.close();
 		
+		req.setAttribute("p_name", cdao.getPlaceNames(dto.getCourse_id()));	
 		req.setAttribute("mainCommentsLists", mainCommentsLists);
 		req.setAttribute("dto", dto);
 		req.getRequestDispatcher("/saii/mainboard/MainView.jsp").forward(req, resp);

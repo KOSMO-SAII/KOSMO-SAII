@@ -116,6 +116,7 @@
 
 </head>
 <body>
+	<span id="m_id" style="display:none;">${dto.m_id}</span>
 	<table id=view_table>
 		<tr>
 			<th colspan='6' style="text-align:left;">${dto.m_title}</th>
@@ -198,8 +199,12 @@
 					<tr>
 						<td><img src="/SAII/Storage/${c_list.n_profile_img}" alt="왜안나옴?" width="50px" height="50px" style="border-radius: 50px"></td>
 						<td>${c_list.nickname}</td>
-						<td colspan="3">${c_list.comments}</td>
+						<td colspan="2">${c_list.comments}</td>
 						<td>${c_list.c_postdate}</td>
+						<td>
+							<button>수정</button>
+							<button>삭제</button>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:when>
