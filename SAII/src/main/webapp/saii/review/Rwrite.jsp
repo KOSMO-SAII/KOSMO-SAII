@@ -58,8 +58,9 @@
     white-space: nowrap;
 }
 .write-btn{
-    height: 25px;
-    width: 80px;
+	height: 40px;
+    width: 90px;
+    vertical-align: middle;
     background: none;
     border: none;
     color: #fff;
