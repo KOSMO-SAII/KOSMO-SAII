@@ -131,6 +131,10 @@ h2 {
 	
 }
 
+input{
+	outline:none;
+}
+
 #profile{
 	position: absolute;
 	width: 300px;
