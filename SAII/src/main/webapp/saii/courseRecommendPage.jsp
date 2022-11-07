@@ -103,7 +103,7 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
 	
 </style>
 <body>
-
+<%@ include file="top.jsp" %>
 	<div class="coco"></div>
 
         <h3>코스 추천</h3>
@@ -152,9 +152,9 @@ input.look {margin-top: 24px; height: 25px; width: 30%; background: none; border
  	</div>	
 	
 <div id="abc">
-	<a href="http://localhost:8081/SAII/home">돌아가기</a>
-	<a href="http://localhost:8081/SAII/mainboard?page=1">추천게시판</a>
-	<a href="http://localhost:8081/SAII/review_list">리뷰게시판</a>
+	<a href="http://localhost:8081/SAII/home"></a>
+	<a href="http://localhost:8081/SAII/mainboard?page=1"></a>
+	<a href="http://localhost:8081/SAII/review_list"></a>
 </div>
 
 <!--마우스 커서-->	
