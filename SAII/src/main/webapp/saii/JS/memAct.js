@@ -71,8 +71,6 @@ function check() {
 		}
 	}
 
-
-
 	//비밀번호 재확인
 	if (!(form.pw.value == form.pw2.value)) {
 		alert("비밀번호가 일치하지 않습니다.");
