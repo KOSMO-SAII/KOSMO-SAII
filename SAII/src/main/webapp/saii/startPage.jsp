@@ -30,11 +30,11 @@
 						<a href="http://localhost:8081/SAII/mypage?id=${UserId }"
 							class="nav-link px-2 link-dark">MyPage</a>
 					</c:if></li>
-				<li><a href="http://localhost:8081/SAII/saii/startPage.jsp"
+				<li><a href="http://localhost:8081/SAII/mypage"
 					class="nav-link px-2 link-dark">Home</a></li>
-				<li test="${UserId==null}"><a href="#"
+				<li test="${UserId==null}"><a href="<!--링크입력하기 -->"
 					class="nav-link px-2 link-dark">FAQs</a></li>
-				<li test="${UserId==null}"><a href="#"
+				<li test="${UserId==null}"><a href="<!--링크입력하기 -->"
 					class="nav-link px-2 link-dark">About</a></li>
 				
 			</ul>
