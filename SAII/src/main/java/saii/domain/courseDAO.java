@@ -64,30 +64,31 @@ public class courseDAO extends JDBConnect {
 		
 	}
 
-public void insertData(String query, courseDTO cdto) {
+	public void insertData(String query, courseDTO cdto) {
+			 
 		
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setInt(1, cdto.getOrder());
-			psmt.setString(2, cdto.getCategory());
-			psmt.setString(3, cdto.getAddress_id());
-			psmt.setString(4, cdto.getAddress_name());
-			psmt.setString(5, cdto.getRoad_address_name());
-			psmt.setString(6, cdto.getPhone_number());
-			psmt.setString(7, cdto.getPlace_name());
-			psmt.setString(8, cdto.getPlace_url());
-			psmt.setString(9, cdto.getX());
-			psmt.setString(10, cdto.getY());
-			psmt.setString(11, cdto.getMemo());
-
-			rs = psmt.executeQuery();
-
-		} catch (SQLException e) {
-			System.out.println("insert Data err");
-			e.printStackTrace();
+			try {
+				psmt = con.prepareStatement(query);
+				psmt.setInt(1, cdto.getOrder());
+				psmt.setString(2, cdto.getCategory());
+				psmt.setString(3, cdto.getAddress_id());
+				psmt.setString(4, cdto.getAddress_name());
+				psmt.setString(5, cdto.getRoad_address_name());
+				psmt.setString(6, cdto.getPhone_number());
+				psmt.setString(7, cdto.getPlace_name());
+				psmt.setString(8, cdto.getPlace_url());
+				psmt.setString(9, cdto.getX());
+				psmt.setString(10, cdto.getY());
+				psmt.setString(11, cdto.getMemo());
+	
+				rs = psmt.executeQuery();
+	
+			} catch (SQLException e) {
+				System.out.println("insert Data err");
+				e.printStackTrace();
+			}
+	
 		}
-
-	}
 
 	public void updateCourse(int course_id, ArrayList<courseDTO> cdtos) {
 		String del = " delete from COURSE_DATA "
