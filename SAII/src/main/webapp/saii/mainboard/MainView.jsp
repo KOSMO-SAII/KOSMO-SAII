@@ -124,7 +124,6 @@
 
 </head>
 <body>
-<%@ include file="../top.jsp" %>
 <div>
 	<span id="m_id" style="display:none;">${dto.m_id}</span>
 	<table id=view_table>
