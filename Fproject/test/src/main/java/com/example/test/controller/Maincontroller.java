@@ -24,6 +24,11 @@ public class Maincontroller extends HttpServlet {
 //        model.addAttribute("data","1");
 //        return "test";
 //    }
+    @RequestMapping("/")
+    public String root(){
+        return "Mainpage";
+    }
+
 
     @RequestMapping("/test2")
     public String test2(){
