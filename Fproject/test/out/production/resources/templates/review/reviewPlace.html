@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>거리</title>
+  <link th:href="@{/css/review.css}" rel="stylesheet" />
+</head>
+<body>
+<h3>장소-리뷰게시판</h3>
+<!-- 검색 -->
+<form method="get">
+  <table width="100%">
+    <tr>
+      <td class="search-bar" align="center">
+        <select name="searchType">
+          <option value="both" selected>전체</option>
+          <option value="content" selected>장소명</option>
+          <option value="r_writer" selected>작성자</option>
+          <!--     세부검색 체크박스     -->
+          <option value="days" >기간</option>
+        </select>
+
+        <input type="search" name="searchStr" value="${map.searchStr}"/>
+        <input class="search-bar btn" type="submit" value="검색" />
+      </td>
+    </tr>
+  </table>
+</form>
+
+조회: 조회순,장소이름순, 평점순
+<!--<th:block th:switch="${data}">-->
+<div>
+  <p align="center">등록된 게시물이 없습니다.</p>
+  <div>
+<!--    <div th:each="list : ${placeLists}">-->
+      <div>
+        <p>${list.place_name}</p><p align="right">조회수 {list.visitcount}</p><p></p>
+        <p>평점 ${list.score}/5</p>
+        <img src="" alt="profile"><p>${list.nickname}</p>
+        <div>---------------- ${list.comment} ------------------</div>
+      </div>
+<!--    </div>-->
+  </div>
+</div>
+<!--</th:block>-->
+
+
+
+
+</body>
+</html>

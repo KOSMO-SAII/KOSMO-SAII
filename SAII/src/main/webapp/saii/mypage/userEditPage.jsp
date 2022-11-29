@@ -237,7 +237,7 @@ h4{
 	<label class="mylabel">전화 *</label><br/>
 	<input class="myinput" type="text" name="phone" value="${dto.phone }" >
 	</div>
-	<div class="mydiv">
+	<div class="mydiv">S
 	<label class="mylabel">이메일 *</label><br/>
 	<input class="myinput" type="email" name="email" value="${dto.email }" >
 	</div>

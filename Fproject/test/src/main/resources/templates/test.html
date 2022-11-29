@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<th:block th:if="${data=='get'}">
+  <p th:text="${data}"></p>
+</th:block>
+<th:block th:if="${data=='post'}">
+  <p th:text="${data}"></p>
+</th:block>
+
+<!--<p th:text="${list}"></p>-->
+<!--<p th:text="${list[0]}"></p>-->
+<!--<p th:text="${list[0].name == 0}"></p>-->
+<!--<p th:text="${list[0].name == 'name'}"></p>-->
+<!--<p th:text="${param.mode == 'edit'}"></p>-->
+
+<th:block th:each="List :${list}">
+  <p th:text="${List}"></p>
+  <p th:text="${List.name}"></p>
+  <script th:inline="javascript">
+
+        console.log(/*[[${List}]]*/);
+
+  		var paramObj={
+			obj:/*[[${List.name}]]*/
+		}
+		console.log(paramObj);
+  </script>
+</th:block>
+
+
+
+
+<form th:action="@{/test}" method="get">
+  <input type="submit" value="get">
+</form>
+
+<form th:action="@{/test}" method="post">
+  <input type="submit" value="post">
+</form>
+
+
+</body>
+</html>
