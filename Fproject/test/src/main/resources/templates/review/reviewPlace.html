@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>거리</title>
-  <link th:href="@{/css/review.css}" rel="stylesheet" />
+  <!--  css 파일 적용-->
+  <link th:href="@{/css/reviewPlace.css}" rel="stylesheet" />
+  <link th:href="@{/css/courseViewPage.css}" rel="stylesheet" />
+  <!-- 카카오 맵 api 불러오기 -->
+  <script type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
+  <!-- 제이쿼리 적용 -->
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 <body>
 <h3>장소-리뷰게시판</h3>
 <!-- 검색 -->
-<form method="get">
+<form style="height:100px" method="get">
   <table width="100%">
     <tr>
       <td class="search-bar" align="center">
@@ -28,19 +35,67 @@
 </form>
 
 조회: 조회순,장소이름순, 평점순
+
+<div class="body_wrap" style="border: 1px solid black; height:25%; justify-content:center">
+  <div class="map_wrap" style="border: 1px solid blue; width:40%;" >
+    <div id="map"style="border: 1px solid red; width: 100%; height: 100%; position: relative; overflow: hidden;">
+      민성아 현도야 지도 이거 어떻게 쓰는 거야아아아????
+      뭐가 좋을까??
+        이 지도에서 장소 선택? / 팝업으로 지도 크게 나오고 검색하여 장소 선택?
+      1.장소명 검색하면 지도에 검색 단어에 해당되는 목록 나오고
+      2.원하는 장소 선택하면
+      3.선택된 장소가 지도 가운데에 표시되고, (핀, 상세보기 기능 있으면 좋으려나???)
+      4.선택된 장소의 리뷰글이 지도 아래에 렌더링됨.
+    </div>
+  </div>
+</div>
+
 <!--<th:block th:switch="${data}">-->
 <div>
-  <p align="center">등록된 게시물이 없습니다.</p>
+<!--  <p align="center">등록된 게시물이 없습니다.</p>-->
   <div>
 <!--    <div th:each="list : ${placeLists}">-->
-      <div>
-        <p>${list.place_name}</p><p align="right">조회수 {list.visitcount}</p><p></p>
+      <div style="position:relative; left:10%; width:80%;border:1px solid black;border-radius:15px;padding:5px;margin-top:2%;">
+        <p style="display:inline;">${list.place_name}</p><p style="display:inline; position:relative; left:60%;">조회수 ${list.visitcount}</p>
         <p>평점 ${list.score}/5</p>
-        <img src="" alt="profile"><p>${list.nickname}</p>
+        <img style="display:inline;width: 5%; height: 5%;border-radius:100%; vertical-align:bottom;" src="" alt="profile">
+        <p style="display:inline; position:relative; left:4px;">${list.nickname}</p>
         <div>---------------- ${list.comment} ------------------</div>
+        <p align="right">${list.postdate}</p>
       </div>
 <!--    </div>-->
   </div>
+  <div>
+    <!--    <div th:each="list : ${placeLists}">-->
+    <div style="position:relative; left:10%; width:80%;border:1px solid black;border-radius:15px;padding:5px;margin-top:2%;">
+      <p style="display:inline;">장소명: 우리집김치찌개</p><p style="display:inline; position:relative; left:60%;">조회수:186</p>
+      <p>평점 4.9/5</p>
+      <img style="display:inline;width: 5%; height: 5%;border-radius:100%; vertical-align:bottom;" src="/img/cycle.webp" alt="profile">
+      <p style="display:inline; position:relative; left:4px;">김치도둑</p>
+      <div>이집 김치 맛집 인정~ 일주일에 두 번 이상 방문하는 단골인데 후배들 맨날 만남. 거의 뭐 물치 아지트</div>
+      <p align="right">2022.11.30 04:13:22</p>
+    </div>
+    이렇게 최신 또는 베스트 리뷰 최대 5개까지 나오고...
+    <!--    </div>-->
+  </div>
+
+
+</div>
+
+<div class="list_wrap">
+  <p>해당 장소와 관련된 코스 추천 ></p>
+  한페이지에 연관 코스추천 3~5개가 같이 나오게 하고(사진, 제목), "더보기"로 "검색장소 포함된 연관코스가 조회된 코스게시판의 목록화면"으로 링크타고 이동.
+  <div class="list_wrap item">
+    <img class="image" src="/img/Doldam.jpg">
+    <p>대학로 우정여행 코스추천</p>
+  </div>
+  <div class="list_wrap item">
+    <img class="image" src="/img/Seoul.jpg">
+    <p>도심 속 힐링하기</p>
+  </div>
+  <div class="list_wrap item">
+    <img class="image" src="/img/Damyang.jpg">
+    <p>가을 단풍 ~ 맛집까지 탈탈 털기</p>
 </div>
 <!--</th:block>-->
 
@@ -48,4 +103,6 @@
 
 
 </body>
+<!--js 파일 연동-->
+<script type="text/javascript" th:src="@{ /js/courseViewPage.js}"></script>
 </html>
