@@ -5,8 +5,6 @@
   <title>거리</title>
   <!--  css 파일 적용-->
   <link th:href="@{/css/reviewPlace.css}" rel="stylesheet" />
-  <link th:href="@{/css/reviewPlace.css}" rel="stylesheet" />
-
   <!-- 카카오 맵 api 불러오기 -->
   <script type="text/javascript"
           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
@@ -37,11 +35,11 @@
 
 조회: 조회순,장소이름순, 평점순
 
-<div class="body_wrap" style="border: 1px solid black; height:25%; justify-content:center">
-  <div class="map_wrap" style="border: 1px solid blue; width:40%;" >
-    <div id="map"style="border: 1px solid red; width: 100%; height: 100%; position: relative; overflow: hidden;">
+<div class="body_wrap">
+  <div class="map_wrap">
+    <div id="map">
       뭐가 좋을까??
-        이 지도에서 장소 선택? / 팝업으로 지도 크게 나오고 검색하여 장소 선택?
+      이 지도에서 장소 선택? / 팝업으로 지도 크게 나오고 검색하여 장소 선택?
       1.장소명 검색하면 지도에 검색 단어에 해당되는 목록 나오고
       2.원하는 장소 선택하면
       3.선택된 장소가 지도 가운데에 표시되고, (핀, 상세보기 기능 있으면 좋으려나???)
@@ -52,25 +50,25 @@
 
 <!--<th:block th:switch="${data}">-->
 <div>
-<!--  <p align="center">등록된 게시물이 없습니다.</p>-->
+  <!--  <p align="center">등록된 게시물이 없습니다.</p>-->
   <div class="review_list">
-      <button>전체 리뷰 보기</button>
-<!--    <div th:each="list : ${placeLists}">-->
-      <div class="list_item">
-        <p>${list.place_name}</p>
-        <p style="position:relative; left:60%;">조회수 ${list.visitcount}</p>
-        <p style="display:none;">평점 ${list.score}/5</p>
-        <img src="" alt="profile">
-        <p style="position:relative; left:4px;">${list.nickname}</p>
-        <div>---------------- ${list.comment} ------------------</div>
-        <p style="display:none" align="right">${list.postdate}</p>
-      </div>
-<!--    </div>-->
+    <button>전체 리뷰 보기</button>
+    <!--    <div th:each="list : ${placeLists}">-->
+    <div class="list_item">
+      <p>${list.place_name}</p>
+      <p style="position:relative; left:60%;">조회수 ${list.visitcount}</p>
+      <p style="display:none;">평점 ${list.score}/5</p>
+      <img src="" alt="profile">
+      <p style="position:relative; left:4px;">${list.nickname}</p>
+      <div>---------------- ${list.comment} ------------------</div>
+      <p style="display:none" align="right">${list.postdate}</p>
+    </div>
+    <!--    </div>-->
   </div>
   <div>
     <!--    <div th:each="list : ${placeLists}">-->
     <div class="list_item">
-      <p style="">장소명: 우리집김치찌개</p>
+      <p>장소명: 우리집김치찌개</p>
       <p style="position:relative; left:60%;">조회수:186</p>
       <p style="display:none">평점 4.9/5</p>
       <img src="/img/cycle.webp" alt="profile">
@@ -99,8 +97,8 @@
   <div class="list_wrap item">
     <img class="image" src="/img/Damyang.jpg">
     <p>가을 단풍 ~ 맛집까지 탈탈 털기</p>
-</div>
-<!--</th:block>-->
+  </div>
+  <!--</th:block>-->
 
 
 
