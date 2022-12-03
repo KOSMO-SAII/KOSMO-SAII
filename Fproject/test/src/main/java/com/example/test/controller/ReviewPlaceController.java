@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReviewPlaceController {
 
-    @RequestMapping("/review")
-    public  String review(){
+    @RequestMapping("/reviewP")
+    public String reviewP(){
         return "review/reviewPlace";
+    }
+
+    @RequestMapping("/reviewPv")
+    public String reviewPv(){
+        return "review/reviewPlaceView";
     }
 
 

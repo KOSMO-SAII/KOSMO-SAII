@@ -170,3 +170,10 @@ h3{
     position: relative;
     left: 80%;
 }
+
+#map{
+    height:300px;
+    width:500px;
+    margin:auto;
+}
+

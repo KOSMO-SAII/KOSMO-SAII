@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReviewCourseController {
 
-    @RequestMapping("/review2")
+    @RequestMapping("/reviewC")
     public  String review2(){
         return "review/reviewCourse";
     }
