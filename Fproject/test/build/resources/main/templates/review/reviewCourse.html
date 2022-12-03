@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>거리</title>
+    <link th:href="@{/css/reviewCourse.css}" rel="stylesheet" />
+</head>
+<body>
+<h3>코스-리뷰게시판</h3>
+<!-- 검색 -->
+<form method="get">
+    <table width="100%">
+        <tr>
+            <td class="search-bar" align="center">
+                <select name="searchType">
+                    <!-- th:if="${map.searchType=='both' }" -->
+                    <option value="both"  selected>제목+내용</option>
+                    <option value="r_title" >제목</option>
+                    <option value="content" >내용</option>
+                    <option value="r_writer" >작성자</option>
+                    <!--     세부검색 체크박스 - 검색된 내용 중에 ajax로 목록 검색 실시간 반영     -->
+                    <option value="days" >기간</option>
+                </select>
+                <input type="search" name="searchStr" value="${map.searchStr}"/>
+                <input class="search-bar btn" type="submit" value="검색" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!-- 조건 empty sessionScope.userid / 클릭시, 글쓰기폼 이동 || 로그인시 이용 알림. -->
+<div>
+    <button th:if="${true}" onclick="" class="writeBtn">글쓰기</button>
+    <button th:unless="${true}" onclick="" class="writeBtn">글쓰기</button>
+</div>
+
+<!--<th:block th:switch="${data}">-->
+<!--    &lt;!&ndash; 조건 empty boardlists&ndash;&gt;-->
+    <p th:text="등록된 게시물이 없습니다." th:if="${not true}" align="center"></p>
+    <!-- 조건 * -->
+    <div th:if="${true}" class="ui_box">
+        <!-- th:each="list : ${courseLists}" -->
+        <ul class="list_wrap">
+            <a href="">
+                <li class="item">
+                    <!--조건 not empty list.o_file -->
+                    <div th:if="${true}">
+                        <img class="image" src="/img/Doldam.jpg">
+                    </div>
+                    <!--조건 not empty list.o_file -->
+                    <div th:unless="${true}">
+                        <img class="image" src="/img/cafe.jpg" >
+                    </div>
+
+                    <div class="cont">
+                        <input type="hidden" value="${list.course_id}">
+                        <p class="title">
+                            <a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_title}</a>
+                        </p>
+                        <p>작성자 ${list.nickname}</p>
+                        <p>조회수 ${list.visitcount}</p>
+                        <p align="right">${list.r_postdate}</p>
+                        <!-- 조건 not empty list.o_file -->
+                        <p th:if="${true}">
+                            <a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}">링크?</a>
+                        </p>
+                    </div>
+                </li>
+            </a>
+        </ul>
+    </div>
+<!--</th:block>-->
+
+</body>
+</html>

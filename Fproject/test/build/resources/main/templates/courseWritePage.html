@@ -7,14 +7,14 @@
     <link th:href="@{ /css/courseWritePage.css}" rel="stylesheet" />
     <!-- 카카오 맵 API 불러오기-->
     <script th:inline="javascript" type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
     <!-- 제이쿼리    -->
     <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="body_wrap">
     <div class="my">
-        <form action="http://localhost:8081/SAII/course_view?mode=${param.mode}&c_id=${param.c_id}" method="post" onsubmit="return coursecheck()" >
+        <form th:action="@{/courseViewPage(mode=${param.mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
 
                 <th:block th:if="${param.mode=='edit'}">
                     제목<br/><input class="input "type="text" name="title" value="${requestScope.title }"/><br/>

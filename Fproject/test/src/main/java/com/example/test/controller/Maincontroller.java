@@ -55,4 +55,7 @@ public class Maincontroller extends HttpServlet {
         model.addAttribute("data","post");
         return "test";
     }
+
+    @RequestMapping("/signup")
+    public String signupPage() {return "signupPage";}
 }

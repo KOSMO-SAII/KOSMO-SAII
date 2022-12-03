@@ -2,9 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper  namespace="com.example.test.repository.mainBoardDAO">
-    <select id="getMainboard" resultType="com.example.test.domain.mainBoardDTO" parameterType="int">
-        select m_title,region from main board where course_id = {0}
+<mapper namespace="com.example.test.repository.CourseDAO">
+
+    <insert id="insertCourse"   parameterType="com.example.test.domain.CourseDTO" useGeneratedKeys="true" keyProperty="course_id">
+        insert into course (user_id) value(1);
+    </insert>
+    <insert id="insertCourseData"  parameterType="Map">
+        insert into COURSE_DATA ( COURSE_ID, COURSE_ORDER, CATEGORY, ADDRESS_ID, ADDRESS_NAME, ROAD_ADDRESS_NAME, PHONENUMBER, PLACE_NAME, PLACE_URL, X, Y, MEMO)
+        values(#{id},#{cdto.order},#{cdto.category},#{cdto.address_id},#{cdto.address_name},#{cdto.road_address_name},#{cdto.phone_number},#{cdto.place_name},#{cdto.place_url},#{cdto.x},#{cdto.y},#{cdto.memo})
+    </insert>
+    <select id="getCurrentCourseId" resultType="int">
+
     </select>
 </mapper>
-
