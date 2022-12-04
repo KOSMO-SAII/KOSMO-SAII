@@ -8,7 +8,7 @@
             crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>초기화면</title>
-    <link th:href="@{/css/main.css}" rel="stylesheet" >
+    <link href="/css/main.css" rel="stylesheet" >
 </head>
 <body>
 <h1><img id=img src="/img/saii.png"></h1>
@@ -46,8 +46,8 @@
                         type="button" class="btn btn-outline-primary me-2">LogOut</button></a>
             </p>
             <p th:if="${UserId==null}">
-                <a href="http://localhost:8081/SAII/signup"><button
-                        type="button" class="btn btn-primary">Sign-up</button></a>
+                <a href="http://localhost:8081/signup"><button
+                        type="button" class="btn btn-primary" >Sign-up</button></a>
             </p>
         </div>
     </header>

@@ -6,21 +6,18 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class Main_board extends BaseTime{
+public class PlaceComment extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long post_id;
+    @Column(name = "comment_id")
+    private Long id;
 
     @Column(nullable = false)
-    private Long course_id;
+    private Long place_id;
 
     @Column(nullable = false)
-    private Long user_id;
+    private Double score;
 
-    @Column(nullable = false)
-    private String title;
-
-    private String region;
-
+    private String comment;
 }

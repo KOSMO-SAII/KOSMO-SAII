@@ -7,8 +7,8 @@
     <title>회원가입 입력</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link th:href="@{/CSS/signup.css}" rel="stylesheet">
-    <script src ="JS/Check.js"></script>
+    <link th:href="@{/css/signup.css}" rel="stylesheet">
+    <script src ="jS/signup.js"></script>
 
     <style>
 
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
             <label th:for="address">주소</label>
-            <input type="text" th:field="*{address}" class="form-control" placeholder="주소를 입력해주세요">
+            <input type="text" th:field="*{address}" class="form-control" onClick="goPopup()" placeholder="주소를 입력해주세요">
             <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect data</p>
         </div>
         <div style="text-align: center">

@@ -6,11 +6,12 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class Course extends Base {
+public class ReviewComment extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id")
+    @Column(name = "comment_id")
     private Long id;
 
+    private Long post_id;
 }

@@ -6,17 +6,15 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class Liked_post extends BaseTime{
+public class CourseReview extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "review_id")
     private long id;
 
     @Column(nullable = false)
-    private long post_id;
+    private long course_id;
 
-    @Column(nullable = false)
-    private long user_id;
-
+    private String content;
 }
-

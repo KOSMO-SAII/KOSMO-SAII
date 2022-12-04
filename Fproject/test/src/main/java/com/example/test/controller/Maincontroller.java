@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +17,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+@Slf4j
 @Controller
 public class Maincontroller extends HttpServlet {
 
-//    @RequestMapping("/test")
-//    public String test(Model model){
-//        model.addAttribute("data","1");
-//        return "test";
-//    }
     @RequestMapping("/")
     public String root(){
+        log.info("========MainPage");
         return "Mainpage";
     }
 
