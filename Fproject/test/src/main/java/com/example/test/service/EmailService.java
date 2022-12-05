@@ -1,13 +1,8 @@
 package com.example.test.service;
 
-import com.example.test.domain.Account;
-import com.example.test.domain.EmailMessage;
-
-import com.example.test.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -85,41 +80,4 @@ public class EmailService {
         return templateEngine.process("EmailMessage", context); //mail.html
     }
 
-    public void sendLoginLink(Account account ){
-        Context context = getContext(account);
-        String message = templateEngine.process(TEMPLATE_LINK, context);
-
-        EmailMessage emailMessage = EmailMessage.builder()
-                .to(account.getEmail())
-                .subject("이메일 제목")
-                .message(message)
-                .build();
-
-        send(emailMessage);
-    }
-
-
-    public void send(EmailMessage emailMessage){
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-
-        try {
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
-            mimeMessageHelper.setTo(emailMessage.getTo());
-            mimeMessageHelper.setSubject(emailMessage.getSubject());
-            mimeMessageHelper.setText(emailMessage.getMessage(), true);
-
-            javaMailSender.send(mimeMessage);
-            log.info("sent email:{}", emailMessage.getMessage());
-        } catch (MessagingException e) {
-            log.error("[EmailService.send()] error {}", e.getMessage());
-        }
-    }
-
-    public Context getContext(Account account){
-        Context context = new Context();
-        context.setVariable("name", account.getName());
-        context.setVariable("message", "메세지");
-
-        return context;
-    }
 }

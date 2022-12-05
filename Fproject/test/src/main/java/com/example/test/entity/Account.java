@@ -1,4 +1,4 @@
-package com.example.test.domain;
+package com.example.test.entity;
 
 import lombok.*;
 
@@ -26,20 +26,5 @@ public class Account {
 
     private String email;
 
-    private String token;
 
-    private LocalDateTime tokenGeneratedAt;
-
-    public void generateToken(){
-        this.token = UUID.randomUUID().toString();
-        this.tokenGeneratedAt = LocalDateTime.now();
-    }
-
-    public boolean isValid(String token){
-        return this.token.equals(token);
-    }
-
-    public boolean canSend(){
-        return this.tokenGeneratedAt.isBefore(LocalDateTime.now().minusHours(1));
-    }
 }
