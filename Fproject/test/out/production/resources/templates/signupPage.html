@@ -19,7 +19,7 @@
 <h2>회원가입</h2>
 <div layout:fragment="content">
 
-    <form action="/members/new" role="form" method="post"  th:object="${memberFormDto}">
+    <form action="/members/new" role="form" method="post"  th:object="${UserDTO}">
         <div class="form-group">
             <label th:for="name">이름</label>
             <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요">
@@ -48,8 +48,8 @@
         </div>
         <div class="form-group">
             <label>성별</label>  <br/>
-            <input type="radio" name="sex" value="여자" checked/><a>여자</a>
-            <input type="radio" name="sex" value="남자" /><a>남자</a><br/>
+            <input type="radio" name="gender" value="여자" checked/><a>여자</a>
+            <input type="radio" name="gender" value="남자" /><a>남자</a><br/>
         </div>
         <div class="form-group">
             <label>생년월일</label> <br/>
