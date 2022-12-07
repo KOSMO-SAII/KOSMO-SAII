@@ -48,6 +48,10 @@ public class Maincontroller extends HttpServlet {
         return "test";
     }
 
+    @RequestMapping("/test3")
+    public String test3(){
+        return "test3";
+    }
     @PostMapping("/test")
     public String post(Model model){
         model.addAttribute("data","post");
