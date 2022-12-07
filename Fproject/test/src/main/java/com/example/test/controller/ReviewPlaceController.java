@@ -16,5 +16,9 @@ public class ReviewPlaceController {
         return "review/reviewPlaceView";
     }
 
+    @RequestMapping("/placeMore")
+    public String placeMore(){
+        return "review/placeMore";
+    }
 
 }
