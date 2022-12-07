@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/style4.css">
+  <link rel="stylesheet" href="css/style3.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/style1.css">
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header id="common_header" class="main_gnb sub">
+</header>
+<!-- //header -->
+
+<!-- contents -->
+<div id="contents" >
+
+  <div class="tit_cont"><!-- 1021 내위치버튼 있을때 position 추가 -->
+    <div class="area_tag">
+      <span class="name4"><span class="ico">Hot</span>축제</span>
+    </div>
+    <h2 class="tag">
+    </h2>
+    <!-- 0724 클래스 추가 strong 태그 추가 -->
+    <!-- // 0724 클래스 추가 strong 태그 추가 -->
+    <a href="javascript:" class="btn_represch">새로고침</a><!-- 0731 태그 위치 수정 -->
+    <span class="positionBtn" style="display: none;"><button type="button" onclick="layerPopup.layerShow('positionPop');">내 위치 OFF</button></span>
+  </div>
+
+  <div class="wrap_contView clfix">
+
+    <!-- 썸네일 리스트 -->
+    <div class="box_leftType1">
+      <div class="total_check">
+        <strong>총<span id="totalCnt"></span>건</strong>
+        <div class="btn_txt">
+          <button type="button" class="on" id="new">최신순</button>
+          <button type="button" id="dis">거리순</button>
+          <button type="button" id="popu">인기순</button>
+        </div>
+        <button type="button" class="btn_mPop">상세조회</button>
+      </div>
+      <h3 class="blind" id="blindsearchtype">최신순</h3>
+      <ul class="list_thumType flnon">
+<!--        <li>1<image src="http://tong.visitkorea.or.kr/cms/resource/42/2929142_image2_1.jpg"></image><p class="title"></p> </li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--        <li>4</li>-->
+      </ul>
+      <!-- paging -->
+      <div class="page_box">
+      </div>
+      <!-- //paging -->
+    </div>
+    <!-- //썸네일 리스트 -->
+
+    <div class="box_rightType1">
+      <div class="tit_mPop">
+        <h2>태그선택</h2>
+        <button type="button" class="btn_close">닫기</button>
+      </div>
+      <!-- 태그 리스트 -->
+      <div class="area_tagList">
+        <!-- ul class="tag_menu">
+            <li id="thismonth"><a href="javascript:">#이달의축제</a></li>
+        </ul-->
+        <ul class="tag_list js_multi" id="monthlist">
+          <li id="All">
+            <button type="button" class="btn_all_active"><span>#전체</span></button>
+          </li>
+          <li class="01">
+            <button type="button" class="btn"><span>#1월</span></button>
+          </li>
+          <li class="02">
+            <button type="button" class="btn"><span>#2월</span></button>
+          </li>
+          <li class="03">
+            <button type="button" class="btn"><span>#3월</span></button>
+          </li>
+          <li class="04">
+            <button type="button" class="btn"><span>#4월</span></button>
+          </li>
+          <li class="05">
+            <button type="button" class="btn"><span>#5월</span></button>
+          </li>
+          <li class="06">
+            <button type="button" class="btn"><span>#6월</span></button>
+          </li>
+          <li class="07">
+            <button type="button" class="btn"><span>#7월</span></button>
+          </li>
+          <li class="08">
+            <button type="button" class="btn"><span>#8월</span></button>
+          </li>
+          <li class="09">
+            <button type="button" class="btn"><span>#9월</span></button>
+          </li>
+          <li class="10">
+            <button type="button" class="btn"><span>#10월</span></button>
+          </li>
+          <li class="11">
+            <button type="button" class="btn"><span>#11월</span></button>
+          </li>
+          <li class="12">
+            <button type="button" class="btn"><span>#12월</span></button>
+          </li>
+        </ul>
+        <ul class="tag_list area_list js_one" id="arealist">
+          <li id="AllCity">
+            <button type="button" class="btn_all_active"><span>#전체</span></button>
+          </li>
+          <li id="1">
+            <button type="button" class="btn"><span>#서울</span></button>
+          </li>
+          <li id="6">
+            <button type="button" class="btn"><span>#부산</span></button>
+          </li>
+          <li id="4">
+            <button type="button" class="btn"><span>#대구</span></button>
+          </li>
+          <li id="2">
+            <button type="button" class="btn"><span>#인천</span></button>
+          </li>
+          <li id="5">
+            <button type="button" class="btn"><span>#광주</span></button>
+          </li>
+          <li id="3">
+            <button type="button" class="btn"><span>#대전</span></button>
+          </li>
+          <li id="7">
+            <button type="button" class="btn"><span>#울산</span></button>
+          </li>
+          <li id="8">
+            <button type="button" class="btn"><span>#세종</span></button>
+          </li>
+          <li id="31">
+            <button type="button" class="btn"><span>#경기</span></button>
+          </li>
+          <li id="32">
+            <button type="button" class="btn"><span>#강원</span></button>
+          </li>
+          <li id="33">
+            <button type="button" class="btn"><span>#충북</span></button>
+          </li>
+          <li id="34">
+            <button type="button" class="btn"><span>#충남</span></button>
+          </li>
+          <li id="35">
+            <button type="button" class="btn"><span>#경북</span></button>
+          </li>
+          <li id="36">
+            <button type="button" class="btn"><span>#경남</span></button>
+          </li>
+          <li id="37">
+            <button type="button" class="btn"><span>#전북</span></button>
+          </li>
+          <li id="38">
+            <button type="button" class="btn"><span>#전남</span></button>
+          </li>
+          <li id="39">
+            <button type="button" class="btn"><span>#제주</span></button>
+          </li>
+        </ul>
+        <ul class="tag_list area_view_list js_multi" id="sigungulist">
+        </ul>
+        <ul class="tag_list cnt_list js_multi" id="taglist">
+        </ul>
+        <div class="btn_area"><a
+                onclick="javascript:$('.box_rightType1').removeClass('on');$('body').css('overflow','');">확인</a>
+        </div>
+      </div>
+      <!-- //태그 리스트 -->
+
+    </div>
+
+  </div>
+
+</div>
+<!-- //contents -->
+
+<!-- 공지사항 , 유관기관, footer-->
+<div id="footer">
+</div>
+<!-- //footer -->
+
+<!-- 1017 추가 -->
+<div id="positionPop" class="wrap_layerpop">
+  <div class="layerpop">
+    <div class="positionCont">
+      <strong><em>위치 서비스</em>를 이용하면</strong>
+      <p>“거리순 정렬, 현재 위치에서 여행지까지의 거리를”<br/>확인할 수 있습니다.</p>
+      <div class="btn_center">
+        <a href="/detail/rem_detail.do?cotid=6b3a7a2f-cffc-483e-b3c6-f74bf974dc8c&con_type=10000">위치 서비스 허용 방법
+          보기</a>
+      </div>
+      <button type="button" class="btn_close3" onclick="layerPopup.layerHide('positionPop');">닫기</button>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="/js/test3.js"></script>
+<script >
+
+
+//const url = '';
+<!--fetch('https://apis.data.go.kr/B551011/KorService/categoryCode?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&contentTypeId=12&cat1=A01&cat2=A0101&cat3=A01010100')-->
+<!--.then((response) => response.json())-->
+<!--.then((data) => {-->
+
+<!--    console.log(data);-->
+<!--    const items = data.response.body.items;-->
+<!--    console.log(items);-->
+<!--    const item=[data];-->
+<!--    for(let index in arr){-->
+<!--        document.write(arr[index]);-->
+<!--    }-->
+<!--.catch(error => console.log(error));-->
+<!--});-->
+
+fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&arrange=D&eventStartDate=20221201')
+.then((response) => response.json())
+.then((data) => {
+
+    console.log(data);
+<!--    const items = data.response.body.items;-->
+<!--    console.log(items);-->
+})
+.catch(error => console.log(error));
+
+
+</script>
+
+</html>
