@@ -15,4 +15,9 @@ public class CSBoardController {
         return "board_festival/timeleaf";
     }
 
+    @RequestMapping("/t")
+    public String testtt(){
+        return "test3";
+    }
+
 }
