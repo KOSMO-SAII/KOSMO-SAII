@@ -2,6 +2,7 @@ package com.example.test.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -18,10 +19,8 @@ import java.util.Random;
 public class EmailService {
 
     private static final String TEMPLATE_LINK = "EmailMessage";
-
     private final TemplateEngine templateEngine;
     private final JavaMailSender javaMailSender;
-
     private String authNum;
 
     public void createCode(){
