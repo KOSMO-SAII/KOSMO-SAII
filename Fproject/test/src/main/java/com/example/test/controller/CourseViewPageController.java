@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.service.CourseViewService;

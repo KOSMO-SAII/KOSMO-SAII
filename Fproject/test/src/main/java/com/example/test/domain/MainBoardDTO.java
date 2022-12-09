@@ -1,18 +1,20 @@
-package com.study.springboot.dto;
+package com.example.test.domain;
 
-import java.sql.Date;
+
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.Date;
 
 @Getter
 @Setter
 @ToString
 public class MainBoardDTO {
 	private String post_id;
-	private date create_date;
-	private date update_date;
+	private Date create_date;
+	private Date update_date;
 	private String created_by;
 	private String modified_by;
 	private String course_id;

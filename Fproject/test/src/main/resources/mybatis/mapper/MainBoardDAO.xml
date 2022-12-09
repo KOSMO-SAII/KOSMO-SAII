@@ -3,11 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.study.springboot.dao.MainBoardDAO">
-	<select id="listDao" resultType="com.study.springboot.dto.MainBoardDTO">
+<mapper namespace="com.example.test.repository.MainBoardDAO">
+	<select id="listDao" resultType="com.example.test.domain.MainBoardDTO">
 		select * from main_board order by post_id desc
 	</select>
-	<select id="viewDao" resultType="com.study.springboot.dto.MainBoardDTO">
+	<select id="viewDao" resultType="com.example.test.domain.MainBoardDTO">
 		select * from main_board where post_id=#{0}
 	</select>
 

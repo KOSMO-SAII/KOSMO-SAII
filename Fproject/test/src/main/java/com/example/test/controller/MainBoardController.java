@@ -1,10 +1,12 @@
-package com.study.springboot.controller;
+package com.example.test.controller;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.example.test.domain.MainBoardDTO;
+import com.example.test.repository.MainBoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -14,8 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.study.springboot.dao.MainBoardDAO;
-import com.study.springboot.dto.MainBoardDTO;
+
 
 @Controller
 public class MainBoardController {
