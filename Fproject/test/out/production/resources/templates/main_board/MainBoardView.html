@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시글 상세보기</title>
+<link th:href="@{ /css/MainBoard.css}" rel="stylesheet" />
+</head>
+<body>
+	<h2>게시글 상세보기</h2>
+	<table>
+		<tr>
+			<td>글번호 : [[${view.post_id}]]</td>
+			<td>제목 : [[${view.title}]]</td>
+			<td>작성자 : [[${view.user_id}]]</td>
+			<td>작성날짜 : [[${view.post_date}]]</td>
+		</tr>
+		<tr>
+			<td>코스번호 : [[${view.course_id}]]</td>
+			<td>지역 : [[${view.region}]]</td>
+			<td>조회수 : [[${view.viewcount}]]</td>
+			<td>좋아요</td>
+		</tr>
+		<tr>  
+			<td colspan="4">
+				내용
+			</td>
+		</tr>
+		<td colspan="4">
+			<button type="button" onclick="location.href=''">수정하기</button>
+			<button type="button" onclick="location.href=''">삭제하기</button>
+			<button type="button" onclick="location.href='http://localhost:8081/mainboard_list'">목록보기</button>
+		</td>
+	</table>
+</body>
+</html>
