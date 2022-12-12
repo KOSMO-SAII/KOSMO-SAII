@@ -37,9 +37,9 @@
                    class=" link-dark gnb">MyPage</a>
             </li>
             <li><a href="http://localhost:8081/SAII/mypage"
-                   class=" link-dark ">Home</a></li>
+                   class=" link-dark ">공지사항</a></li>
             <li test="${UserId==null}"><a href="#"
-                    class="link-dark ">FAQ</a></li>
+                    class="link-dark ">Q&A</a></li>
             <li test="${UserId==null}"><a href="#"
                      class=" link-dark ">About</a></li>
 
@@ -72,15 +72,19 @@
 <section id="tripple">
     <div class="ibox">
         <a href="http://localhost:8081/SAII/course_write">
-            <img class="imgbox" alt="코스 작성 화면" src="/img/pencil.png"></a>
-        </div>
+            <img class="imgbox" alt="코스 작성 화면" src="/img/memo.png"></br>
+            <p class="ppp">사용방법</p>
+        </a></div>
     <div class="ibox">
         <a href="http://localhost:8081/SAII/course_recommend">
-            <img class="imgbox" alt="코스 추천화면" src="/img/recommend.png"></a></div>
+            <img class="imgbox" alt="코스 추천화면" src="/img/pencil.png"></br>
+            <p class="ppp">코스 작성</p>
+        </a></div>
     <div class="ibox">
         <a href="http://localhost:8081/SAII/course_write">
-            <img class="imgbox" alt="코스 작성 화면" src="/img/pencil.png"></a>
-    </div>
+            <img class="imgbox" alt="코스 작성 화면" src="/img/recommend.png"></br>
+            <p class="ppp">게시판</p>
+        </a></div>
 </section>
 
 
@@ -94,7 +98,6 @@
                 <div class = "card-header-number" > 커몬!! </div >
             </div >
         </div>
-
         <!--  카드 바디 -->
         <div class="card-body">
             <!--  카드 바디 헤더 -->
@@ -107,8 +110,6 @@
             <p class="card-body-description">
                 어서요어서요!
             </p>
-            <!--  카드 바디 본문 -->
-
             <!--  카드 바디 푸터 -->
             <div class="card-body-footer">
                 <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
@@ -119,25 +120,101 @@
         </div>
     </div>
 </a>
+
+    <a href="">
+        <div class="card">
+            <!-- 카드 헤더 -->
+            <div class="card-header" >
+                <div class = "card-header-is_closed" >
+                    <div class = "card-header-text" > 품절 </div >
+                    <div class = "card-header-number" > 임박!! </div >
+                </div >
+            </div>
+            <!--  카드 바디 -->
+            <div class="card-body">
+                <!--  카드 바디 헤더 -->
+                <div class="card-body-header">
+                    <h1>주말 품절임박</h1>
+                    <p class="card-body-hashtag">#주말 #벌써 #끝나가</p>
+                    <p class = "card-body-nickname">
+                        작성자: 절대지켜 </p>
+                </div>
+                <p class="card-body-description">
+                    아아 가지마요!
+                </p>
+                <!--  카드 바디 푸터 -->
+                <div class="card-body-footer">
+                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                    <i class="icon icon-view_count"></i>조회 321회
+                    <i class="icon icon-comments_count"></i>댓글 789개
+                    <i class="reg_date"> 22/12/11 </i>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="card">
+            <!-- 카드 헤더 -->
+            <div class="card-header" >
+                <div class = "card-header-is_closed" >
+                    <div class = "card-header-text" > 간식 </div >
+                    <div class = "card-header-number" > 닭강정 </div >
+                </div >
+            </div>
+            <!--  카드 바디 -->
+            <div class="card-body">
+                <!--  카드 바디 헤더 -->
+                <div class="card-body-header">
+                    <h1>빠빠빨간맛</h1>
+                    <p class="card-body-hashtag">#인천 #닭강정 #뼈있음</p>
+                    <p class = "card-body-nickname">
+                        작성자: 순살좋아 </p>
+                </div>
+                <p class="card-body-description">
+                    그럼 왜 강정이냐고오오오~~
+                </p>
+                <!--  카드 바디 푸터 -->
+                <div class="card-body-footer">
+                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                    <i class="icon icon-view_count"></i>조회 98회
+                    <i class="icon icon-comments_count"></i>댓글 102개
+                    <i class="reg_date"> 22/12/11 </i>
+                </div>
+            </div>
+        </div>
+    </a>
 </div>
 
 
-
-
-
-
-
-
-
-
-
-<footer>
-    <ul>
-        <br/>
-        <li>대표전화:070-000-0000 /</li><br/>
-        <li>대표이메일:saiIcustomer@saii.co.kr</li>
-    </ul>
+<footer class="footer-distributed">
+    <div class="footer-left">
+        <h3>Company<span>SAII</span></h3>
+        <p class="footer-links">
+            <a href="#" class="link-1">Home  |  </a>
+            <a href="#">About  |  </a>
+            <a href="#">Faq  |  </a>
+            <a href="#">Contact </a>
+        </p>
+        <p class="footer-company-name">Company SAII © 2022</p>
+    </div>
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p>서울특별시 금천구 가산디지털2로 123</p>
+        </div>
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+1.123.456.789</p>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:support@company.com">Seonmee@saii.com</a></p>
+        </div>
+    </div>
 </footer>
+
+
 
 <!--마우스커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
