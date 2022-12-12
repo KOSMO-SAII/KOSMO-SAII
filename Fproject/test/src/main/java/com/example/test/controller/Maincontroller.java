@@ -69,4 +69,10 @@ public class Maincontroller extends HttpServlet {
         model.addAttribute("data","post");
         return "test";
     }
+
+    @PostMapping("/festivalview")
+    public String get(Model model){
+        model.addAttribute("data","post");
+        return "festival_view";
+    }
 }
