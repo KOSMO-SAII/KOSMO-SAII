@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<form action="/members/signup" method="post" th:object="${memberFormDto}">
+  아이디 : <input type="text" th:field="*{loginId}" placeholder="아이디입력"><br/>
+  비밀번호 : <input type="password" th:field="*{loginPw}" placeholder="비밀번호 입력"><br/>
+  비밀번호 확인 : <input type="password" placeholder="비밀번호 확인"><br/>
+  이름 : <input type="text" th:field="*{name}" placeholder="이름입력"><br/>
+  닉네임 : <input type="text" th:field="*{nickname}" placeholder="닉네임입력"><br/>
+  주소 : <input type="text" th:field="*{address}" placeholder="주소입력"><br/>
+  생년월일 : <input type="date" th:field="*{birthday}" min="1920-01-01" max="2030-01-01"><br/>
+  이메일 : <input type="email" th:field="*{email}" placeholder="이메일입력"><br/>
+  번호 : <input type="text" th:field="*{phoneNumber}" placeholder="번호입력"><br/>
+  성별 : <input type="radio" th:field="*{gender}" value="남자">남자
+  <input type="radio" th:field="*{gender}" value="여자">여자<br/>
+  프로필 :
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+  <input type="submit" value="회원가입!">
+  유저아이디값 생성날 권한
+</form>
+</body>
+</html>
