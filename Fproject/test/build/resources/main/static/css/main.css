@@ -182,9 +182,9 @@ h1 {font-size: 22px;
     color: #9FA5A8;
     padding: 0 15px;}
 
-.icon {display: inline-block;
+.icon {
     vertical-align: middle;
-    margin-right: 2px;}
+    margin-right: 8px;}
 
 .icon-view_count {
     width: 25px;
