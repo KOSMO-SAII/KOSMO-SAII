@@ -8,65 +8,133 @@
             crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>초기화면</title>
-    <link th:href="@{/css/main.css}" rel="stylesheet" >
+    <link href="/css/main.css" rel="stylesheet" >
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <style type="text/css">
+        @import url("/css/main.css");
+    </style>
+
 </head>
-<body>
-<h1><img id=img src="/img/saii.png"></h1>
-<div class="container">
-    <header
-            id="header">
+<body class="body">
+
+<header id="header">
+    <div class="container">
         <a href="/">
             <svg class="bi me-2" width="40" height="32" role="img"
                  aria-label="Bootstrap">
                 <use xlink:href="#bootstrap"></use></svg>
         </a>
 
-        <ul
-                class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <h1 class="logo">
+            <a href="/">
+            <img id=img src="/img/saii.png">
+            </a>
+        </h1>
+
+        <ul class="nav justify-content-center">
             <li th:if="${UserId!=null}">
                 <a href="http://localhost:8081/SAII/mypage?id=${UserId }"
-                   class="nav-link px-2 link-dark">MyPage</a>
+                   class=" link-dark gnb">MyPage</a>
             </li>
             <li><a href="http://localhost:8081/SAII/mypage"
-                   class="nav-link px-2 link-dark">Home</a></li>
+                   class=" link-dark ">Home</a></li>
             <li test="${UserId==null}"><a href="#"
-                                          class="nav-link px-2 link-dark">FAQs</a></li>
+                    class="link-dark ">FAQ</a></li>
             <li test="${UserId==null}"><a href="#"
-                                          class="nav-link px-2 link-dark">About</a></li>
+                     class=" link-dark ">About</a></li>
 
+            <div class="col-md-3 text-end">
+                <p th:if ="${UserId==null}">
+                    <a href="http://localhost:8081/SAII/login"><button
+                            type="button" class="btn btn-outline-primary me-2">Login</button></a>
+                    <a href="http://localhost:8081/signup"><button
+                            type="button" class="btn btn-primary" >Sign-up</button></a>
+                </p>
+                <p th:if="${UserId!=null}">
+                    <a href="http://localhost:8081/SAII/logout"><button
+                            type="button" class="btn btn-outline-primary me-2">LogOut</button></a>
+                </p>
+            </div>
         </ul>
-
-        <div class="col-md-3 text-end">
-            <p th:if ="${UserId==null}">
-                <a href="http://localhost:8081/SAII/login"><button
-                        type="button" class="btn btn-outline-primary me-2">Login</button></a>
-            </p>
-            <p th:if="${UserId!=null}">
-                <a href="http://localhost:8081/SAII/logout"><button
-                        type="button" class="btn btn-outline-primary me-2">LogOut</button></a>
-            </p>
-            <p th:if="${UserId==null}">
-                <a href="http://localhost:8081/signup"><button
-                        type="button" class="btn btn-primary" >Sign-up</button></a>
-            </p>
-        </div>
-    </header>
-</div>
-<section id="tripple">
-    <div class="image-box">
-        <a href="http://localhost:8081/SAII/course_write"><img
-                class="imgbox" alt="코스 작성 화면" src="/img/pencil.png"></a><br/>
     </div>
-    <div class="image-box">
-        <a href="http://localhost:8081/SAII/course_recommend"><img
-                class="imgbox" alt="코스 추천화면" src="/img/recommend.png"></a><br/>
+</header>
+
+
+<div id="second" >
+    <div class="title" style="text-align: center;">국내 여행 플래너 SAII </div><br/>
+    <div class="title2">나만의 여행을 만들어 보아요</div><br/>
+    <div class="search-area">
+        <input type="text" class="search-input">
+        <button class="but">검색</button>
+    </div>
+</div>
+
+<section id="tripple">
+    <div class="ibox">
+        <a href="http://localhost:8081/SAII/course_write">
+            <img class="imgbox" alt="코스 작성 화면" src="/img/pencil.png"></a>
+        </div>
+    <div class="ibox">
+        <a href="http://localhost:8081/SAII/course_recommend">
+            <img class="imgbox" alt="코스 추천화면" src="/img/recommend.png"></a></div>
+    <div class="ibox">
+        <a href="http://localhost:8081/SAII/course_write">
+            <img class="imgbox" alt="코스 작성 화면" src="/img/pencil.png"></a>
     </div>
 </section>
 
 
+<div class="rec-card">
+<a href="">
+    <div class="card">
+        <!-- 카드 헤더 -->
+        <div class="card-header" >
+            <div class = "card-header-is_closed" >
+                <div class = "card-header-text" > 빨리 </div >
+                <div class = "card-header-number" > 커몬!! </div >
+            </div >
+        </div>
+
+        <!--  카드 바디 -->
+        <div class="card-body">
+            <!--  카드 바디 헤더 -->
+            <div class="card-body-header">
+                <h1>로또 당첨 바라요!</h1>
+                <p class="card-body-hashtag">#로또 #당첨 #나야나</p>
+                <p class = "card-body-nickname">
+                    작성자: 선미선미 </p>
+            </div>
+            <p class="card-body-description">
+                어서요어서요!
+            </p>
+            <!--  카드 바디 본문 -->
+
+            <!--  카드 바디 푸터 -->
+            <div class="card-body-footer">
+                <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                <i class="icon icon-view_count"></i>조회 123회
+                <i class="icon icon-comments_count"></i>댓글 456개
+                <i class="reg_date"> 22/12/06 </i>
+            </div>
+        </div>
+    </div>
+</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <footer>
     <ul>
-        <li>대표전화:070-000-0000 /</li>
+        <br/>
+        <li>대표전화:070-000-0000 /</li><br/>
         <li>대표이메일:saiIcustomer@saii.co.kr</li>
     </ul>
 </footer>

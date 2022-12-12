@@ -1,31 +1,26 @@
 package com.example.test.repository;
 
-import com.example.test.domain.MainBoardDTO;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import com.example.test.domain.MainBoardDTO;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 
 @Mapper
 @Repository
 public interface MainBoardDAO {
-    public int selectCount(Map<String, Object> map);
+	public List<MainBoardDTO> listDao(); // 리스트
+	public MainBoardDTO viewDao(String post_id); // 상세보기
+	public void plusviewcountDao(String post_id); // 조회수 증가
+	public void deleteDao(String post_id); // 글 삭제
+	public void writeDao(String course_id, String user_id, String title, String region);//임시
 
-    public List<MainBoardDTO> selectListPage(Map<String, Object> map);
-    public List<MainBoardDTO> myPage_selectListPage(Map<String, Object> map);
-    public void updateVisitCount(String m_id);
-    public void minusVisitCount(String m_id);
-    public MainBoardDTO selectView(String m_id);
-    public int insertWrite(Map<String,Object> map);
-    public int updateWrite(MainBoardDTO dto, String nickname);
-    public int delete(String m_id);
-    public ArrayList<MainBoardDTO> getRecommendData();
-    public ArrayList<MainBoardDTO> getmylist(String nickname);
-    public ArrayList<MainBoardDTO> myfavolist(String nickname);
-    public int mylistcount(String nickname);
-    public String favoprofile (String m_id);
-    public String getNickname(int course_id);
-    public MainBoardDTO getMainboard(int course_id);
+	public String getNickname(int course_id);//임시
+
+	public MainBoardDTO getMainboard(int course_id);//임시
+
+	public void insertWrite(Map<String,Object> map);
 }

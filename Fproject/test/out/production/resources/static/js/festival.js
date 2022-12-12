@@ -27,7 +27,7 @@ $("btn_all_active").click(function(event){
     c = ""
 })
 
-$(".js_multi").child.click(function(event){
+$("#monthlist").child.click(function(event){
     var e = event.target
     id = e.id
     getInfo(id,'')
@@ -38,7 +38,7 @@ function getInfo(id, c){
     var infoitem=[];
     var param = ('&areaCode='+id+'&eventStartDate=2022'+c+'01&eventEndDate=2022'+c+'31')
     console.log(param);
-    fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=C'+param)
+    fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=Q'+param)
     .then((response) => response.json())
     .then((data) => {
         info = data;
@@ -56,6 +56,6 @@ function getInfo(id, c){
 function printInfo(infoitem){
     var ul =$('.flnon');
     var li=document.createElement('li');
-    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'"></image><p class="title">'+infoitem.title+'</p>';
+    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p>';
     ul[0].appendChild(li);
 }

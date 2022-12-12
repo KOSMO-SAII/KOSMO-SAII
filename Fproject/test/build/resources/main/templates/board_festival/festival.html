@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="css/style4.css">
     <link rel="stylesheet" href="css/style3.css">
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/style1.css">
-    <script src="jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -44,6 +46,9 @@
             </div>
             <h3 class="blind" id="blindsearchtype">최신순</h3>
             <ul class="list_thumType flnon">
+                <li class="bdr_nor"><div class="photo"><a href="js/festival/>
+
+                <!--<li class="bdr_nor"><div class="photo"><a href="js/festival" onclick="goDetail(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;1&quot;);"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=353b6137-9466-4360-8c05-1fc127bb0a4e&amp;thumb" alt="대한민국무용대상"><em class="flag type_ing">진행중</em></a></div><div class="area_txt">    <div class="tit">        <a href="js/festival" onclick="goDetail(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;1&quot;);">대한민국무용대상</a>    </div><p>[2022.12.09~12.09]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>    <p class="tag"><span>#관광지</span><span>#대한민국무용</span><span>#무용</span><span>#예술</span><span>#이번주는여기!</span><span>#축제</span><span>#행사</span>    </p></div><button type="button" title="열기" class="btn_view" onclick="viewClick(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;)">더보기</button><div class="pop_subMenu">    <ul>        <li class="btn_far"><a href="js/festival" onclick="setFavoContent(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;)">즐겨찾기</a></li>        <li class="btn_share" id="4f24b070-eafe-4273-be52-fb98d21e00ca"><a href="js/festival" onclick="getShareInfo(&quot;%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EB%AC%B4%EC%9A%A9%EB%8C%80%EC%83%81&quot;,&quot;353b6137-9466-4360-8c05-1fc127bb0a4e&quot;,&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,15);">공유하기</a></li>        <li class="btn_cart" id="4f24b070-eafe-4273-be52-fb98d21e00ca"><a href="js/festival" onclick="myCourseList(&quot;C&quot;,&quot;15&quot;,&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;&quot;)">코스에 담기</a></li>    </ul></div></li>-->
             </ul>
             <!-- paging -->
             <div class="page_box">
@@ -139,33 +144,6 @@
     </div>
 </div>
 </body>
-<script >
-//const url = '';
-<!--fetch('https://apis.data.go.kr/B551011/KorService/categoryCode?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&contentTypeId=12&cat1=A01&cat2=A0101&cat3=A01010100')-->
-<!--.then((response) => response.json())-->
-<!--.then((data) => {-->
 
-<!--    console.log(data);-->
-<!--    const items = data.response.body.items;-->
-<!--    console.log(items);-->
-<!--    const item=[data];-->
-<!--    for(let index in arr){-->
-<!--        document.write(arr[index]);-->
-<!--    }-->
-<!--.catch(error => console.log(error));-->
-<!--});-->
-
-fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&arrange=D&eventStartDate=20221201')
-.then((response) => response.json())
-.then((data) => {
-
-    console.log(data);
-<!--    const items = data.response.body.items;-->
-<!--    console.log(items);-->
-})
-.catch(error => console.log(error));
-
-
-</script>
 
 </html>

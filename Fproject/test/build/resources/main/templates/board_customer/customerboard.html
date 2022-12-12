@@ -1,138 +1,269 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
+	<meta http-equiv="CONTENT-TYPE" content="text/html;charset=EUC-KR">
+	<link rel="shortcut icon" href=" " type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href=" " />
+	<meta name="referrer" content="no-referrer-when-downgrade" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="" />
+	<title>Q&A</title>
 
-	</style>
-</head>
+	<h3>Q&A</h3>
+	<div class="bbs-sch">
+		<form action="board.html" name="form1">
+			<input type=hidden name=s_id value="">
+			<input type=hidden name=code value="">
+			<input type=hidden name=page value=1>
+			<input type=hidden name=type value=s>
+			<input type=hidden name=board_cate value="">
+			<input type=hidden name="review_type" value="" /><!-- .∞Àªˆ ∆˚Ω√¿€ -->
+			<fieldset>
+				<legend>∞‘Ω√∆« ∞Àªˆ ∆˚</legend>
+				<label>
+					<input type='radio' name='shname' value='ok' onclick='change(1);'  class="MS_input_checkbox" />                                        ¿Ã∏ß
+				</label>
+				<label>
+					<input type='radio' name='ssubject' value='ok' onclick='change(2);' checked="checked"  class="MS_input_checkbox" />                                        ¡¶∏Ò
+				</label>
+				<label>
+					<input type='radio' name='scontent' value='ok' onclick='change(3);'  class="MS_input_checkbox" />                                        ≥ªøÎ
+				</label>
+				<span class="key-wrap">
+                                        <input type='text' name='stext' value=''  class="MS_input_txt" />                                        <a href="javascript:document.form1.submit();"><img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif" alt="∞Àªˆ" title="∞Àªˆ" /></a>
+                                    </span>
+			</fieldset>
+		</form><!-- .∞Àªˆ ∆˚ ≥° -->
+	</div><!-- .bbs-sch -->
+	</div>
 
-<body>
-	<div id="header_top">
-		<div id="header">
-			<!-- ÏÉÅÎã®Î∞î -->
-			<div class="topbar">
-				<div class="box_1200">
-					<ul class="topbar_right">
-						<li class="">Î°úÍ∑∏Ïù∏</a></li>
-						<li><a href="">ÌöåÏõêÍ∞ÄÏûÖ</a></li>
-						<li><a href="">ÎßàÏù¥ÌéòÏù¥ÏßÄ</a></li>
-						<li><a href="" >Ïû•Î∞îÍµ¨Îãà</a></li>
-				</ul>
-			</div> <!-- .box_1200 -->
-		</div> <!-- .topbar -->
-		<div class=" sear">
-								<form action=" " method="post" name="search">
-									<fieldset>
-										<legend>Í≤ÄÏÉâ</legend>
-										<span><input name="search" class="MS_search_word input-keyword"
-												onkeydown="CheckKey_search();" onfocus="this.value=''" /></span>
-										<a href="javascript:search_submit();" class="btn_search"><input type="button"
-												name="csbtn" onclick="" value="Í≤ÄÏÉâ"> </input></a> <!-- .btn_search -->
-									</fieldset>
-								</form>
-				</div>
-				<!-- //Í≤ÄÏÉâ -->
+	<!-- ∞‘Ω√∆« ∏Ò∑œ -->
+	<div class="bbs-table-list">
+		<table summary="No, content,Name,Data,Hits">
+			<caption>¿œπ›∞‘Ω√∆« ∞‘Ω√±€</caption>
+			<colgroup>
+				<col width="150" />
+				<col width="35" />
+				<col width="*" />
+				<col width="110" />
+				<col width="110" />
+				<col width="75" />
+			</colgroup>
+			<thead>
+			<tr>
+				<th scope="col"><div class="tb-center">NO.</div></th>
+				<th scope="col"><div class="tb-center">&nbsp;</div></th>
+				<th scope="col"><div class="tb-center">CONTENT</div></th>
+				<th scope="col"><div class="tb-center">NAME</div></th>
+				<th scope="col"><div class="tb-center">DATE</div></th>
+				<th scope="col"><div class="tb-center">HITS</div></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><div class="tb-center"><img src="" /></div></td>
+				<td><div class="tb-left"><img src = ""/> </div></td>
+				<td colspan= 4><div class="tb-left tb-bold">°⁄ πÆ¿«∞‘Ω√∆«¿∫ »∏ø¯∏∏ ¿€º∫ ∞°¥…«’¥œ¥Ÿ °⁄</div></td>
+			</tr>
+			<!-- .∞¯¡ˆªÁ«◊ ∏ÆΩ∫∆Æ Ω√¿€ -->
+			<tr>
+				<td><div class="tb-center"><img src="/images/d3/modern_simple/common/icon_box_arrow.gif" /></div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_notice.gif"/> </div></td>
+				<td>
+					<div class="tb-left">
+						<a href="" class="tb-bold"><font size=2><b>[æ»Ω… πËº€Ω√Ω∫≈€]</b></font></a>
+						<img src="/board/images/neo_hit.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<img src = "/shopimages/chicfox/MK_neo_chicfox_adminimg.gif"/>
+					</div>
+				</td>
+				<td><div class="tb-center">2020.04.29</div></td>
+				<td><div class="tb-center">57423</div></td>
+			</tr>
+			<tr>
+				<td><div class="tb-center"><img src="/images/d3/modern_simple/common/icon_box_arrow.gif" /></div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_notice.gif"/> </div></td>
+				<td>
+					<div class="tb-left">
+						<img src ="/board/images/neo_head.gif"/>
+						<a href="/board/board.html?code=chicfox&page=1&type=v&board_cate=&num1=520197&num2=00000&number=1124365&lock=N&flag=notice" class="tb-bold"><font size=2><b>[ π›«∞/±≥»Ø πÊπ˝æ»≥ª ]</b></font></a>
+						<img src="/board/images/neo_hit.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<img src = "/shopimages/chicfox/MK_neo_chicfox_adminimg.gif"/>
+					</div>
+				</td>
+				<td><div class="tb-center">2019.05.16</div></td>
+				<td><div class="tb-center">125088</div></td>
+			</tr>
+			<tr>
+				<td><div class="tb-center"><img src="/images/d3/modern_simple/common/icon_box_arrow.gif" /></div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_notice.gif"/> </div></td>
+				<td>
+					<div class="tb-left">
+						<img src ="/board/images/neo_head.gif"/>
+						<a href="/board/board.html?code=chicfox&page=1&type=v&board_cate=&num1=520204&num2=00000&number=1124364&lock=N&flag=notice" class="tb-bold"><font size=2><b>[ ªÛ«∞ πﬂº€ ¡ÿ∫Ò±‚∞£ æ»≥ª ]</b></font></a>
+						<img src="/board/images/neo_hit.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<img src = "/shopimages/chicfox/MK_neo_chicfox_adminimg.gif"/>
+					</div>
+				</td>
+				<td><div class="tb-center">2019.05.16</div></td>
+				<td><div class="tb-center">93553</div></td>
+			</tr>
+			<tr>
+				<td><div class="tb-center"><img src="/images/d3/modern_simple/common/icon_box_arrow.gif" /></div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_notice.gif"/> </div></td>
+				<td>
+					<div class="tb-left">
+						<img src ="/board/images/neo_head.gif"/>
+						<a href="/board/board.html?code=chicfox&page=1&type=v&board_cate=&num1=520301&num2=00000&number=1124363&lock=N&flag=notice" class="tb-bold"><font size=2><font color=#ff0000><b>°⁄¿·±Ò°⁄ π›«∞/±≥»Ø ø¯«œ¥¬ ªÛ«∞¿Ã ∆˜«‘µ» ¡÷πÆº≠∞° ∫Œ∫–πËº€ µ«æ˙¥Ÿ∏È ¿–æÓ¡÷ººø‰</b></font></font></a>
+						<img src="/board/images/neo_hit.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<img src = "/shopimages/chicfox/MK_neo_chicfox_adminimg.gif"/>
+					</div>
+				</td>
+				<td><div class="tb-center">2019.05.15</div></td>
+				<td><div class="tb-center">100379</div></td>
+			</tr>
+			<!--. ∞¯¡ˆªÁ«◊ ∏ÆΩ∫∆Æ ≥°! -->
 
+			<!--. ∞‘Ω√±€ ∏ÆΩ∫∆Æ Ω√¿€(«—∆‰¿Ã¡ˆ¥Á ∞‘Ω√±€ ºˆ) -->
+			<tr>
+				<td><div class="tb-center">1124386</div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_lock.gif"/></div></td>
+				<!-- .product image ∞¸∑√ -->
+				<td>
+					<div class="tb-left">
+						<img src = "/board/images/neo_head.gif" style="padding-left: 00px;"/>
 
-				<h2>Í≥†Í∞ùÎ¨∏Ïùò Í≤åÏãúÌåê</h2>
+						<!--. Ω∫∆‘±€ √≥∏Æ -->
+						<a href=" ">[ø©«‡∞¸∑√πÆ¿«] πÆ¿«ªÁ«◊¿‘¥œ¥Ÿ.</a>
+						<!--. ªÛ«∞¡§∫∏∞° ¿÷¿ª∂ß ¡∂»∏ºˆ∞° 10¿ÃªÛ¿Ã∏È hitæ∆¿Ãƒ‹∫∏ø©¡÷±‚ -->
+						<!--. newæ∆¿Ãƒ‹√≥∏Æ -->
+						<img src = "/board/images/neo_new.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<div class='video-writer' style='padding-left:2px; padding-right:2px;' onMouseover="document.getElementById('MK_searchId_432581_00000').style.display='block'" onMouseout="document.getElementById('MK_searchId_432581_00000').style.display='none'">√÷¿∫*                <div id='MK_searchId_432581_00000' class='search_id' style='display:none'>
+							<a href="Javascript:search_id('432581||00000')">»∏ø¯∞‘Ω√±€∞Àªˆ</a>
+						</div></div>                                                                                            </div>
+				</td>
+				<td><div class="tb-center">2022.12.11</div></td>
+				<td><div class="tb-center">1</div></td>
+			</tr>
+			<!--. ∞‘Ω√±€ ∏ÆΩ∫∆Æ Ω√¿€(«—∆‰¿Ã¡ˆ¥Á ∞‘Ω√±€ ºˆ) -->
+			<tr>
+				<td><div class="tb-center">1124385</div></td>
+				<td><div class="tb-left"><img src = "/board/images/neo_lock.gif"/></div></td>
+				<!-- .product image ∞¸∑√ -->
+				<td>
+					<div class="tb-left">
+						<img src = "/board/images/neo_head.gif" style="padding-left: 00px;"/>
+
+						<!--. Ω∫∆‘±€ √≥∏Æ -->
+						<a href="/board/board.html?code=">[»®∆‰¿Ã¡ˆ ¿ÃøÎ∞¸∑√ πÆ¿« ªÁ«◊¿‘¥œ¥Ÿ.]</a>
+						<!--. ªÛ«∞¡§∫∏∞° ¿÷¿ª∂ß ¡∂»∏ºˆ∞° 10¿ÃªÛ¿Ã∏È hitæ∆¿Ãƒ‹∫∏ø©¡÷±‚ -->
+						<!--. newæ∆¿Ãƒ‹√≥∏Æ -->
+						<img src = "/board/images/neo_new.gif"/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<div class='video-writer' style='padding-left:2px; padding-right:2px;' onMouseover="document.getElementById('').style.display='block'" onMouseout="document.getElementById('').style.display='none'">  <div id='' class='search_id' style='display:none'>
+							<a href=" ">»∏ø¯∞‘Ω√±€∞Àªˆ</a>
+						</div></div>                                                                                            </div>
+				</td>
+				<td><div class="tb-center">2022.12.11</div></td>
+				<td><div class="tb-center">2</div></td>
+			</tr>
+			<!--. ∞‘Ω√±€ ∏ÆΩ∫∆Æ Ω√¿€(«—∆‰¿Ã¡ˆ¥Á ∞‘Ω√±€ ºˆ) -->
+			<tr>
+				<td><div class="tb-center">ID</div></td>
+				<td><div class="tb-left"><img src = " "/></div></td>
+				<!-- .product image ∞¸∑√ -->
+				<td>
+					<div class="tb-left">
+						<img src = "/board/images/neo_head.gif" style="padding-left: 00px;"/>
+						<a href=" ">»®∆‰¿Ã¡ˆ ∞¸∑√ πÆ¿«ªÁ«◊ ≥≤±È¥œ¥Ÿ.</a>
+
+						<!--. Ω∫∆‘±€ √≥∏Æ -->
+						<!--. ªÛ«∞¡§∫∏∞° ¿÷¿ª∂ß ¡∂»∏ºˆ∞° 10¿ÃªÛ¿Ã∏È hitæ∆¿Ãƒ‹∫∏ø©¡÷±‚ -->
+						<!--. newæ∆¿Ãƒ‹√≥∏Æ -->
+					</div>
+				</td>
+
+			<!--. ∞‘Ω√±€ ∏ÆΩ∫∆Æ Ω√¿€(«—∆‰¿Ã¡ˆ¥Á ∞‘Ω√±€ ºˆ) -->
+			<tr>
+				<td><div class="tb-center">IDª˝º∫«ÿº≠ ≥÷±‚</div></td>
+				<td><div class="tb-left"><img src = " "/></div></td>
+				<!-- .product image ∞¸∑√ -->
+				<td>
+					<div class="tb-left">
+						<img src = " " style="padding-left: 00px;"/>
+						<a href="\ ">[ªÁ¿Ã∆ÆπÆ¿«]</a>
+
+						<!--. Ω∫∆‘±€ √≥∏Æ -->
+						<a href="/board/board.html?code=chicfox&page=1&type=v&board_cate=&num1=432595&num2=00000&number=1124374&lock=Y">[±≥»Ø/π›«∞πÆ¿«] πÆ¿«ªÁ«◊¿‘¥œ¥Ÿ.</a>
+						<!--. ªÛ«∞¡§∫∏∞° ¿÷¿ª∂ß ¡∂»∏ºˆ∞° 10¿ÃªÛ¿Ã∏È hitæ∆¿Ãƒ‹∫∏ø©¡÷±‚ -->
+						<!--. newæ∆¿Ãƒ‹√≥∏Æ -->
+						<img src = ""/>
+					</div>
+				</td>
+				<td>
+					<div class="tb-center">
+						<div class='video-writer' style='padding-left:2px; padding-right:2px;' onMouseover="document.getElementById('').style.display='block'" onMouseout="document.getElementById('').style.display='none'">                <div id='' class='search_id' style='display:none'>
+							<a href="">»∏ø¯∞‘Ω√±€∞Àªˆ</a>
+						</div></div>                                                                                            </div>
+				</td>
+				<td><div class="tb-center">2022.12.11</div></td>
+				<td><div class="tb-center">0</div></td>
+
+			<!--. ∞‘Ω√±€ ∏ÆΩ∫∆Æ ≥° -->
+			</tbody>
+		</table>
+	</div>
+	<!-- //∞‘Ω√∆« ∏Ò∑œ -->
+
+	<!-- «œ¥‹ ∆‰¿Ã¬° & πˆ∆∞ -->
+	<div class="bbs-btm">
+		<div class="bbs-link"><a href="/board/board.html?code=chicfox&page=1&board_cate=&type=i" class="CSSbuttonWhite">±€æ≤±‚</a></div>
+		<div class="bbs-paging">
+			<div class="paging">
+				<a href="/board/board.html?code=chicfox&page=1&board_cate=#board_list_target" class="now">1</a>
+				<a href="/board/board.html?code=chicfox&page=2&board_cate=#board_list_target">2</a>
+				<a href="/board/board.html?code=chicfox&page=3&board_cate=#board_list_target">3</a>
+				<a href="/board/board.html?code=chicfox&page=4&board_cate=#board_list_target">4</a>
+				<a href="/board/board.html?code=chicfox&page=5&board_cate=#board_list_target">5</a>
+				<a href="/board/board.html?code=chicfox&page=6&board_cate=#board_list_target">6</a>
+				<a href="/board/board.html?code=chicfox&page=7&board_cate=#board_list_target">7</a>
+				<a href="/board/board.html?code=chicfox&page=8&board_cate=#board_list_target">8</a>
+				<a href="/board/board.html?code=chicfox&page=9&board_cate=#board_list_target">9</a>
+				<a href="/board/board.html?code=chicfox&page=10&board_cate=#board_list_target">10</a>
+				<a href="/board/board.html?code=chicfox&page=11&board_cate=#board_list_target" class="next">&gt;</a>
+				<a href="/board/board.html?code=chicfox&page=56220&board_cate=#board_list_target" class="last">&gt;&gt;</a>
 			</div>
-
-			<div id="bbsData">
-				<div class="page-body">
-					<div class="bbs-table-list">
-						<table summary="No, content,Name,Data,Hits">
-							<caption>ÏùºÎ∞òÍ≤åÏãúÌåê Í≤åÏãúÍ∏Ä</caption>
-							<colgroup>
-								<col width="90" />
-								<col width="30" />
-								<!-- .ÏÉÅÌíàÏ†ïÎ≥¥Í∞Ä ÏûàÏùÑ Í≤ΩÏö∞ÏóêÎßå ÎÇòÌÉÄÎÇ® -->
-								<col width="90" />
-								<col width="*" />
-								<col width="110" />
-								<col width="110" />
-								<col width="80" />
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">
-										<div class="tb-center">No.</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">&nbsp;</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">Ïπ¥ÌÖåÍ≥†Î¶¨</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">ÎÇ¥Ïö©</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">Ïù¥Î¶Ñ</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">ÎÇ†Ïßú</div>
-									</th>
-									<th scope="col">
-										<div class="tb-center">Ï°∞Ìöå</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- .Í≥µÏßÄÏÇ¨Ìï≠ Î¶¨Ïä§Ìä∏ ÏãúÏûë -->
-								<tr>
-									<td>
-										<div class="tb-center"><img src="" /></div>
-									</td>
-									<td>
-										<div class="tb-left"><img src="" /> </div>
-									</td>
-									<!-- .ÏÉÅÌíàÏ†ïÎ≥¥Í∞Ä ÏûàÏùÑ Í≤ΩÏö∞ÏóêÎßå ÎÇòÌÉÄÎÇ® -->
-									<td colspan="2">
-										<div class="tb-left">
-
-										</div>
-									</td>
-
-									<td>
-										<div class="tb-center">2020/02/23</div>
-									</td>
-									<td>
-										<div class="tb-center">30812</div>
-									</td>
-								</tr>
-								<!--. Í≥µÏßÄÏÇ¨Ìï≠ Î¶¨Ïä§Ìä∏ ÎÅù! -->
-
-								<!--. Í≤åÏãúÍ∏Ä Î¶¨Ïä§Ìä∏ ÏãúÏûë(ÌïúÌéòÏù¥ÏßÄÎãπ Í≤åÏãúÍ∏Ä Ïàò) -->
-								<tr>
-									<td>
-										<div class="tb-center">19294</div>
-									</td>
-									<td>
-										<div class="tb-left"><img src="/board/images/neo_default.gif" /></div>
-									</td>
-									<!-- .product image Í¥ÄÎ†® -->
-									<td>
-										<div class="tb-left"><img src="/shopimages/thessancom/0060060000933.jpg"
-												height="50" align="middle" /></div>
-									</td>
-									<td>
-										<div class="tb-left">
-											<a href="">[ÏΩîÏä§Î¨∏Ïùò]</a>
-
-											<!--. Ïä§Ìå∏Í∏Ä Ï≤òÎ¶¨ -->
-											<a href=" "> ÏΩîÏä§ÏàòÏ†ïÏùÄ Ïñ¥ÎñªÍ≤å Ìï† Ïàò ÏûàÎÇòÏöî?</a>
-											<!--. ÏΩîÎ©òÌä∏Í∞ØÏàòÏ≤òÎ¶¨ -->
-											(1)
-											<!--. ÏÉÅÌíàÏ†ïÎ≥¥Í∞Ä ÏûàÏùÑÎïå Ï°∞ÌöåÏàòÍ∞Ä 10Ïù¥ÏÉÅÏù¥Î©¥ hitÏïÑÏù¥ÏΩòÎ≥¥Ïó¨Ï£ºÍ∏∞ -->
-										</div>
-									</td>
-
-
-</body>
-
+		</div>
+	</div>
+	<!-- //«œ¥‹ ∆‰¿Ã¬° & πˆ∆∞ -->
+	</div><!-- .page-body -->
+	</div><!-- #bbsData -->
+	</div><!-- #content -->
+	</div><!-- #contentWrap -->
+	</div><!-- #contentWrapper-->
+	<hr />
+	</body>
 </html>

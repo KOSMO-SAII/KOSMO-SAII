@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.service.CourseViewService;
@@ -58,13 +59,14 @@ public class CourseViewPageController extends HttpServlet {
     @PostMapping("/courseViewPage")
     public String doPost(Model model, HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 
-        int course_id = 0;
+
         String mode=req.getParameter("mode");
 
         //courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정
         if(mode.equals( "edit")) {
+            System.out.println("edit모드");
             MainBoardDTO mdto = courseViewServiceImple.editMode(req);
-
+            
             req.setAttribute("title", mdto.getTitle());
             req.setAttribute("region", mdto.getRegion());
 
@@ -84,7 +86,7 @@ public class CourseViewPageController extends HttpServlet {
         }
         List<Map<String, String>> list = courseViewServiceImple.giveCourse(req);
         System.out.println(list);
-        req.setAttribute("c_id", course_id);
+
         req.setAttribute("List", list);
 
         return "courseViewPage";
