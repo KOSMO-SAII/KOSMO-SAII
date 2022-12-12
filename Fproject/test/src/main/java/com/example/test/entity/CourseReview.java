@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @Getter
 @ToString
-@SuperBuilder
 public class CourseReview extends Base{
 
     @Id

@@ -3,6 +3,7 @@ package com.example.test.entity;
 import com.example.test.constant.Role;
 import com.example.test.domain.MemberDTO;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;

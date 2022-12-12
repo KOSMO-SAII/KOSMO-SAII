@@ -1,6 +1,7 @@
 package com.example.test.entity;
 
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
