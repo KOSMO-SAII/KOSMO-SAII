@@ -19,6 +19,10 @@ import java.util.Vector;
 @Controller
 public class Maincontroller extends HttpServlet {
 
+    @GetMapping("/")
+    public String MainPage(){
+        return "Mainpage";
+    }
     @RequestMapping("/test3")
     public String test3()
     {return "test3";}
