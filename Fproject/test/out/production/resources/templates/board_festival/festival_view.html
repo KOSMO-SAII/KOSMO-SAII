@@ -40,6 +40,144 @@
 </script>
 
   <script type="text/javascript">
+  <style>
+  /*! Flickity v2.2.1
+https://flickity.metafizzy.co
+---------------------------------------------- */
+
+.flickity-enabled {
+  position: relative;
+}
+
+.flickity-enabled:focus { outline: none; }
+
+.flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* draggable */
+
+.flickity-enabled.is-draggable {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* ---- flickity-button ---- */
+
+.flickity-button {
+  position: absolute;
+  background: hsla(0, 0%, 100%, 0.75);
+  border: none;
+  color: #333;
+}
+
+.flickity-button:hover {
+  background: white;
+  cursor: pointer;
+}
+
+.flickity-button:focus {
+  box-shadow: 0 0 0 5px #19F;
+}
+
+.flickity-button:active {
+  opacity: 0.6;
+}
+
+.flickity-button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+  /* prevent disabled button from capturing pointer up event. #716 */
+  pointer-events: none;
+}
+
+.flickity-button-icon {
+  fill: currentColor;
+}
+
+/* ---- previous/next buttons ---- */
+
+.flickity-prev-next-button {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  /* vertically center */
+  transform: translateY(-50%);
+}
+
+.flickity-prev-next-button.previous { left: 10px; }
+.flickity-prev-next-button.next { right: 10px; }
+/* right to left */
+.flickity-rtl .flickity-prev-next-button.previous {
+  left: auto;
+  right: 10px;
+}
+.flickity-rtl .flickity-prev-next-button.next {
+  right: auto;
+  left: 10px;
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+/* ---- page dots ---- */
+
+.flickity-page-dots {
+  position: absolute;
+  width: 100%;
+  bottom: -25px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 1;
+}
+
+.flickity-rtl .flickity-page-dots { direction: rtl; }
+
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.flickity-page-dots .dot.is-selected {
+  opacity: 1;
+}
+  </style>
 
 var otd_nm = "";
 if( appYn == 'N') {
@@ -305,111 +443,6 @@ var custInfo = {
       </div>
     </div>
     <!-- //사진보기 -->
-    <!-- 큐레이션영역 -->
-    <div class="safely_index_graph">
-      <div class="safely_index">
-        <h3>안전여행지수<button type="button" onclick="layerPopup.layerShow('travelinfoPop');">팝업 열기</button></h3>
-        <p>‘안전여행지수’란? SK SafeCaster에서 제공하는 여행지 혼잡도<br/>
-          데이터를 기반으로, 혼잡도가 낮은 여행지는 ‘양호’ ↔ 혼잡도가 높은<br/>
-          여행지는 ‘경계’로 표시되는 지수입니다.
-        </p>
-        <div class="progress" data-percent="0" id="safely_info"><!-- 양호:good, 보통:average, 주의:care, 경계:vigilance, -->
-        </div>
-      </div>
-      <div class="congestion">
-        <h3>시간별/일별 혼잡도</h3>
-        <p>※ 안전여행지수는 해당 여행지가 위치한 주소 ‘동’ 기준 혼잡도를 기준으로 제공하기 때문에 실제<br/>
-          여행지의 혼잡도와는 차이가 있을 수 있음을 알려드립니다.
-        </p>
-        <span class="btn">
-                        <button type="button" class="on" title="선택됨" onclick="onClickSafetyDay(this);">시간별</button>
-                        <button type="button"  onclick="onClickSafetyWeek(this);">일간별</button>
-                    </span>
-        <div class="graph_wrap">
-          <div class="month_btn">
-            <button type="button" class="prev off">이전</button>
-            <span id="safety_day"></span>
-            <button type="button" class="next">다음</button>
-          </div>
-          <div class="graph">
-            <div id="safety_chart" style="min-height: 225px; "></div>
-            <div id="safety_chart2" style="min-height: 225px; display : none;"></div>
-            <div class="blind">
-              <em id="safetype"></em>
-              <span id="nowdata"></span>
-              <ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="loading" style="display : none;">
-        <p>호종이가 안전여행지수를 수집 중입니다.</p>
-      </div>
-    </div>
-
-    <div class="detail_graph_wrap" style="display : none;">
-      <h3 class="title_btn_toggle active type1">
-        코로나 세부 현황 보기
-        <button type="button" class="btn_close"><span>닫기</span></button>
-        <button type="button" class="btn_open"><span>열기</span></button>
-      </h3>
-      <div class="detail_graph">
-        <div class="coronic">
-          <h4> 코로나 확진자 현황</h4>
-          <div class="graph">
-            <div id="covid_chart" style="min-height: 235px; "></div>
-            <div class="blind">
-              <ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="inoculator">
-          <h4> 백신 접종 현황</h4>
-          <div class="graph">
-            <div id="vaccine_chart" style="min-height: 235px; "></div>
-            <div class="blind">
-              <ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- //큐레이션영역 -->
-    <!-- 상세정보 -->
-    <div id="detailGo">
-      <div class="blind">
-        올해로 제 11회째 맞이하는 유러피언 크리스마스 마켓은 11개국 주한유럽대사관들과 인근 상인협의회의 참여와 후원으로 유럽 전통 크리스마스 시즌 음식과 수공예 장식품을 선보일 예정이다. 시즌 음식에는 프랑스 소시지, 스페인 빠에야, 럼커피, 독일 글뤼와인, 불가리아 미트볼스테이크, 헝가리 굴라쉬와 수공예 물품에는 도자기, 식탁보 수건, 핸드페인팅 작품 등 유럽 각국의 전통 크리스마스 데코 용품으로 가정에서도 유럽풍의 크리스마스를 즐길 수 있을 것이다. 내·외국인이 한자리에 모여 거주 외국인은 고향의 향수를 느끼고 내국인은 유럽의 다양한 크리스마스 문화를 체험하며 상호 이해를 통해 함께하는 공동체를 실현하고, 판매 수익 기부를 통해 나누고 베푸는 크리스마스 본연의 의미를 전파한다. 유럽의 정통 크리스마스의 로맨틱한 분위기에 각 나라의 맛과 멋을 더한 이색적인 겨울축제로 매년 국내 내·외국인에게 사랑받는 축제로 자리매김했다. 코로나 이후 3년만에 재게하게 되어 그 의미가 더 크다고 할 수 있으며 주한외교대사 등 주요 내외빈이 함께 참여하여 행사를 축하할 예정이다. 특히 이번 행사는 공연 및 이벤트를 축소하여 안전하고 차분하게 진행하고자 한다. 또한 나와 내 가족의 응급상황시 빠르게 대처할 수 있는 심폐소생술(CPR) 체험 부스를 운영하며 행사장 및 주변상황에 대해 그 어느때보다 안전을 최우선시 할 예정이다.
-      </div>
-      <!-- 내용더보기 -->
-      <div class="wrap_contView">
-        <h3>상세정보</h3>
-        <button class="btn_modify" onclick="goJikimi();"><span>관광정보 수정요청</span></button>
-        <div class="area_txtView top">
-          <div class="inr_wrap">
-            <div class="inr">
-              <p>
-              </p>
-            </div>
-          </div>
-          <div class="cont_more"><button type="button" class="btn_more" title="내용더보기">내용 <span>더보기</span></button></div>
-        </div>
-      </div>
-      <!-- //내용더보기 -->
-
-      <h3 class="blind">상세정보</h3>
-      <!-- 주변정보 지도 -->
-      <div class="surroundingsMap" id="detailGo">
-        <div class="map_skip" tabindex="0"><a style="display:none;" href="javascript:jumpkakaomap();">지도 건너뛰기</a></div>
-        <div id="map" class="wrap_map"> <!-- open 클래스 추가 시 지도 확장-->
-          <img src="https://cdn.visitkorea.or.kr/resources/images/sub/map_dim01.png" alt="" style="width: 100%; height: 100%;">
-
-
-
-
-
 
 
           <div class="layer" tabindex="0">
@@ -698,19 +731,7 @@ var custInfo = {
       <h2><strong>여행콕콕</strong> 제공 여행지 안내</h2>
       <button type="button" class="btn_close3" onclick="layerPopup.layerHide('travelinfoPop');">닫기</button>
     </div>
-    <div class="box_cont">
-      <p>
-        <strong>다양한 행동유형 데이터를 바탕으로 맞춤형 안전여행지와 <br/>맛집 정보를 제공합니다.</strong>
-        SK텔레콤 데이터를 활용하여 경계~양호 4단계로 여행지별 <br/>‘안전여행지수’를 안내하고 있습니다.
-      </p>
-      <span>
-					<img src="https://cdn.visitkorea.or.kr/resources/images/sub/pop_img_travelinfo.gif" class="pc" alt="양호:50~100(87), 보통:30~49(41), 주의:10~29(22), 경계:0~9(8) 자료제공:safecaster">
-					<img src="https://cdn.visitkorea.or.kr/resources/images/sub/pop_img_mtravelinfo.gif" class="mo" alt="양호:50~100(87), 보통:30~49(41), 주의:10~29(22), 경계:0~9(8) 자료제공:safecaster">
-				</span>
-    </div>
-  </div>
-</div>
-<!-- //큐레이션 팝업 -->
+
 
 <script src="https://cdn.visitkorea.or.kr/resources/js/mylocation/location_detail.js?v=1670685812761"></script>
 <script src="https://cdn.visitkorea.or.kr/resources/js/contentSub.js"></script>

@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @ToString
+@SuperBuilder
 public class CourseReview extends Base{
 
     @Id
@@ -27,9 +29,16 @@ public class CourseReview extends Base{
 
 
     @Builder
-    public CourseReview(long course_id, String title, String content){
+    public CourseReview(long course_id, String title, String content, String createdBy){
         this.course_id=course_id;
         this.title=title;
         this.content=content;
+        this.createdBy=createdBy;
     }
+
+    public void update(String title, String content){
+        this.title=title;
+        this.content=content;
+    }
+
 }

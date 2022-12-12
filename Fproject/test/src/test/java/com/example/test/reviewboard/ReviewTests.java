@@ -2,7 +2,7 @@ package com.example.test.reviewboard;
 
 import com.example.test.TestApplication;
 import com.example.test.entity.CourseReview;
-import com.example.test.repository.CourseReviewRepository;
+import com.example.test.repository.ReviewCourseRepository;
 
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = TestApplication.class)
 public class ReviewTests {
     @Autowired
-    CourseReviewRepository courseReviewRepository;
+    ReviewCourseRepository courseReviewRepository;
 
     @Test
     void save(){
