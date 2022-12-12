@@ -52,8 +52,11 @@
                     <a href="/members/new"><button
                             type="button" class="btn btn-primary" >Sign-up</button></a>
                 </p>
-                <p th:if="${UserId!=null}">
-                    <a href="http://localhost:8081/SAII/logout"><button
+<!--                <p th:if="${UserId!=null}">-->
+                <p sec:authorize="isAuthenticated()">
+                    <a href="/members/logins"><button
+                            type="button" class="btn btn-outline-primary me-2">마이페이지</button></a>
+                    <a href="/members/logout"><button
                             type="button" class="btn btn-outline-primary me-2">LogOut</button></a>
                 </p>
             </div>
