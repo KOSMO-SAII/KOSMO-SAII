@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.
+    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.
     <title>거리</title>
     <link th:href="@{/css/reviewCourse.css}" rel="stylesheet" />
 </head>
@@ -14,7 +18,7 @@
             <td class="search-bar" align="center">
                 <select name="searchType">
                     <!-- th:if="${map.searchType=='both' }" -->
-                    <option value="both"  selected>제목+내용</option>
+                    <option value="both" selected>제목+내용</option>
                     <option value="r_title" >제목</option>
                     <option value="content" >내용</option>
                     <option value="r_writer" >작성자</option>
