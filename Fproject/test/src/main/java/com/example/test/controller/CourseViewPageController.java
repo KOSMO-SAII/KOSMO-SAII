@@ -25,13 +25,7 @@ public class CourseViewPageController extends HttpServlet {
     @Autowired
     private CourseViewServiceImple courseViewServiceImple;
 
-    @RequestMapping("/courseViewPage")
-    public String root(){
-        return "courseViewPage";
-    }
-
-
-    @GetMapping("/courseViewPage")
+      @GetMapping("/courseViewPage")
     public String doGet(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int course_id= Integer.parseInt( req.getParameter("num"));
         //코스 id에 맞는 닉네임 찾기
@@ -52,7 +46,7 @@ public class CourseViewPageController extends HttpServlet {
         req.setAttribute("nickname", nickname);
         req.setAttribute("List", list);
 
-        return "courseViewPage";
+        return "course/courseViewPage";
     }
 
 
@@ -89,6 +83,6 @@ public class CourseViewPageController extends HttpServlet {
 
         req.setAttribute("List", list);
 
-        return "courseViewPage";
+        return "course/courseViewPage";
     }
 }
