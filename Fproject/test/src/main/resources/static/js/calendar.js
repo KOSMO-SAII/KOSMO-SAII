@@ -35,20 +35,20 @@ var ed; //여행 종료날짜
 
 function addDays(){
     console.log("데이 실행")
-    console.log(days==="")
     var sel=$('.days');
-    for(var i=1;i<=days;i++){
-        if(days==1){
+     if(!days){
             var opt=document.createElement("option");
                         opt.text=1+"day"
                         opt.value=1;
                     sel[0].appendChild(opt);
-        }else{
+            }
+    for(var i=1;i<=days;i++){
+
             var opt=document.createElement("option");
                 opt.text=i+"day"
                 opt.value=i;
             sel[0].appendChild(opt);
-        }
+
     }
 
 }
