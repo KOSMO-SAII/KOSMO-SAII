@@ -97,7 +97,7 @@ public class MemberController {
         System.out.println(principal.getName());
         model.addAttribute("sessionMember",sessionMember);
 
-        return "memberUpdate";
+        return "/mypage/memberUpdate";
     }
 
     @PostMapping("/updateS")
@@ -112,6 +112,12 @@ public class MemberController {
         model.addAttribute("info",sessionMember1);
 
         return "redirect:/members/logins";
+    }
+
+    @PostMapping("delete")
+    public String delete(Model model, Principal principal){
+        System.out.println("회원탈퇴하는곳");
+
     }
 
     @RequestMapping(value = "/juso")
