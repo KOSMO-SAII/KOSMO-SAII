@@ -6,6 +6,7 @@ import com.example.test.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -65,6 +66,11 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(user1);
     }
 
+    public void deleteById(String id) {
+        Member mem = memberRepository.findByLoginId(id);
+        memberRepository.delete(mem);
+        SecurityContextHolder.clearContext();
+    }
 
 //    @Transactional
 //    public void modify(String email) {

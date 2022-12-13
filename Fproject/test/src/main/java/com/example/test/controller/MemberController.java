@@ -114,11 +114,11 @@ public class MemberController {
         return "redirect:/members/logins";
     }
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public String delete(Model model, Principal principal){
         System.out.println("회원탈퇴하는곳");
-
-        return "";
+        memberService.deleteById(principal.getName());
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/juso")

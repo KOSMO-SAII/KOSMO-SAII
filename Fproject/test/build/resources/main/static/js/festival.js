@@ -34,11 +34,11 @@ $("btn_all_active").click(function(event){
     c = ""
 })
 
-$("#monthlist").children().click(function(event){
-    var e = event.target
-    id = e.id
-    getInfo(id,'')
-    })
+//$("#monthlist").child().click(function(event){
+//    var e = event.target
+//    id = e.id
+//    getInfo(id,'')
+//    })
 
 function getInfo(id, c){
     var info;
@@ -64,5 +64,6 @@ function printInfo(infoitem){
     var ul =$('.flnon');
     var li=document.createElement('li');
     li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."><a href="/festivalview"></a></image><p class="title">'+infoitem.title+'</p>';
+
     ul[0].appendChild(li);
 }
