@@ -53,7 +53,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
     public String search(@RequestParam(value="searchQuery") String keyword, Model model) {
         List<ReviewCourseListResponseDTO> dto = reviewCourseService.findByKeyword(keyword);
         model.addAttribute("reviewCourse", dto);
-        return "review/reviewCourse";
+        return "/review/reviewCourse";
     }
     //검색
 

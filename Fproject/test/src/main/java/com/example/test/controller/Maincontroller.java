@@ -60,24 +60,24 @@ public class Maincontroller extends HttpServlet {
         return "test2";
     }
 
-    private static PythonInterpreter intP;
-    @RequestMapping("/python_test")
-    public @ResponseBody String getTest(){
-        System.setProperty("python.import.site","false");
-        intP = new PythonInterpreter();
-        intP.execfile("src/main/resources/py/testcrawl.py");
-//        intP.execfile("src/main/resources/py/test.py");
-        intP.exec("print(crawling_img('트와이스'))");
-//        intP.exec("print(testFunc(10,5))");
-
-
-        PyFunction pyFunction = (PyFunction) intP.get("testFunc",PyFunction.class);
-        int a = 10, b = 20;
-        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b));
-        System.out.println(pyObject.toString());
-
-        return pyObject.toString();
-    }
+//    private static PythonInterpreter intP;
+//    @RequestMapping("/python_test")
+//    public @ResponseBody String getTest(){
+//        System.setProperty("python.import.site","false");
+//        intP = new PythonInterpreter();
+//        intP.execfile("src/main/resources/py/testcrawl.py");
+////        intP.execfile("src/main/resources/py/test.py");
+//        intP.exec("print(crawling_img('트와이스'))");
+////        intP.exec("print(testFunc(10,5))");
+//
+//
+//        PyFunction pyFunction = (PyFunction) intP.get("testFunc",PyFunction.class);
+//        int a = 10, b = 20;
+//        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b));
+//        System.out.println(pyObject.toString());
+//
+//        return pyObject.toString();
+//    }
 
     @GetMapping("/test")
     public String get(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
