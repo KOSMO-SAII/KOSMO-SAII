@@ -89,7 +89,7 @@
 <!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
 <div>
     <p sec:authorize="isAuthenticated()">
-        <button th:onclick="|location.href='@{/signup}'|" class="writeBtn">글쓰기</button></p>
+        <button th:onclick="|location.href='@{review/writeCourseReview}'|" class="writeBtn">글쓰기</button></p>
     <p sec:authorize="isAnonymous()">
         <button th:onclick="loginPop()" class="writeBtn">글쓰기</button></p>
 </div>
