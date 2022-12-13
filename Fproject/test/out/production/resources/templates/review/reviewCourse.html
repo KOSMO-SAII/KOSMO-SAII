@@ -114,9 +114,8 @@
                         </p>
                         <p th:text="작성자 ${list.createdBy}"></p>
                         <p th:text="조회수"></p>
-                        <p align="right">${list.r_postdate}</p>
-                        <!-- 조건 not empty list.o_file -->
-                        <p th:if="${true}">
+                        <p align="right" th:text="${list.createDate}"></p>
+                        <p th:if="not empty list.o_file">
                             <a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}">링크?</a>
                         </p>
                     </div>
