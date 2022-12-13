@@ -118,6 +118,7 @@ public class MemberController {
     public String delete(Model model, Principal principal){
         System.out.println("회원탈퇴하는곳");
 
+        return "";
     }
 
     @RequestMapping(value = "/juso")
