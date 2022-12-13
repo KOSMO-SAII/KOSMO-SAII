@@ -107,24 +107,31 @@ public class CourseViewServiceImple implements CourseViewService{
 
     @Override
     public MainBoardDTO writeMode(HttpServletRequest req) {
-
         String[] str = req.getParameterValues("data");
         ArrayList<CourseDTO> cdtos = this.toCDTO(str);
-        //임시
-        CourseDTO courseDTO= new CourseDTO();
-        courseDAO.insertCourse(courseDTO);
-        System.out.println(courseDTO.getCourse_id());
-        int course_id= Integer.parseInt(courseDTO.getCourse_id());
+        CourseWriteServiceImple courseWriteServiceImple = new CourseWriteServiceImple();
 
-        //
+        Long course_id = courseWriteServiceImple.makeCourse();
+        for(CourseDTO dto : cdtos) {
+            courseWriteServiceImple.saveCourse(dto, course_id);
+        }
 
-        this.insertCourseS(cdtos , course_id);
+//        //임시
+//        CourseDTO courseDTO= new CourseDTO();
+//        courseDAO.insertCourse(courseDTO);
+//        System.out.println(courseDTO.getCourse_id());
+//        int course_id= Integer.parseInt(courseDTO.getCourse_id());
+//
+//        //
+//
+//        this.insertCourseS(cdtos , course_id);
 
        // int course_id = courseDAO.getCurrentCourseId();
 
+        //
         MainBoardDTO mdto = new MainBoardDTO();
 
-        mdto.setCourse_id(Integer.toString(course_id));
+        mdto.setCourse_id(Long.toString(course_id));
 
         String title = req.getParameter("title");
         String region = req.getParameter("region");

@@ -13,4 +13,5 @@ public class Course extends Base {
     @Column(name = "course_id")
     private Long id;
 
+
 }
