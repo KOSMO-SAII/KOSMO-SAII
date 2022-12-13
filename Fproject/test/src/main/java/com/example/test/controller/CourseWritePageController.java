@@ -26,7 +26,7 @@ public class CourseWritePageController extends HttpServlet {
     @GetMapping("/courseWritePage")
     public String doGet(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         courseWriteServiceImple.loginCheck(req,resp);
-        return "courseWritePage";
+        return "course/courseWritePage";
     }
 
     @PostMapping("/courseWritePage")
@@ -39,6 +39,6 @@ public class CourseWritePageController extends HttpServlet {
         req.setAttribute("region",mdto.getRegion());
         req.setAttribute("list", list);
 
-        return "courseWritePage";
+        return "course/courseWritePage";
     }
 }

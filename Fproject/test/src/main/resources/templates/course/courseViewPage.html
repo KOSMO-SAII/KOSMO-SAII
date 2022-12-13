@@ -15,7 +15,7 @@
 <body>
 <div class="body_wrap">
     <div class="my">
-        <form action="http://localhost:8081/SAII/course_write?mode=edit&c_id=${c_id}" method="post" >
+        <form th:action="@{/courseWritePage(mode=edit,c_id=${ c_id})}" method="post" >
             <div class="sidebar">제목:
                 <div id="sidebartitle" th:text="${title}"></div>
             </div>
@@ -23,15 +23,22 @@
             <div class="sidebar">지역:
                 <div id="sidebarregion" th:text="${region}"></div>
             </div>
+            <div class="sidebar">days:
+                <select name="days">
+                    <th:bolck th:each="day,State:${days}">
+                        <option th:name="${State.Count}" th:value="${State.Count}" th:text="${day}"></option>
+                    </th:bolck>
+                </select>
+            </div>
             <ul id="My_List">
 
             </ul>
             <div id="btnbox">
 
                 <!-- <a class="submitbtna" href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a> -->
-                <th:block th:if="${nickname==session.nickname || param.mode == 'edit'}">
+<!--                <th:block th:if="${nickname==session.nickname || param.mode == 'edit'}">-->
                     <input type="submit" class="submitbtn" value="코스 수정">
-                </th:block>
+<!--                </th:block>-->
 
             </div>
         </form>

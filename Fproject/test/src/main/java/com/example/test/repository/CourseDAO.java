@@ -10,7 +10,7 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface CourseDAO {
-    //임시
+
     public void insertCourse(CourseDTO courseDTO);
 
     public void insertCourseData( Map<String,Object> cdto);
