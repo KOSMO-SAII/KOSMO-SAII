@@ -76,7 +76,7 @@ public class MemberController {
         System.out.println(principal.getName()+"여기는 컨트롤 피린");
 
 
-        return "/logins";
+        return "/mypage/mypage";
     }
     @GetMapping("/loginF")
     public String loginf(Model model){
