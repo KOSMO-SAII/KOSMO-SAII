@@ -38,6 +38,7 @@ public class MainBoardController {
 		return "MainBoardView";
 	}
 	
+	/* 코스게시판 글 작성
 	@GetMapping(value="/mainboard_write_form")
 	public String mainboardWrite(@ModelAttribute("mainBoardDTO") MainBoardDTO mainBoardDTO) {
 		System.out.println("writeform");
@@ -54,4 +55,5 @@ public class MainBoardController {
 		mainBoardDAO.writeDao(course_id, user_id, title, region);
 		return "redirect:/mainboard_list";
 	}
+	*/
 }

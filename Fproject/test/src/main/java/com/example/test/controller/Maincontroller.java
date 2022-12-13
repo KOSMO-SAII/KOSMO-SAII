@@ -1,10 +1,16 @@
 package com.example.test.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.python.core.PyFunction;
+import org.python.core.PyInteger;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,6 +58,25 @@ public class Maincontroller extends HttpServlet {
         model.addAttribute("region",req.getParameter("region"));
 
         return "test2";
+    }
+
+    private static PythonInterpreter intP;
+    @RequestMapping("/python_test")
+    public @ResponseBody String getTest(){
+        System.setProperty("python.import.site","false");
+        intP = new PythonInterpreter();
+        intP.execfile("src/main/resources/py/testcrawl.py");
+//        intP.execfile("src/main/resources/py/test.py");
+        intP.exec("print(crawling_img('트와이스'))");
+//        intP.exec("print(testFunc(10,5))");
+
+
+        PyFunction pyFunction = (PyFunction) intP.get("testFunc",PyFunction.class);
+        int a = 10, b = 20;
+        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b));
+        System.out.println(pyObject.toString());
+
+        return pyObject.toString();
     }
 
     @GetMapping("/test")
