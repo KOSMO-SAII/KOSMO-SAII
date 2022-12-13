@@ -2,21 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
-    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
 <!--    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.-->
 <!--    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.-->
-    <title></title>
-    <link th:href="@{/css/reviewCourse.css}" rel="stylesheet" />
+<title>사이</title>
+<link th:href="@{/css/reviewCourse.css}" rel="stylesheet" />
 </head>
 <body>
-<!--<body class="body">-->
 <header id="header">
     <div class="container">
         <a href="/">
@@ -63,6 +62,8 @@
     </div>
 </header>
 
+
+
 <h3>코스-리뷰게시판</h3>
 <!-- 검색 -->
 <form method="get">
@@ -85,10 +86,12 @@
     </table>
 </form>
 
-<!-- 조건 empty sessionScope.userid / 클릭시, 글쓰기폼 이동 || 로그인시 이용 알림. -->
+<!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
 <div>
-    <button th:if="${true}" onclick="" class="writeBtn">글쓰기</button>
-    <button th:unless="${true}" onclick="" class="writeBtn">글쓰기</button>
+    <p sec:authorize="isAuthenticated()">
+        <button th:onclick="|location.href='@{/signup}'|" class="writeBtn">글쓰기</button></p>
+    <p sec:authorize="isAnonymous()">
+        <button th:onclick="loginPop()" class="writeBtn">글쓰기</button></p>
 </div>
 
 <!--<th:block th:switch="${data}">-->
