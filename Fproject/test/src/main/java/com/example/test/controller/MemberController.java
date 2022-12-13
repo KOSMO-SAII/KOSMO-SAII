@@ -36,13 +36,13 @@ public class MemberController {
     @GetMapping("/new")
     public String memberForm(Model model) {
         model.addAttribute("memberFormDto", new MemberDTO());
-        return "/signup/signup";
+        return "/signupPage";
     }
 
     @PostMapping("/signup")
     public String newMember(@Validated MemberDTO memberFormDto, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            return "/signup/signup";
+            return "/signupPage";
         }
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);

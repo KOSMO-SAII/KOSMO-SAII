@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>코스 작성</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--css 연동 -->
+    <link th:href="@{ /css/courseWritePage.css}" rel="stylesheet" />
+    <!-- 카카오 맵 API 불러오기-->
+    <script th:inline="javascript" type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
+    <!-- 제이쿼리    -->
+    <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!--slick slider 필요 태그 st-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
+    <!-- jQuery CDN -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- slick Carousel CDN -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+    <!--slick slider 필요 태그 en-->
+
+    <!--달력 필요 태그 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+</head>
+<body >
+<div class="body_wrap">
+    <div class="my">
+        <form th:action="@{/courseViewPage(mode=${param.mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
+            <div class="inputbox hidden">
+            제목:<br/><input class="input "type="text" name="title"  readonly/><br/>
+            지역:<br/><input class="input "type="text" name="region" readonly/><br/>
+            여행일수:<input class="input "type="text" name="days" readonly/>
+                <input class="start" type="hidden" name="start"/>
+                <input class="end" type="hidden" name="end"/><Br>
+                Days:<select class="days">
+                </select>
+            </div>
+            <input type="hidden" name="nickname" value="${sessionScope.nickname}" />
+            <ul id="My_List">
+            </ul>
+            <div id="btnbox">
+                <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
+                <!-- <button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button> -->
+                    <th:block th:if="${param.mode=='edit'}">
+                        <input type="submit" class="submitbtn" value="코스수정"></input>
+                    </th:block>
+                    <th:block th:unless="${param.mode=='edit'}">
+                        <input type="submit" class="submitbtn" value="코스저장"></input>
+                    </th:block>
+            </div>
+        </form>
+    </div>
+    <div class="map_wrap">
+        <div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+
+        <!-- 검색 사이드바 -->
+        <div id="menu_wrap_box">
+            <div id="menu_wrap" class="bg_white">
+                <div class="option">
+                    <div>
+                        <form onsubmit="searchPlaces(); return false;">
+                            키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
+                            <button class="searchbtn" type="submit">검색</button>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <ul id="placesList"></ul>
+                <div id="pagination"></div>
+            </div>
+            <div id="arrow">▼</div>
+        </div>
+        <!-- 카테고리 목록 위치  -->
+        <div id="box">
+            <div id="arrow2">▶</div>
+            <div id="category-box">
+                <ul id="category">
+                    <li id="BK9" data-order="0"><span class="category_bg bank"></span>
+                        은행</li>
+                    <li id="MT1" data-order="1"><span class="category_bg mart"></span>
+                        마트</li>
+                    <li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
+                        약국</li>
+                    <li id="OL7" data-order="3"><span class="category_bg oil"></span>
+                        주유소</li>
+                    <li id="CE7" data-order="4"><span class="category_bg cafe"></span>
+                        카페</li>
+                    <li id="CS2" data-order="5"><span class="category_bg store"></span>
+                        편의점</li>
+                    <li id="PK6" data-order="6"><span class="category_bg park"></span>
+                        주차장</li>
+                </ul>
+                <ul id="category2">
+                    <li id="SW8" data-order="7"><span class="category_bg subway"></span>
+                        지하철역</li>
+                    <li id="CT1" data-order="8"><span class="category_bg culture"></span>
+                        문화시설</li>
+                    <li id="AT4" data-order="9"><span class="category_bg tourism"></span>
+                        관광명소</li>
+                    <li id="AD5" data-order="10"><span class="category_bg lodgment"></span>
+                        숙박</li>
+                    <li id="FD6" data-order="11"><span class="category_bg food"></span>
+                        음식점</li>
+                    <li id="HP8" data-order="12"><span class="category_bg hospital"></span>
+                        병원</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="memobox" class="none">
+
+        <div class="title">
+        </div>
+        <div class="close memo"  title="닫기"></div>
+        <textarea class="memo"></textarea>
+        <button class="savememobtn" type="button">저장</button>
+
+    </div>
+</div>
+<!--  팝업          -->
+<div class="modal-bg"></div>
+<div th:replace="~{course/popup::popup}"></div>
+
+<script th:inline="javascript">
+		var paramObjs=[]; //장소 정보 객체 담는 배열
+		var mode=/*[[${param.mode}]]*/ ;  //현재 작성 모드인지 수정 모드이지 구분
+		var region=/*[[${region }]]*/
+<!--		console.log(mode)-->
+<!--		console.log(region);-->
+</script>
+<th:block th:each="List :${list}">
+    <script th:inline="javascript">
+		//장소 정브를 반복문을 돌려서 객체에 담음
+		var paramObj={
+			address_id:/*[[${List.address_id}]]*/,
+			address_name:/*[[${List.address_name}]]*/,
+			category:/*[[${List.category}]]*/,
+			Memo:/*[[${List.Memo}]]*/,
+			Phone_number:/*[[${List.Phone_number}]]*/,
+			Place_name:/*[[${List.Place_name}]]*/,
+			Place_url:/*[[${List.Place_url}]]*/,
+			Road_address_name:/*[[${List.Road_address_name}]]*/,
+			X:/*[[${List.X}]]*/,
+			Y:/*[[${List.Y}]]*/,
+		}
+		paramObjs.push(paramObj)
+	</script>
+</th:block>
+
+</body>
+<!--js 파일 연동-->
+<script type="text/javascript" th:src="@{ /js/courseWritePage.js}"></script>
+<script type="text/javascript" th:src="@{ /js/calendar.js}"></script>
+</html>
