@@ -13,12 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/members")
@@ -36,13 +38,13 @@ public class MemberController {
     @GetMapping("/new")
     public String memberForm(Model model) {
         model.addAttribute("memberFormDto", new MemberDTO());
-        return "/signupPage";
+        return "/signup/signup";
     }
 
     @PostMapping("/signup")
     public String newMember(@Validated MemberDTO memberFormDto, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            return "/signupPage";
+            return "/signup/signup";
         }
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
@@ -108,6 +110,18 @@ public class MemberController {
         model.addAttribute("info",sessionMember1);
 
         return "redirect:/members/logins";
+    }
+
+    @RequestMapping(value = "/juso")
+    public String jusoPopup(HttpServletRequest request,Model model) {
+
+        String inputYn = request.getParameter("inputYn");
+        String roadFullAddr = request.getParameter("roadFullAddr");
+
+        model.addAttribute("inputYn",inputYn);
+        model.addAttribute("roadFullAddr",roadFullAddr);
+
+        return "juso";
     }
 
 

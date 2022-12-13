@@ -56,7 +56,7 @@ public class Member extends BaseTime{
                   String nProfileImg, String name, String nickname, String oProfileImg,
                   String phoneNumber){
         this.memberId=memberId;
-//        this.createDate=createDate;
+        this.createDate=createDate;
 //        this.updateDate=updateDate;
         this.address=address;
         this.birthday=birthday;
@@ -86,7 +86,7 @@ public class Member extends BaseTime{
         member.setBirthday(memberDTO.getBirthday());
         member.setGender(memberDTO.getGender());
         member.setRole(Role.USER);
-//        member.setCreateDate(LocalDateTime.now());
+        member.setCreateDate(LocalDateTime.now());
         return member;
     }
 
@@ -105,7 +105,7 @@ public class Member extends BaseTime{
         String pw = passwordEncoder.encode(member.loginPw);
         member1.setLoginPw(pw);
         member1.setRole(member.getRole());
-//        member1.setCreateDate(member.getCreateDate());
+        member1.setCreateDate(member.getCreateDate());
 //        member1.setUpdateDate(LocalDateTime.now());
 
         return member1;

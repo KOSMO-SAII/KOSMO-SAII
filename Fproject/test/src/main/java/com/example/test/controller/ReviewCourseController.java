@@ -15,13 +15,14 @@ public class ReviewCourseController {
     public final ReviewCourseService reviewCourseService;
 
     @RequestMapping("/reviewCourse")
-    public  String index(Model model, Principal principal){
+    public String index(Model model, Principal principal){
         model.addAttribute("courseReview",reviewCourseService.findAllDesc());
         if(principal != null){
             model.addAttribute("name",principal.getName());
         }
         return "review/reviewCourse";
     }
+
 
 
 
