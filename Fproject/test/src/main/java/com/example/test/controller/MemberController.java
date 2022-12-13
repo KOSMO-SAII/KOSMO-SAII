@@ -7,6 +7,7 @@ import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -42,8 +43,9 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String newMember(@Validated MemberDTO memberFormDto, BindingResult bindingResult, Model model) {
+    public String newMember(@Validated MemberDTO memberFormDto, @NotNull BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
+            model.addAttribute("memberFormDto", memberFormDto);
             return "/signup/signup";
         }
         try {
@@ -95,7 +97,7 @@ public class MemberController {
         System.out.println(principal.getName());
         model.addAttribute("sessionMember",sessionMember);
 
-        return "memberUpdate";
+        return "/mypage/memberUpdate";
     }
 
     @PostMapping("/updateS")
@@ -110,6 +112,13 @@ public class MemberController {
         model.addAttribute("info",sessionMember1);
 
         return "redirect:/members/logins";
+    }
+
+    @GetMapping("delete")
+    public String delete(Model model, Principal principal){
+        System.out.println("회원탈퇴하는곳");
+        memberService.deleteById(principal.getName());
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/juso")
