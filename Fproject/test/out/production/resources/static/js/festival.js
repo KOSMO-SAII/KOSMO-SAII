@@ -1,5 +1,5 @@
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
-//console.log("실행");
+console.log("실행");
 var id = ""
 var c = ""
 
@@ -27,7 +27,7 @@ $("btn_all_active").click(function(event){
     c = ""
 })
 
-$("#monthlist").child.click(function(event){
+$("#monthlist").children().click(function(event){
     var e = event.target
     id = e.id
     getInfo(id,'')
@@ -56,6 +56,6 @@ function getInfo(id, c){
 function printInfo(infoitem){
     var ul =$('.flnon');
     var li=document.createElement('li');
-    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p>';
+    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."><a href="/festivalview"></a></image><p class="title">'+infoitem.title+'</p>';
     ul[0].appendChild(li);
 }
