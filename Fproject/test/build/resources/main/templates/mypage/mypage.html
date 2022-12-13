@@ -397,9 +397,10 @@ function imgoriginalhidden(){
             <label class="mylabel">주소</label><br/>
             <input class="myinput" type="text" name="address" th:value="${info.address }" readonly>
         </div>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
 
-    </table>
+
     <div id="profile" align="center">
         <img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
         <form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
