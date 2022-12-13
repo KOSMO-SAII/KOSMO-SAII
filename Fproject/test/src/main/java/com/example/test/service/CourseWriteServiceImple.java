@@ -1,8 +1,15 @@
 package com.example.test.service;
 
+import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
+import com.example.test.entity.Course;
+import com.example.test.entity.CourseData;
 import com.example.test.repository.CourseDAO;
+import com.example.test.repository.CourseDataRepository;
+import com.example.test.repository.CourseRepository;
 import com.example.test.repository.MainBoardDAO;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +25,18 @@ import java.util.Map;
 import java.util.Vector;
 
 @Service
+@RequiredArgsConstructor
 public class CourseWriteServiceImple extends HttpServlet implements CourseWriteService {
 
-    @Autowired
     private CourseDAO courseDAO;
-    @Autowired
+
     private MainBoardDAO mainBoardDAO;
 
+    private CourseDataRepository courseDataRepository;
+
+    private CourseRepository courseRepository;
+
+    private ModelMapper modelMapper;
 //    @Autowired
 //    public courseWriteServiceImple(courseDAO courseDAO, mainBoardDAO mainBoardDAO){
 //        this.mainBoardDAO=mainBoardDAO;
@@ -59,7 +71,7 @@ public class CourseWriteServiceImple extends HttpServlet implements CourseWriteS
             map.put("Place_url",data[6]);
             map.put("X",data[7]);
             map.put("Y",data[8]);
-            if(data.length==10) {
+            if(data.length == 10) {
                 map.put("Memo",data[9]);
             }else {
                 map.put("Memo","");
@@ -74,8 +86,20 @@ public class CourseWriteServiceImple extends HttpServlet implements CourseWriteS
     public MainBoardDTO saveMainboard(HttpServletRequest req) {
 
         int c_id=Integer.parseInt(req.getParameter("c_id"));
-        MainBoardDTO mdto=mainBoardDAO.getMainboard(c_id);
+        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
 
         return mdto;
+    }
+
+    public void saveCourse(CourseDTO cdto, Long course_id){
+        CourseData courseData = modelMapper.map(cdto, CourseData.class);
+        courseData.setCourse_id(course_id);
+        courseDataRepository.save(courseData);
+    }
+
+    public long makeCourse(){
+        Course course = new Course();
+        courseRepository.save(course);
+        return course.getId();
     }
 }

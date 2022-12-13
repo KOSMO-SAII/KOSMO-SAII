@@ -65,6 +65,8 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(user1);
     }
 
+    public
+
 //    @Transactional
 //    public void modify(String email) {
 //        Member user = memberRepository.findByEmail(email).orElseThrow(() ->
