@@ -99,9 +99,13 @@ public class Maincontroller extends HttpServlet {
         return "test";
     }
 
-    @PostMapping("/festivalview")
-    public String get(Model model){
-        model.addAttribute("data","post");
-        return "festival_view";
+    @RequestMapping("/festivalview")
+    public String festivalview(){
+        return"board_festival/festival_view";
+    }
+
+    @RequestMapping("/festival")
+    public  String festival(){
+        return "board_festival/festival";
     }
 }
