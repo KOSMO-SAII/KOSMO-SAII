@@ -25,7 +25,7 @@ public class MemberDTO {
     private String gender;
 
     @NotBlank(message = "아이디는 필수 입력 값입니다.")
-    @Pattern(regexp="/[a-zA-Z0-9]/")
+//    @Pattern(regexp="/[a-zA-Z0-9]/")
     @Size(min=6, max=15, message = "아이디는 영어와 숫자 6~15자 이하로 입력해주세요")
     private String loginId;
 

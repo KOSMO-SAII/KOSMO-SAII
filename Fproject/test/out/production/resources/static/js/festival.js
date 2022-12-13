@@ -9,12 +9,19 @@ var e = event.target
 //console.dir(e)
 //console.dir(e.parentElement.id)
 //console.dir(e.parentElement.localName=='li')
+if(e.parentElement.parentElement.id == "monthlist"){
+if(e.parentElement.id != ""){
+ c = e.parentElement.id
+ }
+
+}else if(e.parentElement.parentElement.id == "arealist"){
 if(e.parentElement.id != ""){
  id = e.parentElement.id
  }
-if(e.parentElement.className != ""){
- c = e.parentElement.className
- }
+}
+
+
+console.log(e.parentElement.parentElement.id)
 
  console.log(e + '    ' +e.parentElement + '   ' + id + '   ' +  c)
  var ul =$('.flnon')
