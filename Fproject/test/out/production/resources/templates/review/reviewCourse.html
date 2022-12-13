@@ -76,7 +76,7 @@
                     <option value="content">내용</option>
                     <option value="createdBy">작성자</option>
                     <!--     세부검색 체크박스 - 검색된 내용 중에 ajax로 목록 검색 실시간 반영     -->
-                    <!--   (몇박일정인지)여행 기간별 검색    -->
+                    <!--   (몇박일정인지)기간별 검색 기능 넣기.   -->
                 </select>
                 <input type="search" name="searchStr" />
                 <input class="search-bar btn" type="submit" value="검색" />
@@ -94,38 +94,42 @@
 </div>
 
 <!-- 등록된 게시물이 없습니다. || 게시물출력 -->
-    <div th:if="${true}" class="ui_box">
-        <div th:each="list : ${reviewCourse}" >
-            <ul class="list_wrap">
+
+<!--</th:block>-->
+
+<!--<div th:if="${true}" class="ui_box">-->
+<div class="ui_box">
+    <div th:each="list : ${courseReview}" >
+        <ul class="list_wrap">
             <a th:href="@{'/review/detail/' + ${list.id}}">
                 <li class="item">
-                    <p th:text="${p.id}"></p>
-                    <div th:if="${not empty list.o_file}">
+                    <p th:text="${list.id}"></p>
+                    <div th:if="${true}">
                         <img class="image" src="/img/Doldam.jpg">
                     </div>
-                    <div th:unless="${not empty list.o_file}">
-                        <img class="image" src="/img/cafe.jpg" >
-                    </div>
+<!--                    <div th:unless="${not empty list.o_file}">-->
+<!--                        <img class="image" src="/img/cafe.jpg" >-->
+<!--                    </div>-->
 
                     <div class="cont">
                         <input type="hidden" value="${list.course_id}">
                         <p class="title">
-                            <a href="http://localhost:8081/SAII/review_view?r_id=${list.r_id}">${list.r_title}</a>
+                            <a th:href="@{/review/detail/{id}(id = ${list.id})}" th:text="${list.title}"></a>
                         </p>
-                        <p th:text="작성자 ${list.createdBy}"></p>
+                        <p th:text="|작성자 ${list.createdBy}|"></p>
                         <p th:text="조회수"></p>
-                        <p align="right">${list.r_postdate}</p>
-                        <!-- 조건 not empty list.o_file -->
-                        <p th:if="${true}">
-                            <a href="http://localhost:8081/SAII/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}">링크?</a>
+                        <p align="right" th:text="${list.updateDate}"></p>
+<!--                        <p th:if="not empty list.o_file">-->
+                        <p>
+<!--                            <a href="@{'/review_download?o_file=${list.o_file}&n_file=${list.n_file}&r_id=${list.r_id}">링크?</a>-->
                         </p>
                     </div>
                 </li>
             </a>
-            </ul>
-        </div>
+        </ul>
     </div>
-<!--</th:block>-->
+</div>
+
 
 <footer class="footer-distributed">
     <div class="footer-left">
@@ -153,7 +157,6 @@
         </div>
     </div>
 </footer>
-
 
 <!--마우스커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>

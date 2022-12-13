@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ReviewCourseRepository extends JpaRepository<CourseReview, Long> {
 
-    @Query(value = "SELECT * FROM course_review r ORDER BY r.review_id DESC", nativeQuery = true)
+    @Query(value = "SELECT r FROM CourseReview r ORDER BY r.id DESC")
     List<CourseReview> findAllDesc();
 
     List<CourseReview> findByTitleContaining(String title);

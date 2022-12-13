@@ -39,7 +39,7 @@ public class ReviewCourseApiController {
 		return reviewCourseService.findById(id);
 	}
 	
-	@DeleteMapping("api/v1/review/{id}")
+	@DeleteMapping("/api/v1/review/{id}")
 	public Long delete(@PathVariable Long id) {
 		reviewCourseService.delete(id);
 		return id;
