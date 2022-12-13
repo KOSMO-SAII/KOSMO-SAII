@@ -101,7 +101,7 @@ public class Maincontroller extends HttpServlet {
 
     @RequestMapping("/festivalview")
     public String festivalview(){
-        return"board_festival/festival_view";
+        return "board_festival/festival_view";
     }
 
     @RequestMapping("/festival")

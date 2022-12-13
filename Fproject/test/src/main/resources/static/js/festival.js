@@ -1,5 +1,5 @@
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
-//console.log("실행");
+console.log("실행");
 var id = ""
 var c = ""
 
@@ -9,12 +9,19 @@ var e = event.target
 //console.dir(e)
 //console.dir(e.parentElement.id)
 //console.dir(e.parentElement.localName=='li')
+if(e.parentElement.parentElement.id == "monthlist"){
+if(e.parentElement.id != ""){
+ c = e.parentElement.id
+ }
+
+}else if(e.parentElement.parentElement.id == "arealist"){
 if(e.parentElement.id != ""){
  id = e.parentElement.id
  }
-if(e.parentElement.className != ""){
- c = e.parentElement.className
- }
+}
+
+
+console.log(e.parentElement.parentElement.id)
 
  console.log(e + '    ' +e.parentElement + '   ' + id + '   ' +  c)
  var ul =$('.flnon')
@@ -27,7 +34,7 @@ $("btn_all_active").click(function(event){
     c = ""
 })
 
-$("#monthlist").child.click(function(event){
+$("#monthlist").children().click(function(event){
     var e = event.target
     id = e.id
     getInfo(id,'')
@@ -56,6 +63,6 @@ function getInfo(id, c){
 function printInfo(infoitem){
     var ul =$('.flnon');
     var li=document.createElement('li');
-    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p>';
+    li.innerHTML = '<image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."><a href="/festivalview"></a></image><p class="title">'+infoitem.title+'</p>';
     ul[0].appendChild(li);
 }
