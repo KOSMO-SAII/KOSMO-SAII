@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReviewPlaceController {
 
-    @RequestMapping("/reviewP")
+    @RequestMapping("/Place")
     public String reviewP(){
         return "review/reviewPlace";
     }
 
-    @RequestMapping("/reviewPv")
+    @RequestMapping("/PlaceView")
     public String reviewPv(){
         return "review/reviewPlaceView";
     }

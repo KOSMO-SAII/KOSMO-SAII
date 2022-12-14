@@ -1,0 +1,87 @@
+/* header */
+
+head{ -ms-overflow-style: none;}
+.logo {
+    float:left;
+    margin-right: 30px;
+    padding-top:15px;
+    cursor:pointer;
+}
+.link-dark{
+    text-decoration: none;
+    padding:40px;
+    font-size: 25px;
+    padding-top:30px;
+    margin: 0 auto;
+}
+#header {
+    width: 100%;
+    height: 150px;
+    position: center;
+    border-top: solid #4eb1e4 3px;
+}
+.container {
+    width : 90%;
+    height: 100px
+    margin: 20px;
+    font-size: 20px;
+    font-weight:bold;
+    text-align: center;
+}
+.container a, .logo a,  {
+    width : 80%;
+    height: 100px
+    margin: 20px;
+    font-size: 20px;
+    font-weight:bold;
+    text-align: center;
+    color:black;
+    text-decoration:none;
+}
+
+
+
+/* footer */
+
+.footer-distributed{
+  background: #E2E2E2;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 40px 60px;
+}
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+.footer-distributed .footer-left{
+  width: 50%;
+  margin-left: 80px;
+}
+/* The company logo */
+.footer-distributed h3{
+  color:  #ffffff;
+  font: normal 36px 'Open Sans', cursive;
+  margin: 0;
+}
+.footer-distributed h3 span{
+  color:  lightseagreen;
+  font: normal 36px 'Open Sans', cursive;
+}
+/* Footer links */
+.footer-distributed .footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+.footer-distributed .footer-links a{
+  line-height: 1.8;
+  font-weight:400;
+  color:  inherit;
+}
+.footer-distributed .footer-company-name{
+  font-weight: normal;
+  margin-left:50px;
+}
