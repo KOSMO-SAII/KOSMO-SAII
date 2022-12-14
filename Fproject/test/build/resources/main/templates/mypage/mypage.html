@@ -366,10 +366,6 @@ function imgoriginalhidden(){
             <input class="myinput" type="text" id="userId" name="userId" th:value="${name}" readonly>
         </div>
         <div class="mydiv">
-            <label class="mylabel">비밀번호</label><br/>
-            <input class="myinput" type="password" name="password" th:value="${info.loginPw}" readonly>
-        </div>
-        <div class="mydiv">
             <label class="mylabel">닉네임</label><br/>
             <input class="myinput" type="text" name="nickname" th:value="${info.nickname }" readonly>
         </div>
@@ -403,7 +399,7 @@ function imgoriginalhidden(){
     <a href="/members/delete"><button type="button">회원탈</button> </a>
     <div id="profile" align="center">
         <img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
-        <form action="http://localhost:8081/SAII/upload?id=${dto.id }" name="img" method="post" enctype="multipart/form-data">
+        <form action="/members/imgchange" name="img" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${dto.id}">
             <label class="input_file_button" for="filebutton">사진선택</label>
             <input id="filebutton" type="file" name="o_profile_img" onchange="imgcg(this)" required><br>
