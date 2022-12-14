@@ -50,8 +50,8 @@
 
 <!--<div th:if="${true}" class="ui_box">-->
 <div class="ui_box">
-    <div th:each="list : ${courseReview}" >
         <ul class="list_wrap">
+        <th:block th:each="list : ${courseReview}" >
             <a th:href="@{'/review/detail/' + ${list.id}}">
                 <li class="item">
                     <p th:text="${list.id}"></p>
@@ -77,8 +77,8 @@
                     </div>
                 </li>
             </a>
+    </th:block>
         </ul>
-    </div>
 </div>
 
 

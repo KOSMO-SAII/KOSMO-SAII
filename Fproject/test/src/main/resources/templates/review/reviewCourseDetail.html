@@ -40,7 +40,7 @@
     </form>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <a th:href="@{/posts/update/{id}(id = ${p.id})}">수정/삭제</a>
+    <a th:href="@{/review/update/{id}(id = ${p.id})}">수정/삭제</a>
 </div>
 
 
