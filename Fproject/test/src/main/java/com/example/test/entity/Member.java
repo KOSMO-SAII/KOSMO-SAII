@@ -18,15 +18,15 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Member extends BaseTime{
+public class Member{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
-//    @CreatedDate
-//    private LocalDateTime createDate;
-//    @LastModifiedDate
-//    private LocalDateTime updateDate;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
     private String address;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
@@ -48,16 +48,16 @@ public class Member extends BaseTime{
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private LocalDateTime createDate;
+
 
     @Builder
-    public Member(Long memberId, String address,
+    public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,
                   Date birthday, String email, String gender, String loginId, String loginPw,
                   String nProfileImg, String name, String nickname, String oProfileImg,
                   String phoneNumber){
         this.memberId=memberId;
         this.createDate=createDate;
-//        this.updateDate=updateDate;
+        this.updateDate=updateDate;
         this.address=address;
         this.birthday=birthday;
         this.email=email;
@@ -85,6 +85,7 @@ public class Member extends BaseTime{
         member.setEmail(memberDTO.getEmail());
         member.setBirthday(memberDTO.getBirthday());
         member.setGender(memberDTO.getGender());
+        member.setPhoneNumber(memberDTO.getPhoneNumber());
         member.setRole(Role.USER);
         member.setCreateDate(LocalDateTime.now());
         return member;
@@ -106,7 +107,7 @@ public class Member extends BaseTime{
         member1.setLoginPw(pw);
         member1.setRole(member.getRole());
         member1.setCreateDate(member.getCreateDate());
-//        member1.setUpdateDate(LocalDateTime.now());
+        member1.setUpdateDate(LocalDateTime.now());
 
         return member1;
     }
