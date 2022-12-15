@@ -5,6 +5,7 @@ package com.example.test.controller;
 import com.example.test.config.SessionMember;
 import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
+import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Locale;
@@ -32,6 +34,7 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
     private final MemberService memberService;
     private final HttpSession httpSession;
+    private final MemberRepository memberRepository;
 //    @Autowired
 //    private final Member member;
 
@@ -102,15 +105,27 @@ public class MemberController {
     }
 
     @PostMapping("/updateS")
-    public String updateS(Model model, SessionMember sessionMember, Principal principal, MultipartFile multipartFile){
+    public String updateS(Model model, SessionMember sessionMember, Principal principal) throws Exception {
         System.out.println("어어");
 
         ModelMapper mapper = new ModelMapper();
         Member member = mapper.map(sessionMember, Member.class);
-        memberService.saveMember1(member, multipartFile);
+        memberService.saveMember1(member);
         model.addAttribute("info", member);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
+
+        return "redirect:/members/logins";
+    }
+    @PostMapping("profile")
+    public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
+        System.out.println("프로필 업데이트");
+        String st = multipartFile.getOriginalFilename();
+        SessionMember member = memberService.memdto(principal.getName());
+        ModelMapper modelMapper = new ModelMapper();
+        Member member2 = modelMapper.map(member,Member.class);
+        Member member1 = Member.profileup(member2,multipartFile);
+        memberRepository.save(member1);
 
         return "redirect:/members/logins";
     }

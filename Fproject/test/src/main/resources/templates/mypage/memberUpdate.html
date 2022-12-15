@@ -355,7 +355,7 @@ function imgoriginalhidden(){
 </script>
 <body>
 
-<form action="/members/updateS" method="post" th:object="${sessionMember}" enctype="multipart/form-data">
+<form action="/members/updateS" method="post" th:object="${sessionMember}">
   <input type="hidden" name=memberId th:field="*{memberId}"/>
   <input type="hidden" th:field="*{createDate}"/>
   <input type="hidden" th:field="*{role}"/>
@@ -395,13 +395,18 @@ function imgoriginalhidden(){
   <div class="mydiv">
     <label class="mylabel">주소</label><br/>
     <input class="myinput" type="text" th:field="*{address}" >
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
   </div>
-  <img id="preview" th:src="@{${oProfileImg}}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
-  <img id="preview1" src="/SAII/Storage/${dto.n_profile_img}" onclick="imgoriginalhidden()">
+</form>
+<form enctype="multipart/form-data" action="/members/profile" method="post">
+  <img id="preview" th:src="${info.oProfileImg}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
+  <img id="preview1" th:src="${info.oProfileImg}" onclick="imgoriginalhidden()">
   <label class="input_file_button" for="filebutton">사진선택</label>
-  <input id="filebutton" type="file" th:field="*{oProfileImg}" onchange="imgcg(this)" required><br>
+  <input id="filebutton" type="file" name="oProfileImg" th:value="*{info.oProfileImg}" onchange="imgcg(this)" required><br>
+  <input type="submit" value="프로필저장">
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
-
+<span th:text="${info.oProfileImg}"></span>
+<img src="/img/profile/d860e9fe-c3d6-4b5b-81c2-b24f27f00fad-민지.webp" width="120px" height="120px" style="border-radius: 50px">
 </body>
 </html>

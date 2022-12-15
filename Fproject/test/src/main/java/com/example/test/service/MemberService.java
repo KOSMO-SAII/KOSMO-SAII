@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -61,9 +64,9 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public Member saveMember1(Member member, MultipartFile multipartFile){
+    public Member saveMember1(Member member) throws Exception {
         System.out.println("여기는 엡데이트 서비스");
-        Member user1 = member.update1(member,passwordEncoder, multipartFile);
+        Member user1 = member.update1(member,passwordEncoder);
         return memberRepository.save(user1);
     }
 

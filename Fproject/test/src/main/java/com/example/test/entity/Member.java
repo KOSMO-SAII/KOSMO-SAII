@@ -11,8 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -92,7 +95,7 @@ public class Member{
         return member;
     }
 
-    public static Member update1(Member member, PasswordEncoder passwordEncoder, MultipartFile multipartFile){
+    public static Member update1(Member member, PasswordEncoder passwordEncoder) throws Exception {
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(member.getMemberId());
@@ -113,6 +116,33 @@ public class Member{
         System.out.println(member1+"여ㅣ가 업데이트 엔티티");
 
         return member1;
+    }
+
+    public static Member profileup(Member member,MultipartFile multipartFile) throws IOException {
+        Member member1 = new Member();
+        member1.setMemberId(member.getMemberId());
+        member1.setAddress(member.getAddress());
+        member1.setBirthday(member.getBirthday());
+        member1.setEmail(member.getEmail());
+        member1.setGender(member.getGender());
+        member1.setLoginId(member.getLoginId());
+        member1.setName(member.getName());
+        member1.setNickname(member.getNickname());
+        member1.setPhoneNumber(member.getPhoneNumber());
+        member1.setLoginPw(member.getLoginPw());
+        member1.setRole(member.getRole());
+        member1.setCreateDate(member.getCreateDate());
+        member1.setUpdateDate(LocalDateTime.now());
+        String projectPath = System.getProperty("user.dir")+"\\test\\src\\main\\resources\\static\\img\\profile";
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid+"-"+multipartFile.getOriginalFilename();
+        File saveFile = new File(projectPath,fileName);
+        multipartFile.transferTo(saveFile);
+        member.setOProfileImg("/img/profile/"+fileName);
+        member1.setOProfileImg(member.getOProfileImg());
+
+        return member1;
+
     }
 
 
