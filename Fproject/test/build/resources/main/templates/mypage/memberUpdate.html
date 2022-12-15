@@ -355,7 +355,7 @@ function imgoriginalhidden(){
 </script>
 <body>
 <body>
-<form action="/members/updateS" method="post" th:object="${sessionMember}">
+<form action="/members/updateS" method="post" th:object="${sessionMember}" enctype="multipart/form-data">
   <input type="hidden" name=memberId th:field="*{memberId}"/>
   <input type="hidden" th:field="*{createDate}"/>
   <input id="edit" type="submit" value="저장" >
@@ -395,6 +395,8 @@ function imgoriginalhidden(){
     <label class="mylabel">주소</label><br/>
     <input class="myinput" type="text" th:field="*{address}" >
   </div>
+  <label class="input_file_button" for="filebutton">사진선택</label>
+  <input id="filebutton" type="file" th:field="*{o_profile_img}" onchange="imgcg(this)" required><br>
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
 
