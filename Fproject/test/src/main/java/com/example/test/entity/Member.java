@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -91,7 +92,7 @@ public class Member{
         return member;
     }
 
-    public static Member update1(Member member, PasswordEncoder passwordEncoder){
+    public static Member update1(Member member, PasswordEncoder passwordEncoder, MultipartFile multipartFile){
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(member.getMemberId());
@@ -108,6 +109,8 @@ public class Member{
         member1.setRole(member.getRole());
         member1.setCreateDate(member.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
+
+        System.out.println(member1+"여ㅣ가 업데이트 엔티티");
 
         return member1;
     }
