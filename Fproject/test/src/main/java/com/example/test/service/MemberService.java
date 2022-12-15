@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 
@@ -60,9 +61,9 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public Member saveMember1(Member member){
+    public Member saveMember1(Member member, MultipartFile multipartFile){
         System.out.println("여기는 엡데이트 서비스");
-        Member user1 = member.update1(member,passwordEncoder);
+        Member user1 = member.update1(member,passwordEncoder, multipartFile);
         return memberRepository.save(user1);
     }
 
