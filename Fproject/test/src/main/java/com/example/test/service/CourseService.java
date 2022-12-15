@@ -2,23 +2,41 @@ package com.example.test.service;
 
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
+import com.example.test.entity.Course;
+import com.example.test.entity.CourseData;
 import com.example.test.repository.CourseDAO;
+import com.example.test.repository.CourseDataRepository;
+import com.example.test.repository.CourseRepository;
 import com.example.test.repository.MainBoardDAO;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.*;
 
 @Service
-public class CourseViewServiceImple implements CourseViewService{
+@RequiredArgsConstructor
+public class CourseService {
     @Autowired
     private CourseDAO courseDAO;
     @Autowired
     private MainBoardDAO mainBoardDAO;
 
+    private final CourseDataRepository courseDataRepository;
 
-    @Override
+    private final CourseRepository courseRepository;
+
+    private ModelMapper modelMapper = new ModelMapper();
+
+
+
+
     public ArrayList<CourseDTO> toCDTO(String[] str) {
         ArrayList<CourseDTO> cdtos = new ArrayList<>();
         CourseDTO cdto = new CourseDTO();
@@ -49,25 +67,25 @@ public class CourseViewServiceImple implements CourseViewService{
         return cdtos;
     }
 
-    @Override
+
     public String findIdNickName(int course_id) {
         String nickname=mainBoardDAO.getNickname(course_id);
         return nickname;
     }
 
-    @Override
+
     public MainBoardDTO findIdPostRegion(int course_id) {
         MainBoardDTO mdto=mainBoardDAO.getMainboard(course_id);
         return mdto;
     }
 
-    @Override
+
     public ArrayList<CourseDTO> getIdCourse(int course_id) {
         ArrayList<CourseDTO> cdtos=courseDAO.getCourse(course_id);
         return cdtos;
     }
 
-    @Override
+
     public List<Map<String, String>> printCourse(ArrayList<CourseDTO> cdtos) {
         List<Map<String, String>> list=new Vector<Map<String,String>>();
 
@@ -92,7 +110,7 @@ public class CourseViewServiceImple implements CourseViewService{
         return list;
     }
 
-    @Override
+
     public MainBoardDTO editMode(HttpServletRequest req) {
 
         String[] str = req.getParameterValues("data");
@@ -105,30 +123,17 @@ public class CourseViewServiceImple implements CourseViewService{
         return mdto;
     }
 
-    @Override
+
     public MainBoardDTO writeMode(HttpServletRequest req) {
         String[] str = req.getParameterValues("data");
         ArrayList<CourseDTO> cdtos = this.toCDTO(str);
-        CourseWriteServiceImple courseWriteServiceImple = new CourseWriteServiceImple();
 
-        Long course_id = courseWriteServiceImple.makeCourse();
+
+        Long course_id = this.makeCourse();
         for(CourseDTO dto : cdtos) {
-            courseWriteServiceImple.saveCourse(dto, course_id);
+            this.saveCourse(dto, course_id);
         }
 
-//        //임시
-//        CourseDTO courseDTO= new CourseDTO();
-//        courseDAO.insertCourse(courseDTO);
-//        System.out.println(courseDTO.getCourse_id());
-//        int course_id= Integer.parseInt(courseDTO.getCourse_id());
-//
-//        //
-//
-//        this.insertCourseS(cdtos , course_id);
-
-       // int course_id = courseDAO.getCurrentCourseId();
-
-        //
         MainBoardDTO mdto = new MainBoardDTO();
 
         mdto.setCourse_id(Long.toString(course_id));
@@ -160,7 +165,7 @@ public class CourseViewServiceImple implements CourseViewService{
         return mdto;
     }
 
-    @Override
+
     public void insertCourseS(ArrayList<CourseDTO> cdtos,int course_id) {
 
         for(CourseDTO cdto:cdtos){
@@ -173,7 +178,7 @@ public class CourseViewServiceImple implements CourseViewService{
 
     }
 
-    @Override
+
     public List<Map<String, String>> giveCourse(HttpServletRequest req) {
         List<Map<String, String>> list=new Vector<Map<String,String>>();
         String[] datas = req.getParameterValues("data");
@@ -201,7 +206,65 @@ public class CourseViewServiceImple implements CourseViewService{
             list.add(map);
 
         }
-
         return list;
+    }
+    //===================
+
+    public void loginCheck(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if(session.getAttribute("UserId")!=null) {
+            req.getRequestDispatcher("/saii/course/courseWritePage.jsp").forward(req, resp);
+        }else {
+//            AlertFunc.alertLocation(resp, "작성하시려면 로그인을 해주세요", "http://localhost:8081/SAII/login");
+        }
+    }
+
+    public List<Map<String, String>> changeCourse( HttpServletRequest req) {
+        List<Map<String, String>> list=new Vector<>();
+        String[] datas = req.getParameterValues("data");
+
+        for(int k=0; k<datas.length;k++) {
+            String[] data =  datas[k].split("\\|");
+
+            Map<String, String> map= new HashMap<>();
+            map.put("category",data[0]);
+            map.put("address_id",data[1]);
+            map.put("address_name",data[2]);
+            map.put("Road_address_name",data[3]);
+            map.put("Phone_number",data[4]);
+            map.put("Place_name",data[5]);
+            map.put("Place_url",data[6]);
+            map.put("X",data[7]);
+            map.put("Y",data[8]);
+            if(data.length == 10) {
+                map.put("Memo",data[9]);
+            }else {
+                map.put("Memo","");
+            }
+            list.add(map);
+
+        }
+        return list;
+    }
+
+    public MainBoardDTO saveMainboard(HttpServletRequest req) {
+
+        int c_id=Integer.parseInt(req.getParameter("c_id"));
+        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
+
+        return mdto;
+    }
+
+    public void saveCourse(CourseDTO cdto, Long course_id){
+        CourseData courseData = modelMapper.map(cdto, CourseData.class);
+        courseData.setCourse_id(course_id);
+        courseDataRepository.save(courseData);
+
+    }
+
+    public long makeCourse(){
+        Course course = new Course();
+        courseRepository.save(course);
+        return course.getId();
     }
 }
