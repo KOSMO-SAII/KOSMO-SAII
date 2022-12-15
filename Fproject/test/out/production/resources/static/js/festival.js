@@ -63,6 +63,6 @@ function getInfo(id, c){
 function printInfo(infoitem){
     var ul =$('.flnon');
     var li=document.createElement('li');
-    li.innerHTML = '<a href="/festivalview"><image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p><p class="date">['+''+infoitem.eventstartdate+'~'+infoitem.eventenddate+']</p></a>';
+    li.innerHTML = '<a href="/festivalview/'+infoitem.contentid+'"><image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p><p class="date">['+''+infoitem.eventstartdate+'~'+infoitem.eventenddate+']</p></a>';
     ul[0].appendChild(li);
 }
