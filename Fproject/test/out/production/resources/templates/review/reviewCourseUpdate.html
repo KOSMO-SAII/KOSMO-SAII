@@ -9,14 +9,19 @@
     <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <!--    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.-->
     <!--    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.-->
+    <!-- 제이쿼리    -->
+    <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
 </head>
 <div layout:fragment="content">
 
 
+    <body>
 <script th:inline="javascript">
-    function postUpdate(){
+    function reviewUpdate(){
+    console.log("asdfasdf");
         var data = {
             title: $('#title').val(),
             content: $('#content').val()
@@ -44,7 +49,7 @@
             console.log(data.content);
     };
 
-    function postDelete(){
+    function reviewDelete(){
         var id = $("#id").val();
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content")
@@ -58,7 +63,7 @@
                  contentType : 'application/json; charset=utf-8'
              }).done(function(){
                  alert('글이 삭제되었습니다.');
-                 window.location.href = '/';
+                 window.location.href = '/reviewCourse';
              }).fail(function(error){
                  alert(JSON.stringify(error));
              })
@@ -69,27 +74,22 @@
 
 </script>
 
-<body>
 <div>
     <form>
         <div class="form-group">
             <label for="id">글 번호</label>
-            <input type="text" id="id" th:value="${reviewCourse.id}" readonly>
-        </div>
+            <input type="text" id="id" th:value="${reviewCourse.id}" readonly></div>
         <div class="form-group">
             <label for="title">제목</label>
-            <input type="text" id="title"  th:value="${reviewCourse.title}">
-        </div>
+            <input type="text" id="title"  th:value="${reviewCourse.title}"></div>
         <div class="form-group">
             <label for="createdBy">작성자</label>
-            <input type="text" id="createdBy"  th:value="${reviewCourse.createdBy}" readonly>
-        </div>
+            <input type="text" id="createdBy"  th:value="${reviewCourse.createdBy}" readonly></div>
         <div class="form-group">
             <label for="content">내용</label>
-            <textarea id="content"  th:text="${reviewCourse.content}"></textarea>
-        </div>
+            <textarea id="content"  th:text="${reviewCourse.content}"></textarea></div>
     </form>
-    <a href="/" role="button" class="btn btn-secondary">취소</a>
+    <a th:href="@{'/review/detail/' + ${reviewCourse.id}}">취소</a>
     <input type="button" id="btn-update" onclick="reviewUpdate()" value="수정 완료">
     <input type="button" id="btn-delete" onclick="reviewDelete()" value="삭제">
 </div>
@@ -99,4 +99,5 @@
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>
+</div>
 </html>
