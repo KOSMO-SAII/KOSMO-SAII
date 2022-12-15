@@ -7,11 +7,17 @@
   <link th:href="@{/css/signup.css}" rel="stylesheet">
   <script type="text/javascript" src="js/signup.js" defer></script>
 </head>
+<style>
+  .p1{
+  position:relative;
+  left:-173px;
+  }
+</style>
 <body>
 <h2>회원가입</h2>
 <div class="one">
 <form action="/members/signup" method="post" th:object="${memberFormDto}">
-  <p>아이디</p>  <input type="text" th:field="*{loginId}" placeholder="아이디입력"><br/>
+  <p class="p1">아이디</p>  <input type="text" th:field="*{loginId}" placeholder="아이디입력"><br/>
   <p>비밀번호</p>  <input type="password" th:field="*{loginPw}" placeholder="비밀번호 입력"><br/>
   <p>비밀번호 확인</p>  <input type="password" placeholder="비밀번호 확인"><br/>
   <p>이름</p>  <input type="text" th:field="*{name}" placeholder="이름입력"><br/>
