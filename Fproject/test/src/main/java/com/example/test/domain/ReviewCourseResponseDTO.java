@@ -11,11 +11,11 @@ public class ReviewCourseResponseDTO extends Base {
     private String content;
     private String title;
 
-    public ReviewCourseResponseDTO(CourseReview courseReview){
-        this.id=courseReview.getId();
-        this.course_id=courseReview.getCourse_id();
-        this.title=courseReview.getTitle();
-        this.content=courseReview.getContent();
-        this.createdBy=courseReview.getCreatedBy();
+    public ReviewCourseResponseDTO(CourseReview reviewCourse){
+        this.id=reviewCourse.getId();
+        this.course_id=reviewCourse.getCourse_id();
+        this.title=reviewCourse.getTitle();
+        this.content=reviewCourse.getContent();
+        this.createdBy=reviewCourse.getCreatedBy();
     }
 }

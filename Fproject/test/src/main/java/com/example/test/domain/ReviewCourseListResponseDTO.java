@@ -18,13 +18,13 @@ public class ReviewCourseListResponseDTO {
 
     private LocalDateTime updateDate;
 
-    public ReviewCourseListResponseDTO(CourseReview courseReview){
-        this.id=courseReview.getId();
-        this.course_id=courseReview.getCourse_id();
-        this.title=courseReview.getTitle();
-        this.content=courseReview.getContent();
-        this.createdBy=courseReview.getCreatedBy();
-        this.updateDate=courseReview.getUpdateDate();
+    public ReviewCourseListResponseDTO(CourseReview reviewCourse){
+        this.id=reviewCourse.getId();
+        this.course_id=reviewCourse.getCourse_id();
+        this.title=reviewCourse.getTitle();
+        this.content=reviewCourse.getContent();
+        this.createdBy=reviewCourse.getCreatedBy();
+        this.updateDate=reviewCourse.getUpdateDate();
     }
 
 }
