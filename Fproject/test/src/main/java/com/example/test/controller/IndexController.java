@@ -22,7 +22,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
     @GetMapping("/index")
     public String index(Model model, Principal principal){
-        model.addAttribute("courseReview", reviewCourseService.findAllDesc());
+        model.addAttribute("reviewCourse", reviewCourseService.findAllDesc());
         if(principal != null){
             model.addAttribute("name",principal.getName());
         }
