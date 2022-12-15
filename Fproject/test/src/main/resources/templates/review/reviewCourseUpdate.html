@@ -21,7 +21,6 @@
     <body>
 <script th:inline="javascript">
     function reviewUpdate(){
-    console.log("asdfasdf");
         var data = {
             title: $('#title').val(),
             content: $('#content').val()
@@ -34,13 +33,13 @@
                 xhr.setRequestHeader(header,token);
                 },
                 type : 'PUT',
-                url : '/api/v1/review/'+id
+                url : '/api/v1/review/'+id,
                 dataType : 'json',
                 contentType : 'application/json; charset=utf-8',
                 data : JSON.stringify(data)
             }).done(function(){
                 alert('글이 수정되었습니다.');
-                window.location.href = '/';
+                window.location.href = '/review/detail/'+id;
             }).fail(function(error){
                 alert(JSON.stringify(error));
             });
