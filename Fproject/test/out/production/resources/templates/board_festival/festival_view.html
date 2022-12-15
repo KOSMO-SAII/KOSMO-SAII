@@ -22,9 +22,210 @@
   <script src="https://code.jquery.com/jquery-3.6.1.js"
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
+  <script src="https://cdn.visitkorea.or.kr/resources/js/echarts.js"></script>
+  <!--[if lt IE 9]>
+  <script src="https://cdn.visitkorea.or.kr/resources/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-5JVS3BG"></script>
+  <script src="https://cdn.visitkorea.or.kr/resources/js/cdp/web/sphereAnalytics.min.js?v=3ec1fad6-3a29-477e-a7e5-6d99a059e6d1"></script>
+
+  <script type="text/javascript">
+   SphereAnalytics.setLogLevel("info");
+   let sphereAs_options  = new Object();
+   sphereAs_options.webMsg = true;
+
+   SphereAnalytics.init(
+          'qsJfZhE2Ft85SvZnBo2KSL', sphereAs_options
+   );
+</script>
+
+  <script type="text/javascript">
+  <style>
+  /*! Flickity v2.2.1
+https://flickity.metafizzy.co
+---------------------------------------------- */
+
+.flickity-enabled {
+  position: relative;
+}
+
+.flickity-enabled:focus { outline: none; }
+
+.flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* draggable */
+
+.flickity-enabled.is-draggable {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* ---- flickity-button ---- */
+
+.flickity-button {
+  position: absolute;
+  background: hsla(0, 0%, 100%, 0.75);
+  border: none;
+  color: #333;
+}
+
+.flickity-button:hover {
+  background: white;
+  cursor: pointer;
+}
+
+.flickity-button:focus {
+  box-shadow: 0 0 0 5px #19F;
+}
+
+.flickity-button:active {
+  opacity: 0.6;
+}
+
+.flickity-button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+  /* prevent disabled button from capturing pointer up event. #716 */
+  pointer-events: none;
+}
+
+.flickity-button-icon {
+  fill: currentColor;
+}
+
+/* ---- previous/next buttons ---- */
+
+.flickity-prev-next-button {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  /* vertically center */
+  transform: translateY(-50%);
+}
+
+.flickity-prev-next-button.previous { left: 10px; }
+.flickity-prev-next-button.next { right: 10px; }
+/* right to left */
+.flickity-rtl .flickity-prev-next-button.previous {
+  left: auto;
+  right: 10px;
+}
+.flickity-rtl .flickity-prev-next-button.next {
+  right: auto;
+  left: 10px;
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+/* ---- page dots ---- */
+
+.flickity-page-dots {
+  position: absolute;
+  width: 100%;
+  bottom: -25px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 1;
+}
+
+.flickity-rtl .flickity-page-dots { direction: rtl; }
+
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.flickity-page-dots .dot.is-selected {
+  opacity: 1;
+}
+  </style>
+
+var otd_nm = "";
+if( appYn == 'N') {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-92880258-1', 'auto');
+		ga('require', 'displayfeatures');
+
+        otd_nm = "문화관광축제";
+        ga('set', 'dimension5', otd_nm);
+} else {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-92878657-1', 'auto');
+		ga('require', 'displayfeatures');
+		ga('send', 'pageview');
+        otd_nm = "문화관광축제";
+        ga('set', 'dimension5', otd_nm);
+}
+var custInfo = {
+		uuid : null, //SNS_ID
+		loginYn : 'N', //로그인여부
+		firstYn : 'N', //최초로그인여부
+		gender : 'null', //성별
+		grade : 'null', //여행구독레벨
+		birthYr : 0, //생년월일
+		rsdeNm : 'null', //거주지명
+		favoriteCnt : null, //즐겨찾기수
+		commentCnt : null, //댓글수
+		joinYmd : null, //가입일
+	    channel : null, //SNS채널구분
+	    device : appYn == 'Y' ? device : mobileYn == 'Y' ? 'mobileweb' : 'pcweb', //device 구분
+	    cardAreaNm : null //digitcard area Name
+}
+
+$(document).ready(){
 
 
-  <!-- Global sitetag (gtag.js) - Google Analytics -->
+}
+</script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYY1LJZCC4"></script>
   <script type="text/javascript" charset="UTF-8">
   window.dataLayer = window.dataLayer || [{
@@ -65,17 +266,103 @@
 	})(window,document,'script','dataLayer','GTM-PJVBVKB');
  }
 </script>
+  <!-- End Google Tag Manager -->
+
+
+
+
+
+
+
+
+  <!-- Facebook Pixel Code -->
+  <!--
+  <script>
+
+   if(getParameter('cotId') == '50fbcf94-4917-489a-9c74-1b0255e2effd'
+           || getParameter('cotId') == '7cf76837-65e6-47f0-a99a-e114c4cdcecf'
+           || getParameter('cotId') == 'e34bd25c-5a92-43e1-9cd2-5b65974d777d'
+           || getParameter('cotId') == '35b0b18a-5eb2-4bec-a0f4-2f4d91681a42') {
+   } else{
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+     n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];
+     s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2686987211544937');
+    fbq('track', 'PageView');
+   }
+
+
+  </script>
+  -->
+  <!-- End Facebook Pixel Code -->
+
+  <!-- Facebook Pixel Code Start 2021-02-16-->
+  <!--
+  <script>
+   if(getParameter('cotId') == '50fbcf94-4917-489a-9c74-1b0255e2effd'
+           || getParameter('cotId') == '7cf76837-65e6-47f0-a99a-e114c4cdcecf'
+           || getParameter('cotId') == 'e34bd25c-5a92-43e1-9cd2-5b65974d777d'
+           || getParameter('cotId') == '35b0b18a-5eb2-4bec-a0f4-2f4d91681a42') {
+   } else{
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '748419839116592');
+    fbq('track', 'PageView');
+   }
+  </script>
+  -->
+  <!-- End Facebook Pixel Code -->
   <meta name="referrer" content="unsafe-url">
 
   <!-- End Facebook Pixel Code -->
+  <script src=""></script><!-- 우편번호 검색 -->
+  <script type="text/javascript">
+		var cotid = '734c8641-f731-4a89-9fc3-6c75114fce66';
+		if( cotid == '' || cotid == undefined ) alert('잘못된 호출입니다.');
+	</script>
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJVBVKB"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
+<!-- Facebook Pixel Code -->
+
+
+
+<!-- End Facebook Pixel Code -->
+
+<!-- Facebook Pixel Code Start 2021-02-16-->
+
+
+
+<!-- End Facebook Pixel Code -->
+
+<script type="text/javascript">
+	//Kakao.init('f7a8e940eec1794a386315ec71daac6b');
+	Kakao.init('44732c3ca5b90a4f1f49c6b38df023d1');
+	</script>
+
+<!-- skip -->
 <div id="skipToContent">
   <a href="#contents">본문 바로가기</a>
   <!--<a href="#btnMenu">주메뉴 바로가기</a>-->
 </div>
+<!-- // skip -->
+
 
 <!-- header -->
 <header id="detail_header" class="main_gnb sub type1">
@@ -451,5 +738,139 @@
     </div>
 
 
+<script src="https://cdn.visitkorea.or.kr/resources/js/mylocation/location_detail.js?v=1670685812761"></script>
+<script src="https://cdn.visitkorea.or.kr/resources/js/contentSub.js"></script>
+<script src="https://cdn.visitkorea.or.kr/resources/js/commentCommon.js?v=1670685812761"></script>
+
+<script src="../../resources/js/newDetailCommon.js?v=1670685812761"></script>
+<script src="https://cdn.visitkorea.or.kr/resources/js/curation/safecaster.js?v=1670685812761"></script>
+
+<script type="text/javascript" src="/resources/js/curation/curation_trace_v2.js?v=1670685812761"></script>
+<script type="text/javascript">
+		var contitle 	= '2022 제11회 유러피언 크리스마스 마켓';
+		var curDate		= '20221211';
+		var cotId		= '734c8641-f731-4a89-9fc3-6c75114fce66';
+		var snsId;
+		bannerview = false;
+
+		if( $.cookie('content_'+cotId) == 'Y') {
+			$('.btn_good').attr('class','btn_good on');
+			$("input:radio[id=estimateForm1]").prop('checked', true);
+    	}
+
+		function nextLogin(){
+			// 상세페이지 공통함수
+			DetailsGo();
+			pageChk = 'fes';
+
+			detailReady();
+			tgprDbCheck();
+
+
+			getSnsFavorites(cotId);
+		}
+
+		//축제상세 가져오기
+		function getContentList() {
+
+			showLoding();
+
+			$.ajax({
+				url: mainurl+'/call',
+				dataType: 'json',
+				type: 'POST',
+				data: {
+					cmd : 'FESTIVAL_CONTENT_BODY_DETAIL',
+					cotId : cotId,
+					locationx : locationx+'',
+					locationy : locationy+''
+				},
+				success: function(data) {
+					goContentListView(data);
+					landingLocationMap(data);
+				},
+				complete: function() {
+					TrssMissionCheck();
+					getContentMapList('Festival');
+					killerBanner();
+					getContentPromotion();
+					getSafetyWeek();
+					hideLoding();
+				},
+				error: function(xhr, textStatus, errorThrown){
+				}
+			});
+		}
+
+		//축제배너 가져오기
+		function getContentPromotion() {
+			$.ajax({
+				url: mainurl+'/call',
+				dataType: 'json',
+				type: "POST",
+				data: {
+					cmd : 'CONTENT_PROMOTION_VIEW',
+					cotid : cotId
+				},
+				success: function(data) {
+					goContentPromotionView(data);
+				},
+				complete: function() {
+				},
+				error: function(xhr, textStatus, errorThrown) {
+				}
+			});
+		}
+
+		//축제배너 가져오기
+		function goContentPromotionView(data) {
+			var strHtml = '';
+
+			if( data.body.result != undefined && data.body.result != null && data.body.result.length != 0 ) {
+
+				strHtml = '<a href="javascript:" onclick="goContentPromotion(\''+data.body.result[0].link+'\',\''+quotReplace(data.body.result[0].title)+'\');"><img src="'+mainimgurl+data.body.result[0].imgId+'" alt="'+data.body.result[0].title+'"></a>';
+				if($('.festivalBanner_btm').html() == '')
+					$('.festivalBanner_btm').html(strHtml);
+				$('.festivalBanner_btm').show();
+			}
+		}
+
+		function goContentPromotion( rlinkUrl, rtitle) {
+
+			goBannerLogSave( '축제상세',rlinkUrl,rtitle);
+
+			setTimeout(function () {
+				if( rlinkUrl != 'undefined' &&  rlinkUrl != '' ) {
+
+					if( rlinkUrl.indexOf(mainurl) > -1  ) {
+						location.href = rlinkUrl;
+					} else {
+						openWindow(rlinkUrl);
+					}
+
+				}
+
+		  	}, 200) ;
+		}
+
+		// 인쇄하기
+		function openPrint() {
+			window.open('/detail/fes_detail_print.do?cotid='+cotid,"","width=1024px,height=940px,scrollbars=yes");
+		}
+
+		//여행지도보기 클릭시 여행지도페이지 랜딩
+		function landingLocationMap(data) {
+			var x =data.body.detail.mapX;
+			var y =data.body.detail.mapY;
+
+			let locationMap = mainurl+'/mylocation/mylocation.do?cotId='+cotId+'&service=contents&latitude=' + y + "&" + "longitude=" + x;
+
+			if( appYn == 'N') {
+				$('.btn_map').click((e) => window.open(locationMap));
+			} else {
+				$('.btn_map').click((e) => window.location.href = locationMap);
+			}
+		}
+	</script>
 </body>
 </html>

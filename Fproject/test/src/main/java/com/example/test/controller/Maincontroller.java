@@ -1,16 +1,18 @@
 package com.example.test.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.python.core.PyFunction;
 import org.python.core.PyInteger;
 import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -60,24 +62,27 @@ public class Maincontroller extends HttpServlet {
         return "test2";
     }
 
-//    private static PythonInterpreter intP;
-//    @RequestMapping("/python_test")
-//    public @ResponseBody String getTest(){
-//        System.setProperty("python.import.site","false");
-//        intP = new PythonInterpreter();
-//        intP.execfile("src/main/resources/py/testcrawl.py");
-////        intP.execfile("src/main/resources/py/test.py");
-//        intP.exec("print(crawling_img('트와이스'))");
-////        intP.exec("print(testFunc(10,5))");
-//
-//
-//        PyFunction pyFunction = (PyFunction) intP.get("testFunc",PyFunction.class);
-//        int a = 10, b = 20;
-//        PyObject pyObject = pyFunction.__call__(new PyInteger(a), new PyInteger(b));
-//        System.out.println(pyObject.toString());
-//
-//        return pyObject.toString();
-//    }
+    @RequestMapping("/crawl")
+    public String crawl(String str){
+        WebDriver webDriver;
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/py/chromedriver.exe");
+        webDriver = new ChromeDriver();
+
+        webDriver.get("https://www.google.co.kr/imghp?hl=ko&tab=wi&authuser=0&ogbl");
+        WebElement element = webDriver.findElement(By.name("q"));
+        element.sendKeys(str);
+        element.sendKeys(Keys.RETURN);
+
+        List<WebElement> elements = webDriver.findElements(By.className("rg_i.Q4LuWd"));
+        int count = 1;
+        for(WebElement e : elements){
+
+        }
+
+
+        return null;
+    }
+
 
     @GetMapping("/test")
     public String get(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -99,8 +104,9 @@ public class Maincontroller extends HttpServlet {
         return "test";
     }
 
-    @RequestMapping("/festivalview")
-    public String festivalview(){
+    @RequestMapping("/festivalview/{id}")
+    public String festivalview(@PathVariable int id, Model model){
+        model.addAttribute("id",id);
         return "board_festival/festival_view";
     }
 
