@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,12 +102,12 @@ public class MemberController {
     }
 
     @PostMapping("/updateS")
-    public String updateS(Model model, SessionMember sessionMember, Principal principal){
+    public String updateS(Model model, SessionMember sessionMember, Principal principal, MultipartFile multipartFile){
         System.out.println("어어");
 
         ModelMapper mapper = new ModelMapper();
         Member member = mapper.map(sessionMember, Member.class);
-        memberService.saveMember1(member);
+        memberService.saveMember1(member, multipartFile);
         model.addAttribute("info", member);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
