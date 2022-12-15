@@ -16,7 +16,7 @@ public class ReviewCourseController {
 
     @RequestMapping("/reviewCourse")
     public String index(Model model, Principal principal){
-        model.addAttribute("courseReview",reviewCourseService.findAllDesc());
+        model.addAttribute("reviewCourse",reviewCourseService.findAllDesc());
         if(principal != null){
             model.addAttribute("name",principal.getName());
         }

@@ -26,16 +26,16 @@ public class ReviewCourseService {
 
     @Transactional
     public Long update(Long id, ReviewCourseUpdateRequestDTO requestDTO){
-        CourseReview courseReview = reviewCourseRepository.findById(id)
+        CourseReview reviewCourse = reviewCourseRepository.findById(id)
                                     .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        courseReview.update(requestDTO.getTitle(), requestDTO.getContent());
+        reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent());
         return id;
     }
 
     public ReviewCourseResponseDTO findById(Long id){
-        CourseReview courseReview = reviewCourseRepository.findById(id)
+        CourseReview reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        return new ReviewCourseResponseDTO(courseReview);
+        return new ReviewCourseResponseDTO(reviewCourse);
     }
 
     @Transactional
@@ -49,15 +49,15 @@ public class ReviewCourseService {
 
     @Transactional
     public void delete(Long id){
-        CourseReview courseReview = reviewCourseRepository.findById(id)
+        CourseReview reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        reviewCourseRepository.delete(courseReview);
+        reviewCourseRepository.delete(reviewCourse);
     }
 
     @Transactional
     public List<ReviewCourseListResponseDTO> findByKeyword(String title){
         return reviewCourseRepository.findByTitleContaining(title).stream()
-                .map(courseReview -> new ReviewCourseListResponseDTO(courseReview))
+                .map(reviewCourse -> new ReviewCourseListResponseDTO(reviewCourse))
                 .collect(Collectors.toList());
     }
 
