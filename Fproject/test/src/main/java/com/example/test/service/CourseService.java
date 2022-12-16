@@ -136,9 +136,9 @@ public class CourseService {
             this.saveCourse(dto, course_id, index++);
         }
 
-        MainBoardDTO mdto = new MainBoardDTO();
+//        MainBoardDTO mdto = new MainBoardDTO();
 
-        mdto.setCourse_id(Long.toString(course_id));
+//        mdto.setCourse_id(Long.toString(course_id));
 
         String title = req.getParameter("title");
         String region = req.getParameter("region");
@@ -154,12 +154,12 @@ public class CourseService {
             if(region.equals("제주특별자치도"))
                 region = "제주";
         }
-        mdto.setTitle(title);
-        mdto.setRegion(region);
+//        mdto.setTitle(title);
+//        mdto.setRegion(region);
 
         //임시
         Map<String,Object> map = new HashMap<String,Object >();
-        map.put("mdto",mdto);
+//        map.put("mdto",mdto);
         map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
         //
 //        mainBoardDAO.insertWrite(map);
@@ -170,7 +170,8 @@ public class CourseService {
 
         courseListRepositroy.save(courseList);
 
-        return mdto;
+//        return mdto;
+        return null;
     }
 
 

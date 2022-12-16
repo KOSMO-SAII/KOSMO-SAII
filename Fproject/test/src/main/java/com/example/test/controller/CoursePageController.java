@@ -96,10 +96,10 @@ public class CoursePageController extends HttpServlet {
     public String doPostWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
         List<Map<String, String>> list = courseService.changeCourse(req);
 
-        MainBoardDTO mdto =courseService.saveMainboard(req);
+//        MainBoardDTO mdto =courseService.saveMainboard(req);
 
-        req.setAttribute("title", mdto.getTitle());
-        req.setAttribute("region",mdto.getRegion());
+//        req.setAttribute("title", mdto.getTitle());
+//        req.setAttribute("region",mdto.getRegion());
         req.setAttribute("list", list);
 
         return "course/courseWritePage";

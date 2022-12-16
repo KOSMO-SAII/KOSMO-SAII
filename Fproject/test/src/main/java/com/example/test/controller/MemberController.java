@@ -128,17 +128,6 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/juso")
-    public String jusoPopup(HttpServletRequest request,Model model) {
-
-        String inputYn = request.getParameter("inputYn");
-        String roadFullAddr = request.getParameter("roadFullAddr");
-
-        model.addAttribute("inputYn",inputYn);
-        model.addAttribute("roadFullAddr",roadFullAddr);
-
-        return "juso";
-    }
     @PostMapping("profile")
     public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
         System.out.println("프로필 업데이트");
