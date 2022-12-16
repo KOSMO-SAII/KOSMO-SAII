@@ -4,10 +4,9 @@ import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.entity.Course;
 import com.example.test.entity.CourseData;
-import com.example.test.repository.CourseDAO;
-import com.example.test.repository.CourseDataRepository;
-import com.example.test.repository.CourseRepository;
-import com.example.test.repository.MainBoardDAO;
+import com.example.test.entity.CourseList;
+import com.example.test.repository.*;
+import com.google.common.base.StandardSystemProperty;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,7 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
 
+    private final CourseListRepositroy courseListRepositroy;
     private ModelMapper modelMapper = new ModelMapper();
 
 
@@ -126,12 +126,14 @@ public class CourseService {
 
     public MainBoardDTO writeMode(HttpServletRequest req) {
         String[] str = req.getParameterValues("data");
+        System.out.println(str);
         ArrayList<CourseDTO> cdtos = this.toCDTO(str);
 
-
         Long course_id = this.makeCourse();
+        int index = 1;
         for(CourseDTO dto : cdtos) {
-            this.saveCourse(dto, course_id);
+            System.out.println(dto.toString());
+            this.saveCourse(dto, course_id, index++);
         }
 
         MainBoardDTO mdto = new MainBoardDTO();
@@ -160,7 +162,13 @@ public class CourseService {
         map.put("mdto",mdto);
         map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
         //
-        mainBoardDAO.insertWrite(map);
+//        mainBoardDAO.insertWrite(map);
+        CourseList courseList = new CourseList();
+        courseList.setCourse_id(course_id);
+        courseList.setTitle(title);
+        courseList.setRegion(region);
+
+        courseListRepositroy.save(courseList);
 
         return mdto;
     }
@@ -255,11 +263,11 @@ public class CourseService {
         return mdto;
     }
 
-    public void saveCourse(CourseDTO cdto, Long course_id){
+    public void saveCourse(CourseDTO cdto, long course_id, long course_order){
         CourseData courseData = modelMapper.map(cdto, CourseData.class);
         courseData.setCourse_id(course_id);
+        courseData.setCourse_order(course_order);
         courseDataRepository.save(courseData);
-
     }
 
     public long makeCourse(){
