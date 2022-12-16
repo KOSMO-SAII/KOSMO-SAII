@@ -283,6 +283,10 @@ a {
    text-align: center;
 }
 </style>
+<script
+        src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
+        crossorigin="anonymous"></script>
 <script>
 function passCk(){     
 
@@ -350,7 +354,15 @@ function imgoriginal(){
 function imgoriginalhidden(){
    document.getElementById("preview1").style.display="none";
 }
-
+function openPopup() {
+	window.open("/members/jusoPopup", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+}
+function jusoCallBack(zipNo, roadAddrPart1, roadAddrPart2, jibunAddr, addrDetail){
+	$("#tp_address_add_zip_code").val(zipNo);
+	$("#tp_address_add_road_address").val(roadAddrPart1);
+	$("#tp_address_add_number_address").val(jibunAddr);
+	$("#tp_address_add_desc_address").val(roadAddrPart2 + " " + addrDetail);
+}
 
 </script>
 <body>
@@ -394,7 +406,12 @@ function imgoriginalhidden(){
   </div>
   <div class="mydiv">
     <label class="mylabel">주소</label><br/>
-    <input class="myinput" type="text" th:field="*{address}" >
+    <input class="myinput" type="text" th:field="*{address}" onClick="openPopup();" >
+    <input id="zipNo" type="text">
+    <input id="roadAddrPart1" type="text">
+    <input id="roadAddrPart2" type="text">
+    <input id="jibunAddr" type="text">
+    <input id="addrDetail" type="text">
   </div>
 </form>
 <form enctype="multipart/form-data" action="/members/profile" method="post">
