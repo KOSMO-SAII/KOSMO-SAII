@@ -2,7 +2,7 @@ package com.example.test.reviewboard;
 
 import com.example.test.TestApplication;
 import com.example.test.entity.CourseReview;
-import com.example.test.repository.ReviewCourseRepository;
+import com.example.test.entity.ReviewCourseRepository;
 
 
 import org.junit.jupiter.api.Test;

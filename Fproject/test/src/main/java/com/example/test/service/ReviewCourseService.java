@@ -5,7 +5,7 @@ import com.example.test.domain.ReviewCourseResponseDTO;
 import com.example.test.domain.ReviewCourseSaveRequestDTO;
 import com.example.test.domain.ReviewCourseUpdateRequestDTO;
 import com.example.test.entity.CourseReview;
-import com.example.test.repository.ReviewCourseRepository;
+import com.example.test.entity.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +61,9 @@ public class ReviewCourseService {
                 .collect(Collectors.toList());
     }
 
+//    @Transactional
+//    public int updateView(Long id){
+//        return reviewCourseRepository.updateView(id);
+//    }
 
 }
