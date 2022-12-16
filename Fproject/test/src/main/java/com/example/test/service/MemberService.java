@@ -61,9 +61,9 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public Member saveMember1(Member member, MultipartFile multipartFile){
+    public Member saveMember1(Member member)throws Exception {
         System.out.println("여기는 엡데이트 서비스");
-        Member user1 = member.update1(member,passwordEncoder, multipartFile);
+        Member user1 = member.update1(member,passwordEncoder);
         return memberRepository.save(user1);
     }
 
