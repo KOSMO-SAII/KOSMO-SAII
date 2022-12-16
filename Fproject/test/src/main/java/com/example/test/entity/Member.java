@@ -84,7 +84,7 @@ public class Member{
         member.setLoginPw(pw);
         member.setName(memberDTO.getName());
         member.setNickname(memberDTO.getNickname());
-        member.setAddress(memberDTO.getAddress());
+        member.setAddress(memberDTO.getAddress().concat(memberDTO.getAddress1()));
         member.setBirthday(memberDTO.getBirthday());
         member.setEmail(memberDTO.getEmail());
         member.setBirthday(memberDTO.getBirthday());
