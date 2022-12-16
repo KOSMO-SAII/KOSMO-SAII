@@ -90,7 +90,7 @@ public class MemberController {
     }
     @GetMapping("/loginF")
     public String loginf(Model model){
-        model.addAttribute("loginErrorMsg","뭐가 됐든 제대로 입력해보셈");
+        model.addAttribute("loginErrorMsg","아이디 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 아이디 입니다.");
 
         return "login/loginPage";
     }
@@ -128,17 +128,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/juso")
-    public String jusoPopup(HttpServletRequest request,Model model) {
 
-        String inputYn = request.getParameter("inputYn");
-        String roadFullAddr = request.getParameter("roadFullAddr");
-
-        model.addAttribute("inputYn",inputYn);
-        model.addAttribute("roadFullAddr",roadFullAddr);
-
-        return "juso";
-    }
     @PostMapping("profile")
     public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
         System.out.println("프로필 업데이트");
@@ -175,28 +165,7 @@ public class MemberController {
         }
     }
 
-    @RequestMapping(value = "/jusoPopup")
-    public ModelAndView jusoPopup(HttpServletRequest request, @RequestParam HashMap<String, String> p, Locale locale) {
 
-        // callback 함수가 실행되어야하니 호출한 html 파일로 return
-        ModelAndView mav = new ModelAndView("/mypage/memberUpdate.html");
-
-        String inputYn = request.getParameter("inputYn");
-        String zipNo = request.getParameter("zipNo");
-        String roadAddrPart1 = request.getParameter("roadAddrPart1");
-        String roadAddrPart2 = request.getParameter("roadAddrPart2");
-        String addrDetail = request.getParameter("addrDetail");
-        String jibunAddr = request.getParameter("jibunAddr");
-
-        mav.addObject("inputYn", inputYn);
-        mav.addObject("zipNo", zipNo);
-        mav.addObject("roadAddrPart1", roadAddrPart1);
-        mav.addObject("roadAddrPart2", roadAddrPart2);
-        mav.addObject("jibunAddr", jibunAddr);
-        mav.addObject("addrDetail", addrDetail);
-
-        return mav;
-    }
 
 
 
