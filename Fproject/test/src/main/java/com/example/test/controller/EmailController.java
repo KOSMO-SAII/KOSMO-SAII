@@ -25,7 +25,7 @@ public class EmailController extends HttpServlet {
     @RequestMapping("/m")
     public String mailConfirm() throws MessagingException, UnsupportedEncodingException {
 
-        authCode = emailService.sendEmail("goddlsdurgkf@naver.com");
+        authCode = emailService.sendEmail("goddlsdurgkf@naver.com");  //수정
         Account account = new Account();
         accountRepository.save(account);
         return "mailCheck";

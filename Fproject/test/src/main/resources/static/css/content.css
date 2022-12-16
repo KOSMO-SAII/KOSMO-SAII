@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
+
 /* 공통 */
 .wid100P{width: 100% !important;}
 .color_black{color: #000 !important;}
@@ -8400,4 +8401,7 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
     .seasonTab .stabCont .swiper-slide{width:45% !important;}
 
 }
-    
+.image{
+    width:200px;
+
+}
