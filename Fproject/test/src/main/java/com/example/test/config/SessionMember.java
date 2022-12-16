@@ -37,8 +37,8 @@ public class SessionMember implements Serializable {
 
     public SessionMember(Member member) {
         this.memberId = member.getMemberId();
-//        this.createDate=member.getCreateDate();
-//        this.updateDate=member.getUpdateDate();
+        this.createDate=member.getCreateDate();
+        this.updateDate=member.getUpdateDate();
         this.address=member.getAddress();
         this.birthday=member.getBirthday();
         this.email=member.getEmail();
