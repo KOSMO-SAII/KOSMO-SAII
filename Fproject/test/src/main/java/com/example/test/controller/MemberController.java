@@ -60,7 +60,7 @@ public class MemberController {
             memberService.saveMember(member);
         }catch(IllegalStateException e){
             model.addAttribute("errorMessage",e.getMessage());
-            return "member/memberForm";
+            return "/signup/signup";
         }
         return "redirect:/";
     }
