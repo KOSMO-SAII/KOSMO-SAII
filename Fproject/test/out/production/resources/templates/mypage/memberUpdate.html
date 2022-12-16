@@ -354,16 +354,20 @@ function imgoriginal(){
 function imgoriginalhidden(){
    document.getElementById("preview1").style.display="none";
 }
-function openPopup() {
-	window.open("/members/jusoPopup", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("roadFullAddr").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("roadFullAddr").value = data.address; // 주소 넣기
+<!--                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱-->
+            }
+        }).open();
+    });
 }
-function jusoCallBack(zipNo, roadAddrPart1, roadAddrPart2, jibunAddr, addrDetail){
-	$("#tp_address_add_zip_code").val(zipNo);
-	$("#tp_address_add_road_address").val(roadAddrPart1);
-	$("#tp_address_add_number_address").val(jibunAddr);
-	$("#tp_address_add_desc_address").val(roadAddrPart2 + " " + addrDetail);
-}
-
 </script>
 <body>
 
@@ -406,13 +410,9 @@ function jusoCallBack(zipNo, roadAddrPart1, roadAddrPart2, jibunAddr, addrDetail
   </div>
   <div class="mydiv">
     <label class="mylabel">주소</label><br/>
-    <input class="myinput" type="text" th:field="*{address}" onClick="openPopup();" >
-    <input id="zipNo" type="text">
-    <input id="roadAddrPart1" type="text">
-    <input id="roadAddrPart2" type="text">
-    <input id="jibunAddr" type="text">
-    <input id="addrDetail" type="text">
+    <input class="myinput" id="roadFullAddr" type="text" th:field="*{address}" onClick="openPopup();" >
   </div>
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
 <form enctype="multipart/form-data" action="/members/profile" method="post">
   <img id="preview" th:src="${info.oProfileImg}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
