@@ -5,10 +5,12 @@ package com.example.test.controller;
 import com.example.test.config.SessionMember;
 import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
+import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +19,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Locale;
@@ -32,6 +36,7 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
     private final MemberService memberService;
     private final HttpSession httpSession;
+    private final MemberRepository memberRepository;
 //    @Autowired
 //    private final Member member;
 
@@ -90,8 +95,9 @@ public class MemberController {
         return "login/loginPage";
     }
 
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public String updateMember(Model model,Principal principal){
+        System.out.println("정보수정하러가요");
         SessionMember sessionMember = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember);
         System.out.println(sessionMember.toString());
@@ -102,12 +108,12 @@ public class MemberController {
     }
 
     @PostMapping("/updateS")
-    public String updateS(Model model, SessionMember sessionMember, Principal principal, MultipartFile multipartFile){
+    public String updateS(Model model, SessionMember sessionMember, Principal principal)throws Exception{
         System.out.println("어어");
 
         ModelMapper mapper = new ModelMapper();
         Member member = mapper.map(sessionMember, Member.class);
-        memberService.saveMember1(member, multipartFile);
+        memberService.saveMember1(member);
         model.addAttribute("info", member);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
@@ -132,6 +138,41 @@ public class MemberController {
         model.addAttribute("roadFullAddr",roadFullAddr);
 
         return "juso";
+    }
+    @PostMapping("profile")
+    public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
+        System.out.println("프로필 업데이트");
+        String st = multipartFile.getOriginalFilename();
+        SessionMember member = memberService.memdto(principal.getName());
+        ModelMapper modelMapper = new ModelMapper();
+        Member member2 = modelMapper.map(member,Member.class);
+        Member member1 = Member.profileup(member2,multipartFile);
+        memberRepository.save(member1);
+
+        return "redirect:/members/logins";
+    }
+
+    @RequestMapping("checkpath")
+    public String password(Model model,Principal principal){
+        SessionMember member = memberService.memdto(principal.getName());
+        model.addAttribute("member",member);
+        return "/mypage/pwcheck";
+    }
+    @RequestMapping("check")
+    public String passwordCheck(Authentication auth, @RequestParam("loginPw1") String loginPw1, RedirectAttributes rttr, Principal principal){
+//        Member user = (Member) auth.getPrincipal();
+//        String userpw = user.getLoginPw();
+        SessionMember member = memberService.memdto(principal.getName());
+        String pw = member.getLoginPw();
+        if(passwordEncoder.matches(loginPw1, pw)) {
+            System.out.println("pw 재확인 완료..");
+            return "redirect:/members/update";
+        }
+        else {
+            rttr.addFlashAttribute("msg", "비밀번호를 다시 확인해 주세요.");
+            System.out.println("비밀번호 틀린듯?");
+            return "redirect:/members/checkpath";
+        }
     }
 
 

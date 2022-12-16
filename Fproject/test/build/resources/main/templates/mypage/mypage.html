@@ -398,7 +398,7 @@ function imgoriginalhidden(){
 
     <a href="/members/delete"><button type="button">회원탈</button> </a>
     <div id="profile" align="center">
-        <img id="preview" src="/SAII/Storage/${dto.n_profile_img}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
+        <img id="preview" th:src="${info.oProfileImg}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
         <form action="/members/imgchange" name="img" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${dto.id}">
             <label class="input_file_button" for="filebutton">사진선택</label>
@@ -408,7 +408,7 @@ function imgoriginalhidden(){
         </form>
     </div>
 </div>
-<img id="preview1" src="/SAII/Storage/${dto.n_profile_img}" onclick="imgoriginalhidden()">
+<img id="preview1" th:src="${info.oProfileImg}" onclick="imgoriginalhidden()">
 <div id="show2">
 
 </div>
@@ -423,7 +423,7 @@ function imgoriginalhidden(){
     </form>
     <a href="/members/delete"><button type="button">회원탈1</button> </a>
 </div>
-<a href="http://localhost:8081/SAII/home">돌아가기</a>
+<a href="/">돌아가기</a>
 
 
 
