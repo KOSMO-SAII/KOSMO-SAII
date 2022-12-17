@@ -95,22 +95,22 @@ public class Member{
         return member;
     }
 
-    public static Member update1(Member member, PasswordEncoder passwordEncoder)throws Exception{
+    public static Member update1(MemberDTO memberDTO, PasswordEncoder passwordEncoder)throws Exception{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
-        member1.setMemberId(member.getMemberId());
-        member1.setAddress(member.getAddress());
-        member1.setBirthday(member.getBirthday());
-        member1.setEmail(member.getEmail());
-        member1.setGender(member.getGender());
-        member1.setLoginId(member.getLoginId());
-        member1.setName(member.getName());
-        member1.setNickname(member.getNickname());
-        member1.setPhoneNumber(member.getPhoneNumber());
-        String pw = passwordEncoder.encode(member.getLoginPw());
+        member1.setMemberId(memberDTO.getMemberId());
+        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setBirthday(memberDTO.getBirthday());
+        member1.setEmail(memberDTO.getEmail());
+        member1.setGender(memberDTO.getGender());
+        member1.setLoginId(memberDTO.getLoginId());
+        member1.setName(memberDTO.getName());
+        member1.setNickname(memberDTO.getNickname());
+        member1.setPhoneNumber(memberDTO.getPhoneNumber());
+        String pw = passwordEncoder.encode(memberDTO.getLoginPw());
         member1.setLoginPw(pw);
-        member1.setRole(member.getRole());
-        member1.setCreateDate(member.getCreateDate());
+        member1.setRole(memberDTO.getRole());
+        member1.setCreateDate(memberDTO.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
 
         System.out.println(member1+"여ㅣ가 업데이트 엔티티");

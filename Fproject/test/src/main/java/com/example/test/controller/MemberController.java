@@ -112,13 +112,11 @@ public class MemberController {
     }
 
     @PostMapping("/updateS")
-    public String updateS(Model model, SessionMember sessionMember, Principal principal)throws Exception{
+    public String updateS(Model model, MemberDTO memberDTO, Principal principal)throws Exception{
         System.out.println("어어");
-
-        ModelMapper mapper = new ModelMapper();
-        Member member = mapper.map(sessionMember, Member.class);
-        memberService.saveMember1(member);
-        model.addAttribute("info", member);
+        System.out.println(memberDTO.toString());
+        memberService.saveMember1(memberDTO);
+        model.addAttribute("info", memberDTO);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
 
