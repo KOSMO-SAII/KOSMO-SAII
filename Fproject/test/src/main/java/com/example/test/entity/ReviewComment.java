@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
 
@@ -35,11 +34,11 @@ public class ReviewComment{
     private String modifiedDate;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    private CourseReview courseReview;
+    @JoinColumn(name = "posts_id")
+    private CourseReview reviewCourse;
 
     @ManyToOne
-    @JoinColumn(name = "mem_id")
-    private Member member;
+    @JoinColumn(name = "user_id")
+    private Member user;//작성자
 
 }

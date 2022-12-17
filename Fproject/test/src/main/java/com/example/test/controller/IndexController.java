@@ -1,5 +1,8 @@
 package com.example.test.controller;
 
+import com.example.test.config.LoginUser;
+import com.example.test.domain.MemberDTO;
+import com.example.test.domain.ReviewCommentResponseDTO;
 import com.example.test.domain.ReviewCourseListResponseDTO;
 import com.example.test.domain.ReviewCourseResponseDTO;
 import com.example.test.service.MemberService;
@@ -43,11 +46,34 @@ public class IndexController {//페이지에 관련된 컨트롤러
     }
     //수정
     @GetMapping("/reviews/detail/{id}")
-    public String reviewDetail(@PathVariable Long id, Model model) {
+    public String reviewDetail(@PathVariable Long id, @LoginUser MemberDTO user, Model model) {
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
+
+        // 댓글
+        List<ReviewCommentResponseDTO> comments = dto.getComments();
+        if(comments != null && !comments.isEmpty()){
+            model.addAttribute("comments",comments);
+        }
+
+        // 사용자
+        if(user != null){
+            model.addAttribute("nickname", user.getNickname());
+
+            //리뷰 작성자가 본인인지 확인
+            if(dto.getUserId().equals(user.getMemberId())){
+                model.addAttribute("author",true);
+            }
+        }
+
         model.addAttribute("reviewCourse",dto);
         return "reviews/reviewCourseDetail";
     }
+//    @GetMapping("/reviews/detail/{id}")
+//    public String reviewDetail(@PathVariable Long id,  Model model) {
+//        ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
+//        model.addAttribute("reviewCourse",dto);
+//        return "reviews/reviewCourseDetail";
+//    }
     //조회
     @GetMapping("/reviews/search")
     public String search(@RequestParam(value="searchQuery") String keyword, Model model) {

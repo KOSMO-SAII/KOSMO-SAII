@@ -29,14 +29,14 @@ public class CourseReview extends Base{
 
 //    @Column(columnDefinition = "integer default 0")
 //    private int view;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "mem_id")
-//    private Member member_id;
-//
-//    @OneToMany(mappedBy = "courseReview", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-//    @OrderBy("id asc")
-//    private List<ReviewComment> comments;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Member user;
+
+    @OneToMany(mappedBy = "reviewCourse", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OrderBy("id asc")
+    private List<ReviewComment> comments;
 
     @Builder
     public CourseReview(String course_id, String title, String content, String author){
