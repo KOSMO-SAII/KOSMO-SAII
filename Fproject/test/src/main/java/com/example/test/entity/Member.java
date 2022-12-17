@@ -84,7 +84,7 @@ public class Member{
         member.setLoginPw(pw);
         member.setName(memberDTO.getName());
         member.setNickname(memberDTO.getNickname());
-        member.setAddress(memberDTO.getAddress().concat(memberDTO.getAddress1()));
+        member.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
         member.setBirthday(memberDTO.getBirthday());
         member.setEmail(memberDTO.getEmail());
         member.setBirthday(memberDTO.getBirthday());
@@ -107,7 +107,7 @@ public class Member{
         member1.setName(member.getName());
         member1.setNickname(member.getNickname());
         member1.setPhoneNumber(member.getPhoneNumber());
-        String pw = passwordEncoder.encode(member.loginPw);
+        String pw = passwordEncoder.encode(member.getLoginPw());
         member1.setLoginPw(pw);
         member1.setRole(member.getRole());
         member1.setCreateDate(member.getCreateDate());
