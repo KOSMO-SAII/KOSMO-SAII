@@ -44,7 +44,7 @@ public class MemberController {
 
     @GetMapping("/new")
     public String memberForm(Model model) {
-        model.addAttribute("memberFormDto", new MemberDTO());
+        model.addAttribute("memberDTO", new MemberDTO());
         return "/signup/signup";
     }
 
@@ -55,7 +55,7 @@ public class MemberController {
             System.out.println(bindingResult.getAllErrors());
             System.out.println();
             System.out.println();
-            model.addAttribute("memberFormDto", memberDTO);
+            model.addAttribute("memberDTO", memberDTO);
             return "/signup/signup";
         }
         try {
