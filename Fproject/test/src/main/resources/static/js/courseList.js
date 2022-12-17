@@ -13,15 +13,21 @@ var datas=[];
 //선그리기 경로 배열
 var path=[];
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
+var mapContainer = document.querySelectorAll(".map");
+mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};
 
 // 지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption);
+for(var i = 0;i < paramObjs.length;i++){
+    mapOption={
+        center: new kakao.maps.LatLng(paramObjs[i].Y, paramObjs[i].X),
+        level: 3
+    }
+    var staticMap = new kakao.maps.StaticMap(mapContainer[i],mapOption)
+
+}
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
@@ -292,6 +298,6 @@ function makeline(){
 		}
 		polyline.setPath(path);
 	}
-	polyline.setMap(map);
+//	polyline.setMap(map);
 	//console.log(path);
 }

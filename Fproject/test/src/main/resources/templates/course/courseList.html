@@ -34,9 +34,9 @@
     <div th:unless="${#lists.isEmpty(lists)}">
       <table th:each="list, i: ${lists}">
         <tr>
-          <div class="map_wrap">
-            <div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-          </div>
+          <td class="map_wrap" id="map${i.index}">
+            <div class="map"style="width: 100px; height: 100px; position: relative;">DIV</div>
+          </td>
           <td th:text="${i.index}"></td>
           <td th:text="${list.title}"></td>
           <td th:text="${list.region}"></td>
@@ -48,6 +48,25 @@
     <div th:if="${#lists.isEmpty(lists)}">
       <h2>게시글이 존재하지 않습니다.</h2>
     </div>
+
+    <th:block th:each="list :${lists}">
+      <script th:inline="javascript" type="text/javascript">
+		var paramObj={
+			address_id:/*[[${list.address_id}]]*/,
+			address_name:/*[[${list.address_name}]]*/,
+			category:/*[[${list.category}]]*/,
+			Memo:/*[[${list.Memo}]]*/,
+			Phone_number:/*[[${list.Phone_number}]]*/,
+			Place_name:/*[[${list.Place_name}]]*/,
+			Place_url:/*[[${list.Place_url}]]*/,
+			Road_address_name:/*[[${list.Road_address_name}]]*/,
+			X:/*[[${list.X}]]*/,
+			Y:/*[[${list.Y}]]*/,
+		}
+		paramObjs.push(paramObj)
+	</script>
+    </th:block>
+
   </body>
   <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>
 </div>
