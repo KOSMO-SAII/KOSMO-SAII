@@ -67,8 +67,8 @@ window.onload = function(){
   <div class="form-group">
     <label th:for="checkPw">비밀번호 재확인</label><br/>
     <input type="password" class="form-control" placeholder="비밀번호를 재입력해주세요">
-<!--      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>-->
-  </div>   <!-- 비밀번호와 동일한지 체크하는 부분 만들기 -->
+      <p th:if="${#fields.hasErrors('checkPw')}" th:errors="*{checkPw}" class="fieldError">Incorrect data</p>
+  </div>
   <div class="form-group">
     <label th:for="nickname">닉네임</label><br/>
     <input type="text" th:field="*{nickname}" class="form-control" placeholder="닉네임을 입력해주세요">

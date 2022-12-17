@@ -11,6 +11,7 @@ import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class MemberController {
     private final MemberService memberService;
     private final HttpSession httpSession;
     private final MemberRepository memberRepository;
-    private SignUpFormValidator signUpFormValidator;
+//    private SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
 //    @Autowired
 //    private final Member member;
 
@@ -56,6 +57,7 @@ public class MemberController {
             model.addAttribute("memberDTO", memberDTO);
             return "/signup/signup";
         }
+        SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
         signUpFormValidator.validate(memberDTO,bindingResult);
         if(bindingResult.hasErrors()) {
             return "/signup/signup";
