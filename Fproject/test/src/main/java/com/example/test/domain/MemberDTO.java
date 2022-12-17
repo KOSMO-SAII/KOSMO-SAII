@@ -2,6 +2,7 @@ package com.example.test.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 public class MemberDTO {
 
     @NotEmpty(message = "주소는 필수 입력 값입니다.")
@@ -35,6 +37,8 @@ public class MemberDTO {
     @Size(min=8, max=16, message = "비밀번호는 숫자, 특수문자가 각각 최소 1개이상을 포함한 8~16자 이하로 입력해주세요")
 //    @Pattern(regexp = "/^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,16}$/")
     private String loginPw;
+
+    private String checkPw;
 
     private String nProfileImg;
 

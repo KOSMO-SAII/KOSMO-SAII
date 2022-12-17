@@ -49,13 +49,17 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String newMember(@Validated MemberDTO memberFormDto, @NotNull BindingResult bindingResult, Model model) {
+    public String newMember(@Validated MemberDTO memberDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            model.addAttribute("memberFormDto", memberFormDto);
+            System.out.println(memberDTO.toString()+"\n====================================\n");
+            System.out.println(bindingResult.getAllErrors());
+            System.out.println();
+            System.out.println();
+            model.addAttribute("memberFormDto", memberDTO);
             return "/signup/signup";
         }
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            Member member = Member.createMember(memberDTO, passwordEncoder);
             httpSession.setAttribute("user", new SessionMember(member));
             memberService.saveMember(member);
         }catch(IllegalStateException e){

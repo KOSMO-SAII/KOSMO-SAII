@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+  <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <title>사이</title>
+</head>
+<div layout:fragment="content">
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td class="search-bar" align="center">
+            <select name="searchType">
+              <option value="">전체</option>
+              <option value="title">제목</option>
+              <option value="author">작성자</option>
+              <option value="region">지역</option>
+            </select>
+            <input type="text" name="searchStr" />
+            <input type="submit" value="검색" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div th:unless="${#lists.isEmpty(lists)}">
+      <table th:each="list, i: ${lists}">
+        <tr>
+          <td th:text="${i.index}"></td>
+          <td th:text="${list.title}"></td>
+          <td th:text="${list.region}"></td>
+          <td th:text="${list.createdBy}"></td>
+          <td th:text="${list.viewCount}"></td>
+        </tr>
+      </table>
+    </div>
+    <div th:if="${#lists.isEmpty(lists)}">
+      <h2>게시글이 존재하지 않습니다.</h2>
+    </div>
+  </body>
+</div>
+</html>

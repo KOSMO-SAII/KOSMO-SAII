@@ -158,16 +158,15 @@ public class CourseService {
 //        mdto.setRegion(region);
 
         //임시
-        Map<String,Object> map = new HashMap<String,Object >();
+//        Map<String,Object> map = new HashMap<String,Object >();
 //        map.put("mdto",mdto);
-        map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
-        //
+//        map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
 //        mainBoardDAO.insertWrite(map);
         CourseList courseList = new CourseList();
         courseList.setCourse_id(course_id);
         courseList.setTitle(title);
         courseList.setRegion(region);
-
+        System.out.println(courseList.toString());
         courseListRepositroy.save(courseList);
 
 //        return mdto;
@@ -256,18 +255,19 @@ public class CourseService {
         return list;
     }
 
-    public MainBoardDTO saveMainboard(HttpServletRequest req) {
-
-        int c_id=Integer.parseInt(req.getParameter("c_id"));
-        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
-
-        return mdto;
-    }
+//    public MainBoardDTO saveMainboard(HttpServletRequest req) {
+//
+//        int c_id=Integer.parseInt(req.getParameter("c_id"));
+//        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
+//
+//        return mdto;
+//    }
 
     public void saveCourse(CourseDTO cdto, long course_id, long course_order){
         CourseData courseData = modelMapper.map(cdto, CourseData.class);
         courseData.setCourse_id(course_id);
         courseData.setCourse_order(course_order);
+        System.out.println(courseData.toString());
         courseDataRepository.save(courseData);
     }
 
@@ -275,5 +275,10 @@ public class CourseService {
         Course course = new Course();
         courseRepository.save(course);
         return course.getId();
+    }
+
+    public List<CourseList> getList(){
+        List<CourseList> courseLists = courseListRepositroy.findAll();
+        return courseLists;
     }
 }
