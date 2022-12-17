@@ -3,6 +3,7 @@ package com.example.test.controller;
 //import com.example.test.config.SessionMember;
 //import com.example.test.service.MemberService;
 import com.example.test.config.SessionMember;
+import com.example.test.config.SignUpFormValidator;
 import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
@@ -37,6 +38,7 @@ public class MemberController {
     private final MemberService memberService;
     private final HttpSession httpSession;
     private final MemberRepository memberRepository;
+    private SignUpFormValidator signUpFormValidator;
 //    @Autowired
 //    private final Member member;
 
@@ -51,13 +53,14 @@ public class MemberController {
     @PostMapping("/signup")
     public String newMember(@Validated MemberDTO memberDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            System.out.println(memberDTO.toString()+"\n====================================\n");
-            System.out.println(bindingResult.getAllErrors());
-            System.out.println();
-            System.out.println();
             model.addAttribute("memberDTO", memberDTO);
             return "/signup/signup";
         }
+        signUpFormValidator.validate(memberDTO,bindingResult);
+        if(bindingResult.hasErrors()) {
+            return "/signup/signup";
+        }
+
         try {
             Member member = Member.createMember(memberDTO, passwordEncoder);
             httpSession.setAttribute("user", new SessionMember(member));

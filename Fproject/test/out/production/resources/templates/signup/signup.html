@@ -78,7 +78,6 @@ window.onload = function(){
   <div class="form-group">
     <label th:for="name">이름</label><br/>
     <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요">
-    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
     <!--  <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>-->
   </div>
   <div class="form-group">
@@ -97,8 +96,8 @@ window.onload = function(){
     <label th:for="email">이메일주소</label><br/>
     <div class="email"  style="display:flex;">
     <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
-      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
       <button type="button" class="ck-button" onclick="window.open('/m')" >확인</button><br/>
+      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
     </div>
   </div>
   <div class="form-group">
