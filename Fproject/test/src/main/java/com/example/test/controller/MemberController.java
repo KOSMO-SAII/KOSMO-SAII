@@ -132,6 +132,7 @@ public class MemberController {
         return "redirect:/";
     }
 
+
     @PostMapping("profile")
     public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
         System.out.println("프로필 업데이트");

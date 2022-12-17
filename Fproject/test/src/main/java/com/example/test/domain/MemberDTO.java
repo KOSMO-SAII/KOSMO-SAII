@@ -1,5 +1,6 @@
 package com.example.test.domain;
 
+import com.example.test.constant.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -53,4 +55,10 @@ public class MemberDTO {
     private String oProfileImg;
 
     private String phoneNumber;
+
+    private Long memberId;
+
+    private Role role;
+
+    private LocalDateTime createDate;
 }
