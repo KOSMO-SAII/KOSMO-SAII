@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import com.example.test.repository.MemberRepository;
 import com.example.test.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,15 +18,13 @@ import java.io.UnsupportedEncodingException;
 public class EmailController extends HttpServlet {
 
     private final EmailService emailService;
-    private final AccountRepository accountRepository;
+    private final MemberRepository accountRepository;
     String authCode = "";
 
     @RequestMapping("/m")
     public String mailConfirm() throws MessagingException, UnsupportedEncodingException {
 
         authCode = emailService.sendEmail("goddlsdurgkf@naver.com");  //수정
-        Account account = new Account();
-        accountRepository.save(account);
         return "mailCheck";
     }
 
