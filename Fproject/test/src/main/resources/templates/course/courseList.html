@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+  <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <!-- 카카오 맵 api 불러오기 -->
+  <script type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
+  <!-- 제이쿼리 적용 -->
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <title>사이</title>
+</head>
+<div layout:fragment="content">
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td class="search-bar" align="center">
+            <select name="searchType">
+              <option value="">전체</option>
+              <option value="title">제목</option>
+              <option value="author">작성자</option>
+              <option value="region">지역</option>
+            </select>
+            <input type="text" name="searchStr" />
+            <input type="submit" value="검색" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div th:unless="${#lists.isEmpty(lists)}">
+      <table th:each="list, i: ${lists}">
+        <tr>
+          <td class="map_wrap" id="map${i.index}">
+            <div class="map"style="width: 100px; height: 100px; position: relative;">DIV</div>
+          </td>
+          <td th:text="${i.index}"></td>
+          <td th:text="${list.title}"></td>
+          <td th:text="${list.region}"></td>
+          <td th:text="${list.createdBy}"></td>
+          <td th:text="${list.viewCount}"></td>
+        </tr>
+      </table>
+    </div>
+    <div th:if="${#lists.isEmpty(lists)}">
+      <h2>게시글이 존재하지 않습니다.</h2>
+    </div>
+
+    <th:block th:each="list :${lists}">
+      <script th:inline="javascript" type="text/javascript">
+		var paramObj={
+			address_id:/*[[${list.address_id}]]*/,
+			address_name:/*[[${list.address_name}]]*/,
+			category:/*[[${list.category}]]*/,
+			Memo:/*[[${list.Memo}]]*/,
+			Phone_number:/*[[${list.Phone_number}]]*/,
+			Place_name:/*[[${list.Place_name}]]*/,
+			Place_url:/*[[${list.Place_url}]]*/,
+			Road_address_name:/*[[${list.Road_address_name}]]*/,
+			X:/*[[${list.X}]]*/,
+			Y:/*[[${list.Y}]]*/,
+		}
+		paramObjs.push(paramObj)
+	</script>
+    </th:block>
+
+  </body>
+  <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>
+</div>
+</html>

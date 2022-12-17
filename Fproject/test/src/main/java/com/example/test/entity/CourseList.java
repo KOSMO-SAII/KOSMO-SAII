@@ -1,6 +1,7 @@
 package com.example.test.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -20,4 +21,7 @@ public class CourseList extends Base{
     private String title;
 
     private String region;
+
+    @Column(columnDefinition = "integer default 0")
+    private long viewCount;
 }

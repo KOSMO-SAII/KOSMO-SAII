@@ -3,8 +3,13 @@ package com.example.test.repository;
 import com.example.test.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface  MemberRepository extends JpaRepository<Member, Long> {
     Member findByLoginId(String loginId);
+
+    Boolean existsByEmail(String Email);
+    Boolean existsByNickname(String Nickname);
+
+    Boolean existsByLoginId(String LoginId);
 
 
 

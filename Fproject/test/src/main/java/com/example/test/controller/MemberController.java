@@ -3,6 +3,7 @@ package com.example.test.controller;
 //import com.example.test.config.SessionMember;
 //import com.example.test.service.MemberService;
 import com.example.test.config.SessionMember;
+import com.example.test.config.SignUpFormValidator;
 import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
@@ -10,6 +11,7 @@ import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,7 @@ public class MemberController {
     private final MemberService memberService;
     private final HttpSession httpSession;
     private final MemberRepository memberRepository;
+//    private SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
 //    @Autowired
 //    private final Member member;
 
@@ -44,23 +47,29 @@ public class MemberController {
 
     @GetMapping("/new")
     public String memberForm(Model model) {
-        model.addAttribute("memberFormDto", new MemberDTO());
+        model.addAttribute("memberDTO", new MemberDTO());
         return "/signup/signup";
     }
 
     @PostMapping("/signup")
-    public String newMember(@Validated MemberDTO memberFormDto, @NotNull BindingResult bindingResult, Model model) {
+    public String newMember(@Validated MemberDTO memberDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            model.addAttribute("memberFormDto", memberFormDto);
+            model.addAttribute("memberDTO", memberDTO);
             return "/signup/signup";
         }
+        SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
+        signUpFormValidator.validate(memberDTO,bindingResult);
+        if(bindingResult.hasErrors()) {
+            return "/signup/signup";
+        }
+
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            Member member = Member.createMember(memberDTO, passwordEncoder);
             httpSession.setAttribute("user", new SessionMember(member));
             memberService.saveMember(member);
         }catch(IllegalStateException e){
             model.addAttribute("errorMessage",e.getMessage());
-            return "member/memberForm";
+            return "/signup/signup";
         }
         return "redirect:/";
     }
@@ -90,7 +99,7 @@ public class MemberController {
     }
     @GetMapping("/loginF")
     public String loginf(Model model){
-        model.addAttribute("loginErrorMsg","아이디 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 아이디 입니다.");
+        model.addAttribute("loginErrorMsg","뭐가 됐든 제대로 입력해보셈");
 
         return "login/loginPage";
     }
@@ -108,13 +117,11 @@ public class MemberController {
     }
 
     @PostMapping("/updateS")
-    public String updateS(Model model, SessionMember sessionMember, Principal principal)throws Exception{
+    public String updateS(Model model, MemberDTO memberDTO, Principal principal)throws Exception{
         System.out.println("어어");
-
-        ModelMapper mapper = new ModelMapper();
-        Member member = mapper.map(sessionMember, Member.class);
-        memberService.saveMember1(member);
-        model.addAttribute("info", member);
+        System.out.println(memberDTO.toString());
+        memberService.saveMember1(memberDTO);
+        model.addAttribute("info", memberDTO);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
 
@@ -164,8 +171,6 @@ public class MemberController {
             return "redirect:/members/checkpath";
         }
     }
-
-
 
 
 

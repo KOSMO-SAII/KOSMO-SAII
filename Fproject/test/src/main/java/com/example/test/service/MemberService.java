@@ -1,6 +1,7 @@
 package com.example.test.service;
 
 import com.example.test.config.SessionMember;
+import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -61,9 +62,10 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public Member saveMember1(Member member)throws Exception {
+    public Member saveMember1(MemberDTO memberDTO)throws Exception {
         System.out.println("여기는 엡데이트 서비스");
-        Member user1 = member.update1(member,passwordEncoder);
+        Member user1 = new Member();
+        user1 = user1.update1(memberDTO,passwordEncoder);
         return memberRepository.save(user1);
     }
 

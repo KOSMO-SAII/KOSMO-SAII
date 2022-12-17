@@ -1,19 +1,25 @@
 package com.example.test.domain;
 
+import com.example.test.constant.Role;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 public class MemberDTO {
 
     @NotEmpty(message = "주소는 필수 입력 값입니다.")
     private String address;
+
+    private String address1;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
@@ -34,6 +40,8 @@ public class MemberDTO {
 //    @Pattern(regexp = "/^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,16}$/")
     private String loginPw;
 
+    private String checkPw;
+
     private String nProfileImg;
 
     @NotBlank(message = "이름은 필수 입력 값입니다.")
@@ -47,4 +55,10 @@ public class MemberDTO {
     private String oProfileImg;
 
     private String phoneNumber;
+
+    private Long memberId;
+
+    private Role role;
+
+    private LocalDateTime createDate;
 }
