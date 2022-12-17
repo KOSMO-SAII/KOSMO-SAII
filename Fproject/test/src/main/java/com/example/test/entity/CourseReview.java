@@ -46,9 +46,10 @@ public class CourseReview extends Base{
         this.author=author;
     }
 
-    public void update(String title, String content){
+    public void update(String title, String content, String course_id){
         this.title=title;
         this.content=content;
+        this.course_id=course_id;
     }
 
 }

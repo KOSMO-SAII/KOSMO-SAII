@@ -8,17 +8,17 @@ public class ReviewPlaceController {
 
     @RequestMapping("/Place")
     public String reviewP(){
-        return "review/reviewPlace";
+        return "reviews/reviewPlace";
     }
 
     @RequestMapping("/PlaceView")
     public String reviewPv(){
-        return "review/reviewPlaceView";
+        return "reviews/reviewPlaceView";
     }
 
     @RequestMapping("/placeMore")
     public String placeMore(){
-        return "review/placeMore";
+        return "reviews/placeMore";
     }
 
 }

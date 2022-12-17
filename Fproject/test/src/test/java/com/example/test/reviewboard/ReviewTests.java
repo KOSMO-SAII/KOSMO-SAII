@@ -2,7 +2,7 @@ package com.example.test.reviewboard;
 
 import com.example.test.TestApplication;
 import com.example.test.entity.CourseReview;
-import com.example.test.entity.ReviewCourseRepository;
+import com.example.test.repository.ReviewCourseRepository;
 
 
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class ReviewTests {
         CourseReview params = CourseReview.builder()
                 .title("테스트 제목")
                 .content("테스트 내용")
-                .course_id(3)
+                .course_id("3")
                 .build();
         System.out.println(params.toString());
         courseReviewRepository.save(params);

@@ -29,31 +29,31 @@ public class IndexController {//페이지에 관련된 컨트롤러
         return "index";
     }
 
-    @GetMapping("/review/write")
+    @GetMapping("/reviews/write")
     public String reviewWrite(Model model, Principal principal){
         model.addAttribute("name",principal.getName());
-        return "review/reviewCourseWrite";
+        return "reviews/reviewCourseWrite";
     }
     //작성(저장)
-    @GetMapping("/review/update/{id}")
+    @GetMapping("/reviews/update/{id}")
     public String reviewUpdate(@PathVariable Long id, Model model){
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
         model.addAttribute("reviewCourse",dto);
-        return "review/reviewCourseUpdate";
+        return "reviews/reviewCourseUpdate";
     }
     //수정
-    @GetMapping("/review/detail/{id}")
+    @GetMapping("/reviews/detail/{id}")
     public String reviewDetail(@PathVariable Long id, Model model) {
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
         model.addAttribute("reviewCourse",dto);
-        return "review/reviewCourseDetail";
+        return "reviews/reviewCourseDetail";
     }
     //조회
-    @GetMapping("/review/search")
+    @GetMapping("/reviews/search")
     public String search(@RequestParam(value="searchQuery") String keyword, Model model) {
         List<ReviewCourseListResponseDTO> dto = reviewCourseService.findByKeyword(keyword);
         model.addAttribute("reviewCourse", dto);
-        return "/review/reviewCourse";
+        return "/reviews/reviewCourse";
     }
     //검색
 

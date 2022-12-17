@@ -14,7 +14,7 @@ public class ReviewCourseListResponseDTO extends Base{
     private String course_id;
     private String content;
     private String title;
-    private int view;
+//    private int view;
     private String author;
 
     private LocalDateTime createDate;

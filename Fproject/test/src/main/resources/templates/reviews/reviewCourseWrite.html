@@ -37,16 +37,16 @@
                     xhr.setRequestHeader(header,token);
                     },
                     type : 'POST',
-                    url : '/api/v1/review',
+                    url : '/api/reviews',
                     dataType : 'json',
                     contentType : 'application/json; charset=utf-8',
                     data : JSON.stringify(data)
                 }).done(function(){
                     alert('글이 등록되었습니다.');
-                    window.location.href = '/reviewCourse';
+                    window.location.href = '/course-reviews';
                 }).fail(function(error){
                     alert(JSON.stringify(error));
-                    window.location.href = '/reviewCourse';
+                    window.location.href = '/course-reviews';
                 })
                 console.log(token);
                 console.log(header);
@@ -60,20 +60,16 @@
         <form>
             <div>
                 <label for="title">제목</label>
-                <input type="text" id="title" placeholder="제목을 입력하세요">
-            </div>
+                <input type="text" id="title" placeholder="제목을 입력하세요"></div>
             <div>
                 <label for="author">작성자</label>
-                <input type="text" id="author" th:value="${name}" readonly>
-            </div>
+                <input type="text" id="author" th:value="${name}" readonly></div>
             <div>
                 <label for="course_id">코스번호</label>
-                <input type="text" id="course_id" >
-            </div>
+                <input type="text" id="course_id" ></div>
             <div>
                 <label for="content">내용</label>
-                <textarea id="content" placeholder="내용을 입력하세요"></textarea>
-            </div>
+                <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
         </form>
         <a href="/" role="button">취소</a>
         <input type="button" id="btn-save" onclick="reviewSave()" value="등록">

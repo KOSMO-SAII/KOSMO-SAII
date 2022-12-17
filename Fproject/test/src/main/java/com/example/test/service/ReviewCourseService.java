@@ -5,7 +5,7 @@ import com.example.test.domain.ReviewCourseResponseDTO;
 import com.example.test.domain.ReviewCourseSaveRequestDTO;
 import com.example.test.domain.ReviewCourseUpdateRequestDTO;
 import com.example.test.entity.CourseReview;
-import com.example.test.entity.ReviewCourseRepository;
+import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +27,9 @@ public class ReviewCourseService {
     @Transactional
     public Long update(Long id, ReviewCourseUpdateRequestDTO requestDTO){
         CourseReview reviewCourse = reviewCourseRepository.findById(id)
-                                    .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent());
+                .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent(), requestDTO.getCourse_id());
+        System.out.println(requestDTO.getCourse_id());
         return id;
     }
 
