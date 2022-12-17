@@ -10,7 +10,7 @@
   <script>
 window.onload = function(){
     document.getElementById("address").addEventListener("click", function(){ //주소입력칸을 클릭하면
-        //카카오 지도 발생
+        //카카오 지도 <발생></발생>
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
                 document.getElementById("address").value = data.address; // 주소 넣기
@@ -96,8 +96,8 @@ window.onload = function(){
     <label th:for="email">이메일주소</label><br/>
     <div class="email"  style="display:flex;">
     <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
-      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
       <button type="button" class="ck-button" onclick="window.open('/m')" >확인</button><br/>
+      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
     </div>
   </div>
   <div class="form-group">

@@ -1,7 +1,5 @@
 package com.example.test.controller;
 
-import com.example.test.entity.Account;
-import com.example.test.repository.AccountRepository;
 import com.example.test.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
