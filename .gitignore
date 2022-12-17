@@ -1,3 +1,4 @@
 
 Fproject/test/src/main/resources/application.properties
 /.metadata/
+*.class
