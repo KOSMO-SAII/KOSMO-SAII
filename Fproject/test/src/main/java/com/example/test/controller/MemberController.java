@@ -39,7 +39,6 @@ public class MemberController {
     private final MemberService memberService;
     private final HttpSession httpSession;
     private final MemberRepository memberRepository;
-//    private SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
 //    @Autowired
 //    private final Member member;
 
@@ -54,7 +53,6 @@ public class MemberController {
     @PostMapping("/signup")
     public String newMember(@Validated MemberDTO memberDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            model.addAttribute("memberDTO", memberDTO);
             return "/signup/signup";
         }
         SignUpFormValidator signUpFormValidator = new SignUpFormValidator(memberRepository);
