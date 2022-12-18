@@ -34,13 +34,17 @@
     <div th:unless="${#lists.isEmpty(lists)}">
       <table th:each="list, i: ${lists}">
         <tr>
-          <td class="map_wrap" id="map${i.index}">
-            <div class="map"style="width: 100px; height: 100px; position: relative;">DIV</div>
+          <td class="map_wrap" rowspan="3">
+            <div class="map"style="width: 100px; height: 100px; position: relative;">Map</div>
           </td>
-          <td th:text="${i.index}"></td>
-          <td th:text="${list.title}"></td>
+          <td colspan="2" th:text="|제목 : ${list.title}|"></td>
           <td th:text="${list.region}"></td>
-          <td th:text="${list.createdBy}"></td>
+        </tr>
+        <tr>
+          <td colspan="4" th:text="${list.getOrders()}"></td>
+        </tr>
+        <tr>
+          <td colspan="3" th:text="${list.createdBy}"></td>
           <td th:text="${list.viewCount}"></td>
         </tr>
       </table>
@@ -49,25 +53,7 @@
       <h2>게시글이 존재하지 않습니다.</h2>
     </div>
 
-    <th:block th:each="list :${lists}">
-      <script th:inline="javascript" type="text/javascript">
-		var paramObj={
-			address_id:/*[[${list.address_id}]]*/,
-			address_name:/*[[${list.address_name}]]*/,
-			category:/*[[${list.category}]]*/,
-			Memo:/*[[${list.Memo}]]*/,
-			Phone_number:/*[[${list.Phone_number}]]*/,
-			Place_name:/*[[${list.Place_name}]]*/,
-			Place_url:/*[[${list.Place_url}]]*/,
-			Road_address_name:/*[[${list.Road_address_name}]]*/,
-			X:/*[[${list.X}]]*/,
-			Y:/*[[${list.Y}]]*/,
-		}
-		paramObjs.push(paramObj)
-	</script>
-    </th:block>
-
   </body>
-  <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>
+<!--  <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>-->
 </div>
 </html>

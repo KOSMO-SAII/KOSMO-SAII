@@ -1,9 +1,11 @@
 package com.example.test.service;
 
 import com.example.test.domain.CourseDTO;
+import com.example.test.domain.CourseListDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.entity.Course;
 import com.example.test.entity.CourseData;
+import com.example.test.entity.CourseDataId;
 import com.example.test.entity.CourseList;
 import com.example.test.repository.*;
 import com.google.common.base.StandardSystemProperty;
@@ -265,8 +267,8 @@ public class CourseService {
 
     public void saveCourse(CourseDTO cdto, long course_id, long course_order){
         CourseData courseData = modelMapper.map(cdto, CourseData.class);
-        courseData.setCourse_id(course_id);
-        courseData.setCourse_order(course_order);
+        courseData.setId(course_id);
+        courseData.setOrder(course_order);
         System.out.println(courseData.toString());
         courseDataRepository.save(courseData);
     }
@@ -277,8 +279,24 @@ public class CourseService {
         return course.getId();
     }
 
-    public List<CourseList> getList(){
+    public List<CourseListDTO> getList(){
         List<CourseList> courseLists = courseListRepositroy.findAll();
-        return courseLists;
+        List<CourseListDTO> lists = new ArrayList<>();
+        int order = 1;
+        for(CourseList courseList : courseLists){
+            CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            int length = courseDataRepository.countById(cdto.getCourse_id());
+            List<CourseDTO> datas = new ArrayList<>();
+            for(int i=0; i < length;i++) {
+                CourseDataId id = new CourseDataId();
+                id.setId(cdto.getCourse_id());
+                id.setOrder((long) i+1);
+                datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
+            }
+            cdto.setCourseDatas(datas);
+            cdto.setCenter();
+            lists.add(cdto);
+        }
+        return lists;
     }
 }
