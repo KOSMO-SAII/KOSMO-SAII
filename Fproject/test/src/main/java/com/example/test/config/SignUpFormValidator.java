@@ -35,9 +35,6 @@ public class SignUpFormValidator implements Validator {
         }
 //        if(memberDTO.getLoginPw()!=memberDTO.getCheckPw()){
         if(!(memberDTO.getLoginPw().equals(memberDTO.getCheckPw()))){
-            System.out.println(memberDTO.getLoginPw());
-            System.out.println(memberDTO.getCheckPw());
-            System.out.println(!(memberDTO.getLoginPw().equals(memberDTO.getCheckPw())));
             errors.rejectValue("checkPw", "invalid.checkPw",
                     new Object[]{memberDTO.getCheckPw()}, "비밀번호와 동일하지 않습니다.");
         }
