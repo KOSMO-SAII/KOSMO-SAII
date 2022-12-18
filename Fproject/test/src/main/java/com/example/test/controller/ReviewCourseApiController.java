@@ -55,7 +55,7 @@ public class ReviewCourseApiController {
 		return id;
 	}
 
-//	@GetMapping("/review/{id}")
+//	@GetMapping("/reviews/{id}")
 //	public String read(@PathVariable Long id, Model model){
 //		ReviewCourseResponseDTO responseDto = reviewCourseService.findById(id);
 //		reviewCourseService.updateView(id);

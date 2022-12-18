@@ -38,7 +38,7 @@ public class ReviewComment{
     private CourseReview reviewCourse;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "memberId")
     private Member user;//작성자
 
 }
