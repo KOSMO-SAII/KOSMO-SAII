@@ -2,6 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+  <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+  <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>회원가입</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link th:href="@{/css/signup.css}" rel="stylesheet">
@@ -38,6 +40,12 @@ window.onload = function(){
               alert(errorMessage);
           }
       });
+
+      function emailChk(){
+        var email = document.getElementById('email').value
+        console.log(email);
+        window.open('/m/'+email)
+      }
   </script>
 
 </head>
@@ -95,8 +103,8 @@ window.onload = function(){
   <div class="form-group">
     <label th:for="email">이메일주소</label><br/>
     <div class="email"  style="display:flex;">
-    <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
-      <button type="button" class="ck-button" onclick="window.open('/m')" >확인</button><br/>
+    <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
+      <button type="button" class="ck-button" onclick="emailChk()" >확인</button><br/>
       <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
     </div>
   </div>

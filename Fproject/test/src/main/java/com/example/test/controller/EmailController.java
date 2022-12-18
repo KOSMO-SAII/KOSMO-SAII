@@ -4,8 +4,10 @@ import com.example.test.repository.MemberRepository;
 import com.example.test.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.mail.MessagingException;
@@ -21,18 +23,20 @@ public class EmailController extends HttpServlet {
     private final MemberRepository accountRepository;
     String authCode = "";
 
-    @RequestMapping("/m")
-    public String mailConfirm() throws MessagingException, UnsupportedEncodingException {
-
-        authCode = emailService.sendEmail("goddlsdurgkf@naver.com");  //수정
+    @RequestMapping("/m/{email}")
+    public String mailConfirm(@PathVariable String email, Model model) throws MessagingException, UnsupportedEncodingException {
+        authCode = emailService.sendEmail(email);  //수정
+        model.addAttribute("authCode", authCode);
         return "mailCheck";
+
     }
 
-    @RequestMapping("/confirm")
-    public @ResponseBody String codeCheck(HttpServletRequest req){
-        String code = req.getParameter("code");
-        return code.equals(authCode) ? "true" : "false";
-    }
+
+//    @RequestMapping("/confirm")
+//    public @ResponseBody String codeCheck(HttpServletRequest req){
+//        String code = req.getParameter("code");
+//        return code.equals(authCode) ? "인증에 성곻하였습니다." : "인증에 실패하였습니다";
+//    }
 
     @RequestMapping("/{code}")
     public @ResponseBody String code(@PathVariable String code){
