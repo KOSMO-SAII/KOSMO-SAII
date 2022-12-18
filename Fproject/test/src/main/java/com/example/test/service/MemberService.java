@@ -7,6 +7,7 @@ import com.example.test.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -83,4 +84,11 @@ public class MemberService implements UserDetailsService {
 //        String encPassword = encoder.encode(dto.getPassword());
 //        user.modify(dto.getNickname(), encPassword);
 //    }
+
+    public Member getMember(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Member member = memberRepository.findByLoginId(authentication.getName());
+        return member;
+    }
+
 }

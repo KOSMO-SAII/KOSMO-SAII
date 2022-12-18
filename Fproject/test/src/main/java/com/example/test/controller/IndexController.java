@@ -5,9 +5,12 @@ import com.example.test.domain.MemberDTO;
 import com.example.test.domain.ReviewCommentResponseDTO;
 import com.example.test.domain.ReviewCourseListResponseDTO;
 import com.example.test.domain.ReviewCourseResponseDTO;
+import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import com.example.test.service.ReviewCourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,7 +63,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
             model.addAttribute("nickname", user.getNickname());
 
             //리뷰 작성자가 본인인지 확인
-            if(dto.getUserId().equals(user.getMemberId())){
+            if(dto.getAuthor().equals(memberService.getMember().getLoginId())){
                 model.addAttribute("author",true);
             }
         }

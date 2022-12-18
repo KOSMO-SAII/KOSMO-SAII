@@ -31,7 +31,7 @@ public class CourseReview extends Base{
 //    private int view;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "memberId")
     private Member user;
 
     @OneToMany(mappedBy = "reviewCourse", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)

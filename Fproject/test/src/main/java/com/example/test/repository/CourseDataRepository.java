@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CourseDataRepository extends JpaRepository<CourseData, CourseDataId> {
 
+    int countById(long id);
 
 }

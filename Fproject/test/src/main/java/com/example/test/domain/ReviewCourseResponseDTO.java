@@ -33,7 +33,7 @@ public class ReviewCourseResponseDTO extends Base {
         this.title=reviewCourse.getTitle();
         this.content=reviewCourse.getContent();
         this.author=reviewCourse.getAuthor();
-        this.userId = reviewCourse.getUser().getMemberId();
+//        this.userId = reviewCourse.getUser().getMemberId();
         this.comments = reviewCourse.getComments().stream().map(ReviewCommentResponseDTO::new).collect(Collectors.toList());
     }
 }
