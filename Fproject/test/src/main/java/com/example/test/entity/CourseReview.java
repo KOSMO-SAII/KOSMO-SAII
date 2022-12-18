@@ -30,9 +30,9 @@ public class CourseReview extends Base{
 //    @Column(columnDefinition = "integer default 0")
 //    private int view;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Member user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private Member user;
 
     @OneToMany(mappedBy = "reviewCourse", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")
