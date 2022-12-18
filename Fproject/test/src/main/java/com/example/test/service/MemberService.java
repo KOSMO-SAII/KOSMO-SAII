@@ -91,4 +91,12 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
+    public Member getMember(long id){
+        Member member = new Member();
+        if(id != -1){
+            member = memberRepository.findById(id).orElseThrow();
+        }
+        return member;
+    }
+
 }

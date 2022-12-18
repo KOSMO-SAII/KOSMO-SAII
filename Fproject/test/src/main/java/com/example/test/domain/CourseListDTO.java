@@ -1,5 +1,6 @@
 package com.example.test.domain;
 
+import com.example.test.repository.MemberRepository;
 import lombok.Data;
 
 import java.util.List;
@@ -44,4 +45,5 @@ public class CourseListDTO {
 
         return orders;
     }
+
 }

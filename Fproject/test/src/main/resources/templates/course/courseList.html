@@ -35,7 +35,7 @@
       <table th:each="list, i: ${lists}">
         <tr>
           <td class="map_wrap" rowspan="3">
-            <div class="map"style="width: 100px; height: 100px; position: relative;">Map</div>
+            <div class="map"style="width: 200px; height: 200px; position: relative;"></div>
           </td>
           <td colspan="2" th:text="|제목 : ${list.title}|"></td>
           <td th:text="${list.region}"></td>
@@ -47,6 +47,15 @@
           <td colspan="3" th:text="${list.createdBy}"></td>
           <td th:text="${list.viewCount}"></td>
         </tr>
+        <script th:inline="javascript">
+          mapContainer = document.getElementsByClassName('map')
+          mapOption={
+            center: new kakao.maps.LatLng([[${list.yPoint}]], [[${list.xPoint}]]),
+            level: 5
+          }
+          var index = [[${i.index}]]
+          var staticMap = new kakao.maps.StaticMap(mapContainer[index],mapOption)
+        </script>
       </table>
     </div>
     <div th:if="${#lists.isEmpty(lists)}">

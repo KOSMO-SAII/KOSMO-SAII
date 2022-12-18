@@ -3,10 +3,7 @@ package com.example.test.service;
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.CourseListDTO;
 import com.example.test.domain.MainBoardDTO;
-import com.example.test.entity.Course;
-import com.example.test.entity.CourseData;
-import com.example.test.entity.CourseDataId;
-import com.example.test.entity.CourseList;
+import com.example.test.entity.*;
 import com.example.test.repository.*;
 import com.google.common.base.StandardSystemProperty;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +31,9 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     private final CourseListRepositroy courseListRepositroy;
+
+    private final MemberRepository memberRepository;
+    private final MemberService memberService;
     private ModelMapper modelMapper = new ModelMapper();
 
 
@@ -295,6 +295,9 @@ public class CourseService {
             }
             cdto.setCourseDatas(datas);
             cdto.setCenter();
+            long id = Long.parseLong(cdto.getCreatedBy());
+            System.out.println(id);
+            cdto.setCreatedBy(memberService.getMember(id).getNickname());
             lists.add(cdto);
         }
         return lists;
