@@ -63,26 +63,30 @@ public class Maincontroller extends HttpServlet {
     }
 
     @RequestMapping("/crawl")
-    public String crawl(String str){
+    public @ResponseBody String crawl(){
         WebDriver webDriver;
         System.setProperty("webdriver.chrome.driver", "src/main/resources/py/chromedriver.exe");
         webDriver = new ChromeDriver();
 
         webDriver.get("https://www.google.co.kr/imghp?hl=ko&tab=wi&authuser=0&ogbl");
         WebElement element = webDriver.findElement(By.name("q"));
-        element.sendKeys(str);
+        element.sendKeys("nell");
         element.sendKeys(Keys.RETURN);
 
-        List<WebElement> elements = webDriver.findElements(By.className("rg_i Q4LuWd"));
-        int count = 1;
+        List<WebElement> elements = webDriver.findElements(By.className("rg_i"));
+        System.out.println(elements.size());
+        int count = 0;
         for(WebElement e : elements){
+            e.click();
             List<WebElement> img = webDriver.findElements(By.className("n3VNCb KAlRDb"));
+            System.out.println(img.get(0).getAttribute("src"));
 
-
+            count++;
+            if(count > 3)
+                break;
         }
 
-
-        return null;
+        return "crawled";
     }
 
 
