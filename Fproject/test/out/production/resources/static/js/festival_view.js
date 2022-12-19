@@ -52,6 +52,7 @@ galleryGo();
          .then((response) => response.json())
          .then((data) => {
                infoitem=data.response.body.items.item[0]
+         printservice(infoitem)
                console.log(infoitem)
          if(true){
                for(var j=0;j<infoitem.length;j++){
@@ -63,6 +64,6 @@ galleryGo();
      function printservice(infoitem){
      var div=$('.inr_wrap');
      var p=document.createElement('p');
-     p.innerHTML='<p>'+infoitem[j]+'</p>'
+     p.innerHTML='<ul><li><strong>시작일</strong><span>'+infoitem.eventstartdate+'</span></li><li><strong>종료일</strong><span>2022.12.25</span></li><li><strong>전화번호</strong><span class="mo"><a href="tel:02-6000-1155">02-6000-1155</a></span><span class="pc">02-6000-1155</span></li><li><strong>홈페이지</strong><span><a href="http://www.coexworld.co.kr" target="_blank" title="새창 : 코엑스 윈터 페스티벌 (Coex Winter Festival)">www.coexworld.co.kr</a></span></li><li><strong>주소</strong><span>서울특별시 강남구 영동대로 513</span></li><li><strong>행사장소</strong><span>코엑스 광장, 코엑스 K-POP광장, 코엑스 실내로비</span></li><li><strong>주최</strong><span>강남구청, 한국무역협회, 코엑스 MICE 클러스터 위원회(CMC)</span></li><li><strong>주관</strong><span>코엑스</span></li><li><strong>이용요금</strong><span>무료</span></li><li><strong>행사시간</strong><span>10:00 ~ 19:00</span></li></ul>'
      }
 
