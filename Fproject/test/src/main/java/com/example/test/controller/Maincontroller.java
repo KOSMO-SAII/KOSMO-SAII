@@ -73,9 +73,11 @@ public class Maincontroller extends HttpServlet {
         element.sendKeys(str);
         element.sendKeys(Keys.RETURN);
 
-        List<WebElement> elements = webDriver.findElements(By.className("rg_i.Q4LuWd"));
+        List<WebElement> elements = webDriver.findElements(By.className("rg_i Q4LuWd"));
         int count = 1;
         for(WebElement e : elements){
+            List<WebElement> img = webDriver.findElements(By.className("n3VNCb KAlRDb"));
+
 
         }
 

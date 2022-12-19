@@ -43,27 +43,22 @@ galleryGo();
       $('.inr_wrap')[0].append(detail)
     }
 
-   koreaservice();
      function koreaservice(){
          var info;
-         var infoitem=[];
+         var infoitem;
          var contentId=id
          fetch('https://apis.data.go.kr/B551011/KorService/detailIntro?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&MobileOS=ETC&MobileApp=AppTest&_type=json&contentId='+contentId+'&contentTypeId=15')
          .then((response) => response.json())
          .then((data) => {
                infoitem=data.response.body.items.item[0]
-         printservice(infoitem)
-               console.log(infoitem)
-         if(true){
-               for(var j=0;j<infoitem.length;j++){
-               printInfo(infoitem[j])
-               }
-            }
+               printservice(infoitem)
          })
      }
      function printservice(infoitem){
-     var div=$('.inr_wrap');
-     var p=document.createElement('p');
-     p.innerHTML='<ul><li><strong>시작일</strong><span>'+infoitem.eventstartdate+'</span></li><li><strong>종료일</strong><span>2022.12.25</span></li><li><strong>전화번호</strong><span class="mo"><a href="tel:02-6000-1155">02-6000-1155</a></span><span class="pc">02-6000-1155</span></li><li><strong>홈페이지</strong><span><a href="http://www.coexworld.co.kr" target="_blank" title="새창 : 코엑스 윈터 페스티벌 (Coex Winter Festival)">www.coexworld.co.kr</a></span></li><li><strong>주소</strong><span>서울특별시 강남구 영동대로 513</span></li><li><strong>행사장소</strong><span>코엑스 광장, 코엑스 K-POP광장, 코엑스 실내로비</span></li><li><strong>주최</strong><span>강남구청, 한국무역협회, 코엑스 MICE 클러스터 위원회(CMC)</span></li><li><strong>주관</strong><span>코엑스</span></li><li><strong>이용요금</strong><span>무료</span></li><li><strong>행사시간</strong><span>10:00 ~ 19:00</span></li></ul>'
+        var div=$('.inr')[0]
+        var startDate = infoitem.eventstartdate.substr(0,4) + '-' + infoitem.eventstartdate.substr(4,2) + '-' + infoitem.eventstartdate.substr(6,2)
+        div.innerHTML='<ul><li><strong>시작일</strong><span>'+startDate+'</span></li><li><strong>종료일</strong><span>'+infoitem.eventenddate+'</span></li><li><strong>전화번호</strong><span class="mo"><a href="tel:02-6000-1155">02-6000-1155</a></span><span class="pc">02-6000-1155</span></li><li><strong>홈페이지</strong><span><a href="http://www.coexworld.co.kr" target="_blank" title="새창 : 코엑스 윈터 페스티벌 (Coex Winter Festival)">www.coexworld.co.kr</a></span></li><li><strong>주소</strong><span>서울특별시 강남구 영동대로 513</span></li><li><strong>행사장소</strong><span>코엑스 광장, 코엑스 K-POP광장, 코엑스 실내로비</span></li><li><strong>주최</strong><span>강남구청, 한국무역협회, 코엑스 MICE 클러스터 위원회(CMC)</span></li><li><strong>주관</strong><span>코엑스</span></li><li><strong>이용요금</strong><span>무료</span></li><li><strong>행사시간</strong><span>10:00 ~ 19:00</span></li></ul>'
      }
 
+
+   koreaservice();
