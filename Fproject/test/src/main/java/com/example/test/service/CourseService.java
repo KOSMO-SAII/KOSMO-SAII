@@ -1,13 +1,11 @@
 package com.example.test.service;
 
 import com.example.test.domain.CourseDTO;
+import com.example.test.domain.CourseListDTO;
 import com.example.test.domain.MainBoardDTO;
-import com.example.test.entity.Course;
-import com.example.test.entity.CourseData;
-import com.example.test.repository.CourseDAO;
-import com.example.test.repository.CourseDataRepository;
-import com.example.test.repository.CourseRepository;
-import com.example.test.repository.MainBoardDAO;
+import com.example.test.entity.*;
+import com.example.test.repository.*;
+import com.google.common.base.StandardSystemProperty;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,10 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
 
+    private final CourseListRepositroy courseListRepositroy;
+
+    private final MemberRepository memberRepository;
+    private final MemberService memberService;
     private ModelMapper modelMapper = new ModelMapper();
 
 
@@ -126,17 +128,19 @@ public class CourseService {
 
     public MainBoardDTO writeMode(HttpServletRequest req) {
         String[] str = req.getParameterValues("data");
+        System.out.println(str);
         ArrayList<CourseDTO> cdtos = this.toCDTO(str);
 
-
         Long course_id = this.makeCourse();
+        int index = 1;
         for(CourseDTO dto : cdtos) {
-            this.saveCourse(dto, course_id);
+            System.out.println(dto.toString());
+            this.saveCourse(dto, course_id, index++);
         }
 
-        MainBoardDTO mdto = new MainBoardDTO();
+//        MainBoardDTO mdto = new MainBoardDTO();
 
-        mdto.setCourse_id(Long.toString(course_id));
+//        mdto.setCourse_id(Long.toString(course_id));
 
         String title = req.getParameter("title");
         String region = req.getParameter("region");
@@ -152,17 +156,23 @@ public class CourseService {
             if(region.equals("제주특별자치도"))
                 region = "제주";
         }
-        mdto.setTitle(title);
-        mdto.setRegion(region);
+//        mdto.setTitle(title);
+//        mdto.setRegion(region);
 
         //임시
-        Map<String,Object> map = new HashMap<String,Object >();
-        map.put("mdto",mdto);
-        map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
-        //
-        mainBoardDAO.insertWrite(map);
+//        Map<String,Object> map = new HashMap<String,Object >();
+//        map.put("mdto",mdto);
+//        map.put("user_id",1); //임시값, 나중에 session에서 유저id 가져와야함
+//        mainBoardDAO.insertWrite(map);
+        CourseList courseList = new CourseList();
+        courseList.setCourse_id(course_id);
+        courseList.setTitle(title);
+        courseList.setRegion(region);
+        System.out.println(courseList.toString());
+        courseListRepositroy.save(courseList);
 
-        return mdto;
+//        return mdto;
+        return null;
     }
 
 
@@ -247,24 +257,49 @@ public class CourseService {
         return list;
     }
 
-    public MainBoardDTO saveMainboard(HttpServletRequest req) {
+//    public MainBoardDTO saveMainboard(HttpServletRequest req) {
+//
+//        int c_id=Integer.parseInt(req.getParameter("c_id"));
+//        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
+//
+//        return mdto;
+//    }
 
-        int c_id=Integer.parseInt(req.getParameter("c_id"));
-        MainBoardDTO mdto = mainBoardDAO.getMainboard(c_id);
-
-        return mdto;
-    }
-
-    public void saveCourse(CourseDTO cdto, Long course_id){
+    public void saveCourse(CourseDTO cdto, long course_id, long course_order){
         CourseData courseData = modelMapper.map(cdto, CourseData.class);
-        courseData.setCourse_id(course_id);
+        courseData.setId(course_id);
+        courseData.setOrder(course_order);
+        System.out.println(courseData.toString());
         courseDataRepository.save(courseData);
-
     }
 
     public long makeCourse(){
         Course course = new Course();
         courseRepository.save(course);
         return course.getId();
+    }
+
+    public List<CourseListDTO> getList(){
+        List<CourseList> courseLists = courseListRepositroy.findAll();
+        List<CourseListDTO> lists = new ArrayList<>();
+        int order = 1;
+        for(CourseList courseList : courseLists){
+            CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            int length = courseDataRepository.countById(cdto.getCourse_id());
+            List<CourseDTO> datas = new ArrayList<>();
+            for(int i=0; i < length;i++) {
+                CourseDataId id = new CourseDataId();
+                id.setId(cdto.getCourse_id());
+                id.setOrder((long) i+1);
+                datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
+            }
+            cdto.setCourseDatas(datas);
+            cdto.setCenter();
+            long id = Long.parseLong(cdto.getCreatedBy());
+            System.out.println(id);
+            cdto.setCreatedBy(memberService.getMember(id).getNickname());
+            lists.add(cdto);
+        }
+        return lists;
     }
 }

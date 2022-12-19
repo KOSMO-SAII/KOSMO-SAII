@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>비밀번호 확인</title>
 </head>
-<script>
-    var msg = '${msg}';
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var msg = /*[[${msg}]]*/;
     if(msg === '비밀번호를 다시 확인해 주세요.') {
         alert("비밀번호를 다시 확인해 주세요.");
     }
+/*]]>*/
 </script>
 <body>
 <form action="/members/check" method="post">

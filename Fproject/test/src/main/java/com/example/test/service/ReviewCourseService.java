@@ -27,8 +27,9 @@ public class ReviewCourseService {
     @Transactional
     public Long update(Long id, ReviewCourseUpdateRequestDTO requestDTO){
         CourseReview reviewCourse = reviewCourseRepository.findById(id)
-                                    .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent());
+                .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+        reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent(), requestDTO.getCourse_id());
+        System.out.println(requestDTO.getCourse_id());
         return id;
     }
 
@@ -61,5 +62,9 @@ public class ReviewCourseService {
                 .collect(Collectors.toList());
     }
 
+//    @Transactional
+//    public int updateView(Long id){
+//        return reviewCourseRepository.updateView(id);
+//    }
 
 }

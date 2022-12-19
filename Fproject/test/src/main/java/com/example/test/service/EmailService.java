@@ -76,7 +76,8 @@ public class EmailService {
     public String setContext(String code) {
         Context context = new Context();
         context.setVariable("code", code);
-        return templateEngine.process("EmailMessage", context); //mail.html
+        return templateEngine.process("EmailMessage", context); //emailMessage.html
     }
+
 
 }

@@ -23,7 +23,8 @@
     function reviewUpdate(){
         var data = {
             title: $('#title').val(),
-            content: $('#content').val()
+            content: $('#content').val(),
+            course_id: $('#course_id').val()
         };
         var id = $('#id').val();
         var token = $("meta[name='_csrf']").attr("content");
@@ -33,13 +34,13 @@
                 xhr.setRequestHeader(header,token);
                 },
                 type : 'PUT',
-                url : '/api/v1/review/'+id,
+                url : '/api/reviews/'+id,
                 dataType : 'json',
                 contentType : 'application/json; charset=utf-8',
                 data : JSON.stringify(data)
             }).done(function(){
                 alert('글이 수정되었습니다.');
-                window.location.href = '/review/detail/'+id;
+                window.location.href = '/reviews/detail/'+id;
             }).fail(function(error){
                 alert(JSON.stringify(error));
             });
@@ -57,12 +58,12 @@
                    xhr.setRequestHeader(header,token);
                  },
                  type : 'DELETE',
-                 url : '/api/v1/review/'+id,
+                 url : '/api/reviews/'+id,
                  dataType : 'json',
                  contentType : 'application/json; charset=utf-8'
              }).done(function(){
                  alert('글이 삭제되었습니다.');
-                 window.location.href = '/reviewCourse';
+                 window.location.href = '/course-reviews';
              }).fail(function(error){
                  alert(JSON.stringify(error));
              })
@@ -79,16 +80,19 @@
             <label for="id">글 번호</label>
             <input type="text" id="id" th:value="${reviewCourse.id}" readonly></div>
         <div class="form-group">
+            <label for="course_id">코스번호</label>
+            <input type="text" id="course_id" th:value="${reviewCourse.course_id}"></div>
+        <div class="form-group">
             <label for="title">제목</label>
             <input type="text" id="title"  th:value="${reviewCourse.title}"></div>
         <div class="form-group">
-            <label for="createdBy">작성자</label>
-            <input type="text" id="createdBy"  th:value="${reviewCourse.createdBy}" readonly></div>
+            <label for="author">작성자</label>
+            <input type="text" id="author"  th:value="${reviewCourse.author}" readonly></div>
         <div class="form-group">
             <label for="content">내용</label>
             <textarea id="content"  th:text="${reviewCourse.content}"></textarea></div>
     </form>
-    <a th:href="@{'/review/detail/' + ${reviewCourse.id}}">취소</a>
+    <a th:href="@{'/reviews/detail/' + ${reviewCourse.id}}">취소</a>
     <input type="button" id="btn-update" onclick="reviewUpdate()" value="수정 완료">
     <input type="button" id="btn-delete" onclick="reviewDelete()" value="삭제">
 </div>

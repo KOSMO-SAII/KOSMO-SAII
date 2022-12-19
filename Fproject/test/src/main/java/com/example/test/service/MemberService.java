@@ -1,11 +1,13 @@
 package com.example.test.service;
 
 import com.example.test.config.SessionMember;
+import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -61,9 +63,10 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public Member saveMember1(Member member)throws Exception {
+    public Member saveMember1(MemberDTO memberDTO)throws Exception {
         System.out.println("여기는 엡데이트 서비스");
-        Member user1 = member.update1(member,passwordEncoder);
+        Member user1 = new Member();
+        user1 = user1.update1(memberDTO,passwordEncoder);
         return memberRepository.save(user1);
     }
 
@@ -81,4 +84,19 @@ public class MemberService implements UserDetailsService {
 //        String encPassword = encoder.encode(dto.getPassword());
 //        user.modify(dto.getNickname(), encPassword);
 //    }
+
+    public Member getMember(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Member member = memberRepository.findByLoginId(authentication.getName());
+        return member;
+    }
+
+    public Member getMember(long id){
+        Member member = new Member();
+        if(id != -1){
+            member = memberRepository.findById(id).orElseThrow();
+        }
+        return member;
+    }
+
 }

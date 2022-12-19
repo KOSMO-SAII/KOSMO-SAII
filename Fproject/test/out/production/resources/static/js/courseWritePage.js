@@ -793,7 +793,9 @@ function rsaveMyPin(myplace,myplaceinfo){
 			mymarker:mymarker,
 			myoverlay:myoverlay,
 			data:data,
-			id:myplaceinfo.placeid
+			id:myplaceinfo.placeid,
+			xPoint : myplaceinfo.placex,
+			yPoint : myplaceinfo.placey
 		}
 		
 		mymarkers.push(mymarkerOb);
@@ -824,7 +826,6 @@ function addMySchedule(place){
 	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
 				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|",
 						memo:""}
-	
 	var li=document.createElement('li');	
 	li.innerHTML=
 	        '	 <input type="hidden" class="id" name="as" value="'+place.placeid+'">'+
@@ -1199,4 +1200,20 @@ function arraychange(currentItemIndex,dropItemIndex){
 	//console.log(mymarkers);
 	makeline(path);
 	polyline.setMap(map);
+}
+
+var xPoints = 0;
+var yPoints = 0;
+function makeStaticMap(){
+    for(var i = 0;i < mymarkers.length;i++){
+        xPoints += Number(mymarkers[i].xPoint);
+        yPoints += Number(mymarkers[i].yPoint);
+    }
+    xPoints = xPoints/mymarkers.length;
+    yPoints = yPoints/mymarkers.length;
+
+    var moveLatLon = new kakao.maps.LatLng(yPoints, xPoints);
+    map.setCenter(moveLatLon);
+
+    
 }
