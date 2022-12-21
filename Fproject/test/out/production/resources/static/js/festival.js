@@ -13,11 +13,19 @@ if(e.parentElement.parentElement.id == "monthlist"){
 if(e.parentElement.id != ""){
  c = e.parentElement.id
  }
+//  else(e.parentElement.id=""){
+//    c=""
+//  }
 
 }else if(e.parentElement.parentElement.id == "arealist"){
 if(e.parentElement.id != ""){
  id = e.parentElement.id
  }
+//  else(e.parentElement.id=""){
+//     for(var i=0;i<id.length;i++){
+//     printInfo(id[i]
+//     }
+//   }
 }
 
 
@@ -45,7 +53,7 @@ function getInfo(id, c){
     var infoitem=[];
     var param = ('&areaCode='+id+'&eventStartDate=2022'+c+'01&eventEndDate=2022'+c+'31')
     console.log(param);
-    fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=Q'+param)
+    fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=O'+param)
     .then((response) => response.json())
     .then((data) => {
         info = data;
@@ -66,3 +74,14 @@ function printInfo(infoitem){
     li.innerHTML = '<a href="/festivalview/'+infoitem.contentid+'"><image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image><p class="title">'+infoitem.title+'</p><p class="date">['+''+infoitem.eventstartdate+'~'+infoitem.eventenddate+']</p></a>';
     ul[0].appendChild(li);
 }
+
+//var All=false;
+//function SelectAll(){
+//var selection=document.getElementById("infoitem[]");
+//if(all==false){
+//    all=true;
+//    for(var i=0;i<)
+//}
+//}
+
+
