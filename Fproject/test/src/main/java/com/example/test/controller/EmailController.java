@@ -25,7 +25,7 @@ public class EmailController extends HttpServlet {
 
     @RequestMapping("/m/{email}")
     public String mailConfirm(@PathVariable String email, Model model) throws MessagingException, UnsupportedEncodingException {
-        authCode = emailService.sendEmail(email);  //수정
+        authCode = emailService.sendEmail(email);
         model.addAttribute("authCode", authCode);
         return "mailCheck";
 

@@ -33,7 +33,8 @@ public class SignUpFormValidator implements Validator {
             errors.rejectValue("LoginId", "invalid.LoginId",
                     new Object[]{memberDTO.getLoginId()}, "이미 사용중인 아이디 입니다.");
         }
-        if(memberDTO.getLoginPw()!=memberDTO.getCheckPw()){
+//        if(memberDTO.getLoginPw()!=memberDTO.getCheckPw()){
+        if(!(memberDTO.getLoginPw().equals(memberDTO.getCheckPw()))){
             errors.rejectValue("checkPw", "invalid.checkPw",
                     new Object[]{memberDTO.getCheckPw()}, "비밀번호와 동일하지 않습니다.");
         }
