@@ -22,7 +22,7 @@ public class ReviewCommentResponseDTO {
         this.comment = comment.getComment();
         this.createdDate = comment.getCreatedDate();
         this.modifiedDate = comment.getModifiedDate();
-        this.nickname = comment.getUser().getNickname();
+//        this.nickname = comment.getUser().getNickname();
         this.postsId = comment.getReviewCourse().getId();
     }
 }
