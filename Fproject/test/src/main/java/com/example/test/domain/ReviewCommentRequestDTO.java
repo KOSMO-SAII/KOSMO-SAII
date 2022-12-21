@@ -20,7 +20,7 @@ public class ReviewCommentRequestDTO {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private Member user;
+//    private Member user;
     private CourseReview reviewCourse;
 
     /* Dto -> Entity */
@@ -30,7 +30,7 @@ public class ReviewCommentRequestDTO {
                 .comment(comment)
                 .createdDate(createdDate)
                 .modifiedDate(modifiedDate)
-                .user(user)
+//                .user(user)
                 .reviewCourse(reviewCourse)
                 .build();
 
