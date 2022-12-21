@@ -21,4 +21,6 @@ public class PlaceComment extends Base{
     private Double score;
 
     private String comment;
+
+
 }
