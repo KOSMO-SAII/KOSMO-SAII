@@ -32,6 +32,7 @@ public class ReviewCourseApiController {
 	@PostMapping("/reviews")
 	public Long save(@RequestBody ReviewCourseSaveRequestDTO requestDto) {
 		//RequestBody, ResponseBody - 데이터 비동기 처리 하여 값 받음
+		System.out.println(requestDto.getAuthor());
 		return reviewCourseService.save(requestDto);
 	}
 	
