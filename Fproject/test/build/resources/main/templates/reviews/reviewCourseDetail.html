@@ -23,26 +23,32 @@
     <form>
         <div>
             <label for="id">글 번호</label>
-            <input type="text" id="id" th:value="${reviewCourse.id}" readonly>
-        </div>
+            <input type="text" id="id" th:value="${reviewCourse.id}" readonly></div>
+        <div>
+            <label for="course_id">코스 번호</label>
+            <input type="text" id="course_id" th:value="${reviewCourse.course_id}" readonly></div>
         <div>
             <label for="title">제목</label>
-            <input type="text" id="title"  th:value="${reviewCourse.title}" readonly>
-        </div>
+            <input type="text" id="title"  th:value="${reviewCourse.title}" readonly></div>
         <div>
-            <label for="createdBy">작성자</label>
-            <input type="text" id="createdBy"  th:value="${reviewCourse.createdBy}" readonly>
-        </div>
+            <label for="author">작성자</label>
+            <input type="text" id="author"  th:value="${reviewCourse.author}" readonly></div>
         <div>
             <label for="content">내용</label>
-            <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea>
-        </div>
+            <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea></div>
     </form>
 </div>
-<div sec:authorize="isAuthenticated()">
-    <a th:href="@{/review/update/{id}(id = ${reviewCourse.id})}" >수정/삭제</a>
+    <a th:href="@{/course-reviews}">목록</a>
+<div sec:authorize="isAuthenticated()">  <!-- 이 부분 수정하기 :  작성자 아이디와 세션 정보 같을 때로 -->
+    <a th:href="@{/reviews/update/{id}(id = ${reviewCourse.id})}" >수정/삭제</a>
 </div>
 
+<!-- 댓글 -->
+<div class="card">
+    <div class="card-header bi bi-chat-dots">
+
+    </div>
+</div>
 
 
 <!--마우스커서-->

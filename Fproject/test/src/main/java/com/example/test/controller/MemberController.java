@@ -86,7 +86,12 @@ public class MemberController {
         }else if(principal != null && sessionMember != null ) {
             model.addAttribute("name",sessionMember.getLoginId());
             model.addAttribute("nickname",sessionMember.getNickname());
+            SessionMember sessionUser = memberService.memdto(sessionMember.getLoginId());
+            model.addAttribute("info",sessionUser);
+            return "/mypage/mypage";
+
         }
+        System.out.println(principal.getName());
         SessionMember sessionUser = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionUser);
         System.out.println(sessionUser.toString());
@@ -148,16 +153,20 @@ public class MemberController {
     }
 
     @RequestMapping("checkpath")
-    public String password(Model model,Principal principal){
-        SessionMember member = memberService.memdto(principal.getName());
+    public String password(Model model,SessionMember sessionMember){
+        System.out.println(sessionMember.getLoginId());
+        SessionMember member = memberService.memdto(sessionMember.getLoginId());
+        System.out.println(member.toString());
         model.addAttribute("member",member);
         return "/mypage/pwcheck";
     }
     @RequestMapping("check")
-    public String passwordCheck(Authentication auth, @RequestParam("loginPw1") String loginPw1, RedirectAttributes rttr, Principal principal){
+    public String passwordCheck(Authentication auth, @RequestParam("loginPw1") String loginPw1, RedirectAttributes rttr, SessionMember sessionMember){
 //        Member user = (Member) auth.getPrincipal();
 //        String userpw = user.getLoginPw();
-        SessionMember member = memberService.memdto(principal.getName());
+        System.out.println(sessionMember.getLoginId());
+        SessionMember member = memberService.memdto(sessionMember.getLoginId());
+        System.out.println(member.toString());
         String pw = member.getLoginPw();
         if(passwordEncoder.matches(loginPw1, pw)) {
             System.out.println("pw 재확인 완료..");

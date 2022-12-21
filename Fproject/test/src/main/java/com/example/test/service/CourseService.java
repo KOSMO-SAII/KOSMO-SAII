@@ -280,6 +280,7 @@ public class CourseService {
     }
 
     public List<CourseListDTO> getList(){
+
         List<CourseList> courseLists = courseListRepositroy.findAll();
         List<CourseListDTO> lists = new ArrayList<>();
         int order = 1;
