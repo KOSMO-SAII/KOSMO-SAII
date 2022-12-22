@@ -33,6 +33,7 @@ public class SessionMember implements Serializable {
     private String nickname;
     private String oProfileImg;
     private String phoneNumber;
+    private String picture;
     private Role role;
 
     public SessionMember(Member member) {
@@ -51,6 +52,7 @@ public class SessionMember implements Serializable {
         this.oProfileImg=member.getOProfileImg();
         this.phoneNumber=member.getPhoneNumber();
         this.role = member.getRole();
+        this.picture=member.getPicture();
 
     }
 }

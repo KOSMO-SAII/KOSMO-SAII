@@ -23,7 +23,7 @@ public class ReviewCourseResponseDTO extends Base {
     private String author;
 
     //댓글 추가
-    private Long userId;
+//    private Long userId;
     private List<ReviewCommentResponseDTO> comments;
 
     /* Entity -> Dto*/

@@ -1,6 +1,6 @@
 package com.example.test.entity;
 
-import lombok.Getter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -14,11 +14,13 @@ public class PlaceComment extends Base{
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(nullable = false)
-    private Long place_id;
+    @Column(nullable = false, name = "place_id")
+    private Long placeId;
 
     @Column(nullable = false)
     private Double score;
 
     private String comment;
+
+
 }

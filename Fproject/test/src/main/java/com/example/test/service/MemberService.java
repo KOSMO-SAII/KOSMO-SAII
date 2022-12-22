@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,8 +24,8 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
-    @Autowired
-    PasswordEncoder passwordEncoder;
+
+
     private final MemberRepository memberRepository;
 
     public Member saveMember(Member member) {
@@ -41,7 +42,6 @@ public class MemberService implements UserDetailsService {
 
     public SessionMember memdto (String loginId){
         Member member = memberRepository.findByLoginId(loginId);
-        System.out.println(member.toString());
         ModelMapper modelMapper = new ModelMapper();
         SessionMember employeeEntity = modelMapper.map(member, SessionMember.class);
         System.out.println(employeeEntity+"여기 memdto");
@@ -64,6 +64,7 @@ public class MemberService implements UserDetailsService {
     }
 
     public Member saveMember1(MemberDTO memberDTO)throws Exception {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         System.out.println("여기는 엡데이트 서비스");
         Member user1 = new Member();
         user1 = user1.update1(memberDTO,passwordEncoder);
