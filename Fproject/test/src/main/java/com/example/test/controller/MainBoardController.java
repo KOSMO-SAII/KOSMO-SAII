@@ -27,7 +27,7 @@ public class MainBoardController {
 	public String mainBoardList(Model model) {
 		System.out.println("list");
 		model.addAttribute("list", mainBoardDAO.listDao());
-		return "MainBoardList";
+		return "main_board/MainBoardList";
 	}
 	
 	@GetMapping(value="/mainboard_view")
@@ -35,7 +35,7 @@ public class MainBoardController {
 		System.out.println("view");
 		mainBoardDAO.plusviewcountDao(req.getParameter("post_id"));
 		model.addAttribute("view", mainBoardDAO.viewDao(req.getParameter("post_id")));
-		return "MainBoardView";
+		return "main_board/MainBoardView";
 	}
 	
 	/* 코스게시판 글 작성
