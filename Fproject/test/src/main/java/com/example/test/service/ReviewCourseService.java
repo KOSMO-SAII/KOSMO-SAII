@@ -7,6 +7,9 @@ import com.example.test.domain.ReviewCourseUpdateRequestDTO;
 import com.example.test.entity.CourseReview;
 import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,6 +22,7 @@ public class ReviewCourseService {
 
     private final ReviewCourseRepository reviewCourseRepository;
 
+    private ModelMapper modelMapper = new ModelMapper();
     @Transactional
     public Long save(ReviewCourseSaveRequestDTO requestDTO){
         return reviewCourseRepository.save(requestDTO.toCourseReview()).getId();
@@ -40,13 +44,16 @@ public class ReviewCourseService {
     }
 
     @Transactional
-    public List<ReviewCourseListResponseDTO> findAllDesc(){
-        return reviewCourseRepository.findAllDesc().stream()
-                .map(ReviewCourseListResponseDTO::new)
-                .collect(Collectors.toList());
+    public Page<ReviewCourseListResponseDTO> findAllDesc(PageRequest pageRequest){
+
+        Page<CourseReview> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
+
+        Page<ReviewCourseListResponseDTO> dtos = courseReviewList.map(reviewCourse -> modelMapper.map(reviewCourse, ReviewCourseListResponseDTO.class));
+
+        return dtos;
     }
-    //reviewCourseRepository 결과로 넘어온 CourseReview의 Stream을 map을 통해
-    // ReviewCourseListResponseDTO로 변환해 List로 반환하는 메소드.
+    //reviewCourseRepository 결과로 넘어온 CourseReviewList를 Page로 래핑하고 map을 통해
+    // ReviewCourseListResponseDTO로 변환해 반환하는 메소드.
 
     @Transactional
     public void delete(Long id){

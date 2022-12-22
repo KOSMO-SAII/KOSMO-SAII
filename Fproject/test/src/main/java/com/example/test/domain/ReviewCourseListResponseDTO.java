@@ -4,11 +4,13 @@ import com.example.test.entity.Base;
 import com.example.test.entity.CourseReview;
 import com.example.test.entity.Member;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 @Getter
+@RequiredArgsConstructor
 public class ReviewCourseListResponseDTO extends Base{
     private long id;
     private String course_id;

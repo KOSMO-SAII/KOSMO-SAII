@@ -39,7 +39,7 @@
             <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea></div>
     </form>
 </div>
-    <a th:href="@{/course-reviews}">목록</a>
+    <a th:href="@{/reviews/course}">목록</a>
 <div sec:authorize="isAuthenticated()">  <!-- 이 부분 수정하기 :  작성자 아이디와 세션 정보 같을 때로 -->
     <a th:href="@{/reviews/update/{id}(id = ${reviewCourse.id})}" >수정/삭제</a>
 </div>

@@ -285,7 +285,6 @@ public class CourseService {
     public Page<CourseListDTO> getList(PageRequest pageRequest){
 
         Page<CourseList> courseLists = courseListRepositroy.findAll(pageRequest);
-        int order = 1;
         for(CourseList courseList : courseLists){
             CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
             int length = courseDataRepository.countById(cdto.getCourse_id());

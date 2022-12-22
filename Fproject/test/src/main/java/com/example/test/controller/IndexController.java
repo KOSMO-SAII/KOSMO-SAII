@@ -11,6 +11,7 @@ import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import com.example.test.service.ReviewCourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
     private final MemberService memberService;
 
     @GetMapping("/index")
-    public String index(Model model, Principal principal){
-        model.addAttribute("reviewCourse", reviewCourseService.findAllDesc());
+    public String index(Model model, Principal principal,PageRequest pageRequest){
+        model.addAttribute("reviewCourse", reviewCourseService.findAllDesc(pageRequest));
         if(principal != null){
             model.addAttribute("name",principal.getName());
         }
