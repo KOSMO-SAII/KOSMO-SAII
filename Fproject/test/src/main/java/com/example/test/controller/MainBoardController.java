@@ -39,8 +39,8 @@ public class MainBoardController {
 	}
 
 	@GetMapping(value="/mainboard_delete")
-	public String mainBoardDelete(HttpServletRequest req,Model model){
-
+	public String mainBoardDelete(HttpServletRequest req, Model model){
+		mainBoardDAO.deleteDao(req.getParameter("post_id"));
 		return "redirect:http://localhost:8081/mainboard_list";
 	}
 	

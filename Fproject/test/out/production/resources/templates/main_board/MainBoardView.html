@@ -28,7 +28,10 @@
 		</tr>
 		<td colspan="5">
 			<button type="button" onclick="location.href=''">수정하기</button>
-			<button type="button" onclick="location.href='http://localhost:8081/mainboard_delete'">삭제하기</button>
+			<!--<button type="button" th:onclick="location.href='http://localhost:8081/mainboard_delete'">삭제하기</button>-->
+			<!--<button type="button" th:onclick="|location.href='@{http://localhost:8081/mainboard_delete(post_id=${view.post_id})}'|">삭제하기</button>-->
+			                  <!--th:onclick="'location.href=\'' + @{view(uid=${ad.uid})} + '\''"-->
+
 			<button type="button" onclick="location.href='http://localhost:8081/mainboard_list'">목록보기</button>
 		</td>
 	</table>
