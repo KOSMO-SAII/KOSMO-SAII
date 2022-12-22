@@ -37,6 +37,12 @@ public class MainBoardController {
 		model.addAttribute("view", mainBoardDAO.viewDao(req.getParameter("post_id")));
 		return "main_board/MainBoardView";
 	}
+
+	@GetMapping(value="/mainboard_delete")
+	public String mainBoardDelete(HttpServletRequest req,Model model){
+
+		return "redirect:http://localhost:8081/mainboard_list";
+	}
 	
 	/* 코스게시판 글 작성
 	@GetMapping(value="/mainboard_write_form")
