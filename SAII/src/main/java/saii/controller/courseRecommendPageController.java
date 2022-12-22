@@ -19,33 +19,28 @@ import saii.dto.mainboardDTO;
 
 @WebServlet("/course_recommend")
 public class courseRecommendPageController extends HttpServlet {
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//MBOARD DAO 정보가져오기
+		// MBOARD DAO 정보가져오기
 		mainboardDAO mdao = new mainboardDAO();
 		ArrayList<mainboardDTO> mdtos = mdao.getRecommendData();
-		//COURSE DAO 정보가져오기
+		// COURSE DAO 정보가져오기
 		courseDAO cdao = new courseDAO();
-		List<Map<String,String>> list = new Vector<Map<String, String>>();
-		for(mainboardDTO mdto : mdtos) {
+		List<Map<String, String>> list = new Vector<Map<String, String>>();
+		for (mainboardDTO mdto : mdtos) {
 			HashMap<String, String> map = new HashMap<>();
 			map.put("title", mdto.getM_title());
 			map.put("region", mdto.getRegion());
 			map.put("p_name", cdao.getPlaceNames(mdto.getCourse_id()));
 			map.put("c_id", mdto.getCourse_id());
-			
+
 			// 각 정보 속성값에 저장하기
 			list.add(map);
-		}		
+		}
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("saii/courseRecommendPage.jsp").forward(req, resp);
 	}
-	
-	
-	
+
 }
-
-
-

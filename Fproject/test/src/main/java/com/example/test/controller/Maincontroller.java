@@ -36,7 +36,7 @@ public class Maincontroller extends HttpServlet {
     @GetMapping("/")
     public String MainPage(Model model){
         PageRequest pageRequest = PageRequest.of(0,3);
-        model.addAttribute("lists",courseService.getList(pageRequest));
+        model.addAttribute("lists",courseService.getCard());
         return "Mainpage";
     }
     @RequestMapping("/test3")
