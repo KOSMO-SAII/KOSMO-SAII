@@ -46,11 +46,9 @@ public class ReviewCourseService {
     @Transactional
     public Page<ReviewCourseListResponseDTO> findAllDesc(PageRequest pageRequest){
 
-        Page<CourseReview> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
+        Page<ReviewCourseListResponseDTO> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
 
-        Page<ReviewCourseListResponseDTO> dtos = courseReviewList.map(reviewCourse -> modelMapper.map(reviewCourse, ReviewCourseListResponseDTO.class));
-
-        return dtos;
+        return courseReviewList;
     }
     //reviewCourseRepository 결과로 넘어온 CourseReviewList를 Page로 래핑하고 map을 통해
     // ReviewCourseListResponseDTO로 변환해 반환하는 메소드.

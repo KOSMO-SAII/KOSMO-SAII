@@ -1,5 +1,6 @@
 package com.example.test.repository;
 
+import com.example.test.domain.ReviewCourseListResponseDTO;
 import com.example.test.entity.CourseReview;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,8 +17,10 @@ public interface ReviewCourseRepository extends JpaRepository<CourseReview, Long
     //jpa 쿼리 작성 법 검색
 
     @Query(value = "SELECT r FROM CourseReview r ORDER BY r.id DESC")
-    Page<CourseReview> findAllDesc(PageRequest pageRequest);
+    Page<ReviewCourseListResponseDTO> findAllDesc(PageRequest pageRequest);
     //조회용 프레임워크 사용
+
+
 
     List<CourseReview> findByTitleContaining(String title);
 
