@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 
 <head>
   <meta charset="UTF-8">
@@ -17,7 +19,7 @@
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
-
+<div layout:fragment="content">
 <body>
 <div id="skipToContent">
   <a href="#contents">본문 바로가기</a>
@@ -122,13 +124,12 @@
             <p>
             </p>
           </div>
-      </div>
+
       </details>
+      </div>
         <div class="area_txtView top">
           <div class="inr_wrap">
         </div>
-
-      </div>
       <!-- //내용더보기 -->
 
       <h3 class="blind">상세정보</h3>
@@ -308,8 +309,6 @@
 <!-- //contents -->
 
 <!-- 공지사항 , 유관기관, footer-->
-<div id="footer">
-</div>
 
 
 <!-- 맵 팝업 -->
@@ -356,15 +355,15 @@
     </div>
   </div>
 </div>
+</div>
 <!-- //맵 팝업 -->
 
-
-
 </body>
-
-<script th:inline="javascript">
+  <script th:inline="javascript">
   var id=/*[[${id}]]*/
-
 </script>
-<script src="/js/festival_view.js"></script>
+  <script type="text/javascript" th:src="@{/js/festival_view.js}"></script>
+</div>
+
+
 </html>
