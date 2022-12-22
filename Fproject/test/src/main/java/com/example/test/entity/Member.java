@@ -48,6 +48,9 @@ public class Member{
     @Column(nullable = false, unique = true)
     private String nickname;
     private String oProfileImg;
+    @Column
+    private String picture;
+
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
@@ -59,7 +62,7 @@ public class Member{
     public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,
                   Date birthday, String email, String gender, String loginId, String loginPw,
                   String nProfileImg, String name, String nickname, String oProfileImg,
-                  String phoneNumber){
+                  String phoneNumber, String picture,Role role){
         this.memberId=memberId;
         this.createDate=createDate;
         this.updateDate=updateDate;
@@ -74,6 +77,9 @@ public class Member{
         this.nickname=nickname;
         this.oProfileImg=oProfileImg;
         this.phoneNumber=phoneNumber;
+        this.picture=picture;
+        this.role=role;
+
     }
 
     public static Member createMember(MemberDTO memberDTO, PasswordEncoder passwordEncoder) {
@@ -96,6 +102,21 @@ public class Member{
         return member;
     }
 
+    public Member createMember2(String name, String password, String email, PasswordEncoder passwordEncoder,String loginId) {
+        Member member = new Member();
+        member.setLoginId(loginId);
+        System.out.println(loginId+" "+member.getLoginId());
+        member.setName(name);
+        member.setEmail(email);
+        member.setAddress("입력없음");
+        String pw = passwordEncoder.encode(password);
+        member.setNickname(LocalDateTime.now()+"간편로그인="+name);
+        member.setLoginPw(pw);
+        member.setRole(Role.USER);
+        System.out.println(member.getEmail()+"이이이");
+        return member;
+    }
+
     public static Member update1(MemberDTO memberDTO, PasswordEncoder passwordEncoder)throws Exception{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
@@ -113,6 +134,7 @@ public class Member{
         member1.setRole(memberDTO.getRole());
         member1.setCreateDate(memberDTO.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
+        member1.setPicture(memberDTO.getPicture());
 
         System.out.println(member1+"여ㅣ가 업데이트 엔티티");
 
@@ -138,15 +160,23 @@ public class Member{
         String fileName = uuid+"-"+multipartFile.getOriginalFilename();
         File saveFile = new File(projectPath,fileName);
         multipartFile.transferTo(saveFile);
-        member.setOProfileImg("/img/profile/"+fileName);
-        member1.setOProfileImg(member.getOProfileImg());
+        member.setPicture("/img/profile/"+fileName);
+        member1.setPicture(member.getOProfileImg());
 
         return member1;
 
     }
+    public Member update(String name, String password, String address, PasswordEncoder passwordEncoder) {
+        this.name = name;
+        String pw = passwordEncoder.encode(password);
+        this.loginPw = pw;
+        this.address = "입력없음";
+        return this;
 
+    }
 
-
-
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
 }

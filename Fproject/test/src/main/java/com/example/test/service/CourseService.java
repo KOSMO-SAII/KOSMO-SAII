@@ -9,12 +9,15 @@ import com.google.common.base.StandardSystemProperty;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.print.Pageable;
 import java.io.IOException;
 import java.util.*;
 
@@ -279,10 +282,9 @@ public class CourseService {
         return course.getId();
     }
 
-    public List<CourseListDTO> getList(){
-        List<CourseList> courseLists = courseListRepositroy.findAll();
-        List<CourseListDTO> lists = new ArrayList<>();
-        int order = 1;
+    public Page<CourseListDTO> getList(PageRequest pageRequest){
+
+        Page<CourseList> courseLists = courseListRepositroy.findAll(pageRequest);
         for(CourseList courseList : courseLists){
             CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
             int length = courseDataRepository.countById(cdto.getCourse_id());
@@ -298,8 +300,8 @@ public class CourseService {
             long id = Long.parseLong(cdto.getCreatedBy());
             System.out.println(id);
             cdto.setCreatedBy(memberService.getMember(id).getNickname());
-            lists.add(cdto);
         }
+        Page<CourseListDTO> lists = courseLists.map(courseList -> modelMapper.map(courseList, CourseListDTO.class));
         return lists;
     }
 }

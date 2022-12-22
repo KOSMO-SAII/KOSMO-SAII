@@ -16,6 +16,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Getter
 public class Base extends BaseTime{
+
     @CreatedBy
     @Column(updatable = false)
     protected String createdBy;

@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">>
+      layout:decorate="~{layouts/layout1}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
     <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <!--    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.-->
     <!--    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.-->
+
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
 </head>
@@ -38,18 +39,72 @@
             <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea></div>
     </form>
 </div>
-    <a th:href="@{/course-reviews}">목록</a>
+    <a th:href="@{/reviews/course}">목록</a>
 <div sec:authorize="isAuthenticated()">  <!-- 이 부분 수정하기 :  작성자 아이디와 세션 정보 같을 때로 -->
     <a th:href="@{/reviews/update/{id}(id = ${reviewCourse.id})}" >수정/삭제</a>
 </div>
 
 <!-- 댓글 -->
-<div class="card">
-    <div class="card-header bi bi-chat-dots">
+<div class="col justify-content-center my-1 mx-0">
+    <form method="POST" onsubmit="return checkComment(event)" id="commentForm">
+        <!-- hidden 영역 -->
+        <input type="hidden" name="EMAIL" th:value="${userInform.userEmail}">
+        <input type="hidden" name="POST_NUM" th:value="${resultMap.POST_NUM}">
+        <input type="hidden" name="CATEGORY_NAME" th:value="${resultMap.CATEGORY_NAME}">
 
+        <!-- 입력 영역 -->
+        <input type="text" id="content" name="CONTENT">
+        <input type="button" onclick="return checkComment(event)" value="댓글작성">
+    </form>
+</div>
+<!-- 댓글 목록 -->
+<div id="commentTable">
+    <div th:each="comment:${commentList}">
+        <form method="POST">
+            <input type="hidden" id="commentNum" name="CommentNum" th:value="${comment.CO_NUM}">
+            <div>
+                <input type="button" class="btn p-0 btn-md" name="commentID" th:value="${comment.EMAIL}" />
+                <small th:text="${#strings.substring(comment.TIME,0,19)}"></small>
+            </div>
+            <div th:text="${comment.CONTENT}"></div>
+            <div class="text-right" th:if="${comment.EMAIL==userInform.userEmail}">
+                <span><button type="submit" name="submit" value="update">수정</button></span>
+                <span><button type="submit" name="submit" value="delete">삭제</button></span>
+            </div>
+        </form>
     </div>
 </div>
 
+<script>
+
+ /** 댓글 저장 */
+function commentSave() {
+    const data = {
+        postsId: $('#postsId').val(),
+        comment: $('#comment').val()
+    }
+
+    // 공백 및 빈 문자열 체크
+    if (!data.comment || data.comment.trim() === "") {
+        alert("공백 또는 입력하지 않은 부분이 있습니다.");
+        return false;
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: '/api/posts/' + data.postsId + '/comments',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function () {
+            alert('댓글이 등록되었습니다.');
+            window.location.reload();
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    }
+}
+
+</script>
 
 <!--마우스커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>

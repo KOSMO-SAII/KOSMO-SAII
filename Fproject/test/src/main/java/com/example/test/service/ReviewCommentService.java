@@ -25,7 +25,7 @@ public class ReviewCommentService {
         CourseReview reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다."+id));
 
-        dto.setUser(user);
+//        dto.setUser(user);
         dto.setReviewCourse(reviewCourse);
 
         ReviewComment reviewComment = dto.toReviewComment();

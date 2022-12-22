@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 
 <head>
   <meta charset="UTF-8">
@@ -17,7 +19,7 @@
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
-
+<div layout:fragment="content">
 <body>
 <div id="skipToContent">
   <a href="#contents">본문 바로가기</a>
@@ -77,7 +79,7 @@
         <li class="select_tab on" id="photoTab"><a href="#galleryGo"><span>사진보기</span></a></li>
         <li class="select_tab" id="detailTab"><a href="#detailGo"><span>상세정보</span></a></li>
         <li class="select_tab" id="talkTab"><a href="#replyGo"><span>여행톡</span></a></li>
-        <li class="select_tab" id="recomTab"><a href="javascript:tabChange('relationGo');"><span>추천여행</span></a></li>
+        <li class="select_tab" id="recomTab"><a href="course/courseList"><span>추천여행</span></a></li>
       </ul>
     </div>
 
@@ -113,19 +115,21 @@
         올해로 8회째를 맞는 ‘2022 겨울, 청계천의 빛’이 12월 16일부터 31일까지 청계광장에서 열린다.<br>올해는 2023년 새해 안전한 세상을 위한 희망의 빛을 담았다.
       </div>
       <!-- 내용더보기 -->
+
       <div class="wrap_contView">
         <h3>상세정보</h3>
         <button class="btn_modify" onclick="goJikimi();"><span>관광정보 수정요청</span></button>
+        <details>
+          <div class="inr">
+            <p>
+            </p>
+          </div>
+
+      </details>
+      </div>
         <div class="area_txtView top">
           <div class="inr_wrap">
-            <div class="inr">
-              <p>
-              </p>
-            </div>
-          </div>
-          <div class="cont_more"><button type="button" class="btn_more" title="내용더보기">내용 <span>더보기</span></button></div>
         </div>
-      </div>
       <!-- //내용더보기 -->
 
       <h3 class="blind">상세정보</h3>
@@ -207,12 +211,6 @@
             </a>
         </li> -->
         <!-- // 1002 로드뷰 삭제 -->
-        <li class="link_phone"><!-- 기본 노출 영역 -->
-          <a href="javascript:;" title="전화걸기" style="background-color:#49c9a3">
-            <em>전화걸기</em>
-            <span></span>
-          </a>
-        </li>
       </ul>
       <!-- //중간 배너 -->
 
@@ -311,8 +309,6 @@
 <!-- //contents -->
 
 <!-- 공지사항 , 유관기관, footer-->
-<div id="footer">
-</div>
 
 
 <!-- 맵 팝업 -->
@@ -345,6 +341,7 @@
           </div>
           <div class="map_menu">
             <button type="button" class="view" style="display : none;">상세보기</button>
+
             <ul>
               <li><button type="button"><span class="icon1">주변 여행지</span></button></li>
               <li><button type="button"><span class="icon2">음식점</span></button></li>
@@ -358,15 +355,15 @@
     </div>
   </div>
 </div>
+</div>
 <!-- //맵 팝업 -->
 
-
-
 </body>
-
-<script th:inline="javascript">
+  <script th:inline="javascript">
   var id=/*[[${id}]]*/
-
 </script>
-<script src="/js/festival_view.js"></script>
+  <script type="text/javascript" th:src="@{/js/festival_view.js}"></script>
+</div>
+
+
 </html>

@@ -1,14 +1,17 @@
 package com.example.test.controller;
 
 import com.example.test.config.LoginUser;
+import com.example.test.config.SessionMember;
 import com.example.test.domain.MemberDTO;
 import com.example.test.domain.ReviewCommentResponseDTO;
 import com.example.test.domain.ReviewCourseListResponseDTO;
 import com.example.test.domain.ReviewCourseResponseDTO;
+import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import com.example.test.service.ReviewCourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,8 +30,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
     private final MemberService memberService;
 
     @GetMapping("/index")
-    public String index(Model model, Principal principal){
-        model.addAttribute("reviewCourse", reviewCourseService.findAllDesc());
+    public String index(Model model, Principal principal,PageRequest pageRequest){
+        model.addAttribute("reviewCourse", reviewCourseService.findAllDesc(pageRequest));
         if(principal != null){
             model.addAttribute("name",principal.getName());
         }
@@ -37,7 +40,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
     @GetMapping("/reviews/write")
     public String reviewWrite(Model model, Principal principal){
-        model.addAttribute("name",principal.getName());
+        Member member = memberService.getMember();
+        model.addAttribute("nickname",member.getNickname());
         return "reviews/reviewCourseWrite";
     }
     //작성(저장)
@@ -49,9 +53,10 @@ public class IndexController {//페이지에 관련된 컨트롤러
     }
     //수정
     @GetMapping("/reviews/detail/{id}")
-    public String reviewDetail(@PathVariable Long id, @LoginUser MemberDTO user, Model model) {
+    public String reviewDetail(@PathVariable Long id, Principal principal, Model model) {
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
-
+        SessionMember sessionMember = memberService.memdto(principal.getName());
+        sessionMember.getNickname();
         // 댓글
         List<ReviewCommentResponseDTO> comments = dto.getComments();
         if(comments != null && !comments.isEmpty()){
@@ -59,8 +64,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
         }
 
         // 사용자
-        if(user != null){
-            model.addAttribute("nickname", user.getNickname());
+        if(principal != null){
+            model.addAttribute("name", principal.getName());
 
             //리뷰 작성자가 본인인지 확인
             if(dto.getAuthor().equals(memberService.getMember().getLoginId())){
