@@ -31,7 +31,7 @@
         </tr>
       </table>
     </div>
-    <div th:unless="${#lists.isEmpty(lists)}">
+    <div th:unless="${#list.isEmpty(lists)}">
       <table th:each="list, i: ${lists}">
         <tr>
           <td class="map_wrap" rowspan="3">

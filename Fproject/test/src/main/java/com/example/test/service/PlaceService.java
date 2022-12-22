@@ -19,12 +19,26 @@ import java.util.List;
 public class PlaceService {
     private ModelMapper modelMapper = new ModelMapper();
 
-    private PlaceRepository placeRepository;
+    final private PlaceRepository placeRepository;
 
     private Place placelist(long id){
 
        return placeRepository.findById(id).orElseThrow();
     }
 
+    public List<PlaceDTO> getList(){
+        List<PlaceDTO> list = new ArrayList<>();
+        List<Place> places = placeRepository.findAll();
+        for(Place place : places){
+            list.add(modelMapper.map(place,PlaceDTO.class));
+        }
+        return list;
+    }
 
+    public PlaceDTO getPlaceDetail(Long id){
+        Place place = placeRepository.findById(id).orElseThrow();
+        PlaceDTO placeDTO = new PlaceDTO();
+        placeDTO = placeDTO.map(place);
+        return placeDTO;
+    }
 }

@@ -1,12 +1,13 @@
 package com.example.test.domain;
 
+import com.example.test.entity.Place;
 import lombok.Data;
+import org.modelmapper.ModelMapper;
 
-import javax.persistence.Column;
 @Data
 public class PlaceDTO {
 
-    private  Long id;
+    private Long id;
 
     private String address_id;
 
@@ -23,4 +24,10 @@ public class PlaceDTO {
     private String x;
 
     private String y;
+
+    private ModelMapper modelMapper = new ModelMapper();
+
+    public PlaceDTO map(Place place){
+        return modelMapper.map(place,PlaceDTO.class);
+    }
 }
