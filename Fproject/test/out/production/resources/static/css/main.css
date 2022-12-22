@@ -79,6 +79,10 @@ head{ -ms-overflow-style: none;}
 
  .ppp { margin-top: 30px;}
 
+.aa {padding-left:30px;}
+.bb {padding-right: 20px;}
+
+
 #tripple{margin-top: 150px;
          margin-bottom: 150px;
          width: 950px;
@@ -86,7 +90,7 @@ head{ -ms-overflow-style: none;}
          display: block;
          margin-right: auto;
          }
-.rec-card {margin-top: 150px;
+.rec-card {margin-top: 20px;
         margin-bottom: 150px;
         width:100%;
         }
