@@ -60,5 +60,7 @@ public class MemberDTO {
 
     private Role role;
 
+    private String picture;
+
     private LocalDateTime createDate;
 }

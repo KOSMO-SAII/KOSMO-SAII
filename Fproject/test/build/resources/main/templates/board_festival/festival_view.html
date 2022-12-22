@@ -1,370 +1,28 @@
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <title> | 문화관광축제:대한민국 구석구석</title>
-  <meta name="description" content=""/>
-  <meta name="keywords" content="">
-  <meta property="og:type" content="website">
-  <meta property="og:title" id="ogtitle" content=" ">
-  <meta property="og:image" id="ogimage" content="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b68f2a59-d3b8-4b6e-a913-c02c5f821f45">
-  <meta property="og:description" content=" " />
-  <meta property="og:url" content="https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=734c8641-f731-4a89-9fc3-6c75114fce66&big_category=A02&mid_category=A0207&big_area=1" />
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-  <link rel="canonical" href="https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=734c8641-f731-4a89-9fc3-6c75114fce66&big_category=A02&mid_category=A0207&big_area=1"><!-- 2019-07-26  url 추가 -->
-  <link rel="stylesheet" href="css/style4.css">
-  <link rel="stylesheet" href="css/style3.css">
-  <link rel="stylesheet" href="css/style2.css">
-  <link rel="stylesheet" href="css/style1.css">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="description" content=""/>
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="ogtitle" content="">
+  <meta property="og:image" id="ogimage" content="">
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=3fc4c92d-ced8-4bea-a14f-19f8abf61dfc&big_category=A02&mid_category=A0207&big_area=37" />
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/css/content.css">
+  <link rel="stylesheet" type="text/css" href="/css/style1.css">
   <script src="https://code.jquery.com/jquery-3.6.1.js"
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-
-  <script src="https://cdn.visitkorea.or.kr/resources/js/echarts.js"></script>
-  <!--[if lt IE 9]>
-  <script src="https://cdn.visitkorea.or.kr/resources/js/html5shiv.js"></script>
-  <![endif]-->
-  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-5JVS3BG"></script>
-  <script src="https://cdn.visitkorea.or.kr/resources/js/cdp/web/sphereAnalytics.min.js?v=3ec1fad6-3a29-477e-a7e5-6d99a059e6d1"></script>
-
-  <script type="text/javascript">
-   SphereAnalytics.setLogLevel("info");
-   let sphereAs_options  = new Object();
-   sphereAs_options.webMsg = true;
-
-   SphereAnalytics.init(
-          'qsJfZhE2Ft85SvZnBo2KSL', sphereAs_options
-   );
-</script>
-
-  <script type="text/javascript">
-  <style>
-  /*! Flickity v2.2.1
-https://flickity.metafizzy.co
----------------------------------------------- */
-
-.flickity-enabled {
-  position: relative;
-}
-
-.flickity-enabled:focus { outline: none; }
-
-.flickity-viewport {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-}
-
-.flickity-slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-/* draggable */
-
-.flickity-enabled.is-draggable {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.flickity-enabled.is-draggable .flickity-viewport {
-  cursor: move;
-  cursor: -webkit-grab;
-  cursor: grab;
-}
-
-.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
-}
-
-/* ---- flickity-button ---- */
-
-.flickity-button {
-  position: absolute;
-  background: hsla(0, 0%, 100%, 0.75);
-  border: none;
-  color: #333;
-}
-
-.flickity-button:hover {
-  background: white;
-  cursor: pointer;
-}
-
-.flickity-button:focus {
-  box-shadow: 0 0 0 5px #19F;
-}
-
-.flickity-button:active {
-  opacity: 0.6;
-}
-
-.flickity-button:disabled {
-  opacity: 0.3;
-  cursor: auto;
-  /* prevent disabled button from capturing pointer up event. #716 */
-  pointer-events: none;
-}
-
-.flickity-button-icon {
-  fill: currentColor;
-}
-
-/* ---- previous/next buttons ---- */
-
-.flickity-prev-next-button {
-  top: 50%;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  /* vertically center */
-  transform: translateY(-50%);
-}
-
-.flickity-prev-next-button.previous { left: 10px; }
-.flickity-prev-next-button.next { right: 10px; }
-/* right to left */
-.flickity-rtl .flickity-prev-next-button.previous {
-  left: auto;
-  right: 10px;
-}
-.flickity-rtl .flickity-prev-next-button.next {
-  right: auto;
-  left: 10px;
-}
-
-.flickity-prev-next-button .flickity-button-icon {
-  position: absolute;
-  left: 20%;
-  top: 20%;
-  width: 60%;
-  height: 60%;
-}
-
-/* ---- page dots ---- */
-
-.flickity-page-dots {
-  position: absolute;
-  width: 100%;
-  bottom: -25px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  text-align: center;
-  line-height: 1;
-}
-
-.flickity-rtl .flickity-page-dots { direction: rtl; }
-
-.flickity-page-dots .dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 0 8px;
-  background: #333;
-  border-radius: 50%;
-  opacity: 0.25;
-  cursor: pointer;
-}
-
-.flickity-page-dots .dot.is-selected {
-  opacity: 1;
-}
-  </style>
-
-var otd_nm = "";
-if( appYn == 'N') {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-92880258-1', 'auto');
-		ga('require', 'displayfeatures');
-
-        otd_nm = "문화관광축제";
-        ga('set', 'dimension5', otd_nm);
-} else {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-92878657-1', 'auto');
-		ga('require', 'displayfeatures');
-		ga('send', 'pageview');
-        otd_nm = "문화관광축제";
-        ga('set', 'dimension5', otd_nm);
-}
-var custInfo = {
-		uuid : null, //SNS_ID
-		loginYn : 'N', //로그인여부
-		firstYn : 'N', //최초로그인여부
-		gender : 'null', //성별
-		grade : 'null', //여행구독레벨
-		birthYr : 0, //생년월일
-		rsdeNm : 'null', //거주지명
-		favoriteCnt : null, //즐겨찾기수
-		commentCnt : null, //댓글수
-		joinYmd : null, //가입일
-	    channel : null, //SNS채널구분
-	    device : appYn == 'Y' ? device : mobileYn == 'Y' ? 'mobileweb' : 'pcweb', //device 구분
-	    cardAreaNm : null //digitcard area Name
-}
-
-$(document).ready(){
-
-
-}
-</script>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYY1LJZCC4"></script>
-  <script type="text/javascript" charset="UTF-8">
-  window.dataLayer = window.dataLayer || [{
-// 	 'dimension6': gaCookie == null || gaCookie == '' ? null : gaCookie,
-	 'dimension7': custInfo.uuid,
-	 'dimension8': custInfo.joinYmd,
-	 'dimension9': custInfo.loginYn,
-	 'dimension10': custInfo.channel,
-	 'dimension11': custInfo.device,
-
-
-
-// 	 'dimension15': location.href.indexOf('search/search_list') > -1 ? 'Y' : null,
-  }];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-    gtag('config', 'G-LYY1LJZCC4', {
-
-     otd_nm : "문화관광축제"
-    });
-
-
-</script>
-
-  <!-- Google Tag Manager -->
-  <script>
-
- if(getParameter('cotId') == '50fbcf94-4917-489a-9c74-1b0255e2effd'
-         || getParameter('cotId') == '7cf76837-65e6-47f0-a99a-e114c4cdcecf'
-         || getParameter('cotId') == 'e34bd25c-5a92-43e1-9cd2-5b65974d777d'
-         || getParameter('cotId') == '35b0b18a-5eb2-4bec-a0f4-2f4d91681a42') {
- } else if (appYn == null || appYn != 'Y') {
-	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-PJVBVKB');
- }
-</script>
-  <!-- End Google Tag Manager -->
-
-
-
-
-
-
-
-
-  <!-- Facebook Pixel Code -->
-  <!--
-  <script>
-
-   if(getParameter('cotId') == '50fbcf94-4917-489a-9c74-1b0255e2effd'
-           || getParameter('cotId') == '7cf76837-65e6-47f0-a99a-e114c4cdcecf'
-           || getParameter('cotId') == 'e34bd25c-5a92-43e1-9cd2-5b65974d777d'
-           || getParameter('cotId') == '35b0b18a-5eb2-4bec-a0f4-2f4d91681a42') {
-   } else{
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-     n.queue=[];t=b.createElement(e);t.async=!0;
-     t.src=v;s=b.getElementsByTagName(e)[0];
-     s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2686987211544937');
-    fbq('track', 'PageView');
-   }
-
-
-  </script>
-  -->
-  <!-- End Facebook Pixel Code -->
-
-  <!-- Facebook Pixel Code Start 2021-02-16-->
-  <!--
-  <script>
-   if(getParameter('cotId') == '50fbcf94-4917-489a-9c74-1b0255e2effd'
-           || getParameter('cotId') == '7cf76837-65e6-47f0-a99a-e114c4cdcecf'
-           || getParameter('cotId') == 'e34bd25c-5a92-43e1-9cd2-5b65974d777d'
-           || getParameter('cotId') == '35b0b18a-5eb2-4bec-a0f4-2f4d91681a42') {
-   } else{
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '748419839116592');
-    fbq('track', 'PageView');
-   }
-  </script>
-  -->
-  <!-- End Facebook Pixel Code -->
-  <meta name="referrer" content="unsafe-url">
-
-  <!-- End Facebook Pixel Code -->
-  <script src=""></script><!-- 우편번호 검색 -->
-  <script type="text/javascript">
-		var cotid = '734c8641-f731-4a89-9fc3-6c75114fce66';
-		if( cotid == '' || cotid == undefined ) alert('잘못된 호출입니다.');
-	</script>
 </head>
 
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJVBVKB"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<!-- Facebook Pixel Code -->
-
-
-
-<!-- End Facebook Pixel Code -->
-
-<!-- Facebook Pixel Code Start 2021-02-16-->
-
-
-
-<!-- End Facebook Pixel Code -->
-
-<script type="text/javascript">
-	//Kakao.init('f7a8e940eec1794a386315ec71daac6b');
-	Kakao.init('44732c3ca5b90a4f1f49c6b38df023d1');
-	</script>
-
-<!-- skip -->
 <div id="skipToContent">
   <a href="#contents">본문 바로가기</a>
-  <!--<a href="#btnMenu">주메뉴 바로가기</a>-->
 </div>
-<!-- // skip -->
 
-
-<!-- header -->
 <header id="detail_header" class="main_gnb sub type1">
 </header>
 <!-- //header -->
@@ -373,7 +31,7 @@ $(document).ready(){
   <!-- 상단 -->
   <div class="titleType1">
     <div class="area_tag">
-      <span class="name4"><a href="/list/fes_list.do"><span class="ico">Hot</span>축제</a></span>
+      <span class="name4"><a href="http://localhost:8081/festival"><span class="ico">Hot</span>축제</a></span>
       <div class="brandingIcon">
       </div>
     </div>
@@ -399,7 +57,6 @@ $(document).ready(){
       <span class="rline">
 					<button type="button" class="btn_bookmark" onclick="setFavoContentDetail();"><span class="ico">즐겨찾기</span></button>
 					<button type="button" class="btn_print" onclick="openPrint();" title="새창 열림">
-						<span class="ico" title="새창 열림">인쇄하기</span>
 					</button>
 					<button type="button" class="btn_cos" onclick="myCourseCartDetail('C','12','');">
 						<span class="ico">코스 담기</span>
@@ -408,7 +65,7 @@ $(document).ready(){
                         <span class="ico">공유하기</span>
                         <span class="num" id="conShare"></span>
                     </button>
-				</span>
+      </span>
     </div>
   </div>
   <!-- //상단 -->
@@ -417,9 +74,9 @@ $(document).ready(){
   <div class="db_cont_detail">
     <div class="detail_tab">
       <ul>
-        <li class="select_tab on" id="photoTab"><a href="javascript:tabChange('galleryGo');"><span>사진보기</span></a></li>
-        <li class="select_tab" id="detailTab"><a href="javascript:tabChange('detailGo');"><span>상세정보</span></a></li>
-        <li class="select_tab" id="talkTab"><a href="javascript:tabChange('replyGo');"><span>여행톡</span></a></li>
+        <li class="select_tab on" id="photoTab"><a href="#galleryGo"><span>사진보기</span></a></li>
+        <li class="select_tab" id="detailTab"><a href="#detailGo"><span>상세정보</span></a></li>
+        <li class="select_tab" id="talkTab"><a href="#replyGo"><span>여행톡</span></a></li>
         <li class="select_tab" id="recomTab"><a href="javascript:tabChange('relationGo');"><span>추천여행</span></a></li>
       </ul>
     </div>
@@ -434,10 +91,10 @@ $(document).ready(){
 
         <!-- 공사 사진 영역 -->
         <div class="swiper-container">
+
           <div class="swiper-wrapper" id="pImgList">
+          <!--가져온 사진 이미지-->
           </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
           <!-- Add Arrows -->
           <div class="swiper-button-next">다음</div>
           <div class="swiper-button-prev">이전</div>
@@ -448,7 +105,41 @@ $(document).ready(){
       </div>
     </div>
     <!-- //사진보기 -->
+    <!-- 큐레이션영역 -->
+    <!-- //큐레이션영역 -->
+    <!-- 상세정보 -->
+    <div id="detailGo">
+      <div class="blind">
+        올해로 8회째를 맞는 ‘2022 겨울, 청계천의 빛’이 12월 16일부터 31일까지 청계광장에서 열린다.<br>올해는 2023년 새해 안전한 세상을 위한 희망의 빛을 담았다.
+      </div>
+      <!-- 내용더보기 -->
+      <div class="wrap_contView">
+        <h3>상세정보</h3>
+        <button class="btn_modify" onclick="goJikimi();"><span>관광정보 수정요청</span></button>
+        <div class="area_txtView top">
+          <div class="inr_wrap">
+            <div class="inr">
+              <p>
+              </p>
+            </div>
+          </div>
+          <div class="cont_more"><button type="button" class="btn_more" title="내용더보기">내용 <span>더보기</span></button></div>
+        </div>
+      </div>
+      <!-- //내용더보기 -->
 
+      <h3 class="blind">상세정보</h3>
+      <!-- 주변정보 지도 -->
+      <div class="surroundingsMap" id="detailGo">
+        <div class="map_skip" tabindex="0"><a style="display:none;" href="javascript:jumpkakaomap();">지도 건너뛰기</a></div>
+        <div id="map" class="wrap_map"> <!-- open 클래스 추가 시 지도 확장-->
+          <img src="https://cdn.visitkorea.or.kr/resources/images/sub/map_dim01.png" alt="" style="width: 100%; height: 100%;">
+
+
+
+
+          <a href="javascript:mapOpenClose();" class="map_open">지도 펼치기</a>
+          <a href="javascript:mapOpenClose();" class="map_close">지도 접기</a>
 
           <div class="layer" tabindex="0">
             <span class="img"><a href="javascript:;"><img src="" alt=""></a></span>
@@ -480,17 +171,6 @@ $(document).ready(){
       <!-- //주변정보 지도 -->
 
       <div class="wrap_contView">
-        <!-- 세부 정보 -->
-        <div class="area_txtView bottom">
-          <div class="inr_wrap">
-            <div class="inr">
-              <ul>
-              </ul>
-            </div>
-          </div>
-          <div class="cont_more"><button type="button" class="btn_more" title="내용더보기"><span>더보기</span></button></div>
-        </div>
-        <!-- //세부 정보 -->
       </div>
       <div class="association_btn" style="display : none;">
         <a href="javascript:tgprDbCheck();">연관 여행상품 보기</a>
@@ -633,57 +313,7 @@ $(document).ready(){
 <!-- 공지사항 , 유관기관, footer-->
 <div id="footer">
 </div>
-<!-- //공지사항 , 유관기관, footer-->
 
-<div id="userPicReg" class="wrap_layerpop">
-  <div class="layerpop">
-    <div class="tit">
-      <h2>직접 찍은 여행지 사진을 올려주세요</h2>
-      <button type="button" class="btn_close3" onclick="userImgCancel();">닫기</button>
-    </div>
-    <div class="box_cont">
-      <div class="imgReg">
-        <form name="form" id="form">
-          <div class="file">
-							<span class="fileBtn">
-								<input type="file" id="fileUp02" onchange="fileUpload(this)" />
-								<label for="fileUp02" class="btn_file" >파일찾기</label>
-							</span>
-          </div>
-        </form>
-        <!-- 유의사항 -->
-        <div class="attention_area">
-          <strong class="tit">[사진 파일 첨부시 유의사항]</strong>
-          <ul>
-            <li>사진 활용에 저작권 문제가 없는 사진만을 첨부 부탁드립니다.</li>
-            <li>상표권 및 초상권에 문제가 없는 직접 촬영한 사진만을 등록 부탁드립니다.<br/>(인물, 얼굴 노출 삼가 )</li>
-            <li>사진 파일은 jpg, jpeg, png 확장자만 업로드 가능합니다.</li>
-            <li>사이즈는  700px 이상의 사이즈만 업로드 가능합니다.</li>
-            <li>사진은 최대용량 10Mb를 넘을 수 없습니다.</li>
-          </ul>
-          <input type="checkbox" id="chk">
-          <label for="chk">저작권 보증 및 제공에 동의합니다.</label>
-          <a href="javascript:;" class="terms_view">약관보기</a><!-- [D]클래스 active 적용시 활성화 -->
-          <div class="terms_cont" tabindex="0">
-            <strong class="tit">※ 저작권 보증 및 제공 동의</strong>
-            <p>
-              지역관광지(업소) 홍보를 목적으로 귀하(기관)에서 우리 공사에 제공하는 자료(사진,원고 등)에 대한 저작권 및 소유권을 귀하(기관)가 보유하고 있음을 보증하여야 합니다. <br><br>
-
-              만일, 귀하(기관)가 제공한 자료가 제3자의 권리를 침해하거나 제3자에게 손해가 발생하는 등 자료와 	관련하여 법적 분쟁이 발생했을 경우, 모든 책임은 귀하(기관)에 있으며 귀하(기관)의 비용과 노력으로 분쟁을 해결해야 하며 함을 알려 드립니다.<br><br>
-
-              귀하(기관)에서 우리 공사에 제공하는 자료(사진, 원고, 영상 등)는 지역관광지(업소) 홍보 목적으로 타기관(공공기관, 포탈사이트 등)에 제공 될 수 있으며, 민원 제기 등의 사유로 귀하(기관)의 정보를 더 이상 제공하기에 어렵다고 판단되는 경우, 사전 동의 없이 삭제 처리할 수 있음을 알려 드립니다.
-            </p>
-          </div>
-        </div>
-        <!-- // 유의사항 -->
-      </div>
-      <div class="btn_center">
-        <a href="javascript:;" class="btn_cancel" onclick="userImgCancel();">취소</a>
-        <a href="javascript:;" class="btn_ok" onclick="userImgSave();" >등록</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 맵 팝업 -->
 <div id="mapviewPop" class="wrap_layerpop">
@@ -705,9 +335,9 @@ $(document).ready(){
               <span class="area"></span>
               <span class="km"></span>
               <div class="btn">
-                <button type="button" class="bookmark" onClick="setFavoContentDetail(2);">즐겨찾기</button>
+                <button type="button" class="bookmark" onClick=" ">즐겨찾기</button>
                 <button type="button" class="good" onClick="setLike(2);">좋아요</button>
-                <button type="button" class="course" onClick="MycourseAddContent(2);">코스담기</button>
+                <button type="button" class="course" onClick="">코스담기</button>
                 <button type="button" class="guide roadbutton">길안내</button>
               </div>
             </div>
@@ -729,148 +359,14 @@ $(document).ready(){
   </div>
 </div>
 <!-- //맵 팝업 -->
-<!-- 큐레이션 팝업 -->
-<div id="travelinfoPop" class="wrap_layerpop">
-  <div class="layerpop">
-    <div class="tit">
-      <h2><strong>여행콕콕</strong> 제공 여행지 안내</h2>
-      <button type="button" class="btn_close3" onclick="layerPopup.layerHide('travelinfoPop');">닫기</button>
-    </div>
 
 
-<script src="https://cdn.visitkorea.or.kr/resources/js/mylocation/location_detail.js?v=1670685812761"></script>
-<script src="https://cdn.visitkorea.or.kr/resources/js/contentSub.js"></script>
-<script src="https://cdn.visitkorea.or.kr/resources/js/commentCommon.js?v=1670685812761"></script>
 
-<script src="../../resources/js/newDetailCommon.js?v=1670685812761"></script>
-<script src="https://cdn.visitkorea.or.kr/resources/js/curation/safecaster.js?v=1670685812761"></script>
-
-<script type="text/javascript" src="/resources/js/curation/curation_trace_v2.js?v=1670685812761"></script>
-<script type="text/javascript">
-		var contitle 	= '2022 제11회 유러피언 크리스마스 마켓';
-		var curDate		= '20221211';
-		var cotId		= '734c8641-f731-4a89-9fc3-6c75114fce66';
-		var snsId;
-		bannerview = false;
-
-		if( $.cookie('content_'+cotId) == 'Y') {
-			$('.btn_good').attr('class','btn_good on');
-			$("input:radio[id=estimateForm1]").prop('checked', true);
-    	}
-
-		function nextLogin(){
-			// 상세페이지 공통함수
-			DetailsGo();
-			pageChk = 'fes';
-
-			detailReady();
-			tgprDbCheck();
-
-
-			getSnsFavorites(cotId);
-		}
-
-		//축제상세 가져오기
-		function getContentList() {
-
-			showLoding();
-
-			$.ajax({
-				url: mainurl+'/call',
-				dataType: 'json',
-				type: 'POST',
-				data: {
-					cmd : 'FESTIVAL_CONTENT_BODY_DETAIL',
-					cotId : cotId,
-					locationx : locationx+'',
-					locationy : locationy+''
-				},
-				success: function(data) {
-					goContentListView(data);
-					landingLocationMap(data);
-				},
-				complete: function() {
-					TrssMissionCheck();
-					getContentMapList('Festival');
-					killerBanner();
-					getContentPromotion();
-					getSafetyWeek();
-					hideLoding();
-				},
-				error: function(xhr, textStatus, errorThrown){
-				}
-			});
-		}
-
-		//축제배너 가져오기
-		function getContentPromotion() {
-			$.ajax({
-				url: mainurl+'/call',
-				dataType: 'json',
-				type: "POST",
-				data: {
-					cmd : 'CONTENT_PROMOTION_VIEW',
-					cotid : cotId
-				},
-				success: function(data) {
-					goContentPromotionView(data);
-				},
-				complete: function() {
-				},
-				error: function(xhr, textStatus, errorThrown) {
-				}
-			});
-		}
-
-		//축제배너 가져오기
-		function goContentPromotionView(data) {
-			var strHtml = '';
-
-			if( data.body.result != undefined && data.body.result != null && data.body.result.length != 0 ) {
-
-				strHtml = '<a href="javascript:" onclick="goContentPromotion(\''+data.body.result[0].link+'\',\''+quotReplace(data.body.result[0].title)+'\');"><img src="'+mainimgurl+data.body.result[0].imgId+'" alt="'+data.body.result[0].title+'"></a>';
-				if($('.festivalBanner_btm').html() == '')
-					$('.festivalBanner_btm').html(strHtml);
-				$('.festivalBanner_btm').show();
-			}
-		}
-
-		function goContentPromotion( rlinkUrl, rtitle) {
-
-			goBannerLogSave( '축제상세',rlinkUrl,rtitle);
-
-			setTimeout(function () {
-				if( rlinkUrl != 'undefined' &&  rlinkUrl != '' ) {
-
-					if( rlinkUrl.indexOf(mainurl) > -1  ) {
-						location.href = rlinkUrl;
-					} else {
-						openWindow(rlinkUrl);
-					}
-
-				}
-
-		  	}, 200) ;
-		}
-
-		// 인쇄하기
-		function openPrint() {
-			window.open('/detail/fes_detail_print.do?cotid='+cotid,"","width=1024px,height=940px,scrollbars=yes");
-		}
-
-		//여행지도보기 클릭시 여행지도페이지 랜딩
-		function landingLocationMap(data) {
-			var x =data.body.detail.mapX;
-			var y =data.body.detail.mapY;
-
-			let locationMap = mainurl+'/mylocation/mylocation.do?cotId='+cotId+'&service=contents&latitude=' + y + "&" + "longitude=" + x;
-
-			if( appYn == 'N') {
-				$('.btn_map').click((e) => window.open(locationMap));
-			} else {
-				$('.btn_map').click((e) => window.location.href = locationMap);
-			}
-		}
-	</script>
 </body>
+
+<script th:inline="javascript">
+  var id=/*[[${id}]]*/
+
+</script>
+<script src="/js/festival_view.js"></script>
 </html>

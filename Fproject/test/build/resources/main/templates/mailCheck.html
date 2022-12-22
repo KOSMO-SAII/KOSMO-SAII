@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
+
+    <script>
+        function check() {
+            if(form.email.value==authCode){
+                self.close(); alert("인증이 완료되었습니다.")
+            }else{
+                alert("인증에 실패하셨습니다.")
+                return redirect;
+                }
+        }
+    </script>
+
 </head>
 <body>
-<form action="../confirm">
+<!--<form action="../confirm">-->
+<form>
   <input type="text" name="code"/>
-  <input type="submit" value="확인"/>
+  <input type="submit" name="email" value="" onclick="check(this)">확인</input>
 </form>
 </body>
 </html>
