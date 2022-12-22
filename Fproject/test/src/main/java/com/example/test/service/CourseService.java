@@ -301,6 +301,7 @@ public class CourseService {
             cdto.setCreatedBy(memberService.getMember(id).getNickname());
             lists.add(cdto);
         }
+
         return lists;
     }
 }

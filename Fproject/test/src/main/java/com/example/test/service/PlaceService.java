@@ -19,7 +19,7 @@ import java.util.List;
 public class PlaceService {
     private ModelMapper modelMapper = new ModelMapper();
 
-    private PlaceRepository placeRepository;
+    final private PlaceRepository placeRepository;
 
     private Place placelist(long id){
 
@@ -27,26 +27,18 @@ public class PlaceService {
     }
 
     public List<PlaceDTO> getList(){
-
+        List<PlaceDTO> list = new ArrayList<>();
         List<Place> places = placeRepository.findAll();
-        List<PlaceDTO> lists = new ArrayList<>();
         for(Place place : places){
-            PlaceDTO cdto = modelMapper.map(place, PlaceDTO.class);
-            int length = PlaceRepository.countById(cdto.getCourse_id());
-            List<CourseDTO> datas = new ArrayList<>();
-            for(int i=0; i < length;i++) {
-                CourseDataId id = new CourseDataId();
-                id.setId(cdto.getCourse_id());
-                id.setOrder((long) i+1);
-                datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
-            }
-            cdto.setCourseDatas(datas);
-            cdto.setCenter();
-            long id = Long.parseLong(cdto.getCreatedBy());
-            System.out.println(id);
-            cdto.setCreatedBy(memberService.getMember(id).getNickname());
-            lists.add(cdto);
+            list.add(modelMapper.map(place,PlaceDTO.class));
         }
-        return lists;
+        return list;
+    }
+
+    public PlaceDTO getPlaceDetail(Long id){
+        Place place = placeRepository.findById(id).orElseThrow();
+        PlaceDTO placeDTO = new PlaceDTO();
+        placeDTO = placeDTO.map(place);
+        return placeDTO;
     }
 }
