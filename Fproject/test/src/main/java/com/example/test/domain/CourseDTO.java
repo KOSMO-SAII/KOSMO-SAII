@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CourseDTO {
-    private String course_id;
+    private String id;
     private int order;
     private String category;
     private String address_id;
@@ -16,6 +16,8 @@ public class CourseDTO {
     private String x;
     private String y;
     private String memo;
+    private String day;
+    private int corder;
 
 
 

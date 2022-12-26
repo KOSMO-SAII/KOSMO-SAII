@@ -12,7 +12,7 @@
 	</select>
 
     <delete id="deleteDao">
-        delete from main_board where id = #{0}
+        delete from main_board where post_id = #{0}
     </delete>
     
     <update id="plusviewcountDao">
