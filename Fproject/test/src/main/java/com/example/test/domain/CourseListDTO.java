@@ -9,7 +9,7 @@ import java.util.List;
 public class CourseListDTO {
 
     private long id;
-    private long course_id;
+    private long courseId;
     private String title;
     private String region;
     private long viewCount;
@@ -33,6 +33,7 @@ public class CourseListDTO {
 
         xPoint = xPoint / courseDatas.size();
         yPoint = yPoint / courseDatas.size();
+        System.out.println(xPoint+" "+yPoint);
     }
 
     public String getOrders(){

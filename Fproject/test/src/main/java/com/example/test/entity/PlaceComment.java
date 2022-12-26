@@ -22,9 +22,9 @@ public class PlaceComment extends Base{
 
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "place_id")
-    private Place place;
+//    @ManyToOne
+//    @JoinColumn(name = "place_id")
+//    private Place place;
 
     @ManyToOne
     @JoinColumn(name="memberId")

@@ -48,9 +48,6 @@
 <div class="col justify-content-center my-1 mx-0">
     <form method="POST" onsubmit="return checkComment(event)" id="commentForm">
         <!-- hidden 영역 -->
-        <input type="hidden" name="EMAIL" th:value="${userInform.userEmail}">
-        <input type="hidden" name="POST_NUM" th:value="${resultMap.POST_NUM}">
-        <input type="hidden" name="CATEGORY_NAME" th:value="${resultMap.CATEGORY_NAME}">
 
         <!-- 입력 영역 -->
         <input type="text" id="content" name="CONTENT">
