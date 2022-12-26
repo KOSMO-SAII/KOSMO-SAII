@@ -15,9 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import javax.servlet.http.HttpSession;
-
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -25,7 +22,6 @@ public class securityConfig{
 
     private MemberService memberService;
     private final CustomOAuth2UserService customOAuth2UserService;
-
 
     @Autowired
     public securityConfig(MemberService memberService,@Lazy CustomOAuth2UserService customOAuth2UserService){
@@ -69,6 +65,7 @@ public class securityConfig{
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
         ;
+
 
 //		http.csrf().disable();
         return http.build();
