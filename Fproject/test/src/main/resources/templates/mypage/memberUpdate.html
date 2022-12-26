@@ -419,10 +419,10 @@ window.onload = function(){
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
 <form enctype="multipart/form-data" action="/members/profile" method="post">
-  <img id="preview" th:src="${info.oProfileImg}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
-  <img id="preview1" th:src="${info.oProfileImg}" onclick="imgoriginalhidden()">
+  <img id="preview" th:src="${info.picture}" width="120px" height="120px" style="border-radius: 50px" onclick="imgoriginal()">
+  <img id="preview1" th:src="${info.picture}" onclick="imgoriginalhidden()">
   <label class="input_file_button" for="filebutton">사진선택</label>
-  <input id="filebutton" type="file" name="oProfileImg" th:value="*{info.oProfileImg}" onchange="imgcg(this)" required><br>
+  <input id="filebutton" type="file" name="picture" th:value="*{info.picture}" onchange="imgcg(this)" required><br>
   <input type="submit" value="프로필저장">
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>

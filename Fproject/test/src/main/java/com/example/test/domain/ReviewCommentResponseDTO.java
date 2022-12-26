@@ -13,7 +13,7 @@ public class ReviewCommentResponseDTO {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String nickname;
+//    private String nickname;
     private Long postsId;
 
     /* Entity -> Dto*/

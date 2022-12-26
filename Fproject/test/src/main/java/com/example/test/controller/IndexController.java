@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.mail.Session;
 import java.security.Principal;
 import java.util.List;
 
@@ -28,6 +29,8 @@ import java.util.List;
 public class IndexController {//페이지에 관련된 컨트롤러
     public final ReviewCourseService reviewCourseService;
     private final MemberService memberService;
+    private final MemberRepository memberRepository;
+
 
     @GetMapping("/index")
     public String index(Model model, Principal principal,PageRequest pageRequest){
@@ -55,13 +58,16 @@ public class IndexController {//페이지에 관련된 컨트롤러
     @GetMapping("/reviews/detail/{id}")
     public String reviewDetail(@PathVariable Long id, Principal principal, Model model) {
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
-        SessionMember sessionMember = memberService.memdto(principal.getName());
-        sessionMember.getNickname();
+        Member member = memberRepository.findByNickname(dto.getAuthor());
+        String loginId = member.getLoginId();
+        //로그인 아이디 비교하려고 함.
+        // 리뷰 테이블에는 닉네임값만 있음. 닉네임으로 멤버 정보 가져와서 아이디 값 가져오기. principal.getName()과 가져온 아이디 값 비교하기.
+
+
         // 댓글
         List<ReviewCommentResponseDTO> comments = dto.getComments();
-        if(comments != null && !comments.isEmpty()){
             model.addAttribute("comments",comments);
-        }
+
 
         // 사용자
         if(principal != null){
@@ -70,7 +76,14 @@ public class IndexController {//페이지에 관련된 컨트롤러
             //리뷰 작성자가 본인인지 확인
             if(dto.getAuthor().equals(memberService.getMember().getLoginId())){
                 model.addAttribute("author",true);
+
             }
+            if(principal.getName().equals(loginId)){
+                model.addAttribute("check",true);
+            }
+            System.out.println(principal.getName()+"=========");
+            System.out.println(loginId+"********");
+
         }
 
         model.addAttribute("reviewCourse",dto);
