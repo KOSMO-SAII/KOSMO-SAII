@@ -140,7 +140,7 @@ public class MemberController {
 
 
     @PostMapping("profile")
-    public String profileupdate(Model model, @RequestParam("oProfileImg") MultipartFile multipartFile, Principal principal) throws IOException {
+    public String profileupdate(Model model, @RequestParam("picture") MultipartFile multipartFile, Principal principal) throws IOException {
         System.out.println("프로필 업데이트");
         String st = multipartFile.getOriginalFilename();
         SessionMember member = memberService.memdto(principal.getName());

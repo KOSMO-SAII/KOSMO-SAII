@@ -39,18 +39,18 @@
 <!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
 <div>
 <!--    <p sec:authorize="isAuthenticated()">-->
-<!--        <button th:onclick="|location.href='@{reviews/write}'|" class="writeBtn">글쓰기</button></p>-->
+        <button th:onclick="|location.href='@{/reviews/write}'|" class="writeBtn">글쓰기</button></p>
 <!--    <p sec:authorize="isAnonymous()">-->
 <!--        <button th:onclick="loginPop()" class="writeBtn">글쓰기</button></p>-->
-    <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>
+<!--    <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>-->
 </div>
 
 <!-- 등록된 게시물이 없습니다. || 게시물출력 -->
+<div th:if="${#lists.isEmpty(reviewCourse)}">
+    <h2>등록된 게시물이 없습니다.</h2>
+</div>
 
-<!--</th:block>-->
-
-<!--<div th:if="${true}" class="ui_box">-->
-<div class="ui_box">
+<div th:unless="${#lists.isEmpty(reviewCourse)}" class="ui_box" >
         <ul class="list_wrap">
         <th:block th:each="list : ${reviewCourse}" >
             <a th:href="@{'/reviews/detail/' + ${list.id}}">

@@ -158,10 +158,12 @@ public class Member{
         String projectPath = System.getProperty("user.dir")+"\\test\\src\\main\\resources\\static\\img\\profile";
         UUID uuid = UUID.randomUUID();
         String fileName = uuid+"-"+multipartFile.getOriginalFilename();
+        System.out.println(multipartFile.getOriginalFilename());
+        System.out.println(member.getPicture());
         File saveFile = new File(projectPath,fileName);
         multipartFile.transferTo(saveFile);
-        member.setPicture("/img/profile/"+fileName);
-        member1.setPicture(member.getOProfileImg());
+        member1.setPicture("/img/profile/"+fileName);
+//        member1.setPicture(member.getOProfileImg());
 
         return member1;
 
