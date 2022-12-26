@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.python.antlr.ast.Str;
 import org.springframework.data.annotation.CreatedBy;
 
 @Getter

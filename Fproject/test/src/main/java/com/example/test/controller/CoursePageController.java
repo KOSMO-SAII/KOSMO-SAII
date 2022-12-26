@@ -25,7 +25,7 @@ public class CoursePageController extends HttpServlet {
     @Autowired
     private CourseService courseService;
 
-      @GetMapping("/courseViewPage")
+    @GetMapping("/courseViewPage")
     public String doGetView(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int course_id= Integer.parseInt( req.getParameter("num"));
         //코스 id에 맞는 닉네임 찾기
@@ -55,19 +55,21 @@ public class CoursePageController extends HttpServlet {
 
 
         String mode=req.getParameter("mode");
+        String days=req.getParameter("days");
 
         //courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정
         if(mode.equals( "edit")) {
             System.out.println("edit모드");
             MainBoardDTO mdto = courseService.editMode(req);
-            
+
             req.setAttribute("title", mdto.getTitle());
             req.setAttribute("region", mdto.getRegion());
 
         }else {
+
             //courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장
             if(req.getParameterValues("data")!=null) {
-                courseService.writeMode(req);
+                List<Map<String, String>> list=courseService.writeMode(req);
 
                 String title = req.getParameter("title");
                 String region = req.getParameter("region");
@@ -75,15 +77,18 @@ public class CoursePageController extends HttpServlet {
                 req.setAttribute("nickname", nickname);
                 req.setAttribute("title", title);
                 req.setAttribute("region", region);
+                req.setAttribute("List", list);
+                System.out.println(list);
             }
 
         }
-        List<Map<String, String>> list = courseService.giveCourse(req);
-        System.out.println(list);
 
-        req.setAttribute("List", list);
+        //System.out.println(list);
+        req.setAttribute("days",days);
+        //req.setAttribute("List", list);
 
-        return "course/courseViewPage";
+        return "course/CourseViewPage";
+//        return "test/test2";
     }
 
     @GetMapping("/courseWritePage")
@@ -96,10 +101,10 @@ public class CoursePageController extends HttpServlet {
     public String doPostWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
         List<Map<String, String>> list = courseService.changeCourse(req);
 
-//        MainBoardDTO mdto =courseService.saveMainboard(req);
+        MainBoardDTO mdto =courseService.saveMainboard(req);
 
-//        req.setAttribute("title", mdto.getTitle());
-//        req.setAttribute("region",mdto.getRegion());
+        req.setAttribute("title", mdto.getTitle());
+        req.setAttribute("region",mdto.getRegion());
         req.setAttribute("list", list);
 
         return "course/courseWritePage";

@@ -254,7 +254,7 @@ form {
 
 /*#arrow{position: fixed;  bottom: 0px; left: 125px; cursor: pointer;}*/
 /* 좌측 마이 스케쥴 사이드 바 css*/
-#My_List {
+.My_List {
 	list-style-type: none;
 	padding: 0px;
 	height: 90%;
@@ -262,11 +262,12 @@ form {
 	overflow-x: hidden
 }
 
-#My_List a{
+.My_List a{
 	text-decoration: none;
+
 }
 
-#My_List li {
+.My_List li {
     margin-bottom: 5px;
     position: relative;
     display: block;
@@ -274,7 +275,7 @@ form {
     margin-bottom: 37px;
 }
 
-#My_List li .info .close {
+.My_List li .info .close {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
@@ -285,7 +286,7 @@ form {
 		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
 }
 
-#My_List li .info .title {
+.My_List li .info .title {
 	overflow: hidden;
 }
 
