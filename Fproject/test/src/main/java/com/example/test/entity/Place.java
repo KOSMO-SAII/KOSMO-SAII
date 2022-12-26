@@ -12,7 +12,7 @@ public class Place {
 
     @Id
     @Column(name = "place_id")
-    private  Long id;
+    private Long id;
 
     @Column(nullable = false)
     private String address_id;
