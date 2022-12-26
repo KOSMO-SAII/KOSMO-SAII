@@ -4,27 +4,16 @@ src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK
 
 //======수정 페이지에서 넘어온 데이터 출력
 //내가 저장한 핀 리스트에 부여할 넘버 및 
-var num=0;
+//var num=0;
+
+////일자별 코스 배열
+//var schedul=[];
 
 //내가 저장한 핀 담을 배열
 var mymarkers=[];
 
-//라인 정보
-var polyline = new kakao.maps.Polyline({
-				    map: map,
-				    path:[
-						new kakao.maps.LatLng(0, 0)
-						],
-						endArrow:true,
-				    strokeWeight: 6,
-				    strokeColor: '#98dde3',
-				    strokeOpacity: 1,
-					});
 //라인 그리기 좌표 담는 배열					
 var path=[];
-
-//마이핀 목록 활성화
-var checkmode=0;
 
 //==========이하 지도 api부분
 // 마커를 담을 배열입니다
@@ -86,15 +75,20 @@ if(mode=="edit"){
 //================
 //코스저장 전 체크
 function coursecheck(){
-	//console.log(mymarkers[0]);
-	if(mymarkers[0]==undefined){
-		alert("코스를 저장해주세요");
-		return false;
-	}else{
-		return true;
-	}
+    for(var i=0; i<schedul.length;i++){
+        if(schedul[i][0]==undefined){
+            alert((i+1)+"Day 코스를 저장해주세요");
+            return false;
+        }
+    }
+//	if(mymarkers[0]==undefined){
+//		alert("코스를 저장해주세요");
+//		return false;
+//	}else{
+//		return true;
+//	}
 }
-
+2
 //==검색 사이드 바 드롭다운
 let subToggle=true;
 	$('.searchbtn').click(function(){
@@ -211,7 +205,7 @@ function displayPlaces(places) {
     removeMarker();
     
     for ( var i=0; i<places.length; i++ ) {
-        console.log(places[i]);
+        //console.log(places[i]);
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
@@ -284,7 +278,7 @@ function hovereventlist(marker,position){
 function addEventClick(place){
 	//console.log("한번만 실행 되야함")
 		$("#placesList li").click(function(){
-			console.log("리스트 클릭")
+			//console.log("리스트 클릭")
 			
 			if(soverlay!=undefined){
 			soverlay.setMap(null);
@@ -542,8 +536,8 @@ for(var i=0;i<li.length;i++){
 
 //지도 확대,축소,이동에 따른 idle효과 등록
 function addListenr(){
-	console.log("아이들 이벤트 변경")
-	console.log(currCategory)
+	//console.log("아이들 이벤트 변경")
+	//console.log(currCategory)
 		if(currCategory!=''){
 			kakao.maps.event.addListener(map, 'idle',categorySearch);
 		}else if(currCategory==''){
@@ -658,7 +652,7 @@ function addOverLay(markerc,place){
 	
 	//오버레이에 표시할 정보 
 	var content = '<div class="wrap">' + 
-            '    <div class="info">' + 
+            '    <div class="info ">' +
             '        <div class=" mapoverlay">' + 
                         			place.place_name + 
             '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
@@ -716,9 +710,9 @@ function rsaveMyPin(myplace,myplaceinfo){
 	//console.log("rsaveMyPin 실행")
 
 	//중복체크 임시
-	if(mymarkers[0]!=undefined){
-		for(var i=0;i<mymarkers.length;i++){
-			if(mymarkers[i].id==myplaceinfo.placeid){
+	if(schedul[schedulNum][0]!=undefined){
+		for(var i=0;i<schedul[schedulNum].length;i++){
+			if(schedul[schedulNum][i].id==myplaceinfo.placeid){
 				alert("같은 장소 중복 선택불가")
 				//console.log("중복")
 				return ;
@@ -728,7 +722,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 	
 	//핀은 최대 7개까지 고정 가능
-	if(num<7){
+	if(listNum[schedulNum].num<7){
 		//마커이미지 생성
 		var imageSrc = '/img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
@@ -755,7 +749,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 		
 		//오버레이 생성
 		var mycontent='<div class="wrap">' + 
-            '    <div class="info">' + 
+            '    <div class="info overlay">' +
             '        <div class="title ">' + 
                         			myplaceinfo.placeName + 
             '            <div class="close r"  title="닫기"></div>' + 
@@ -793,12 +787,10 @@ function rsaveMyPin(myplace,myplaceinfo){
 			mymarker:mymarker,
 			myoverlay:myoverlay,
 			data:data,
-			id:myplaceinfo.placeid,
-			xPoint : myplaceinfo.placex,
-			yPoint : myplaceinfo.placey
+			id:myplaceinfo.placeid
 		}
 		
-		mymarkers.push(mymarkerOb);
+		schedul[schedulNum].push(mymarkerOb);
 		
 		//console.log(mymarkers);
 		
@@ -812,7 +804,8 @@ function rsaveMyPin(myplace,myplaceinfo){
 	}
 	//임시 목록보기 중이면 실시간 갱신
 	if(checkmode==1){
-		check();
+		realTimeCheck();
+
 	}
 }
 //임시 
@@ -820,16 +813,18 @@ function rsaveMyPin(myplace,myplaceinfo){
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 function addMySchedule(place){
-	//console.log("addMySchedule실행")
-	//console.log(num);
+//    console.log("=======")
+//	console.log("addMySchedule실행")
+//	console.log("schdulnum= "+schedulNum+" listNum: "+listNum[schedulNum].num);
 	//db에 전달할 정보
-	mymarkers[num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
-				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|",
+	schedul[schedulNum][listNum[schedulNum].num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
+				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|"+optVal+"|",
 						memo:""}
+	
 	var li=document.createElement('li');	
 	li.innerHTML=
 	        '	 <input type="hidden" class="id" name="as" value="'+place.placeid+'">'+
-            '    <div class="info">' + 
+            '    <div class="info'+" "+schedulNum+'">' +
             '       <div class="title">' + 
                         			place.placeName + 
             '        </div>' + 
@@ -844,31 +839,34 @@ function addMySchedule(place){
             '        </div>' + 
             '		 <input type="hidden" class="data" name="data" value="">'+
             '		 <button type="button" class="memobtn" >메모'+
-            '		 </button>' 
+            '		 </button>' +
             '    	</div>' + 
             '	 </div>';
   
-	var ul =document.getElementById('My_List');
-	ul.appendChild(li);
+	var ul =$('.My_List.'+optVal+'');
+	ul[0].appendChild(li);
 	
 	li.setAttribute("draggable", "true");
 	
-	$('.info .data')[num].defaultValue=mymarkers[num].data.data
-	
-	num+=1;
+	$('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num].defaultValue=schedul[schedulNum][listNum[schedulNum].num].data.data
+//	console.log("선택한 리스트info")
+//	console.log($('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num])
+//	console.log("저장할 data내용")
+//	console.log(schedul[schedulNum][listNum[schedulNum].num].data.data)
+	listNum[schedulNum].num+=1;
 	
 	//생성한 리스트에 클릭시 삭제 이벤트 등록
-	$("#My_List .close").click(function(event){
+	$(".My_List .close").click(function(event){
 		removeMySchedule(event)	
 	});
 	
 	//생성한 리스트에 마우스 오버시 화면 이동
-	$('#My_List li .title').mouseover(function(event){
+	$('.My_List li .title').mouseover(function(event){
 		var over="over"
 		hoverevent(event,over);
 	})
 	
-	$('#My_List li .title').mouseout(function(event){
+	$('.My_List li .title').mouseout(function(event){
 		var out="out"
 		hoverevent(event,out);
 	})
@@ -884,26 +882,26 @@ function removeMySchedule(event){
 	var et= event.target;
 	var div=et.parentNode.parentNode;
 	var li=div.parentNode;
-	console.log(li.firstElementChild);
-	console.log(li.firstElementChild.defaultValue);
+	//console.log(li.firstElementChild);
+	//console.log(li.firstElementChild.defaultValue);
 	//console.log(li.firstElementChild.defaultValue);
 	//console.log($(li).firstElementChild.defaultValue);
-	for(var i = 0 ;i<mymarkers.length;i++){
+	for(var i = 0 ;i<schedul[schedulNum].length;i++){
 		if (i==$(li).index()){
 			//console.log("삭제완료")
 			//라인삭제
 			path.splice(i,1);
-			polyline.setPath(path);
+			polylineArr[schedulNum].setPath(path);
 			
 			//마커,오버레이 삭제
-			mymarkers[i].mymarker.mymarker.setMap(null);
-			mymarkers[i].myoverlay.myoverlay.setMap(null);
+			schedul[schedulNum][i].mymarker.mymarker.setMap(null);
+			schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
 			
-			mymarkers.splice(i,1);
+			schedul[schedulNum].splice(i,1);
 
 			//좌측 마이 스케쥴 삭제
 			li.remove();
-			num-=1;
+			listNum[schedulNum].num-=1;
 			break;
 		}
 	}
@@ -912,78 +910,116 @@ function removeMySchedule(event){
 function hoverevent(event,state){
 		var li=event.target.parentElement.parentElement;
 		var value=li.firstElementChild.defaultValue;
-		for(var i = 0 ;i<mymarkers.length;i++){
-			if(value==mymarkers[i].mymarker.id){
-				var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
+		for(var i = 0 ;i<schedul[schedulNum].length;i++){
+			if(value==schedul[schedulNum][i].mymarker.id){
+				var mapmove=new kakao.maps.LatLng(schedul[schedulNum][i].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][i].mymarker.mymarker.getPosition().La)
 				map.panTo(mapmove);
 				if(state=="over"){				
-				mymarkers[i].mymarker.mymarker.setMap(map);
-				mymarkers[i].myoverlay.myoverlay.setMap(map);
+				schedul[schedulNum][i].mymarker.mymarker.setMap(map);
+				schedul[schedulNum][i].myoverlay.myoverlay.setMap(map);
 				}else if(state=="out"){
-				mymarkers[i].myoverlay.myoverlay.setMap(null);	
+				schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
 					if(checkmode!=1){
-					mymarkers[i].mymarker.mymarker.setMap(null);
+					schedul[schedulNum][i].mymarker.mymarker.setMap(null);
 					}
 				}
 
 			break;
 			}
-			
-			/*if (i==$(li).index()){
-			var mapmove=new kakao.maps.LatLng(mymarkers[i].mymarker.mymarker.getPosition().Ma,mymarkers[i].mymarker.mymarker.getPosition().La)
-			mymarkers[i].mymarker.mymarker.setMap(map);
-			map.panTo(mapmove);
-			break;
-			}*/
 		}
 }
 //=======
 
 
 function check(){
-	if(mymarkers[0]!= undefined){
-		//마이핀 ,마이 오버레이 생성
-		for(var i=0; i<mymarkers.length;i++){
-			mymarkers[i].mymarker.mymarker.setMap(map);
-			
-				
-				
-			(function(marker, index) {
-				console.log("이벤트 등록");
-			
-				//리스트 클릭스 오버레이 출력
-	            kakao.maps.event.addListener(marker,'click',function(){
-					console.log(marker);
-					console.log(index);
-					addmOverlay(marker,index);	
-				});	
-        	})(mymarkers[i].mymarker.mymarker, i);
-		}
+	if(schedul[schedulNum][0]!= undefined  ){
+	    for(var i=0;i<schedul.length;i++){
+            for(var j=0;j<schedul[i].length;j++){
+                schedul[i][j].mymarker.mymarker.setMap(null);
+                schedul[i][j].myoverlay.myoverlay.setMap(null);
+            }
+        }
+        for(var k=0;k<schedul[schedulNum].length;k++){
+            schedul[schedulNum][k].mymarker.mymarker.setMap(map);
+            schedul[schedulNum][k].myoverlay.myoverlay.setMap(map);
+
+            (function(marker, index) {
+
+                //리스트 클릭스 오버레이 출력
+                kakao.maps.event.addListener(marker,'click',function(){
+
+                    addmOverlay(marker,index);
+                });
+            })(schedul[schedulNum][k].mymarker.mymarker, k);
+
+            $(".info .r").click(function(event){
+                console.log("초창기 클릭")
+                closeMyOverlay(event)
+            });
+
+        }
+            //임시
+            $(".info.overlay").off("click");
+            $(".info.overlay").click(indexchange);
+
 		//라인 생성
-		polyline.setMap(map);
-		
+//		polyline.setMap(map);
+
 		checkmode=1;
 		
 		$('.check').attr("onclick","hide();");
 		$('.check').text("마이 핀 숨기기")
 	}else{
 		alert("핀을 저장해주세요");
+		 for(var i=0;i<schedul.length;i++){
+            for(var j=0;j<schedul[i].length;j++){
+                schedul[i][j].mymarker.mymarker.setMap(null);
+                schedul[i][j].myoverlay.myoverlay.setMap(null);
+            }
+        }
 	}
 }
+
+//임시 오버레이 z-index 변경
+function indexchange(){
+    console.log("인덱스체인지 실행")
+}
+
+function realTimeCheck(){
+    var num=(listNum[schedulNum].num-1)
+
+	schedul[schedulNum][num].mymarker.mymarker.setMap(map)
+	schedul[schedulNum][num].myoverlay.myoverlay.setMap(map)
+
+    kakao.maps.event.addListener(schedul[schedulNum][num].mymarker.mymarker,'click',function(){
+        addmOverlay(schedul[schedulNum][num].mymarker.mymarker,num);
+    });
+
+    //임시
+    $(".info.overlay").off("click");
+    $(".info.overlay").click(indexchange);
+
+    $(".info .r").click(function(event){
+    closeMyOverlay(event)
+    });
+
+    checkmode=1;
+
+    $('.check').attr("onclick","hide();");
+    $('.check').text("마이 핀 숨기기")
+
+}
+
 
 //마이핀 오버레이 출력
 function addmOverlay(marker,index){
 	//console.log("애드 오버레이")
-	for(var i = 0 ; i<mymarkers.length;i++){
-		//console.log("===========시작")
-		//console.log(marker.Rc.x+'/'+marker.Rc.y);
-		//console.log(mymarkers[i].myoverlay.myoverlay.Rc.x+'/'+mymarkers[i].myoverlay.myoverlay.Rc.y);
-		//console.log(marker.getPosition().La+'/'+marker.getPosition().Ma);
-		//console.log(mymarkers[i].myoverlay.myoverlay.getPosition().La+'/'+mymarkers[i].myoverlay.myoverlay.getPosition().Ma);
-		//console.log("===========")
-		if(mymarkers[index].mymarker.id==mymarkers[i].myoverlay.id){
-			//console.log("일치")
-			mymarkers[i].myoverlay.myoverlay.setMap(map);
+	for(var i = 0 ; i<schedul[schedulNum].length;i++){
+		if(schedul[schedulNum][index].mymarker.id==schedul[schedulNum][i].myoverlay.id){
+			schedul[schedulNum][i].myoverlay.myoverlay.setMap(map);
+
+
+
 			$(".info .r").click(function(event){
 			closeMyOverlay(event)	
 			});
@@ -994,18 +1030,19 @@ function addmOverlay(marker,index){
 
 //오버레이 닫기 
 function closeMyOverlay(event) {
+
 	var et= event.target;
 	var value=et.nextElementSibling.value;
-	for(var i=0; i<mymarkers.length;i++){
-		if(mymarkers[i].id==value){
-			mymarkers[i].myoverlay.myoverlay.setMap(null);
+	for(var i=0; i<schedul[schedulNum].length;i++){
+		if(schedul[schedulNum][i].id==value){
+			schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
 		}
 	}    
 }
 
 //마이핀 숨기기
 function hide(){
-	for(var i=0; i<mymarkers.length;i++){
+	for(var i=0; i<schedul[schedulNum].length;i++){
 		
 		
 		/*(function(marker, index) {
@@ -1018,9 +1055,9 @@ function hide(){
 			});	
         })(mymarkers[i].mymarker.mymarker, i);*/
 		
-		mymarkers[i].mymarker.mymarker.setMap(null);
-		mymarkers[i].myoverlay.myoverlay.setMap(null);
-		polyline.setMap(null);
+		schedul[schedulNum][i].mymarker.mymarker.setMap(null);
+		schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
+		polylineArr[schedulNum].setMap(null);
 		
 	}
 	checkmode=0;
@@ -1036,35 +1073,37 @@ function hide(){
 
 //마이 핀 라인 생성
 function makeline(){
-	polyline.setMap(null);
-	if( polyline.getPath()[0]==undefined || polyline.getPath()[0].La== 0 && polyline.getPath()[0].Ma==0 ){
-		for(var i=0;i<mymarkers.length;i++){
-			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
-				la=mymarkers[i].mymarker.mymarker.getPosition().La
+	polylineArr[schedulNum].setMap(null);
+
+	if( polylineArr[schedulNum].getPath()[0]==undefined || polylineArr[schedulNum].getPath()[0].La== 0 && polylineArr[schedulNum].getPath()[0].Ma==0 ){
+		for(var i=0;i<schedul[schedulNum].length;i++){
+			var ma= schedul[schedulNum][i].mymarker.mymarker.getPosition().Ma,
+				la=schedul[schedulNum][i].mymarker.mymarker.getPosition().La
 			//넘겨 받은 좌표 값 설정
 			var coord = new kakao.maps.LatLng(ma, la);
 			
 			path.push(coord);
 		}
-		polyline.setPath(path);
+		polylineArr[schedulNum].setPath(path);
 		//polyline.setMap(map);
 	}else{
 		var length=path.length;
 		
-		for(var i=0;i<mymarkers.length;i++){
+		for(var i=0;i<schedul[schedulNum].length;i++){
 			if(i<length){
 				continue
 			}else{
-			var ma= mymarkers[i].mymarker.mymarker.getPosition().Ma,
-				la=mymarkers[i].mymarker.mymarker.getPosition().La
+			var ma= schedul[schedulNum][i].mymarker.mymarker.getPosition().Ma,
+				la=schedul[schedulNum][i].mymarker.mymarker.getPosition().La
 				
 			var coord = new kakao.maps.LatLng(ma, la);
 			
 			path.push(coord);
 			}	
 		}
-		polyline.setPath(path);
+		polylineArr[schedulNum].setPath(path);
 	}
+
 }
 
 //===========임시 메모
@@ -1078,17 +1117,17 @@ function memobox(event){
 	
 	//none 클래스 삭제
 	var e = event.target.parentElement.parentElement;
-		console.log(e);
-		console.log($(e).index());
+		//console.log(e);
+		//console.log($(e).index());
 	$('#memobox').removeClass('none');
 	
 	 index=$(e).index()
 	
 	//title 부여
-	var text=$('.info .title')[index].innerText;
+	var text=$('.info.'+schedulNum+' .title')[index].innerText;
 	$('#memobox .title').text(text);
 	
-	$('#memobox textarea')[0].value=mymarkers[index].data.memo;
+	$('#memobox textarea')[0].value=schedul[schedulNum][index].data.memo;
 }
 
 //메모 박스 숨기기
@@ -1101,25 +1140,25 @@ $('#memobox .close').click(function(){
 		//메모 내용 있을시 저장 누르면 창 닫기
 	
 		//초기화
-		$('.info .data')[index].defaultValue="";
+		$('.info.'+schedulNum+' .data')[index].defaultValue="";
 		//console.log($('.info .data')[index]);
 		//console.log($('.info .data')[index].defaultValu);
 		//리스트 input value값 불러오기
-		var value=mymarkers[index].data.data;
+		var value=schedul[schedulNum][index].data.data;
 
 		//텍스트 에어이라 입력 값
 		var memo=$('#memobox textarea')[0].value
 		
-		mymarkers[index].data.memo=memo;
+		schedul[schedulNum][index].data.memo=memo;
 		
 		//input value에 메모내용 값 추가
-		$('.info .data')[index].defaultValue = value+memo;
+		$('.info.'+schedulNum+' .data')[index].defaultValue = value+memo;
 		//console.log($('.info .data')[index].defaultValue)
 		
 		$('#memobox').addClass('none');
 	})
 //========드래그 앤 드랍
-const list = document.querySelector('#My_List');
+const list = document.querySelector('.My_List');
 let currentItemIndex = null;
 let currentItem = null;
 
@@ -1199,21 +1238,5 @@ function arraychange(currentItemIndex,dropItemIndex){
 	}
 	//console.log(mymarkers);
 	makeline(path);
-	polyline.setMap(map);
-}
-
-var xPoints = 0;
-var yPoints = 0;
-function makeStaticMap(){
-    for(var i = 0;i < mymarkers.length;i++){
-        xPoints += Number(mymarkers[i].xPoint);
-        yPoints += Number(mymarkers[i].yPoint);
-    }
-    xPoints = xPoints/mymarkers.length;
-    yPoints = yPoints/mymarkers.length;
-
-    var moveLatLon = new kakao.maps.LatLng(yPoints, xPoints);
-    map.setCenter(moveLatLon);
-
-    
+	polylineArr[schedulNum].setMap(map);
 }

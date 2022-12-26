@@ -236,7 +236,7 @@
 .wrap_contView .area_txtView{position:relative;padding-bottom:0 !important;}
 .wrap_contView .area_txtView.top.on .inr_wrap,
 .wrap_contView .area_txtView.bottom.on .inr_wrap{overflow:visible !important;height:auto !important;}
-.wrap_contView .area_txtView.top .inr_wrap{overflow:hidden;height:140px;}
+.wrap_contView .area_txtView.top .inr_wrap{overflow:hidden;height:350px;}
 .wrap_contView .area_txtView.bottom .inr_wrap{overflow:hidden;height:140px;}
 .wrap_contView .area_txtView.top.on .inr{border-bottom:0;padding-bottom:0;}
 .wrap_contView .area_txtView .inr > p{color: #333; font-size: 18px; line-height:1.7;letter-spacing: -1px;}

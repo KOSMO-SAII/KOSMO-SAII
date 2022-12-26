@@ -1,17 +1,18 @@
 package com.example.test.service;
 
 import com.example.test.domain.CourseDTO;
+import com.example.test.domain.CourseListDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.entity.Course;
 import com.example.test.entity.CourseData;
 import com.example.test.entity.CourseDataId;
-import com.example.test.repository.CourseDAO;
-import com.example.test.repository.CourseDataRepository;
-import com.example.test.repository.CourseRepository;
-import com.example.test.repository.MainBoardDAO;
+import com.example.test.entity.CourseList;
+import com.example.test.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletException;
@@ -32,6 +33,10 @@ public class CourseService {
     private final CourseDataRepository courseDataRepository;
 
     private final CourseRepository courseRepository;
+
+    private final CourseListRepository courseListRepository;
+
+    private MemberService memberService;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -318,5 +323,37 @@ public class CourseService {
         return course.getId();
     }
 
-//    public
+    public Page<CourseListDTO> getList(PageRequest pageRequest){
+
+        Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
+
+        for(CourseList courseList : courseLists){
+            CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            int length = courseDataRepository.countById(cdto.getCourse_id());
+            List<CourseDTO> datas = new ArrayList<>();
+            for(int i=0; i < length;i++) {
+                CourseDataId id = new CourseDataId();
+                id.setId(cdto.getCourse_id());
+                id.setOrder((long) i+1);
+                datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
+            }
+            cdto.setCourseDatas(datas);
+            cdto.setCenter();
+            long id = Long.parseLong(cdto.getCreatedBy());
+            System.out.println(id);
+            cdto.setCreatedBy(memberService.getMember(id).getNickname());
+        }
+        Page<CourseListDTO> lists = courseLists.map(courseList -> modelMapper.map(courseList, CourseListDTO.class));
+        return lists;
+    }
+    public List<CourseListDTO> getCard(){
+        List<CourseList> courseLists = courseListRepository.findTop3ByOrderByViewCountDesc();
+        List<CourseListDTO> list = new ArrayList<>();
+
+        for(CourseList c : courseLists){
+            list.add(modelMapper.map(c, CourseListDTO.class));
+        }
+
+        return list;
+    }
 }
