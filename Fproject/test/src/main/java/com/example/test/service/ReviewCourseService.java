@@ -53,6 +53,9 @@ public class ReviewCourseService {
     //reviewCourseRepository 결과로 넘어온 CourseReviewList를 Page로 래핑하고 map을 통해
     // ReviewCourseListResponseDTO로 변환해 반환하는 메소드.
 
+
+
+
     @Transactional
     public void delete(Long id){
         CourseReview reviewCourse = reviewCourseRepository.findById(id)

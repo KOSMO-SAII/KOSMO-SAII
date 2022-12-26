@@ -7,7 +7,6 @@ import com.example.test.entity.*;
 import com.example.test.repository.*;
 import com.google.common.base.StandardSystemProperty;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.internal.build.AllowSysOut;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,7 +33,7 @@ public class CourseService {
 
     private final CourseRepository courseRepository;
 
-    private final CourseListRepositroy courseListRepository;
+    private final CourseListRepositroy courseListRepositroy;
 
     private final MemberRepository memberRepository;
     private final MemberService memberService;
@@ -173,7 +172,7 @@ public class CourseService {
         courseList.setTitle(title);
         courseList.setRegion(region);
         System.out.println(courseList.toString());
-        courseListRepository.save(courseList);
+        courseListRepositroy.save(courseList);
 
 //        return mdto;
         return null;
@@ -285,8 +284,7 @@ public class CourseService {
 
     public Page<CourseListDTO> getList(PageRequest pageRequest){
 
-        Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
-
+        Page<CourseList> courseLists = courseListRepositroy.findAll(pageRequest);
         for(CourseList courseList : courseLists){
             CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
             int length = courseDataRepository.countById(cdto.getCourse_id());
@@ -305,15 +303,5 @@ public class CourseService {
         }
         Page<CourseListDTO> lists = courseLists.map(courseList -> modelMapper.map(courseList, CourseListDTO.class));
         return lists;
-    }
-    public List<CourseListDTO> getCard(){
-        List<CourseList> courseLists = courseListRepository.findTop3ByOrderByViewCountDesc();
-        List<CourseListDTO> list = new ArrayList<>();
-
-        for(CourseList c : courseLists){
-            list.add(modelMapper.map(c, CourseListDTO.class));
-        }
-
-        return list;
     }
 }

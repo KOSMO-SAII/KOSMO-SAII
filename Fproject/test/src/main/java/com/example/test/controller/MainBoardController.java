@@ -27,7 +27,7 @@ public class MainBoardController {
 	public String mainBoardList(Model model) {
 		System.out.println("list");
 		model.addAttribute("list", mainBoardDAO.listDao());
-		return "main_board/MainBoardList";
+		return "MainBoardList";
 	}
 	
 	@GetMapping(value="/mainboard_view")
@@ -35,13 +35,7 @@ public class MainBoardController {
 		System.out.println("view");
 		mainBoardDAO.plusviewcountDao(req.getParameter("post_id"));
 		model.addAttribute("view", mainBoardDAO.viewDao(req.getParameter("post_id")));
-		return "main_board/MainBoardView";
-	}
-
-	@GetMapping(value="/mainboard_delete")
-	public String mainBoardDelete(HttpServletRequest req, Model model){
-		mainBoardDAO.deleteDao(req.getParameter("post_id"));
-		return "redirect:http://localhost:8081/mainboard_list";
+		return "MainBoardView";
 	}
 	
 	/* 코스게시판 글 작성
