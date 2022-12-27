@@ -31,9 +31,11 @@ public class CourseReview extends Base{
 //    @Column(columnDefinition = "integer default 0")
 //    private int view;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Member member;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "member_id")
+//    private Member member;
+
+    private String commentWriter;
 
     //@ManyToOne 과 @OneToMany 로 양방향 관계
     //게시글이 삭제되면 댓글 또한 삭제되어야 하기 때문에 CascadeType.REMOVE 속성을 사용

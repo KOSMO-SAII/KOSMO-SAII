@@ -70,6 +70,9 @@ public class IndexController {//페이지에 관련된 컨트롤러
             model.addAttribute("comments",comments);
 //        }
 
+        if (principal == null) {
+            model.addAttribute("toLogin", true);
+        }
 
         // 사용자
         if(principal != null){
