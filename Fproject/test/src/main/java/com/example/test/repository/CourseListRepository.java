@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CourseListRepository extends JpaRepository<CourseList, Long> {
-
     public List<CourseList> findTop3ByOrderByViewCountDesc();
 
 }
