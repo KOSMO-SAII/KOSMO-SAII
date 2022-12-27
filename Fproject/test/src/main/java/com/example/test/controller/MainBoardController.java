@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainBoardController {
 	@Autowired
 	MainBoardDAO mainBoardDAO;
+
+	Principal principal;
 	
 	@GetMapping(value="/mainboard_list")
 	public String mainBoardList(Model model) {
