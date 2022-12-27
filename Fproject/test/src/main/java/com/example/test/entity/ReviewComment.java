@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
 
@@ -39,7 +37,7 @@ public class ReviewComment extends Base{
     private CourseReview posts;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private Member member;//작성자
 
 }

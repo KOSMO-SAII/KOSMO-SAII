@@ -32,7 +32,7 @@ public class CourseReview extends Base{
 //    private int view;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     //@ManyToOne 과 @OneToMany 로 양방향 관계
