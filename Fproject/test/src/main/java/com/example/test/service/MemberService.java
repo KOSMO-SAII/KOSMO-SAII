@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 
 @Service
 @Transactional
@@ -68,6 +69,17 @@ public class MemberService implements UserDetailsService {
         System.out.println("여기는 엡데이트 서비스");
         Member user1 = new Member();
         user1 = user1.update1(memberDTO,passwordEncoder);
+        return memberRepository.save(user1);
+    }
+
+    public Member saveMember2(MemberDTO memberDTO, Principal principal)throws Exception {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        System.out.println("여기는 엡데이트 서비스");
+        SessionMember sessionMember = memdto(principal.getName());
+        String pw = sessionMember.getLoginPw();
+        System.out.println(pw+"여기는 비밀번호  없을때");
+        Member user1 = new Member();
+        user1 = user1.update2(memberDTO,pw);
         return memberRepository.save(user1);
     }
 
