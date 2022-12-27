@@ -4,6 +4,7 @@ import com.example.test.entity.Base;
 import com.example.test.entity.CourseReview;
 import com.example.test.entity.Member;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  */
 
 @Getter
+@ToString
 public class ReviewCourseResponseDTO extends Base {
     private long id;
     private String course_id;
@@ -33,8 +35,8 @@ public class ReviewCourseResponseDTO extends Base {
         this.author=reviewCourse.getAuthor();
         this.content=reviewCourse.getContent();
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        this.memberId = reviewCourse.getMember().getMemberId();
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + memberId);
+//        this.memberId = reviewCourse.getMember().getMemberId();
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + memberId);
         this.comments = reviewCourse.getComments().stream().map(ReviewCommentResponseDTO::new).collect(Collectors.toList());
     }
 }
