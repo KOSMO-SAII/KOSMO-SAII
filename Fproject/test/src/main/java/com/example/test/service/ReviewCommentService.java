@@ -26,7 +26,6 @@ public class ReviewCommentService {
                 .orElseThrow(()->new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다."+id));
 
         dto.setMember(member);
-        dto.setPosts(posts);
 
         ReviewComment comment = dto.toReviewComment();
         reviewCommentRepository.save(comment);

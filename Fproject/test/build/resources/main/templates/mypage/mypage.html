@@ -89,7 +89,7 @@ function imgoriginalhidden(){
 <div id="show1" >
     <!--    <form method="post" action="/members/update">-->
     <form method="post" action="/members/checkpath">
-        <input id="edit" type="submit" value="수정하러가기" >
+        <input id="edit" type="submit" value="수정/탈퇴" >
         <div class="mydiv">
             <label class="mylabel">아이디</label><br/>
             <input class="myinput" type="text" id="userId" name="loginId" th:value="${info.loginId}" readonly>
@@ -169,6 +169,6 @@ function imgoriginalhidden(){
       modalClose.addEventListener('click', () => {
         modal.style.display = "none";
       });
-    </script>
+</script>
 </body>
 </html>
