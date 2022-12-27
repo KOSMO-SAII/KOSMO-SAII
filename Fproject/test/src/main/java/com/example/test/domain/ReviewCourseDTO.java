@@ -1,13 +1,9 @@
 package com.example.test.domain;
 
-import com.example.test.entity.Base;
-import com.example.test.entity.CourseReview;
-import com.example.test.entity.Member;
-import lombok.Getter;
-import lombok.ToString;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import com.example.test.entity.ReviewCourse;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 /**
  * 게시글 정보를 리턴할 응답(Response) 클래스
@@ -15,29 +11,32 @@ import java.util.stream.Collectors;
  * comments 필드의 List 타입을 DTO 클래스로해서 엔티티간 무한 참조를 방지
  */
 
-@Getter
-@ToString
-public class ReviewCourseResponseDTO extends Base {
+@Data
+@RequiredArgsConstructor
+public class ReviewCourseDTO{
     private long id;
     private String course_id;
     private String title;
     private String author;
     private String content;
-//    private String createdDate, modifiedDate;
-    private Long memberId;
-    private List<ReviewCommentResponseDTO> comments;
+
+    private String createdDate;
+    private String modifiedDate;
+    private String createdBy;
+    private String modifiedBy;
+
 
     /* Entity -> Dto*/
-    public ReviewCourseResponseDTO(CourseReview reviewCourse){
+    public ReviewCourseDTO(ReviewCourse reviewCourse){
         this.id=reviewCourse.getId();
         this.course_id=reviewCourse.getCourse_id();
         this.title=reviewCourse.getTitle();
-        this.author=reviewCourse.getAuthor();
+        this.author=reviewCourse.getCreatedBy();
         this.content=reviewCourse.getContent();
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 //        this.memberId = reviewCourse.getMember().getMemberId();
 //        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + memberId);
-        this.comments = reviewCourse.getComments().stream().map(ReviewCommentResponseDTO::new).collect(Collectors.toList());
+        ModelMapper modelMapper = new ModelMapper();
     }
 }
 
