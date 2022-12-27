@@ -167,14 +167,14 @@ display: inline-block;
    padding: 6px 25px;
    border-radius: 5px;
    display:inline-block;
-   width: 102px;
-   height: 37px;
+   width: 94px;
    left:70px;
    vertical-align:middle;
 }
 
 #cbtn{
-    left:232px;
+    left:273px;
+    width:141px;
 }
 
 #red{
@@ -388,4 +388,3 @@ a {
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
 }
-

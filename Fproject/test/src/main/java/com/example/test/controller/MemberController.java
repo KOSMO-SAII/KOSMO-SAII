@@ -102,7 +102,7 @@ public class MemberController {
     }
     @GetMapping("/loginF")
     public String loginf(Model model){
-        model.addAttribute("loginErrorMsg","뭐가 됐든 제대로 입력해보셈");
+        model.addAttribute("loginErrorMsg","아이디 혹은 비밀번호를 확인해주세요.");
 
         return "login/loginPage";
     }
@@ -153,28 +153,30 @@ public class MemberController {
     }
 
     @RequestMapping("checkpath")
-    public String password(Model model,SessionMember sessionMember){
-        System.out.println(sessionMember.getLoginId());
-        SessionMember member = memberService.memdto(sessionMember.getLoginId());
+    public String password(Model model,Principal principal){
+        System.out.println(principal.getName());
+        SessionMember member = memberService.memdto(principal.getName());
         System.out.println(member.toString());
         model.addAttribute("member",member);
         return "/mypage/pwcheck";
     }
     @RequestMapping("check")
-    public String passwordCheck(Authentication auth, @RequestParam("loginPw1") String loginPw1, RedirectAttributes rttr, SessionMember sessionMember){
+    public String passwordCheck(Authentication auth, @RequestParam("loginPw1") String loginPw1, RedirectAttributes abc, SessionMember sessionMember){
 //        Member user = (Member) auth.getPrincipal();
 //        String userpw = user.getLoginPw();
         System.out.println(sessionMember.getLoginId());
         SessionMember member = memberService.memdto(sessionMember.getLoginId());
         System.out.println(member.toString());
         String pw = member.getLoginPw();
+        System.out.println(pw+"기존패스워드");
         if(passwordEncoder.matches(loginPw1, pw)) {
+            System.out.println(loginPw1+"확인패스워드");
             System.out.println("pw 재확인 완료..");
             return "redirect:/members/update";
         }
         else {
-            rttr.addFlashAttribute("msg", "비밀번호를 다시 확인해 주세요.");
             System.out.println("비밀번호 틀린듯?");
+            abc.addFlashAttribute("msg", "비밀번호를 다시 확인해 주세요.");
             return "redirect:/members/checkpath";
         }
     }
