@@ -8,9 +8,8 @@ head{ -ms-overflow-style: none;}
 .logo {
     float:left;
     margin-right: 30px;
-    padding-top:30px;
+    padding-top:15px;
     cursor:pointer;
-    margin-left: -160px;
 }
 .link-dark{text-decoration: none;
             padding:40px;
@@ -19,7 +18,7 @@ head{ -ms-overflow-style: none;}
             margin: 0 auto;}
 
 #header {width: 100%;
-        height: 200px;
+        height: 150px;
         position: center;
         border-top: solid #4eb1e4 3px;
 	    }
@@ -80,27 +79,21 @@ head{ -ms-overflow-style: none;}
 
  .ppp { margin-top: 30px;}
 
-.aa {padding-left:30px;}
-.bb {padding-right: 20px;}
-
-
 #tripple{margin-top: 150px;
          margin-bottom: 150px;
-         width: 1350px;
+         width: 950px;
          margin-left: auto;
          display: block;
          margin-right: auto;
          }
-.rec-card {margin-top: 20px;
+.rec-card {margin-top: 150px;
         margin-bottom: 150px;
         width:100%;
-        margin-left: 500px;
         }
 .card {color:black;
         font-size:15px;
          text-align: center;
          text-decoration: none;
-        margin-right: 80px;
 
          height: 400px;
          width: 350px;

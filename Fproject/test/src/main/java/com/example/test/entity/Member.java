@@ -156,12 +156,15 @@ public class Member{
         member1.setCreateDate(member.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
         String projectPath = System.getProperty("user.dir")+"\\test\\src\\main\\resources\\static\\img\\profile";
+//        String prijectPath1= System.getProperty("user.dir")+"..\\out\\production\\resources\\static\\img\\profile";
         UUID uuid = UUID.randomUUID();
         String fileName = uuid+"-"+multipartFile.getOriginalFilename();
         System.out.println(multipartFile.getOriginalFilename());
         System.out.println(member.getPicture());
         File saveFile = new File(projectPath,fileName);
+//        File saveFile1 = new File(prijectPath1,fileName);
         multipartFile.transferTo(saveFile);
+//        multipartFile.transferTo(saveFile1);
         member1.setPicture("/img/profile/"+fileName);
 //        member1.setPicture(member.getOProfileImg());
 

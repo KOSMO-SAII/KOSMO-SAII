@@ -66,10 +66,15 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
         // 댓글
         List<ReviewCommentResponseDTO> comments = dto.getComments();
+
 //        if(comments!=null && !comments.isEmpty()){
             model.addAttribute("comments",comments);
 //        }
 
+
+        if(comments != null && !comments.isEmpty()){
+            model.addAttribute("comments",comments);
+        }
 
         // 사용자
         if(principal != null){
@@ -78,7 +83,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
             //리뷰 작성자가 본인인지 확인
             if(dto.getAuthor().equals(memberService.getMember().getLoginId())){
                 model.addAttribute("author",true);
-
+//                model.addAttribute("author1",memberService.getMember().getLoginId());
             }
             //게시글 작성자 본인만 수정-삭제 버튼이 보이게 본인 확인.
             if(principal.getName().equals(loginId)){

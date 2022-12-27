@@ -1,14 +1,15 @@
 package com.example.test.controller;
 
-import com.example.test.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import org.python.core.PyFunction;
+import org.python.core.PyInteger;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,8 @@ import java.util.Vector;
 @Controller
 public class Maincontroller extends HttpServlet {
 
-    @Autowired
-    private CourseService courseService;
-
     @GetMapping("/")
-    public String MainPage(Model model){
-        PageRequest pageRequest = PageRequest.of(0,3);
-        model.addAttribute("lists",courseService.getCard());
+    public String MainPage(){
         return "Mainpage";
     }
     @RequestMapping("/test3")
