@@ -21,15 +21,15 @@ public class ReviewCommentService {
 
     @Transactional
     public Long commentSave(String nickname, Long id, ReviewCommentRequestDTO dto){
-        Member user = memberRepository.findByNickname(nickname);
-        CourseReview reviewCourse = reviewCourseRepository.findById(id)
+        Member member = memberRepository.findByNickname(nickname);
+        CourseReview posts = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다."+id));
 
-//        dto.setUser(user);
-        dto.setReviewCourse(reviewCourse);
+        dto.setMember(member);
+        dto.setPosts(posts);
 
-        ReviewComment reviewComment = dto.toReviewComment();
-        reviewCommentRepository.save(reviewComment);
+        ReviewComment comment = dto.toReviewComment();
+        reviewCommentRepository.save(comment);
 
         return  dto.getId();
     }

@@ -27,14 +27,15 @@ public class CourseReview extends Base{
 
     private String author;
 
+
 //    @Column(columnDefinition = "integer default 0")
 //    private int view;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "memberId")
-//    private Member user;
+    private Member member;
 
-    @OneToMany(mappedBy = "reviewCourse", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    //@ManyToOne 과 @OneToMany 로 양방향 관계
+    //게시글이 삭제되면 댓글 또한 삭제되어야 하기 때문에 CascadeType.REMOVE 속성을 사용
+//    @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")
     private List<ReviewComment> comments;
 
@@ -46,6 +47,7 @@ public class CourseReview extends Base{
         this.author=author;
     }
 
+//    게시글 수정
     public void update(String title, String content, String course_id){
         this.title=title;
         this.content=content;

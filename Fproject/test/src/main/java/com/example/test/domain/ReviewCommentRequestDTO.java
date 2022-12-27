@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,8 +21,8 @@ public class ReviewCommentRequestDTO {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-//    private Member user;
-    private CourseReview reviewCourse;
+    private Member member;
+    private CourseReview posts;
 
     /* Dto -> Entity */
     public ReviewComment toReviewComment() {
@@ -30,8 +31,8 @@ public class ReviewCommentRequestDTO {
                 .comment(comment)
                 .createdDate(createdDate)
                 .modifiedDate(modifiedDate)
-//                .user(user)
-                .reviewCourse(reviewCourse)
+                .member(member)
+                .posts(posts)
                 .build();
 
         return comments;

@@ -18,12 +18,11 @@ import java.util.stream.Collectors;
 public class ReviewCourseResponseDTO extends Base {
     private long id;
     private String course_id;
-    private String content;
     private String title;
     private String author;
-
-    //댓글 추가
-//    private Long userId;
+    private String content;
+//    private String createdDate, modifiedDate;
+    private Long memberId;
     private List<ReviewCommentResponseDTO> comments;
 
     /* Entity -> Dto*/
@@ -31,8 +30,9 @@ public class ReviewCourseResponseDTO extends Base {
         this.id=reviewCourse.getId();
         this.course_id=reviewCourse.getCourse_id();
         this.title=reviewCourse.getTitle();
-        this.content=reviewCourse.getContent();
         this.author=reviewCourse.getAuthor();
+        this.content=reviewCourse.getContent();
+        this.memberId = reviewCourse.getMember().getMemberId();
         this.comments = reviewCourse.getComments().stream().map(ReviewCommentResponseDTO::new).collect(Collectors.toList());
     }
 }

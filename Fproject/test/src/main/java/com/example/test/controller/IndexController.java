@@ -56,7 +56,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
     }
     //수정
     @GetMapping("/reviews/detail/{id}")
-    public String reviewDetail(@PathVariable Long id, Principal principal, Model model) {
+    public String read(@PathVariable Long id, Principal principal, Model model) {
         ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
         Member member = memberRepository.findByNickname(dto.getAuthor());
         String loginId = member.getLoginId();
@@ -66,7 +66,9 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
         // 댓글
         List<ReviewCommentResponseDTO> comments = dto.getComments();
+//        if(comments!=null && !comments.isEmpty()){
             model.addAttribute("comments",comments);
+//        }
 
 
         // 사용자
@@ -78,6 +80,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
                 model.addAttribute("author",true);
 
             }
+            //게시글 작성자 본인만 수정-삭제 버튼이 보이게 본인 확인.
             if(principal.getName().equals(loginId)){
                 model.addAttribute("check",true);
             }
@@ -90,7 +93,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
         return "reviews/reviewCourseDetail";
     }
 //    @GetMapping("/reviews/detail/{id}")
-//    public String reviewDetail(@PathVariable Long id,  Model model) {
+//    public String read(@PathVariable Long id,  Model model) {
 //        ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
 //        model.addAttribute("reviewCourse",dto);
 //        return "reviews/reviewCourseDetail";

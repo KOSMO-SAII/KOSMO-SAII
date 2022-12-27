@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
 
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Getter
-public class ReviewComment{
+public class ReviewComment extends Base{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +34,12 @@ public class ReviewComment{
     @LastModifiedDate
     private String modifiedDate;
 
-    @ManyToOne
-    @JoinColumn(name = "posts_id")
-    private CourseReview reviewCourse;
+//    @ManyToOne
+//    @JoinColumn(name = "posts_id")
+    private CourseReview posts;
 
 //    @ManyToOne
-//    @JoinColumn(name = "memberId")
-//    private Member user;//작성자
+//    @JoinColumn(name = "user_id")
+    private Member member;//작성자
 
 }

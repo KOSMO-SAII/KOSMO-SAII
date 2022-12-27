@@ -13,7 +13,7 @@ public class ReviewCommentResponseDTO {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-//    private String nickname;
+    private String nickname;
     private Long postsId;
 
     /* Entity -> Dto*/
@@ -22,7 +22,7 @@ public class ReviewCommentResponseDTO {
         this.comment = comment.getComment();
         this.createdDate = comment.getCreatedDate();
         this.modifiedDate = comment.getModifiedDate();
-//        this.nickname = comment.getUser().getNickname();
-        this.postsId = comment.getReviewCourse().getId();
+        this.nickname = comment.getMember().getNickname();
+        this.postsId = comment.getPosts().getId();
     }
 }

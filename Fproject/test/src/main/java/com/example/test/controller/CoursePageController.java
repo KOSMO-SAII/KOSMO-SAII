@@ -4,6 +4,7 @@ package com.example.test.controller;
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.MainBoardDTO;
 import com.example.test.service.CourseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
 public class CoursePageController extends HttpServlet {
 
-    @Autowired
     private CourseService courseService;
 
     @GetMapping("/courseViewPage")

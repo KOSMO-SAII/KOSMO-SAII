@@ -20,9 +20,8 @@ public class ReviewCommentApiController {
     private final MemberService memberService;
 
     @PostMapping("/reviews/{id}/comments")
-    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody ReviewCommentRequestDTO dto,
-                                               @LoginUser MemberDTO memberDTO){
+    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody ReviewCommentRequestDTO dto, String nickname){
         System.out.println(memberService.getMember().getNickname());
-        return ResponseEntity.ok(reviewCommentService.commentSave(memberDTO.getNickname(), id, dto));
+        return ResponseEntity.ok(reviewCommentService.commentSave(memberService.getMember().getNickname(), id, dto));
     }
 }
