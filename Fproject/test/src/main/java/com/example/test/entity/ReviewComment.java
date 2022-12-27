@@ -14,8 +14,8 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Getter
+@Entity
 public class ReviewComment extends Base{
 
     @Id
@@ -34,12 +34,12 @@ public class ReviewComment extends Base{
     @LastModifiedDate
     private String modifiedDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "posts_id")
+    @ManyToOne
+    @JoinColumn(name = "posts_id")
     private CourseReview posts;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private Member member;//작성자
 
 }
