@@ -66,7 +66,7 @@
                         <input type="hidden" value="${list.course_id}">
                         <p class="title">
                             <a th:href="@{/reviews/detail/{id}(id = ${list.id})}" th:text="${list.title}"></a></p>
-                        <p th:text="|작성자 ${list.author}|"></p>
+                        <p th:text="|작성자 ${list.createdBy}|"></p>
 <!--                        <p th:text="|조회수 ${list.view}|"></p>-->
                         <p align="right" th:text="${list.updateDate}"></p>
 <!--                        <p th:if="not empty list.o_file">-->

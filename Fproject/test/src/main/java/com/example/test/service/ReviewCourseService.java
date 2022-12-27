@@ -1,10 +1,7 @@
 package com.example.test.service;
 
-import com.example.test.domain.ReviewCourseListResponseDTO;
-import com.example.test.domain.ReviewCourseResponseDTO;
-import com.example.test.domain.ReviewCourseSaveRequestDTO;
-import com.example.test.domain.ReviewCourseUpdateRequestDTO;
-import com.example.test.entity.CourseReview;
+import com.example.test.domain.ReviewCourseDTO;
+import com.example.test.entity.ReviewCourse;
 import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,29 +21,34 @@ public class ReviewCourseService {
 
     private ModelMapper modelMapper = new ModelMapper();
     @Transactional
-    public Long save(ReviewCourseSaveRequestDTO requestDTO){
-        return reviewCourseRepository.save(requestDTO.toCourseReview()).getId();
+    public Long save(ReviewCourseDTO reviewCourseDTO){
+        ReviewCourse reviewCourse = modelMapper.map(reviewCourseDTO, ReviewCourse.class);
+        reviewCourseRepository.save(reviewCourse);
+        return reviewCourse.getId();
     }
 
     @Transactional
-    public Long update(Long id, ReviewCourseUpdateRequestDTO requestDTO){
-        CourseReview reviewCourse = reviewCourseRepository.findById(id)
+    public Long update(Long id, ReviewCourseDTO requestDTO){
+        ReviewCourse reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         reviewCourse.update(requestDTO.getTitle(), requestDTO.getContent(), requestDTO.getCourse_id());
         System.out.println(requestDTO.getCourse_id());
         return id;
     }
 
-    public ReviewCourseResponseDTO findById(Long id){
-        CourseReview reviewCourse = reviewCourseRepository.findById(id)
+    public ReviewCourseDTO findById(Long id){
+        ReviewCourse reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        return new ReviewCourseResponseDTO(reviewCourse);
+        ReviewCourseDTO dto = modelMapper.map(reviewCourse, ReviewCourseDTO.class);
+        System.out.println(reviewCourse.toString());
+        System.out.println(dto.toString());
+        return dto;
     }
 
     @Transactional
-    public Page<ReviewCourseListResponseDTO> findAllDesc(PageRequest pageRequest){
+    public Page<ReviewCourseDTO> findAllDesc(PageRequest pageRequest){
 
-        Page<ReviewCourseListResponseDTO> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
+        Page<ReviewCourseDTO> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
 
         return courseReviewList;
     }
@@ -58,15 +60,15 @@ public class ReviewCourseService {
 
     @Transactional
     public void delete(Long id){
-        CourseReview reviewCourse = reviewCourseRepository.findById(id)
+        ReviewCourse reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         reviewCourseRepository.delete(reviewCourse);
     }
 
     @Transactional
-    public List<ReviewCourseListResponseDTO> findByKeyword(String title){
+    public List<ReviewCourseDTO> findByKeyword(String title){
         return reviewCourseRepository.findByTitleContaining(title).stream()
-                .map(reviewCourse -> new ReviewCourseListResponseDTO(reviewCourse))
+                .map(reviewCourse -> new ReviewCourseDTO(reviewCourse))
                 .collect(Collectors.toList());
     }
 

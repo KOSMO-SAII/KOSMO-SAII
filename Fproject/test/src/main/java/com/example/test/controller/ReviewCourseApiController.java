@@ -1,10 +1,7 @@
 package com.example.test.controller;
 
-import com.example.test.domain.ReviewCourseResponseDTO;
-import com.example.test.domain.ReviewCourseSaveRequestDTO;
-import com.example.test.domain.ReviewCourseUpdateRequestDTO;
+import com.example.test.domain.ReviewCourseDTO;
 import com.example.test.service.ReviewCourseService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -30,21 +27,21 @@ public class ReviewCourseApiController {
 	private final ReviewCourseService reviewCourseService;
 	
 	@PostMapping("/reviews")
-	public Long save(@RequestBody ReviewCourseSaveRequestDTO requestDto) {
+	public Long save(@RequestBody ReviewCourseDTO requestDto) {
 		//RequestBody, ResponseBody - 데이터 비동기 처리 하여 값 받음
 		System.out.println(requestDto.getAuthor());
 		return reviewCourseService.save(requestDto);
 	}
 	
 	@PutMapping("/reviews/{id}")
-	public Long update(@PathVariable Long id, @RequestBody ReviewCourseUpdateRequestDTO requestDto) {
+	public Long update(@PathVariable Long id, @RequestBody ReviewCourseDTO requestDto) {
 		// PutMapping 수정할때 사용
 		// PathVariable 파라미터값 사용 
 		return reviewCourseService.update(id, requestDto);
 	}
 	
 	@GetMapping("/reviews/{id}")
-	public ReviewCourseResponseDTO findById(@PathVariable Long id) {
+	public ReviewCourseDTO findById(@PathVariable Long id) {
 		//GetMapping 조회할때 사용
 		return reviewCourseService.findById(id);
 	}
