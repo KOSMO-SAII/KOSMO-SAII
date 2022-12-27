@@ -140,6 +140,29 @@ public class Member{
 
         return member1;
     }
+    public static Member update2(MemberDTO memberDTO,String pw) throws Exception{
+        System.out.println("여기는 엔티티 멤버 업데이트");
+        Member member1 = new Member();
+        member1.setMemberId(memberDTO.getMemberId());
+        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setBirthday(memberDTO.getBirthday());
+        member1.setEmail(memberDTO.getEmail());
+        member1.setGender(memberDTO.getGender());
+        member1.setLoginId(memberDTO.getLoginId());
+        member1.setName(memberDTO.getName());
+        member1.setNickname(memberDTO.getNickname());
+        member1.setPhoneNumber(memberDTO.getPhoneNumber());
+        member1.setLoginPw(pw);
+        member1.setRole(memberDTO.getRole());
+        member1.setCreateDate(memberDTO.getCreateDate());
+        member1.setUpdateDate(LocalDateTime.now());
+        member1.setPicture(memberDTO.getPicture());
+
+        System.out.println(member1+"여ㅣ가 업데이트 엔티티");
+
+        return member1;
+    }
+
     public static Member profileup(Member member,MultipartFile multipartFile) throws IOException {
         Member member1 = new Member();
         member1.setMemberId(member.getMemberId());

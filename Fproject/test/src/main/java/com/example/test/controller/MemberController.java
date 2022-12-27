@@ -123,7 +123,12 @@ public class MemberController {
     public String updateS(Model model, MemberDTO memberDTO, Principal principal)throws Exception{
         System.out.println("어어");
         System.out.println(memberDTO.toString());
-        memberService.saveMember1(memberDTO);
+        System.out.println(memberDTO.getLoginPw()+"정보정보수정");
+        if(memberDTO.getLoginPw()!="") {
+            memberService.saveMember1(memberDTO);
+        }else{
+            memberService.saveMember2(memberDTO,principal);
+        }
         model.addAttribute("info", memberDTO);
         SessionMember sessionMember1 = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionMember1);
