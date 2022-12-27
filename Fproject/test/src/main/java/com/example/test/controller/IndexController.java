@@ -3,6 +3,7 @@ package com.example.test.controller;
 
 import com.example.test.domain.ReviewCourseDTO;
 import com.example.test.entity.Member;
+import com.example.test.entity.ReviewComment;
 import com.example.test.repository.MemberRepository;
 import com.example.test.service.MemberService;
 import com.example.test.service.ReviewCourseService;
@@ -59,10 +60,10 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
 
         // 댓글
-//        List<ReviewCommentResponseDTO> comments = dto.getComments();
-//        if(comments!=null && !comments.isEmpty()){
-//            model.addAttribute("comments",comments);
-//        }
+        List<ReviewComment> comments = dto.getComments();
+        if(comments!=null && !comments.isEmpty()){
+            model.addAttribute("comments",comments);
+        }
 
         if (principal == null) {
             model.addAttribute("toLogin", true);

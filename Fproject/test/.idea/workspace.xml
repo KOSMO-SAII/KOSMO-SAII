@@ -13,12 +13,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/ReviewComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/ReviewComment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/mypage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/mypage/memberUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/mypage/memberUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourseDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCommentApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCommentApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCommentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCommentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewComment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" afterDir="false" />
     </list>

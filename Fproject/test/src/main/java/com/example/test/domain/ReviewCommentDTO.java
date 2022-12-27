@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public class ReviewCommentDTO {
     private Long id;
     private String comment;
-    private Member member;
     private Long postId;
 
     private LocalDateTime createdDate;

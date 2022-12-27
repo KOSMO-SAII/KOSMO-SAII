@@ -8,6 +8,7 @@ import com.example.test.repository.MemberRepository;
 import com.example.test.repository.ReviewCommentRepository;
 import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,18 +17,19 @@ import javax.transaction.Transactional;
 @Service
 public class ReviewCommentService {
     private final ReviewCommentRepository reviewCommentRepository;
-    private final MemberRepository memberRepository;
     private final ReviewCourseRepository reviewCourseRepository;
 
+    private ModelMapper modelMapper = new ModelMapper();
+
     @Transactional
-    public Long commentSave(String nickname, Long id, ReviewCommentDTO dto){
-        Member member = memberRepository.findByNickname(nickname);
+    public Long commentSave(ReviewCommentDTO dto){
+        long id = dto.getPostId();
+        System.out.println(dto.toString());
         ReviewCourse posts = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다."+id));
 
-        dto.setMember(member);
-
-        ReviewComment comment = dto.toReviewComment();
+        ReviewComment comment = modelMapper.map(dto, ReviewComment.class);
+        System.out.println(comment.toString());
         reviewCommentRepository.save(comment);
 
         return  dto.getId();

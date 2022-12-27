@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewCommentApiController {
 
     private final ReviewCommentService reviewCommentService;
-    private final MemberService memberService;
 
     @PostMapping("/comments/{id}")
-    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody ReviewCommentDTO dto, String nickname){
-        System.out.println(memberService.getMember().getNickname());
-        return ResponseEntity.ok(reviewCommentService.commentSave(memberService.getMember().getNickname(), id, dto));
+    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody ReviewCommentDTO dto){
+
+        System.out.println("comments dto = "+dto.toString());
+        return ResponseEntity.ok(reviewCommentService.commentSave(dto));
     }
 
 }
