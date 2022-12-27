@@ -52,7 +52,7 @@
 
 <div class="card">
     <div class="card-header bi bi-chat-dots">
-        <span th:text="${#lists.size(comments)}"></span> Comments</div>
+<!--        <span th:text="${#lists.size(comments)}"></span> Comments</div>-->
     <div th:if="${#lists.isEmpty(comments)}">
         <h2>등록된 댓글이 없습니다.</h2></div>
     <div th:unless="${#lists.isEmpty(comments)}" class="card">

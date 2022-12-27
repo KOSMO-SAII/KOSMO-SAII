@@ -4,124 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4167993-fbb4-465f-9c37-3d1d5e69cde0" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/TestApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/TestApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/ServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/TestApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/SessionMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/SessionMember.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/securityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/securityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/constant/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/constant/Role.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/CoursePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/CoursePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/EmailController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MainBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MainBoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewPlaceController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/EmailMessage$EmailMessageBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/EmailMessage.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/MemberDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/MemberDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseListResponseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseListResponseDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseResponseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseResponseDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO$ReviewCourseSaveRequestDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO$ReviewCourseSaveRequestDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseListResponseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseResponseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO$ReviewCourseSaveRequestDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseSaveRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseUpdateRequestDTO$ReviewCourseUpdateRequestDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/ReviewCourseUpdateRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/SignupDTO.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Base.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview$CourseReviewBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview$CourseReviewBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseDataId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseDataId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview$CourseReviewBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/CourseReview.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/LikedPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Member$MemberBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Member$MemberBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/PlaceComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/PlaceComment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/ReviewComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/ReviewComment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/PlaceComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/ReviewComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/MemberRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/ReviewCourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/ReviewCourseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/FestivalService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/MemberService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/ReviewCourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/ReviewCourseService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/mybatis/mapper/MainBoardDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mybatis/mapper/MainBoardDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/content.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/courseViewPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/courseViewPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/courseWritePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/courseWritePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/courseViewPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/courseViewPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/courseWritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/courseWritePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/festival.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/festival.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/festival_view.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/festival_view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/course/courseList.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/course/courseList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/course/courseViewPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/course/courseViewPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/course/courseWritePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/course/courseWritePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/course/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/course/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mailCheck.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mailCheck.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardList.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardView.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/login/loginPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/login/loginPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/pwcheck.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/pwcheck.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourse.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseWrite.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseWrite.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/signup/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/signup/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/TestApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/config/AuditConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/config/AuditorAwareImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/config/SessionMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/config/securityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/constant/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/CoursePageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/IndexController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/Maincontroller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/MemberController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/CourseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/MemberDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseResponseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/Course.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/CourseData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/Member$MemberBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/PlaceComment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/MainBoardDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/ReviewCourseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/CourseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/MemberService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/ReviewCourseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/css/courseViewPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/css/courseViewPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/css/courseWritePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/css/courseWritePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/js/calendar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/js/courseViewPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/js/courseViewPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/js/courseWritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/js/courseWritePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/js/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/course/courseViewPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/course/courseViewPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/course/courseWritePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/course/courseWritePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/course/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/course/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/CourseListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/CourseListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseSaveRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseSaveRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/CourseList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/CourseList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/PlaceComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/PlaceComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseListRepositroy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/reviews/reviewCourseDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCommentApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCommentApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCourseApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCommentRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCommentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCommentResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseListResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseSaveRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseUpdateRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/CourseReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/test/reviewboard/ReviewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/test/reviewboard/ReviewTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +159,7 @@
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -264,20 +228,13 @@
     </configuration>
     <list>
       <item itemvalue="Python.python" />
-      <item itemvalue="애플리케이션.ttest" />
       <item itemvalue="애플리케이션.TestApplication" />
+      <item itemvalue="애플리케이션.ttest" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="애플리케이션.TestApplication" />
-        <item itemvalue="애플리케이션.ttest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="a4167993-fbb4-465f-9c37-3d1d5e69cde0" name="변경" comment="" />
       <created>1669618615683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -298,6 +255,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoSuchMethodException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
