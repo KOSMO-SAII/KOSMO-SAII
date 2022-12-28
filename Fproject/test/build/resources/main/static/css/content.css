@@ -1233,10 +1233,9 @@
 .eventTag span{float:left;padding:0 20px 14px 0;font-weight:400;font-size:16px;color:#333;}
 
 #contents.eventWide{width:auto;padding:0 0 27px 0;}
-#contents.eventWide .tit_cont{width:940px;margin:0 auto;}
-#contents.eventWide .eventNotice .inner{width:940px;margin:0 auto;padding: 0 36px 25px;overflow: hidden;}
-#contents.eventWide .eventInquiry .inner{width:940px;margin:0 auto;padding: 0 36px 0;overflow: hidden;}
-#contents.eventWide .eventTag{width:940px;margin:0 auto;}
+#contents.eventWide .eventNotice .inner{width:1000px;margin:0 auto;padding: 0 36px 25px;overflow: hidden;}
+#contents.eventWide .eventInquiry .inner{width:1000px;margin:0 auto;padding: 0 36px 0;overflow: hidden;}
+#contents.eventWide .eventTag{width:1000px;margin:0 auto;}
 .evmainBanner{overflow:hidden;margin-bottom:40px;}
 
 /* 이벤트 당첨자발표 */
@@ -3492,8 +3491,8 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
 
 /* 축제 메인 */
 #contents.fesMain_wrap{width: 100%;margin: 0 auto;}
-#contents.fesMain_wrap .seasonTab{width: 940px;margin: 0 auto;}
-#contents.fesMain_wrap .tit_cont{width: 940px;margin: 0 auto;}
+#contents.fesMain_wrap .seasonTab{width: 1100px;margin: 0 auto;}
+#contents.fesMain_wrap .tit_cont{width: 1100px;margin: 0 auto;}
 .seasonTab{position:relative;}
 .seasonTab .tabs > ul{height:738px;}
 .seasonTab .tabs > ul:after{content:'';display:block;overflow:hidden;clear:both;}
@@ -7216,7 +7215,7 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
     .box_travelInfo .area_infoData .cafe{margin:1px 5px 0 0;}
 
     .list_thumType{float: none; width: 100%;}
-    .list_thumType > li .area_txt{padding-left:150px;}
+    .list_thumType > li .area_txt{padding-left:200px;}
     .list_thumType > li .area_txt .tit{margin-top:0;}
     .list_thumType > li .area_txt em.ongoing{height:21px;line-height:21px;padding:0 6px;margin:0 0 6px;font-size: 12px;}
     .list_thumType > li .area_txt em.end{height:21px;line-height:21px;padding:0 6px;margin:0 0 6px;font-size: 12px;}
@@ -7227,7 +7226,17 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
     .list_thumType > li .area_txt .btn01{height:21px;line-height:21px;padding:0 6px;margin:10px 0 0;font-size: 12px;}
     .list_thumType > li .area_txt .ar_tag > span{margin:0 5px 5px 0;}
     .list_thumType > li .btn_view{top:10px;right:-9px;width:12px;height:13px;padding:15px;background:url(../images/sub/btn_dot2_m.png) 50% 50% no-repeat;background-size:12px auto;}
-    .list_thumType li .area_txt .tit a{font-size: 1.2em;}
+    .list_thumType li .area_txt .tit a{
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: -5px;
+    padding-bottom: 5px;}
     .list_thumType li .area_txt .tit span{font-size: 1em;}
     .list_thumType li .area_txt p{font-size: 1em;}
     .list_thumType > li .area_txt .closure{font-size:12px;padding:4px 0 0 8px;}
@@ -8403,5 +8412,20 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
 }
 .image{
     width:200px;
-
 }
+.imgandtext {
+    box-sizing: border-box;
+    text-align: left;
+    position: relative;
+    display: flex;
+    font-weight: bold;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: space-between;
+}
+.titleanddate {
+    text-align: center;
+    margin: 0 auto;
+}
+
+

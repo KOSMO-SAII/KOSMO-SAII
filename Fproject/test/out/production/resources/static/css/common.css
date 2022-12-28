@@ -176,7 +176,7 @@ select{padding:3px 2px 3px 2px;background-color:#fff;font-size:13px; line-height
 .btnWhite_auto{display: inline-block; margin-top: 20px; padding: 8px 53px; border: 1px solid #bababa; text-align: center; font-size: 16px; color: #000;}
 .btndark_auto{display: inline-block; margin-top: 20px; padding: 8px 53px; border: 1px solid #13294b;background:#13294b; text-align: center; font-size: 16px; color: #fff;}
 
-#contents{width: 980px; margin: 0 auto; padding:0 20px 27px 20px;}
+#contents{width: 1100px; margin: 0 auto; padding:0 20px 27px 20px;}
 #contents.contents_all{width: 100%; margin: 0 auto; padding: 0 0 30px 0;}
 #contents.contents_all .contents_in{width: 980px; margin: 0 auto; padding: 20px 20px 0 20px;}
 #contents.partnersMainContents{width:100%;margin:0;padding:0;}
