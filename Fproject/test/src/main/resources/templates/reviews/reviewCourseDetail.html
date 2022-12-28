@@ -64,7 +64,7 @@
 
                 <li class="list-group-item">
                         <span>
-                            <span th:text="${comment.nickname}" style="font-size: small"></span>
+                            <span th:text="${comment.createdBy}" style="font-size: small"></span>
                             <span th:text="${comment.createdDate}" style="font-size: xx-small"></span>&nbsp;
                                 <button class="badge bi bi-pencil-square"> 수정</button>
                                 <button class="badge bi bi-trash"> 삭제</button>
@@ -81,7 +81,7 @@
     <div class="card-header bi bi-chat-right-dots"> Write a Comment</div>
 <!--    댓글작성 부분-->
     <form>
-        <input type="hidden" id="postsId" th:value="${reviewCourse.id}">
+        <input type="hidden" id="postId" th:value="${reviewCourse.id}">
         <div class="card-body">
             <textarea id="comment" class="form-control" rows="4" placeholder="댓글을 입력하세요"></textarea>
         </div>
@@ -96,7 +96,7 @@
 <script th:inline="javascript">
     function commentSave() {
         const data = {
-            postsId: $('#postsId').val(),
+            postId: $('#postId').val(),
             comment: $('#comment').val()
         }
         var token = $("meta[name='_csrf']").attr("content");
@@ -111,8 +111,7 @@
                 xhr.setRequestHeader(header,token);
                 },
                 type: 'POST',
-                url: '/comments/' + data.postsId,
-                dataType: 'JSON',
+                url: '/comments/' + data.postId,
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
             }).done(function () {

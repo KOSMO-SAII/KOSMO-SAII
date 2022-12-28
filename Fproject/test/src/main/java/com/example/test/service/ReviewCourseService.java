@@ -1,7 +1,10 @@
 package com.example.test.service;
 
+import com.example.test.domain.ReviewCommentDTO;
 import com.example.test.domain.ReviewCourseDTO;
+import com.example.test.entity.ReviewComment;
 import com.example.test.entity.ReviewCourse;
+import com.example.test.repository.ReviewCommentRepository;
 import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -10,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +22,8 @@ import java.util.stream.Collectors;
 public class ReviewCourseService {
 
     private final ReviewCourseRepository reviewCourseRepository;
+
+    private final ReviewCommentRepository reviewCommentRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
     @Transactional
@@ -77,4 +83,12 @@ public class ReviewCourseService {
 //        return reviewCourseRepository.updateView(id);
 //    }
 
+    public List<ReviewCommentDTO> getComments(long id){
+        List<ReviewComment> reviewComments = reviewCommentRepository.findByPostId(id);
+        List<ReviewCommentDTO> dto = new ArrayList<>();
+        for(ReviewComment comment : reviewComments){
+            dto.add(modelMapper.map(comment, ReviewCommentDTO.class));
+        }
+        return dto;
+    }
 }

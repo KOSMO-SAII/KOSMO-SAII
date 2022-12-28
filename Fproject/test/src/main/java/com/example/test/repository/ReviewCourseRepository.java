@@ -19,9 +19,6 @@ public interface ReviewCourseRepository extends JpaRepository<ReviewCourse, Long
     Page<ReviewCourseDTO> findAllDesc(PageRequest pageRequest);
     //조회용 프레임워크 사용
 
-
-
-
     List<ReviewCourse> findByTitleContaining(String title);
 
 //    @Modifying

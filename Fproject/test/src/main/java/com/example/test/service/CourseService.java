@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.*;
 
 @Service
@@ -35,8 +36,6 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     private final CourseListRepository courseListRepository;
-
-    private MemberService memberService;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -76,7 +75,8 @@ public class CourseService {
             if(data.length==11) {
                 cdto.setMemo(data[10]);
             }
-
+            System.out.println(date);
+            System.out.println(date[dayN-1]);
             cdto.setCorder(date[dayN-1]++);
 
             cdtos.add(cdto);
@@ -329,19 +329,19 @@ public class CourseService {
 
         for(CourseList courseList : courseLists){
             CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            System.out.println(cdto);
             int length = courseDataRepository.countById(cdto.getCourse_id());
             List<CourseDTO> datas = new ArrayList<>();
             for(int i=0; i < length;i++) {
                 CourseDataId id = new CourseDataId();
                 id.setId(cdto.getCourse_id());
                 id.setOrder((long) i+1);
+                System.out.println(courseDataRepository.findById(id));
                 datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
             }
             cdto.setCourseDatas(datas);
             cdto.setCenter();
-            long id = Long.parseLong(cdto.getCreatedBy());
-            System.out.println(id);
-            cdto.setCreatedBy(memberService.getMember(id).getNickname());
+            System.out.println("center = " + cdto.getXPoint() + "  " + cdto.getYPoint());
         }
         Page<CourseListDTO> lists = courseLists.map(courseList -> modelMapper.map(courseList, CourseListDTO.class));
         return lists;

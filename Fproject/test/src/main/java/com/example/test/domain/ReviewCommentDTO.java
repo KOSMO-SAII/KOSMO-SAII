@@ -17,11 +17,10 @@ import java.time.LocalDateTime;
 public class ReviewCommentDTO {
     private Long id;
     private String comment;
-    private Member member;
     private Long postId;
 
     private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updateDate;
     private String createdBy;
     private String modifiedBy;
 
