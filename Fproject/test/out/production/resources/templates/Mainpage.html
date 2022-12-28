@@ -75,20 +75,21 @@
 </div>
 
 <section id="tripple">
+
     <div class="ibox">
-        <a href="/">
-            <img class="imgbox" alt="코스 작성 화면" src="/img/memo.png"></br>
-            <p class="ppp">사용방법</p>
-        </a></div>
-    <div class="ibox">
-        <a href="/courseWritePage">
+        <a href="/courseWritePage" class="a1">
             <img class="imgbox" alt="코스 추천화면" src="/img/pencil.png"></br>
             <p class="ppp">코스 작성</p>
         </a></div>
     <div class="ibox">
-        <a href="/course/list">
+        <a href="/course/list" class="a1">
             <img class="imgbox" alt="코스 작성 화면" src="/img/recommend.png"></br>
-            <p class="ppp">게시판</p>
+            <p class="ppp">코스게시판</p>
+        </a></div>
+    <div class="ibox">
+        <a href="/reviews/Course" class="a1">
+            <img class="imgbox" alt="코스 작성 화면" src="/img/memo.png"></br>
+            <p class="ppp">리뷰게시판</p>
         </a></div>
 </section>
 
@@ -103,12 +104,15 @@
 <!--    <button type="button" onclick="" class="but">최신순</button>-->
 <!--</div>-->
 
+    <img class="middle"  src="/img/코알라.PNG"></br>
+
     <div class="rec-card">
 
         <a href="" th:each ="courselist, i : ${lists}">
+
             <div class="card">
                 <!-- 카드 헤더 -->
-                <div class="card-header" >
+                <div class="card-header" th:style="'background-image: url(/img/loc/'+${courselist.region}+'.png);'">
                     <div class = "card-header-is_closed" >
                         <div class = "card-header-text" >[[${i.count}]]위 </div >
                     </div >
@@ -118,9 +122,9 @@
                     <!--  카드 바디 헤더 -->
                     <div class="card-body-header">
                         <h1>[[${courselist.title}]]</h1>
-                        <p class="card-body-hashtag"> #조회순 #1위</p>
+                        <p class="card-body-hashtag"> #조회순 #[[${i.count}]]위</p>
                         <p class = "card-body-nickname">
-                            [[${courselist.region}]] </p>
+                            [[${courselist.region}]]</p>
                     </div>
                     <p class="card-body-description">
 
@@ -129,7 +133,7 @@
                     <div class="card-body-footer">
                         <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
                         <i class="icon icon-view_count"></i> 조회수: [[${courselist.viewCount}]]회
-                        <i class="reg_date"> 22/12/06 </i>
+<!--                        <i class="reg_date"> 22/12/06 </i>-->
                     </div>
                 </div>
             </div>
