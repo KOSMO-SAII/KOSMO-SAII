@@ -24,6 +24,7 @@ public class ReviewCourse extends Base{
 
     private String title;
 
+    private String author;
 
     @Builder
     public ReviewCourse(String course_id, String title, String content){
