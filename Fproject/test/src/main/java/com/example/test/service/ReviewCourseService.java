@@ -55,7 +55,9 @@ public class ReviewCourseService {
     public Page<ReviewCourseDTO> findAllDesc(PageRequest pageRequest){
 
         Page<ReviewCourseDTO> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
-
+        for(ReviewCourseDTO r : courseReviewList){
+            System.out.println(r.toString());
+        }
         return courseReviewList;
     }
     //reviewCourseRepository 결과로 넘어온 CourseReviewList를 Page로 래핑하고 map을 통해

@@ -9,6 +9,7 @@ import javax.persistence.*;
 @ToString
 @Builder
 @Getter
+@Setter
 @Entity
 public class ReviewCourse extends Base{
 
