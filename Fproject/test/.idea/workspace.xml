@@ -5,22 +5,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/BoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/BoardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/BoardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/board_customer/boardlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/board_customer/boardmodify.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/board_customer/boardview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/board_customer/boardwrite.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/board_customer/message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/ReviewCourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/ReviewCourseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-oauth.properties.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/content.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/1111.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/calendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/festival.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/festival.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/festival_view.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/festival_view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/board_festival/festival_view.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseListRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseListRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/ServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/TestApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/config/AuditorAwareImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/CSBoardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/IndexController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/MainBoardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/MemberController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/ReviewCourseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/ReviewPlaceController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/EmailMessage$EmailMessageBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/EmailMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/MainBoardDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/MemberDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseListResponseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseSaveRequestDTO$ReviewCourseSaveRequestDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseSaveRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseUpdateRequestDTO$ReviewCourseUpdateRequestDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/ReviewCourseUpdateRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/SignupDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/Base.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/BaseTime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/CourseDataId.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/CourseList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/CourseReview$CourseReviewBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/CourseReview.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/LikedPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/PlaceComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/ReviewComment$ReviewCommentBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/entity/ReviewComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/CourseDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/CourseDataRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/CourseListRepositroy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/repository/CourseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/CourseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/FestivalService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/service/ReviewCourseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/board_customer/customerboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board_customer/customerboard.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,37 +146,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kosmo/Downloads/demo&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/jiddu/Documents/GitHub/KOSMO-SAII/Fproject/test/src/main/resources/templates/board_customer",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jiddu\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources\templates\board_customer" />
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\java\com\example\test\config" />
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources\py" />
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources" />
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources\templates" />
-      <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources" />
       <recent name="C:\Users\kosmo\Documents\GitHub\KOSMO-SAII\Fproject\test\src\main\resources\templates" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.test.controller" />
       <recent name="com.example.test.entity" />
+      <recent name="com.example.test.repository" />
+      <recent name="com.example.test.service" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.TestApplication">
+  <component name="RunManager" selected="Application.TestApplication">
     <configuration name="TestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.test.TestApplication" />
       <module name="test.main" />
@@ -165,14 +228,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.TestApplication" />
+      <item itemvalue="Application.ttest" />
       <item itemvalue="Python.python" />
-      <item itemvalue="애플리케이션.TestApplication" />
-      <item itemvalue="애플리케이션.ttest" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="" />
       <created>1669618615683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
