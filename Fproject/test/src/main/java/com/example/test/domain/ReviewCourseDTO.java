@@ -21,7 +21,7 @@ public class ReviewCourseDTO{
     private String content;
 
     private String createdDate;
-    private String modifiedDate;
+    private String updateDate;
     private String createdBy;
     private String modifiedBy;
 

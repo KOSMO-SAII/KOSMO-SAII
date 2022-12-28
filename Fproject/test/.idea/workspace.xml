@@ -23,6 +23,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -81,6 +82,27 @@
       <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/board_customer/customerboard.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board_customer/customerboard.html" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/config/AuditConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/config/AuditConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/course/courseList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/course/courseList.html" afterDir="false" />
+>>>>>>> 4b52470dda39147f6493596ce9941f9592946d03
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
