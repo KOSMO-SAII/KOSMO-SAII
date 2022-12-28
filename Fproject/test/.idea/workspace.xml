@@ -4,37 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+    <list default="true" id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/securityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/config/securityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/EmailController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MainBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MainBoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/MemberDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/MemberDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/MemberRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/MemberService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/test-0.0.1-SNAPSHOT-plain.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/test-0.0.1-SNAPSHOT-plain.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/test-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/test-0.0.1-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.example.test.TestApplicationTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.example.test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-oauth.properties.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/1111.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/calendar.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/Mainpage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/login/loginPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/login/loginPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardList.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardView.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/main_board/MainBoardView.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/memberUpdate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseWrite.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/reviews/reviewCourseWrite.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.example.test.TestApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCourseApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/ReviewCourseApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/entity/ReviewCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/ReviewCourseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/ReviewCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/IndexController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/example/test/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/MemberDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/example/test/domain/MemberDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/login/idFind.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/login/idFind.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/domain/ReviewCourseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseWrite.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reviews/reviewCourseWrite.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,32 +72,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="test" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="test" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="test" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="test" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -150,7 +150,7 @@
       <recent name="com.example.test.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.TestApplication">
+  <component name="RunManager" selected="Application.TestApplication">
     <configuration name="TestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.test.TestApplication" />
       <module name="test.main" />
@@ -199,14 +199,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.python" />
-      <item itemvalue="애플리케이션.TestApplication" />
-      <item itemvalue="애플리케이션.ttest" />
+      <item itemvalue="Application.TestApplication" />
+      <item itemvalue="Application.ttest" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="" />
       <created>1669618615683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
