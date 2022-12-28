@@ -89,6 +89,8 @@ public class MemberService implements UserDetailsService {
         SecurityContextHolder.clearContext();
     }
 
+
+
 //    @Transactional
 //    public void modify(String email) {
 //        Member user = memberRepository.findByEmail(email).orElseThrow(() ->
