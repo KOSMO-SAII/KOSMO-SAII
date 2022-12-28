@@ -24,5 +24,4 @@ public class Base extends BaseTime{
     @LastModifiedBy
     private String modifiedBy;
 
-
 }

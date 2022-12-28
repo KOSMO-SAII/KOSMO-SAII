@@ -22,5 +22,5 @@ public interface MainBoardDAO {
 
 	public MainBoardDTO getMainboard(int course_id);//임시
 
-	public void insertWrite(Map<String,Object> map);
+	public void insertWrite(MainBoardDTO mdto);
 }

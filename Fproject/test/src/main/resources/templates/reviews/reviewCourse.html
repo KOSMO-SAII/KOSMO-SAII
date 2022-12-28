@@ -39,18 +39,18 @@
 <!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
 <div>
 <!--    <p sec:authorize="isAuthenticated()">-->
-<!--        <button th:onclick="|location.href='@{reviews/write}'|" class="writeBtn">글쓰기</button></p>-->
+        <button th:onclick="|location.href='@{/reviews/write}'|" class="writeBtn">글쓰기</button></p>
 <!--    <p sec:authorize="isAnonymous()">-->
 <!--        <button th:onclick="loginPop()" class="writeBtn">글쓰기</button></p>-->
-    <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>
+<!--    <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>-->
 </div>
 
 <!-- 등록된 게시물이 없습니다. || 게시물출력 -->
+<div th:if="${#lists.isEmpty(reviewCourse)}">
+    <h2>등록된 게시물이 없습니다.</h2>
+</div>
 
-<!--</th:block>-->
-
-<!--<div th:if="${true}" class="ui_box">-->
-<div class="ui_box">
+<div th:unless="${#lists.isEmpty(reviewCourse)}" class="ui_box" >
         <ul class="list_wrap">
         <th:block th:each="list : ${reviewCourse}" >
             <a th:href="@{'/reviews/detail/' + ${list.id}}">
@@ -66,7 +66,7 @@
                         <input type="hidden" value="${list.course_id}">
                         <p class="title">
                             <a th:href="@{/reviews/detail/{id}(id = ${list.id})}" th:text="${list.title}"></a></p>
-                        <p th:text="|작성자 ${list.author}|"></p>
+                        <p th:text="|작성자 ${list.createdBy}|"></p>
 <!--                        <p th:text="|조회수 ${list.view}|"></p>-->
                         <p align="right" th:text="${list.updateDate}"></p>
 <!--                        <p th:if="not empty list.o_file">-->
@@ -80,7 +80,33 @@
         </ul>
 </div>
 
-<script>
+<div th:with="start=${(reviewCourse.number/maxPage)*maxPage + 1}, end=(${(reviewCourse.totalPages == 0) ? 1 : (start + (maxPage - 1) < reviewCourse.totalPages ? start + (maxPage - 1) : reviewCourse.totalPages)})" >
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item" th:classappend="${reviewCourse.number eq 0}?'disabled':''">
+            <a th:href="@{'/reviews/course?page=' + ${reviewCourse.number-1}}" aria-label='Previous' class="page-link">
+                <span aria-hidden='true'>Previous</span>
+            </a>
+        </li>
+
+        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${reviewCourse.number eq page-1}?'active':''">
+            <a th:href="@{'/reviews/course?page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+        </li>
+
+        <li class="page-item" th:classappend="${reviewCourse.number+1 ge reviewCourse.totalPages}?'disabled':''">
+            <a th:href="@{'/reviews/course?page=' + ${reviewCourse.number+1}}" aria-label='Next' class="page-link">
+                <span aria-hidden='true'>Next</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+
+
+<script th:inline="javascript">
+
     function loginCheck(){
     let sessionId = "${sessionId}";
     if(sessionId == ""){

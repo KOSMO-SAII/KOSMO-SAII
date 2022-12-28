@@ -16,21 +16,23 @@
 <div class="body_wrap">
     <div class="my">
         <form th:action="@{/courseWritePage(mode=edit,c_id=${ c_id})}" method="post" >
-            <div class="sidebar">제목:
-                <div id="sidebartitle" th:text="${title}"></div>
+            <div class="sidebar">
+                제목: <div id="sidebartitle" th:text="${title}"></div>
             </div>
-
-            <div class="sidebar">지역:
-                <div id="sidebarregion" th:text="${region}"></div>
+            <div class="sidebar">
+                지역: <div id="sidebarregion" th:text="${region}"></div>
             </div>
-            <div class="sidebar">days:
-                <select name="days">
-                    <th:bolck th:each="day,State:${days}">
-                        <option th:name="${State.Count}" th:value="${State.Count}" th:text="${day}"></option>
-                    </th:bolck>
+            <div class="sidebar">
+                총 여행 날짜: <div id="sidebardays" th:text="${days}"></div>
+            </div>
+            <div class="sidebar nickname">days:
+                <select class="days">
+<!--                    <th:bolck th:each="day,State:${days}">-->
+<!--                        <option th:name="${State.Count}" th:value="${State.Count}" th:text="${day}"></option>-->
+<!--                    </th:bolck>-->
                 </select>
             </div>
-            <ul id="My_List">
+            <ul class="My_List 1">
 
             </ul>
             <div id="btnbox">
@@ -46,6 +48,8 @@
     <div class="map_wrap">
         <div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
+
+
     </div>
     <div id="memobox" class="none">
 
@@ -60,8 +64,8 @@
 </div>
 <script th:inline="javascript" type="text/javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
-		 console.log(/*[[${list}]]*/)
-	</script>
+		var days= /*[[${days}]]*/
+</script>
 <th:block th:each="List :${List}">
     <script th:inline="javascript" type="text/javascript">
 		//장소 정브를 반복문을 돌려서 객체에 담음
@@ -76,6 +80,8 @@
 			Road_address_name:/*[[${List.Road_address_name}]]*/,
 			X:/*[[${List.X}]]*/,
 			Y:/*[[${List.Y}]]*/,
+			day:/*[[${List.day}]]*/,
+			corder:/*[[${List.corder}]]*/
 		}
 		paramObjs.push(paramObj)
 	</script>
@@ -83,5 +89,6 @@
 
 </body>
 <!--js 파일 연동-->
+<script type="text/javascript" th:src="@{ /js/courseViewPage2.js}"></script>
 <script type="text/javascript" th:src="@{ /js/courseViewPage.js}"></script>
 </html>

@@ -1,12 +1,13 @@
 package com.example.test.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
 public class CourseList extends Base{
 
     @Id
