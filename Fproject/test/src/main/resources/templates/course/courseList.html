@@ -31,7 +31,6 @@
         </tr>
       </table>
     </div>
-    <div th:unless="${#list.isEmpty(lists)}">
       <table th:each="list, i: ${lists}">
         <tr>
           <td class="map_wrap" rowspan="3">
@@ -41,7 +40,7 @@
           <td th:text="${list.region}"></td>
         </tr>
         <tr>
-<!--          <td colspan="4" th:text="${list.getOrders()}"></td>-->
+          <td colspan="4" th:text="${list.getOrders()}"></td>
         </tr>
         <tr>
           <td colspan="3" th:text="${list.createdBy}"></td>
@@ -58,10 +57,7 @@
         </script>
       </table>
 
-    </div>
-    <div th:if="${#lists.isEmpty(lists)}">
-      <h2>게시글이 존재하지 않습니다.</h2>
-    </div>
+
 
     <div th:with="start=${(lists.number/maxPage)*maxPage + 1}, end=(${(lists.totalPages == 0) ? 1 : (start + (maxPage - 1) < lists.totalPages ? start + (maxPage - 1) : lists.totalPages)})" >
       <ul class="pagination justify-content-center">

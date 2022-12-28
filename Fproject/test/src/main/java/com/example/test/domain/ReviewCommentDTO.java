@@ -20,7 +20,7 @@ public class ReviewCommentDTO {
     private Long postId;
 
     private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updateDate;
     private String createdBy;
     private String modifiedBy;
 

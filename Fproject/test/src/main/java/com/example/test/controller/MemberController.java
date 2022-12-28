@@ -33,7 +33,9 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/members")
 @RequiredArgsConstructor
-public class MemberController {
+public class
+
+MemberController {
 
     private final PasswordEncoder passwordEncoder;
     private final MemberService memberService;
