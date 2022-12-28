@@ -56,7 +56,8 @@
     <div class="card-header bi bi-chat-dots">
 <!--        <span th:text="${#lists.size(comments)}"></span> Comments</div>-->
     <div th:if="${#lists.isEmpty(comments)}">
-        <h2>등록된 댓글이 없습니다.</h2></div>
+        <h2>등록된 댓글이 없습니다.</h2>
+    </div>
     <div th:unless="${#lists.isEmpty(comments)}" class="card">
         <ul class="list-group-flush">
             <div th:each="comment : ${comments}">
@@ -80,7 +81,7 @@
     <div class="card-header bi bi-chat-right-dots"> Write a Comment</div>
 <!--    댓글작성 부분-->
     <form>
-        <input type="hidden" id="postsId" value="{{reviewCourse.id}}">
+        <input type="hidden" id="postsId" th:value="${reviewCourse.id}">
         <div class="card-body">
             <textarea id="comment" class="form-control" rows="4" placeholder="댓글을 입력하세요"></textarea>
         </div>
@@ -98,15 +99,19 @@
             postsId: $('#postsId').val(),
             comment: $('#comment').val()
         }
-
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content")
         // 공백 및 빈 문자열 체크
         if (!data.comment || data.comment.trim() === "") {
             alert("공백 또는 입력하지 않은 부분이 있습니다.");
             return false;
         } else {
             $.ajax({
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(header,token);
+                },
                 type: 'POST',
-                url: '/reviews/' + data.postsId + '/comments',
+                url: '/comments/' + data.postsId,
                 dataType: 'JSON',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
@@ -120,8 +125,11 @@
     }
 </script>
 
-
+    </div>
 <!--마우스커서-->
+</div>
+    </form>
+</div>
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
 <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
 </body>

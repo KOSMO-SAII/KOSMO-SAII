@@ -112,4 +112,20 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
+    public String findId(String name, String email){
+        Member member = new Member();
+        memberRepository.existsByEmailAndName(email,name);
+
+        if(memberRepository.existsByEmailAndName(email,name)){
+            member = memberRepository.findByEmailAndName(email,name).orElseThrow();
+            String id = member.getLoginId();
+            id = id.substring(0,id.length()-3);
+            id = id+"***";
+            return id;
+        }else{
+            String loginId = "아이디를 찾을 수 없습니다.";
+            return loginId;
+        }
+    }
+
 }

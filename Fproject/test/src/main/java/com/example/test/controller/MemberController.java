@@ -28,7 +28,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/members")
@@ -186,7 +188,22 @@ public class MemberController {
         }
     }
 
+    @RequestMapping("findId")
+    public String idFind(String name,String email,Model model){
+        String id = memberService.findId(name,email);
+        model.addAttribute("findId",id);
+        return "/login/findId";
+    }
 
+    @RequestMapping("idFind")
+    public String idFind(){
+        return "/login/idFind";
+    }
+
+    @RequestMapping("snow")
+    public String snow(){
+        return "mypage/snow";
+    }
 
 
 }
