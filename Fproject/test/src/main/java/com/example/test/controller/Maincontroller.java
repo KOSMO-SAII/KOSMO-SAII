@@ -2,6 +2,7 @@ package com.example.test.controller;
 
 import com.example.test.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
+import net.minidev.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -124,4 +125,5 @@ public class Maincontroller extends HttpServlet {
     public  String festival(){
         return "board_festival/festival";
     }
+
 }
