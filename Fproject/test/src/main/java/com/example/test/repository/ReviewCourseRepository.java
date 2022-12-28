@@ -14,7 +14,6 @@ public interface ReviewCourseRepository extends JpaRepository<ReviewCourse, Long
     //기본적 CRUD 메소드 자동 생성 해준다. save, update, delete.. 자동적으로 쿼리를 해준다. 명시하지 않아도.
     //사용할 쿼리문들 작성
     //jpa 쿼리 작성 법 검색
-
     @Query(value = "SELECT r FROM ReviewCourse r ORDER BY r.id DESC")
     Page<ReviewCourseDTO> findAllDesc(PageRequest pageRequest);
     //조회용 프레임워크 사용

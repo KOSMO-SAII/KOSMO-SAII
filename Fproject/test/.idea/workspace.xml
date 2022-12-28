@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseApiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/ReviewCourseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/controller/maincontroller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/courseDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/domain/mainBoardDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/entity/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/CourseDataRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/courseDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/repository/mainBoardDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/test/service/CourseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/config/AuditConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/config/AuditConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/controller/Maincontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/repository/CourseDataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/test/service/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/course/courseList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/course/courseList.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +101,7 @@
       <recent name="com.example.test.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.TestApplication">
+  <component name="RunManager" selected="Application.TestApplication">
     <configuration name="TestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.test.TestApplication" />
       <module name="test.main" />
@@ -174,14 +150,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.TestApplication" />
+      <item itemvalue="Application.ttest" />
       <item itemvalue="Python.python" />
-      <item itemvalue="애플리케이션.TestApplication" />
-      <item itemvalue="애플리케이션.ttest" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="b47a15c5-d887-4c7b-b325-55ed580ba94b" name="Changes" comment="" />
       <created>1669618615683</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -216,5 +198,10 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/festival_js$TestApplication.ic" NAME="TestApplication Coverage Results" MODIFIED="1672219104716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.test.*</FILTER>
+    </SUITE>
   </component>
 </project>

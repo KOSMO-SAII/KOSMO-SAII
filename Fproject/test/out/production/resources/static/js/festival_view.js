@@ -1,7 +1,6 @@
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
 console.log("안녕")
 galleryGo();
-var homepage;
   function galleryGo(){
       var info;
       var infoitem=[];
@@ -12,7 +11,6 @@ var homepage;
       .then((data) => {
             infoitem=data.response.body.items.item[0]
             console.log(infoitem)
-            homepage = infoitem.homepage
             printImg(infoitem)
             printInfo(infoitem)
          })
@@ -62,21 +60,7 @@ var homepage;
         var startDate = infoitem.eventstartdate.substr(0,4) + '-' + infoitem.eventstartdate.substr(4,2) + '-' + infoitem.eventstartdate.substr(6,2)
         var eventenddate = infoitem.eventstartdate.substr(0,4) + '-' + infoitem.eventstartdate.substr(4,2) + '-' + infoitem.eventstartdate.substr(6,2)
         var sponsor1tel=infoitem.sponsor1tel.substr(0,3)+'-'+ infoitem.sponsor1tel.substr(3,3)+'-'+ infoitem.sponsor1tel.substr(6,4)
-        div.innerHTML += '<ul>'
-                      +  '  <li><strong>시작일</strong><span>'+startDate+'</span></li>'
-                      +  '  <li><strong>종료일</strong><span>'+eventenddate+'</span></li>'
-                      +  '  <li><strong>전화번호</strong><span>'+sponsor1tel+'</span></li>'
-                      +  '  <li><strong>홈페이지</strong><span>'
-//                      +  '    <a href="@{'+infoitem.homepage+'}" target="_blank" title="새창 : 코엑스 윈터 페스티벌 (Coex Winter Festival)/>' + infoitem.homepage + '</a>'
-                      +  homepage
-                      +  '  </span></li>'
-                      +  '  <li><strong>주소</strong><span></span></li>'
-                      +  '  <li><strong>행사장소</strong><span>'+infoitem.eventplace+'</span></li>'
-                      +  '  <li><strong>주최</strong><span>'+infoitem.sponsor2+'</span></li>'
-                      +  '  <li><strong>주관</strong><span>'+infoitem.sponsor1+'</span></li>'
-                      +  '  <li><strong>이용요금</strong><span>'+infoitem.usetimefestival+'</span></li>'
-                      +  '  <li><strong>행사시간</strong><span>'+infoitem.playtime+'</span></li>'
-                      +  '</ul>'
+        div.innerHTML='<ul><li><strong>시작일</strong><span>'+startDate+'</span></li><li><strong>종료일</strong><span>'+eventenddate+'</span></li><li><strong>전화번호</strong><span>'+infoitem.sponsor1tel+'</span></li><li><strong>홈페이지</strong><span>'+infoitem.eventhomepage+'<a href="infoitem.eventhomepage" target="_blank" title="새창 : 코엑스 윈터 페스티벌 (Coex Winter Festival)</a></span></li><li><strong>주소</strong><span></span></li><li><strong>행사장소</strong><span>'+infoitem.eventplace+'</span></li><li><strong>주최</strong><span>'+infoitem.sponsor2+'</span></li><li><strong>주관</strong><span>'+infoitem.sponsor1+'</span></li><li><strong>이용요금</strong><span>'+infoitem.usetimefestival+'</span></li><li><strong>행사시간</strong><span>'+infoitem.playtime+'</span></li></ul>'
      }
 
    koreaservice();
