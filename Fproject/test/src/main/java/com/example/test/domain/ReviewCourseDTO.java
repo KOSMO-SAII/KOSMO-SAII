@@ -33,9 +33,6 @@ public class ReviewCourseDTO{
         this.title=reviewCourse.getTitle();
         this.author=reviewCourse.getCreatedBy();
         this.content=reviewCourse.getContent();
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//        this.memberId = reviewCourse.getMember().getMemberId();
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + memberId);
         ModelMapper modelMapper = new ModelMapper();
     }
 }

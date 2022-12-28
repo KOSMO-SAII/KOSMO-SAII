@@ -38,11 +38,10 @@
 
 <!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
 <div>
-<!--    <p sec:authorize="isAuthenticated()">-->
+    <p sec:authorize="isAuthenticated()">
         <button th:onclick="|location.href='@{/reviews/write}'|" class="writeBtn">글쓰기</button></p>
-<!--    <p sec:authorize="isAnonymous()">-->
-<!--        <button th:onclick="loginPop()" class="writeBtn">글쓰기</button></p>-->
-<!--    <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>-->
+    <p sec:authorize="isAnonymous()">
+        <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>
 </div>
 
 <!-- 등록된 게시물이 없습니다. || 게시물출력 -->
@@ -107,15 +106,15 @@
 
 <script th:inline="javascript">
 
-    function loginCheck(){
-    let sessionId = "${sessionId}";
-    if(sessionId == ""){
-        if(!confirm("리뷰 작성은 로그인 후 사용하실 수 있습니다. \n 로그인 하시겠습니까?")){
-            return false;
-        }
+function loginCheck(){
+    if(!confirm("리뷰 작성은 로그인 후 사용하실 수 있습니다. \n 로그인 하시겠습니까?")){
+        return false;
+    }
+    else{
+        location.href = "/members/login"
+    }
+}
 
-    }
-    }
 
 </script>
 
