@@ -10,6 +10,8 @@
 }
 
  function popClose() {
+
+
    var modalPop = $('.modal-wrap');
    var modalBg = $('.modal-bg');
 

@@ -1,8 +1,6 @@
 package com.example.test.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +14,8 @@ public class CourseData {
 
     @Id
     @Column(name = "course_id")
-    private Long id;
+    private Long id;;
+
     @Id
     @Column(name = "course_order")
     private Long order;
@@ -44,4 +43,9 @@ public class CourseData {
     private String y;
 
     private String memo;
+    @Column(nullable = false)
+    private String day;
+
+    @Column
+    private int corder;
 }

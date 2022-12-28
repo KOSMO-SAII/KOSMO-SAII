@@ -48,8 +48,8 @@
     <input class="input "type="text" name="ptitle" /><br>
     <button type="button" class="nextbtn">다음</button>
   </div>
-  <div class="class2">
-    <select name="pregion">
+  <div class="class2" >
+    <select name="pregion" >
       <option value="없음" >지역을 선택해주세요</option>
       <option class="서울" value="서울">서울특별시</option>
       <option class="부산" value="부산">부산광역시</option>
@@ -75,13 +75,13 @@
   <div class="class2">
     <input type="text" id="demo" name="day" value="" />
     <br>
-    <button type="button" class="prevbtn">이전</button><input type="submit" class="nextbtn" onclick="popClose()" value="다음">
+    <button type="button" class="prevbtn">이전</button><input type="submit" class="nextbtn" onclick="return popClose()" value="다음">
   </div>
 <!--  <button class="modal-close" onClick="popClose();">닫기</button>-->
 </div>
 <!--</form>-->
 <!-- //modal 영역 -->
 </body>
-<script type="text/javascript" th:src="@{/js/popup.js}"></script>
+<!--<script type="text/javascript" th:src="@{/js/popup.js}"></script>-->
 
 </html>

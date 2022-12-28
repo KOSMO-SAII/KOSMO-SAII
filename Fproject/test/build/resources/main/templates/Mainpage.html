@@ -68,10 +68,10 @@
 <div id="second" >
     <div class="title" style="text-align: center;">국내 여행 플래너 SAII </div><br/>
     <div class="title2">나만의 여행을 만들어 보아요</div><br/>
-    <div class="search-area">
-        <input type="text" class="search-input">
-        <button class="but">검색</button>
-    </div>
+<!--    <div class="search-area">-->
+<!--        <input type="text" class="search-input">-->
+<!--        <button class="but">검색</button>-->
+<!--    </div>-->
 </div>
 
 <section id="tripple">
@@ -92,104 +92,111 @@
         </a></div>
 </section>
 
+<!--<div class="aa">-->
+<!--    <input type="radio" onclick="" class="bb" checked/> 조회순</button>-->
+<!--    <input type="radio" onclick="" class="bb"> 좋아요순</button>-->
+<!--    <input type="radio" onclick="" class="bb"> 최신순</button>-->
+<!--</div>-->
+<!--<div class="aa">-->
+<!--    <button type="button" onclick="" class="but">조회순</button>-->
+<!--    <button type="button" onclick="" class="but">좋아요순</button>-->
+<!--    <button type="button" onclick="" class="but">최신순</button>-->
+<!--</div>-->
 
-<div class="rec-card">
-<a href="">
-    <div class="card">
-        <!-- 카드 헤더 -->
-        <div class="card-header" >
-            <div class = "card-header-is_closed" >
-                <div class = "card-header-text" > 빨리 </div >
-                <div class = "card-header-number" > 커몬!! </div >
-            </div >
-        </div>
-        <!--  카드 바디 -->
-        <div class="card-body">
-            <!--  카드 바디 헤더 -->
-            <div class="card-body-header">
-                <h1>로또 당첨 바라요!</h1>
-                <p class="card-body-hashtag">#로또 #당첨 #나야나</p>
-                <p class = "card-body-nickname">
-                    작성자: 선미선미 </p>
+    <div class="rec-card">
+
+        <a href="" th:each ="courselist, i : ${lists}">
+            <div class="card">
+                <!-- 카드 헤더 -->
+                <div class="card-header" >
+                    <div class = "card-header-is_closed" >
+                        <div class = "card-header-text" >[[${i.count}]]위 </div >
+                    </div >
+                </div>
+                <!--  카드 바디 -->
+                <div class="card-body">
+                    <!--  카드 바디 헤더 -->
+                    <div class="card-body-header">
+                        <h1>[[${courselist.title}]]</h1>
+                        <p class="card-body-hashtag"> #조회순 #1위</p>
+                        <p class = "card-body-nickname">
+                            [[${courselist.region}]] </p>
+                    </div>
+                    <p class="card-body-description">
+
+                    </p>
+                    <!--  카드 바디 푸터 -->
+                    <div class="card-body-footer">
+                        <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                        <i class="icon icon-view_count"></i> 조회수: [[${courselist.viewCount}]]회
+                        <i class="reg_date"> 22/12/06 </i>
+                    </div>
+                </div>
             </div>
-            <p class="card-body-description">
-                어서요어서요!
-            </p>
-            <!--  카드 바디 푸터 -->
-            <div class="card-body-footer">
-                <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-                <i class="icon icon-view_count"></i>조회 123회
-                <i class="icon icon-comments_count"></i>댓글 456개
-                <i class="reg_date"> 22/12/06 </i>
-            </div>
-        </div>
+        </a>
+
+<!--        <a href="">-->
+<!--            <div class="card">-->
+<!--                &lt;!&ndash; 카드 헤더 &ndash;&gt;-->
+<!--                <div class="card-header" >-->
+<!--                    <div class = "card-header-is_closed" >-->
+<!--                        <div class = "card-header-text" > 2위 </div >-->
+<!--    &lt;!&ndash;                    <div class = "card-header-number" > 임박!! </div >&ndash;&gt;-->
+<!--                    </div >-->
+<!--                </div>-->
+<!--                &lt;!&ndash;  카드 바디 &ndash;&gt;-->
+<!--                <div class="card-body">-->
+<!--                    &lt;!&ndash;  카드 바디 헤더 &ndash;&gt;-->
+<!--                    <div class="card-body-header">-->
+<!--                        <h1>주말 품절임박</h1>-->
+<!--                        <p class="card-body-hashtag">#주말 #벌써 #끝나가</p>-->
+<!--                        <p class = "card-body-nickname">-->
+<!--                            작성자: 절대지켜 </p>-->
+<!--                    </div>-->
+<!--                    <p class="card-body-description">-->
+<!--                        아아 가지마요!-->
+<!--                    </p>-->
+<!--                    &lt;!&ndash;  카드 바디 푸터 &ndash;&gt;-->
+<!--                    <div class="card-body-footer">-->
+<!--                        <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">-->
+<!--                        <i class="icon icon-view_count"></i>조회 321회-->
+<!--                        <i class="reg_date"> 22/12/11 </i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
+
+<!--        <a href="">-->
+<!--            <div class="card">-->
+<!--                &lt;!&ndash; 카드 헤더 &ndash;&gt;-->
+<!--                <div class="card-header" >-->
+<!--                    <div class = "card-header-is_closed" >-->
+<!--                        <div class = "card-header-text" > 3위 </div >-->
+<!--    &lt;!&ndash;                    <div class = "card-header-number" > 닭강정 </div >&ndash;&gt;-->
+<!--                    </div >-->
+<!--                </div>-->
+<!--                &lt;!&ndash;  카드 바디 &ndash;&gt;-->
+<!--                <div class="card-body">-->
+<!--                    &lt;!&ndash;  카드 바디 헤더 &ndash;&gt;-->
+<!--                    <div class="card-body-header">-->
+<!--                        <h1>빠빠빨간맛</h1>-->
+<!--                        <p class="card-body-hashtag">#인천 #닭강정 #뼈있음</p>-->
+<!--                        <p class = "card-body-nickname">-->
+<!--                            작성자: 순살좋아 </p>-->
+<!--                    </div>-->
+<!--                    <p class="card-body-description">-->
+<!--                        그럼 왜 강정이냐고오오오~~-->
+<!--                    </p>-->
+<!--                    &lt;!&ndash;  카드 바디 푸터 &ndash;&gt;-->
+<!--                    <div class="card-body-footer">-->
+<!--                        <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">-->
+<!--                        <i class="icon icon-view_count"></i>조회 98회-->
+<!--                        <i class="reg_date"> 22/12/11 </i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
     </div>
-</a>
-
-    <a href="">
-        <div class="card">
-            <!-- 카드 헤더 -->
-            <div class="card-header" >
-                <div class = "card-header-is_closed" >
-                    <div class = "card-header-text" > 품절 </div >
-                    <div class = "card-header-number" > 임박!! </div >
-                </div >
-            </div>
-            <!--  카드 바디 -->
-            <div class="card-body">
-                <!--  카드 바디 헤더 -->
-                <div class="card-body-header">
-                    <h1>주말 품절임박</h1>
-                    <p class="card-body-hashtag">#주말 #벌써 #끝나가</p>
-                    <p class = "card-body-nickname">
-                        작성자: 절대지켜 </p>
-                </div>
-                <p class="card-body-description">
-                    아아 가지마요!
-                </p>
-                <!--  카드 바디 푸터 -->
-                <div class="card-body-footer">
-                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-                    <i class="icon icon-view_count"></i>조회 321회
-                    <i class="icon icon-comments_count"></i>댓글 789개
-                    <i class="reg_date"> 22/12/11 </i>
-                </div>
-            </div>
-        </div>
-    </a>
-
-    <a href="">
-        <div class="card">
-            <!-- 카드 헤더 -->
-            <div class="card-header" >
-                <div class = "card-header-is_closed" >
-                    <div class = "card-header-text" > 간식 </div >
-                    <div class = "card-header-number" > 닭강정 </div >
-                </div >
-            </div>
-            <!--  카드 바디 -->
-            <div class="card-body">
-                <!--  카드 바디 헤더 -->
-                <div class="card-body-header">
-                    <h1>빠빠빨간맛</h1>
-                    <p class="card-body-hashtag">#인천 #닭강정 #뼈있음</p>
-                    <p class = "card-body-nickname">
-                        작성자: 순살좋아 </p>
-                </div>
-                <p class="card-body-description">
-                    그럼 왜 강정이냐고오오오~~
-                </p>
-                <!--  카드 바디 푸터 -->
-                <div class="card-body-footer">
-                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-                    <i class="icon icon-view_count"></i>조회 98회
-                    <i class="icon icon-comments_count"></i>댓글 102개
-                    <i class="reg_date"> 22/12/11 </i>
-                </div>
-            </div>
-        </div>
-    </a>
-</div>
 
 
 <footer class="footer-distributed">

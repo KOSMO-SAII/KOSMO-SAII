@@ -33,14 +33,14 @@
             <div class="inputbox hidden">
             제목:<br/><input class="input "type="text" name="title"  readonly/><br/>
             지역:<br/><input class="input "type="text" name="region" readonly/><br/>
-            여행일수:<input class="input "type="text" name="days" readonly/>
+            총 여행 날짜:<input class="input "type="text" name="days" readonly/>
                 <input class="start" type="hidden" name="start"/>
                 <input class="end" type="hidden" name="end"/><Br>
                 Days:<select class="days">
-                </select>
+                     </select>
             </div>
-            <input type="hidden" name="nickname" value="${sessionScope.nickname}" />
-            <ul id="My_List">
+            <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
+            <ul class="My_List 1">
             </ul>
             <div id="btnbox">
                 <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
@@ -154,5 +154,5 @@
 </body>
 <!--js 파일 연동-->
 <script type="text/javascript" th:src="@{ /js/courseWritePage.js}"></script>
-<script type="text/javascript" th:src="@{ /js/calendar.js}"></script>
+<script type="text/javascript" th:src="@{ /js/courseWritePageCalendar.js}"></script>
 </html>

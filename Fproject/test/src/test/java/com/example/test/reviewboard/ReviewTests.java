@@ -1,7 +1,7 @@
 package com.example.test.reviewboard;
 
 import com.example.test.TestApplication;
-import com.example.test.entity.CourseReview;
+import com.example.test.entity.ReviewCourse;
 import com.example.test.repository.ReviewCourseRepository;
 
 
@@ -22,7 +22,7 @@ public class ReviewTests {
 
     @Test
     void save(){
-        CourseReview params = CourseReview.builder()
+        ReviewCourse params = ReviewCourse.builder()
                 .title("테스트 제목")
                 .content("테스트 내용")
                 .course_id("3")
@@ -32,9 +32,9 @@ public class ReviewTests {
 
 //        CourseReview entity = courseReviewRepository.findById((long) 1).get();
         long id = 2;
-        Optional<CourseReview> temp = courseReviewRepository.findById(id);
+        Optional<ReviewCourse> temp = courseReviewRepository.findById(id);
         if(temp.isPresent()) {
-            CourseReview entity = temp.get();
+            ReviewCourse entity = temp.get();
 
 //            assertThat(entity.getTitle()).isEqualTo("테스트 제목");
 //            assertThat(entity.getContent()).isEqualTo("테스트 내용");
@@ -49,15 +49,15 @@ public class ReviewTests {
     @Test
     void findAll(){
         long reviewsCount = courseReviewRepository.count();
-        List<CourseReview> courseReviewList = courseReviewRepository.findAll();
+        List<ReviewCourse> reviewCourseList = courseReviewRepository.findAll();
     }
 
     @Test
     void delete(){
         long id = 1;
-        Optional<CourseReview> temp = courseReviewRepository.findById(id);
+        Optional<ReviewCourse> temp = courseReviewRepository.findById(id);
         if(temp.isPresent()) {
-            CourseReview entity = temp.get();
+            ReviewCourse entity = temp.get();
 
             courseReviewRepository.delete(entity);
         }

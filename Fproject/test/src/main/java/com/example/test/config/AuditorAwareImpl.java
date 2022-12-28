@@ -21,8 +21,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 
         String userId = "-1";
         if(authentication != null){
-            userId = memberRepository.findByLoginId(authentication.getName()).getMemberId().toString();
-//          userId = authentication.getName();
+            userId = authentication.getName();
         }
         return Optional.of(userId);
     }
