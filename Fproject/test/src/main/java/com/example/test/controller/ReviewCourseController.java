@@ -29,10 +29,10 @@ public class ReviewCourseController {
         model.addAttribute("maxPage", 5);
 //        model.addAttribute("sessionId",principal.getName());
 
-//        if(principal != null){
-//            System.out.println(member.getNickname());
-//            model.addAttribute("nickname",member.getNickname());
-//        }
+        if(principal != null){
+            System.out.println(member.getNickname());
+            model.addAttribute("nickname",member.getNickname());
+        }
         return "reviews/reviewCourse";
     }
 

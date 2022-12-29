@@ -78,7 +78,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
             //리뷰 작성자가 본인인지 확인
             if(dto.getCreatedBy().equals(memberService.getMember().getLoginId())){
-                model.addAttribute("author",true);
+                model.addAttribute("writer",true);
                 model.addAttribute("check",true);
 
             }
