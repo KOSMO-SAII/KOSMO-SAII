@@ -68,6 +68,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
         if (principal == null) {
             model.addAttribute("toLogin", true);
+        }else{
+            model.addAttribute("okLogin", true);
         }
 
         // 사용자
