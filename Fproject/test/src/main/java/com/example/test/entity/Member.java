@@ -14,7 +14,9 @@ import javax.persistence.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -56,6 +58,8 @@ public class Member{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+    private List<ReviewCourse> ReviewCourseList = new ArrayList<>();
 
 
     @Builder
