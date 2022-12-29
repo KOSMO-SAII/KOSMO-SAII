@@ -9,29 +9,158 @@ var schedul=[]; //코스 정보 객체 담는 배열
 //마이핀 목록 활성화
 var checkmode=0;
 var polylineArr=[];//line 정보 객체 담는 배열
-//라인 정보
-var polyline = new kakao.maps.Polyline({
-				    map: map,
-				    path:[
-						new kakao.maps.LatLng(0, 0)
-						],
-						endArrow:true,
-				    strokeWeight: 6,
-				    strokeColor: '#98dde3',
-				    strokeOpacity: 1,
-					});
+var pathArr=[];
+//임시
+var datas=[];
+var editsSchedul=[];
+var editmode=false;
+var checkmode2=false;
+
+if(mode=="edit"){
+    var modalPop = $('.modal-wrap');
+        var modalBg = $('.mbg');
+        $(modalBg).removeClass('modal-bg');
+        $(modalPop).css("z-index",-1000)
+        $('.inputbox').removeClass('hidden')
+        days=editdays;
+        addDays()
+        setSchArr();
+        addList()
+        hideList(optVal)
+        setEditsSchedul();
+        editmode=true;
+}
+
+function setEditsSchedul(){
+    for(var i=0;i<days;i++){
+        var arr=[];
+        editsSchedul.push(arr)
+    }
+}
+
+//mode가 edit일때만 실행
+if(mode=="edit"){
+
+	$('.'+region+'').attr("selected","selected");
 
 
+	//코스 day별로 나눠서 배열에 저장
+    for(var k=0;k<paramObjs.length;k++){
+        var cDay=(paramObjs[k].day-1);
 
+    	//오버레이 내용
+    	var mycontent='<div class="wrap">' +
+    	            '    <div class="info overlay">' +
+    	            '        <div class="title">' +
+    	                        			paramObjs[k].Place_name +
+    	            '            <div class="close r" onclick="overlayclose('+paramObjs[k].corder+')" title="닫기"><input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'"></div>' +
+    	            '        </div>' +
+    	            '        <div class="body">' +
+    	            '            <div class="desc">' +
+    	            '                <div class="ellipsis">'+paramObjs[k].Road_address_name+'</div>' +
+    	            '                <div class="jibun ellipsis">'+paramObjs[k].address_name+'</div>' +
+    	            '                <div class="phone ellipsis">'+paramObjs[k].Phone_number+'</div>' +
+    	            '                <div><a href="'+paramObjs[k].Place_url+'" target="_blank" class="link">상세보기</a></div>' +
+    	            '            </div>' +
+    	            '        </div>' +
+    	            '    </div>' +
+    	            '</div>';
+
+    	//마이 핀 이미지 생성
+    	var imageSrc = '/img/realpin.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    	    imageSize = new kakao.maps.Size(45, 45),  // 마커 이미지의 크기
+    	    imgOptions =  {
+    	        spriteSize : new kakao.maps.Size(45, 45), // 스프라이트 이미지의 크기
+    	        //spriteOrigin : new kakao.maps.Point(1409, 1033), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+    	        offset: new kakao.maps.Point(22, 35), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+    	        shape:'poly',
+    	        coords:'19,9,25,9,28,11,31,14,31,21,28,26,22,35,16,26,14,21,14,14,16,11'
+    	    },
+    	    markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions)
+
+
+    	//마이 핀 마커 생성
+    	var mymarker = {
+    		mymarker:new kakao.maps.Marker({
+    				map: map,
+    				position: new kakao.maps.LatLng(paramObjs[k].Y,paramObjs[k].X),
+    				image:markerImage
+    			}),
+    		id:paramObjs[k].address_id
+    		}
+    	//마이 핀 오버레이 생성
+    	var myoverlay={
+    			myoverlay:	new kakao.maps.CustomOverlay({
+    	    				content: mycontent,
+    	    				map: map,
+    	    				position: mymarker.mymarker.getPosition(),
+    	    				clickable:true
+    					}),
+    	    	id:paramObjs[k].address_id
+    			}
+    	//마커,오버레이를 객체로 묶음
+    	var mymarkerOb={
+    				mymarker:mymarker,
+    				myoverlay:myoverlay,
+    				id:paramObjs[k].address_id,
+    				Object:paramObjs[k]
+    			}
+    	mymarkerOb.myoverlay.myoverlay.setMap(null);
+    	mymarkerOb.mymarker.mymarker.setMap(null);
+    	//묶은 객체를 배열에 집어 넣음
+    	editsSchedul[cDay].push(mymarkerOb)
+    }
+
+   for(var i=0;i<editsSchedul.length;i++){
+       for(var j=0;j<editsSchedul[i].length;j++){
+
+            var paramObj = {
+                    placex:editsSchedul[i][j].Object.X,
+                    placey:editsSchedul[i][j].Object.Y
+
+                };
+            var paramObjinfo = {
+                    placeName:editsSchedul[i][j].Object.Place_name,
+                    placeRaddress:editsSchedul[i][j].Object.Road_address_name  ,
+                    placeAddress:editsSchedul[i][j].Object.address_name   ,
+                    placePhone:editsSchedul[i][j].Object.Phone_number ,
+                    placeUrl:editsSchedul[i][j].Object.Place_url ,
+                    placeid:editsSchedul[i][j].Object.address_id,
+                    placeCategoryCode:editsSchedul[i][j].Object.category,
+                    placex:editsSchedul[i][j].Object.X,
+                    placey:editsSchedul[i][j].Object.Y,
+                    day:editsSchedul[i][j].Object.day ,
+                    corder:editsSchedul[i][j].Object.corder
+
+                };
+
+            rsaveMyPin(paramObj,paramObjinfo,paramObjinfo.day);
+       }
+   }
+
+
+    var x=editsSchedul[0][0].Object.X
+    var y=editsSchedul[0][0].Object.Y
+    var po =new kakao.maps.LatLng(y,x)
+    map.panTo(po)
+
+    editmode=false;
+    schedulNum=0;
+}
 
 //날짜 select option 변경 이벤트
 $('.days').on('change',function(){
-    //console.log($(this).val());
+    console.log("days 체인지")
     schedulNum=($(this).val()-1);
     optVal=$(this).val();
     hideList(optVal)
     if(checkmode==1){
         check()
+    }
+    if(checkmode2){
+    console.log(schedulNum)
+        var move =new kakao.maps.LatLng(schedul[schedulNum][0].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][0].mymarker.mymarker.getPosition().La)
+        map.panTo(move)
     }
 })
 
@@ -39,7 +168,16 @@ $('.days').on('change',function(){
  function popOpen() {
     //console.log("오픈시작");
     var modalPop = $('.modal-wrap');
-    var modalBg = $('.modal-bg');
+    var modalBg = $('.mbg');
+    $(modalPop).css("z-index",1000)
+    $(modalBg).addClass('modal-bg');
+    if(mode=="edit"){
+       console.log("edit 팝업오픈")
+
+      $('input[name=ptitle]')[0].value=$('input[name=title]')[0].value
+//        $('input[name=prigion]')[0].value=$('input[name=region]')[0].value
+
+    }
 
 }
 
@@ -62,9 +200,9 @@ $('.days').on('change',function(){
 
 
   var modalPop = $('.modal-wrap');
-    var modalBg = $('.modal-bg');
-    $(modalPop).hide();
+    var modalBg = $('.mbg');
     $(modalBg).removeClass('modal-bg');
+    $(modalPop).css("z-index",-1000)
     $('.inputbox').removeClass('hidden')
     $('input[name=title]')[0].value=$('input[name=ptitle]')[0].value
     $('input[name=region]')[0].value=$('select[name=pregion]')[0].value
@@ -77,31 +215,156 @@ $('.days').on('change',function(){
         $('.end')[0].value=dateFormat(new Date());
      $('input[name=days]')[0].value=1;
     }
-
+     setSchedul()
      addDays()
      addList()
      hideList(optVal)
-     setSchedul()
+
 }
 
 //일자별 코스 배열 생성
 function setSchedul(){
-    if(days==undefined){
-        var array=[]
-        var num={num:0};
-        schedul.push(array);
-        listNum.push(num);
-        polylineArr.push(polyline)
-
+    var delul=$('ul.My_List')
+    if(mode=='edit'){
+        if(days==delul.length){
+            console.log("스케쥴 배열 같음")
+        }else if(days>delul.length){
+           console.log("스케쥴 배열 큼")
+           var sum=days-delul.length
+           for(var i=0;i<sum;i++){
+               var array=[]
+               var num={num:0};
+               var path=[];
+               //라인 정보
+               var polyline = new kakao.maps.Polyline({
+                                   map: map,
+                                   path:[
+                                       new kakao.maps.LatLng(0, 0)
+                                       ],
+                                       endArrow:true,
+                                   strokeWeight: 6,
+                                   strokeColor: '#98dde3',
+                                   strokeOpacity: 1,
+                                   });
+               schedul.push(array);
+               listNum.push(num);
+               polylineArr.push(polyline)
+               pathArr.push(path)
+           }
+        }else if(days<delul.length){
+           console.log("스케쥴 배열 작음")
+           var sum=delul.length-days;
+          for(var i=0;i<sum;i++){
+              var array=[]
+              var num={num:0};
+              var path=[];
+              //라인 정보
+              var polyline = new kakao.maps.Polyline({
+                                  map: map,
+                                  path:[
+                                      new kakao.maps.LatLng(0, 0)
+                                      ],
+                                      endArrow:true,
+                                  strokeWeight: 6,
+                                  strokeColor: '#98dde3',
+                                  strokeOpacity: 1,
+                                  });
+              schedul.pop();
+              listNum.pop();
+              polylineArr.pop();
+              pathArr.pop();
+          }
+        }
     }else{
-        for(var i=0;i<days;i++){
+        if(days==undefined){
             var array=[]
             var num={num:0};
+            var path=[];
+            //라인 정보
+            var polyline = new kakao.maps.Polyline({
+                                map: map,
+                                path:[
+                                    new kakao.maps.LatLng(0, 0)
+                                    ],
+                                    endArrow:true,
+                                strokeWeight: 6,
+                                strokeColor: '#98dde3',
+                                strokeOpacity: 1,
+                                });
             schedul.push(array);
             listNum.push(num);
             polylineArr.push(polyline)
+            pathArr.push(path)
+
+        }else{
+            for(var i=0;i<days;i++){
+                var array=[]
+                var num={num:0};
+                var path=[];
+                //라인 정보
+                var polyline = new kakao.maps.Polyline({
+                                    map: map,
+                                    path:[
+                                        new kakao.maps.LatLng(0, 0)
+                                        ],
+                                        endArrow:true,
+                                    strokeWeight: 6,
+                                    strokeColor: '#98dde3',
+                                    strokeOpacity: 1,
+                                    });
+                schedul.push(array);
+                listNum.push(num);
+                polylineArr.push(polyline)
+                pathArr.push(path)
+            }
         }
     }
+}
+
+//임시 코드 길이서 메소드로 분리
+function setSchArr(){
+    if(days==undefined){
+                var array=[]
+                var num={num:0};
+                var path=[];
+                //라인 정보
+                var polyline = new kakao.maps.Polyline({
+                                    map: map,
+                                    path:[
+                                        new kakao.maps.LatLng(0, 0)
+                                        ],
+                                        endArrow:true,
+                                    strokeWeight: 6,
+                                    strokeColor: '#98dde3',
+                                    strokeOpacity: 1,
+                                    });
+                schedul.push(array);
+                listNum.push(num);
+                polylineArr.push(polyline)
+                pathArr.push(path)
+
+            }else{
+                for(var i=0;i<days;i++){
+                    var array=[]
+                    var num={num:0};
+                    var path=[];
+                    //라인 정보
+                    var polyline = new kakao.maps.Polyline({
+                                        map: map,
+                                        path:[
+                                            new kakao.maps.LatLng(0, 0)
+                                            ],
+                                            endArrow:true,
+                                        strokeWeight: 6,
+                                        strokeColor: '#98dde3',
+                                        strokeOpacity: 1,
+                                        });
+                    schedul.push(array);
+                    listNum.push(num);
+                    polylineArr.push(polyline)
+                    pathArr.push(path)
+                }
+            }
 }
 
 //마이 코스 리스트 숨기기
@@ -115,14 +378,45 @@ function hideList(optVal){
 
 //마이 코스 리스트 생성
 function addList(){
-    if(!days){
+    var delul=$('ul.My_List')
+
+    if(mode=='edit'){
+        if(days==delul.length){
+        }else if(days>delul.length){
+            var num=days-delul.length;
+            var num2=delul.length+1;
+            for(var i=0;i<num;i++){
+                var ul = document.createElement("ul")
+                $('.nickname').after(ul)
+                $(ul).attr('class',num2++)
+                $(ul).addClass("My_List")
+            }
+        }else if(days<delul.length){
+            var num=delul.length-days;
+            var num2=days;
+            for(var i=0;i<num;i++){
+                delul[i].remove();
+            }
+        }
     }else{
-        for(var i = days; i>=2;i--){
+        for(var i=0;i<delul.length;i++){
+             delul[i].remove()
+        }
+
+        if(!days){
             var ul = document.createElement("ul")
             $('.nickname').after(ul)
-            $(ul).attr('class',i)
+            $(ul).attr('class',1)
             $(ul).addClass("My_List")
-        }
+        }else{
+            for(var i = days; i>=1;i--){
+                var ul = document.createElement("ul")
+                $('.nickname').after(ul)
+                $(ul).attr('class',i)
+                $(ul).addClass("My_List")
+            }
+
+    }
     }
 
 }
@@ -131,6 +425,7 @@ function addList(){
 function addDays(){
    // console.log("데이 실행")
     var sel=$('.days');
+    sel.empty();
      if(!days){
             var opt=document.createElement("option");
                         opt.text=1+"day"

@@ -1,14 +1,13 @@
 package com.example.test.controller;
 
 
-import com.example.test.domain.CourseDTO;
-import com.example.test.domain.MainBoardDTO;
+import com.example.test.entity.CourseList;
 import com.example.test.service.CourseService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletException;
@@ -16,37 +15,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequiredArgsConstructor
 public class CoursePageController extends HttpServlet {
 
+    @Autowired
     private CourseService courseService;
 
-    @GetMapping("/courseViewPage")
-    public String doGetView(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int course_id= Integer.parseInt( req.getParameter("num"));
-        //코스 id에 맞는 닉네임 찾기
-        String nickname = courseService.findIdNickName(course_id);
+
+      @GetMapping("/courseViewPage/{num}")
+    public String doGetView(@PathVariable("num") String num, Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {
+        Long course_id= Long.parseLong(num);
+
+
+        List<CourseList> courseList = courseService.getCourseList(course_id);
+          Map<String,String> map = courseService.getDays(course_id);
+        //코스 id에 맞는 작성자 찾기
+        String createdBy = courseList.get(0).getCreatedBy();
+
+        String nowUser = principal.getName();
 
         //코스 id에 맞는 글 제목,지역 찾기
-        MainBoardDTO mdto=courseService.findIdPostRegion(course_id);
+        String region = courseList.get(0).getRegion();
+        String title = courseList.get(0).getTitle();
 
         //받아온 코스 id로 db에서 값 뽑아옴
-        ArrayList<CourseDTO> cdtos=courseService.getIdCourse(course_id);
+        List<Map<String, String>> list=courseService.giveCourseData(course_id);
 
-        //넘어온 코스 정보 list에 저장
-        List<Map<String, String>> list = courseService.printCourse(cdtos);
 
-        req.setAttribute("title", mdto.getTitle());
-        req.setAttribute("region",mdto.getRegion());
+        req.setAttribute("title", title);
+        req.setAttribute("region",region);
         req.setAttribute("c_id", course_id);
-        req.setAttribute("nickname", nickname);
-        req.setAttribute("List", list);
-
+        req.setAttribute("createdBy", createdBy);
+        req.setAttribute("list", list);
+        req.setAttribute("days", map.get("day"));
+        req.setAttribute("start",map.get("start"));
+        req.setAttribute("nowUser",nowUser);
+        //return "test/test";
         return "course/courseViewPage";
     }
 
@@ -57,14 +66,20 @@ public class CoursePageController extends HttpServlet {
 
         String mode=req.getParameter("mode");
         String days=req.getParameter("days");
+        String start=req.getParameter("start");
 
         //courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정
         if(mode.equals( "edit")) {
             System.out.println("edit모드");
-            MainBoardDTO mdto = courseService.editMode(req);
+            String title=req.getParameter("title");
+            String region=req.getParameter("region");
 
-            req.setAttribute("title", mdto.getTitle());
-            req.setAttribute("region", mdto.getRegion());
+            List<Map<String, String>> list=courseService.editMode(req);
+            
+            req.setAttribute("title", title);
+            req.setAttribute("region", region);
+            req.setAttribute("list", list);
+            System.out.println(list);
 
         }else {
 
@@ -74,40 +89,58 @@ public class CoursePageController extends HttpServlet {
 
                 String title = req.getParameter("title");
                 String region = req.getParameter("region");
-                String nickname = req.getParameter("nickname");
-                req.setAttribute("nickname", nickname);
+                //String nickname = req.getParameter("nickname");
+                //req.setAttribute("nickname", nickname);
                 req.setAttribute("title", title);
                 req.setAttribute("region", region);
-                req.setAttribute("List", list);
+                req.setAttribute("list", list);
                 System.out.println(list);
             }
-
         }
-
-        //System.out.println(list);
         req.setAttribute("days",days);
-        //req.setAttribute("List", list);
+        req.setAttribute("start",start);
 
         return "course/CourseViewPage";
-//        return "test/test2";
+
     }
 
     @GetMapping("/courseWritePage")
-    public String doGetWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        courseService.loginCheck(req,resp);
-        return "course/courseWritePage";
+    public String doGetWrite(Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {
+        boolean check=courseService.loginCheck(principal);
+        System.out.println(check);
+        if(check){
+            return "course/courseWritePage";
+        }else {
+            try {
+                //비로그인시 알람창
+                resp.setContentType("text/html; charset=utf-8");
+                PrintWriter w = resp.getWriter();
+                w.write("<script>alert('로그인을 해주세요');location.href='/members/login';</script>");
+                w.flush();
+                w.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            return "redirect:/members/login";
+        }
+
     }
 
     @PostMapping("/courseWritePage")
     public String doPostWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
-        List<Map<String, String>> list = courseService.changeCourse(req);
+        Long course_id= Long.parseLong(req.getParameter("c_id"));
+        //System.out.println("코스아이디: "+course_id);
+        List<Map<String, String>> list = courseService.changeCourseData(course_id);
+        Map<String,String> map =courseService.getDays(course_id);
+        //System.out.println("days: "+days);
+        List<CourseList> courseList = courseService.getCourseList(course_id);
 
-        MainBoardDTO mdto =courseService.saveMainboard(req);
 
-        req.setAttribute("title", mdto.getTitle());
-        req.setAttribute("region",mdto.getRegion());
+        req.setAttribute("days",map.get("days"));
+        req.setAttribute("title", courseList.get(0).getTitle());
+        req.setAttribute("region",courseList.get(0).getRegion());
         req.setAttribute("list", list);
-
+        req.setAttribute("start",map.get("start"));
         return "course/courseWritePage";
     }
 }

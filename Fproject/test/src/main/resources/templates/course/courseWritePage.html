@@ -25,19 +25,24 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <link th:href="@{ /css/rpopup.css}" rel="stylesheet" />
 </head>
 <body >
 <div class="body_wrap">
     <div class="my">
         <form th:action="@{/courseViewPage(mode=${param.mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
             <div class="inputbox hidden">
-            제목:<br/><input class="input "type="text" name="title"  readonly/><br/>
-            지역:<br/><input class="input "type="text" name="region" readonly/><br/>
-            총 여행 날짜:<input class="input "type="text" name="days" readonly/>
-                <input class="start" type="hidden" name="start"/>
-                <input class="end" type="hidden" name="end"/><Br>
+            제목:<input class="input "type="text" name="title" th:value="${title}" readonly/><br/>
+            지역:<input class="input "type="text" name="region" th:value="${region}" readonly/><br/>
+            총 여행 날짜:<input class="input "type="text" name="days" th:value="${days}" readonly/><Br>
+                여행 시작 날짜:<input class="start" type="text" th:value="${start}" name="start" readonly/><br>
+<!--                <input class="start" type="hidden" name="start"/>-->
+                <input class="end" type="hidden" name="end"/>
                 Days:<select class="days">
                      </select>
+<!--                <th:block th:if="${#strings.equals(param.mode, 'edit')}">-->
+                <button type="button" class="changebtn" onclick="popOpen()" >변경</button>
+<!--                </th:block>-->
             </div>
             <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
             <ul class="My_List 1">
@@ -45,12 +50,12 @@
             <div id="btnbox">
                 <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
                 <!-- <button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button> -->
-                    <th:block th:if="${param.mode=='edit'}">
-                        <input type="submit" class="submitbtn" value="코스수정"></input>
-                    </th:block>
-                    <th:block th:unless="${param.mode=='edit'}">
-                        <input type="submit" class="submitbtn" value="코스저장"></input>
-                    </th:block>
+                <th:block th:if="${#strings.equals(param.mode, 'edit')}">
+                    <input type="submit" class="submitbtn" value="코스수정"></input>
+                </th:block>
+                <th:block th:unless="${#strings.equals(param.mode, 'edit')}">
+                    <input type="submit" class="submitbtn" value="코스저장"></input>
+                </th:block>
             </div>
         </form>
     </div>
@@ -107,6 +112,7 @@
                         음식점</li>
                     <li id="HP8" data-order="12"><span class="category_bg hospital"></span>
                         병원</li>
+
                 </ul>
             </div>
         </div>
@@ -122,13 +128,14 @@
     </div>
 </div>
 <!--  팝업          -->
-<div class="modal-bg"></div>
+<div class="modal-bg mbg"></div>
 <div th:replace="~{course/popup::popup}"></div>
 
 <script th:inline="javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var mode=/*[[${param.mode}]]*/ ;  //현재 작성 모드인지 수정 모드이지 구분
 		var region=/*[[${region }]]*/
+		var editdays=/*[[${days }]]*/
 <!--		console.log(mode)-->
 <!--		console.log(region);-->
 </script>
@@ -146,13 +153,15 @@
 			Road_address_name:/*[[${List.Road_address_name}]]*/,
 			X:/*[[${List.X}]]*/,
 			Y:/*[[${List.Y}]]*/,
+			day:/*[[${List.day}]]*/,
+			corder:/*[[${List.corder}]]*/
 		}
 		paramObjs.push(paramObj)
 	</script>
-</th:block>
-
 </body>
+</div>
 <!--js 파일 연동-->
 <script type="text/javascript" th:src="@{ /js/courseWritePage.js}"></script>
 <script type="text/javascript" th:src="@{ /js/courseWritePageCalendar.js}"></script>
+<script type="text/javascript" th:src="@{ /js/courseWritePageFestival.js}"></script>
 </html>

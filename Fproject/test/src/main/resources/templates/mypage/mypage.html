@@ -20,8 +20,8 @@
 <h3>마이페이지</h3>
 </div>
 <div class="div1">
-    <div class="div1-1" onclick="divshow1()">내 정보</div>
-    <div class="div1-1" onclick="divshow2()">내가 만든 코스</div>
+    <div class="div1-1" id="myInfo" onclick="divshow1()">내 정보</div>
+    <div class="div1-1" id="myCourse" onclick="divshow2()">내가 만든 코스</div>
 </div>
 <div id="show1" >
     <!--    <form method="post" action="/members/update">-->
@@ -79,17 +79,6 @@
 
 </div>
 
-<div class="modal">
-    <div class="modal_body">
-        <div id="texth4"><h3>정말로</h3><h3 id="red">탈퇴</h3><h3>하시겠습니까?</h3></div>
-        <label class="withdraw" for="del" >예</label>
-        <form action="/members/delete">
-            <input type="submit" id="del">
-        </form>
-        <button id="cbtn" class="withdraw">아니요</button>
-    </div>
-</div>
-<a class="btn-3d red" id="modalbtn">회원탈퇴</a>
 <script>
       const modal = document.querySelector('.modal');
       const btnOpenPopup = document.querySelector('#modalbtn');
@@ -125,13 +114,15 @@ function passCk(){     
 function divshow1(){
    document.getElementById("show1").style.display="block";
    document.getElementById("show2").style.display="none";
-   document.getElementById("show3").style.display="none";
+   document.getElementById("myInfo").style.border="1px solid #2F76BD";
+   document.getElementById("myCourse").style.border="none";
 
 }
 function divshow2(){
    document.getElementById("show1").style.display="none";
    document.getElementById("show2").style.display="block";
-   document.getElementById("show3").style.display="none";
+   document.getElementById("myCourse").style.border="1px solid #2F76BD";
+   document.getElementById("myInfo").style.border="none";
 
 }
 function divshow3(){

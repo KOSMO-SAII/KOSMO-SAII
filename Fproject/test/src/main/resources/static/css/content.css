@@ -836,14 +836,15 @@
 .area_tagList .tag_list li:first-child button span{font-weight:800;color:#000;}
 .area_tagList .tag_list li button.active{background-color:#57667e;}
 .area_tagList .tag_list li button.active span{color:#fff;}
-.area_tagList .tag_list li button.btn_all_active{background-color:#57667e;color:#fff;}
 .area_tagList .tag_list li button.btn_all_active span{color:#fff;}
 .area_tagList .tag_list li:hover button.btn_all_active:after{display:none;}
 .area_tagList .tag_list.area_view_list{display:none;border-top:1px solid #e6e6e6 !important;}
 .area_tagList .cnt_list li:first-child button{font-weight:400;color:#666}
 .area_tagList .cnt_list li:first-child button span{font-weight:400;}
 .area_tagList .btn_area{display:none;}
-
+.clicked {
+         color: gray;
+       }
 /* 우측 태그 상단 유관부서관련 */
 .area_tagList .type02{padding: 12px 0 6px;}
 .area_tagList .type02 li{width:50%;padding:0 0 0 0;margin:0 0 5px 0;}
@@ -6819,6 +6820,8 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
     /* 이미지 검색 목록 더보기 */
     .tit_moreAdd .btn_more{font-size:12px;}
     /* 추천 목록 : 소팅 영역 */
+    .btnclick{background-color: #57667e;
+                  color: #fff;}
     .tit_mPop{position: relative; display: block;padding:20px 15px 27px;background-color:#fff;}
     .tit_mPop h2{font-weight:800;color:#333;font-size:20px;}
     .tit_mPop .btn_search{overflow:hidden;position:absolute;top:10px;right:40px;width:17px;height:17px;padding:20px 16px;background:url(../images/common/ico_search_m.png) no-repeat 50% 50%; background-size:17px auto;text-indent: -9999px;}

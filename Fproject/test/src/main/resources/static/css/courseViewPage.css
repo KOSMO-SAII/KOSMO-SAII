@@ -1,7 +1,14 @@
 @charset "UTF-8";
 /* 메인 css*/
 html, body, .map_wrap {
-	height: 100%;
+	height: 99.4%;
+}
+
+body{
+    border: 4px solid skyblue;
+    margin: 0px;
+    border-radius:10px;
+
 }
 
 form {
@@ -20,8 +27,8 @@ form {
 }
 
 #btnbox {
-	position: static;
-	bottom: 10px;
+	position: absolute;
+	bottom: 4px;
 }
 
 form {
@@ -256,7 +263,7 @@ form {
 .My_List {
 	list-style-type: none;
 	padding: 0px;
-	height: 90%;
+	    height: 69%;
 	overflow: auto;
 	overflow-x: hidden
 }
@@ -288,7 +295,7 @@ form {
 	overflow: hidden;
 }
 
-.check,.submitbtn{
+/*.check,.submitbtn{
 	 font-weight: bold;
     background-color: #98dde3;
     border: none;
@@ -297,17 +304,40 @@ form {
     padding: 8px;
     cursor: pointer;
     color:#fff;
-}
+}*/
 
-.searchbtn{
-	font-weight: bold;
+.submitbtn{
+/*	font-weight: bold;
     background-color: #98dde3;
     border: none;
     border-radius: 5px;
     font-size: 13px;
     padding: 8px;
     padding: 2px 9px;
-    cursor: pointer;
+    cursor: pointer;*/
+                display: inline-block;
+                font-size: 13px;
+                padding: 4px 15px;
+                color: white;
+                margin: 20px 8px 15px;
+                border-radius: 6px;
+                text-align: center;
+                transition: top .01s linear;
+                text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+                text-decoration: none;
+                background-color: #AEDBE1;
+                box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
+                border: none;
+                    position: relative;
+                    top: 0px;
+}
+
+.submitbtn:active{
+        position: relative;
+        top: 4px;
+              box-shadow: 0 0 0 1px #94BABF inset,
+                    0 0 0 2px rgba(255,255,255,0.15) inset,
+                    0 0 0 1px rgba(0,0,0,0.4);
 }
 /* 화면 우측 상단 카테고리 목록 css*/
 /*#category {position:absolute;top:10px;right:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;

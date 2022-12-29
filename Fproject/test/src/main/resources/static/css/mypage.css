@@ -144,6 +144,9 @@ display: inline-block;
     position:relative;
     margin:0 auto;
 }
+#myInfo{
+    border:1px solid #2F76BD;
+}
 
 .div1 {
    text-align: center;
@@ -151,7 +154,7 @@ display: inline-block;
 }
 
 .div1-1{
-   width: 120px;
+   width: 199px;
    height: 61px;
    margin: auto;
    display: inline-block;
@@ -215,7 +218,7 @@ display: inline-block;
 }
 #show1 {
    position:relative;
-   width: 400px;
+   width: 458px;
    margin:auto;
    padding:30px
 }
@@ -392,6 +395,26 @@ a {
 }
 .btn-3d.red:active {
   box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+
+
+.btn-3d.red1:hover {
+    background-color: #FF3E46;
+    color:white;
+}
+/* 3D button colors */
+.btn-3d.red1 {
+  background-color: #FF3E46;
+  box-shadow: 0 0 0 1px #BA2D33 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #BA2D33,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.red1:active {
+  box-shadow: 0 0 0 1px #BA2D33 inset,
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
 }

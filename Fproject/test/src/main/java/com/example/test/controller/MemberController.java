@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URL;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -95,6 +96,8 @@ MemberController {
             return "/mypage/mypage";
 
         }
+        URL r = this.getClass().getResource("");
+        System.out.println(r);
         System.out.println(principal.getName());
         SessionMember sessionUser = memberService.memdto(principal.getName());
         model.addAttribute("info",sessionUser);
