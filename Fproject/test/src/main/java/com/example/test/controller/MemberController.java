@@ -193,11 +193,15 @@ MemberController {
         }
     }
 
-    @RequestMapping("findId")
-    public String idFind(String name,String email,Model model){
+    @PostMapping("/findId/{email}/{name}")
+    @ResponseBody
+    public String idFind(@PathVariable String email,@PathVariable String name,Model model){
+        System.out.println(name+email+"여기는 리스폰스바디 아이디");
         String id = memberService.findId(name,email);
-        model.addAttribute("findId",id);
-        return "/login/findId";
+        model.addAttribute("id",id);
+        System.out.println("찍혀라 제발");
+        System.out.println(id+"컨트롤러 아이디");
+        return id;
     }
 
     @RequestMapping("idFind")
@@ -210,5 +214,25 @@ MemberController {
         return "mypage/snow";
     }
 
+    @RequestMapping("/passwordFind")
+    public String passwordFind(){
+        return "/login/passwordFind";
+    }
+
+    @PostMapping("/findPassword/{email}/{name}/{loginId}")
+    @ResponseBody
+    public String passwordFind(@PathVariable String email,@PathVariable String name,@PathVariable String loginId,Model model){
+        System.out.println(name+email+"여기는 리스폰스바디 아이디");
+        String passwordCheck = memberService.findPassword(name,email,loginId);
+        model.addAttribute("passwordCheck",passwordCheck);
+        System.out.println(passwordCheck+"컨트롤러 패스워드");
+        return passwordCheck;
+    }
+
+    @PostMapping("/passFind")
+    public String passFind (String loginId1,String loginPw,PasswordEncoder passwordEncoder){
+        memberService.passSave(loginId1,loginPw,passwordEncoder);
+        return "redirect:/members/login";
+    }
 
 }
