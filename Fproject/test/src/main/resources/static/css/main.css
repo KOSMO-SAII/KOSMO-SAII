@@ -10,7 +10,7 @@ head{ -ms-overflow-style: none;}
     margin-right: 30px;
     padding-top:30px;
     cursor:pointer;
-    margin-left: -160px;
+    margin-left: 100px;
 }
 .link-dark{text-decoration: none;
             padding:40px;
@@ -72,12 +72,12 @@ head{ -ms-overflow-style: none;}
 
 #tripple{margin-top: 150px;
          margin-bottom: 150px;
-         width: 100%;
+         width: 80%;
          display: block;
-         margin-left: 650px;
+         margin-left: auto;
          }
-.imgbox {height: 300px;
-       width: 300px;
+.imgbox {height: 280px;
+       width: 280px;
        display: inline-block;
        margin-right: 180px;}
 .ibox {height: 300px;
@@ -91,10 +91,11 @@ head{ -ms-overflow-style: none;}
 .aa {padding-left:30px;}
 .bb {padding-right: 20px;}
 
-.middle {width:60%;
-        margin-left: 500px;
+.middle {width:70%;
         margin-bottom: 100px;
-        height: 250px;}
+        height: 200px;
+        display: block;
+        margin: 50px auto;}
 
 
 
@@ -103,8 +104,8 @@ head{ -ms-overflow-style: none;}
      font-size:17px;}
 .rec-card {margin-top: 20px;
         margin-bottom: 150px;
-        width:100%;
-        margin-left: 600px;
+        width:85%;
+        margin-left: auto;
         }
 .card {color:black;
         font-size:15px;
@@ -222,7 +223,7 @@ h1 {font-size: 22px;
 }
 .footer-distributed .footer-left{
   width: 50%;
-  margin-left: 380px;
+  margin-left: 300px;
 }
 /* The company logo */
 .footer-distributed h3{
