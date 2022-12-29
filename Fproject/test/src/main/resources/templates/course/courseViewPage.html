@@ -13,9 +13,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 <body>
+<!--<p th:text="${c_id}"></p>-->
 <div class="body_wrap">
     <div class="my">
-        <form th:action="@{/courseWritePage(mode=edit,c_id=${ c_id})}" method="post" >
+        <form th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post" >
             <div class="sidebar">
                 제목: <div id="sidebartitle" th:text="${title}"></div>
             </div>
@@ -24,6 +25,9 @@
             </div>
             <div class="sidebar">
                 총 여행 날짜: <div id="sidebardays" th:text="${days}"></div>
+            </div>
+            <div class="sidebar">
+                여행 시작 날짜: <div id="sidebarstart" th:text="${start}"></div>
             </div>
             <div class="sidebar nickname">days:
                 <select class="days">
@@ -38,9 +42,9 @@
             <div id="btnbox">
 
                 <!-- <a class="submitbtna" href="http://localhost:8081/SAII/home">메인 메뉴로 돌아가기</a> -->
-<!--                <th:block th:if="${nickname==session.nickname || param.mode == 'edit'}">-->
+                <th:block th:if="${createdBy==nowUser || param.mode == 'edit'}">
                     <input type="submit" class="submitbtn" value="코스 수정">
-<!--                </th:block>-->
+                </th:block>
 
             </div>
         </form>
@@ -66,7 +70,7 @@
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var days= /*[[${days}]]*/
 </script>
-<th:block th:each="List :${List}">
+<th:block th:each="List :${list}">
     <script th:inline="javascript" type="text/javascript">
 		//장소 정브를 반복문을 돌려서 객체에 담음
 		var paramObj={

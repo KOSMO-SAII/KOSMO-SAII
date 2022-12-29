@@ -50,7 +50,6 @@ var index;
 //코스 day별로 나눠서 배열에 저장
 for(var k=0;k<paramObjs.length;k++){
     var cDay=(paramObjs[k].day-1);
-//        console.log(cDay)
 
 	//오버레이 내용
 	var mycontent='<div class="wrap">' +

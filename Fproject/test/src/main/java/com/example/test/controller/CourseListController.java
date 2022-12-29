@@ -24,6 +24,7 @@ public class CourseListController {
             PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
 
             model.addAttribute("lists", courseService.getList(pageRequest));
+            model.addAttribute("pages", courseService.getPage(pageRequest));
             model.addAttribute("maxPage", 5);
 
             return "course/courseList";

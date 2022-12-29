@@ -1,13 +1,13 @@
 package com.example.test.entity;
 
-import lombok.Data;
 import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 public class CourseList extends Base{
 
     @Id
@@ -15,8 +15,8 @@ public class CourseList extends Base{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private long course_id;
+    @Column(nullable = false, name="course_id")
+    private long courseid;
 
     @Column(nullable = false)
     private String title;
