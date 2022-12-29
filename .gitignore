@@ -2,3 +2,6 @@
 Fproject/test/src/main/resources/application.properties
 /.metadata/
 *.class
+*.bin
+*.lock
+Fproject/test/.idea/workspace.xml

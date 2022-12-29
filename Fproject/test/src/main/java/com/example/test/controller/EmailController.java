@@ -31,13 +31,17 @@ public class EmailController extends HttpServlet {
 
     }
 
-    @RequestMapping("/emailCheck/{email}")
-    public String mailConfirm1(@PathVariable String email, Model model) throws MessagingException, UnsupportedEncodingException {
-       //
+    @RequestMapping("/emailCheck/{email}/{name}")
+    @ResponseBody
+    public String mailConfirm1(@PathVariable String email,@PathVariable String name, Model model) throws MessagingException, UnsupportedEncodingException {
+        System.out.println(email);
+        if(accountRepository.existsByEmailAndName(email,name)){
+            authCode = emailService.sendEmail(email);
+            model.addAttribute("authCode", authCode);
+            return authCode;
+        }
+        return "";
 
-        authCode = emailService.sendEmail(email);
-        model.addAttribute("authCode", authCode);
-        return "mailCheck";
 
     }
 
