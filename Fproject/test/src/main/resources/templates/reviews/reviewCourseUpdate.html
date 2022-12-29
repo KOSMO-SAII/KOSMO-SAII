@@ -49,28 +49,7 @@
             console.log(data.content);
     };
 
-    function reviewDelete(){
-        var id = $("#id").val();
-        var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content")
-             $.ajax({
-                 beforeSend: function(xhr){
-                   xhr.setRequestHeader(header,token);
-                 },
-                 type : 'DELETE',
-                 url : '/api/reviews/'+id,
-                 dataType : 'json',
-                 contentType : 'application/json; charset=utf-8'
-             }).done(function(){
-                 alert('글이 삭제되었습니다.');
-                 window.location.href = '/reviews/course';
-             }).fail(function(error){
-                 alert(JSON.stringify(error));
-             })
-             console.log(token);
-             console.log(header);
-             console.log(data.contents)
-    };
+
 
 </script>
 
@@ -94,7 +73,7 @@
     </form>
     <a th:href="@{'/reviews/detail/' + ${reviewCourse.id}}">취소</a>
     <input type="button" id="btn-update" onclick="reviewUpdate()" value="수정 완료">
-    <input type="button" id="btn-delete" onclick="reviewDelete()" value="삭제">
+
 </div>
 
 

@@ -2,6 +2,7 @@ package com.example.test.controller;
 
 import com.example.test.domain.ReviewCourseDTO;
 import com.example.test.service.ReviewCourseService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,11 +28,15 @@ public class ReviewCourseApiController {
 	private final ReviewCourseService reviewCourseService;
 	
 	@PostMapping("/reviews")
-	public Long save(@RequestBody ReviewCourseDTO requestDto) {
-		//RequestBody, ResponseBody - 데이터 비동기 처리 하여 값 받음
-		System.out.println(requestDto);
-		return reviewCourseService.save(requestDto);
+	public ResponseEntity save(@RequestBody ReviewCourseDTO dto){
+		return ResponseEntity.ok(reviewCourseService.save(dto));
 	}
+
+//	public Long save(@RequestBody ReviewCourseDTO requestDto) {
+//		//RequestBody, ResponseBody - 데이터 비동기 처리 하여 값 받음
+//		System.out.println(requestDto);
+//		return reviewCourseService.save(requestDto);
+//	}
 	
 	@PutMapping("/reviews/{id}")
 	public Long update(@PathVariable Long id, @RequestBody ReviewCourseDTO requestDto) {

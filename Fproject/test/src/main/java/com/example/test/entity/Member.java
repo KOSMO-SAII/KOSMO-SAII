@@ -23,7 +23,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Member{
 
     @Id
@@ -60,7 +59,6 @@ public class Member{
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<ReviewCourse> ReviewCourseList = new ArrayList<>();
-
 
     @Builder
     public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,
@@ -207,5 +205,30 @@ public class Member{
     public String getRoleKey() {
         return this.role.getKey();
     }
+
+    public MemberDTO toDto(){
+        MemberDTO dto = new MemberDTO();
+
+        dto.setMemberId(memberId);
+        dto.setAddress(address);
+        dto.setBirthday(birthday);
+        dto.setEmail(email);
+        dto.setGender(gender);
+        dto.setName(name);
+        dto.setNickname(nickname);
+        dto.setCreateDate(createDate);
+        dto.setPhoneNumber(phoneNumber);
+//        dto.setUpdateDate(updateDate);
+        dto.setLoginId(loginId);
+        dto.setLoginPw(loginPw);
+        dto.setNProfileImg(nProfileImg);
+        dto.setOProfileImg(oProfileImg);
+        dto.setPicture(picture);
+        dto.setRole(role);
+
+        return dto;
+    }
+
+
 
 }

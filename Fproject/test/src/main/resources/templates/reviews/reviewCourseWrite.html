@@ -27,7 +27,8 @@
         var data = {
                 title: $('#title').val(),
                 content: $('#content').val(),
-                course_id: $('#course_id').val()
+                course_id: $('#course_id').val(),
+                memberId: $('#writer').val()
             };
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content")

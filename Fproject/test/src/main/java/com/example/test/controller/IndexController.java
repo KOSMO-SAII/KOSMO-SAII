@@ -54,7 +54,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
     public String read(@PathVariable Long id, Principal principal, Model model) {
         ReviewCourseDTO dto = reviewCourseService.findById(id);
         System.out.println(id + " " + dto.toString());
-        Member member = memberRepository.findByLoginId(dto.getCreatedBy());
+        Member member = memberRepository.findByLoginId(dto.getMember().getLoginId());
         String loginId = member.getLoginId();
         model.addAttribute("nickname",member.getNickname());
 
@@ -77,7 +77,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
             model.addAttribute("name", principal.getName());
 
             //리뷰 작성자가 본인인지 확인
-            if(dto.getCreatedBy().equals(memberService.getMember().getLoginId())){
+            if(dto.getMember().getLoginId().equals(memberService.getMember().getLoginId())){
                 model.addAttribute("writer",true);
                 model.addAttribute("check",true);
 
