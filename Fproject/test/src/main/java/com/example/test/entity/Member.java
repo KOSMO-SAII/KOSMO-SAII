@@ -182,7 +182,7 @@ public class Member{
         member1.setRole(member.getRole());
         member1.setCreateDate(member.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
-        String projectPath = System.getProperty("user.dir")+"\\test\\src\\main\\resources\\static\\img\\profile";
+        String projectPath = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\img\\profile";
         UUID uuid = UUID.randomUUID();
         String fileName = uuid+"-"+multipartFile.getOriginalFilename();
         System.out.println(multipartFile.getOriginalFilename());

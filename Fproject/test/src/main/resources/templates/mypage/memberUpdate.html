@@ -1,387 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
   <meta charset="UTF-8">
   <title>정보 수정</title>
 </head>
 <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-<style>
-.input_submit{
-   position:relative;
-   top:14px;
-    display: inline-block;
-    font-size: 13px;
-    padding: 4px 15px;
-    color: white;
-    margin: 20px 8px 15px;
-    border-radius: 6px;
-    text-align: center;
-    transition: top .01s linear;
-    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
-     text-decoration: none;
-       background-color: #AEDBE1;
-       box-shadow: 0 0 0 1px #94BABF inset,
-             0 0 0 2px rgba(255,255,255,0.15) inset,
-             0 4px 0 0 #9EC7CC,
-             0 4px 0 1px rgba(0,0,0,0.4),
-             0 4px 4px 1px rgba(0,0,0,0.5);
-}
-.input_submit:active {
-  box-shadow: 0 0 0 1px #94BABF inset,
-        0 0 0 2px rgba(255,255,255,0.15) inset,
-        0 0 0 1px rgba(0,0,0,0.4);
-  top:18px;
-}
-#pwValid{
-  border:none;
-  display:none;
-}
-
-#red{
-    color:red;
-}
-.withdraw{
-    position:absolute;
-    top: 300px;
-   background-color: black;
-   color: white;
-   cursor: pointer;
-   padding: 6px 25px;
-   border-radius: 5px;
-   display:inline-block;
-   width: 94px;
-   left:43px;
-   vertical-align:middle;
-}
-
-#cbtn{
-    left:248px;
-    width:141px;
-}
-#texth4{
-    position:relative;
-    top:47px;
-}
-.btn-3d {
- position: relative;
- display: inline-block;
- font-size: 13px;
- padding: 4px 15px;
- color: white;
- margin: 20px 8px 15px;
- border-radius: 6px;
- text-align: center;
- transition: top .01s linear;
- text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
-  text-decoration: none;
-  float:right;
-  top: -63px;
-}
-.btn-3d.red:hover {
-    background-color: #AEDBE1;
-    color:white;
-}
-
-.btn-3d:active {
-  top: -59px;
-}
-
-/* 3D button colors */
-.btn-3d.red {
-  background-color: #AEDBE1;
-  box-shadow: 0 0 0 1px #94BABF inset,
-        0 0 0 2px rgba(255,255,255,0.15) inset,
-        0 4px 0 0 #9EC7CC,
-        0 4px 0 1px rgba(0,0,0,0.4),
-        0 4px 4px 1px rgba(0,0,0,0.5);
-}
-.btn-3d.red:active {
-  box-shadow: 0 0 0 1px #94BABF inset,
-        0 0 0 2px rgba(255,255,255,0.15) inset,
-        0 0 0 1px rgba(0,0,0,0.4);
-}
-.modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1254px;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.4);
-
-}
-.modal_body {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  width: 350px;
-  height: 350px;
-  padding: 40px;
-  text-align: center;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-  transform: translateX(-50%) translateY(-50%);
-}
-#preview{
-   transition-timing-function: ease-in;
-}
-#preview1{
-   display: none;
-   z-index: 1;
-   position: absolute;
-   top: 7%;
-   transition: 2s;
-   transition-timing-function: ease-in;
-   max-height: 500px;
-   max-width: 500px;
-}
-
-#show2{
-   display: none;
-   width: 1000px;
-   position: relative;
-   margin: auto;
-}
-#show3{
-   display: none;
-}
-
-tr>td:first-child {
-   text-align: right
-}
-
-h3 {
-   text-align: center;
-}
-h2 {
-   text-align: center;
-   position: relative;
-}
-
-#edit {
-   position: relative;
-   font-size: 15px;
-   margin-top: 24px;
-   height: 38px;
-   width: 120px;
-   left: 283px;
-   background: none;
-   border: none;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #98dde3;
-
-}
-
-#profile{
-   position: absolute;
-   width: 300px;
-   height: 300px;
-   top: 100px;
-   left: -250px;
-}
-#filebutton {
-   display: none;
-}
-
-.input_file_button{
-   position:relative;
-   top:10px;
-   cursor: pointer;
-   display:inline-block;
-   font-size: 15px;
-   margin-top: 24px;
-   height: 30px;
-   width: 120px;
-   background: none;
-   border: none;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #98dde3;
-    padding-top: 8px;
-}
-#sub{
-   display: none;
-}
-#mboard{
-   position:relative;
-   height: 300px;
-   width: 818px;
-   left: 50%;
-   margin-left: -400px;
-}
-
-.div1 {
-   text-align: center;
-   vertical-align: middle;
-}
-
-.div1-1{
-   width: 120px;
-   height: 40px;
-   margin: auto;
-   display: inline-block;
-   padding-top: 20px;
-   text-align: center;
-   align-items: center;
-   background-color: rgb(236,236,236);
-   border-radius: 10px;
-}
-#del {
-   display: none;
-}
-.withdraw{
-   background-color: black;
-   color: white;
-   cursor: pointer;
-   padding: 6px 25px;
-   border-radius: 5px;
-   display:inline-block;
-   width: 100px
-}
-
-.mylabel{
-   vertical-align: 5px;
-   color: #999;
-}
-.mydiv{
-   padding: 0px 0px 8px 0px;
-}
-.myinput{
-   vertical-align: 5px;
-   width:400px;
-   height:40px;
-   display: inline-block;
-   border:none;
-   background-color: #F7F7F7;
-}
-#show1 {
-   position:relative;
-   width: 400px;
-   margin:auto;
-   padding:30px
-}
-.mylist{
-   position: relative;
-   margin: auto;
-   width: 500px;
-   height: 150px;
-   box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
-   outline: 5px;
-   margin-bottom: 10px;
-   border-radius: 4px;
-   top: 22px;
-
-}
-.mylist:hover{
-   transform: scale(1.1) ;
-    border: 10px;
-    border-color: gray;
-    background-color: #FFF4F9;
-}
-.imgdiv {
-   position: relative;
-   left: 316px;
-   top: 15px;
-}
-.spannick {
-   position: relative;
-   top: -40px;
-}
-.divdate{
-   position: absolute;
-   bottom: 2%;
-   right: 3%;
-}
-span{
-   color: #5075B5;
-   font-weight: bold;
-}
-
-.divtitle{
-   position: absolute;
-   top: 10%;
-   left: 4%
-}
-
-.divregion{
-   position: absolute;
-   top: 10%;
-   left: 58%;
-}
-
-.divname{
-   position: absolute;
-   top: 33%;
-   left: 4%;
-}
-
-.divcount{
-   position: absolute;
-   top: 56%;
-   left: 4%;
-
-}
-a {
-   color: black;
-}
-.favoimg{
-   position: relative;
-   width:70px;
-   height:70px;
-    margin: auto;
-    top: 32px;
-
-}
-.mylist2{
-   position: relative;
-   margin: auto;
-   width: 500px;
-   height: 150px;
-   box-shadow: rgb(31 38 135 / 20%) 0px 8px 32px 0px;
-   outline: 5px;
-   margin-bottom: 10px;
-   border-radius: 4px;
-   top:-70px;
-
-}
-.myfavo{
-   height: 160px;
-   width: 900px;
-   position: relative;
-   margin: auto;
-}
-.mylist2:hover{
-   transform: scale(1.1) ;
-    border: 10px;
-    border-color: gray;
-    background-color: #FFF4F9;
-}
-.spanimg{
-   position:relative;
-
-   top: 49px;
-}
-.favodiv{
-   position: relative;
-   margin: auto;
-   height: 150px;
-   width: 240px;
-   right: 355px;
-   top: 78px;
-   text-align: center;
-}
-</style>
+<div layout:fragment="content">
+<link th:href="@{/css/memberUpdate.css}" rel="stylesheet" />
 <script
         src="https://code.jquery.com/jquery-3.6.2.min.js"
         integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
@@ -402,7 +30,9 @@ window.onload = function(){
 }
 </script>
 <body>
-
+<hr>
+<div class="divOut">
+  <div class="divIn">
 <form action="/members/updateS" method="post" th:object="${sessionMember}" onsubmit="return submit1()">
   <input type="hidden" name=memberId th:field="*{memberId}"/>
   <input type="hidden" th:field="*{createDate}"/>
@@ -456,15 +86,19 @@ window.onload = function(){
   </div>
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
-<form enctype="multipart/form-data" action="/members/profile" method="post">
-  <img id="preview" th:src="${info.picture}" width="120px" height="120px" style="border-radius: 50px" onclick="$('#filebutton').trigger('click');">
-  <img id="preview1" th:src="${info.picture}" onclick="imgoriginalhidden()">
-  <!--  <label class="input_file_button" for="filebutton">사진선택</label>-->
-  <input id="filebutton" type="file" name="picture" th:value="*{info.picture}" onchange="imgcg(this)" required><br>
-  <label class="input_submit" for="sub">프로필 적용</label>
-  <input id="sub" type="submit" value="프로필변경">
-  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-</form>
+  </div>
+  <div class="divProfile">
+    <form enctype="multipart/form-data" action="/members/profile" method="post">
+      <img id="preview" th:src="${info.picture}" width="120px" height="120px" style="border-radius: 50px" onclick="$('#filebutton').trigger('click');">
+      <img id="preview1" th:src="${info.picture}" onclick="imgoriginalhidden()">
+      <!--  <label class="input_file_button" for="filebutton">사진선택</label>-->
+      <input id="filebutton" type="file" name="picture" th:value="*{info.picture}" onchange="imgcg(this)" required><br>
+      <label class="input_submit" for="sub">프로필 적용</label>
+      <input id="sub" type="submit" value="프로필변경">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    </form>
+  </div>
+
 <div class="modal">
   <div class="modal_body">
     <div id="texth4"><h3>정말로</h3><h3 id="red">탈퇴</h3><h3>하시겠습니까?</h3></div>
@@ -475,7 +109,7 @@ window.onload = function(){
     <button id="cbtn" class="withdraw">아니요</button>
   </div>
 </div>
-<a class="btn-3d red" id="modalbtn">회원탈퇴</a>
+<a class="btn-3d red1" id="modalbtn">회원탈퇴</a>
 <script>
       const modal = document.querySelector('.modal');
       const btnOpenPopup = document.querySelector('#modalbtn');
@@ -493,7 +127,7 @@ window.onload = function(){
         modal.style.display = "none";
       });
 </script>
-
+</div>
 </body>
 <script>
 function passCk(){     
@@ -597,4 +231,5 @@ function submit1(){
 
 
 </script>
+</div>
 </html>
