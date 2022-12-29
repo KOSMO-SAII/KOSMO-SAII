@@ -56,7 +56,7 @@ head{ -ms-overflow-style: none;}
        font-size: 44px;
        font-weight: bold;
        text-align: center;
-       padding-top: 70px;
+       padding-top: 80px;
         }
 .title2{text-align: center;
         font-size: 26px;
@@ -72,18 +72,18 @@ head{ -ms-overflow-style: none;}
 
 #tripple{margin-top: 150px;
          margin-bottom: 150px;
-         width: 80%;
+         width: 90%;
          display: block;
          margin-left: auto;
          }
 .imgbox {height: 280px;
        width: 280px;
-       display: inline-block;
-       margin-right: 180px;}
+       display: inline-block;}
 .ibox {height: 300px;
        width: 300px;
        display: inline-block;
-       margin-right: 180px;}
+       margin-right: 50px;
+       margin-left: 50px;}
 
  .ppp { margin-top: 30px;
         text-align: center ;}

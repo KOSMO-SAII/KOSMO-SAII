@@ -70,3 +70,32 @@
 .loginBtn2:hover{
     color:white;
 }
+.loginBtn3{
+   position:relative;
+   top:48px;
+   width:400px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+     text-decoration: none;
+       background-color: #AEDBE1;
+       box-shadow: 0 0 0 1px #94BABF inset,
+             0 0 0 2px rgba(255,255,255,0.15) inset,
+             0 4px 0 0 #9EC7CC,
+             0 4px 0 1px rgba(0,0,0,0.4),
+             0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.loginBtn3:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+  top:52px;
+}
+.loginBtn3:hover{
+    color:white;
+}
