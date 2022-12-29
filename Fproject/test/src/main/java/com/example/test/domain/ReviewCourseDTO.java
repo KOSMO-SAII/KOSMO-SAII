@@ -1,9 +1,11 @@
 package com.example.test.domain;
 
+import com.example.test.entity.Member;
 import com.example.test.entity.ReviewCourse;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.User;
 
 /**
  * 게시글 정보를 리턴할 응답(Response) 클래스
@@ -17,7 +19,7 @@ public class ReviewCourseDTO{
     private long id;
     private String course_id;
     private String title;
-    private String author;
+    private String writer;
     private String content;
 
     private String createdDate;
@@ -25,14 +27,16 @@ public class ReviewCourseDTO{
     private String createdBy;
     private String modifiedBy;
 
+    private Member member;
 
     /* Entity -> Dto*/
     public ReviewCourseDTO(ReviewCourse reviewCourse){
         this.id=reviewCourse.getId();
         this.course_id=reviewCourse.getCourse_id();
         this.title=reviewCourse.getTitle();
-        this.author=reviewCourse.getCreatedBy();
+        this.writer=reviewCourse.getCreatedBy();
         this.content=reviewCourse.getContent();
+        this.member=reviewCourse.getMember();
         ModelMapper modelMapper = new ModelMapper();
     }
 }
