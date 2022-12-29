@@ -32,14 +32,18 @@
 
   transform: translateX(-50%) translateY(-50%);
 }
+#errorM{
+    color:red;
+}
 </style>
 <body>
-  <form action="/members/findId" method="post">
+  <form action="/members/findId" method="post" onsubmit="return loginCh()">
     이름 <input type="text" id="name" name="name"><br>
     이메일<input type="email" id="email" name="email">
     <button type="button" class="btn-3d red" id="modalbtn" onclick="emailChk()">이메일 인증</button><br/>
+    <p id="errorM"></p>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    <input type="submit" value="찾기">
+    <input type="submit" id="submitBtn" value="찾기">
   </form>
   <div class="modal">
       <div class="modal_body">
@@ -68,6 +72,20 @@
     });
 </script>
 <script th:inline="javascript">
+    function loginCh(){
+        console.log('아이디찾기 서브밋')
+        var code = $('#code').val()
+        var code1 = $('#code1').val()
+        if(code==code1 && code!=null && code !=""){
+            return true;
+        }else{
+            event.preventDefault()
+            return false;
+        }
+
+    }
+
+
     function check() {
         console.log("인증코드 체크합니다")
         var code = $('#code').val()
