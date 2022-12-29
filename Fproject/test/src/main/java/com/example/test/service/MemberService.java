@@ -40,6 +40,13 @@ public class MemberService implements UserDetailsService {
         }
     }
 
+//    public void pictureUse(Member member) {
+//
+//        if(picture == null) {
+//
+//        }
+//    }
+
     public SessionMember memdto (String loginId){
         Member member = memberRepository.findByLoginId(loginId);
         ModelMapper modelMapper = new ModelMapper();

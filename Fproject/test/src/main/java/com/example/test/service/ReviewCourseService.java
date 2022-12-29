@@ -4,6 +4,7 @@ import com.example.test.domain.ReviewCommentDTO;
 import com.example.test.domain.ReviewCourseDTO;
 import com.example.test.entity.ReviewComment;
 import com.example.test.entity.ReviewCourse;
+import com.example.test.repository.MemberRepository;
 import com.example.test.repository.ReviewCommentRepository;
 import com.example.test.repository.ReviewCourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +26,12 @@ public class ReviewCourseService {
 
     private final ReviewCommentRepository reviewCommentRepository;
 
+    private final MemberRepository memberRepository;
+
     private ModelMapper modelMapper = new ModelMapper();
     @Transactional
     public Long save(ReviewCourseDTO reviewCourseDTO){
+        reviewCourseDTO.setMember(memberRepository.findById(reviewCourseDTO.getMemberId()).orElseThrow());
         ReviewCourse reviewCourse = modelMapper.map(reviewCourseDTO, ReviewCourse.class);
         reviewCourseRepository.save(reviewCourse);
         return reviewCourse.getId();
@@ -45,7 +49,7 @@ public class ReviewCourseService {
     public ReviewCourseDTO findById(Long id){
         ReviewCourse reviewCourse = reviewCourseRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        ReviewCourseDTO dto = modelMapper.map(reviewCourse, ReviewCourseDTO.class);
+        ReviewCourseDTO dto = reviewCourse.toDto();
         System.out.println(reviewCourse.toString());
         System.out.println(dto.toString());
         return dto;
@@ -55,9 +59,6 @@ public class ReviewCourseService {
     public Page<ReviewCourseDTO> findAllDesc(PageRequest pageRequest){
 
         Page<ReviewCourseDTO> courseReviewList = reviewCourseRepository.findAllDesc(pageRequest);
-        for(ReviewCourseDTO r : courseReviewList){
-            System.out.println(r.toString());
-        }
         return courseReviewList;
     }
     //reviewCourseRepository 결과로 넘어온 CourseReviewList를 Page로 래핑하고 map을 통해

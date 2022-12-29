@@ -1,8 +1,10 @@
 package com.example.test.entity;
 
+import com.example.test.domain.ReviewCourseDTO;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +26,6 @@ public class ReviewCourse extends Base{
 
     private String title;
 
-
 //    @ManyToOne의 기본 Fetch 전략은 EAGER(즉시 로딩)이지만, 필요하지 않은 쿼리도 JPA에서 함께 조회하기 때문에
 //    N+1 문제를 야기할 수 있어, Fetch 전략을 LAZY(지연 로딩)로 설정함.
     @ManyToOne(fetch = FetchType.LAZY) //User 입장에선 Posts와 다대일 관계이므로 @ManyToOne이 된다.
@@ -33,15 +34,13 @@ public class ReviewCourse extends Base{
 
     private String writer;
 
-
-
-
-
     @Builder
-    public ReviewCourse(String course_id, String title, String content){
+    public ReviewCourse(String course_id, String title, String content, Member member, String writer){
         this.course_id=course_id;
         this.title=title;
         this.content=content;
+        this.member=member;
+        this.writer=writer;
     }
 
 //    게시글 수정
@@ -51,4 +50,16 @@ public class ReviewCourse extends Base{
         this.course_id=course_id;
     }
 
+    public ReviewCourseDTO toDto(){
+
+        ReviewCourseDTO dto = new ReviewCourseDTO();
+        dto.setId(id);
+        dto.setCourse_id(course_id);
+        dto.setContent(content);
+        dto.setMember(member);
+        dto.setTitle(title);
+        dto.setWriter(writer);
+
+        return dto;
+    }
 }

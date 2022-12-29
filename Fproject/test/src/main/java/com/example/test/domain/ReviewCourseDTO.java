@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.User;
 
+import java.time.LocalDateTime;
+
 /**
  * 게시글 정보를 리턴할 응답(Response) 클래스
  * Entity 클래스를 생성자 파라미터로 받아 데이터를 Dto로 변환하여 응답
@@ -22,12 +24,13 @@ public class ReviewCourseDTO{
     private String writer;
     private String content;
 
-    private String createdDate;
-    private String updateDate;
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
     private String createdBy;
     private String modifiedBy;
 
     private Member member;
+    private long memberId;
 
     /* Entity -> Dto*/
     public ReviewCourseDTO(ReviewCourse reviewCourse){
