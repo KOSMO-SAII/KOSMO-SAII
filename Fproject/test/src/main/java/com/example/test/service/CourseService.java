@@ -383,28 +383,35 @@ public class CourseService {
         }
     }
 
-    public Page<CourseListDTO> getList(PageRequest pageRequest){
+    public List<CourseListDTO> getList(PageRequest pageRequest){
 
         Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
+        List<CourseListDTO> lists = new ArrayList<>();
 
         for(CourseList courseList : courseLists){
             CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            System.out.println(cdto);
             int length = courseDataRepository.countById(cdto.getCourseid());
             List<CourseDTO> datas = new ArrayList<>();
             for(int i=0; i < length;i++) {
                 CourseDataId id = new CourseDataId();
                 id.setId(cdto.getCourseid());
                 id.setOrder((long) i+1);
+                System.out.println(courseDataRepository.findById(id));
                 datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
             }
             cdto.setCourseDatas(datas);
             cdto.setCenter();
-            long id = Long.parseLong(cdto.getCreatedBy());
-            System.out.println(id);
-            cdto.setCreatedBy(memberService.getMember(id).getNickname());
+            lists.add(cdto);
         }
-        Page<CourseListDTO> lists = courseLists.map(courseList -> modelMapper.map(courseList, CourseListDTO.class));
+
         return lists;
+    }
+
+    public Page<CourseList> getPage(PageRequest pageRequest){
+
+        Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
+        return courseLists;
     }
 
     public List<CourseListDTO> getCard(){
