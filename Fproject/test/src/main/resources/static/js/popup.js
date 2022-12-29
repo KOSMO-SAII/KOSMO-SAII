@@ -3,9 +3,10 @@
     console.log("오픈시작");
     var modalPop = $('.modal-wrap');
     var modalBg = $('.modal-bg');
-
-    $(modalPop).show();
-    $(modalBg).show();
+       $(modalPop).css("z-index",1000)
+       $(modalBg).addClass('modal-bg');
+//    $(modalPop).show();
+//    $(modalBg).show();
 
 }
 
@@ -14,9 +15,10 @@
 
    var modalPop = $('.modal-wrap');
    var modalBg = $('.modal-bg');
-
-   $(modalPop).hide();
-   $(modalBg).hide();
+           $(modalPop).css("z-index",-1000)
+           $(modalBg).css("z-index",-999)
+//   $(modalPop).hide();
+//   $(modalBg).hide();
 }
 //
 $(document).ready(function(){

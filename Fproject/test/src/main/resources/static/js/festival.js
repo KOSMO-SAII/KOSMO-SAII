@@ -113,13 +113,3 @@ function printAll(infoitem){
 
 
 
-//var All=false;
-//function SelectAll(){
-//var selection=document.getElementById("infoitem[]");
-//if(all==false){
-//    all=true;
-//    for(var i=0;i<)
-//}
-//}
-
-

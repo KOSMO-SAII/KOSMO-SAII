@@ -18,5 +18,9 @@ public class Course extends Base {
     @Column(nullable = false)
     private String days;
 
+    @Column(name="start_day")
+    private String startday;
 
+    @Column(name="end_day")
+    private String endday;
 }
