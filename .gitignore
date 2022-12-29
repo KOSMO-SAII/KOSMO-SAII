@@ -4,4 +4,10 @@ Fproject/test/src/main/resources/application.properties
 *.class
 *.bin
 *.lock
-Fproject/test/.idea/workspace.xml
+*.zip
+*.exe
+Fproject/test/.idea
+Fproject/test/.gradle
+Fproject/test/build
+Fproject/test/out
+

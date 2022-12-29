@@ -45,7 +45,7 @@
       <div class="modal_body">
           <div id="texth4"><h3>이메일</h3><h3 id="red">인증코드를</h3><h3>입력해주세요.</h3></div>
           <input type="text" id="code" name="code"/>
-          <input type="text" th:value="${authCode}" id="code1" name="code1">
+          <input type="hidden" id="code1" name="code1">
           <button type="submit" name="email" value="확인" onclick="check()">확인</button>
           <button id="cbtn" class="withdraw">아니요</button>
       </div>
@@ -69,11 +69,13 @@
 </script>
 <script th:inline="javascript">
     function check() {
-        console.log("체크펑션")
-        var code = [[${authCode}]]
+        console.log("인증코드 체크합니다")
+        var code = $('#code').val()
+        var code1 = $('#code1').val()
         console.log(code)
-        if(document.getElementById('code').value==code){
+        if(code==code1 && code!=null && code !=""){
            alert("인증이 완료되었습니다.")
+           modal.style.display = "none";
         }else{
             console.log(document.getElementById('code').value)
             alert("인증에 실패하셨습니다.")
@@ -99,13 +101,14 @@
                 },
                 type : 'POST',
                 url : '/emailCheck/'+email+'/'+name,
-                dataType : 'json',
-                contentType : 'application/json; charset=utf-8',
         }).done(function(data){
             alert('인증번호를 발송하였습니다.');
             console.log('dl')
-            $('#code1').val(data.authCode);
+            console.log(data)
+            console.log(data.authCode)
+            $('#code1').val(data);
         }).fail(function(error){
+            console.log('dll')
             alert(JSON.stringify(error));
         });
         console.log(token);
