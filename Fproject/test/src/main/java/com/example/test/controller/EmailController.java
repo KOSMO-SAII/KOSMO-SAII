@@ -39,10 +39,10 @@ public class EmailController extends HttpServlet {
             authCode = emailService.sendEmail(email);
             model.addAttribute("authCode", authCode);
             return authCode;
+        }else{
+
+            return "";
         }
-        return "";
-
-
     }
 
 //    @RequestMapping("/confirm")
