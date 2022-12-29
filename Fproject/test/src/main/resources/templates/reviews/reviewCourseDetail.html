@@ -22,6 +22,10 @@
     var id = $("#id").val();
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content")
+    if(!confirm("삭제하면 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?")){
+        return false;
+    }
+    else{
          $.ajax({
              beforeSend: function(xhr){
                xhr.setRequestHeader(header,token);
@@ -36,9 +40,7 @@
          }).fail(function(error){
              alert(JSON.stringify(error));
          })
-         console.log(token);
-         console.log(header);
-         console.log(data.contents)
+    }
 };
 </script>
 
@@ -51,10 +53,9 @@
             <label for="id">글 번호</label>
             <input type="text" id="id" th:value="${reviewCourse.id}" readonly>
             <label for="createDate">작성일시</label>
-            <input type="text" id="createDate" th:value="${reviewCourse.createDate}" readonly></div>
+            <input type="text" id="createDate" th:value="${reviewCourse.createDate}" readonly>
             <label for="course_id">코스 번호</label>
             <input type="text" id="course_id" th:value="${reviewCourse.course_id}" readonly></div>
-        <div>
         <div class="card-header d-flex justify-content-between">
             <label for="writer">작성자</label>
             <input type="text" id="writer"  th:value="${reviewCourse.createdBy}" readonly></div>
@@ -69,7 +70,7 @@
     <a th:href="@{/reviews/course}" class="btn btn-info bi bi-arrow-return-left">목록</a>
 <div th:if="${writer}">  <!-- 이 부분 수정하기 :  작성자 아이디와 principal 같을 때로 -->
     <a th:href="@{/reviews/update/{id}(id = ${reviewCourse.id})}" class="btn btn-primary bi bi-pencil-square">수정</a>
-    <button type="button" id="btn-delete" class="btn btn-danger bi bi-trash" onclick="reviewDelete()" value="삭제"></button>
+    <button type="button" id="btn-delete" class="btn btn-danger bi bi-trash" onclick="reviewDelete()">삭제</button>
 </div>
 
 <!-- 댓글 -->
