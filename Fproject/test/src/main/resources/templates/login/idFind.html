@@ -13,18 +13,31 @@
 <link th:href="@{/css/idFind.css}" rel="stylesheet" />
 <body>
 <hr>
-  <form action="/members/findId" method="post" onsubmit="return loginCh()">
-    이름 <input type="text" id="name" name="name"><br>
-    이메일<input type="email" id="email" name="email">
-    <button type="button" class="btn-3d red" id="modalbtn" onclick="emailChk()">이메일 인증</button><br/>
-    <p id="errorM"></p>
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    <input type="submit" id="submitBtn" value="찾기">
-  </form>
+<div class="divOut">
+    <div class="idFind">
+        <span class="spanSize">아이디 찾기</span>
+    </div>
+    <div class="divInner">
+        <div class="divInner2">
+        <form action="/members/findId" method="post" onsubmit="return loginCh()">
+            <span class="spanSize1">이름</span><br>
+            <input type="text" class="inputCheck" id="name" name="name" placeholder="이름을 입력하세요"><br>
+            <div id="spanEmail">
+            <span class="spanSize1">이메일</span><br>
+            <input type="email" class="inputCheck" id="email" name="email" placeholder="이메일을 입력하세요">
+            </div>
+        <button type="button" id="modalbtn" onclick="emailChk()">인증</button><br/>
+        <p id="errorM"></p>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <input type="submit" class="btn-3d red" id="submitBtn" value="찾기">
+        </form>
+        </div>
+    </div>
+</div>
   <div class="modal">
       <div class="modal_body">
           <div id="texth4"><h3>이메일</h3><h3 id="red">인증코드를</h3><h3>입력해주세요.</h3></div>
-          <input type="text" id="code" name="code"/>
+          <input type="text" id="code" class="inputCheck" name="code"/>
           <input type="hidden" id="code1" name="code1">
           <button type="submit" name="email" value="확인" onclick="check()">확인</button>
           <button id="cbtn" class="withdraw">아니요</button>

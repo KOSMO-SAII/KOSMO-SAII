@@ -42,13 +42,14 @@
    border-radius: 5px;
    display:inline-block;
    width: 94px;
-   left:43px;
+   left:79px;
    vertical-align:middle;
 }
 
 #cbtn{
     left:248px;
-    width:141px;
+    width:109px;
+    height:37px
 }
 #texth4{
     position:relative;
@@ -106,8 +107,8 @@
   position: absolute;
   top: 25%;
   left: 50%;
-  width: 350px;
-  height: 350px;
+  width: 441px;
+  height: 400px;
   padding: 40px;
   text-align: center;
   background-color: rgb(255, 255, 255);

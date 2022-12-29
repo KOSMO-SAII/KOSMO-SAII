@@ -25,3 +25,102 @@
 #errorM{
     color:red;
 }
+.inputCheck{
+    vertical-align: 5px;
+    width: 400px;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    background-color: #F7F7F7;
+}
+
+.divOut{
+    width:100vw;
+    height:60vh;
+}
+.divInner{
+    width:500px;
+    height:500px;
+    margin:auto;
+    border:3px solid;
+    border-radius: 5px;
+}
+.idFind{
+    margin:auto;
+    width: 135px;
+}
+.divInner2{
+    margin:auto;
+    width:397px;
+    position:relative;
+    top:52px;
+}
+.spanSize{
+    font-size:25px;
+}
+.spanSize1{
+    font-size:19px;
+}
+#spanEmail{
+    position:relative;
+    top:10px;
+}
+#modalbtn {
+ position: relative;
+ display: inline-block;
+ font-size: 13px;
+ padding: 4px 15px;
+ margin: 20px 8px 15px;
+ text-align: center;
+ transition: top .01s linear;
+ text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+  text-decoration: none;
+  float:right;
+  top: -50px;
+  height:40px;
+  left:11px;
+  border:none;
+  background-color:#E0E0E0;
+  color: black;
+}
+
+.btn-3d {
+    position: absolute;
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: black;
+    margin: 20px 8px 15px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    float:right;
+    top: 135px;
+    left: 333px;
+    border:none;
+}
+.btn-3d.red:hover {
+    background-color: #AEDBE1;
+    color:white;
+}
+
+.btn-3d:active {
+  top: 139px;
+}
+
+/* 3D button colors */
+.btn-3d.red {
+  background-color: #AEDBE1;
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #9EC7CC,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.red:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
