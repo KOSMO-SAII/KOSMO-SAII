@@ -56,8 +56,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
         System.out.println(id + " " + dto.toString());
         Member member = memberRepository.findByLoginId(dto.getCreatedBy());
         String loginId = member.getLoginId();
-        //로그인 아이디 비교하려고 함.
-        // 리뷰 테이블에는 닉네임값만 있음. 닉네임으로 멤버 정보 가져와서 아이디 값 가져오기. principal.getName()과 가져온 아이디 값 비교하기.
+        model.addAttribute("nickname",member.getNickname());
+
 
 
         // 댓글
@@ -67,9 +67,9 @@ public class IndexController {//페이지에 관련된 컨트롤러
         }
 
         if (principal == null) {
-            model.addAttribute("toLogin", true);
+            model.addAttribute("toLogin", true); //비로그인 회원 로그인창으로
         }else{
-            model.addAttribute("okLogin", true);
+            model.addAttribute("okLogin", true); //로그인 회원 기능
         }
 
         // 사용자
