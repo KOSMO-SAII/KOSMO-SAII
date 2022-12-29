@@ -26,7 +26,6 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
 
-
     private final MemberRepository memberRepository;
 
     public Member saveMember(Member member) {
@@ -40,6 +39,13 @@ public class MemberService implements UserDetailsService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
+//    public void pictureUse(Member member) {
+//
+//        if(picture == null) {
+//
+//        }
+//    }
 
     public SessionMember memdto (String loginId){
         Member member = memberRepository.findByLoginId(loginId);

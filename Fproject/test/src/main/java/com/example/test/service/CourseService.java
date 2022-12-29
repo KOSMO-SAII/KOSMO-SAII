@@ -418,8 +418,20 @@ public class CourseService {
         List<CourseList> courseLists = courseListRepository.findTop3ByOrderByViewCountDesc();
         List<CourseListDTO> list = new ArrayList<>();
 
-        for(CourseList c : courseLists){
-            list.add(modelMapper.map(c, CourseListDTO.class));
+        for(CourseList courseList : courseLists){
+            CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            int length = courseDataRepository.countById(cdto.getCourseid());
+            List<CourseDTO> datas = new ArrayList<>();
+            for(int i=0; i < length;i++) {
+                CourseDataId id = new CourseDataId();
+                id.setId(cdto.getCourseid());
+                id.setOrder((long) i+1);
+                System.out.println(courseDataRepository.findById(id));
+                datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
+            }
+            cdto.setCourseDatas(datas);
+
+            list.add(cdto);
         }
 
         return list;
