@@ -55,6 +55,14 @@ public class MemberService implements UserDetailsService {
         return employeeEntity;
     }
 
+    public void passSave(String loginId1,String loginPw){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Member member = memberRepository.findByLoginId(loginId1);
+        String pw = passwordEncoder.encode(loginPw);
+        member.setLoginPw(pw);
+        memberRepository.save(member);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
         Member users = memberRepository.findByLoginId(loginId);
@@ -133,6 +141,14 @@ public class MemberService implements UserDetailsService {
         }else{
             String loginId = "아이디를 찾을 수 없습니다.";
             return loginId;
+        }
+    }
+
+    public String findPassword(String name,String email,String loginId){
+        if(memberRepository.existsByEmailAndNameAndLoginId(email,name,loginId)){
+            return "있음";
+        }else{
+            return "없음";
         }
     }
 

@@ -45,6 +45,7 @@ public class CoursePageController extends HttpServlet {
 
         //받아온 코스 id로 db에서 값 뽑아옴
         List<Map<String, String>> list=courseService.giveCourseData(course_id);
+        System.out.println(list.toString());
 
 
         req.setAttribute("title", title);
