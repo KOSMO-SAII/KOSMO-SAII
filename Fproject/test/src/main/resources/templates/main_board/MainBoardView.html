@@ -20,9 +20,8 @@
 			<td>지역 : [[${view.region}]]</td>
 			<td>조회수 : [[${view.viewcount}]]</td>
 			<td>
-				<span id="good" th:if="${#authentication.principal.getName()} != ${null}">
-					<img src="img/yesGood.png" alt="좋아" width="20px" height="20px">
-				</span>
+				<img src="img/notGood.png" alt="안조아" width="20px" height="20px">
+				&nbsp;[[${goodcount}]]
 			</td>
 			<td>수정날짜 : [[${view.update_date}]]</td>
 		</tr>

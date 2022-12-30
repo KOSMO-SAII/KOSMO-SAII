@@ -5,17 +5,21 @@
   
 <mapper namespace="com.example.test.repository.MainBoardDAO">
 	<select id="listDao" resultType="com.example.test.domain.MainBoardDTO">
-		select * from main_board order by post_id desc
+		select * from main_board order by post_id desc <!-- 게시판 리스트 표시 -->
 	</select>
 	<select id="viewDao" resultType="com.example.test.domain.MainBoardDTO">
-		select * from main_board where post_id=#{0}
+		select * from main_board where post_id=#{0} <!-- 게시글 상세내용 표시 -->
 	</select>
 
     <delete id="deleteDao">
-        delete from main_board where post_id = #{0}
+        delete from main_board where post_id = #{0} <!-- 게시글 삭제 -->
     </delete>
     
     <update id="plusviewcountDao">
-    	update main_board set viewcount = viewcount + 1 where post_id = #{0}
+    	update main_board set viewcount = viewcount + 1 where post_id = #{0} <!-- 조회수 표시 -->
     </update>
+
+	<select id="goodcountDao" resultType="com.example.test.domain.GoodCountDTO">
+		select count(*) from good_count where post_id = #{0} <!-- 좋아요 갯수 표시 -->
+	</select>
 </mapper>

@@ -37,8 +37,8 @@
                 <a href="http://localhost:8081/SAII/mypage?id=${UserId }"
                    class=" link-dark gnb">MyPage</a>
             </li>
-            <li><a href="http://localhost:8081/SAII/mypage"
-                   class=" link-dark ">공지사항</a></li>
+            <li><a href="members/use"
+                   class=" link-dark ">사용방법</a></li>
             <li test="${UserId==null}"><a href="#"
                     class="link-dark ">Q&A</a></li>
             <li test="${UserId==null}"><a href="#"
@@ -115,7 +115,7 @@
 
     <div class="rec-card">
 
-        <a href="" th:each ="courselist, i : ${lists}">
+        <div class="a" th:each ="courselist, i : ${lists}" th:onclick="|courseView(${courselist.courseid})|">
 
             <div class="card">
                 <!-- 카드 헤더 -->
@@ -144,7 +144,12 @@
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
+        <script th:inline="javascript">
+          function courseView(id){
+            location.href="/courseViewPage/"+id
+          }
+        </script>
     </div>
 
 <img class="middle"  src="/img/코알라.PNG"></br>
