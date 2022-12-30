@@ -230,8 +230,9 @@ MemberController {
     }
 
     @PostMapping("/passFind")
-    public String passFind (String loginId1,String loginPw,PasswordEncoder passwordEncoder){
-        memberService.passSave(loginId1,loginPw,passwordEncoder);
+    public String passFind (String loginId1,String loginPw){
+        System.out.println(loginId1+loginPw+"여기 passFInd");
+        memberService.passSave(loginId1,loginPw);
         return "redirect:/members/login";
     }
 
