@@ -122,7 +122,7 @@
 
       <div class="wrap_contView">
         <h3>상세정보</h3>
-        <button class="btn_modify" onclick="goJikimi();"><span>관광정보 수정요청</span></button>
+       <a href="/mail/send" onclick="window.open(this.href,'_blank','width=300px,height=500px,toolbars=no,scrollbars=yes');return false;"> <button class="btn_modify" ><span>관리자에게 문의하기</span></button></a>
         <details>
           <div class="inr">
             <p>
@@ -138,7 +138,7 @@
 
       <h3 class="blind">상세정보</h3>
       <!-- 주변정보 지도 -->
-      <div class="surroundingsMap" id="detailGo">
+      <div class="surroundingsMap" id="detailedGo">
         <div class="map_skip" tabindex="0"><a style="display:none;" href="javascript:jumpkakaomap();">지도 건너뛰기</a></div>
         <div id="map" class="wrap_map"> <!-- open 클래스 추가 시 지도 확장-->
 
