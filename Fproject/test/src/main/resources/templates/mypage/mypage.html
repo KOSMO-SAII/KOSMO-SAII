@@ -4,6 +4,10 @@
       layout:decorate="~{layouts/layout1}">
 <head>
     <meta charset="UTF-8">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
     <title>마이페이지</title>
     <link th:href="@{/css/mypage.css}" rel="stylesheet" />
 </head>
@@ -76,7 +80,21 @@
     </div>
 </div>
 <div id="show2">
-
+    <div>
+        <table class="table_wrap" th:each="lis, i: ${list}">
+            <tr>
+                <td colspan="2" th:text="|제목 : ${lis.title}|"></td>
+                <td th:text="${lis.region}"></td>
+            </tr>
+            <tr>
+                <td colspan="3" th:text="${lis.createdBy}"></td>
+                <td th:text="${lis.viewCount}"></td>
+            </tr>
+            <tr>
+                <td th:text="${lis.courseid}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <script>

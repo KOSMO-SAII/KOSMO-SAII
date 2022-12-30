@@ -7,11 +7,13 @@ import com.example.test.config.SignUpFormValidator;
 import com.example.test.domain.MemberDTO;
 import com.example.test.entity.Member;
 import com.example.test.repository.MemberRepository;
+import com.example.test.service.CourseService;
 import com.example.test.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,10 +30,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URL;
 import java.security.Principal;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/members")
@@ -40,6 +39,8 @@ public class
 
 MemberController {
 
+    @Autowired
+    private CourseService courseService;
     private final PasswordEncoder passwordEncoder;
     private final MemberService memberService;
     private final HttpSession httpSession;
@@ -84,7 +85,7 @@ MemberController {
     }
 
     @GetMapping("/logins")
-    public String loginSuccess(Model model, Principal principal){
+    public String loginSuccess(Model model, Principal principal, Optional<Integer> page){
         SessionMember sessionMember =(SessionMember)httpSession.getAttribute("user");
         if(principal!= null && sessionMember == null) {
             model.addAttribute("name",principal.getName());
@@ -104,6 +105,13 @@ MemberController {
         System.out.println(sessionUser.toString());
         System.out.println(principal.getName()+"여기는 컨트롤 피린");
 
+
+        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
+
+        model.addAttribute("lists", courseService.getList(pageRequest));
+        model.addAttribute("pages", courseService.getPage(pageRequest));
+        model.addAttribute("maxPage", 5);
+        model.addAttribute("list", courseService.myList(principal));
 
         return "/mypage/mypage";
     }

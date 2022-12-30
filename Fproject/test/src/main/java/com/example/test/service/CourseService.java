@@ -408,6 +408,18 @@ public class CourseService {
         return lists;
     }
 
+    public List<CourseListDTO> myList(Principal principal){
+        List<CourseList> list = courseListRepository.findByCreatedBy(principal.getName());
+        List<CourseListDTO> courseDTOList = new ArrayList<>();
+
+        for(CourseList courseList : list){
+            CourseListDTO cdto = modelMapper.map(courseList, CourseListDTO.class);
+            courseDTOList.add(cdto);
+        }
+
+        return courseDTOList;
+    }
+
     public Page<CourseList> getPage(PageRequest pageRequest){
 
         Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
