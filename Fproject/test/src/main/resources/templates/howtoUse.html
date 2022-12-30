@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta charset="UTF-8">
+    <title>Howtouse</title>
+    <style>
+		.div { text-align: center; margin-top:200px;}
+		.vv { width:10%; text-align:center; height:100px; margin-top:30px;  margin-bottom:30px;}
+	</style>
+
+</head>
+<div layout:fragment="content">
+<body>
+    <div class="div">
+       <img  src="/img/사용1.PNG"></br>
+       <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용2.PNG"></br>
+       <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용3.PNG"></br>
+        <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용4.PNG"></br>
+        <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용5.PNG"></br>
+        <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용6.PNG"></br>
+        <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용7.PNG"></br>
+        <img  src="/img/화살표.png" class="vv"></br>
+       <img  src="/img/사용8.PNG"></br>
+    </div>
+</body>
+</html>

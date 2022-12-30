@@ -14,4 +14,5 @@ public interface CourseListRepository extends JpaRepository<CourseList, Long> {
 
     public List<CourseList> findByCourseid(Long course_id);
 
+    List<CourseList> findByCreatedBy(String name);
 }

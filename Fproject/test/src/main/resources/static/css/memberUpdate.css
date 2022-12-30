@@ -27,7 +27,9 @@
 #pwValid{
   border:none;
   display:none;
+  width:400px;
 }
+
 
 #red{
     color:red;

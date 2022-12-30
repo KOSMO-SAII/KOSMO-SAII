@@ -79,6 +79,25 @@ p{
     position:absolute;
     bottom:197px;
 }
+
+
+
+.snowflake{
+     width:8px;
+     height:8px;
+     border-radius:50%;
+     background-color:#4E8EFF;
+     position:absolute;
+     top:-8px;
+}
+@keyframes fall {
+ from{
+ }
+ to {
+  transform: translateY(100vh);
+  opacity: 0;
+ }
+}
 </style>
 <hr>
 <div id="divH">
@@ -97,7 +116,7 @@ p{
         </form>
     </div>
 </div>
-<img src="/img/나무나무.png" id="tree">
+<!--<img src="/img/나무나무.png" id="tree">-->
 </body>
 <script th:inline="javascript">
 /*<![CDATA[*/
@@ -106,6 +125,38 @@ p{
         alert("비밀번호를 다시 확인해 주세요.");
     }
 /*]]>*/
+</script>
+<script type="text/javascript">
+
+
+  function makeSnowflake(){
+    const body = document.querySelector("body");
+    const MIN_DURATION = 10;
+    const snowflake=document.createElement("div");
+    const delay = Math.random()*10;
+    const initialOpacity = Math.random();
+    const duration = Math.random()*20+MIN_DURATION;
+
+    snowflake.classList.add("snowflake");
+    snowflake.style.left = `${Math.random() * window.screen.width}px`;
+    snowflake.style.animationDelay = `${delay}s`;
+    snowflake.style.opacity = initialOpacity;
+    snowflake.style.animation = `fall ${duration}s linear`;
+
+    body.append(snowflake);
+
+    setTimeout(() => {
+      body.removeChild(snowflake);
+      makeSnowflake()
+    }, (duration + delay) * 1000);
+  }
+  makeSnowflake();
+  for(let index = 0; index<200; index++){
+    setTimeout(makeSnowflake, 500 * index);
+  }
+  setTimeout(() => {
+    body.removeChild(snowflake);
+  }, (duration + delay) * 1000);
 </script>
 </div>
 </html>

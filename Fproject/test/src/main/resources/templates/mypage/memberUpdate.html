@@ -201,24 +201,24 @@ function passwordCheck(){
   const pw1=document.getElementById('pw1').value;
   const pw2=document.getElementById('pw2').value;
   const pwdCheck=/^(?=.*[a-zA-Z])(?=.*[`!@#$%^&*+=-_])(?=.*[0-9]).{8,16}$/;
-  if(pw1==pw2){
+  if(pw1==pw2 && pwdCheck.test(pw1)){
     document.getElementById('pwValid').style.display="block";
     document.getElementById('pwValid').value="비밀번호 확인";
     document.getElementById('pwValid').style.color="green";
     console.log("비밀번호가 같아?");
     return true;
-  }else{
+  }else if(pw1!=pw2){
     document.getElementById('pwValid').style.display="block";
-    document.getElementById('pwValid').value="비밀번호 같음/영문자,숫자,특수문자 포함 8~16자리를 입력하세요.";
+    document.getElementById('pwValid').value="비밀번호 다름";
     document.getElementById('pwValid').style.color="red";
     console.log("비밀번호가 달라?");
     return false;
+  }else if(!pwdCheck.test(pw1)){
+    document.getElementById('pwValid').style.display="block";
+    document.getElementById('pwValid').value="영문자,숫자,특수문자 포함 8~16자리를 입력하세요.";
+    document.getElementById('pwValid').style.color="red";
+    return false;
   }
-  if(pwdCheck.test(pw1){
-
-  }
-
-
 
 }
 
