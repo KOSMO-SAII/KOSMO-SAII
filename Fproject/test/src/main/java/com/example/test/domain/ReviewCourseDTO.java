@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.User;
 
+import javax.sound.sampled.ReverbType;
 import java.time.LocalDateTime;
 
 /**
@@ -42,5 +43,18 @@ public class ReviewCourseDTO{
         this.member=reviewCourse.getMember();
         ModelMapper modelMapper = new ModelMapper();
     }
+
+//    public ReviewCourse toEntity(){
+//        ReviewCourse reviewCourse = new ReviewCourse();
+//        reviewCourse.setMember(member);
+//        reviewCourse.setWriter(writer);
+//        reviewCourse.setId(id);
+//        reviewCourse.setCourse_id(course_id);
+//        reviewCourse.setTitle(title);
+//        reviewCourse.setContent(content);
+//
+//        return reviewCourse;
+//    }
+
 }
 

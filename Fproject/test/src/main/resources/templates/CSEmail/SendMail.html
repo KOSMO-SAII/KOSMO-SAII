@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Mail</title>
+  <link rel="stylesheet" type="text/css" href="/css/mypage.css">
+</head>
+<body>
+<form th:action="@{/mail/send}" method="post">
+  <table style="position:relative" >
+    <tr>
+      <td>
+        <input style="width: 400px;" type="hidden" name="address" value="hewn0505@gmail.com" class="myinput" >
+      </td>
+    </tr>
+    <tr>
+      <td class="mylabel">제목</td>
+      <td>
+        <input style="width: 400px;" type="text" name="title" placeholder="제목을 입력하세요" class="myinput"><br>
+      </td>
+    </tr>
+    <tr>
+      <td class="mylabel">문의 내용</td><br>
+      <td>
+        <textarea style="width: 400px; height: 300px;" name="content" placeholder="보낼 내용을 입력하세요" class="myinput"> </textarea>
+      </td>
+    </tr>
+  </table>
+  <button id="edit"  style="width: 70px; height: 30px;">발송</button>
+</form>
+
+</body>
+</html>

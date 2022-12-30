@@ -31,7 +31,7 @@ public class ReviewCourseService {
     private ModelMapper modelMapper = new ModelMapper();
     @Transactional
     public Long save(ReviewCourseDTO reviewCourseDTO){
-        reviewCourseDTO.setMember(memberRepository.findById(reviewCourseDTO.getMemberId()).orElseThrow());
+        reviewCourseDTO.setMember(memberRepository.findByNickname(reviewCourseDTO.getWriter()));
         ReviewCourse reviewCourse = modelMapper.map(reviewCourseDTO, ReviewCourse.class);
         reviewCourseRepository.save(reviewCourse);
         return reviewCourse.getId();

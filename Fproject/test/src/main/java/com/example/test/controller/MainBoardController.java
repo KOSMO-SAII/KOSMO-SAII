@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainBoardController {
 	@Autowired
 	MainBoardDAO mainBoardDAO;
-
-	Principal principal;
 	
 	@GetMapping(value="/mainboard_list")
 	public String mainBoardList(Model model) {
@@ -38,6 +36,9 @@ public class MainBoardController {
 		System.out.println("view");
 		mainBoardDAO.plusviewcountDao(req.getParameter("post_id"));
 		model.addAttribute("view", mainBoardDAO.viewDao(req.getParameter("post_id")));
+
+		int goodcount = mainBoardDAO.goodcountDao(req.getParameter("post_id"));
+		model.addAttribute("goodcount", goodcount);
 		return "main_board/MainBoardView";
 	}
 
