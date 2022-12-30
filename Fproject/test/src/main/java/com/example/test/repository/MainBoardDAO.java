@@ -16,6 +16,7 @@ public interface MainBoardDAO {
 	public MainBoardDTO viewDao(String post_id); // 상세보기
 	public void plusviewcountDao(String post_id); // 조회수 증가
 	public void deleteDao(String post_id); // 글 삭제
+	public int goodcountDao(String post_id); // 좋아요 횟수 표시
 	public void writeDao(String course_id, String user_id, String title, String region);//임시
 
 	public String getNickname(int course_id);//임시
