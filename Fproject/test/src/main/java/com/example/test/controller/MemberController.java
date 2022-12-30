@@ -77,6 +77,11 @@ MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/use")
+    public String useTo() {
+        return "/howtoUse";
+    }
+
     @GetMapping("/login")
     public String loginMember() {
 
