@@ -12,6 +12,7 @@
   <!-- 제이쿼리 적용 -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <title>사이</title>
+
 </head>
 <div layout:fragment="content">
   <body>
@@ -51,10 +52,11 @@
             location.href="/courseViewPage/"+id
           }
 
-          mapContainer = document.getElementsByClassName('map')
           var index = [[${i.index}]]
           var datas = [[${list.courseDatas}]]
           var markers = []
+
+          mapContainer = document.getElementsByClassName('map')
 
           function addMarker(position, idx) {
             var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png',
@@ -85,8 +87,6 @@
           var map = new kakao.maps.StaticMap(mapContainer[index],mapOption)
         </script>
       </table>
-    </div>
-
 
     <div th:with="start=${(pages.number/maxPage)*maxPage + 1}, end=(${(pages.totalPages == 0) ? 1 : (start + (maxPage - 1) < pages.totalPages ? start + (maxPage - 1) : pages.totalPages)})" >
       <ul class="pagination justify-content-center">
@@ -111,6 +111,5 @@
     </div>
 
   </body>
-<!--  <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>-->
 </div>
 </html>

@@ -27,7 +27,7 @@ public class CoursePageController extends HttpServlet {
     private CourseService courseService;
 
 
-      @GetMapping("/courseViewPage/{num}")
+    @GetMapping("/courseViewPage/{num}")
     public String doGetView(@PathVariable("num") String num, Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {
         Long course_id= Long.parseLong(num);
 
@@ -37,7 +37,9 @@ public class CoursePageController extends HttpServlet {
         //코스 id에 맞는 작성자 찾기
         String createdBy = courseList.get(0).getCreatedBy();
 
-        String nowUser = principal.getName();
+        String nowUser = "익명";
+        if(principal != null)
+            principal.getName();
 
         //코스 id에 맞는 글 제목,지역 찾기
         String region = courseList.get(0).getRegion();
