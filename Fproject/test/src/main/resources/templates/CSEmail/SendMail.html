@@ -3,32 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Send Mail</title>
+  <link rel="stylesheet" type="text/css" href="/css/mypage.css">
 </head>
 <body>
-<h1>메일 보내기</h1>
-
 <form th:action="@{/mail/send}" method="post">
-  <table>
+  <table style="position:relative" >
     <tr>
-      <td>메일 주소</td>
       <td>
-        <input type="text" name="address" value="vodtndl3@google.com">
+        <input style="width: 400px;" type="hidden" name="address" value="hewn0505@gmail.com" class="myinput" >
       </td>
     </tr>
     <tr>
-      <td>제목</td>
+      <td class="mylabel">제목</td>
       <td>
-        <input type="text" name="title" placeholder="제목을 입력하세요">
+        <input style="width: 400px;" type="text" name="title" placeholder="제목을 입력하세요" class="myinput"><br>
       </td>
     </tr>
     <tr>
-      <td>내용</td>
+      <td class="mylabel">문의 내용</td><br>
       <td>
-        <textarea name="content" placeholder="보낼 내용을 입력하세요"> </textarea>
+        <textarea style="width: 400px; height: 300px;" name="content" placeholder="보낼 내용을 입력하세요" class="myinput"> </textarea>
       </td>
     </tr>
   </table>
-  <button>발송</button>
+  <button id="edit"  style="width: 70px; height: 30px;">발송</button>
 </form>
 
 </body>

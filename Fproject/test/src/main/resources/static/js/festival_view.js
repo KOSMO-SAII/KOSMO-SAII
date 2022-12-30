@@ -74,7 +74,7 @@ var title;
         var div=$('.inr')[0]
         var startDate = infoitem.eventstartdate.substr(0,4) + '-' + infoitem.eventstartdate.substr(4,2) + '-' + infoitem.eventstartdate.substr(6,2)
         var eventenddate = infoitem.eventstartdate.substr(0,4) + '-' + infoitem.eventstartdate.substr(4,2) + '-' + infoitem.eventstartdate.substr(6,2)
-       div.innerHTML='<ul><li><strong>시작일 : </strong><span>'+startDate+'</span></li><li><strong>종료일 : </strong><span>'+eventenddate+'</span></li><strong>주최 :<span>'+infoitem.sponsor1+'</span></strong><li><strong>행사문의 : </strong><span>'+infoitem.sponsor1tel+'</span></li><li><strong>홈페이지 : </strong><span>'+infoitem.homepage+'<a href="infoitem.homepage" target="_blank" </a></span></li><li></li></ul>'
+       div.innerHTML='<ul><li><strong>시작일 : </strong><span>'+startDate+'</span></li><li><strong>종료일 : </strong><span>'+eventenddate+'</span></li><strong>주최 :<span>'+infoitem.sponsor1+'</span></strong><li><strong>행사문의 : </strong><span>'+infoitem.sponsor1tel+'</span></li><li></li></ul>'
             }
 
    koreaservice();

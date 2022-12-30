@@ -15,12 +15,10 @@ public class CSemailService {
     public void sendSimpleMessage(EmailDTO mailDto) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(mailDto.getAddress());
-        message.setTo("vodtndl3@google.com");
+        message.setTo("hewn0505@gmail.com");
         message.setSubject(mailDto.getTitle());
         message.setText(mailDto.getContent());
         emailSender.send(message);
-
-
 
     }
 }

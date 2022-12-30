@@ -23,6 +23,6 @@ public class CSemailController {
     public String sendMail(EmailDTO mailDto) {
         emailService.sendSimpleMessage(mailDto);
         System.out.println("메일 전송 완료");
-        return "AfterMail.html";
+        return "AfterMail";
     }
 }
