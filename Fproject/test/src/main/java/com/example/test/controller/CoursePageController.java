@@ -29,7 +29,10 @@ public class CoursePageController extends HttpServlet {
 
     @GetMapping("/courseViewPage/{num}")
     public String doGetView(@PathVariable("num") String num, Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {
+        System.out.println("getView 실행");
+
         Long course_id= Long.parseLong(num);
+        System.out.println("c_id = "+course_id);
 
 
         List<CourseList> courseList = courseService.getCourseList(course_id);
@@ -47,6 +50,7 @@ public class CoursePageController extends HttpServlet {
 
         //받아온 코스 id로 db에서 값 뽑아옴
         List<Map<String, String>> list=courseService.giveCourseData(course_id);
+        System.out.println("=====");
         System.out.println(list.toString());
 
 
@@ -55,7 +59,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("c_id", course_id);
         req.setAttribute("createdBy", createdBy);
         req.setAttribute("list", list);
-        req.setAttribute("days", map.get("day"));
+        req.setAttribute("days", map.get("days"));
         req.setAttribute("start",map.get("start"));
         req.setAttribute("nowUser",nowUser);
         //return "test/test";
