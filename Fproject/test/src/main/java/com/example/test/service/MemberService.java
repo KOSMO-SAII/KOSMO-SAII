@@ -55,7 +55,8 @@ public class MemberService implements UserDetailsService {
         return employeeEntity;
     }
 
-    public void passSave(String loginId1,String loginPw, PasswordEncoder passwordEncoder){
+    public void passSave(String loginId1,String loginPw){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Member member = memberRepository.findByLoginId(loginId1);
         String pw = passwordEncoder.encode(loginPw);
         member.setLoginPw(pw);
