@@ -1,7 +1,11 @@
 package com.example.test.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -15,6 +19,8 @@ public class CourseListDTO {
     private List<CourseDTO> courseDatas;
     private String createdBy;
     private String modifiedBy;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private LocalDateTime createDate;
     private double xPoint;
     private double yPoint;
 

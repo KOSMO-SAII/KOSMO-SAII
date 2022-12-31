@@ -418,3 +418,46 @@ a {
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
 }
+.courseImg{
+    width: 130px;
+    height: 130px;
+}
+.eachInput{
+    border:none;
+}
+.eachInput:focus{
+    border:none;
+}
+.eachInput{
+    width:157px;
+    position:relative;
+    top:-81px;
+    left:134px;
+}
+.courseName{
+    position:relative;
+    top:-44px;
+}
+.dateForm{
+    position:relative;
+    top:-81px;
+    left:136px;
+}
+.lookUp{
+    position:relative;
+    top:-38px;
+    left:-105px;
+}
+.courseRegion{
+    position:relative;
+    top:-69px;
+    background-color: rgba(196, 196, 196, 0.6);
+    width:130px;
+    height: 43px;
+}
+.courseRe{
+    position:relative;
+    top:9px;
+    left:45px;
+    color:black;
+}
