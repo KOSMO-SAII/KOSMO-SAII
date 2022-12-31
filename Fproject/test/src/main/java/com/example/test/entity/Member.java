@@ -60,6 +60,9 @@ public class Member{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<ReviewCourse> ReviewCourseList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member")
+    private List<QnABoardReply> replyList;
+
     @Builder
     public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,
                   Date birthday, String email, String gender, String loginId, String loginPw,
