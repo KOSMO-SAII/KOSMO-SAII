@@ -108,10 +108,15 @@ form {
 
 #menu_wrap .option p {
 	margin: 10px 0;
+	display: inline;
+        position: relative;
+        top: -15px;
 }
 
 #menu_wrap .option button {
 	margin-left: 5px;
+	    position: relative;
+        top: -19px;
 }
 
 #menu_wrap {
@@ -264,7 +269,7 @@ form {
 .My_List {
 	list-style-type: none;
 	padding: 0px;
-	    height: 69%;
+    height: 82%;
 	overflow: auto;
 	overflow-x: hidden
 }
@@ -309,6 +314,21 @@ form {
 .My_List li .info .title {
 	overflow: hidden;
 }
+.changebtn{
+        right: -135px;
+        position: relative;
+        top: 0px;
+}
+
+.inputbox{
+    font-weight: bold;
+        height: 20%;
+}
+
+.inputbox div{
+
+    position: relative;
+    top: -15px}
 
 .check,.submitbtn,.changebtn{
 /*	 font-weight: bold;
@@ -332,8 +352,7 @@ form {
             background-color: #AEDBE1;
             box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
             border: none;
-                position: relative;
-                top: 0px;
+
 }
 .check:active,.submitbtn:active,.changebtn:active{
     position: relative;
@@ -809,8 +828,10 @@ form {
     cursor: pointer;	
 }
 
-.input{    background-color: #f7f7f7;
+.input{    background-color: white;
 			border: none;
+			    font-weight: bold;
+			    font-size: 14px;
 }
 /* 팝업창 css */
 .class {width:800px;height:500px;background-color:skyblue;text-align:center;}
@@ -838,7 +859,7 @@ form {
 .hidden{visibility:hidden}
 
 .pp{position: relative;
-
+        font-weight:bold;
         top: -251px;}
 
  .nextbtn,.prevbtn{
@@ -846,10 +867,15 @@ form {
         top: -100px;
  }
 
- .pinput{
+ .pinput,.pinput:focus{
         position: relative;
         top: -257px;
+        border-color: skyblue;
+            border-style: solid;
  }
+
+
+
 
 .slick-dots li button{
 

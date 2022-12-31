@@ -12,14 +12,14 @@ var markers = [];
 //임시 데이타
 var data={};
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };  
+    };
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+// 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
@@ -49,13 +49,13 @@ let subToggle=true;
 		menu.style.height='90%';
 		//console.log($('#menu_wrap'));
 		//console.log($('#menu_wrap').style);
-		$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"}); 
+		$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"});
 		$('#arrow').text("▲")
 		//$('#arrow').attr("onclick","javascript:window.scrollTo(0,0)")
 		}
 		subToggle=!subToggle;
 	})
-	
+
 	$('#arrow').click(function() {
 		var menu=document.getElementById('menu_wrap_box');
 		if(subToggle){
@@ -113,9 +113,9 @@ function searchPlaces() {
         alert('키워드를 입력해주세요!');
         return false;
     }
- 
+
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch( keyword, placesSearchCB); 
+    ps.keywordSearch( keyword, placesSearchCB);
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -143,23 +143,23 @@ function placesSearchCB(data, status, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-    var listEl = document.getElementById('placesList'), 
+    var listEl = document.getElementById('placesList'),
     menuEl = document.getElementById('menu_wrap'),
-    fragment = document.createDocumentFragment(), 
-    bounds = new kakao.maps.LatLngBounds(), 
+    fragment = document.createDocumentFragment(),
+    bounds = new kakao.maps.LatLngBounds(),
     listStr = '';
-    
+
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-    
+
     for ( var i=0; i<places.length; i++ ) {
         //console.log(places[i]);
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
+            marker = addMarker(placePosition, i),
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
             marker.setMap(map);
 
@@ -172,14 +172,14 @@ function displayPlaces(places) {
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
-			
+
 			//리스트 클릭스 오버레이 출력
             kakao.maps.event.addListener(marker, 'click', function() {
 				if(soverlay!=undefined){
 					soverlay.setMap(null);
 				}
                displayInfowindow(marker, title);
-               
+
                var placePosition = new kakao.maps.LatLng(title.y, title.x)
                map.panTo(placePosition);
                 //searchmarker=1;
@@ -190,18 +190,18 @@ function displayPlaces(places) {
             /*itemEl.onmouseover =  function () {
 			//console.log("마우스 오버")
              hovereventlist(marker,title);
-               
+
             };
 
             itemEl.onmouseout =  function () {
-				
+
 				//removeSearchMarker(marker);
-			
+
             }; */
         })(marker, places[i]);
 
         fragment.appendChild(itemEl);
-        
+
     }
 
     // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
@@ -210,7 +210,7 @@ function displayPlaces(places) {
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     map.setBounds(bounds);
-    
+
     //검색 목록 결과 클릭시 마커,오버레이 표시 이벤트 등록
 		addEventClick(places);
 }
@@ -230,7 +230,7 @@ function addEventClick(place){
 	//console.log("한번만 실행 되야함")
 		$("#placesList li").click(function(){
 			//console.log("리스트 클릭")
-			
+
 			if(soverlay!=undefined){
 			soverlay.setMap(null);
 			}
@@ -238,11 +238,11 @@ function addEventClick(place){
 			var placePosition = new kakao.maps.LatLng(place[n].y, place[n].x),
 				smarker = addMarker(placePosition);
 			displayInfowindow(smarker, place[n]);
-			
+
 			map.panTo(placePosition);
-			
+
 		})
-	
+
 }
 
 
@@ -258,11 +258,11 @@ function getListItem(index, places) {
         itemStr += '    <span>' + places.road_address_name + '</span>' +
                     '   <span class="jibun gray">' +  places.address_name  + '</span>';
     } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
+        itemStr += '    <span>' +  places.address_name  + '</span>';
     }
-                 
+
       itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
+                '</div>';
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -295,7 +295,7 @@ function addMarker(position, idx, title) {
 function removeMarker() {
     for ( var i = 0; i < markers.length; i++ ) {
         markers[i].setMap(null);
-    }   
+    }
     markers = [];
 }
 
@@ -303,7 +303,7 @@ function removeMarker() {
 function displayPagination(pagination) {
     var paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
-        i; 
+        i;
 
     // 기존에 추가된 페이지번호를 삭제합니다
     while (paginationEl.hasChildNodes()) {
@@ -338,7 +338,7 @@ function displayInfowindow(marker, title) {
 }
 function displayInfomarker(marker ) {
     marker.setMap(map);
-    
+
 }
 
 var mysplace ;
@@ -361,42 +361,42 @@ function searcAddOverLay(marker,places){
 		placePhone:places.phone  ,
 		placeUrl:places.place_url ,
 		placeid:places.id,
-		
+
 		placeCategoryCode:places.category_group_code,
 		placex:places.x,
 		placey:places.y
 	};
-	
-	//오버레이에 표시할 정보 
-	var content = '<div class="wrap">' + 
-            '    <div class="info">' + 
-            '        <div class=" mapoverlay">' + 
-                        			places.place_name + 
-            '            <div class="close" onclick="scloseOverlay()" title="닫기"></div>' + 
-            '        </div>' + 
-            '        <div class="mapoverlaybody">' + 
-            '            <div class="desc">' + 
-            '                <div class="ellipsis">'+places.road_address_name+'</div>' + 
-            '                <div class="jibun ellipsis">'+places.address_name+'</div>' + 
-            '                <div class="phone ellipsis">'+places.phone+'</div>' + 
-            '                <div><a href="'+places.place_url+'" target="_blank" class="link">상세보기</a></div>' + 
-            '            </div>' + 
+
+	//오버레이에 표시할 정보
+	var content = '<div class="wrap">' +
+            '    <div class="info">' +
+            '        <div class=" mapoverlay">' +
+                        			places.place_name +
+            '            <div class="close" onclick="scloseOverlay()" title="닫기"></div>' +
+            '        </div>' +
+            '        <div class="mapoverlaybody">' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">'+places.road_address_name+'</div>' +
+            '                <div class="jibun ellipsis">'+places.address_name+'</div>' +
+            '                <div class="phone ellipsis">'+places.phone+'</div>' +
+            '                <div><a href="'+places.place_url+'" target="_blank" class="link">상세보기</a></div>' +
+            '            </div>' +
             '			 <div class="button">' +
             '				<button  onclick="saveMySearchPin()" >장소 선택</button>'+
             '			 </div>' +
-            '        </div>' + 
-            '    </div>' +    
+            '        </div>' +
+            '    </div>' +
             '</div>';
-            
+
     // 마커 위에 커스텀오버레이를 표시합니다
      // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
 	 soverlay = new kakao.maps.CustomOverlay({
     	content: content,
     	map: map,
     	position: marker.getPosition() ,
-    	clickable:true          
+    	clickable:true
 		});
-		
+
     soverlay.setMap(map);
 }
 
@@ -408,14 +408,14 @@ function saveMySearchPin(){
 
 
 
-//검색 결과 오버레이 닫기 
+//검색 결과 오버레이 닫기
 function scloseOverlay() {
-    soverlay.setMap(null);  
+    soverlay.setMap(null);
 	//smarker.setMap(null);
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-function removeAllChildNods(el) {   
+function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
@@ -449,17 +449,17 @@ for(var i=0;i<li.length;i++){
 	//우측상단 카테고리에 클릭 이벤트 생성
 	li[i].addEventListener('click',function(event){
 		var e = event.target;
-		
+
 		for(var j=0;j<li.length;j++){
 			li[j].style.background='#fff';
 		}
-		
-		
-		
+
+
+
 		if(e.localName=='li'){
 			if(e.id!=currCategory){
 			currCategory = e.id;
-			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true}); 
+			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true});
 			e.style.background='#98dde3';
 			}else if(e.id==currCategory){
 				currCategory='';
@@ -470,7 +470,7 @@ for(var i=0;i<li.length;i++){
 			var p = e.parentElement;
 			if(p.id!=currCategory){
 			currCategory = p.id;
-			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true}); 
+			psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true});
 			p.style.background='#98dde3';
 			}else if(p.id==currCategory){
 				currCategory='';
@@ -480,8 +480,8 @@ for(var i=0;i<li.length;i++){
 				 }
 			}
 
-		}		
-		addListenr();	
+		}
+		addListenr();
 	})
 }
 
@@ -498,7 +498,7 @@ function addListenr(){
 
 //카테고리검색 메서드
 function categorySearch(){
-	psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true}); 
+	psc.categorySearch(currCategory, placesSearchCBCategory, {useMapBounds:true});
 }
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
@@ -506,8 +506,8 @@ function placesSearchCBCategory (data, status) {
     if (status === kakao.maps.services.Status.OK) {
 		removeMarkerCategory();
         for (var i=0; i<data.length; i++) {
-            displayMarkerCategory(data[i]);    
-        }       
+            displayMarkerCategory(data[i]);
+        }
     }else {
 	removeMarkerCategory();
 }
@@ -516,7 +516,7 @@ function placesSearchCBCategory (data, status) {
 	/*if(overlayOb!=null){
 		var exist=0;
 		for(var i=0;i<markerscId.length;i++){
-			if(markerscId[i]==overlayOb.id){	
+			if(markerscId[i]==overlayOb.id){
 				exist=1;
 				break;
 			}
@@ -531,7 +531,7 @@ function placesSearchCBCategory (data, status) {
 function displayMarkerCategory(place) {
     // 마커를 생성하고 지도에 표시합니다
     var markerc = addMarkerCategory(place);
-   
+
     // 마커 클릭스 오버레이 이벤트 등록
     kakao.maps.event.addListener(markerc, 'click', function() {
 		//다른 오버레이가 열려있을시 닫음
@@ -539,12 +539,12 @@ function displayMarkerCategory(place) {
 		closeOverlay();
 	}
 	addOverLay(markerc,place);
-	
+
 	  var placePosition = new kakao.maps.LatLng(place.y, place.x)
                map.panTo(placePosition);
-	});	
-	
-	
+	});
+
+
 }
 
 //키타고리 마커 생성 메서드
@@ -554,14 +554,14 @@ function addMarkerCategory(place){
         position: new kakao.maps.LatLng(place.y, place.x),
         zIndex: -1
     });
-    
+
     markerc.setMap(map);
     markersc.push(markerc);
-    
+
     //임시
     var markercId = place.id;
 	markerscId.push(markercId) ;
-	   
+
     return markerc;
 }
 
@@ -569,7 +569,7 @@ function addMarkerCategory(place){
 function removeMarkerCategory(){
 	for ( var i = 0; i < markersc.length; i++ ) {
         markersc[i].setMap(null);
-    }   
+    }
     markersc = [];
     markerscId=[];
 }
@@ -580,7 +580,7 @@ var myplace;
 var myplaceinfo;
 
 //오버레이 정보 생성 및 표시
-function addOverLay(markerc,place){	
+function addOverLay(markerc,place){
 	 myplace = {
 		placex:place.x,
 		placey:place.y,
@@ -594,36 +594,36 @@ function addOverLay(markerc,place){
 		placePhone:place.phone  ,
 		placeUrl:place.place_url ,
 		placeid:place.id,
-		
+
 		placeCategoryCode:place.category_group_code,
 		placex:place.x,
 		placey:place.y
 	};
 	//console.log(place.phone)
-	
-	//오버레이에 표시할 정보 
-	var content = '<div class="wrap">' + 
+
+	//오버레이에 표시할 정보
+	var content = '<div class="wrap">' +
             '    <div class="info ">' +
-            '        <div class=" mapoverlay">' + 
-                        			place.place_name + 
-            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-            '        </div>' + 
-            '        <div class="mapoverlaybody">' + 
-            '            <div class="desc">' + 
-            '                <div class="ellipsis">'+place.road_address_name+'</div>' + 
-            '                <div class="jibun ellipsis">'+place.address_name+'</div>' + 
-            '                <div class="phone ellipsis">'+place.phone+'</div>' + 
-            '                <div><a href="'+place.place_url+'" target="_blank" class="link">상세보기</a></div>' + 
-            '            </div>' + 
+            '        <div class=" mapoverlay">' +
+                        			place.place_name +
+            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+            '        </div>' +
+            '        <div class="mapoverlaybody">' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">'+place.road_address_name+'</div>' +
+            '                <div class="jibun ellipsis">'+place.address_name+'</div>' +
+            '                <div class="phone ellipsis">'+place.phone+'</div>' +
+            '                <div><a href="'+place.place_url+'" target="_blank" class="link">상세보기</a></div>' +
+            '            </div>' +
             '			 <div class="button">' +
             '				<button  onclick="saveMyPin()" >장소 선택</button>'+
             '			 </div>' +
-            '        </div>' + 
-            '    </div>' +    
+            '        </div>' +
+            '    </div>' +
             '</div>';
-            
 
-            
+
+
     // 마커 위에 커스텀오버레이를 표시합니다
      // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
 	 overlayOb = {
@@ -631,17 +631,17 @@ function addOverLay(markerc,place){
     				content: content,
     				map: map,
     				position: markerc.getPosition(),
-    				clickable:true    
+    				clickable:true
 					}),
 			id:place.id
 			};
 
 }
-//오버레이 닫기 
+//오버레이 닫기
 function closeOverlay() {
-    overlayOb.overlay.setMap(null);   
+    overlayOb.overlay.setMap(null);
     overlayOb=null;
-      
+
 }
 
 
@@ -653,7 +653,7 @@ function closeOverlay() {
 //내가 저장한 핀 실행 메서드1
  function saveMyPin(){
 	rsaveMyPin(myplace,myplaceinfo);
-	
+
 }
 
 //내가 저장한 핀 실행 메서드2
@@ -674,10 +674,10 @@ function rsaveMyPin(myplace,myplaceinfo){
 				//console.log("중복")
 				return ;
 			}
-			
+
 		}
 	}
-	
+
 	//핀은 최대 7개까지 고정 가능
 //	if(listNum[schedulNum].num<7){
 		//마커이미지 생성
@@ -691,8 +691,8 @@ function rsaveMyPin(myplace,myplaceinfo){
             coords:'19,9,25,9,28,11,31,14,31,21,28,26,22,35,16,26,14,21,14,14,16,11'
         },
         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions)
-		
-		
+
+
 		//마서 생성
 		var mymarker = {
 					mymarker:new kakao.maps.Marker({
@@ -703,32 +703,32 @@ function rsaveMyPin(myplace,myplaceinfo){
 								}),
 					id:myplaceinfo.placeid
 					}
-		
+
 		//오버레이 생성
-		var mycontent='<div class="wrap">' + 
+		var mycontent='<div class="wrap">' +
             '    <div class="info overlay">' +
-            '        <div class="title ">' + 
-                        			myplaceinfo.placeName + 
-            '            <div class="close r"  title="닫기"></div>' + 
+            '        <div class="title ">' +
+                        			myplaceinfo.placeName +
+            '            <div class="close r"  title="닫기"></div>' +
             '			 <input type="hidden" class="hidden" value="'+myplaceinfo.placeid+'">'+
-            '        </div>' + 
-            '        <div class="body">' + 
-            '            <div class="desc">' + 
-            '                <div class="ellipsis">'+myplaceinfo.placeRaddress+'</div>' + 
-            '                <div class="jibun ellipsis">'+myplaceinfo.placeAddress+'</div>' + 
-            '                <div class="phone ellipsis">'+myplaceinfo.placePhone+'</div>' + 
-            '                <div><a href="'+myplaceinfo.placeUrl+'" target="_blank" class="link">상세보기</a></div>' + 
-            '            </div>' + 
-            '        </div>' + 
-            '    </div>' +    
+            '        </div>' +
+            '        <div class="body">' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">'+myplaceinfo.placeRaddress+'</div>' +
+            '                <div class="jibun ellipsis">'+myplaceinfo.placeAddress+'</div>' +
+            '                <div class="phone ellipsis">'+myplaceinfo.placePhone+'</div>' +
+            '                <div><a href="'+myplaceinfo.placeUrl+'" target="_blank" class="link">상세보기</a></div>' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
             '</div>';
-		
+
 		var myoverlay={
 					myoverlay:new kakao.maps.CustomOverlay({
 		    				content: mycontent,
 		    				map: map,
 		    				position: mymarker.mymarker.getPosition(),
-		    				clickable:true ,  
+		    				clickable:true ,
 		    				id: myplaceinfo.placeid
 							}),
 					id: myplaceinfo.placeid
@@ -737,7 +737,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 		//?왠진 모르지만 됨/마커와 오버레이를 객체로 마이 핀 배열에 저장
 		mymarker.mymarker.setMap(null);
 		myoverlay.myoverlay.setMap(null);
-	
+
 		 mymarkerOb={
 			mymarker:mymarker,
 			myoverlay:myoverlay,
@@ -749,7 +749,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 
 		//마이핀 라인 생성
 		makeline();
-		
+
 		//좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
 		addMySchedule(myplaceinfo);
 //	}else{
@@ -761,7 +761,7 @@ function rsaveMyPin(myplace,myplaceinfo){
 
 	}
 }
-//임시 
+//임시
 
 
 //좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
@@ -774,27 +774,27 @@ function addMySchedule(place){
 	schedul[schedulNum][listNum[schedulNum].num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
 				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|"+optVal+"|",
 						memo:""}
-	
-	var li=document.createElement('li');	
+
+	var li=document.createElement('li');
 	li.innerHTML=
 	        '	 <input type="hidden" class="id" name="as" value="'+place.placeid+'">'+
             '    <div class="info'+" "+schedulNum+'">' +
-            '       <div class="title">' + 
-                        			place.placeName + 
-            '        </div>' + 
-            '        <div class="body">' + 
-            '            <div class="desc">' + 
-            '                <div class="ellipsis">'+place.placeRaddress+'</div>' + 
-            '                <div class="jibun ellipsis">'+place.placeAddress+'</div>' + 
-            '                <div class="phone ellipsis">'+place.placePhone+'</div>' + 
-            '                <div><a href="'+place.placeUrl+'" target="_blank" class="link">상세보기</a></div>' + 
-            '            </div>' + 
-            '            <div class="close"  title="닫기"></div>' + 
-            '        </div>' + 
+            '       <div class="title">' +
+                        			place.placeName +
+            '        </div>' +
+            '        <div class="body">' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">'+place.placeRaddress+'</div>' +
+            '                <div class="jibun ellipsis">'+place.placeAddress+'</div>' +
+            '                <div class="phone ellipsis">'+place.placePhone+'</div>' +
+            '                <div><a href="'+place.placeUrl+'" target="_blank" class="link">상세보기</a></div>' +
+            '            </div>' +
+            '            <div class="close"  title="닫기"></div>' +
+            '        </div>' +
             '		 <input type="hidden" class="data" name="data" value="">'+
             '		 <button type="button" class="memobtn" >메모'+
             '		 </button>' +
-            '    	</div>' + 
+            '    	</div>' +
             '	 </div>';
     //console.log("edit addmyschedul: "+paramObjinfo.day)
     if(editmode==true){
@@ -807,7 +807,7 @@ function addMySchedule(place){
 
 
 	li.setAttribute("draggable", "true");
-	
+
 	$('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num].defaultValue=schedul[schedulNum][listNum[schedulNum].num].data.data
 //	console.log("선택한 리스트info")
 //	console.log($('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num])
@@ -816,23 +816,23 @@ function addMySchedule(place){
     listNum[schedulNum].num+=1;
 
 
-	
+
 	//생성한 리스트에 클릭시 삭제 이벤트 등록
 	$(".My_List .close").click(function(event){
-		removeMySchedule(event)	
+		removeMySchedule(event)
 	});
-	
+
 	//생성한 리스트에 마우스 오버시 화면 이동
 	$('.My_List li .title').mouseover(function(event){
 		var over="over"
 		hoverevent(event,over);
 	})
-	
+
 	$('.My_List li .title').mouseout(function(event){
 		var out="out"
 		hoverevent(event,out);
 	})
-	
+
 	//임시, 메모버튼클릭시 메모저장 박스 출력
 	$('.memobtn').click(function(event){
 		memobox(event);
@@ -854,11 +854,11 @@ function removeMySchedule(event){
 			//라인삭제
 			pathArr[schedulNum].splice(i,1);
 			polylineArr[schedulNum].setPath(pathArr[schedulNum]);
-			
+
 			//마커,오버레이 삭제
 			schedul[schedulNum][i].mymarker.mymarker.setMap(null);
 			schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
-			
+
 			schedul[schedulNum].splice(i,1);
 
 			//좌측 마이 스케쥴 삭제
@@ -876,7 +876,7 @@ function hoverevent(event,state){
 			if(value==schedul[schedulNum][i].mymarker.id){
 				var mapmove=new kakao.maps.LatLng(schedul[schedulNum][i].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][i].mymarker.mymarker.getPosition().La)
 				map.panTo(mapmove);
-				if(state=="over"){				
+				if(state=="over"){
 				schedul[schedulNum][i].mymarker.mymarker.setMap(map);
 				schedul[schedulNum][i].myoverlay.myoverlay.setMap(map);
 				}else if(state=="out"){
@@ -1007,14 +1007,14 @@ function addmOverlay(marker,index){
 
 
 			$(".info .r").click(function(event){
-			closeMyOverlay(event)	
+			closeMyOverlay(event)
 			});
-			break;		
+			break;
 		}
 	}
 }
 
-//오버레이 닫기 
+//오버레이 닫기
 function closeMyOverlay(event) {
 
 	var et= event.target;
@@ -1023,25 +1023,25 @@ function closeMyOverlay(event) {
 		if(schedul[schedulNum][i].id==value){
 			schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
 		}
-	}    
+	}
 }
 
 //마이핀 숨기기
 function hide(){
 	for(var i=0; i<schedul[schedulNum].length;i++){
 
-		
+
 		schedul[schedulNum][i].mymarker.mymarker.setMap(null);
 		schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
 		polylineArr[schedulNum].setMap(null);
-		
+
 	}
 	checkmode=0;
 	checkmode2=false;
 	$('.check').attr("onclick","check();");
 		$('.check').text("마이 핀 보이기")
-	
-	
+
+
 }
 
 //==================선 그리기
@@ -1058,7 +1058,7 @@ function makeline(){
 				la=schedul[schedulNum][i].mymarker.mymarker.getPosition().La
 			//넘겨 받은 좌표 값 설정
 			var coord = new kakao.maps.LatLng(ma, la);
-			
+
 			pathArr[schedulNum].push(coord);
 		}
 		polylineArr[schedulNum].setPath(pathArr[schedulNum]);
@@ -1066,18 +1066,18 @@ function makeline(){
 	}else{
 	    //console.log("폴리 첫 값 있음")
 		var length=pathArr[schedulNum].length;
-		
+
 		for(var i=0;i<schedul[schedulNum].length;i++){
 			if(i<length){
 				continue
 			}else{
 			var ma= schedul[schedulNum][i].mymarker.mymarker.getPosition().Ma,
 				la=schedul[schedulNum][i].mymarker.mymarker.getPosition().La
-				
+
 			var coord = new kakao.maps.LatLng(ma, la);
-			
+
 			pathArr[schedulNum].push(coord);
-			}	
+			}
 		}
 		polylineArr[schedulNum].setPath(pathArr[schedulNum]);
 	}
@@ -1094,19 +1094,19 @@ var memos=[];
 var index;
 //메모 박스 출력
 function memobox(event){
-	
+
 	//none 클래스 삭제
 	var e = event.target.parentElement.parentElement;
 		//console.log(e);
 		//console.log($(e).index());
 	$('#memobox').removeClass('none');
-	
+
 	 index=$(e).index()
-	
+
 	//title 부여
 	var text=$('.info.'+schedulNum+' .title')[index].innerText;
 	$('#memobox .title').text(text);
-	
+
 	$('#memobox textarea')[0].value=schedul[schedulNum][index].data.memo;
 }
 
@@ -1118,7 +1118,7 @@ $('#memobox .close').click(function(){
 //메모 저장 수정필요
 	$('.savememobtn').click(function(){
 		//메모 내용 있을시 저장 누르면 창 닫기
-	
+
 		//초기화
 		$('.info.'+schedulNum+' .data')[index].defaultValue="";
 		//console.log($('.info .data')[index]);
@@ -1128,13 +1128,13 @@ $('#memobox .close').click(function(){
 
 		//텍스트 에어이라 입력 값
 		var memo=$('#memobox textarea')[0].value
-		
+
 		schedul[schedulNum][index].data.memo=memo;
-		
+
 		//input value에 메모내용 값 추가
 		$('.info.'+schedulNum+' .data')[index].defaultValue = value+memo;
 		//console.log($('.info .data')[index].defaultValue)
-		
+
 		$('#memobox').addClass('none');
 	})
 //========드래그 앤 드랍
@@ -1157,7 +1157,7 @@ list.addEventListener('drop', (e) => {
   e.preventDefault();
 //console.log("끝");
   var currentDropItem=e.target;
-  
+
   for(currentDropItem;currentDropItem.localName!="li";currentDropItem=currentDropItem.parentElement ){
 	}
 
@@ -1170,12 +1170,12 @@ list.addEventListener('drop', (e) => {
   } else {
     currentDropItem.before(currentItem);
   }
-  
+
   //내가 저장한 장소 배열 재설정
    if(currentItemIndex==dropItemIndex){
 	//console.log("제자리 실행")
 	}else{
-  arraychange(currentItemIndex,dropItemIndex);	
+  arraychange(currentItemIndex,dropItemIndex);
 	}
 });
 
@@ -1183,10 +1183,10 @@ list.addEventListener('drop', (e) => {
 function arraychange(currentItemIndex,dropItemIndex){
 	var num= pathArr[schedulNum].length
 	var temp=[];
-		
+
 	//console.log(mymarkers);
 	for(var i=0;i<num;i++){
-	
+
 		var my = pathArr[schedulNum].shift();
 		//console.log(my)
 		temp.push(my)
