@@ -35,14 +35,16 @@
             제목:<input class="input "type="text" name="title" th:value="${title}" readonly/><br/>
             지역:<input class="input "type="text" name="region" th:value="${region}" readonly/><br/>
             총 여행 날짜:<input class="input "type="text" name="days" th:value="${days}" readonly/><Br>
-                여행 시작 날짜:<input class="start" type="text" th:value="${start}" name="start" readonly/><br>
+                여행 시작 날짜:<input class="input start" type="text" th:value="${start}" name="start" readonly/><br>
 <!--                <input class="start" type="hidden" name="start"/>-->
                 <input class="end" type="hidden" name="end"/>
+                <div>
                 Days:<select class="days">
                      </select>
 <!--                <th:block th:if="${#strings.equals(param.mode, 'edit')}">-->
                 <button type="button" class="changebtn" onclick="popOpen()" >변경</button>
 <!--                </th:block>-->
+                </div>
             </div>
             <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
             <ul class="My_List 1">
@@ -68,7 +70,7 @@
                 <div class="option">
                     <div>
                         <form onsubmit="searchPlaces(); return false;">
-                            키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요">
+                            <p>키워드 : <input type="text" value="" id="keyword" size="15" placeholder="입력하세요"></p>
                             <button class="searchbtn" type="submit">검색</button>
                         </form>
                     </div>

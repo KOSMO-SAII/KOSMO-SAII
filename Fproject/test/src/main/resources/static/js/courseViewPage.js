@@ -53,10 +53,11 @@ for(var k=0;k<paramObjs.length;k++){
 
 	//오버레이 내용
 	var mycontent='<div class="wrap">' +
-	            '    <div class="info">' +
+	            '    <div class="info overlay">' +
 	            '        <div class="mapoverlay">' +
 	                        			paramObjs[k].Place_name +
 	            '            <div class="close r" onclick="overlayclose('+paramObjs[k].corder+')" title="닫기"><input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'"></div>' +
+	            '			 <input type="hidden" class="hidden" value="'+paramObjs[k].address_id+'">'+
 	            '        </div>' +
 	            '        <div class="mapoverlaybody">' +
 	            '            <div class="desc">' +
@@ -174,6 +175,8 @@ for(var i=0;i<schedul.length;i++){
 
 overlaySet()
 
+
+
 //day에 따른  오버레이 변경
 function overlaySet(){
     for(var i=0;i<schedul.length;i++){
@@ -186,6 +189,22 @@ function overlaySet(){
         schedul[schedulNum][k].mymarker.mymarker.setMap(map);
         schedul[schedulNum][k].myoverlay.myoverlay.setMap(map);
     }
+
+    //오버레이 z-inex변경
+    $(".info.overlay").off();
+    $(".info.overlay").click(function(){
+        console.log($(this))
+        console.log($(this)[0].firstElementChild.lastElementChild.value)
+        var value=$(this)[0].firstElementChild.lastElementChild.value;
+        for(var i=0;i<schedul[schedulNum].length;i++){
+            schedul[schedulNum][i].myoverlay.myoverlay.setZIndex(0)
+            if(schedul[schedulNum][i].id==value){
+                schedul[schedulNum][i].myoverlay.myoverlay.setZIndex(1)
+
+            }
+        }
+    });
+
     makeline()
 
 }

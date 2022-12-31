@@ -36,8 +36,32 @@ public class CoursePageController extends HttpServlet {
           Map<String,String> map = courseService.getDays(course_id);
         //코스 id에 맞는 작성자 찾기
         String createdBy = courseList.get(0).getCreatedBy();
+          String nowUser;
+        try {
+             nowUser = principal.getName();
 
-        String nowUser = principal.getName();
+        }catch (NullPointerException e){
+              nowUser="Anonymous";
+
+            String region = courseList.get(0).getRegion();
+            String title = courseList.get(0).getTitle();
+
+            //받아온 코스 id로 db에서 값 뽑아옴
+            List<Map<String, String>> list=courseService.giveCourseData(course_id);
+            System.out.println(list.toString());
+
+
+            req.setAttribute("title", title);
+            req.setAttribute("region",region);
+            req.setAttribute("c_id", course_id);
+            req.setAttribute("createdBy", createdBy);
+            req.setAttribute("list", list);
+            req.setAttribute("days", map.get("days"));
+            req.setAttribute("start",map.get("start"));
+            req.setAttribute("nowUser",nowUser);
+            //return "test/test";
+            return "course/courseViewPage";
+        }
 
         //코스 id에 맞는 글 제목,지역 찾기
         String region = courseList.get(0).getRegion();
@@ -53,7 +77,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("c_id", course_id);
         req.setAttribute("createdBy", createdBy);
         req.setAttribute("list", list);
-        req.setAttribute("days", map.get("day"));
+        req.setAttribute("days", map.get("days"));
         req.setAttribute("start",map.get("start"));
         req.setAttribute("nowUser",nowUser);
         //return "test/test";
