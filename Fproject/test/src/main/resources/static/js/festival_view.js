@@ -120,9 +120,9 @@ var        marker = new kakao.maps.Marker({
             console.log("클릭 실행")
             location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
          })
-//        $('.node')[0].click(function(){
-//            console.log("node 클릭")
-//        })
+        $('.node')[0].click(function(){
+            console.log("node 클릭")
+        })
 }
 
 
