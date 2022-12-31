@@ -122,6 +122,7 @@ var        marker = new kakao.maps.Marker({
          })
         $('.node')[0].click(function(){
             console.log("node 클릭")
+            location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
         })
 }
 
