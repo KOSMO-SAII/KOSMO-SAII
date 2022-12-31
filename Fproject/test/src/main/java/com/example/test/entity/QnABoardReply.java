@@ -1,15 +1,15 @@
 package com.example.test.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "QnABoardReply")
@@ -24,7 +24,7 @@ public class QnABoardReply extends Base{
     @NotBlank
     @Size(min = 1, max = 255)
     @Column(nullable = false, length = 120)
-    String content;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name="qnaBoard")

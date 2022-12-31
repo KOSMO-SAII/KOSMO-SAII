@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,11 +40,15 @@ public class QnAReplyService {
         return "redirect:/QnABoard/view/"+qna_id;
     }
 
-    public String replyDelete(QnABoardReply qnABoardReply){
+    public String replyDelete(QnABoardReply qnABoardReply,Long reply_id){
 
         qnAReplyRepository.delete(qnABoardReply);
 
-        return "home";
+        return "redirect:/QnABoard/view/"+reply_id;
+    }
+
+    public List<QnABoardReply> view(Long id) {
+        return qnAReplyRepository.findByQnABoard_Id(id);
     }
 
 };

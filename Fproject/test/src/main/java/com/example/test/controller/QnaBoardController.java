@@ -1,6 +1,8 @@
 package com.example.test.controller;
 
 import com.example.test.entity.QnABoard;
+import com.example.test.entity.QnABoardReply;
+import com.example.test.service.QnAReplyService;
 import com.example.test.service.QnaBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/QnABoard")
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QnaBoardController {
 
     private final QnaBoardService qnaBoardService;
+
+    private final QnAReplyService qnAReplyService;
 
     @GetMapping("/write")
     public String write() {
@@ -68,6 +74,9 @@ public class QnaBoardController {
     @GetMapping("/view/{id}")
     public String view(Model model, @PathVariable("id") Long id) {
         model.addAttribute("board", qnaBoardService.view(id));
+        List<QnABoardReply> qnABoardReplyList=null;
+        qnABoardReplyList = qnAReplyService.view(id);
+        model.addAttribute("replyList", qnABoardReplyList);
         return "qna_board/view";
     }
 

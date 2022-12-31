@@ -26,10 +26,11 @@ public class QnAReplyController {
     }
 
     @PostMapping("/reply_delete")
-    public String replyDelete(@ModelAttribute QnABoardReply qnABoardReply){
+    public String replyDelete(@ModelAttribute QnABoardReply qnABoardReply, Long reply_id){
+        System.out.println(reply_id);
 
 
-        return qnAReplyService.replyDelete(qnABoardReply);
+        return qnAReplyService.replyDelete(qnABoardReply,reply_id);
     }
 
 };
