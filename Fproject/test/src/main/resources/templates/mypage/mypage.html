@@ -81,19 +81,13 @@
 </div>
 <div id="show2">
     <div>
-        <table class="table_wrap" th:each="lis, i: ${list}">
-            <tr>
-                <td colspan="2" th:text="|제목 : ${lis.title}|"></td>
-                <td th:text="${lis.region}"></td>
-            </tr>
-            <tr>
-                <td colspan="3" th:text="${lis.createdBy}"></td>
-                <td th:text="${lis.viewCount}"></td>
-            </tr>
-            <tr>
-                <td th:text="${lis.courseid}"></td>
-            </tr>
-        </table>
+        <div th:each="lis, i: ${list}">
+            <img th:src="|/img/loc/${lis.region}.png|" class="courseImg">
+            <span th:text="|코스이름 : ${lis.title}|" class="courseName"></span><br>
+            <span class="dateForm">작성날짜 : </span><input th:value="${lis.createDate}" class="eachInput">
+            <span th:text="|조 회 수 : ${lis.viewCount}|" class="lookUp"></span><br>
+            <div class="courseRegion"><span th:text="${lis.region}" class="courseRe"></span></div>
+        </div>
     </div>
 </div>
 
