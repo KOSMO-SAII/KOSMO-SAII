@@ -26,7 +26,9 @@ public class QnAReplyService {
     private final MemberRepository memberRepository;
 
     public String replyWrite(QnABoardReply qnABoardReply, Principal principal, Long qna_id){
-
+        System.out.println(qnABoardReply);
+        System.out.println(qna_id);
+        System.out.println(principal.getName());
         Member findMember = memberRepository.findByLoginId(principal.getName());
         Optional<QnABoard> findBoard = qnaBoardRepository.findById(qna_id);
 
@@ -34,7 +36,7 @@ public class QnAReplyService {
         qnABoardReply.setMember(findMember);
         qnAReplyRepository.save(qnABoardReply);
 
-        return "home";
+        return "redirect:/QnABoard/view/"+qna_id;
     }
 
     public String replyDelete(QnABoardReply qnABoardReply){

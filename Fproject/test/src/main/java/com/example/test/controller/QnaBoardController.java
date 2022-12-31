@@ -75,7 +75,7 @@ public class QnaBoardController {
     public String delete(@PathVariable("id") Long id) {
         qnaBoardService.deleteById(id);
 
-        return "redirect:/qna_board/list";
+        return "redirect:/QnABoard/list";
     }
 
     @GetMapping("/modify/{id}")
@@ -95,6 +95,6 @@ public class QnaBoardController {
 
         qnaBoardService.write(boardTemp);
 
-        return "redirect:/qna_board/list";
+        return "redirect:/QnABoard/list";
     }
 }
