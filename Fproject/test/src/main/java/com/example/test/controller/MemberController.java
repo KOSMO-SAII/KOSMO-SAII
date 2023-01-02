@@ -84,6 +84,11 @@ MemberController {
         return "/howtoUse";
     }
 
+    @GetMapping("/intro")
+    public String introTo(){
+        return "/About";
+    }
+
     @GetMapping("/login")
     public String loginMember() {
 
