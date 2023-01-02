@@ -34,7 +34,7 @@ public class Member{
 
     private LocalDateTime updateDate;
     private String address;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
     @Column(unique = true, nullable = false)
     private String email;
@@ -60,8 +60,11 @@ public class Member{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<ReviewCourse> ReviewCourseList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",orphanRemoval = true)
     private List<QnABoardReply> replyList;
+
+    @OneToMany(mappedBy = "member",orphanRemoval = true)
+    private List<QnABoard> qnABoards;
 
     @Builder
     public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,

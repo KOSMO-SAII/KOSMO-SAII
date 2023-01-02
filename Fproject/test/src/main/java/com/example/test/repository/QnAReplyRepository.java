@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface QnAReplyRepository extends JpaRepository<QnABoardReply, Long> {
     List<QnABoardReply> findByQnABoard_Id(Long id);
+
 };

@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
   <meta charset="UTF-8">
   <title>게시물 리스트</title>
 </head>
-<style>
-    .layout {
-        width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-    }
-
-    .layout input {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .layout textarea {
-        width: 100%;
-        margin-top: 10px;
-        min-height: 300px;
-    }
-</style>
 <div layout:fragment="content">
-<body>
+<link th:href="@{/css/QnaList.css}" rel="stylesheet" />
+<body ondragstart="return false" >
 <hr>
 <div class="layout">
-  <table>
-    <thead>
-    <tr>
-      <th>글번호</th>
-      <th>제목</th>
-      <th>작성자</th>
-      <th>작성일자</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="board : ${list}">
-      <td th:text="${board.id}"></td>
-      <td>
-        <a th:text="${board.title}" th:href="@{/QnABoard/view/{id}(id=${board.id})}"></a>
-      </td>
-      <td th:text="${board.createdBy}"></td>
-      <td th:text="${board.createDate}"></td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="divIn">
+    <h1>질의응답 QnA</h1>
+    <div class="divG">
+      <form th:action="@{/QnABoard/list}" method="get">
+        <input style="width: 130px;" type="text" name="searchKeyword" class="SearchInput">
+        <button type="submit" class="Search">검색</button>
+      </form>
+    </div>
+    <div class="divT">
+      <table>
+        <thead>
+        <tr>
+          <th class="th1">No.</th>
+          <th class="th2">제목</th>
+          <th class="th3">작성자</th>
+          <th class="th4">작성일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${list}">
+          <td th:text="${board.id}" class="th1"></td>
+          <td class="th2">
+            <a th:text="${board.title}" th:href="@{/QnABoard/view/{id}(id=${board.id})}" class="tbTile"></a>
+          </td>
+          <td th:text="${board.createdBy}" class="th3"></td>
+          <td class="th4"><input type="text" th:value="${board.createDate}" class="tbInput" disabled></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-    <a th:if="${page != nowPage}" th:href="@{/QnABoard/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
-    <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
-  </th:block>
-  <form th:action="@{/QnABoard/list}" method="get">
-    <input style="width: 130px;" type="text" name="searchKeyword">
-    <button type="submit">검색</button>
-  </form>
-  <a href="/QnABoard/write">글작성</a>
+    <div th:with="start=${(list.number/maxPage)*maxPage + 1}, end=(${(list.totalPages == 0) ? 1 : (start + (maxPage - 1) < list.totalPages ? start + (maxPage - 1) : list.totalPages)})" >
+      <ul class="pagination justify-content-center">
+
+        <li class="page-item" th:classappend="${list.number eq 0}?'disabled':''">
+          <a th:href="@{'/QnABoard/list?page=' + ${list.number-1} + '&searchKeyword=' + ${searchKeyword}}" aria-label='Previous' class="page-link">
+            <span aria-hidden='true'>Previous</span>
+          </a>
+        </li>
+
+        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${list.number eq page-1}?'active':''">
+          <a th:href="@{'/QnABoard/list?page=' + ${page-1} + '&searchKeyword=' + ${searchKeyword}}" th:inline="text" class="page-link">[[${page}]]</a>
+        </li>
+
+        <li class="page-item" th:classappend="${list.number+1 ge list.totalPages}?'disabled':''">
+          <a th:href="@{'/QnABoard/list?page=' + ${list.number+1} + '&searchKeyword=' + ${searchKeyword}}" aria-label='Next' class="page-link">
+            <span aria-hidden='true'>Next</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+      <a href="/QnABoard/write" class="writeBtn"><button class="btnWrite">글작성</button></a>
+  </div>
 </div>
 
 </body>

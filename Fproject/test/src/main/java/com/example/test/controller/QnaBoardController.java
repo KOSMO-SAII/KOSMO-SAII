@@ -7,6 +7,7 @@ import com.example.test.service.QnaBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -36,9 +39,9 @@ public class QnaBoardController {
 
 
     @PostMapping("/writedo")
-    public String writedo(QnABoard qnABoard, Model model) {
+    public String writedo(QnABoard qnABoard, Model model, Principal principal) {
 
-        qnaBoardService.write(qnABoard);
+        qnaBoardService.write(qnABoard,principal);
 
         model.addAttribute("message", "글 작성이 완료되었습니다.");
         model.addAttribute("searchUrl", "/QnABoard/list");
@@ -48,25 +51,22 @@ public class QnaBoardController {
 
     @GetMapping("/list")
     public String list(Model model,
-                       @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                       Optional<Integer> page,
                        String searchKeyword
     ) {
         Page<QnABoard> list = null;
+        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,10);
 
         if (searchKeyword == null) {
-            list = qnaBoardService.list(pageable);
+            list = qnaBoardService.list(pageRequest);
         } else {
-            list = qnaBoardService.searchList(searchKeyword, pageable);
+            list = qnaBoardService.searchList(searchKeyword, pageRequest);
         }
 
-        int nowPage = list.getPageable().getPageNumber() + 1;
-        int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 5, list.getTotalPages());
 
         model.addAttribute("list", list);
-        model.addAttribute("nowPage", nowPage);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("endPage", endPage);
+        model.addAttribute("maxPage", 5);
+        model.addAttribute("searchKeyword",searchKeyword);
 
         return "qna_board/list";
     }
@@ -96,13 +96,13 @@ public class QnaBoardController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") Long id, QnABoard qnABoard) {
+    public String update(@PathVariable("id") Long id, QnABoard qnABoard,Principal principal) {
 
         QnABoard boardTemp = qnaBoardService.view(id);
         boardTemp.setTitle(qnABoard.getTitle());
         boardTemp.setContent(qnABoard.getContent());
 
-        qnaBoardService.write(boardTemp);
+        qnaBoardService.write(boardTemp,principal);
 
         return "redirect:/QnABoard/list";
     }

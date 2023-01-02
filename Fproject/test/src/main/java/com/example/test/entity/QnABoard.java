@@ -22,7 +22,11 @@ public class QnABoard extends Base{
 
     private String content;
 
-    @OneToMany(mappedBy = "qnABoard")
+    @OneToMany(mappedBy = "qnABoard",orphanRemoval = true)
     private List<QnABoardReply> reply;
+
+    @ManyToOne
+    @JoinColumn(name="member")
+    private Member member;
 
 }
