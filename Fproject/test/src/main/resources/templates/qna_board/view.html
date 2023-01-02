@@ -67,7 +67,8 @@
     <td th:text="${reply.createDate}" style="border:solid 1px;"></td>
     <td>
       <form action="/reply_delete" method="post">
-        <input type="hidden" th:value="${reply.id}" name="reply_id">
+        <input type="hidden" th:value="${reply.id}" name="id">
+        <input type="hidden" th:value="${reply.qnABoard.id}" name="qna_id">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <input type="submit" value="삭제">
       </form>

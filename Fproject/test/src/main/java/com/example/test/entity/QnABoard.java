@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,10 +19,10 @@ public class QnABoard extends Base{
     @Column(name = "QnA_id")
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String title;
 
-    @NotNull
+    @Column(nullable = false)
     private String content;
 
     @OneToMany(mappedBy = "qnABoard",orphanRemoval = true)
