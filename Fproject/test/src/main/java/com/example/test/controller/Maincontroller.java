@@ -56,62 +56,6 @@ public class Maincontroller extends HttpServlet {
         return "slider";
     }
 
-    @GetMapping("/test2")
-    public String test2(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        model.addAttribute("title",req.getParameter("title"));
-        model.addAttribute("region",req.getParameter("region"));
-
-        return "test2";
-    }
-
-    @RequestMapping("/crawl")
-    public @ResponseBody String crawl(){
-        WebDriver webDriver;
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/py/chromedriver.exe");
-        webDriver = new ChromeDriver();
-
-        webDriver.get("https://www.google.co.kr/imghp?hl=ko&tab=wi&authuser=0&ogbl");
-        WebElement element = webDriver.findElement(By.name("q"));
-        element.sendKeys("nell");
-        element.sendKeys(Keys.RETURN);
-
-        List<WebElement> elements = webDriver.findElements(By.className("rg_i"));
-        System.out.println(elements.size());
-        int count = 0;
-        for(WebElement e : elements){
-            e.click();
-            List<WebElement> img = webDriver.findElements(By.className("n3VNCb KAlRDb"));
-            System.out.println(img.get(0).getAttribute("src"));
-
-            count++;
-            if(count > 3)
-                break;
-        }
-
-        return "crawled";
-    }
-
-
-    @GetMapping("/test")
-    public String get(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Map<String,String >> list =new Vector<Map<String,String >>();
-        for(int i=0;i<2;i++){
-        Map<String,String> map =new HashMap<String, String>();
-        map.put("name","name");
-        map.put("age","age");
-        list.add(map);
-        }
-        //req.setAttribute("list",list);
-        model.addAttribute("data","get");
-        return "test";
-    }
-
-    @PostMapping("/test")
-    public String post(Model model){
-        model.addAttribute("data","post");
-        return "test";
-    }
-
     @RequestMapping("/festivalview/{id}")
     public String festivalview(@PathVariable int id, Model model){
         model.addAttribute("id",id);
@@ -121,10 +65,6 @@ public class Maincontroller extends HttpServlet {
 
     @RequestMapping("/festival")
     public String list(Optional<Integer> page, Model model){
-        System.out.println("controller");
-
-        model.addAttribute("maxPage", 5);
-
         return "board_festival/festival";
     }
 

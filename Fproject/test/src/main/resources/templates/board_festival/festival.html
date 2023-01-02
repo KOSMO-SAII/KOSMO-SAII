@@ -15,10 +15,11 @@
 
 <div layout:fragment="content">
 <body>
+<script type="text/javascript" th:src="@{/js/festival.js}">
+</script>
 <header id="common_header" class="main_gnb sub">
 </header>
 <!-- //header -->
-
 <!-- contents -->
 <div id="contents" src="http://apis.data.go.kr/B551011/KorService/searchFestival?eventStartDate=20220101&eventEndDate=20230101&areaCode=&sigunguCode=&ServiceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=A&numOfRows=12&pageNo=1">
 
@@ -41,9 +42,9 @@
             <div class="total_check">
                 <strong>총<span id="totalCnt"></span>건</strong>
                 <div class="btn_txt">
-                    <button type="button" class="on" id="1">최신순</button>
-                    <button type="button" id="2">거리순</button>
-                    <button type="button" id="3">인기순</button>
+                    <button type="button" class="on" >최신순</button>
+                    <button type="button" >거리순</button>
+                    <button type="button" >인기순</button>
                 </div>
                 <button type="button" class="btn_mPop">상세조회</button>
             </div>
@@ -134,10 +135,28 @@
         </div>
     </div>
 </div>
+<div>
+    <ul class="pagination justify-content-center">
 
+        <li class="page-item" th:classappend="${pageNo eq 0}?'disabled':''">
+            <a th:href="@{'/course/list?page=' + [[${pageNo-1}]] }" aria-label='Previous' class="page-link">
+                <span aria-hidden='true'>Previous</span>
+            </a>
+        </li>
 
-<script type="text/javascript" th:src="@{/js/festival.js}">
-</script>
+        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="[[${pageNo eq page-1}]]?'active':''">
+            <a th:href="@{'/course/list?page=' + [[${page-1}]]}" th:inline="text" class="page-link">[[${page}]]</a>
+        </li>
+
+        <li class="page-item" th:classappend="[[${pageNo+1 ge totalCount}]]?'disabled':''">
+            <a th:href="@{'/course/list?page=' + [[${pageNo+1}]]}" aria-label='Next' class="page-link">
+                <span aria-hidden='true'>Next</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
 </body>
 </div>
 </html>

@@ -383,9 +383,16 @@ public class CourseService {
         }
     }
 
-    public List<CourseListDTO> getList(PageRequest pageRequest){
+    public List<CourseListDTO> getList(String searchStr,PageRequest pageRequest){
+        System.out.println("ss = "+searchStr);
+        Page<CourseList> courseLists = null;
 
-        Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
+        if(searchStr.isEmpty()){
+            courseLists = courseListRepository.findAll(pageRequest);
+        } else {
+            courseLists = courseListRepository.findBySearch(searchStr, pageRequest);
+        }
+
         List<CourseListDTO> lists = new ArrayList<>();
 
         for(CourseList courseList : courseLists){
@@ -420,9 +427,17 @@ public class CourseService {
         return courseDTOList;
     }
 
-    public Page<CourseList> getPage(PageRequest pageRequest){
+    public Page<CourseList> getPage(String searchStr, PageRequest pageRequest){
+        Page<CourseList> courseLists = null;
 
-        Page<CourseList> courseLists = courseListRepository.findAll(pageRequest);
+        if(searchStr.isEmpty()) {
+            System.out.println("findAll");
+            courseLists = courseListRepository.findAll(pageRequest);
+        } else {
+            System.out.println("findSearch");
+            courseLists = courseListRepository.findBySearch(searchStr, pageRequest);
+        }
+
         return courseLists;
     }
 
