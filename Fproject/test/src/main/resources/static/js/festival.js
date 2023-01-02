@@ -71,7 +71,8 @@ function getInfo(id, c){
         }
       }
     })
-
+    console.log(data.pageNo)
+    console.log(data.totalCount)
 }
 
 
@@ -110,6 +111,15 @@ function printAll(infoitem){
     li.innerHTML = '<div class="imgandtext"><a href="/festivalview/'+infoitem.contentid+'"><image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image></a><div class="titleanddate"><a href="/festivalview/'+infoitem.contentid+'"><p class="title">'+infoitem.title+'</p><p class="date">['+''+eventstartdate+'~'+eventenddate+']</p></div></a></div>';
     ul[0].appendChild(li);
 }
+
+/*let page=3
+let page%10=3
+let firstpagenumber=currentmypage-page%10=3+1
+
+pages.number = page
+pages.totalPages
+
+console.log(page);*/
 
 
 

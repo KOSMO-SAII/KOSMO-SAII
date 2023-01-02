@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 @Controller
 public class Maincontroller extends HttpServlet {
@@ -121,9 +118,15 @@ public class Maincontroller extends HttpServlet {
         return "board_festival/festival_view";
     }
 
+
     @RequestMapping("/festival")
-    public  String festival(){
+    public String list(Optional<Integer> page, Model model){
+        System.out.println("controller");
+
+        model.addAttribute("maxPage", 5);
+
         return "board_festival/festival";
     }
+
 
 }
