@@ -33,10 +33,10 @@
         <tbody>
         <tr th:each="board : ${list}">
           <td th:text="${board.id}" class="th1"></td>
-          <td class="th2">
+          <td class="th22">
             <a th:text="${board.title}" th:href="@{/QnABoard/view/{id}(id=${board.id})}" class="tbTile"></a>
           </td>
-          <td th:text="${board.createdBy}" class="th3"></td>
+          <td class="th3"><img th:src="${board.member.picture}" class="qnaProfile"><span th:text="${board.member.nickname}"></td>
           <td class="th4"><input type="text" th:value="${board.createDate}" class="tbInput" disabled></td>
         </tr>
         </tbody>
