@@ -35,7 +35,6 @@
           <td th:text="${board.id}" class="th1"></td>
           <td class="th22">
             <a th:text="${board.title}" th:href="@{/QnABoard/view/{id}(id=${board.id})}" class="tbTile"></a>
-            [[${board.member.picture}]]
           </td>
           <td class="th3"><img th:src="${board.member.picture}" class="qnaProfile"><span th:text="${board.member.nickname}"></span></td>
           <td class="th4"><input type="text" th:value="${board.createDate}" class="tbInput" disabled></td>
