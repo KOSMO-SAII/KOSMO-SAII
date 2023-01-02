@@ -33,4 +33,4 @@ public class QnAReplyController {
         return qnAReplyService.replyDelete(qnABoardReply,reply_id);
     }
 
-};
+}
