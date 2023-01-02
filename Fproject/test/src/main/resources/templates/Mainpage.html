@@ -25,9 +25,10 @@
                  aria-label="Bootstrap">
                 <use xlink:href="#bootstrap"></use></svg>
         </a>
+
         <h1 class="logo">
             <a href="/">
-            <img id=img src="/img/saii.png">
+                <img id=img src="/img/saii.png">
             </a>
         </h1>
 
@@ -38,20 +39,20 @@
             </li>
             <li><a href="members/use"
                    class=" link-dark ">사용방법</a></li>
+            <li test="${UserId==null}"><a href="QnABoard/list"
+                                          class="link-dark ">Q&A</a></li>
             <li test="${UserId==null}"><a href="#"
-                    class="link-dark ">Q&A</a></li>
-            <li test="${UserId==null}"><a href="#"
-                     class=" link-dark ">About</a></li>
+                                          class=" link-dark ">About</a></li>
 
             <div class="col-md-3 text-end">
-<!--                <p th:if ="${UserId==null}">-->
+                <!--                <p th:if ="${UserId==null}">-->
                 <p sec:authorize="isAnonymous()">
                     <a href="/members/login"><button
                             type="button" class="btn btn-outline-primary me-2">Login</button></a>
                     <a href="/members/new"><button
                             type="button" class="btn btn-primary" >Sign-up</button></a>
                 </p>
-<!--                <p th:if="${UserId!=null}">-->
+                <!--                <p th:if="${UserId!=null}">-->
                 <p sec:authorize="isAuthenticated()">
                     <a href="/members/logins"><button
                             type="button" class="btn btn-outline-primary me-2">마이페이지</button></a>
@@ -67,10 +68,10 @@
 <div id="second" >
     <div class="title" style="text-align: center;">국내 여행 플래너 SAII </div><br/>
     <div class="title2">나만의 여행을 만들어 보아요</div><br/>
-<!--    <div class="search-area">-->
-<!--        <input type="text" class="search-input">-->
-<!--        <button class="but">검색</button>-->
-<!--    </div>-->
+    <!--    <div class="search-area">-->
+    <!--        <input type="text" class="search-input">-->
+    <!--        <button class="but">검색</button>-->
+    <!--    </div>-->
 </div>
 
 <section id="tripple">
@@ -92,10 +93,10 @@
         </a></div>
 
     <div class="ibox">
-         <a href="/festival" class="a1">
-             <img class="imgbox" alt="코스 작성 화면" src="/img/축제2.png"></br>
-             <p class="ppp">축제게시판</p>
-         </a></div>
+        <a href="/festival" class="a1">
+            <img class="imgbox" alt="코스 작성 화면" src="/img/축제2.png"></br>
+            <p class="ppp">축제게시판</p>
+        </a></div>
 </section>
 
 <!--<div class="aa">-->
@@ -110,46 +111,46 @@
 <!--</div>-->
 
 
-    <img class="middle"  src="/img/민성.PNG"></br>
+<img class="middle"  src="/img/민성.PNG"></br>
 
-    <div class="rec-card">
+<div class="rec-card">
 
-        <div class="a" th:each ="courselist, i : ${lists}" th:onclick="|courseView(${courselist.courseid})|">
+    <div class="a" th:each ="courselist, i : ${lists}" th:onclick="|courseView(${courselist.courseid})|">
 
-            <div class="card">
-                <!-- 카드 헤더 -->
-                <div class="card-header" th:style="'background-image: url(/img/loc/'+${courselist.region}+'.png);'">
-                    <div class = "card-header-is_closed" >
-                        <div class = "card-header-text" >[[${i.count}]]위 </div >
-                    </div >
+        <div class="card">
+            <!-- 카드 헤더 -->
+            <div class="card-header" th:style="'background-image: url(/img/loc/'+${courselist.region}+'.png);'">
+                <div class = "card-header-is_closed" >
+                    <div class = "card-header-text" >[[${i.count}]]위 </div >
+                </div >
+            </div>
+            <!--  카드 바디 -->
+            <div class="card-body">
+                <!--  카드 바디 헤더 -->
+                <div class="card-body-header">
+                    <h1>[[${courselist.title}]]</h1>
+                    <p class="card-body-hashtag"> #조회순 #[[${i.count}]]위</p>
+                    <p class = "card-body-nickname">
+                        [[${courselist.region}]]</p>
                 </div>
-                <!--  카드 바디 -->
-                <div class="card-body">
-                    <!--  카드 바디 헤더 -->
-                    <div class="card-body-header">
-                        <h1>[[${courselist.title}]]</h1>
-                        <p class="card-body-hashtag"> #조회순 #[[${i.count}]]위</p>
-                        <p class = "card-body-nickname">
-                            [[${courselist.region}]]</p>
-                    </div>
-                    <p class="card-body-description">
-                        [[${courselist.getOrders()}]]
-                    </p>
-                    <!--  카드 바디 푸터 -->
-                    <div class="card-body-footer">
-                        <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-                        <i class="icon icon-view_count"></i> 조회수: [[${courselist.viewCount}]]회
-<!--                        <i class="reg_date"> 22/12/06 </i>-->
-                    </div>
+                <p class="card-body-description">
+                    [[${courselist.getOrders()}]]
+                </p>
+                <!--  카드 바디 푸터 -->
+                <div class="card-body-footer">
+                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                    <i class="icon icon-view_count"></i> 조회수: [[${courselist.viewCount}]]회
+                    <!--                        <i class="reg_date"> 22/12/06 </i>-->
                 </div>
             </div>
         </div>
-        <script th:inline="javascript">
+    </div>
+    <script th:inline="javascript">
           function courseView(id){
             location.href="/courseViewPage/"+id
           }
         </script>
-    </div>
+</div>
 
 <img class="middle"  src="/img/코알라.PNG"></br>
 
@@ -159,8 +160,8 @@
         <p class="footer-links">
             <a href="#" class="link-1">Home   |  </a>
             <a href="members/use">사용방법   |  </a>
-            <a href="#">Q&A     </a>
-<!--            <a href="#">Contact </a>-->
+            <a href="QnABoard/list">Q&A     </a>
+            <!--            <a href="#">Contact </a>-->
         </p>
         <p class="footer-company-name">Company SAII © 2022</p>
     </div>
