@@ -1,6 +1,7 @@
 package com.example.test.entity;
 
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +20,10 @@ public class QnABoard extends Base{
     @Column(name = "QnA_id")
     private Long id;
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String content;
 
     @OneToMany(mappedBy = "qnABoard",orphanRemoval = true)
