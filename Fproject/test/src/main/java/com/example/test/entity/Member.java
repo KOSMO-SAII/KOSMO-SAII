@@ -107,6 +107,7 @@ public class Member{
         member.setPhoneNumber(memberDTO.getPhoneNumber());
         member.setRole(Role.USER);
         member.setCreateDate(LocalDateTime.now());
+        member.setPicture("/img/profile/saii.png");
         return member;
     }
 
