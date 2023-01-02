@@ -75,11 +75,20 @@ public class QnaBoardController {
     }
 
     @GetMapping("/view/{id}")
-    public String view(Model model, @PathVariable("id") Long id) {
+    public String view(Model model, @PathVariable("id") Long id, Principal principal) {
         model.addAttribute("board", qnaBoardService.view(id));
         List<QnABoardReply> qnABoardReplyList=null;
         qnABoardReplyList = qnAReplyService.view(id);
         model.addAttribute("replyList", qnABoardReplyList);
+
+        if(principal ==null){
+            model.addAttribute("loginCheck",false);
+        }else{
+            model.addAttribute("loginCheck",true);
+            model.addAttribute("idCheck",principal.getName());
+        }
+
+
         return "qna_board/view";
     }
 
