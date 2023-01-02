@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.test.repository.MainBoardDAO">
+	<select id="listDao" resultType="com.example.test.domain.MainBoardDTO">
+		select * from main_board order by post_id desc
+	</select>
+	<select id="viewDao" resultType="com.example.test.domain.MainBoardDTO">
+		select * from main_board where post_id=#{0}
+	</select>
+
+    <delete id="deleteDao">
+        delete from main_board where id = #{0}
+    </delete>
+    
+    <update id="plusviewcountDao">
+    	update main_board set viewcount = viewcount + 1 where post_id = #{0}
+    </update>
+</mapper>

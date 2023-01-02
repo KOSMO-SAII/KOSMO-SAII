@@ -1,6 +1,7 @@
 package com.example.test.controller;
 
 import com.example.test.domain.ReviewCourseDTO;
+import com.example.test.service.ReviewCommentService;
 import com.example.test.service.ReviewCourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,8 @@ public class ReviewCourseApiController {
 
 
 	private final ReviewCourseService reviewCourseService;
-	
+	private final ReviewCommentService reviewCommentService;
+
 	@PostMapping("/reviews")
 	public ResponseEntity save(@RequestBody ReviewCourseDTO dto){
 		return ResponseEntity.ok(reviewCourseService.save(dto));
@@ -55,6 +57,7 @@ public class ReviewCourseApiController {
 	@DeleteMapping("/reviews/{id}")
 	public Long delete(@PathVariable Long id) {
 		reviewCourseService.delete(id);
+		reviewCommentService.commentDeleteAll(id);
 		return id;
 	}
 

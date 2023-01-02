@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -33,5 +34,22 @@ public class ReviewCommentService {
         reviewCommentRepository.save(comment);
 
         return  dto.getId();
+    }
+
+    @Transactional
+    public void commentDeleteAll(Long id){
+       List<ReviewComment> comment = reviewCommentRepository.findByPostId(id);
+        for(ReviewComment c : comment){
+            reviewCommentRepository.delete(c);
+            System.out.println(c);
+        }
+    }
+
+    @Transactional
+    public void commentDelete(Long id){
+        ReviewComment comment = reviewCommentRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("댓글 삭제 실패"+id));
+        reviewCommentRepository.delete(comment);
+        System.out.println(comment);
     }
 }

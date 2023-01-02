@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>장소</title>
+</head>
+<body>
+  <span th:text="|이름 : ${place.place_name}|"></span>
+  <span th:text="|주소 : ${place.road_address_name}|"></span>
+  <span th:text="|전화번호 : ${place.phone_number}|"></span>
+  <a th:href="@{${place.place_url}}"><span th:text="|상세보기 : ${place.place_url}|"></span></a>
+</body>
+</html>

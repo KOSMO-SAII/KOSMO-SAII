@@ -21,4 +21,11 @@ public class ReviewCommentApiController {
         return ResponseEntity.ok(reviewCommentService.commentSave(dto));
     }
 
+
+    @DeleteMapping("/comments/{id}")
+    public Long delete(@PathVariable Long id){
+        reviewCommentService.commentDelete(id);
+
+        return id;
+    }
 }

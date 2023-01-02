@@ -54,6 +54,7 @@ public class MemberDTO {
 
     private String oProfileImg;
 
+    @Pattern(regexp = "^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$", message = "하이픈(-)을 포함하여 입력해주세요.")
     private String phoneNumber;
 
     private Long memberId;

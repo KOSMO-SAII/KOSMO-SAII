@@ -27,6 +27,7 @@ public class UploadResultDTO implements Serializable {
         }catch (UnsupportedEncodingException e){
             e.printStackTrace();
         }
+        System.out.println(folderPath+"/"+uuid+"_"+fileName);
         return "";
     }
 

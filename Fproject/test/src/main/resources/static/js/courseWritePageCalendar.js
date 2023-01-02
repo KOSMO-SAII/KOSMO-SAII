@@ -15,6 +15,7 @@ var datas=[];
 var editsSchedul=[];
 var editmode=false;
 var checkmode2=false;
+var firstCheck=false
 
 if(mode=="edit"){
     var modalPop = $('.modal-wrap');
@@ -29,6 +30,8 @@ if(mode=="edit"){
         hideList(optVal)
         setEditsSchedul();
         editmode=true;
+
+        firstCheck=true;
 }
 
 function setEditsSchedul(){
@@ -220,17 +223,25 @@ $('.days').on('change',function(){
      addList()
      hideList(optVal)
 
+     if(firstCheck){
+     }else{
+        firstCheck=true;
+     }
+
 }
 
 //일자별 코스 배열 생성
 function setSchedul(){
+    console.log("days: "+days)
     var delul=$('ul.My_List')
-    if(mode=='edit'){
+    console.log("delul.length: "+delul.length)
+    if(firstCheck){
         if(days==delul.length){
             console.log("스케쥴 배열 같음")
         }else if(days>delul.length){
            console.log("스케쥴 배열 큼")
            var sum=days-delul.length
+           console.log("sum: "+sum)
            for(var i=0;i<sum;i++){
                var array=[]
                var num={num:0};
@@ -319,6 +330,7 @@ function setSchedul(){
             }
         }
     }
+    console.log(schedul)
 }
 
 //임시 코드 길이서 메소드로 분리
@@ -380,7 +392,7 @@ function hideList(optVal){
 function addList(){
     var delul=$('ul.My_List')
 
-    if(mode=='edit'){
+    if(firstCheck){
         if(days==delul.length){
         }else if(days>delul.length){
             var num=days-delul.length;
@@ -392,9 +404,10 @@ function addList(){
                 $(ul).addClass("My_List")
             }
         }else if(days<delul.length){
+            var length=delul.length-1;
             var num=delul.length-days;
             var num2=days;
-            for(var i=0;i<num;i++){
+            for(var i=0;i>num;i++){
                 delul[i].remove();
             }
         }
