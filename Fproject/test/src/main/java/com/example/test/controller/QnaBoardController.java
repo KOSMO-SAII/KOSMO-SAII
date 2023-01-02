@@ -52,17 +52,20 @@ public class QnaBoardController {
     @GetMapping("/list")
     public String list(Model model,
                        Optional<Integer> page,
-                       String searchKeyword
+                       String searchKeyword,
+                       Principal principal
     ) {
         Page<QnABoard> list = null;
         PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,10);
 
-        if (searchKeyword == null) {
+        if (searchKeyword == null || searchKeyword=="" || searchKeyword.equals("null")) {
             list = qnaBoardService.list(pageRequest);
         } else {
             list = qnaBoardService.searchList(searchKeyword, pageRequest);
         }
-
+        for(QnABoard qnABoard : list){
+            System.out.println(qnABoard.getMember().getPicture());
+        }
 
         model.addAttribute("list", list);
         model.addAttribute("maxPage", 5);
