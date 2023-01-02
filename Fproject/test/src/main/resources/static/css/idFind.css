@@ -36,11 +36,12 @@
 
 .divOut{
     width:100vw;
-    height:70vh;
+    height:60vh;
+    margin-top: 100px;
 }
 .divInner{
-    width:500px;
-    height:500px;
+    width:550px;
+    height:400px;
     margin:auto;
     border:3px solid;
     border-radius: 5px;
@@ -48,6 +49,7 @@
 .idFind{
     margin:auto;
     width: 135px;
+    margin-bottom: 20px;
 }
 .divInner2{
     margin:auto;
@@ -63,7 +65,7 @@
 }
 #spanEmail{
     position:relative;
-    top:10px;
+    top:30px;
 }
 #modalbtn {
  position: relative;
@@ -76,7 +78,7 @@
  text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
   text-decoration: none;
   float:right;
-  top: -50px;
+  top: -30px;
   height:40px;
   left:11px;
   border:none;
@@ -118,6 +120,7 @@
         0 4px 0 0 #9EC7CC,
         0 4px 0 1px rgba(0,0,0,0.4),
         0 4px 4px 1px rgba(0,0,0,0.5);
+        margin-top: 60px;
 }
 .btn-3d.red:active {
   box-shadow: 0 0 0 1px #94BABF inset,
