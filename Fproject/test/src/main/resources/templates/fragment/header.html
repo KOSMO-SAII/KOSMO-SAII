@@ -22,12 +22,14 @@
                 <a href="http://localhost:8081/SAII/mypage?id=${UserId }"
                    class=" link-dark gnb">MyPage</a>
             </li>
-            <li><a href="http://localhost:8081/SAII/mypage"
-                   class=" link-dark ">공지사항</a></li>
+<!--            <li><a href="http://localhost:8081/SAII/mypage"-->
+            <li><a href="/members/use"
+                   class=" link-dark ">사용방법</a></li>
             <li test="${UserId==null}"><a href="#"
                                           class="link-dark ">Q&A</a></li>
             <li test="${UserId==null}"><a href="#"
                                           class=" link-dark ">About</a></li>
+
 
             <div class="col-md-3 text-end">
                 <!--                <p th:if ="${UserId==null}">-->
