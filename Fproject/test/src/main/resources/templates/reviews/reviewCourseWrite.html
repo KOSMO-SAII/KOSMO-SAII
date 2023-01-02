@@ -22,6 +22,40 @@
 <body>
 
 
+
+
+<h1> 게시글 등록 </h1>
+<div>
+    <div>
+        <form>
+            <div>
+                <label for="title">제목</label>
+                <input type="text" id="title" placeholder="제목을 입력하세요"></div>
+            <div>
+                <label for="writer">작성자</label>
+                <input type="text" id="writer" th:value="${nickname}" readonly></div>
+            <div>
+                <label for="course_id">코스번호</label>
+                <input type="text" id="course_id" ></div>
+            <div>
+                <label for="content">내용</label>
+                <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
+        </form>
+
+        <!--imageURL을 이용한 <img>태그 작성하는데, 업로드된 이미지를 보여줄 수 있는 div-->
+        <input name="uploadFiles" type="file" multiple>
+        <button class="uploadBtn">Upload</button>
+
+        <div class="uploadResult">
+
+        </div>
+
+        <a href="/" role="button">취소</a>
+        <input type="button" id="btn-save" onclick="reviewSave()" value="등록">
+    </div>
+</div>
+
+
 <script th:inline="javascript">
     function reviewSave(){
         var data = {
@@ -52,30 +86,90 @@
                 console.log(header);
                 console.log(data.content);
         };
+
+
+
+
+<!--    //업로드 버튼 이벤트 처리 순서-->
+<!--    //(1) Upload 클릭시 FormData 생성-->
+<!--    //(2) 컨트롤러의 uploadFiles 이름으로 파일 데이터 추가-->
+<!--    //(3) 여러 개 파일 업로드할 수 있는 화면 생성-->
+<!--    //(4) 파일 선택 후, 업로드 버튼 클릭시 선택 파일 정보가 콘솔창에 출력-->
+
+<!--    //업로드 이벤트 처리 구성-->
+<!--    //(1) 버튼 클릭시 사용할 함수 작성-->
+<!--    //(2) 변수 : fromData, inputFile, files-->
+<!--    //(3) 반복문을 통한 메서드 호출 : console에 출력, formData에 파일 추가-->
+
+    $('.uploadBtn').click(function( ) {
+
+        var formData = new FormData();
+        var inputFile = $("input[type='file']");
+        var files = inputFile[0].files;
+        for (var i = 0; i < files.length; i++) {
+            console.log(files[i]);
+            formData.append("uploadFiles", files[i]);
+        }
+
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+        $.ajax({
+          beforeSend: function(xhr){
+              xhr.setRequestHeader(header,token);
+              },
+            url: '/uploadAjax',
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            dataType:'json',
+            success: function(result){
+                console.log(result);
+<!--                //나중에 화면 처리-->
+                showUploadedImages(result);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus);
+            }
+        });
+    });
+
+
+
+<!--    //Ajax 업로드 이후 이미지 호출하는 showUploadedImages() 함수 작성-->
+<!--    //: Ajax 호출 성공시, '/display?fileName=xxx' 호출-->
+    function showUploadedImages(arr){
+        console.log(arr);
+        var divArea = $(".uploadResult");
+        var str = "";
+        for(var i = 0; i < arr.length; i++){
+            str += "<div>";
+            str += "<img src='/display?fileName="+arr[i].thumbnailURL+"'>";
+            str += "<button class='removeBtn' data-name='"+arr[i].imageURL +"'>REMOVE</button>"
+            str += "</div>";
+        }
+        divArea.append(str);
+    }
+
+    // 버튼과 이미지를 한꺼번에 삭제하는 이벤트 처리
+    $(".uploadResult").on("click", ".removeBtn", function(e){
+
+        var target = $(this);
+        var fileName = target.data("name");
+        var targetDiv = $(this).closest("div");
+
+        console.log(fileName);
+
+        $.post('/removeFile', {fileName: fileName}, function(result){
+            console.log(result);
+            if(result === true){
+                targetDiv.remove();
+            }
+        } )
+
+    });
+
 </script>
-
-<h1> 게시글 등록 </h1>
-<div>
-    <div>
-        <form>
-            <div>
-                <label for="title">제목</label>
-                <input type="text" id="title" placeholder="제목을 입력하세요"></div>
-            <div>
-                <label for="writer">작성자</label>
-                <input type="text" id="writer" th:value="${nickname}" readonly></div>
-            <div>
-                <label for="course_id">코스번호</label>
-                <input type="text" id="course_id" ></div>
-            <div>
-                <label for="content">내용</label>
-                <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
-        </form>
-        <a href="/" role="button">취소</a>
-        <input type="button" id="btn-save" onclick="reviewSave()" value="등록">
-    </div>
-</div>
-
 
 <!--마우스커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>

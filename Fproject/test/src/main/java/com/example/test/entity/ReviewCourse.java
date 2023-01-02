@@ -34,6 +34,8 @@ public class ReviewCourse extends Base{
 
     private String writer;
 
+    private String picture;
+
     @Builder
     public ReviewCourse(String course_id, String title, String content, Member member, String writer){
         this.course_id=course_id;
