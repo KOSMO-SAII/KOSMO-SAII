@@ -4,32 +4,41 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">>
 <head>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <title>Title</title>
   <style>
-  div {width: 100%; height:100%;
-      display:inline-block;
-      margin:auto;
+  .dd {width: 100%;
+      margin-left:300px;
+      height:600px;
+      position:relative;
       }
-  .pho {width: 500px; height:200px;
-
+  .ee {display:inline-block;
+      position:relative;
+      bottom: 500px;
+      left: 700px;}
+  .pho {width: 300px; height:600px;
+        display:inline;
+        position:relative;
        }
+  .z {color:#2B3856;}
 
   </style>
 </head>
 <div layout:fragment="content">
 <body>
-<div>
-    <div>
+<hr>
+    <div class="dd">
         <img class="pho" src="/img/민성3.PNG"></br>
     </div>
+    <div class="ee">
+        <h3><span>SAII</span>&nbsp<span style="color: #2B3856;">를 소개합니다.</span></h3>
+        <p>각국의 봉쇄조치와 유류비 상승으로 인해 코로나 이전만큼 해외여행이 원활하지 않았으나
+            현재 거리두기 완화로 인해 국내 여행에 대한 관심이 높아지고 있습니다
+            현재 많은 정보를 제공하는 해외여행 사이트에 비해 국내여행은 정보 및 여행계획을 제공하는 사이트가 많지 않으며 밴치마킹한 대한민국 구석구석도 아쉬운 점이 많아서, 여행 계획을 유저가 더 편하게 만들고 정보를 얻을 수 있도록 구현했습니다.
+        </p>
 
-    <div>
-        <h2>저희 프로젝트 팀 <span style="color: #2B3856;>SAII</span>를 소개합니다.</h2>
 
-        <p></p>
     </div>
-
-</div>
 </body>
 </html>
