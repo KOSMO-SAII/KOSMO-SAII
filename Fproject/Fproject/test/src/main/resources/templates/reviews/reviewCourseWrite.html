@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <!--    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.-->
+    <!--    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.-->
+    <!-- 제이쿼리    -->
+    <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <title>사이</title>
+    <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
+</head>
+<div layout:fragment="content">
+<body>
+
+
+<script th:inline="javascript">
+    function reviewSave(){
+        var data = {
+                title: $('#title').val(),
+                author: $('#author').val(),
+                content: $('#content').val(),
+                course_id: $('#course_id').val()
+            };
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content")
+            $.ajax({
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader(header,token);
+                    },
+                    type : 'POST',
+                    url : '/api/reviews',
+                    dataType : 'json',
+                    contentType : 'application/json; charset=utf-8',
+                    data : JSON.stringify(data)
+                }).done(function(){
+                    alert('글이 등록되었습니다.');
+                    window.location.href = '/reviews/course';
+                }).fail(function(error){
+                    alert(JSON.stringify(error));
+                    window.location.href = '/reviews/course';
+                })
+                console.log(token);
+                console.log(header);
+                console.log(data.content);
+        };
+</script>
+
+<h1> 게시글 등록 </h1>
+<div>
+    <div>
+        <form>
+            <div>
+                <label for="title">제목</label>
+                <input type="text" id="title" placeholder="제목을 입력하세요"></div>
+            <div>
+                <label for="author">작성자</label>
+                <input type="text" id="author" th:value="${nickname}" readonly></div>
+            <div>
+                <label for="course_id">코스번호</label>
+                <input type="text" id="course_id" ></div>
+            <div>
+                <label for="content">내용</label>
+                <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
+        </form>
+        <a href="/" role="button">취소</a>
+        <input type="button" id="btn-save" onclick="reviewSave()" value="등록">
+    </div>
+</div>
+
+
+<!--마우스커서-->
+<style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
+<a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
+</body>
+</div>
+</html>

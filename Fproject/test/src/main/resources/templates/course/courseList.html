@@ -11,10 +11,13 @@
           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
   <!-- 제이쿼리 적용 -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
   <title>사이</title>
 </head>
 <div layout:fragment="content">
+  <link th:href="@{/css/courseList.css}" rel="stylesheet" />
   <body>
+  <section class="sch_wrap">
     <div>
       <table>
         <tr>
@@ -31,22 +34,43 @@
         </tr>
       </table>
     </div>
-    <div>
-      <table class="table_wrap" th:each="list, i: ${lists}" th:onclick="|courseView(${list.courseid})|">
-        <tr>
-          <td class="map_wrap" rowspan="3">
-            <div class="map"style="width: 200px; height: 200px; position: relative;"></div>
-          </td>
-          <td colspan="2" th:text="|제목 : ${list.title}|"></td>
-          <td th:text="${list.region}"></td>
-        </tr>
-        <tr>
-          <td colspan="4" th:text="${list.getOrders()}"></td>
-        </tr>
-        <tr>
-          <td colspan="3" th:text="${list.createdBy}"></td>
-          <td th:text="${list.viewCount}"></td>
-        </tr>
+    <div class="trip_list1">
+      <div class="inner" th:each="list, i: ${lists}" th:onclick="|courseView(${list.courseid})|">
+        <div class="img">
+          <div class="img map"></div>
+        </div>
+        <div class="txt_wrap">
+          <ul>
+            <li class="geo txt_hide">
+              <span th:text="${list.region}"></span>
+            </li>
+            <li class="tit" th:text="${list.title}"></li>
+            <li class="schedule pc" th:text="${list.getOrders()}"></li>
+            <li class="di_flex">
+              <ul class="ico_wrap">
+                <li>
+                  <span class="ico_attr"></span>
+                  장소 수
+                </li>
+                <li>
+                  <span class="ico_down"></span>
+                  다운로드 수
+                </li>
+                <li>
+                  <span class="ico_spot"></span>
+                  조회 수
+                </li>
+                <li class="user_wrap">
+                <span clas="img">
+                  <img alt="">
+                </span>
+                  <span class="nick" th:text="${list.createdBy}"></span>
+                </li>
+                <li class="date" style="float:right" th:text="여행일자"></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
         <script th:inline="javascript">
           function courseView(id){
             location.href="/courseViewPage/"+id
@@ -85,7 +109,7 @@
           }
           var map = new kakao.maps.StaticMap(mapContainer[index],mapOption)
         </script>
-      </table>
+      </div>
     </div>
 
 
@@ -110,7 +134,7 @@
 
       </ul>
     </div>
-
+  </section>
   </body>
 <!--  <script type="text/javascript" th:src="@{ /js/courseList.js}"></script>-->
 </div>

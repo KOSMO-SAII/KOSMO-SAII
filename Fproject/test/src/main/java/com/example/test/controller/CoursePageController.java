@@ -136,16 +136,16 @@ public class CoursePageController extends HttpServlet {
         if(check){
             return "course/courseWritePage";
         }else {
-            try {
-                //비로그인시 알람창
-                resp.setContentType("text/html; charset=utf-8");
-                PrintWriter w = resp.getWriter();
-                w.write("<script>alert('로그인을 해주세요');location.href='/members/login';</script>");
-                w.flush();
-                w.close();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                //비로그인시 알람창
+//                resp.setContentType("text/html; charset=utf-8");
+//                PrintWriter w = resp.getWriter();
+//                w.write("<script>alert('로그인을 해주세요');location.href='/members/login';</script>");
+//                w.flush();
+//                w.close();
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
             return "redirect:/members/login";
         }
 

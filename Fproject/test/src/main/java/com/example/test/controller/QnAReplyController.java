@@ -26,11 +26,13 @@ public class QnAReplyController {
     }
 
     @PostMapping("/reply_delete")
-    public String replyDelete(@ModelAttribute QnABoardReply qnABoardReply, Long reply_id){
-        System.out.println(reply_id);
+    public String replyDelete(@ModelAttribute QnABoardReply qnABoardReply, Long reply_id,Long qna_id){
+        System.out.println(reply_id+"1번");
+        System.out.println(qna_id+"2번");
+        System.out.println(qnABoardReply.getId());
 
 
-        return qnAReplyService.replyDelete(qnABoardReply,reply_id);
+        return qnAReplyService.replyDelete(qnABoardReply,qna_id);
     }
 
-};
+}

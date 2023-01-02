@@ -1,24 +1,26 @@
 .loginForm{
     width:100%;
-    height:60vh;
+    height:50vh;
+    margin-top: 100px;
 }
 .login{
-    width:300px;
+    width:450px;
     margin:auto;
 }
 .loginInput{
     vertical-align: 5px;
-    width:400px;
+    width:450px;
     height:40px;
     display: inline-block;
     border:none;
     background-color: #F7F7F7;
+    margin-bottom: 10px;
 }
 .loginBtn1{
    position:relative;
    border:none;
    top:14px;
-   width:400px;
+   width:450px;
     display: inline-block;
     font-size: 13px;
     padding: 4px 15px;
@@ -44,7 +46,7 @@
 .loginBtn2{
    position:relative;
    top:31px;
-   width:400px;
+   width:450px;
     display: inline-block;
     font-size: 13px;
     padding: 4px 15px;
@@ -73,7 +75,7 @@
 .loginBtn3{
    position:relative;
    top:48px;
-   width:400px;
+   width:450px;
     display: inline-block;
     font-size: 13px;
     padding: 4px 15px;

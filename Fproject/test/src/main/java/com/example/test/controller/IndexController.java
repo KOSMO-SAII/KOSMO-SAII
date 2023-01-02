@@ -38,6 +38,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
 
     @GetMapping("/reviews/write")
     public String reviewWrite(Model model, Principal principal){
+
         Member member = memberService.getMember();
         model.addAttribute("nickname",member.getNickname());
         return "reviews/reviewCourseWrite";

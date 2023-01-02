@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style4.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/content.css">
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+
+<div layout:fragment="content">
+<body>
+<header id="common_header" class="main_gnb sub">
+</header>
+<!-- //header -->
+
+<!-- contents -->
+<div id="contents" src="http://apis.data.go.kr/B551011/KorService/searchFestival?eventStartDate=20220101&eventEndDate=20230101&areaCode=&sigunguCode=&ServiceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=A&numOfRows=12&pageNo=1">
+
+    <div class="tit_cont"><!-- 1021 내위치버튼 있을때 position 추가 -->
+        <div class="area_tag">
+            <span class="name4"><span class="ico">Hot</span>축제</span>
+        </div>
+        <h2 class="tag">
+        </h2>
+        <!-- 0724 클래스 추가 strong 태그 추가 -->
+        <!-- // 0724 클래스 추가 strong 태그 추가 -->
+        <a href="javascript:" class="btn_represch">새로고침</a><!-- 0731 태그 위치 수정 -->
+        <span class="positionBtn" style="display: none;"><button type="button" onclick="layerPopup.layerShow('positionPop');">내 위치 OFF</button></span>
+    </div>
+
+    <div class="wrap_contView clfix">
+
+        <!-- 썸네일 리스트 -->
+        <div class="box_leftType1">
+            <div class="total_check">
+                <strong>총<span id="totalCnt"></span>건</strong>
+                <div class="btn_txt">
+                    <button type="button" class="on" id="1">최신순</button>
+                    <button type="button" id="2">거리순</button>
+                    <button type="button" id="3">인기순</button>
+                </div>
+                <button type="button" class="btn_mPop">상세조회</button>
+            </div>
+            <h3 class="blind" id="blindsearchtype">최신순</h3>
+            <ul class="list_thumType flnon">
+                <li class="bdr_nor"></li>
+
+                <!--<li class="bdr_nor"><div class="photo"><a href="js/festival" onclick="goDetail(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;1&quot;);"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=353b6137-9466-4360-8c05-1fc127bb0a4e&amp;thumb" alt="대한민국무용대상"><em class="flag type_ing">진행중</em></a></div><div class="area_txt">    <div class="tit">        <a href="js/festival" onclick="goDetail(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;1&quot;);">대한민국무용대상</a>    </div><p>[2022.12.09~12.09]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>    <p class="tag"><span>#관광지</span><span>#대한민국무용</span><span>#무용</span><span>#예술</span><span>#이번주는여기!</span><span>#축제</span><span>#행사</span>    </p></div><button type="button" title="열기" class="btn_view" onclick="viewClick(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;)">더보기</button><div class="pop_subMenu">    <ul>        <li class="btn_far"><a href="js/festival" onclick="setFavoContent(&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;)">즐겨찾기</a></li>        <li class="btn_share" id="4f24b070-eafe-4273-be52-fb98d21e00ca"><a href="js/festival" onclick="getShareInfo(&quot;%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EB%AC%B4%EC%9A%A9%EB%8C%80%EC%83%81&quot;,&quot;353b6137-9466-4360-8c05-1fc127bb0a4e&quot;,&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,15);">공유하기</a></li>        <li class="btn_cart" id="4f24b070-eafe-4273-be52-fb98d21e00ca"><a href="js/festival" onclick="myCourseList(&quot;C&quot;,&quot;15&quot;,&quot;4f24b070-eafe-4273-be52-fb98d21e00ca&quot;,&quot;&quot;)">코스에 담기</a></li>    </ul></div></li>-->
+            </ul>
+            <!-- paging -->
+            <div class="page_box">
+            </div>
+            <!-- //paging -->
+        </div>
+        <!-- //썸네일 리스트 -->
+
+        <div class="box_rightType1">
+            <div class="tit_mPop">
+                <h2>태그선택</h2>
+                <button type="button" class="btn_close">닫기</button>
+            </div>
+            <!-- 태그 리스트 -->
+            <div class="area_tagList">
+                <!-- ul class="tag_menu">
+                    <li id="thismonth"><a href="javascript:">#이달의축제</a></li>
+                </ul-->
+                <ul class="tag_list js_multi" id="monthlist">
+                    <li id="Allmon"><button type="button" class="btn_all_active">#전체</button></li>
+                    <li id="01"><button type="button" class="btn">#1월</button></li>
+                    <li id="02"><button type="button" class="btn">#2월</button></li>
+                    <li id="03"><button type="button" class="btn">#3월</button></li>
+                    <li id="04"><button type="button" class="btn">#4월</button></li>
+                    <li id="05"><button type="button" class="btn">#5월</button></li>
+                    <li id="06"><button type="button" class="btn">#6월</button></li>
+                    <li id="07"><button type="button" class="btn">#7월</button></li>
+                    <li id="08"><button type="button" class="btn">#8월</button></li>
+                    <li id="09"><button type="button" class="btn">#9월</button></li>
+                    <li id="10"><button type="button" class="btn">#10월</button></li>
+                    <li id="11"><button type="button" class="btn">#11월</button></li>
+                    <li id="12"><button type="button" class="btn">#12월</button></li>
+                </ul>
+                <ul class="tag_list area_list js_one" id="arealist">
+                    <li id="All"><button type="button" class="btn_all_active">#전체</button></li>
+                    <li id="1"><button type="button" class="btn">#서울</button></li>
+                    <li id="6"><button type="button" class="btn">#부산</button></li>
+                    <li id="4"><button type="button" class="btn">#대구</button></li>
+                    <li id="2"><button type="button" class="btn">#인천</button></li>
+                    <li id="5"><button type="button" class="btn">#광주</button></li>
+                    <li id="3"><button type="button" class="btn">#대전</button></li>
+                    <li id="7"><button type="button" class="btn">#울산</button></li>
+                    <li id="8"><button type="button" class="btn">#세종</button></li>
+                    <li id="31"><button type="button" class="btn">#경기</button></li>
+                    <li id="32"><button type="button" class="btn">#강원</button></li>
+                    <li id="33"><button type="button" class="btn">#충북</button></li>
+                    <li id="34"><button type="button" class="btn">#충남</button></li>
+                    <li id="35"><button type="button" class="btn">#경북</button></li>
+                    <li id="36"><button type="button" class="btn">#경남</button></li>
+                    <li id="37"><button type="button" class="btn">#전북</button></li>
+                    <li id="38"><button type="button" class="btn">#전남</button></li>
+                    <li id="39"><button type="button" class="btn">#제주</button></li>
+                </ul>
+                <ul class="tag_list area_view_list js_multi" id="sigungulist">
+                </ul>
+                <ul class="tag_list cnt_list js_multi" id="taglist">
+                </ul>
+                <div class="btn_area"><a onclick="javascript:$('.box_rightType1').removeClass('on');$('body').css('overflow','');">확인</a></div>
+            </div>
+            <!-- //태그 리스트 -->
+
+        </div>
+
+    </div>
+
+</div>
+<!-- //태그 리스트 -->
+
+
+<!-- 1017 추가 -->
+<div id="positionPop" class="wrap_layerpop">
+    <div class="layerpop">
+        <div class="positionCont">
+            <strong><em>위치 서비스</em>를 이용하면</strong>
+            <p>“거리순 정렬, 현재 위치에서 여행지까지의 거리를”<br/>확인할 수 있습니다.</p>
+            <div class="btn_center">
+                <a href="/detail/rem_detail.do?cotid=6b3a7a2f-cffc-483e-b3c6-f74bf974dc8c&con_type=10000">위치 서비스 허용 방법
+                    보기</a>
+            </div>
+            <button type="button" class="btn_close3" onclick="layerPopup.layerHide('positionPop');">닫기</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/festival.js}"></script>
+</body>
+</div>
+</html>

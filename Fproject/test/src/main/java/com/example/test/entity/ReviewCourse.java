@@ -34,13 +34,16 @@ public class ReviewCourse extends Base{
 
     private String writer;
 
+    private String picture;
+
     @Builder
-    public ReviewCourse(String course_id, String title, String content, Member member, String writer){
+    public ReviewCourse(String course_id, String title, String content, Member member, String writer, String picture){
         this.course_id=course_id;
         this.title=title;
         this.content=content;
         this.member=member;
         this.writer=writer;
+        this.picture=picture;
     }
 
 //    게시글 수정
@@ -48,6 +51,7 @@ public class ReviewCourse extends Base{
         this.title=title;
         this.content=content;
         this.course_id=course_id;
+        this.picture=picture;
     }
 
     public ReviewCourseDTO toDto(){
@@ -59,6 +63,7 @@ public class ReviewCourse extends Base{
         dto.setMember(member);
         dto.setTitle(title);
         dto.setWriter(writer);
+
 
         return dto;
     }

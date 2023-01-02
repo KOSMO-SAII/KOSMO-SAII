@@ -1,0 +1,101 @@
+.layout {
+    width: 100vw;
+}
+
+.divIn{
+    width:50vw;
+    margin:auto;
+}
+.divG{
+    width:100%;
+    padding: 8px;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    background-color: #eee;
+    text-align:center;
+}
+.errorDiv{
+    width: 100%%;
+    margin: auto;
+    background-color: #E6383F;
+    color:white;
+    display:none;
+    margin-bottom:2px;
+    height: 29px;
+    border-radius:3px;
+}
+.divGInput{
+    width:80%;
+    border:1px solid #DBDBDB;
+}
+.divText{
+    width:100%;
+}
+.textA{
+    width:100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height: 40vh;
+}
+.divSubmit{
+    width: 222px;
+    margin: 26px auto;
+}
+
+.withdraw {
+    position:relative;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    margin: auto 10px;
+    border-radius: 9px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    width:88px;
+    border:none;
+}
+.withdraw:hover {
+    background-color: #AEDBE1;
+    color:white;
+}
+
+.withdraw:active {
+  top: 4px;
+}
+
+/* 3D button colors */
+.withdraw {
+  background-color: #AEDBE1;
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #9EC7CC,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.withdraw:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+#redBtn{
+    background-color: #E6383F;
+    box-shadow: 0 0 0 1px #D6343B inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 4px 0 0 #D6343B,
+                0 4px 0 1px rgba(0,0,0,0.4),
+                0 4px 4px 1px rgba(0,0,0,0.5);
+}
+#redBtn:active{
+    box-shadow: 0 0 0 1px #D6343B inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+h6{
+    position: relative;
+    top: 4px;
+    left: 11%;
+}

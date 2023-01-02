@@ -10,7 +10,6 @@ head{ -ms-overflow-style: none;}
     margin-right: 30px;
     padding-top:30px;
     cursor:pointer;
-    margin-left: 100px;
 }
 .link-dark{text-decoration: none;
             padding:40px;
@@ -82,8 +81,8 @@ head{ -ms-overflow-style: none;}
 .ibox {height: 300px;
        width: 300px;
        display: inline-block;
-       margin-right: 50px;
-       margin-left: 50px;}
+       margin-right: 40px;
+       margin-left: 40px;}
 
  .ppp { margin-top: 30px;
         text-align: center ;}
@@ -247,7 +246,7 @@ h1 {font-size: 22px;
   color:  #ffffff;
   margin: 20px 0 12px;
   padding: 0;
-  margin-left: 20px;
+  margin-left: 35px;
 }
 .footer-distributed .footer-links a{
   line-height: 1.8;
@@ -257,7 +256,7 @@ h1 {font-size: 22px;
 }
 .footer-distributed .footer-company-name{
   font-weight: normal;
-  margin-left:50px;
+  margin-left:35px;
 }
 
 

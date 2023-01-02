@@ -1,8 +1,8 @@
 package com.example.test.controller;
 
-
 import com.example.test.domain.UploadResultDTO;
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,25 +26,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+//파일 업로드를 위한 클래스
 @RestController
 @Log4j2
 public class UploadController {
 
-    //업로드된 파일 저장 결로 설정
-    @Value("${com.example.upload.path") //애플리케이션 설정 변수
+
+
+    //업로드된 파일 저장 경로 설정
+    @Value("${com.example.upload.path}") //애플리케이션 설정 변수
     private String uploadPath;
+
 
     //MultipartFile 타입을 이용한 파일 사용
     //: Ajax를 이용한 파일 업로드 처리 -> 업로드 결과에 대한 화면 작성 X
     //따라서 업로드 결과는 JSON 형태로 제공
-
     @PostMapping("/uploadAjax")
     //ResponseEntity는 HttpHeader와 HttpBody를 포함하는 HttpEntity를 상속받아 구현한 클래스
     //즉, 사용자의 HttpRequest에 대한 응답 데이터를 포함하는 클래스로 HttpStatus, HttpHeaders, HttpBody를 포함
     public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
         List<UploadResultDTO> resultDTOList = new ArrayList<>();
 
-        for(MultipartFile uploadFile : uploadFiles) {
+        for (MultipartFile uploadFile : uploadFiles) {
             //1. 확장자 검사
             if (uploadFile.getContentType().startsWith("image") == false) {
                 log.warn("this is not image type");
@@ -51,10 +55,11 @@ public class UploadController {
                 //이미지가 아닐경우 HttpRequest에 포함하는 HttpStatus 403을 포함해 반환
             }
 
-            //실제 파일 이름이 전체 경로가 들오기 때문에 원본 이름 처리와 실제 파일 이름 처리
+            //실제 파일 이름이 전체 경로가 들어오기 때문에 원본 이름 처리와 실제 파일 이름 처리
             String originalName = uploadFile.getOriginalFilename();
             String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
             log.info("filename: " + fileName);
+
 
             //2. 동일한 폴더에 많은 파일 방지
             //(1) 날짜 폴더 생성
@@ -68,8 +73,18 @@ public class UploadController {
             Path savePath = Paths.get(saveName);
 
             try {
-                uploadFile.transferTo(savePath); //실제 이미지 저장부
-                //이미지 저장 후, DTOList에 추가한다.
+                uploadFile.transferTo(savePath); //실제 원본 이미지 저장부
+
+                //섬네일 생성하는데, 이름규칙 생성
+                String thumbnailSaveName = uploadPath + File.separator + folderPath + File.separator
+                        + "s_" + uuid + "_" + fileName;
+                File thumbnailFile = new File(thumbnailSaveName);
+
+                //섬네일 생성 메서드
+                //: 경로, 해당 파일, 원하는 사이즈
+                Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100, 100);
+
+                //이미지 저장, 섬네일 생성 후, DTOList에 추가한다.
                 resultDTOList.add(new UploadResultDTO(fileName, uuid, folderPath));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -79,12 +94,14 @@ public class UploadController {
         return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
         //성공할 경우엔 HttpStatus OK를 담아 resultDTOList를 반환한다.
     }
-
     //(3) 폴더 생성 메서드 작성
     private String makeFolder(){
-        String str= LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+//        String str= LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+//
+//        String folderPath = str.replace("/", File.separator);
 
-        String folderPath = str.replace("/", File.separator);
+        String str = "pictures";
+        String folderPath = str.replace("/",File.separator);
 
         //경로에 폴더가 없을 경우 폴더 생성
         File uploadPathFolder =new File(uploadPath, folderPath);
@@ -96,9 +113,10 @@ public class UploadController {
 
     }
 
+
     //URL로 이미지 전송을 위한 메서드
     @GetMapping("/display")
-    public ResponseEntity<byte[]> getFile(String fileName){ //URL 인코딩된 파일 이름을 파라미터로 받아서 해당 파일을 byte[]로 만들어 브라우저로 전송
+    public ResponseEntity<byte[]> getFile(String fileName){
         ResponseEntity<byte[]> result = null;
 
         try{
@@ -125,6 +143,40 @@ public class UploadController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return result;
+    }
+
+
+    //업로드된 파일 삭제를 위한 메서드
+    @PostMapping("/removeFile")
+    public ResponseEntity<Boolean> removeFile(String fileName) {
+
+        String srcFileName = null;
+        try {
+            //삭제할 파일 이름으로 URL디코딩
+            srcFileName= URLDecoder.decode(fileName, "UTF-8");
+            File file = new File(uploadPath+File.separator+srcFileName);
+
+            //(1) 원본 파일 삭제
+            boolean result = file.delete();
+
+            //파일의 디렉토리를 가져오는 함수 :getParent()
+            File thumbnail = new File(file.getParent(), "s_"+file.getName());
+
+            //(2) 섬네일 파일 삭제
+            result=thumbnail.delete();
+
+            return new ResponseEntity<>(result, HttpStatus.OK);
+
+
+
+        }
+        //Exception 클래스 : 사용자 실수와 같은 외적 요인으로 발생하는 예외로 예외처리 필수
+        //: IOException / ClassNotFoundException
+        //IOException 예외로 지정된 문자 부호화 형식을 지원하고 있지 않을때 발생
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

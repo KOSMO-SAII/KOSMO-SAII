@@ -34,7 +34,7 @@ public class Member{
 
     private LocalDateTime updateDate;
     private String address;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
     @Column(unique = true, nullable = false)
     private String email;
@@ -60,8 +60,11 @@ public class Member{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<ReviewCourse> ReviewCourseList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE)
     private List<QnABoardReply> replyList;
+
+    @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE)
+    private List<QnABoard> qnABoards;
 
     @Builder
     public Member(Long memberId, String address,LocalDateTime createDate, LocalDateTime updateDate,
@@ -104,6 +107,7 @@ public class Member{
         member.setPhoneNumber(memberDTO.getPhoneNumber());
         member.setRole(Role.USER);
         member.setCreateDate(LocalDateTime.now());
+        member.setPicture("/img/profile/saii.png");
         return member;
     }
 
@@ -140,6 +144,7 @@ public class Member{
         member1.setCreateDate(memberDTO.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
         member1.setPicture(memberDTO.getPicture());
+        member1.setQnABoards(null);
 
         System.out.println(member1+"여ㅣ가 업데이트 엔티티");
 
@@ -162,6 +167,7 @@ public class Member{
         member1.setCreateDate(memberDTO.getCreateDate());
         member1.setUpdateDate(LocalDateTime.now());
         member1.setPicture(memberDTO.getPicture());
+        member1.setQnABoards(null);
 
         System.out.println(member1+"여ㅣ가 업데이트 엔티티");
 
@@ -191,6 +197,7 @@ public class Member{
         File saveFile = new File(projectPath,fileName);
         multipartFile.transferTo(saveFile);
         member1.setPicture("/img/profile/"+fileName);
+        member1.setQnABoards(null);
 //        member1.setPicture(member.getOProfileImg());
 
         return member1;
