@@ -31,6 +31,8 @@ import java.util.UUID;
 @Log4j2
 public class UploadController {
 
+
+
     //업로드된 파일 저장 경로 설정
     @Value("${com.example.upload.path}") //애플리케이션 설정 변수
     private String uploadPath;
@@ -94,9 +96,12 @@ public class UploadController {
     }
     //(3) 폴더 생성 메서드 작성
     private String makeFolder(){
-        String str= LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+//        String str= LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+//
+//        String folderPath = str.replace("/", File.separator);
 
-        String folderPath = str.replace("/", File.separator);
+        String str = "pictures";
+        String folderPath = str.replace("/",File.separator);
 
         //경로에 폴더가 없을 경우 폴더 생성
         File uploadPathFolder =new File(uploadPath, folderPath);

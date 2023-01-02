@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>코스 작성</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <!--slick slider 필요 태그 st-->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
+  <!-- jQuery CDN -->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <!-- slick Carousel CDN -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+  <!--slick slider 필요 태그 en-->
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <link th:href="@{/css/popup.css}" rel="stylesheet" >
+</head>
+<body>
+<!-- 전체 레이아웃 -->
+<div id="wrap">
+  <!-- Content -->
+  <section class="content">
+    <div class="container">
+      <!-- 팝업용 임시 버튼입니다. -->
+      <div class="btn-box">
+        <a  class="btn-open" onClick="popOpen();">
+          <span>열기</span>
+        </a>
+      </div>
+      <!-- //팝업용 임시 버튼입니다. -->
+    </div>
+  </section>
+  <!-- //Content -->
+</div>
+<!-- //전체 레이아웃 -->
+
+<!-- modal 영역 -->
+<div class="modal-bg" onClick="popClose();"></div> <!--onClick="popClose();" -->
+<!--<form th:action="@{/test2}" action="get">-->
+<div class="modal-wrap class" th:fragment="popup">
+  <div class="class2">
+    <input class="input "type="text" name="ptitle" /><br>
+    <button type="button" class="nextbtn">다음</button>
+  </div>
+  <div class="class2">
+    <select name="pregion">
+      <option value="없음" >지역을 선택해주세요</option>
+      <option class="서울" value="서울">서울특별시</option>
+      <option class="부산" value="부산">부산광역시</option>
+      <option class="대구" value="대구">대구광역시</option>
+      <option class="인천" value="인천">인천광역시</option>
+      <option class="광주" value="광주">광주광역시</option>
+      <option class="대전" value="대전">대전광역시</option>
+      <option class="울산" value="울산">울산광역시</option>
+      <option class="세종" value="세종">세종특별자치시</option>
+
+      <option class="경기" value="경기">경기도</option>
+      <option class="강원" value="강원">강원도</option>
+      <option class="충북" value="충북">충청북도</option>
+      <option class="충남" value="충남">충청남도</option>
+      <option class="전북" value="전북">전라북도</option>
+      <option class="전남" value="전남">전라남도</option>
+      <option class="경북" value="경북">경상북도</option>
+      <option class="경남" value="경남">경상남도</option>
+      <option class="제주" value="제주">제주특별자치도</option>
+    </select><Br>
+    <button type="button" class="prevbtn">이전</button><button type="button" class="nextbtn">다음</button>
+  </div>
+  <div class="class2">
+    <input type="text" id="demo" name="day" value="" />
+    <br>
+    <button type="button" class="prevbtn">이전</button><input type="submit" class="nextbtn" onclick="popClose()" value="다음">
+  </div>
+<!--  <button class="modal-close" onClick="popClose();">닫기</button>-->
+</div>
+<!--</form>-->
+<!-- //modal 영역 -->
+</body>
+<script type="text/javascript" th:src="@{/js/popup.js}"></script>
+
+</html>
