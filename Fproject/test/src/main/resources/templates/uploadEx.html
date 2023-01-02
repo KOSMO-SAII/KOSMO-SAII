@@ -38,48 +38,15 @@
     $('.uploadBtn').click(function( ) {
 
         var formData = new FormData();
-
         var inputFile = $("input[type='file']");
-
         var files = inputFile[0].files;
-
         for (var i = 0; i < files.length; i++) {
             console.log(files[i]);
             formData.append("uploadFiles", files[i]);
         }
 
-<!--//Ajax 업로드 이후 이미지 호출하는 showUploadedImages() 함수 작성-->
-<!--//: Ajax 호출 성공시, '/display?fileName=xxx' 호출-->
-        function showUploadedImages(arr){
-
-            console.log(arr);
-
-            var divArea = $(".uploadResult");
-
-
-            for(var i = 0; i < arr.length; i++){
-                divArea.append("<img src='/display?fileName="+arr[i].imageURL+"'>");
-            }
-
-        }
-
-<!--        //업로드 버튼 클릭시 실제 업로드 처리 부분은 ajax를 이용해 처리-->
-<!--        //(1) 사용할 속성 지정-->
-<!--        //: contentType 속성은 false로 지정해, 'multipart/form-data'타입을 사용-->
-<!--        //: dataType은 json을 이용해 컨트롤러의 메서드에서 데이터 반환해 화면에 처리-->
-<!--        //(2) 파일 업로드 실행시 출력 하는 조건-->
-<!--        //1. 파일 업로드 성공-->
-<!--        //: success : function(result)-->
-<!--        //-> console.log(result);-->
-<!--        //2. 파일 업로드 실패-->
-<!--        //: error : function(jqXHR, textStatus, errorThrown)-->
-<!--        //-> console.log(textStatus);-->
-
-
-<!--        //실제 업로드 부분-->
-<!--        //upload ajax-->
       var token = $("meta[name='_csrf']").attr("content");
-      var header = $("meta[name='_csrf_header']").attr("content")
+      var header = $("meta[name='_csrf_header']").attr("content");
         $.ajax({
           beforeSend: function(xhr){
               xhr.setRequestHeader(header,token);
@@ -98,10 +65,43 @@
             error: function(jqXHR, textStatus, errorThrown){
                 console.log(textStatus);
             }
-
         });
     });
 
+
+
+<!--    //Ajax 업로드 이후 이미지 호출하는 showUploadedImages() 함수 작성-->
+<!--    //: Ajax 호출 성공시, '/display?fileName=xxx' 호출-->
+    function showUploadedImages(arr){
+        console.log(arr);
+        var divArea = $(".uploadResult");
+        var str = "";
+        for(var i = 0; i < arr.length; i++){
+            str += "<div>";
+            str += "<img src='/display?fileName="+arr[i].thumbnailURL+"'>";
+            str += "<button class='removeBtn' data-name='"+arr[i].imageURL +"'>REMOVE</button>"
+            str += "</div>";
+        }
+        divArea.append(str);
+    }
+
+    // 버튼과 이미지를 한꺼번에 삭제하는 이벤트 처리
+    $(".uploadResult").on("click", ".removeBtn", function(e){
+
+        var target = $(this);
+        var fileName = target.data("name");
+        var targetDiv = $(this).closest("div");
+
+        console.log(fileName);
+
+        $.post('/removeFile', {fileName: fileName}, function(result){
+            console.log(result);
+            if(result === true){
+                targetDiv.remove();
+            }
+        } )
+
+    });
 
 
 </script>

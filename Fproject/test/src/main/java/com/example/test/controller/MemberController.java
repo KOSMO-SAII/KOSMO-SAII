@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -57,7 +58,7 @@ MemberController {
     }
 
     @PostMapping("/signup")
-    public String newMember(@Validated MemberDTO memberDTO, BindingResult bindingResult, Model model) {
+    public String newMember(@Validated @DateTimeFormat(pattern="yyyy-MM-dd") MemberDTO memberDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             return "/signup/signup";
         }

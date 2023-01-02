@@ -1,11 +1,16 @@
 package com.example.test.service;
 
+import com.example.test.entity.Member;
 import com.example.test.entity.QnABoard;
+import com.example.test.repository.MemberRepository;
 import com.example.test.repository.QnaBoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 @RequiredArgsConstructor
@@ -13,14 +18,18 @@ public class QnaBoardService {
 
     private final QnaBoardRepository qnaBoardRepository;
 
+    private final MemberRepository memberRepository;
+
     // 글 작성 처리
-    public void write(QnABoard qnABoard) {
+    public void write(QnABoard qnABoard, Principal principal) {
+        Member member = memberRepository.findByLoginId(principal.getName());
+        qnABoard.setMember(member);
         qnaBoardRepository.save(qnABoard);
     }
 
     // 게시글 리스트 처리
-    public Page<QnABoard> list(Pageable pageable) {
-        return qnaBoardRepository.findAll(pageable);
+    public Page<QnABoard> list(PageRequest pageRequest) {
+        return qnaBoardRepository.findAllDesc(pageRequest);
     }
 
     // 특정 게시글 상세보기
@@ -34,7 +43,7 @@ public class QnaBoardService {
         qnaBoardRepository.deleteById(id);
     }
 
-    public Page<QnABoard> searchList(String searchKeyword, Pageable pageable) {
-        return qnaBoardRepository.findByTitleContaining(searchKeyword, pageable);
+    public Page<QnABoard> searchList(String searchKeyword, PageRequest pageRequest) {
+        return qnaBoardRepository.findByTitleContaining(searchKeyword, pageRequest);
     }
 }

@@ -5,6 +5,7 @@ import com.example.test.service.MemberService;
 import com.example.test.service.ReviewCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class ReviewCourseController {
     @RequestMapping("/reviews/course")
     public String index(Optional<Integer> page, Model model, Principal principal){
         Member member= memberService.getMember();
-        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,12);
+        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,12 , Sort.by("id").ascending());
 
         model.addAttribute("reviewCourse",reviewCourseService.findAllDesc(pageRequest));
         model.addAttribute("maxPage", 5);

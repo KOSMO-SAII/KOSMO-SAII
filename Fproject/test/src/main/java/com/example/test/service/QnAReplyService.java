@@ -47,6 +47,7 @@ public class QnAReplyService {
         return "redirect:/QnABoard/view/"+reply_id;
     }
 
+
     public List<QnABoardReply> view(Long id) {
         return qnAReplyRepository.findByQnABoard_Id(id);
     }
