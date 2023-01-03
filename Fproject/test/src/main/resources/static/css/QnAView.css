@@ -1,0 +1,201 @@
+.layout {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.layout input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.layout textarea {
+    width: 100%;
+    margin-top: 10px;
+    min-height: 300px;
+}
+.replyImg{
+    width:30px;
+    height:30px;
+    border-radius: 10px;
+    position:relative;
+    top:16px;
+    left:16px;
+}
+.replyNickname{
+    position: relative;
+    top: 20px;
+    left: 18px;
+}
+.replyCreate{
+    border:none;
+    width:157px;
+    position: relative;
+    top: -12px;
+    left: 186px;
+}
+.divOut{
+    width:100vw;
+}
+.divIn{
+    width:80vw;
+    margin:auto;
+}
+.divTitle{
+    width:100%;
+    height: 85px;
+    background-color:#EEEEEE;
+    border-top: 2px solid #D4D4D4;
+    border-bottom: 2px solid #D4D4D4;
+}
+.divTitleSpan{
+    position: relative;
+    top: 15px;
+    left: 39px;
+    font-size: 34px;
+}
+.divProfile{
+    border-bottom: 2px solid #D4D4D4;
+    width: 100%;
+    height: 91px;
+}
+.boardProfile{
+    width: 50px;
+    height: 50px;
+    border-radius: 22px;
+    position: relative;
+    top: 18px;
+    left: 26px;
+}
+.boardNickname{
+    position: relative;
+    top: 22px;
+    left: 42px;
+}
+.divText{
+    margin-top: 20px;
+    margin-bottom: 24px;
+    margin-left: 44px;
+}
+.boardCreate{
+    width: 157px;
+    border: none;
+    position: relative;
+    float: right;
+    top: 30px;
+    right: 10px;
+}
+.divBtn{
+    width:100%;
+    border-top: 2px solid #D4D4D4;
+    height: 91px;
+    padding-top: 20px;
+}
+
+.divInBtn{
+    position: relative;
+    left: 34px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    margin-right: 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    background-color: #AEDBE1;
+    box-shadow: 0 0 0 1px #94BABF inset,
+          0 0 0 2px rgba(255,255,255,0.15) inset,
+          0 4px 0 0 #9EC7CC,
+          0 4px 0 1px rgba(0,0,0,0.4),
+          0 4px 4px 1px rgba(0,0,0,0.5);
+    border:none
+
+}
+.divInBtn:active {
+    box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+    top:4px;
+}
+#divTitleId{
+    height:50px;
+}
+.divRe{
+    position: relative;
+    top: 12px;
+    left: 43px;
+}
+.divReply{
+    width:100%;
+    height:121px;
+    border-bottom: 2px solid #D4D4D4;
+}
+
+.replyDelete{
+    position: relative;
+    float: right;
+    top: -65px;
+    right: 20px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    margin-right: 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    background-color: #AEDBE1;
+    box-shadow: 0 0 0 1px #94BABF inset,
+          0 0 0 2px rgba(255,255,255,0.15) inset,
+          0 4px 0 0 #9EC7CC,
+          0 4px 0 1px rgba(0,0,0,0.4),
+          0 4px 4px 1px rgba(0,0,0,0.5);
+    border:none
+
+}
+.replyDelete:active {
+    box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+    top:-61px;
+}
+
+
+.replyContent{
+    position: relative;
+    top: 4px;
+    left: 14px;
+}
+.replyCon{
+    width:100%;
+    height:202px;
+    background-color:#E0E0E0;
+}
+#content{
+    width: 96%;
+    height: 133px;
+    margin: auto;
+    position: relative;
+    top: 20px;
+}
+.whitePlace{
+    width:100%;
+    height:20px;
+    background-color:white;
+}
+#replyButton{
+    float:right;
+    left:-12px;
+    top:27px;
+}
+#replyButton:active {
+    box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+    top:9px;
+}

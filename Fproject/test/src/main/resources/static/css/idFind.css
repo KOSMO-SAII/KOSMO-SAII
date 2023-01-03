@@ -24,6 +24,8 @@
 }
 #errorM{
     color:red;
+    position:relative;
+    top:13px;
 }
 .inputCheck{
     vertical-align: 5px;

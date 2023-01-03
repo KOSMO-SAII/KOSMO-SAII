@@ -84,6 +84,11 @@ MemberController {
         return "/howtoUse";
     }
 
+    @GetMapping("/intro")
+    public String introTo(){
+        return "/About";
+    }
+
     @GetMapping("/login")
     public String loginMember() {
 
@@ -114,8 +119,8 @@ MemberController {
 
         PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
 
-        model.addAttribute("lists", courseService.getList(pageRequest));
-        model.addAttribute("pages", courseService.getPage(pageRequest));
+        model.addAttribute("lists", courseService.getList("", pageRequest));
+        model.addAttribute("pages", courseService.getPage("", pageRequest));
         model.addAttribute("maxPage", 5);
         model.addAttribute("list", courseService.myList(principal));
 

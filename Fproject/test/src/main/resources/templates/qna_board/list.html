@@ -16,7 +16,7 @@
     <h1>질의응답 QnA</h1>
     <div class="divG">
       <form th:action="@{/QnABoard/list}" method="get">
-        <input style="width: 130px;" type="text" name="searchKeyword" class="SearchInput">
+        <input type="text" name="searchKeyword" class="SearchInput">
         <button type="submit" class="Search">검색</button>
       </form>
     </div>
@@ -35,7 +35,6 @@
           <td th:text="${board.id}" class="th1"></td>
           <td class="th22">
             <a th:text="${board.title}" th:href="@{/QnABoard/view/{id}(id=${board.id})}" class="tbTile"></a>
-            [[${board.member.picture}]]
           </td>
           <td class="th3"><img th:src="${board.member.picture}" class="qnaProfile"><span th:text="${board.member.nickname}"></span></td>
           <td class="th4"><input type="text" th:value="${board.createDate}" class="tbInput" disabled></td>
@@ -79,7 +78,7 @@
 </div>
 <div class="modal">
   <div class="modal_body">
-    <div id="texth4"><h3>로그인 후 이용해주세요.</h3></div>
+    <div id="texth4"><h3 id="loginH3">로그인 후 이용해주세요.</h3></div>
     <button id="cbtn" class="withdraw"><span id="xBtn">X</span></button>
     <a href="/members/login" class="withdraw" id="widthLogin">로그인</a>
   </div>

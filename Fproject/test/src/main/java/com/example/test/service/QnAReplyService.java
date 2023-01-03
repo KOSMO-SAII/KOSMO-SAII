@@ -40,11 +40,11 @@ public class QnAReplyService {
         return "redirect:/QnABoard/view/"+qna_id;
     }
 
-    public String replyDelete(QnABoardReply qnABoardReply,Long reply_id){
+    public String replyDelete(QnABoardReply qnABoardReply,Long qna_id){
 
         qnAReplyRepository.delete(qnABoardReply);
 
-        return "redirect:/QnABoard/view/"+reply_id;
+        return "redirect:/QnABoard/view/"+qna_id;
     }
 
 
