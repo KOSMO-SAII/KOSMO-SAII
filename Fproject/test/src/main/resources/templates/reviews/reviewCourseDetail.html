@@ -15,8 +15,59 @@
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
 </head>
-<div layout:fragment="content">
+<div class="body" layout:fragment="content">
 <body>
+<style>
+.body{
+    width: 70%;
+    margin:auto;
+    }
+#title{
+    font-size:25px;
+    }
+#writer, #createDate, #course_id{
+    height: fit-content;
+    width: 70%;
+    }
+#createdDate, #course_id, #writer, #title{
+    border:none;
+}
+label{
+    display: inline-block;
+    white-space: nowrap;
+}
+.d-flex {
+    display: flex!important;
+    align-items: baseline;
+}
+input{
+    border:none;
+    background: rgba(0,0,0,.0);
+    }
+.oneline{
+    display:flex;
+    align-items: baseline;
+    }
+#sub{
+    font-size: 15px;
+    background-color: white;
+    }
+.align{
+    font-size:20px;
+    font-weight:800;
+    margin-top: 5%;
+    margin-left: 1%;
+    }
+#content{
+    resize: none;
+    border: none;
+    width: -webkit-fill-available;
+}
+#content:focus {
+  outline: none;
+}
+
+</style>
 <script th:inline="javascript">
     function reviewDelete(){
     var id = $("#id").val();
@@ -46,26 +97,26 @@
 </script>
 
 
-<h1> 게시글 상세보기 </h1>
+<h1 class="align"> 코스 리뷰 </h1>
 
 <div class="col-md-12">
     <form class="card">
         <div class="card-header d-flex justify-content-between">
-            <label for="id">글 번호</label>
-            <input type="text" id="id" th:value="${reviewCourse.id}" readonly>
-            <label for="createDate">작성일시</label>
-            <input type="text" id="createDate" th:value="${reviewCourse.createDate}" readonly>
-            <label for="course_id">코스 번호</label>
-            <input type="text" id="course_id" th:value="${reviewCourse.course_id}" readonly></div>
-        <div class="card-header d-flex justify-content-between">
-            <label for="writer">작성자</label>
-            <input type="text" id="writer"  th:value="${nickname}" readonly></div>
-        <div class="card-body">
-            <label for="title">제목</label>
+<!--            <label for="id">글 번호</label>-->
+            <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly>
+<!--            <label for="title">제목</label>-->
             <input type="text" id="title"  th:value="${reviewCourse.title}" readonly></div>
+        <div id="sub" class="card-header d-flex justify-content-between">
+            <div class="oneline"><label for="writer">작성자</label>
+                <input type="text" id="writer"  th:value="${nickname}" readonly></div>
+            <div class="oneline"><label for="createDate">작성일시</label>
+                <input type="text" id="createDate" th:value="${reviewCourse.createDate}" readonly></div>
+            <div class="oneline"><label for="course_id">코스 번호</label>
+                <input type="text" id="course_id" th:value="${reviewCourse.course_id}" readonly></div></div>
+        <div class="card-body">
         <div>
-            <label for="content">내용</label>
-            <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea></div>
+<!--            <label for="content">내용</label>-->
+            <textarea id="content"  th:text="${reviewCourse.content}" readonly></textarea></div></div>
     </form>
 </div>
     <a th:href="@{/reviews/course}" class="btn btn-info bi bi-arrow-return-left">목록</a>
