@@ -33,7 +33,7 @@ public class CoursePageController extends HttpServlet {
 
 
         List<CourseList> courseList = courseService.getCourseList(course_id);
-          Map<String,String> map = courseService.getDays(course_id);
+        Map<String,String> map = courseService.getDays(course_id);
         //코스 id에 맞는 작성자 찾기
         String createdBy = courseList.get(0).getCreatedBy();
           String nowUser;

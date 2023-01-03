@@ -1219,4 +1219,10 @@ function arraychange(currentItemIndex,dropItemIndex){
 	//console.log(mymarkers);
 	makeline(pathArr[schedulNum]);
 	polylineArr[schedulNum].setMap(map);
+
+	function moveRegion(region){
+
+
+
+	}
 }

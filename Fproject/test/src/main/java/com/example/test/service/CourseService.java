@@ -310,6 +310,9 @@ public class CourseService {
     public List<CourseList> getCourseList(Long course_id){
         System.out.println("getCourseList/course_id : "+course_id);
         List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
+        CourseList course = courseList.get(0);
+        course.setViewCount(course.getViewCount()+1);
+        courseListRepository.save(course);
         System.out.println("getCourseList: "+courseList);
         return courseList;
     }
