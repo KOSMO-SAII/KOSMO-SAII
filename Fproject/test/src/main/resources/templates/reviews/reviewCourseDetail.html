@@ -89,17 +89,18 @@
     <div th:unless="${#lists.isEmpty(comments)}" class="card">
         <ul class="list-group-flush" style="padding-left: 0;">
             <div th:each="comment : ${comments}">
-
-                <li class="list-group-item">
-                        <span>
-                            <input type="hidden" id="commentId" th:value="${comment.id}">
-                            <span th:text="${comment.createdBy}" style="font-size: small"></span>
-                            <span th:text="${comment.createdDate}" style="font-size: xx-small"></span>&nbsp;
-<!--                                <button class="badge bi bi-pencil-square"> 수정</button>-->
-                                <button class="badge bi bi-trash"> 삭제</button>
-                        </span>
-                    <div><textarea th:text="${comment.comment}" readonly></textarea></div>
-                </li>
+                <form>
+                    <li class="list-group-item">
+                            <span>
+                                <input  type="hidden" th:value="${comment.id}">
+                                <span th:text="${comment.createdBy}" style="font-size: small"></span>
+                                <span th:text="${comment.createdDate}" style="font-size: xx-small"></span>&nbsp;
+    <!--                                <button class="badge bi bi-pencil-square"> 수정</button>-->
+                                    <button onclick="commentDelete(${comment.id})" class="badge bi bi-trash"> 삭제</button>
+                            </span>
+                        <div><textarea th:text="${comment.comment}" readonly></textarea></div>
+                    </li>
+                </form>
             </div>
         </ul>
     </div>
@@ -153,13 +154,12 @@
                 alert(JSON.stringify(error));
             });
         }
-    }
+    };
 
-function commentDelete(){
-    var commentId = $("#commentId").val();
+function commentDelete(commentId){
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
-
+    console.log(commentId);
     if(!confirm("삭제하면 되돌릴 수 없습니다. \n 정말 삭제하시겠습니까?")){
         return false;
     }
@@ -173,7 +173,6 @@ function commentDelete(){
              dataType : 'json',
              contentType : 'application/json; charset=utf-8'
          }).done(function(){
-             alert('댓글이 삭제되었습니다.');
              window.location.href = '/reviews/detail';
          }).fail(function(error){
              alert(JSON.stringify(error));

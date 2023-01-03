@@ -12,9 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -25,6 +23,7 @@ public class IndexController {//페이지에 관련된 컨트롤러
     public final ReviewCourseService reviewCourseService;
     private final MemberService memberService;
     private final MemberRepository memberRepository;
+
 
 
     @GetMapping("/index")
@@ -101,6 +100,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
         model.addAttribute("reviewCourse", dto);
         return "/reviews/reviewCourse";
     }
+
+
     //검색
 
 }
