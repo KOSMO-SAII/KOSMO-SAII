@@ -31,12 +31,16 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 //================
 //코스저장 전 체크
 function coursecheck(){
+    var title =$('input[name=ptitle]')[0].value;
+    var region = $('select[name=pregion]')[0].value;
     for(var i=0; i<schedul.length;i++){
         if(schedul[i][0]==undefined){
             alert((i+1)+"Day 코스를 저장해주세요");
             return false;
         }
     }
+
+        
 
 }
 
