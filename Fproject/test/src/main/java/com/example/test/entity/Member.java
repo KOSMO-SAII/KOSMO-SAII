@@ -34,6 +34,7 @@ public class Member{
 
     private LocalDateTime updateDate;
     private String address;
+    private String address1;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
     @Column(unique = true, nullable = false)
@@ -99,7 +100,9 @@ public class Member{
         member.setLoginPw(pw);
         member.setName(memberDTO.getName());
         member.setNickname(memberDTO.getNickname());
-        member.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+//        member.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member.setAddress(memberDTO.getAddress());
+        member.setAddress1(memberDTO.getAddress1());
         member.setBirthday(memberDTO.getBirthday());
         member.setEmail(memberDTO.getEmail());
         member.setBirthday(memberDTO.getBirthday());
