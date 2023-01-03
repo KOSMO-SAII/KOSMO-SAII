@@ -38,3 +38,40 @@ color: skyblue;}
             0 0 0 1px rgba(0,0,0,0.4);
 
 }
+.popclose {    display: inline-block;
+               *: ;
+               display: inline;
+               font-size: 13px;
+               padding: -6px 15px;
+               color: white;
+               margin: 20px 8px 15px;
+               border-radius: 6px;
+               text-align: center;
+               transition: top .01s linear;
+               text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+               text-decoration: none;
+               background-color: #AEDBE1;
+               box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
+               position: relative;
+    bottom: 376px;
+    left: 131px;
+               margin: 0px;
+               border: none;
+
+}
+.popclose.first{
+
+    left: 135px;
+}
+.popclose:after {display: inline-block;content: "\00d7"; font-size:15pt;
+
+            }
+
+.popclose:active{
+   position: relative;
+            bottom: 372px;
+      box-shadow: 0 0 0 1px #94BABF inset,
+            0 0 0 2px rgba(255,255,255,0.15) inset,
+            0 0 0 1px rgba(0,0,0,0.4);
+
+}

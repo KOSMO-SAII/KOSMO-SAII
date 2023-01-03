@@ -33,9 +33,7 @@ public class Maincontroller extends HttpServlet {
         model.addAttribute("lists",courseService.getCard());
         return "Mainpage";
     }
-    @RequestMapping("/test3")
-    public String test3()
-    {return "test3";}
+
     @RequestMapping("/option")
     public String option(){
         return "courseOption";
@@ -65,6 +63,10 @@ public class Maincontroller extends HttpServlet {
 
     @RequestMapping("/festival")
     public String list(Optional<Integer> page, Model model){
+
+        model.addAttribute("start",1);
+        model.addAttribute("end",10);
+
         return "board_festival/festival";
     }
 

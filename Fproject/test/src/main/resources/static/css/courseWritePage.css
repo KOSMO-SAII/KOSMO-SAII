@@ -21,7 +21,7 @@ form {
 }
 
 .my {
-	width: 20%;
+	width: 339px;
 	position: relative; /* overflow: scroll; */
 	height: 100%
 }
@@ -832,6 +832,7 @@ form {
 			border: none;
 			    font-weight: bold;
 			    font-size: 14px;
+			        outline: none;
 }
 /* 팝업창 css */
 .class {width:800px;height:500px;background-color:skyblue;text-align:center;}
