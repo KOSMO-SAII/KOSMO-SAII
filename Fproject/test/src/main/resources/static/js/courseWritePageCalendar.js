@@ -190,6 +190,81 @@ $('.days').on('change',function(){
     var title =$('input[name=ptitle]')[0].value;
     console.log(title)
     var region = $('select[name=pregion]')[0].value;
+    var xPoint = 0;
+    var yPoint = 0;
+    switch(region){
+        case '서울':
+            yPoint = 126.978652258823
+            xPoint = 37.56682420267543
+            break
+        case '인천':
+            yPoint = 126.7052580700657
+            xPoint = 37.456004465652136
+            break
+        case '대전':
+            yPoint = 127.384834846753
+            xPoint = 36.3505388993078
+            break
+        case '대구':
+            yPoint = 128.601805491082
+            xPoint = 35.8713802646523
+            break
+        case '부산':
+            yPoint = 129.07506783124393
+            xPoint = 35.17973748292069
+            break
+        case '울산':
+            yPoint = 129.3116012687339
+            xPoint = 35.53959646757943
+            break
+        case '세종':
+            yPoint = 127.28919531800284
+            xPoint = 36.48006310909889
+            break
+        case '광주':
+            yPoint = 126.85162995901466
+            xPoint = 35.16010195999625
+            break
+        case '경기':
+            yPoint = 127.05346120005058
+            xPoint = 37.28900614836743
+            break
+        case '강원':
+            yPoint = 127.729829010358
+            xPoint = 37.8853257858225
+            break
+        case '충북':
+            yPoint = 127.491457326504
+            xPoint = 36.6353581960153
+            break
+        case '충남':
+            yPoint = 126.67277619382
+            xPoint = 36.6588292533059
+            break
+        case '전북':
+            yPoint = 127.108976712012
+            xPoint = 35.8201963639598
+            break
+        case '전남':
+            yPoint = 126.462788333373
+            xPoint = 34.8160821479338
+            break
+        case '경북':
+            yPoint = 128.50580033730782
+            xPoint = 36.57599440982183
+            break
+        case '경남':
+            yPoint = 128.69192185958292
+            xPoint = 35.23770717139541
+            break
+        case '제주':
+            yPoint = 126.49822914119608
+            xPoint = 33.48891790333224
+            break
+    }
+
+    mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
+
     if(title==''){
         alert("제목을 입력해주세요")
         $('.class').slick('slickGoTo', 0);
@@ -228,6 +303,7 @@ $('.days').on('change',function(){
         firstCheck=true;
      }
 
+    moveRegion();
 }
 
 //일자별 코스 배열 생성

@@ -4,7 +4,7 @@ src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK
 
 //내가 저장한 핀 담을 배열
 var mymarkers=[];
-
+var mapCenter
 //==========이하 지도 api부분
 // 마커를 담을 배열입니다
 var markers = [];
@@ -1220,9 +1220,7 @@ function arraychange(currentItemIndex,dropItemIndex){
 	makeline(pathArr[schedulNum]);
 	polylineArr[schedulNum].setMap(map);
 
-	function moveRegion(region){
-
-
-
-	}
 }
+	function moveRegion(){
+        map.setCenter(mapCenter)
+	}
