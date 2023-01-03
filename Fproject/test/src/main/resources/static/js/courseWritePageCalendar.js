@@ -232,16 +232,16 @@ $('.days').on('change',function(){
 
 //일자별 코스 배열 생성
 function setSchedul(){
-    console.log("days: "+days)
+   // console.log("days: "+days)
     var delul=$('ul.My_List')
-    console.log("delul.length: "+delul.length)
+    //console.log("delul.length: "+delul.length)
     if(firstCheck){
         if(days==delul.length){
-            console.log("스케쥴 배열 같음")
+            //console.log("스케쥴 배열 같음")
         }else if(days>delul.length){
-           console.log("스케쥴 배열 큼")
+          // console.log("스케쥴 배열 큼")
            var sum=days-delul.length
-           console.log("sum: "+sum)
+          // console.log("sum: "+sum)
            for(var i=0;i<sum;i++){
                var array=[]
                var num={num:0};
@@ -263,7 +263,7 @@ function setSchedul(){
                pathArr.push(path)
            }
         }else if(days<delul.length){
-           console.log("스케쥴 배열 작음")
+           //console.log("스케쥴 배열 작음")
            var sum=delul.length-days;
           for(var i=0;i<sum;i++){
               var array=[]
@@ -391,10 +391,13 @@ function hideList(optVal){
 //마이 코스 리스트 생성
 function addList(){
     var delul=$('ul.My_List')
-
+    console.log("days: "+days)
+    console.log("delullength: "+delul.length)
     if(firstCheck){
         if(days==delul.length){
+        console.log("리스트 갯수 같음")
         }else if(days>delul.length){
+            console.log("리스트 갯수 작음")
             var num=days-delul.length;
             var num2=delul.length+1;
             for(var i=0;i<num;i++){
@@ -404,10 +407,11 @@ function addList(){
                 $(ul).addClass("My_List")
             }
         }else if(days<delul.length){
-            var length=delul.length-1;
-            var num=delul.length-days;
+        console.log("리스트 갯수 큼")
+            var length=(delul.length-1);
+            var num=(delul.length-days);
             var num2=days;
-            for(var i=0;i>num;i++){
+            for(var i=0;i<num;i++){
                 delul[i].remove();
             }
         }
