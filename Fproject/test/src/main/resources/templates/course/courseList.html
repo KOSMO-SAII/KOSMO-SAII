@@ -50,16 +50,10 @@
             <li class="di_flex">
               <ul class="ico_wrap">
                 <li>
-                  <span class="ico_attr"></span>
-                  장소 수
+                  <span class="ico_attr" th:text="|전체 ${list.getSize()} 장소|"></span>
                 </li>
                 <li>
-                  <span class="ico_down"></span>
-                  다운로드 수
-                </li>
-                <li>
-                  <span class="ico_spot"></span>
-                  조회 수
+                  <span class="ico_spot" th:text="${list.viewCount}"></span>
                 </li>
                 <li class="user_wrap">
                 <span clas="img">

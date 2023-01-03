@@ -136,24 +136,7 @@
     </div>
 </div>
 <div>
-    <ul class="pagination justify-content-center">
-
-        <li class="page-item" th:classappend="${pageNo eq 0}?'disabled':''">
-            <a th:href="@{'/course/list?page=' + [[${pageNo-1}]] }" aria-label='Previous' class="page-link">
-                <span aria-hidden='true'>Previous</span>
-            </a>
-        </li>
-
-        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="[[${pageNo eq page-1}]]?'active':''">
-            <a th:href="@{'/course/list?page=' + [[${page-1}]]}" th:inline="text" class="page-link">[[${page}]]</a>
-        </li>
-
-        <li class="page-item" th:classappend="[[${pageNo+1 ge totalCount}]]?'disabled':''">
-            <a th:href="@{'/course/list?page=' + [[${pageNo+1}]]}" aria-label='Next' class="page-link">
-                <span aria-hidden='true'>Next</span>
-            </a>
-        </li>
-
+    <ul id="paging" class="pagination justify-content-center">
     </ul>
 </div>
 

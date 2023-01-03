@@ -47,7 +47,10 @@
   <div class="class2">
     <p class="pp">제목</p>
     <input class="pinput "type="text" name="ptitle" /><br>
+    <div class="popbtnbox">
     <button type="button" class="nextbtn">다음</button>
+    </div>
+    <button type="button" class="popclose first"></button>
   </div>
   <div class="class2" >
     <p class="pp" >여행지</p>
@@ -72,13 +75,19 @@
       <option class="경남" value="경남">경상남도</option>
       <option class="제주" value="제주">제주특별자치도</option>
     </select><Br>
+    <div class="popbtnbox">
     <button type="button" class="prevbtn">이전</button><button type="button" class="nextbtn">다음</button>
+    </div>
+    <button type="button" class="popclose"></button>
   </div>
   <div class="class2">
     <p class="pp" >여행 날짜</p>
     <input class="pinput" type="text" id="demo" name="day" value="" />
     <br>
+    <div class="popbtnbox">
     <button type="button" class="prevbtn">이전</button><input type="submit" class="nextbtn" onclick="return popClose()" value="다음">
+    </div>
+    <button type="button" class="popclose"></button>
   </div>
 <!--  <button class="modal-close" onClick="popClose();">닫기</button>-->
 </div>

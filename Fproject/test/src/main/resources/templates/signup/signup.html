@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">>
 <head>
     <meta charset="UTF-8">
   <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
@@ -49,8 +52,9 @@ window.onload = function(){
   </script>
 
 </head>
-
+<div layout:fragment="content">
 <body>
+<hr>
 <div class="top">
 <a href="/members/login"><button
         type="button" class="btn btn-outline-primary me-2">Login</button></a>

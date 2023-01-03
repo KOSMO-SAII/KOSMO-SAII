@@ -23,7 +23,6 @@ public class CourseListDTO {
     private LocalDateTime createDate;
     private double xPoint;
     private double yPoint;
-
     public void setCenter(){
 
         if(courseDatas.size() < 1) {
@@ -51,4 +50,7 @@ public class CourseListDTO {
         return orders;
     }
 
+    public int getSize(){
+        return courseDatas.size();
+    }
 }

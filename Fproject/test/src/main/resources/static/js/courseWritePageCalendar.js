@@ -151,6 +151,10 @@ if(mode=="edit"){
     schedulNum=0;
 }
 
+$('.popclose').on('click',function(){
+    popX()
+})
+
 //날짜 select option 변경 이벤트
 $('.days').on('change',function(){
     console.log("days 체인지")
@@ -183,13 +187,212 @@ $('.days').on('change',function(){
     }
 
 }
+//팝업 x닫기
+function popX(){
+    console.log("x닫기")
 
-//팝업 닫기
+    var title =$('input[name=ptitle]')[0].value;
+    var region = $('select[name=pregion]')[0].value;
+
+    if(title==''){
+        $('input[name=title]')[0].value='제목을 입력해 주세요'
+    }else{
+        $('input[name=title]')[0].value=$('input[name=ptitle]')[0].value
+    }
+    if(region=='없음'){
+        $('input[name=region]')[0].value='지역을 선택해 주세요'
+    }else{
+        var xPoint = 0;
+            var yPoint = 0;
+            switch(region){
+                case '서울':
+                    yPoint = 126.978652258823
+                    xPoint = 37.56682420267543
+                    break
+                case '인천':
+                    yPoint = 126.7052580700657
+                    xPoint = 37.456004465652136
+                    break
+                case '대전':
+                    yPoint = 127.384834846753
+                    xPoint = 36.3505388993078
+                    break
+                case '대구':
+                    yPoint = 128.601805491082
+                    xPoint = 35.8713802646523
+                    break
+                case '부산':
+                    yPoint = 129.07506783124393
+                    xPoint = 35.17973748292069
+                    break
+                case '울산':
+                    yPoint = 129.3116012687339
+                    xPoint = 35.53959646757943
+                    break
+                case '세종':
+                    yPoint = 127.28919531800284
+                    xPoint = 36.48006310909889
+                    break
+                case '광주':
+                    yPoint = 126.85162995901466
+                    xPoint = 35.16010195999625
+                    break
+                case '경기':
+                    yPoint = 127.05346120005058
+                    xPoint = 37.28900614836743
+                    break
+                case '강원':
+                    yPoint = 127.729829010358
+                    xPoint = 37.8853257858225
+                    break
+                case '충북':
+                    yPoint = 127.491457326504
+                    xPoint = 36.6353581960153
+                    break
+                case '충남':
+                    yPoint = 126.67277619382
+                    xPoint = 36.6588292533059
+                    break
+                case '전북':
+                    yPoint = 127.108976712012
+                    xPoint = 35.8201963639598
+                    break
+                case '전남':
+                    yPoint = 126.462788333373
+                    xPoint = 34.8160821479338
+                    break
+                case '경북':
+                    yPoint = 128.50580033730782
+                    xPoint = 36.57599440982183
+                    break
+                case '경남':
+                    yPoint = 128.69192185958292
+                    xPoint = 35.23770717139541
+                    break
+                case '제주':
+                    yPoint = 126.49822914119608
+                    xPoint = 33.48891790333224
+                    break
+            }
+
+            mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
+
+            $('input[name=region]')[0].value=$('select[name=pregion]')[0].value
+
+            moveRegion();
+    }
+   if(daycheck){
+        $('input[name=days]')[0].value=days
+        $('.start')[0].value=st
+        $('.end')[0].value=ed
+   }else{
+       $('.start')[0].value=dateFormat(new Date());
+       $('.end')[0].value=dateFormat(new Date());
+       $('input[name=days]')[0].value=1;
+   }
+
+
+     var modalPop = $('.modal-wrap');
+    var modalBg = $('.mbg');
+    $(modalBg).removeClass('modal-bg');
+    $(modalPop).css("z-index",-1000)
+    $('.inputbox').removeClass('hidden')
+
+    setSchedul()
+     addDays()
+     addList()
+     hideList(optVal)
+
+     if(firstCheck){
+     }else{
+        firstCheck=true;
+     }
+
+
+}
+
+//팝업 저장 후 닫기
  function popClose() {
     //제목,지역 빈칸 예외처리
     var title =$('input[name=ptitle]')[0].value;
     console.log(title)
     var region = $('select[name=pregion]')[0].value;
+
+    var xPoint = 0;
+    var yPoint = 0;
+    switch(region){
+        case '서울':
+            yPoint = 126.978652258823
+            xPoint = 37.56682420267543
+            break
+        case '인천':
+            yPoint = 126.7052580700657
+            xPoint = 37.456004465652136
+            break
+        case '대전':
+            yPoint = 127.384834846753
+            xPoint = 36.3505388993078
+            break
+        case '대구':
+            yPoint = 128.601805491082
+            xPoint = 35.8713802646523
+            break
+        case '부산':
+            yPoint = 129.07506783124393
+            xPoint = 35.17973748292069
+            break
+        case '울산':
+            yPoint = 129.3116012687339
+            xPoint = 35.53959646757943
+            break
+        case '세종':
+            yPoint = 127.28919531800284
+            xPoint = 36.48006310909889
+            break
+        case '광주':
+            yPoint = 126.85162995901466
+            xPoint = 35.16010195999625
+            break
+        case '경기':
+            yPoint = 127.05346120005058
+            xPoint = 37.28900614836743
+            break
+        case '강원':
+            yPoint = 127.729829010358
+            xPoint = 37.8853257858225
+            break
+        case '충북':
+            yPoint = 127.491457326504
+            xPoint = 36.6353581960153
+            break
+        case '충남':
+            yPoint = 126.67277619382
+            xPoint = 36.6588292533059
+            break
+        case '전북':
+            yPoint = 127.108976712012
+            xPoint = 35.8201963639598
+            break
+        case '전남':
+            yPoint = 126.462788333373
+            xPoint = 34.8160821479338
+            break
+        case '경북':
+            yPoint = 128.50580033730782
+            xPoint = 36.57599440982183
+            break
+        case '경남':
+            yPoint = 128.69192185958292
+            xPoint = 35.23770717139541
+            break
+        case '제주':
+            yPoint = 126.49822914119608
+            xPoint = 33.48891790333224
+            break
+    }
+
+    mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
+
     if(title==''){
         alert("제목을 입력해주세요")
         $('.class').slick('slickGoTo', 0);
@@ -228,20 +431,21 @@ $('.days').on('change',function(){
         firstCheck=true;
      }
 
+    moveRegion();
 }
 
 //일자별 코스 배열 생성
 function setSchedul(){
-    console.log("days: "+days)
+   // console.log("days: "+days)
     var delul=$('ul.My_List')
-    console.log("delul.length: "+delul.length)
+    //console.log("delul.length: "+delul.length)
     if(firstCheck){
         if(days==delul.length){
-            console.log("스케쥴 배열 같음")
+            //console.log("스케쥴 배열 같음")
         }else if(days>delul.length){
-           console.log("스케쥴 배열 큼")
+          // console.log("스케쥴 배열 큼")
            var sum=days-delul.length
-           console.log("sum: "+sum)
+          // console.log("sum: "+sum)
            for(var i=0;i<sum;i++){
                var array=[]
                var num={num:0};
@@ -263,7 +467,7 @@ function setSchedul(){
                pathArr.push(path)
            }
         }else if(days<delul.length){
-           console.log("스케쥴 배열 작음")
+           //console.log("스케쥴 배열 작음")
            var sum=delul.length-days;
           for(var i=0;i<sum;i++){
               var array=[]
@@ -391,10 +595,13 @@ function hideList(optVal){
 //마이 코스 리스트 생성
 function addList(){
     var delul=$('ul.My_List')
-
+    console.log("days: "+days)
+    console.log("delullength: "+delul.length)
     if(firstCheck){
         if(days==delul.length){
+        console.log("리스트 갯수 같음")
         }else if(days>delul.length){
+            console.log("리스트 갯수 작음")
             var num=days-delul.length;
             var num2=delul.length+1;
             for(var i=0;i<num;i++){
@@ -404,10 +611,11 @@ function addList(){
                 $(ul).addClass("My_List")
             }
         }else if(days<delul.length){
-            var length=delul.length-1;
-            var num=delul.length-days;
+        console.log("리스트 갯수 큼")
+            var length=(delul.length-1);
+            var num=(delul.length-days);
             var num2=days;
-            for(var i=0;i>num;i++){
+            for(var i=0;i<num;i++){
                 delul[i].remove();
             }
         }
