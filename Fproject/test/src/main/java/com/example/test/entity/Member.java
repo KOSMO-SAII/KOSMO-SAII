@@ -133,7 +133,8 @@ public class Member{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(memberDTO.getMemberId());
-        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setAddress(memberDTO.getAddress());
+        member1.setAddress1(memberDTO.getAddress1());
         member1.setBirthday(memberDTO.getBirthday());
         member1.setEmail(memberDTO.getEmail());
         member1.setGender(memberDTO.getGender());
@@ -157,7 +158,8 @@ public class Member{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(memberDTO.getMemberId());
-        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setAddress(memberDTO.getAddress());
+        member1.setAddress1(memberDTO.getAddress1());
         member1.setBirthday(memberDTO.getBirthday());
         member1.setEmail(memberDTO.getEmail());
         member1.setGender(memberDTO.getGender());
