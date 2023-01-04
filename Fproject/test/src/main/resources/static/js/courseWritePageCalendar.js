@@ -285,10 +285,14 @@ function popX(){
         $('input[name=days]')[0].value=days
         $('.start')[0].value=st
         $('.end')[0].value=ed
+        $('#days')[0].innerText=days+"Days"
+        $('#start_end')[0].innerText=st+"-"+ed;
    }else{
        $('.start')[0].value=dateFormat(new Date());
        $('.end')[0].value=dateFormat(new Date());
        $('input[name=days]')[0].value=1;
+       $('#days')[0].innerText="1Days"
+       $('#start_end')[0].innerText=dateFormat(new Date())+"-"+dateFormat(new Date());
    }
 
 
@@ -416,10 +420,14 @@ function popX(){
      $('input[name=days]')[0].value=days
         $('.start')[0].value=st
          $('.end')[0].value=ed
+         $('#days')[0].innerText=days+"Days"
+         $('#start_end')[0].innerText=st+"-"+ed;
     }else{
        $('.start')[0].value=dateFormat(new Date());
         $('.end')[0].value=dateFormat(new Date());
-     $('input[name=days]')[0].value=1;
+        $('#days')[0].innerText="1Days"
+        $('input[name=days]')[0].value=1;
+        $('#start_end')[0].innerText=dateFormat(new Date())+"-"+dateFormat(new Date());
     }
      setSchedul()
      addDays()
@@ -722,7 +730,7 @@ const getDateDiff = (d1, d2) => {
 
 //날짜 포맷 변경
 function dateFormat(date){
-    let dateFormat = date.getFullYear()+'-'+((date.getMonth()+1) <9?"0"+(date.getMonth()+1) : (date.getMonth()+1) )
-    +'-'+((date.getDate()) < 9 ?"0"+(date.getDate()) : (date.getDate()) );
+    let dateFormat = date.getFullYear()+'.'+((date.getMonth()+1) <9?"0"+(date.getMonth()+1) : (date.getMonth()+1) )
+    +'.'+((date.getDate()) < 9 ?"0"+(date.getDate()) : (date.getDate()) );
     return dateFormat;
 }

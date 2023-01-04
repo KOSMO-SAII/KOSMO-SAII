@@ -140,7 +140,7 @@ for(var i=0;i<schedul.length;i++){
         	            '                <div><a href="'+schedul[i][j].Object.Place_url+'" target="_blank" class="link">상세보기</a></div>'  +
         				'            </div>' +
         	            '		 <input type="hidden" class="data" name="data" value="">'+
-        	            '		 <button type="button" class="memobtn" >메모'+
+        	            '		 <button type="button" class="memobtn" >메모보기'+
         	            '		 </button>' +
         	            '    	</div>' +
         	            '	 </div>';
