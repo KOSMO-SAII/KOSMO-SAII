@@ -708,7 +708,11 @@ function rsaveMyPin(myplace,myplaceinfo){
 	if(schedul[schedulNum][0]!=undefined){
 		for(var i=0;i<schedul[schedulNum].length;i++){
 			if(schedul[schedulNum][i].id==myplaceinfo.placeid){
-				alert("같은 장소 중복 선택불가")
+                 $('#alertBoxp')[0].innerText="장소 중복 선택불가";
+                $('#alertBox').css("z-index",1000)
+                var modalBg = $('.mbg');
+                $(modalBg).addClass('modal-bg');
+//				alert("같은 장소 중복 선택불가")
 				//console.log("중복")
 				return ;
 			}
@@ -918,7 +922,9 @@ function hoverevent(event,state){
 				schedul[schedulNum][i].mymarker.mymarker.setMap(map);
 				schedul[schedulNum][i].myoverlay.myoverlay.setMap(map);
 				}else if(state=="out"){
-				schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
+				    if(!checkmode2){
+				    schedul[schedulNum][i].myoverlay.myoverlay.setMap(null);
+				    }
 					if(checkmode!=1){
 					schedul[schedulNum][i].mymarker.mymarker.setMap(null);
 					}
@@ -986,7 +992,12 @@ function check(){
 		$('.check').attr("onclick","hide();");
 		$('.check').text("마이 핀 숨기기")
 	}else{
-		alert("핀을 저장해주세요");
+
+	     $('#alertBoxp')[0].innerText="핀을 저장해주세요";
+                    $('#alertBox').css("z-index",1000)
+                    var modalBg = $('.mbg');
+                    $(modalBg).addClass('modal-bg');
+//		alert("핀을 저장해주세요");
 		 for(var i=0;i<schedul.length;i++){
 		    polylineArr[i].setMap(null);
             for(var j=0;j<schedul[i].length;j++){

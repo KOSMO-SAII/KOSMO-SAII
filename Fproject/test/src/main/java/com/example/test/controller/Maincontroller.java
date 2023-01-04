@@ -64,8 +64,7 @@ public class Maincontroller extends HttpServlet {
     @RequestMapping("/festival")
     public String list(Optional<Integer> page, Model model){
 
-        model.addAttribute("start",1);
-        model.addAttribute("end",10);
+        model.addAttribute("pageNo",1);
 
         return "board_festival/festival";
     }

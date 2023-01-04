@@ -138,6 +138,7 @@ public class CourseService {
         }
 
         this.changeCourse(req,course_id);
+
         CourseListDTO cldt = new CourseListDTO();
 
         cldt.setCourseid(course_id);
@@ -156,6 +157,9 @@ public class CourseService {
             if(region.equals("제주특별자치도"))
                 region = "제주";
         }
+        List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
+        CourseList course = courseList.get(0);
+        cldt.setViewCount(course.getViewCount()+1);
         cldt.setTitle(title);
         cldt.setRegion(region);
 
@@ -306,15 +310,20 @@ public class CourseService {
         return list;
     }
 
-    public List<CourseList> getCourseList(Long course_id){
+    public List<CourseList> getCourseList(Long course_id,String mode){
         System.out.println("getCourseList/course_id : "+course_id);
         List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
-        CourseList course = courseList.get(0);
-        course.setViewCount(course.getViewCount()+1);
-        courseListRepository.save(course);
-        System.out.println("getCourseList: "+courseList);
+        if(mode=="view"){
+            CourseList course = courseList.get(0);
+            course.setViewCount(course.getViewCount()+1);
+            System.out.println("getCourseList: "+courseList);
+            System.out.println("getCourseID: "+course.getId());
+            courseListRepository.save(course);
+        }
         return courseList;
     }
+
+
 
     public void saveCourseData(CourseDTO cdto, Long course_id){
         System.out.println("saveCourseData 모달 전 "+cdto.getPlace_name());
@@ -330,7 +339,7 @@ public class CourseService {
         courseListRepository.save(courseList);
     }
 
-    //미완성
+
     public void changeCourseList(CourseListDTO clto, Long listId){
         CourseList courseList = modelMapper.map(clto,CourseList.class);
         courseList.setId(listId);
@@ -366,9 +375,11 @@ public class CourseService {
        Course cs= courseRepository.findById(course_id).orElseThrow(()->new NoSuchElementException("값 없음"));
        String days=cs.getDays();
        String start=cs.getStartday();
+       String end=cs.getEndday();
        Map<String,String> map=new HashMap<String,String>();
        map.put("days",days);
        map.put("start",start);
+       map.put("end",end);
        return map;
     }
 
