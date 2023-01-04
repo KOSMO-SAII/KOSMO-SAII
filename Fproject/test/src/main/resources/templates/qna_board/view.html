@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
@@ -44,12 +45,17 @@
       </form>
     </div>
     <div class="replyCon">
-      <form id="reply" action="/reply_write" method="post">
+      <form id="reply" action="/reply_write" method="post" onsubmit="blankCheck()">
         <input type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2">
         <input type="hidden" id="qna_id" name="qna_id" th:value="${board.id}">
         <div class="input-group-append">
           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <div sec:authorize="isAnonymous()">
           <button class="divInBtn" id="replyButton" type="submit">등록</button>
+          </div>
+          <div sec:authorize="isAuthenticated()" class="loginReplyBtn">
+            <button class="divInBtn" id="replyBlankButton" type="submit">등록</button>
+          </div>
           <div id="test_cnt">(0 / 100)</div>
         </div>
       </form>
@@ -57,6 +63,13 @@
     <div class="whitePlace">
 
     </div>
+  </div>
+</div>
+<div class="modal">
+  <div class="modal_body">
+    <div id="texth4"><h3 id="loginH3">로그인 후 이용해주세요.</h3></div>
+    <button id="cbtn" class="withdraw"><span id="xBtn">X</span></button>
+    <a href="/members/login" class="withdraw" id="widthLogin">로그인</a>
   </div>
 </div>
 </body>
@@ -71,6 +84,33 @@
   }
   });
   });
+
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('#replyButton');
+    const modalClose = document.querySelector('#cbtn');
+    btnOpenPopup.addEventListener('click', () => {
+      event.preventDefault();
+      modal.style.display = 'block';
+      window.scrollTo({top: 0});
+    });
+    modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal")) {
+      modal.style.display = "none"
+    }});
+    modalClose.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+
+
+function blankCheck(){
+  const replyContent = document.querySelector('#content').value;
+  if(replyContent==""){
+    event.preventDefault();
+    document.querySelector('#content').placeholder="댓글을 입력해주세요.. 1~200자로 입력해주세요";
+    return false;
+  }
+}
 </script>
 </div>
 </html>
