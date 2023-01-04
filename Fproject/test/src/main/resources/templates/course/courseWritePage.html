@@ -24,6 +24,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!--alert cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <link th:href="@{ /css/rpopup.css}" rel="stylesheet" />
 </head>
@@ -133,7 +135,7 @@
 <!--  팝업          -->
 <div class="modal-bg mbg"></div>
 <div th:replace="~{course/popup::popup}"></div>
-
+<div th:replace="~{course/alertModal::alert}"></div>
 <script th:inline="javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var mode=/*[[${param.mode}]]*/ ;  //현재 작성 모드인지 수정 모드이지 구분

@@ -34,7 +34,10 @@ function coursecheck(){
 
     for(var i=0; i<schedul.length;i++){
         if(schedul[i][0]==undefined){
-            alert((i+1)+"Day 코스를 저장해주세요");
+            $('#alertBoxp')[0].innerText="Day"+(i+1)+" 코스를 저장해주세요";
+            $('#alertBox').css("z-index",1000)
+            var modalBg = $('.mbg');
+            $(modalBg).addClass('modal-bg');
             return false;
         }
     }
@@ -43,31 +46,27 @@ function coursecheck(){
     var region = $('input[name=region]')[0].value;
 
     if(title=='제목을 입력해주세요'){
-        alert("제목을 입력해주세요")
+        $('#alertBoxp')[0].innerText="제목을 입력해주세요";
+        $('#alertBox').css("z-index",1000)
+        var modalBg = $('.mbg');
+        $(modalBg).addClass('modal-bg');
         return false;
     }
     if(region=='지역을 선택해주세요'){
-        alert("지역을 선택해주세요")
+        $('#alertBoxp')[0].innerText="지역을 선택해주세요";
+        $('#alertBox').css("z-index",1000)
+        var modalBg = $('.mbg');
+        $(modalBg).addClass('modal-bg');
         return false;
     }
 
 }
 
-//function titlecheck(){
-//        var title =$('input[name=title]')[0].value;
-//        var region = $('input[name=region]')[0].value;
-//
-//        if(title=='제목을 입력해주세요'){
-//            alert("제목을 입력해주세요")
-//            return false;
-//        }
-//        if(region=='지역을 선택해주세요'){
-//            alert("지역을 선택해주세요")
-//            return false;
-//        }
-//
-//        return false;
-//}
+function alertBoxClose(){
+    $('#alertBox').css("z-index",-1)
+    var modalBg = $('.mbg');
+    $(modalBg).removeClass('modal-bg');
+}
 
 //==검색 사이드 바 드롭다운
 let subToggle=true;
