@@ -158,11 +158,19 @@ $('.popclose').on('click',function(){
 //날짜 select option 변경 이벤트
 $('.days').on('change',function(){
     console.log("days 체인지")
+//    var last num=schedulNum
+    if(schedul[($(this).val()-1)]==''){
+        hide()
+    }
     schedulNum=($(this).val()-1);
     optVal=$(this).val();
     hideList(optVal)
     if(checkmode==1){
-        check()
+        if(schedul[schedulNum]==''){
+            
+        }else{
+            check()
+        }
     }
     if(schedul[schedulNum]!=''){
     console.log(schedulNum)
