@@ -195,12 +195,12 @@ function popX(){
     var region = $('select[name=pregion]')[0].value;
 
     if(title==''){
-        $('input[name=title]')[0].value='제목을 입력해 주세요'
+        $('input[name=title]')[0].value='제목을 입력해주세요'
     }else{
         $('input[name=title]')[0].value=$('input[name=ptitle]')[0].value
     }
     if(region=='없음'){
-        $('input[name=region]')[0].value='지역을 선택해 주세요'
+        $('input[name=region]')[0].value='지역을 선택해주세요'
     }else{
         var xPoint = 0;
             var yPoint = 0;
