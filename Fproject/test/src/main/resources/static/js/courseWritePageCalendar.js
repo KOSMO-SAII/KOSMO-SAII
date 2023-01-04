@@ -709,8 +709,8 @@ $(document).ready(function(){
 //                      console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 //                      console.log('New date range selected: ' + start.format('DD') + ' to ' + end.format('DD') + ' (predefined range: ' + label + ')');
 //                      console.log(end.format('YYYY-MM-DD')-start.format('YYYY-MM-DD'))
-                       st=start.format('YYYY-MM-DD');
-                       ed=end.format('YYYY-MM-DD');
+                       st=start.format('YYYY.MM.DD');
+                       ed=end.format('YYYY.MM.DD');
                        // console.log(start);
                        // console.log(end);
                       days=(getDateDiff(ed,st)+1);

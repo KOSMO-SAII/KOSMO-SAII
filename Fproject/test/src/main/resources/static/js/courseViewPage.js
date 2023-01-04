@@ -38,7 +38,7 @@ var polyline = new kakao.maps.Polyline({
 						new kakao.maps.LatLng(0, 0)
 						],endArrow:true,
 				    strokeWeight: 6,
-				    strokeColor: '#98dde3',
+				    strokeColor: '#000000',
 				    strokeOpacity: 1,
 					});
 var path=[];
