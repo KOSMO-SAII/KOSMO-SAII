@@ -68,6 +68,16 @@ function alertBoxClose(){
     $(modalBg).removeClass('modal-bg');
 }
 
+function alertBoxClose2(){
+    $('#alertBox2').css("z-index",-1)
+    if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
+    $('input[name=ptitle]')[0].focus();
+    }
+    if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
+    $('select[name=pregion]')[0].focus();
+    }
+}
+
 //==검색 사이드 바 드롭다운
 let subToggle=true;
 	$('.searchbtn').click(function(){
@@ -820,7 +830,7 @@ function addMySchedule(place){
             '            <div class="close"  title="닫기"></div>' +
             '        </div>' +
             '		 <input type="hidden" class="data" name="data" value="">'+
-            '		 <button type="button" class="memobtn" >메모'+
+            '		 <button type="button" class="memobtn" >메모작성'+
             '		 </button>' +
             '    	</div>' +
             '	 </div>';

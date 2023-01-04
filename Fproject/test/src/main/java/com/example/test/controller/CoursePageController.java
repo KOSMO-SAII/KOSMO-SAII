@@ -92,6 +92,7 @@ public class CoursePageController extends HttpServlet {
         String mode=req.getParameter("mode");
         String days=req.getParameter("days");
         String start=req.getParameter("start");
+        String end=req.getParameter("end");
 
         //courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정
         if(mode.equals( "edit")) {
@@ -124,7 +125,7 @@ public class CoursePageController extends HttpServlet {
         }
         req.setAttribute("days",days);
         req.setAttribute("start",start);
-
+        req.setAttribute("end",end);
         return "course/CourseViewPage";
 
     }
@@ -166,6 +167,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("region",courseList.get(0).getRegion());
         req.setAttribute("list", list);
         req.setAttribute("start",map.get("start"));
+        req.setAttribute("end",map.get("end"));
         return "course/courseWritePage";
     }
 }
