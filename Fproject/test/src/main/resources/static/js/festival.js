@@ -43,7 +43,6 @@ function getInfo(id,c,on){
     var listparam=('&arrange='+on)
     console.log(param);
     fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&'
-            +'numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y'+param+listparam)
             +'numOfRows=10&pageNo='+pageNo+'&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y'+param+listparam)
     .then((response) => response.json())
     .then((data) => {
