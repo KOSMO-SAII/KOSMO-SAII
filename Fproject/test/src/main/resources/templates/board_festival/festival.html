@@ -15,14 +15,14 @@
 
 <div layout:fragment="content">
 <body>
-<script type="text/javascript" th:src="@{/js/festival.js}">
-</script>
 <header id="common_header" class="main_gnb sub">
 </header>
 <!-- //header -->
 <!-- contents -->
 <div id="contents" src="http://apis.data.go.kr/B551011/KorService/searchFestival?eventStartDate=20220101&eventEndDate=20230101&areaCode=&sigunguCode=&ServiceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=A&numOfRows=12&pageNo=1">
-
+<script th:inline="javascript">
+    var pageNo = [[${pageNo}]]
+</script>
     <div class="tit_cont"><!-- 1021 내위치버튼 있을때 position 추가 -->
         <div class="area_tag">
             <span class="name4"><span class="ico">Hot</span>축제</span>
@@ -138,7 +138,8 @@
     <ul id="paging" class="pagination justify-content-center">
     </ul>
 </div>
-
+<script th:inline="javascript" th:src="@{/js/festival.js}">
+</script>
 </body>
 </div>
 </html>

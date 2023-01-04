@@ -21,17 +21,6 @@ public class CourseListController {
     @Autowired
     private CourseService courseService;
 
-//    @GetMapping("course/list")
-//    public String list(Optional<Integer> page, Model model, HttpServletRequest request){
-//        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
-//        model.addAttribute("lists", courseService.getList("", pageRequest));
-//        model.addAttribute("pages", courseService.getPage("", pageRequest));
-//        model.addAttribute("search", "");
-//        model.addAttribute("maxPage", 5);
-//
-//        return "course/courseList";
-//    }
-
     @RequestMapping("course/list")
     public String search(Optional<Integer> page, Model model, HttpServletRequest request){
         PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
