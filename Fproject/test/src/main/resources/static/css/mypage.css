@@ -215,6 +215,7 @@ display: inline-block;
    display: inline-block;
    border:none;
    background-color: #F7F7F7;
+   outline:none;
 }
 #show1 {
    position:relative;

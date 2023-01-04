@@ -183,6 +183,13 @@
     position: relative;
     top: 20px;
 }
+.noLogin{
+    width: 96%;
+    height: 133px;
+    margin: auto;
+    position: relative;
+    top: 20px;
+}
 .whitePlace{
     width:100%;
     height:20px;
@@ -235,4 +242,77 @@
     position: relative;
     top: 27px;
     left: -43px;
+}
+.withdraw {
+ position: relative;
+ display: inline-block;
+ font-size: 13px;
+ padding: 4px 15px;
+ color: white;
+ margin: 20px 8px 15px;
+ border-radius: 30px;
+ text-align: center;
+ transition: top .01s linear;
+ text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+  text-decoration: none;
+  float:right;
+  top: -80px;
+  left: 25px;
+  width:30px;
+  border:none;
+}
+.withdraw:hover {
+    background-color: #AEDBE1;
+    color:white;
+}
+
+.withdraw:active {
+  top: -76px;
+}
+
+/* 3D button colors */
+.withdraw {
+  background-color: #AEDBE1;
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #9EC7CC,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.withdraw:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+#xBtn{
+    position:relative;
+    left:-4px;
+    color:white;
+    font-weight:bold;
+}
+#widthLogin{
+    top: 101px;
+    width: 100px;
+    left: -70px;
+}
+#widthLogin:active{
+    top: 105px;
+    width: 100px;
+    left: -70px;
+}
+#lists{
+    top:-65px;
+    left:7px;
+    width:88px;
+    background-color: #8c9095;
+    box-shadow: 0 0 0 1px #676a6c inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #605a5a,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+#lists:active {
+    box-shadow: 0 0 0 1px #676a6c inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
 }

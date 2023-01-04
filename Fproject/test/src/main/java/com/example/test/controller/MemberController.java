@@ -129,10 +129,9 @@ MemberController {
 
         PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
 
-        model.addAttribute("lists", courseService.getList("", pageRequest));
-        model.addAttribute("pages", courseService.getPage("", pageRequest));
         model.addAttribute("maxPage", 5);
         model.addAttribute("list", courseService.myList(principal));
+
 
         return "/mypage/mypage";
     }
@@ -190,7 +189,7 @@ MemberController {
         Member member1 = Member.profileup(member2,multipartFile);
         memberRepository.save(member1);
 
-        return "redirect:/members/logins";
+        return "redirect:/members/update";
     }
 
     @RequestMapping("checkpath")
