@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>코스 작성</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!--css 연동 -->
+  <link th:href="@{ /css/courseWritePage.css}" rel="stylesheet" />
+  <!-- 카카오 맵 API 불러오기-->
+  <script th:inline="javascript" type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
+  <!-- 제이쿼리    -->
+  <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <!--slick slider 필요 태그 st-->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
+  <!-- jQuery CDN -->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <!-- slick Carousel CDN -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+  <!--slick slider 필요 태그 en-->
+
+  <!--달력 필요 태그 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!--alert cdn-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+  <link th:href="@{ /css/rpopup.css}" rel="stylesheet" />
+</head>
+<body>
+<div id="alertBox" th:fragment="alert">
+  <p id="alertBoxp">dd</p>
+  <button id="alertBoxbtn" type="button" onclick="alertBoxClose()">OK</button>
+</div>
+</body>
+</html>
