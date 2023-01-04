@@ -15,6 +15,8 @@
 <hr>
 <div class="divOut">
   <div class="divIn">
+    <h1>질의응답 QnA</h1>
+    <a th:href="@{/QnABoard/list}"><button id="lists" class="withdraw">목록</button></a>
     <div class="divTitle">
       <span class="divTitleSpan" th:text="${board.title}">제목입니다.</span>
     </div>
@@ -46,7 +48,8 @@
     </div>
     <div class="replyCon">
       <form id="reply" action="/reply_write" method="post" onsubmit="blankCheck()">
-        <input type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2">
+        <input sec:authorize="isAnonymous()" type="text" name="content" class="form-control noLogin" placeholder="로그인을 하시면 댓글을 등록할 수 있습니다." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2" readonly>
+        <input sec:authorize="isAuthenticated()" type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2">
         <input type="hidden" id="qna_id" name="qna_id" th:value="${board.id}">
         <div class="input-group-append">
           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
