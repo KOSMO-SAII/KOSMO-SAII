@@ -164,11 +164,12 @@ $('.days').on('change',function(){
     if(checkmode==1){
         check()
     }
-    if(checkmode2){
+    if(schedul[schedulNum]!=''){
     console.log(schedulNum)
         var move =new kakao.maps.LatLng(schedul[schedulNum][0].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][0].mymarker.mymarker.getPosition().La)
         map.panTo(move)
     }
+
 })
 
 //팝업 열기
@@ -285,10 +286,14 @@ function popX(){
         $('input[name=days]')[0].value=days
         $('.start')[0].value=st
         $('.end')[0].value=ed
+        $('#days')[0].innerText=days+"Days"
+        $('#start_end')[0].innerText=st+"-"+ed;
    }else{
        $('.start')[0].value=dateFormat(new Date());
        $('.end')[0].value=dateFormat(new Date());
        $('input[name=days]')[0].value=1;
+       $('#days')[0].innerText="1Days"
+       $('#start_end')[0].innerText=dateFormat(new Date())+"-"+dateFormat(new Date());
    }
 
 
@@ -394,12 +399,14 @@ function popX(){
     mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
 
     if(title==''){
-        alert("제목을 입력해주세요")
-        $('.class').slick('slickGoTo', 0);
+        $('#alertBoxp2')[0].innerText="제목을 입력해주세요";
+        $('#alertBox2').css("z-index",1000)
+
         return false;
     }else if(region=='없음'){
-        alert("지역을 입력해주세요")
-        $('.class').slick('slickGoTo', 1);
+        $('#alertBoxp2')[0].innerText="지역을 입력해주세요";
+        $('#alertBox2').css("z-index",1000)
+
         return false;
     }
 
@@ -416,10 +423,14 @@ function popX(){
      $('input[name=days]')[0].value=days
         $('.start')[0].value=st
          $('.end')[0].value=ed
+         $('#days')[0].innerText=days+"Days"
+         $('#start_end')[0].innerText=st+"-"+ed;
     }else{
        $('.start')[0].value=dateFormat(new Date());
         $('.end')[0].value=dateFormat(new Date());
-     $('input[name=days]')[0].value=1;
+        $('#days')[0].innerText="1Days"
+        $('input[name=days]')[0].value=1;
+        $('#start_end')[0].innerText=dateFormat(new Date())+"-"+dateFormat(new Date());
     }
      setSchedul()
      addDays()
@@ -458,7 +469,7 @@ function setSchedul(){
                                        ],
                                        endArrow:true,
                                    strokeWeight: 6,
-                                   strokeColor: '#98dde3',
+                                   strokeColor: '#000000',
                                    strokeOpacity: 1,
                                    });
                schedul.push(array);
@@ -481,7 +492,7 @@ function setSchedul(){
                                       ],
                                       endArrow:true,
                                   strokeWeight: 6,
-                                  strokeColor: '#98dde3',
+                                  strokeColor: '#000000',
                                   strokeOpacity: 1,
                                   });
               schedul.pop();
@@ -503,7 +514,7 @@ function setSchedul(){
                                     ],
                                     endArrow:true,
                                 strokeWeight: 6,
-                                strokeColor: '#98dde3',
+                                strokeColor: '#000000',
                                 strokeOpacity: 1,
                                 });
             schedul.push(array);
@@ -524,7 +535,7 @@ function setSchedul(){
                                         ],
                                         endArrow:true,
                                     strokeWeight: 6,
-                                    strokeColor: '#98dde3',
+                                    strokeColor: '#000000',
                                     strokeOpacity: 1,
                                     });
                 schedul.push(array);
@@ -551,7 +562,7 @@ function setSchArr(){
                                         ],
                                         endArrow:true,
                                     strokeWeight: 6,
-                                    strokeColor: '#98dde3',
+                                    strokeColor: '#000000',
                                     strokeOpacity: 1,
                                     });
                 schedul.push(array);
@@ -572,7 +583,7 @@ function setSchArr(){
                                             ],
                                             endArrow:true,
                                         strokeWeight: 6,
-                                        strokeColor: '#98dde3',
+                                        strokeColor: '#000000',
                                         strokeOpacity: 1,
                                         });
                     schedul.push(array);
@@ -699,8 +710,8 @@ $(document).ready(function(){
 //                      console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 //                      console.log('New date range selected: ' + start.format('DD') + ' to ' + end.format('DD') + ' (predefined range: ' + label + ')');
 //                      console.log(end.format('YYYY-MM-DD')-start.format('YYYY-MM-DD'))
-                       st=start.format('YYYY-MM-DD');
-                       ed=end.format('YYYY-MM-DD');
+                       st=start.format('YYYY.MM.DD');
+                       ed=end.format('YYYY.MM.DD');
                        // console.log(start);
                        // console.log(end);
                       days=(getDateDiff(ed,st)+1);
@@ -722,7 +733,7 @@ const getDateDiff = (d1, d2) => {
 
 //날짜 포맷 변경
 function dateFormat(date){
-    let dateFormat = date.getFullYear()+'-'+((date.getMonth()+1) <9?"0"+(date.getMonth()+1) : (date.getMonth()+1) )
-    +'-'+((date.getDate()) < 9 ?"0"+(date.getDate()) : (date.getDate()) );
+    let dateFormat = date.getFullYear()+'.'+((date.getMonth()+1) <9?"0"+(date.getMonth()+1) : (date.getMonth()+1) )
+    +'.'+((date.getDate()) < 9 ?"0"+(date.getDate()) : (date.getDate()) );
     return dateFormat;
 }

@@ -19,18 +19,19 @@
         <form th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post" >
             <div class="inputbox">
                 <div class="sidebar">
-                    제목: <div id="sidebartitle" th:text="${title}"></div>
+                    <div id="sidebartitle" th:text="${title}"></div>
                 </div>
                 <div class="sidebar">
-                    지역: <div id="sidebarregion" th:text="${region}"></div>
+                    <div id="sidebarregion" th:text="${region}"></div>
                 </div>
                 <div class="sidebar">
-                    총 여행 날짜: <div id="sidebardays" th:text="${days}"></div>
+                     <div id="sidebardays" th:text="${days}+'Days'"></div>
                 </div>
                 <div class="sidebar">
-                    여행 시작 날짜: <div id="sidebarstart" th:text="${start}"></div>
+                    <div id="sidebarstart" th:text="${start}+'-'+${end}"></div>
                 </div>
-                <div class="sidebar">Days:
+                <div class="sidebar">
+                    Days:
                     <select class="days">
     <!--                    <th:bolck th:each="day,State:${days}">-->
     <!--                        <option th:name="${State.Count}" th:value="${State.Count}" th:text="${day}"></option>-->

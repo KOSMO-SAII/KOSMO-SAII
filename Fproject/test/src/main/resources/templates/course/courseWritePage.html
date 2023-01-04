@@ -34,19 +34,22 @@
     <div class="my">
         <form th:action="@{/courseViewPage(mode=${param.mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
             <div class="inputbox hidden">
-            제목:<input class="input "type="text" name="title" th:value="${title}" readonly/><br/>
-            지역:<input class="input "type="text" name="region" th:value="${region}" readonly/><br/>
-            총 여행 날짜:<input class="input "type="text" name="days" th:value="${days}" readonly/><Br>
-                여행 시작 날짜:<input class="input start" type="text" th:value="${start}" name="start" readonly/><br>
+            <input class="input "type="text" name="title" th:value="${title}" readonly/><br/>
+            <input class="input "type="text" name="region" th:value="${region}" readonly/><br/>
+            <input class="input "type="hidden" name="days" th:value="${days}" readonly/>
+                <p id="days" th:text="${days}+'Days'"></p>
+                <p id="start_end" th:text="${start}+'-'+${end}"></p>
+                <input class="input start" type="hidden" th:value="${start}" name="start" readonly/>
 <!--                <input class="start" type="hidden" name="start"/>-->
-                <input class="end" type="hidden" name="end"/>
-                <div>
+                <input class="input end" type="hidden" name="end" th:value="${end}" readonly/>
+                <div id="selectbox">
                 Days:<select class="days">
                      </select>
 <!--                <th:block th:if="${#strings.equals(param.mode, 'edit')}">-->
-                <button type="button" class="changebtn" onclick="popOpen()" >변경</button>
 <!--                </th:block>-->
                 </div>
+                <button type="button" class="changebtn" onclick="popOpen()" >변경</button>
+     <!--           <button type="button" class="submitbtn" onclick="location.href='/'">돌아가기</button>-->
             </div>
             <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
             <ul class="My_List 1">
@@ -136,6 +139,7 @@
 <div class="modal-bg mbg"></div>
 <div th:replace="~{course/popup::popup}"></div>
 <div th:replace="~{course/alertModal::alert}"></div>
+<div th:replace="~{course/alertModal::alert2}"></div>
 <script th:inline="javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var mode=/*[[${param.mode}]]*/ ;  //현재 작성 모드인지 수정 모드이지 구분
