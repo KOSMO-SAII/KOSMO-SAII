@@ -40,7 +40,15 @@ function coursecheck(){
         }
     }
 
-        
+    if(title=='제목을 입력해주세요'){
+        alert("제목을 입력해주세요'")
+        return false;
+    }else if(region=='지역을 선택해주세요'){
+        alert("지역을 선택해주세요'")
+        return false;
+    }
+
+
 
 }
 
