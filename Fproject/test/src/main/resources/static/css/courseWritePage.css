@@ -859,7 +859,7 @@ text-align: center;
 }
 /* 팝업창 css */
 .class {width:800px;height:500px;background-color:skyblue;text-align:center;}
-.class2 {width:100%;height:100%;padding-top:250px;}
+.class2 {width:100%;height:100%;}
 
  .modal-bg {width: 100%;
                 height: 100%;
@@ -868,9 +868,12 @@ text-align: center;
                 position: absolute;
                 top: 0%;
                  right: 0;}
- .modal-wrap { position: absolute;
-                                       top: -65%;
-                                       left: 40%;
+ .modal-wrap {
+     text-align: center;
+ position: absolute;
+                                          top: 32%;
+                                          left: 42%;
+
                                     width: 350px;
                                     height: 300px;
                                     background: #fff;
@@ -884,16 +887,16 @@ text-align: center;
 
 .pp{position: relative;
         font-weight:bold;
-        top: -251px;}
+        }
 
  .nextbtn,.prevbtn{
     position: relative;
-        top: -100px;
+        top: 12px;
  }
 
  .pinput,.pinput:focus{
         position: relative;
-        top: -257px;
+        top: -11px;
         border-color: skyblue;
             border-style: solid;
  }

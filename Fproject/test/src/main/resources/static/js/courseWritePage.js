@@ -68,6 +68,16 @@ function alertBoxClose(){
     $(modalBg).removeClass('modal-bg');
 }
 
+function alertBoxClose2(){
+    $('#alertBox2').css("z-index",-1)
+    if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
+    $('input[name=ptitle]')[0].focus();
+    }
+    if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
+    $('select[name=pregion]')[0].focus();
+    }
+}
+
 //==검색 사이드 바 드롭다운
 let subToggle=true;
 	$('.searchbtn').click(function(){

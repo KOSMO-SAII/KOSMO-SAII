@@ -43,16 +43,44 @@
 <!-- modal 영역 -->
 <div class="modal-bg" onClick="popClose();"></div> <!--onClick="popClose();" -->
 <!--<form th:action="@{/test2}" action="get">-->
-<div class="modal-wrap class" th:fragment="popup">
+<div class="modal-wrap" th:fragment="popup">
   <div class="class2">
     <p class="pp">제목</p>
     <input class="pinput "type="text" name="ptitle" /><br>
+
+    <p class="pp" >여행지</p>
+    <select class="pinput" name="pregion" >
+      <option value="없음" >지역을 선택해주세요</option>
+      <option class="서울" value="서울">서울특별시</option>
+      <option class="부산" value="부산">부산광역시</option>
+      <option class="대구" value="대구">대구광역시</option>
+      <option class="인천" value="인천">인천광역시</option>
+      <option class="광주" value="광주">광주광역시</option>
+      <option class="대전" value="대전">대전광역시</option>
+      <option class="울산" value="울산">울산광역시</option>
+      <option class="세종" value="세종">세종특별자치시</option>
+
+      <option class="경기" value="경기">경기도</option>
+      <option class="강원" value="강원">강원도</option>
+      <option class="충북" value="충북">충청북도</option>
+      <option class="충남" value="충남">충청남도</option>
+      <option class="전북" value="전북">전라북도</option>
+      <option class="전남" value="전남">전라남도</option>
+      <option class="경북" value="경북">경상북도</option>
+      <option class="경남" value="경남">경상남도</option>
+      <option class="제주" value="제주">제주특별자치도</option>
+    </select><Br>
+
+    <p class="pp" >여행 날짜</p>
+    <input class="pinput" type="text" id="demo" name="day" value="" />
+    <br>
     <div class="popbtnbox">
-    <button type="button" class="nextbtn">다음</button>
+    <button type="button" class="nextbtn" onclick="return popClose()">다음</button>
     </div>
     <button type="button" class="popclose first"></button>
+
   </div>
-  <div class="class2" >
+  <!--<div class="class2" >
     <p class="pp" >여행지</p>
     <select class="pinput" name="pregion" >
       <option value="없음" >지역을 선택해주세요</option>
@@ -88,7 +116,7 @@
     <button type="button" class="prevbtn">이전</button><input type="submit" class="nextbtn" onclick="return popClose()" value="다음">
     </div>
     <button type="button" class="popclose"></button>
-  </div>
+  </div>-->
 <!--  <button class="modal-close" onClick="popClose();">닫기</button>-->
 </div>
 <!--</form>-->

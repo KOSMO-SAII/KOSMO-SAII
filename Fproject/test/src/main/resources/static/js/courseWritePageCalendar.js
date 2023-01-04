@@ -398,12 +398,14 @@ function popX(){
     mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
 
     if(title==''){
-        alert("제목을 입력해주세요")
-        $('.class').slick('slickGoTo', 0);
+        $('#alertBoxp2')[0].innerText="제목을 입력해주세요";
+        $('#alertBox2').css("z-index",1000)
+
         return false;
     }else if(region=='없음'){
-        alert("지역을 입력해주세요")
-        $('.class').slick('slickGoTo', 1);
+        $('#alertBoxp2')[0].innerText="지역을 입력해주세요";
+        $('#alertBox2').css("z-index",1000)
+
         return false;
     }
 
