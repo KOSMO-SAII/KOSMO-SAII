@@ -208,7 +208,7 @@ textarea:focus {
                 <input type="text" id="writer"  th:value="${nickname}" readonly></div>
             <div class="oneline"><label for="createDate">작성일시</label>
                 <input type="text" id="createDate" th:value="${reviewCourse.createDate}" readonly></div>
-            <div class="oneline"><label for="course_id">코스 번호</label>
+            <div class="oneline" th:onclick="toCourse([[${reviewCourse.course_id}]])"><label for="course_id">코스 번호</label>
                 <input type="text" id="course_id" th:value="${reviewCourse.course_id}" readonly></div></div>
         <div class="card-body controll">
         <div>
@@ -339,6 +339,10 @@ $(document).ready(function() {
         }
     });
 });
+
+function toCourse(id){
+    location.href="/courseViewPage/"+id
+}
 
 </script>
 

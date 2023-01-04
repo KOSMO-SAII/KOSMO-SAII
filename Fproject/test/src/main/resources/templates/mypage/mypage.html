@@ -45,7 +45,7 @@
         </div>
         <div class="mydiv">
             <label class="mylabel">생년월일</label><br/>
-            <input class="myinput" type="text" name="birthday" th:value="${info.birthday }" readonly>
+            <input class="myinput" type="text" name="birthday" th:value="${#dates.format(info.birthday,'yyyy-MM-dd')}" readonly>
         </div>
         <div class="mydiv">
             <label class="mylabel">성별</label><br/>
@@ -81,7 +81,7 @@
 </div>
 <div id="show2">
     <div>
-        <div th:each="lis, i: ${list}">
+        <div th:each="lis, i: ${list}" th:onclick="toCourse([[${lis.id}]])">
             <img th:src="|/img/loc/${lis.region}.png|" class="courseImg">
             <span th:text="|코스이름 : ${lis.title}|" class="courseName"></span><br>
             <span class="dateForm">작성날짜 : </span><input th:value="${lis.createDate}" class="eachInput">
@@ -176,6 +176,9 @@ function imgoriginal(){
    }
 function imgoriginalhidden(){
    document.getElementById("preview1").style.display="none";
+}
+function toCourse(id){
+    location.href="/courseViewPage/"+id
 }
 </script>
 <a href="/members/snow">눈</a>

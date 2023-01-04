@@ -18,9 +18,9 @@
   <link th:href="@{/css/courseList.css}" rel="stylesheet" />
   <body>
   <section class="sch_wrap">
-    <div style="margin:0 auto; width:100%">
-      <div style="margin:0 auto">
-        <form class="search-bar" align="center" style="width: 80rem">
+    <div style="margin:0 auto; max-width:80rem">
+      <div>
+        <form th:action="@{/course/list}" method="post" class="search-bar" align="center" style="width: 80rem">
           <input type="text" id="search" name="searchStr" />
           <input type="submit" value="검색" style="float: right;
   width: 7rem;
@@ -32,12 +32,13 @@
   transform: translate(-20px, -5.8rem);
   color: #fff;
   font-size: 1.8rem;"/>
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
       </div>
     </div>
     <div class="trip_list1">
       <div class="inner" th:each="list, i: ${lists}" th:onclick="|courseView(${list.courseid})|">
-        <div class="img">
+        <div class="img" style="pointer-events:none">
           <div class="img map"></div>
         </div>
         <div class="txt_wrap">
@@ -53,7 +54,7 @@
                   <span class="ico_attr" th:text="|전체 ${list.getSize()} 장소|"></span>
                 </li>
                 <li>
-                  <span class="ico_spot" th:text="${list.viewCount}"></span>
+                  <span class="ico_spot" th:text="|조회수 ${list.viewCount}|"></span>
                 </li>
                 <li class="user_wrap">
                 <span clas="img">
@@ -61,7 +62,7 @@
                 </span>
                   <span class="nick" th:text="${list.createdBy}"></span>
                 </li>
-                <li class="date" style="float:right" th:text="여행일자"></li>
+                <li class="date" style="float:right" th:text="${list.when}"></li>
               </ul>
             </li>
           </ul>
@@ -112,18 +113,18 @@
       <ul class="pagination justify-content-center" style="margin: 30px">
 
         <li class="page-item" th:classappend="${pages.number eq 0}?'disabled':''">
-          <a th:href="@{'/course/list?page=' + ${pages.number-1}}" aria-label='Previous' class="page-link">
-            <span aria-hidden='true'>Previous</span>
+          <a th:href="@{'/course/list?page=' + ${pages.number-1}} + '&searchStr=' + ${search}" aria-label='<<' class="page-link">
+            <span aria-hidden='true'><<</span>
           </a>
         </li>
 
         <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${pages.number eq page-1}?'active':''">
-          <a th:href="@{'/course/list?page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+          <a th:href="@{'/course/list?page=' + ${page-1} + '&searchStr=' + ${search}}" th:inline="text" class="page-link">[[${page}]]</a>
         </li>
 
         <li class="page-item" th:classappend="${pages.number+1 ge pages.totalPages}?'disabled':''">
-          <a th:href="@{'/course/list?page=' + ${pages.number+1}}" aria-label='Next' class="page-link">
-            <span aria-hidden='true'>Next</span>
+          <a th:href="@{'/course/list?page=' + ${pages.number+1} + '&searchStr=' + ${search}}" aria-label='>>' class="page-link">
+            <span aria-hidden='true'>>></span>
           </a>
         </li>
 

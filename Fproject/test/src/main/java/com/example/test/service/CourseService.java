@@ -3,10 +3,7 @@ package com.example.test.service;
 import com.example.test.domain.CourseDTO;
 import com.example.test.domain.CourseListDTO;
 import com.example.test.domain.MainBoardDTO;
-import com.example.test.entity.Course;
-import com.example.test.entity.CourseData;
-import com.example.test.entity.CourseDataId;
-import com.example.test.entity.CourseList;
+import com.example.test.entity.*;
 import com.example.test.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -34,6 +31,8 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     private final CourseListRepository courseListRepository;
+
+    private final MemberRepository memberRepository;
 
     private MemberService memberService;
 
@@ -393,7 +392,7 @@ public class CourseService {
         if(searchStr.isEmpty()){
             courseLists = courseListRepository.findAll(pageRequest);
         } else {
-            courseLists = courseListRepository.findBySearch(searchStr, pageRequest);
+            courseLists = courseListRepository.findByRegionContainsOrderByIdDesc(searchStr, pageRequest);
         }
 
         List<CourseListDTO> lists = new ArrayList<>();
@@ -410,6 +409,10 @@ public class CourseService {
                 System.out.println(courseDataRepository.findById(id));
                 datas.add(modelMapper.map(courseDataRepository.findById(id), CourseDTO.class));
             }
+            Course course = courseRepository.findById(cdto.getCourseid()).orElseThrow();
+            Member member = memberRepository.findByLoginId(cdto.getCreatedBy());
+            cdto.setCreatedBy(member.getNickname());
+            cdto.setWhen(course.getStartday() + " - " +course.getEndday());
             cdto.setCourseDatas(datas);
             cdto.setCenter();
             lists.add(cdto);
@@ -438,7 +441,7 @@ public class CourseService {
             courseLists = courseListRepository.findAll(pageRequest);
         } else {
             System.out.println("findSearch");
-            courseLists = courseListRepository.findBySearch(searchStr, pageRequest);
+            courseLists = courseListRepository.findByRegionContainsOrderByIdDesc(searchStr, pageRequest);
         }
 
         return courseLists;

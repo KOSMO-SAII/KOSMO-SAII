@@ -2,13 +2,13 @@ src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK
 
 var id = ""
 var c = ""
-var pageNo = 1
-var totalCount = 1
-var maxPage = 10
-var start = 1
-start = (pageNo/maxPage) * maxPage + 1
-var end = 10
-end = (totalCount == 0) ? 1 : (start + (maxPage - 1) < totalCount ? start + (maxPage - 1) : totalCount)
+//var pageNo = 1
+//var totalCount = 1
+//var maxPage = 10
+//var start = 1
+//start = (pageNo/maxPage) * maxPage + 1
+//var end = 10
+//end = (totalCount == 0) ? 1 : (start + (maxPage - 1) < totalCount ? start + (maxPage - 1) : totalCount)
 
 allInfo();
 
@@ -93,31 +93,31 @@ function printAll(infoitem){
     li.innerHTML = '<div class="imgandtext"><a href="/festivalview/'+infoitem.contentid+'"><image class="image" src="'+infoitem.firstimage+'" alt="이미지 준비중입니다."></image></a><div class="titleanddate"><a href="/festivalview/'+infoitem.contentid+'"><p class="title">'+infoitem.title+'</p><p class="date">['+''+eventstartdate+'~'+eventenddate+']</p></div></a></div>';
     ul[0].appendChild(li);
 }
-
-function paging(){
-    var inner = '<li class="page-item" th:classappend="'
-    if (pageNo == 0)
-        inner += 'disabled'
-    else
-        inner += ''
-
-    inner += '">'
-    inner += '<a th:href="@{' + '/course/list?page=' + (pageNo+1) + '}" aria-label="Previous" class="page-link">'
-    inner += '   <span aria-hidden="true">Previous</span>'
-    inner += '</a>'
-    inner += '</li>'
-    inner += '<li class="page-item" th:each="page: ${#numbers.sequence(' + start + ', ' + end + ')}" th:classappend="${pageNo eq page-1}?' + "'active' : ''" + '">'
-    inner += '    <a th:href="@{' + '/course/list?page= ${page-1} }" th:inline="text" class="page-link">${page}</a>'
-    inner += '</li>'
-
-    inner += '<li class="page-item" th:classappend="[[${pageNo+1 ge totalCount}]]?' + "'disabled':''" + '">'
-    inner += '  <a th:href="@{' + '/course/list?page=[[${pageNo+1}]]}" aria-label=' + "'Next' class=" + 'page-link">'
-    inner += '  <span aria-hidden="true">Next</span>'
-    inner += '  </a>'
-    inner += '</li>'
-
-    var li = $('#paging')
-    li.innerHTML += inner
-}
-
-paging()
+//
+//function paging(){
+//    var inner = '<li class="page-item" th:classappend="'
+//    if (pageNo == 0)
+//        inner += 'disabled'
+//    else
+//        inner += ''
+//
+//    inner += '">'
+//    inner += '<a th:href="@{' + '/course/list?page=' + (pageNo+1) + '}" aria-label="Previous" class="page-link">'
+//    inner += '   <span aria-hidden="true">Previous</span>'
+//    inner += '</a>'
+//    inner += '</li>'
+//    inner += '<li class="page-item" th:each="page: ${#numbers.sequence(' + start + ', ' + end + ')}" th:classappend="${pageNo eq page-1}?' + "'active' : ''" + '">'
+//    inner += '    <a th:href="@{' + '/course/list?page= ${page-1} }" th:inline="text" class="page-link">${page}</a>'
+//    inner += '</li>'
+//
+//    inner += '<li class="page-item" th:classappend="[[${pageNo+1 ge totalCount}]]?' + "'disabled':''" + '">'
+//    inner += '  <a th:href="@{' + '/course/list?page=[[${pageNo+1}]]}" aria-label=' + "'Next' class=" + 'page-link">'
+//    inner += '  <span aria-hidden="true">Next</span>'
+//    inner += '  </a>'
+//    inner += '</li>'
+//
+//    var li = $('#paging')
+//    li.innerHTML += inner
+//}
+//
+//paging()

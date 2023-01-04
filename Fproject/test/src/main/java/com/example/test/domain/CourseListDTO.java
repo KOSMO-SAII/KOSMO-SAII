@@ -23,6 +23,9 @@ public class CourseListDTO {
     private LocalDateTime createDate;
     private double xPoint;
     private double yPoint;
+
+    private String when;
+
     public void setCenter(){
 
         if(courseDatas.size() < 1) {
