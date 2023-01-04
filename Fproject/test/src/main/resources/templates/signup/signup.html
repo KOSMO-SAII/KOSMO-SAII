@@ -73,13 +73,14 @@ window.onload = function(){
 
   <div class="form-group">
     <label th:for="loginPw" autoComplete="off">비밀번호</label><br/>
-    <input type="password" th:field="*{loginPw}" class="form-control" placeholder="비밀번호을 입력해주세요">
+    <input type="password" th:field="*{loginPw}" class="form-control" placeholder="비밀번호을 입력해주세요" id="pw1" onkeyup="passwordCheck()">
      <p th:if="${#fields.hasErrors('loginPw')}" th:errors="*{loginPw}" class="fieldError">Incorrect data</p>
   </div>
   <div class="form-group">
     <label th:for="checkPw" autoComplete="off">비밀번호 재확인</label><br/>
-    <input type="password" th:field="*{checkPw}" class="form-control" placeholder="비밀번호를 재입력해주세요">
-      <p th:if="${#fields.hasErrors('checkPw')}" th:errors="*{checkPw}" class="fieldError">Incorrect data</p>
+    <input type="password" th:field="*{checkPw}" class="form-control" placeholder="비밀번호를 재입력해주세요" id="pw2" onkeyup="passwordCheck()">
+    <p th:if="${#fields.hasErrors('checkPw')}" th:errors="*{checkPw}" class="fieldError">Incorrect data</p>
+    <input type="text" id="pwValid">
 
   </div>
   <div class="form-group">
@@ -135,5 +136,31 @@ window.onload = function(){
   </div>
 </form>
 </div>
+<script>
+function passwordCheck(){
+  const pw1=document.getElementById('pw1').value;
+  const pw2=document.getElementById('pw2').value;
+  const pwdCheck=/^(?=.*[a-zA-Z])(?=.*[`!@#$%^&*+=-_])(?=.*[0-9]).{8,16}$/;
+  if(pw1==pw2 && pwdCheck.test(pw1)){
+    document.getElementById('pwValid').style.display="block";
+    document.getElementById('pwValid').value="비밀번호 확인";
+    document.getElementById('pwValid').style.color="green";
+    console.log("비밀번호가 같아?");
+    return true;
+  }else if(pw1!=pw2){
+    document.getElementById('pwValid').style.display="block";
+    document.getElementById('pwValid').value="비밀번호 다름";
+    document.getElementById('pwValid').style.color="red";
+    console.log("비밀번호가 달라?");
+    return false;
+  }else if(!pwdCheck.test(pw1)){
+    document.getElementById('pwValid').style.display="block";
+    document.getElementById('pwValid').value="영문자,숫자,특수문자 포함 8~16자리를 입력하세요.";
+    document.getElementById('pwValid').style.color="red";
+    return false;
+  }
+
+}
+</script>
 </body>
 </html>
