@@ -112,6 +112,16 @@ MemberController {
         System.out.println(r);
         System.out.println(principal.getName());
         SessionMember sessionUser = memberService.memdto(principal.getName());
+        String address="";
+        if(sessionUser.getAddress1()==null || sessionUser.getAddress1()==""){
+            String address1="";
+            address = sessionUser.getAddress()+" "+address1;
+        }else{
+            String address1=sessionUser.getAddress1();
+            address = sessionUser.getAddress()+" "+address1;
+        }
+
+        model.addAttribute("adr",address);
         model.addAttribute("info",sessionUser);
         System.out.println(sessionUser.toString());
         System.out.println(principal.getName()+"여기는 컨트롤 피린");

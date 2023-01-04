@@ -22,6 +22,7 @@ public class SessionMember implements Serializable {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private String address;
+    private String address1;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String email;

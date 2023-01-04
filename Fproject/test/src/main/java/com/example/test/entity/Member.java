@@ -34,6 +34,7 @@ public class Member{
 
     private LocalDateTime updateDate;
     private String address;
+    private String address1;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
     @Column(unique = true, nullable = false)
@@ -99,7 +100,9 @@ public class Member{
         member.setLoginPw(pw);
         member.setName(memberDTO.getName());
         member.setNickname(memberDTO.getNickname());
-        member.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+//        member.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member.setAddress(memberDTO.getAddress());
+        member.setAddress1(memberDTO.getAddress1());
         member.setBirthday(memberDTO.getBirthday());
         member.setEmail(memberDTO.getEmail());
         member.setBirthday(memberDTO.getBirthday());
@@ -130,7 +133,8 @@ public class Member{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(memberDTO.getMemberId());
-        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setAddress(memberDTO.getAddress());
+        member1.setAddress1(memberDTO.getAddress1());
         member1.setBirthday(memberDTO.getBirthday());
         member1.setEmail(memberDTO.getEmail());
         member1.setGender(memberDTO.getGender());
@@ -154,7 +158,8 @@ public class Member{
         System.out.println("여기는 엔티티 멤버 업데이트");
         Member member1 = new Member();
         member1.setMemberId(memberDTO.getMemberId());
-        member1.setAddress(memberDTO.getAddress().concat(" "+memberDTO.getAddress1()));
+        member1.setAddress(memberDTO.getAddress());
+        member1.setAddress1(memberDTO.getAddress1());
         member1.setBirthday(memberDTO.getBirthday());
         member1.setEmail(memberDTO.getEmail());
         member1.setGender(memberDTO.getGender());

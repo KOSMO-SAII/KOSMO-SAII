@@ -82,7 +82,7 @@ window.onload = function(){
   </div>
   <div class="mydiv">
     <label class="mylabel">상세주소</label><br/>
-    <input class="myinput" type="text" name=address1 >
+    <input class="myinput" type="text" th:field="*{address1}">
   </div>
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 </form>
