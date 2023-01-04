@@ -468,7 +468,7 @@ function setSchedul(){
                                        ],
                                        endArrow:true,
                                    strokeWeight: 6,
-                                   strokeColor: '#98dde3',
+                                   strokeColor: '#000000',
                                    strokeOpacity: 1,
                                    });
                schedul.push(array);
@@ -491,7 +491,7 @@ function setSchedul(){
                                       ],
                                       endArrow:true,
                                   strokeWeight: 6,
-                                  strokeColor: '#98dde3',
+                                  strokeColor: '#000000',
                                   strokeOpacity: 1,
                                   });
               schedul.pop();
@@ -513,7 +513,7 @@ function setSchedul(){
                                     ],
                                     endArrow:true,
                                 strokeWeight: 6,
-                                strokeColor: '#98dde3',
+                                strokeColor: '#000000',
                                 strokeOpacity: 1,
                                 });
             schedul.push(array);
@@ -534,7 +534,7 @@ function setSchedul(){
                                         ],
                                         endArrow:true,
                                     strokeWeight: 6,
-                                    strokeColor: '#98dde3',
+                                    strokeColor: '#000000',
                                     strokeOpacity: 1,
                                     });
                 schedul.push(array);
@@ -561,7 +561,7 @@ function setSchArr(){
                                         ],
                                         endArrow:true,
                                     strokeWeight: 6,
-                                    strokeColor: '#98dde3',
+                                    strokeColor: '#000000',
                                     strokeOpacity: 1,
                                     });
                 schedul.push(array);
@@ -582,7 +582,7 @@ function setSchArr(){
                                             ],
                                             endArrow:true,
                                         strokeWeight: 6,
-                                        strokeColor: '#98dde3',
+                                        strokeColor: '#000000',
                                         strokeOpacity: 1,
                                         });
                     schedul.push(array);
