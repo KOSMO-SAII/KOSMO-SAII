@@ -31,8 +31,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 //================
 //코스저장 전 체크
 function coursecheck(){
-    var title =$('input[name=ptitle]')[0].value;
-    var region = $('select[name=pregion]')[0].value;
+
     for(var i=0; i<schedul.length;i++){
         if(schedul[i][0]==undefined){
             alert((i+1)+"Day 코스를 저장해주세요");
@@ -40,17 +39,35 @@ function coursecheck(){
         }
     }
 
+    var title =$('input[name=title]')[0].value;
+    var region = $('input[name=region]')[0].value;
+
     if(title=='제목을 입력해주세요'){
-        alert("제목을 입력해주세요'")
+        alert("제목을 입력해주세요")
         return false;
-    }else if(region=='지역을 선택해주세요'){
-        alert("지역을 선택해주세요'")
+    }
+    if(region=='지역을 선택해주세요'){
+        alert("지역을 선택해주세요")
         return false;
     }
 
-
-
 }
+
+//function titlecheck(){
+//        var title =$('input[name=title]')[0].value;
+//        var region = $('input[name=region]')[0].value;
+//
+//        if(title=='제목을 입력해주세요'){
+//            alert("제목을 입력해주세요")
+//            return false;
+//        }
+//        if(region=='지역을 선택해주세요'){
+//            alert("지역을 선택해주세요")
+//            return false;
+//        }
+//
+//        return false;
+//}
 
 //==검색 사이드 바 드롭다운
 let subToggle=true;
