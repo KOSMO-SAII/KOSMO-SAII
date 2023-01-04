@@ -174,8 +174,7 @@ for(var i=0;i<schedul.length;i++){
 }
 
 overlaySet()
-
-
+kakao.maps.event.addListener(map, 'idle',overlaySet);
 
 //day에 따른  오버레이 변경
 function overlaySet(){
@@ -190,6 +189,7 @@ function overlaySet(){
         schedul[schedulNum][k].myoverlay.myoverlay.setMap(map);
     }
 
+    console.log("overlay실행")
     //오버레이 z-inex변경
     $(".info.overlay").off();
     $(".info.overlay").click(function(){

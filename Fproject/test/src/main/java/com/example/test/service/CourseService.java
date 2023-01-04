@@ -311,10 +311,13 @@ public class CourseService {
         List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
         CourseList course = courseList.get(0);
         course.setViewCount(course.getViewCount()+1);
-        courseListRepository.save(course);
         System.out.println("getCourseList: "+courseList);
+        System.out.println("getCourseID: "+course.getId());
+        courseListRepository.save(course);
         return courseList;
     }
+
+
 
     public void saveCourseData(CourseDTO cdto, Long course_id){
         System.out.println("saveCourseData 모달 전 "+cdto.getPlace_name());
@@ -366,9 +369,11 @@ public class CourseService {
        Course cs= courseRepository.findById(course_id).orElseThrow(()->new NoSuchElementException("값 없음"));
        String days=cs.getDays();
        String start=cs.getStartday();
+       String end=cs.getEndday();
        Map<String,String> map=new HashMap<String,String>();
        map.put("days",days);
        map.put("start",start);
+       map.put("end",end);
        return map;
     }
 

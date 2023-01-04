@@ -59,6 +59,7 @@ public class CoursePageController extends HttpServlet {
             req.setAttribute("days", map.get("days"));
             req.setAttribute("start",map.get("start"));
             req.setAttribute("nowUser",nowUser);
+            req.setAttribute("end",map.get("end"));
             //return "test/test";
             return "course/courseViewPage";
         }
@@ -80,6 +81,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("days", map.get("days"));
         req.setAttribute("start",map.get("start"));
         req.setAttribute("nowUser",nowUser);
+        req.setAttribute("end",map.get("end"));
         //return "test/test";
         return "course/courseViewPage";
     }
@@ -155,11 +157,11 @@ public class CoursePageController extends HttpServlet {
     @PostMapping("/courseWritePage")
     public String doPostWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
         Long course_id= Long.parseLong(req.getParameter("c_id"));
-        //System.out.println("코스아이디: "+course_id);
+        List<CourseList> courseList = courseService.getCourseList(course_id);
+        System.out.println("코스아이디: "+course_id);
         List<Map<String, String>> list = courseService.changeCourseData(course_id);
         Map<String,String> map =courseService.getDays(course_id);
         //System.out.println("days: "+days);
-        List<CourseList> courseList = courseService.getCourseList(course_id);
 
 
         req.setAttribute("days",map.get("days"));

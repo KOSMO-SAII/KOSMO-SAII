@@ -19,10 +19,12 @@ $('.days').on('change',function(){
     schedulNum=($(this).val()-1);
     optVal=$(this).val();
     hideList(optVal)
-    overlaySet();
     var move =new kakao.maps.LatLng(schedul[schedulNum][0].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][0].mymarker.mymarker.getPosition().La)
             map.panTo(move)
+    overlaySet();
 })
+
+
 
 //day select 생성
 function addDays(){
