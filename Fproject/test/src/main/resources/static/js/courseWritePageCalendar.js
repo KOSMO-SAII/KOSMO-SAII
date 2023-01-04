@@ -164,11 +164,12 @@ $('.days').on('change',function(){
     if(checkmode==1){
         check()
     }
-    if(checkmode2){
+    if(schedul[schedulNum]!=''){
     console.log(schedulNum)
         var move =new kakao.maps.LatLng(schedul[schedulNum][0].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][0].mymarker.mymarker.getPosition().La)
         map.panTo(move)
     }
+
 })
 
 //팝업 열기
