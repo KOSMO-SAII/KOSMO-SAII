@@ -19,6 +19,5 @@ public interface CourseListRepository extends JpaRepository<CourseList, Long> {
 
     List<CourseList> findByCreatedBy(String name);
 
-    @Query(value = "select c from CourseList c where region like ?1")
-    Page<CourseList> findBySearch(String searchStr, Pageable pageable);
+    Page<CourseList> findByRegionContainsOrderByIdDesc(String searchStr, Pageable pageable);
 }

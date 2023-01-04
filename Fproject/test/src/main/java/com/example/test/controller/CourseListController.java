@@ -21,24 +21,27 @@ public class CourseListController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("course/list")
-    public String list(Optional<Integer> page, Model model){
-        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
+//    @GetMapping("course/list")
+//    public String list(Optional<Integer> page, Model model, HttpServletRequest request){
+//        PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
+//        model.addAttribute("lists", courseService.getList("", pageRequest));
+//        model.addAttribute("pages", courseService.getPage("", pageRequest));
+//        model.addAttribute("search", "");
+//        model.addAttribute("maxPage", 5);
+//
+//        return "course/courseList";
+//    }
 
-        model.addAttribute("lists", courseService.getList("", pageRequest));
-        model.addAttribute("pages", courseService.getPage("", pageRequest));
-        model.addAttribute("maxPage", 5);
-
-        return "course/courseList";
-    }
-
-    @PostMapping("course/list")
+    @RequestMapping("course/list")
     public String search(Optional<Integer> page, Model model, HttpServletRequest request){
         PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
-
         String searchStr = request.getParameter("searchStr");
+        if(searchStr == null){
+            searchStr = "";
+        }
         model.addAttribute("lists", courseService.getList(searchStr, pageRequest));
         model.addAttribute("pages", courseService.getPage(searchStr, pageRequest));
+        model.addAttribute("search", searchStr);
         model.addAttribute("maxPage", 5);
 
         return "course/courseList";
