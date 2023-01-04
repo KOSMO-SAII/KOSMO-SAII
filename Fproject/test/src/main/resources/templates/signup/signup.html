@@ -55,12 +55,12 @@ window.onload = function(){
 <div layout:fragment="content">
 <body>
 <hr>
-<div class="top">
-<a href="/members/login"><button
-        type="button" class="btn btn-outline-primary me-2">Login</button></a>
-<a href="/"><button
-        type="button" class="btn btn-outline-primary me-2">Main</button></a>
-</div><br/>
+<!--<div class="top">-->
+<!--<a href="/members/login"><button-->
+<!--        type="button" class="btn btn-outline-primary me-2">Login</button></a>-->
+<!--<a href="/"><button-->
+<!--        type="button" class="btn btn-outline-primary me-2">Main</button></a>-->
+<!--</div><br/>-->
 <h2>회원가입</h2>
 <div id="fform">
 <form action="/members/signup" role="form" method="post"  th:object="${memberDTO}">
@@ -110,8 +110,8 @@ window.onload = function(){
     <div class="email"  style="display:flex;">
     <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
       <button type="button" class="ck-button" onclick="emailChk()" >확인</button><br/>
-      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
     </div>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
   </div>
 <!--  <div class="form-group">&ndash;&gt;-->
     <!--    <label>프로필</label> <br/>-->
@@ -120,6 +120,7 @@ window.onload = function(){
   <div class="form-group">
     <label>핸드폰번호</label><br/>
     <input type="text" th:field="*{phoneNumber}" placeholder="예)010-1234-5678"><br/>
+    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="fieldError">Incorrect data</p>
   </div>
   <div class="form-group">
     <label th:for="address">주소</label><br/>

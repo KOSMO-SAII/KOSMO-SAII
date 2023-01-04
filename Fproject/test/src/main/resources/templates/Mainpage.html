@@ -45,6 +45,9 @@
             <li test="${UserId==null}"><a href="members/intro"
                                           class=" link-dark ">About</a></li>
 
+
+
+
             <div class="col-md-3 text-end">
                 <!--                <p th:if ="${UserId==null}">-->
                 <p sec:authorize="isAnonymous()">
@@ -61,6 +64,14 @@
                             type="button" class="btn btn-outline-primary me-2">LogOut</button></a>
                 </p>
             </div>
+        </ul>
+        <ul class="nana">
+            <li><a href="/course/list"
+                   class=" link-dark ">코스게시판</a></li>
+            <li><a href="/Place"
+                   class=" link-dark ">장소게시판</a></li>
+            <li><a href="/festival"
+                   class=" link-dark ">축제게시판</a></li>
         </ul>
     </div>
 </header>
@@ -162,7 +173,7 @@
             <a href="#" class="link-1">Home   |  </a>
             <a href="members/use">사용방법   |  </a>
             <a href="QnABoard/list">Q&A     </a>
-            <!--            <a href="#">Contact </a>-->
+
         </p>
         <p class="footer-company-name">Company SAII © 2022</p>
     </div>
