@@ -324,6 +324,15 @@ function popX(){
 
 }
 
+//메인메뉴 이동
+function  goMain(){
+   $('#alertBoxp2')[0].innerText="저장하지 않고 나가시겠습니까?";
+   $('#alertBox2').css("z-index",1000)
+   var modalBg = $('.mbg');
+   $(modalBg).addClass('modal-bg');
+
+}
+
 //팝업 저장 후 닫기
  function popClose() {
     //제목,지역 빈칸 예외처리

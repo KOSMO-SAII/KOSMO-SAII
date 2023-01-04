@@ -32,7 +32,7 @@
 <body >
 <div class="body_wrap">
     <div class="my">
-        <form th:action="@{/courseViewPage(mode=${param.mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
+        <form th:action="@{/courseViewPage(mode=${mode},c_id=${param.c_id})}" method="post" onsubmit="return coursecheck()" >
             <div class="inputbox hidden">
             <input class="input "type="text" name="title" th:value="${title}" readonly/><br/>
             <input class="input "type="text" name="region" th:value="${region}" readonly/><br/>
@@ -63,7 +63,7 @@
                 <th:block th:unless="${#strings.equals(param.mode, 'edit')}">
                     <input type="submit" class="submitbtn" value="코스저장"></input>
                 </th:block>
-                <button type="button" class="submitbtn" onclick="history.back()">돌아가기</button>
+                <button type="button" class="submitbtn" onclick="return goMain()">메인 메뉴</button>
             </div>
         </form>
     </div>

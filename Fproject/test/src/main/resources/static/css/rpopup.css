@@ -145,9 +145,10 @@ bottom: 0%;
                          background-color: #AEDBE1;
                          box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
                          border: none;
+                         cursor:pointer;
 bottom: 0%;
     position: absolute;
-    right: 42%;}
+    right: 50%;}
 
 #alertBoxbtn2:active{
      position: absolute;
@@ -161,4 +162,24 @@ bottom: 0%;
     font-weight: 600;
     text-align: center;
     text-transform: none;
+}
+
+#alertBoxbtn3{
+     display: inline-block;
+                             font-size: 13px;
+                             padding: 4px 15px;
+                             color: white;
+                             margin: 20px 8px 15px;
+                             border-radius: 6px;
+                             text-align: center;
+                             transition: top .01s linear;
+                             text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+                             text-decoration: none;
+                             background-color: #AEDBE1;
+                             box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
+                             border: none;
+                             cursor:pointer;
+                                 position: absolute;
+                                 bottom: 0%;
+                                 right: 33%;
 }

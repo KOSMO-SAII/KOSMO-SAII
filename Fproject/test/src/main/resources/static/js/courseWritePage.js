@@ -50,6 +50,7 @@ function coursecheck(){
         $('#alertBox').css("z-index",1000)
         var modalBg = $('.mbg');
         $(modalBg).addClass('modal-bg');
+
         return false;
     }
     if(region=='지역을 선택해주세요'){
@@ -57,6 +58,7 @@ function coursecheck(){
         $('#alertBox').css("z-index",1000)
         var modalBg = $('.mbg');
         $(modalBg).addClass('modal-bg');
+
         return false;
     }
 
@@ -66,7 +68,19 @@ function alertBoxClose(){
     $('#alertBox').css("z-index",-1)
     var modalBg = $('.mbg');
     $(modalBg).removeClass('modal-bg');
+
+    if($('#alertBoxp')[0].innerText=="제목을 입력해주세요"){
+       popOpen()
+       $('input[name=ptitle]')[0].focus();
+    }
+    if($('#alertBoxp')[0].innerText=="지역을 선택해주세요"){
+       popOpen()
+       $('select[name=pregion]')[0].focus();
+    }
 }
+
+var modalBg = $('.mbg');
+   $(modalBg).addClass('modal-bg');
 
 function alertBoxClose2(){
     $('#alertBox2').css("z-index",-1)
@@ -76,6 +90,16 @@ function alertBoxClose2(){
     if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
     $('select[name=pregion]')[0].focus();
     }
+    if($('#alertBoxp2')[0].innerText=="저장하지 않고 나가시겠습니까?"){
+        var link = '/';
+        location.href=link;
+    }
+}
+
+function alertBoxClose3(){
+$('#alertBox2').css("z-index",-1)
+    var modalBg = $('.mbg');
+       $(modalBg).removeClass('modal-bg');
 }
 
 //==검색 사이드 바 드롭다운

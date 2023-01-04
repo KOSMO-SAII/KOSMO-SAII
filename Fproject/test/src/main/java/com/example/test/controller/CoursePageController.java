@@ -60,6 +60,8 @@ public class CoursePageController extends HttpServlet {
             req.setAttribute("start",map.get("start"));
             req.setAttribute("nowUser",nowUser);
             req.setAttribute("end",map.get("end"));
+            req.setAttribute("mode",mode);
+
             //return "test/test";
             return "course/courseViewPage";
         }
@@ -82,6 +84,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("start",map.get("start"));
         req.setAttribute("nowUser",nowUser);
         req.setAttribute("end",map.get("end"));
+        req.setAttribute("mode",mode);
         //return "test/test";
         return "course/courseViewPage";
     }
@@ -109,7 +112,7 @@ public class CoursePageController extends HttpServlet {
             req.setAttribute("list", list);
             System.out.println(list);
 
-        }else {
+        }else if(mode.equals( "write")) {
 
             //courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장
             if(req.getParameterValues("data")!=null) {
@@ -128,6 +131,7 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("days",days);
         req.setAttribute("start",start);
         req.setAttribute("end",end);
+        req.setAttribute("mode",mode);
         return "course/CourseViewPage";
 
     }
@@ -137,6 +141,7 @@ public class CoursePageController extends HttpServlet {
         boolean check=courseService.loginCheck(principal);
         System.out.println(check);
         if(check){
+            req.setAttribute("mode","write");
             return "course/courseWritePage";
         }else {
 
@@ -163,6 +168,8 @@ public class CoursePageController extends HttpServlet {
         req.setAttribute("list", list);
         req.setAttribute("start",map.get("start"));
         req.setAttribute("end",map.get("end"));
+        req.setAttribute("mode",mode);
+
         return "course/courseWritePage";
     }
 }
