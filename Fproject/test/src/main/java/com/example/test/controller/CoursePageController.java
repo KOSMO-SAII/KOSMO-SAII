@@ -30,9 +30,9 @@ public class CoursePageController extends HttpServlet {
       @GetMapping("/courseViewPage/{num}")
     public String doGetView(@PathVariable("num") String num, Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {
         Long course_id= Long.parseLong(num);
+        String mode="view";
 
-
-        List<CourseList> courseList = courseService.getCourseList(course_id);
+        List<CourseList> courseList = courseService.getCourseList(course_id,mode);
         Map<String,String> map = courseService.getDays(course_id);
         //코스 id에 맞는 작성자 찾기
         String createdBy = courseList.get(0).getCreatedBy();
@@ -139,16 +139,8 @@ public class CoursePageController extends HttpServlet {
         if(check){
             return "course/courseWritePage";
         }else {
-//            try {
-//                //비로그인시 알람창
-//                resp.setContentType("text/html; charset=utf-8");
-//                PrintWriter w = resp.getWriter();
-//                w.write("<script>alert('로그인을 해주세요');location.href='/members/login';</script>");
-//                w.flush();
-//                w.close();
-//            } catch(Exception e) {
-//                e.printStackTrace();
-//            }
+
+
             return "redirect:/members/login";
         }
 
@@ -157,7 +149,8 @@ public class CoursePageController extends HttpServlet {
     @PostMapping("/courseWritePage")
     public String doPostWrite(Model model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
         Long course_id= Long.parseLong(req.getParameter("c_id"));
-        List<CourseList> courseList = courseService.getCourseList(course_id);
+        String mode= req.getParameter("mode");
+        List<CourseList> courseList = courseService.getCourseList(course_id,mode);
         System.out.println("코스아이디: "+course_id);
         List<Map<String, String>> list = courseService.changeCourseData(course_id);
         Map<String,String> map =courseService.getDays(course_id);

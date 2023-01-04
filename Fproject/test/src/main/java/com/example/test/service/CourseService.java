@@ -138,6 +138,7 @@ public class CourseService {
         }
 
         this.changeCourse(req,course_id);
+
         CourseListDTO cldt = new CourseListDTO();
 
         cldt.setCourseid(course_id);
@@ -156,6 +157,9 @@ public class CourseService {
             if(region.equals("제주특별자치도"))
                 region = "제주";
         }
+        List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
+        CourseList course = courseList.get(0);
+        cldt.setViewCount(course.getViewCount()+1);
         cldt.setTitle(title);
         cldt.setRegion(region);
 
@@ -306,14 +310,16 @@ public class CourseService {
         return list;
     }
 
-    public List<CourseList> getCourseList(Long course_id){
+    public List<CourseList> getCourseList(Long course_id,String mode){
         System.out.println("getCourseList/course_id : "+course_id);
         List<CourseList> courseList= courseListRepository.findByCourseid(course_id);
-        CourseList course = courseList.get(0);
-        course.setViewCount(course.getViewCount()+1);
-        System.out.println("getCourseList: "+courseList);
-        System.out.println("getCourseID: "+course.getId());
-        courseListRepository.save(course);
+        if(mode=="view"){
+            CourseList course = courseList.get(0);
+            course.setViewCount(course.getViewCount()+1);
+            System.out.println("getCourseList: "+courseList);
+            System.out.println("getCourseID: "+course.getId());
+            courseListRepository.save(course);
+        }
         return courseList;
     }
 
@@ -333,7 +339,7 @@ public class CourseService {
         courseListRepository.save(courseList);
     }
 
-    //미완성
+
     public void changeCourseList(CourseListDTO clto, Long listId){
         CourseList courseList = modelMapper.map(clto,CourseList.class);
         courseList.setId(listId);

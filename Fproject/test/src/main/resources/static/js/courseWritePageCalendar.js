@@ -167,7 +167,7 @@ $('.days').on('change',function(){
     hideList(optVal)
     if(checkmode==1){
         if(schedul[schedulNum]==''){
-            
+
         }else{
             check()
         }
