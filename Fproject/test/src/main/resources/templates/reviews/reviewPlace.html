@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">>
 <head>
   <meta charset="UTF-8">
   <title>거리</title>
@@ -13,7 +16,9 @@
   <!-- 제이쿼리 적용 -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
+<div layout:fragment="content">
 <body>
+<hr>
 <h3>장소-리뷰게시판</h3>
 <!-- 검색 -->
 <form style="height:100px" method="get">
@@ -107,6 +112,7 @@
 
 <!--js 파일 연동-->
 </body>
+</div>
 <script type="text/javascript" th:src="@{ /js/courseViewPage.js}"></script>
 <script th:inline="javascript">
   var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스

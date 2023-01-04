@@ -224,6 +224,10 @@ h2 {
    display: inline-block;
    border:none;
    background-color: #F7F7F7;
+   outline:none;
+}
+.borderStyle{
+    border: 1px solid black;
 }
 #show1 {
    position:relative;
@@ -272,4 +276,25 @@ a {
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
 }
-
+.toggleBG{
+    background: #CCCCCC;
+    width: 66px;
+    height: 24px;
+    border: 1px solid #CCCCCC;
+    border-radius: 15px;
+    position: relative;
+    top: -29px;
+    left: 111px;
+}
+.toggleFG{
+    background: #FFFFFF;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    left: 0px;
+}
+.pwToggle{
+    display:none;
+}
