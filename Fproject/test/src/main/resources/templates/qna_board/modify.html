@@ -51,9 +51,26 @@
     width:88px;
     border:none;
     background-color: #AEDBE1;
-    box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
-    margin: 26px auto;
-    left: 430px;}
+    box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%); }
+
+  .divBtn{
+    margin:auto;
+    width:228px;
+  }
+  #redBtn{
+    background-color: #E6383F;
+    box-shadow: 0 0 0 1px #D6343B inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 4px 0 0 #D6343B,
+                0 4px 0 1px rgba(0,0,0,0.4),
+                0 4px 4px 1px rgba(0,0,0,0.5);
+  }
+  #redBtn:active{
+      box-shadow: 0 0 0 1px #D6343B inset,
+                  0 0 0 2px rgba(255,255,255,0.15) inset,
+                  0 0 0 1px rgba(0,0,0,0.4);
+  }
+
 
 </style>
 </head>
@@ -69,11 +86,19 @@
     </div><br>
     <textarea name="content" th:text="${board.content}" class="qq"></textarea> <br>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <div class="divBtn">
+    <button type="button" class="ss" onclick="goBack()" id="redBtn">취소</button>
     <button type="submit" class="ss">수정</button>
+    </div>
   </form>
 
 </div>
 
 </body>
+  <script>
+    function goBack(){
+      window.history.back();
+    }
+  </script>
 </div>
 </html>
