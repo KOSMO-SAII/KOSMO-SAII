@@ -350,7 +350,6 @@ form {
             box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
             border: none;
             cursor:pointer;
-
 }
 .check:active,.submitbtn:active{
     position: relative;
@@ -359,6 +358,16 @@ form {
                 0 0 0 2px rgba(255,255,255,0.15) inset,
                 0 0 0 1px rgba(0,0,0,0.4);
 
+}
+
+.submitbtn.use{
+    position: absolute;
+    top: 4%;
+    left: 21%;
+    z-index: 2;
+    }
+.submitbtn.use:active{
+    top: 5%;
 }
 .check{
 
