@@ -135,31 +135,26 @@ textarea:focus {
     <div class="col-md-12">
         <form class="card">
             <div class="card-header">
-<!--                <label for="course_id">코스번호</label>-->
                 <input type="text" id="course_id" placeholder="코스번호" ></div>
             <div id="sub" class="card-header d-flex justify-content-between">
-<!--                <label for="title">제목</label>-->
                 <input type="text" id="title" placeholder="제목을 입력하세요"></div>
             <div>
-<!--                <label for="writer">작성자</label>-->
                 <input type="hidden" id="writer" th:value="${nickname}" readonly></div>
             <div class="card-body controll">
-<!--                <label for="content">내용</label>-->
                 <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
             <div>
-<!--                <label for="pictures">첨부파일</label>-->
 
                 </div>
         </form>
-            <div class="files">
-                <!--imageURL을 이용한 <img>태그 작성하는데, 업로드된 이미지를 보여줄 수 있는 div-->
-                <input name="uploadFiles" type="file" multiple>
-                <button class="uploadBtn">Upload</button>
+<!--            <div class="files">-->
+<!--                &lt;!&ndash;imageURL을 이용한 <img>태그 작성하는데, 업로드된 이미지를 보여줄 수 있는 div&ndash;&gt;-->
+<!--                <input name="uploadFiles" type="file" multiple>-->
+<!--                <button class="uploadBtn">Upload</button>-->
 
-                <div class="uploadResult">
+<!--                <div class="uploadResult">-->
 
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
     <div class="divSubmit">
         <button class="withdraw" id="btn-save" onclick="reviewSave()" >등록</button>
         <button class="withdraw" id="btn-delete" onclick="location.href='/reviews/course';">취소</button>

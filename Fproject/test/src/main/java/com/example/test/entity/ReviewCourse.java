@@ -2,6 +2,7 @@ package com.example.test.entity;
 
 import com.example.test.domain.ReviewCourseDTO;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,8 +23,10 @@ public class ReviewCourse extends Base{
 
     private String course_id;
 
+    @NotNull
     private String content;
 
+    @NotNull
     private String title;
 
 //    @ManyToOne의 기본 Fetch 전략은 EAGER(즉시 로딩)이지만, 필요하지 않은 쿼리도 JPA에서 함께 조회하기 때문에

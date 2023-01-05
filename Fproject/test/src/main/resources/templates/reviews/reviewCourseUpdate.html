@@ -14,6 +14,112 @@
 
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
+<style>
+    .body{
+    width: 70%;
+    margin: 40px auto 100px auto;
+    }
+.align {
+    font-size: 20px;
+    font-weight: 800;
+    padding-top: 10px;
+    display: inline-block;
+    position: relative;
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    border-bottom: none;
+    padding-bottom: 1px;
+}
+#course_id{
+    border: groove;
+    float: right;
+    width: 18%;
+}
+#title{
+    font-size: 23px;
+    width: 100%;
+    border: groove;
+}
+textarea {
+    resize: none;
+    border: none;
+    width: -webkit-fill-available;
+    height: 366px;
+    overflow: auto;
+}
+textarea:focus {
+  outline: none;
+}
+.controll{
+    width: 100%;
+    border: none;
+    height: 400px;
+}
+.files{
+    padding: 10px 0 0 0;
+}
+
+.divSubmit {
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    padding: 3%;
+}
+.withdraw {
+    position:relative;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    margin: auto 10px;
+    border-radius: 9px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    width:88px;
+    border:none;
+}
+.withdraw:hover {
+    background-color: #AEDBE1;
+    color:white;
+}
+
+.withdraw:active {
+  top: 4px;
+}
+
+/* 3D button colors */
+.withdraw {
+  background-color: #AEDBE1;
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 4px 0 0 #9EC7CC,
+        0 4px 0 1px rgba(0,0,0,0.4),
+        0 4px 4px 1px rgba(0,0,0,0.5);
+}
+.withdraw:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+
+/* 삭제 */
+#btn-delete{
+    background-color: #E6383F;
+    box-shadow: 0 0 0 1px #D6343B inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 4px 0 0 #D6343B,
+                0 4px 0 1px rgba(0,0,0,0.4),
+                0 4px 4px 1px rgba(0,0,0,0.5);
+}
+#btn-delete:active{
+    box-shadow: 0 0 0 1px #D6343B inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+</style>
 </head>
 <div layout:fragment="content">
 
@@ -52,30 +158,26 @@
 
 
 </script>
-
-<div>
-    <form>
-        <div class="form-group">
-            <label for="id">글 번호</label>
-            <input type="text" id="id" th:value="${reviewCourse.id}" readonly></div>
-        <div class="form-group">
-            <label for="course_id">코스번호</label>
-            <input type="text" id="course_id" th:value="${reviewCourse.course_id}"></div>
-        <div class="form-group">
-            <label for="title">제목</label>
+<div class="body">
+<h3 class="align" > 게시글 수정 </h3>
+<div class="col-md-12">
+    <form class="card">
+        <div class="card-header">
+            <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly></div>
+            <input type="hidden" id="course_id" th:value="${reviewCourse.course_id}"></div>
+        <div id="sub" class="card-header d-flex justify-content-between">
             <input type="text" id="title"  th:value="${reviewCourse.title}"></div>
-        <div class="form-group">
-            <label for="writer">작성자</label>
-            <input type="text" id="writer"  th:value="${nickname}" readonly></div>
-        <div class="form-group">
-            <label for="content">내용</label>
+        <div>
+            <input type="hidden" id="writer"  th:value="${nickname}" readonly></div>
+        <div class="card-body controll">
             <textarea id="content"  th:text="${reviewCourse.content}"></textarea></div>
     </form>
+
     <a th:href="@{'/reviews/detail/' + ${reviewCourse.id}}">취소</a>
     <input type="button" id="btn-update" onclick="reviewUpdate()" value="수정 완료">
 
 </div>
-
+</div>
 
 <!--마우스커서-->
 <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
