@@ -45,7 +45,7 @@ public class MemberDTO {
     private String nProfileImg;
 
     @NotBlank(message = "이름은 필수 입력 값입니다.")
-    @Size(min=2, message = "이름은 2자 이상으로 입력해주세요")
+    @Size(min=2, max=6, message = "이름은 2~6자로 입력해주세요")
     private String name;
 
     @NotEmpty(message = "닉네임은 필수 입력 값입니다.")
