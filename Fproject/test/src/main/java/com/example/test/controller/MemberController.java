@@ -105,6 +105,16 @@ MemberController {
             model.addAttribute("nickname",sessionMember.getNickname());
             SessionMember sessionUser = memberService.memdto(sessionMember.getLoginId());
             model.addAttribute("info",sessionUser);
+            String address ="";
+            if(sessionUser.getAddress1()==null || sessionUser.getAddress1()==""){
+                String address1="";
+                address = sessionUser.getAddress()+" "+address1;
+            }else{
+                String address1=sessionUser.getAddress1();
+                address = sessionUser.getAddress()+" "+address1;
+            }
+
+            model.addAttribute("adr",address);
             return "/mypage/mypage";
 
         }
