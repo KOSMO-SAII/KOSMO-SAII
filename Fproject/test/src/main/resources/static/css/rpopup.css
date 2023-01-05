@@ -148,13 +148,14 @@ bottom: 0%;
 }
 
 #alertBox2{
+           display:none;
            top: 14%;
            left: 39%;
            width: 470px;
            height: 121px;
            position: absolute;
            background: white;
-           z-index: -1;
+           z-index: 1030;
            border-radius: 13px;
 }
 
@@ -208,4 +209,62 @@ bottom: 0%;
                                  position: absolute;
                                  bottom: 0%;
                                  right: 33%;
+}
+
+.div{
+display:none;
+    top: 6%;
+    left: 26%;
+    width: 990px;
+    height: 800px;
+    position: absolute;
+    background: white;
+    z-index: 1002;
+    border-radius: 14px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+
+}
+.div {text-align: center; }
+.vv {width:10%; text-align:center; height:100px;}
+.a2 {margin-bottom:100px; margin-top:50px;}
+.a3 {border-radius: 0.25rem; height:50px; width: 105px;
+    font-size: 18px; background-color: rgb(174,219,225);
+    border-width: 1px; color: white;}
+a {text-decoration: none;}
+
+.useClose{
+            display: inline-block;
+                   *: ;
+                   display: inline;
+                   font-size: 13px;
+                   padding: -6px 15px;
+                   color: white;
+                   margin: 20px 8px 15px;
+                   border-radius: 6px;
+                   text-align: center;
+                   transition: top .01s linear;
+                   text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+                   text-decoration: none;
+                   background-color: #AEDBE1;
+                   box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);
+    position: fixed;
+    top: 68px;
+    right: 467px;
+                   margin: 0px;
+                   border: none;
+                   cursor: pointer;
+}
+
+.useClose:after {display: inline-block;content: "\00d7"; font-size:15pt;
+
+            }
+.useClose:active{
+position: fixed;
+    top: 72px;
+      box-shadow: 0 0 0 1px #94BABF inset,
+            0 0 0 2px rgba(255,255,255,0.15) inset,
+            0 0 0 1px rgba(0,0,0,0.4);
+
 }

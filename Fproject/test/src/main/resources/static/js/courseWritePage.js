@@ -85,7 +85,7 @@ var modalBg = $('.mbg');
    $(modalBg).addClass('modal-bg');
 
 function alertBoxClose2(){
-    $('#alertBox2').css("z-index",-1)
+    $('#alertBox2').hide()
     if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
     $('input[name=ptitle]')[0].focus();
     }
@@ -99,7 +99,7 @@ function alertBoxClose2(){
 }
 
 function alertBoxClose3(){
-$('#alertBox2').css("z-index",-1)
+$('#alertBox2').hide()
     var modalBg = $('.mbg');
        $(modalBg).removeClass('modal-bg');
 }

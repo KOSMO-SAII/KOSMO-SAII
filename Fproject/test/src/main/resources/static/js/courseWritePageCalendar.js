@@ -327,7 +327,7 @@ function popX(){
 //메인메뉴 이동
 function  goMain(){
    $('#alertBoxp2')[0].innerText="저장하지 않고 나가시겠습니까?";
-   $('#alertBox2').css("z-index",1000)
+   $('#alertBox2').show()
    var modalBg = $('.mbg');
    $(modalBg).addClass('modal-bg');
 
@@ -417,12 +417,12 @@ function  goMain(){
 
     if(title==''){
         $('#alertBoxp2')[0].innerText="제목을 입력해주세요";
-        $('#alertBox2').css("z-index",1000)
+        $('#alertBox2').show()
 
         return false;
     }else if(region=='없음'){
         $('#alertBoxp2')[0].innerText="지역을 입력해주세요";
-        $('#alertBox2').css("z-index",1000)
+        $('#alertBox2').show()
 
         return false;
     }
@@ -760,4 +760,20 @@ function serchclose(){
     removeMarker();
     $('#placesList').children().remove()
     $('#pagination').children().remove()
+}
+
+function openUse(){
+    $('.div').show()
+
+        var modalBg = $('.mbg');
+
+        $(modalBg).addClass('modal-bg');
+}
+
+function closeUse(){
+    $('.div').hide()
+
+        var modalBg = $('.mbg');
+
+        $(modalBg).removeClass('modal-bg');
 }
