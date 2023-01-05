@@ -82,7 +82,7 @@
       <ul>
         <li class="select_tab on" id="photoTab"><a href="#galleryGo"><span>사진보기</span></a></li>
         <li class="select_tab" id="detailTab"><a href="#detailGo"><span>상세정보</span></a></li>
-        <li class="select_tab" id="talkTab"><a href="#replyGo"><span>여행톡</span></a></li>
+        <!--<li class="select_tab" id="talkTab"><a href="#replyGo"><span>리뷰</span></a></li>-->
         <li class="select_tab" id="recomTab"><a href="/course/list"><span>추천여행</span></a></li>
       </ul>
     </div>
@@ -122,8 +122,7 @@
 
       <div class="wrap_contView">
         <h3>상세정보</h3>
-       <a href="/mail/send" onclick="window.open(this.href,'_blank','width=600px,height=500px,toolbars=no,scrollbars=yes');return false;"> <button class="btn_modify" ><span>관리자에게 문의하기</span></button></a>
-        <details>
+          <details>
           <div class="inr">
             <p>
             </p>
@@ -215,27 +214,11 @@
     </div>
     <!-- //상세정보 -->
     <!-- 여행톡 -->
-    <h3 class="blind">여행톡</h3>
     <div id="replyGo">
       <div class="replyWrap"><!-- login 추가시 로그인 후 form -->
-        <h3 class="tit_reply">여행톡<span></span></h3>
         <div class="write">
           <div class="form">
-            <form name="tform" id="tform">
-              <label class="blind" for="comment">로그인 후 소중한 댓글을 남겨주세요.</label>
-              <span class="writeForm"><textarea name="" rows=""  id="comment" placeholder="로그인 후 소중한 댓글을 남겨주세요." cols="" onkeydown="commentresize(this);"></textarea></span>
-              <div class="fileRegbtn_wrap">
-									<span class="fileRegbtn">
-										<input type="file" id="fileUp" name="fileUp" multiple onchange="fileChange(this)"/>
-										<label for="fileUp" class="btn_fileUp">파일찾기</label>
-										<a href="javascript:" class="btn_apply ContentComment">등록</a>
-									</span>
-              </div>
-            </form>
           </div>
-        </div>
-        <div class="wrap_reply">
-          <p class="reply_none">등록된 댓글이 없습니다.</p>
         </div>
         <div class="wrap_reply">
           <div class="list_reply">
