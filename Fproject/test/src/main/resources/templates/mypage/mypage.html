@@ -80,8 +80,8 @@
     </div>
 </div>
 <div id="show2">
-    <div>
-        <div th:each="lis, i: ${list}" th:onclick="toCourse([[${lis.id}]])">
+    <div style="width:100%;">
+        <div th:each="lis, i: ${list}" th:onclick="toCourse([[${lis.id}]])" class="myCourse">
             <img th:src="|/img/loc/${lis.region}.png|" class="courseImg">
             <span th:text="|코스이름 : ${lis.title}|" class="courseName"></span><br>
             <span class="dateForm">작성날짜 : </span><input th:value="${#temporals.format(lis.createDate,'yyyy-MM-dd HH:mm')}" class="eachInput">
