@@ -183,6 +183,7 @@ public class Member{
         Member member1 = new Member();
         member1.setMemberId(member.getMemberId());
         member1.setAddress(member.getAddress());
+        member1.setAddress1(member.getAddress1());
         member1.setBirthday(member.getBirthday());
         member1.setEmail(member.getEmail());
         member1.setGender(member.getGender());

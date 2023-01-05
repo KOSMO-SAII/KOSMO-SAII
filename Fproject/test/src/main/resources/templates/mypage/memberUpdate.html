@@ -69,7 +69,7 @@ window.onload = function(){
       <div class="mydiv pwToggle">
         <label class="mylabel">비밀번호 확인</label><br/>
         <input class="myinput borderStyle" type="password" name="password1" id="pw2" onkeyup="passwordCheck()"><br>
-        <input type="text" id="pwValid">
+        <input type="text" id="pwValid" readonly>
       </div>
       <div class="mydiv">
         <label class="mylabel">이름</label><br/>
@@ -81,11 +81,12 @@ window.onload = function(){
       </div>
       <div class="mydiv">
         <label class="mylabel">주소</label><br/>
-        <input class="myinput borderStyle" id="roadFullAddr" type="text" th:field="*{address}" onClick="openPopup();" >
+        <input class="myinput borderStyle" id="roadFullAddr" type="text" th:field="*{address}" onClick="openPopup();" onkeyup="addNull()">
       </div>
       <div class="mydiv">
         <label class="mylabel">상세주소</label><br/>
-        <input class="myinput borderStyle" type="text" th:field="*{address1}">
+        <input class="myinput borderStyle" type="text" th:field="*{address1}" id="roadFullAddr1" onkeyup="addNull()">
+        <input type="text" id="pwValid1" readonly>
       </div>
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
@@ -214,13 +215,24 @@ function passwordCheck(){
 function submit1(){
   const pw1=document.getElementById('pw1').value;
   const pw2=document.getElementById('pw2').value;
-  if(document.getElementById('pwValid').value=="비밀번호 확인" || document.getElementById('pwValid').value==""){
+  const ad1=document.getElementById('roadFullAddr').value;
+  const ad2=document.getElementById('roadFullAddr1').value;
+  if(document.getElementById('pwValid').value=="비밀번호 확인" || document.getElementById('pwValid').value=="" && ad1!="" && ad2!=""){
     console.log("비밀번호 같음");
     return true;
-  }else{
+  }else if(document.getElementById('pwValid').value=="비밀번호 다름" || document.getElementById('pwValid').value=="영문자,숫자,특수문자 포함 8~16자리를 입력하세요."){
     console.log("비밀번호를 확인해주세요");
     event.preventDefault();
     alert("비밀번호를 확인해주세요.")
+    setTimeout(function(){document.getElementById('pwValid').focus();}, 1);
+    return false;
+  }else{
+    event.preventDefault();
+    alert("주소지를 입력해주세요")
+    document.getElementById('pwValid1').style.display="block";
+    document.getElementById('pwValid1').value="주소 및 상세주소는 필수입력사항 입니다.";
+    setTimeout(function(){document.getElementById('pwValid1').focus();}, 1);
+
     return false;
   }
 }
@@ -258,6 +270,14 @@ function toggleActionStart(toggleBtn, LR) {
     setTimeout(function(){
         clearInterval(intervalID);
     }, 201);
+}
+function addNull(){
+  if(document.getElementById('roadFullAddr').value!="" && document.getElementById('roadFullAddr1').value!=""){
+    document.getElementById('pwValid1').value="";
+  }
+
+
+
 }
 
 
