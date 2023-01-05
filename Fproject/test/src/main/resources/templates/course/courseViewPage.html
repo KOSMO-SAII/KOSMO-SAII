@@ -19,7 +19,9 @@
         <form id="reviewform" th:action="@{/reviews/write(c_id=${c_id})}" method="get" ></form>
         <form id="form" th:action="@{/courseDelete(c_id=${c_id})}" method="post" >
             <div class="formbox">
+                <th:block th:if="${nowUser!='Anonymous' || param.mode == 'edit'}">
                 <button type="button" class="submitbtn" onclick="review();">리뷰 작성</button>
+                </th:block>
                 <th:block th:if="${createdBy==nowUser || param.mode == 'edit'}">
                 <button type="button" class="submitbtn" onclick="deleteCheck();">코스 삭제</button>
                 </th:block>
