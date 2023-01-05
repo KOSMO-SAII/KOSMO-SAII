@@ -23,7 +23,36 @@ form {width: 400px; margin:auto; padding:30px; }
         			background-color:#EDEDED;
         			width: 60px !important; }
 
-#pwValid{
+
+#pwValid {
+  border:none;
+  display:none;
+  width:400px;
+  background-color:white;
+  outline:none;
+}
+#idValid {
+  border:none;
+  display:none;
+  width:400px;
+  background-color:white;
+  outline:none;
+}
+#numValid{
+  border:none;
+  display:none;
+  width:400px;
+  background-color:white;
+  outline:none;
+}
+#nameValid{
+  border:none;
+  display:none;
+  width:400px;
+  background-color:white;
+  outline:none;
+}
+#nickValid{
   border:none;
   display:none;
   width:400px;
