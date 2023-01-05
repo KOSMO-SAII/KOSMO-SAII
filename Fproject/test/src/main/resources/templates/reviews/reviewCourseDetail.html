@@ -141,6 +141,9 @@ textarea:focus {
                 0 0 0 1px rgba(0,0,0,0.4);
 }
 
+input{
+    outline:none;
+}
 /* 목록 */
 #lists {
     float: right;
@@ -206,7 +209,7 @@ textarea:focus {
 <!--            <label for="id">글 번호</label>-->
             <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly>
 <!--            <label for="title">제목</label>-->
-            <input type="text" id="title"  th:value="${reviewCourse.title}" readonly></div>
+            <span id="title" th:text="${reviewCourse.title}"></span></div>
         <div id="sub" class="card-header d-flex justify-content-between">
             <div class="oneline"><label for="writer">작성자</label>
                 <input type="text" id="writer"  th:value="${nickname}" readonly></div>
@@ -266,7 +269,9 @@ textarea:focus {
                                 <span th:text="${comment.createdBy}" style="font-size: small"></span>
                                 <span th:text="${comment.createdDate}" style="font-size: xx-small"></span>&nbsp;
     <!--                                <button class="badge bi bi-pencil-square"> 수정</button>-->
+                                <div>
                                     <button onclick="commentDelete(${comment.id})" class="badge bi bi-trash"> 삭제</button>
+                                </div>
                             </span>
                         <div><textarea th:text="${comment.comment}" readonly></textarea></div>
                     </li>
