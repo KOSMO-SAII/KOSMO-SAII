@@ -40,37 +40,31 @@
                 <p id="days" th:text="${days}+'Days'"></p>
                 <p id="start_end" th:text="${start}+'-'+${end}"></p>
                 <input class="input start" type="hidden" th:value="${start}" name="start" readonly/>
-<!--                <input class="start" type="hidden" name="start"/>-->
                 <input class="input end" type="hidden" name="end" th:value="${end}" readonly/>
                 <div id="selectbox">
                 Days:<select class="days">
                      </select>
-<!--                <th:block th:if="${#strings.equals(param.mode, 'edit')}">-->
-<!--                </th:block>-->
                 </div>
                 <button type="button" class="changebtn" onclick="popOpen()" >변경</button>
                 <button class="submitbtn use" type="button" onclick="openUse()">사용 방법</button>
-                <!--<button class="submitbtn use" type="button" onclick="window.open('/members/use')">사용 방법</button>-->
-     <!--           <button type="button" class="submitbtn" onclick="location.href='/'">돌아가기</button>-->
             </div>
             <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
             <ul class="My_List 1">
             </ul>
             <div id="btnbox">
                 <button type="button" class="check" onclick="check();">마이 핀 보이기</button>
-                <!-- <button type="button" onclick="location.href='http://localhost:8081/SAII/home';"> 돌아가기 </button> -->
                 <th:block th:if="${#strings.equals(param.mode, 'edit')}">
-                    <input type="submit" class="submitbtn" value="코스수정"></input>
+                    <input type="submit" class="submitbtn" value="코스수정">
                 </th:block>
                 <th:block th:unless="${#strings.equals(param.mode, 'edit')}">
-                    <input type="submit" class="submitbtn" value="코스저장"></input>
+                    <input type="submit" class="submitbtn" value="코스저장">
                 </th:block>
                 <button type="button" class="submitbtn" onclick="return goMain()">메인 메뉴</button>
             </div>
         </form>
     </div>
     <div class="map_wrap">
-        <div id="map"style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+        <div id="map"style="0width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
         <!-- 검색 사이드바 -->
         <div id="menu_wrap_box">
