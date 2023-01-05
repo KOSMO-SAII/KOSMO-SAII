@@ -4,10 +4,9 @@ var id = ""
 var c = ""
 var maxPage = 5
 var totalCount
-allInfo();
-var totalPages = totalCount/maxPage
-var start = (pageNo/maxPage) * maxPage + 1
-var end = (totalPages == 0) ? 1 : (start + (maxPage - 1) < totalPages ? start + (maxPage - 1) : totalPages)
+var totalPages
+var start
+var end
 
 $(".btn").click(function(event){
 var e = event.target
@@ -56,6 +55,10 @@ function getInfo(id,c,on){
         }
       }
     })
+    totalPages = totalCount/maxPage
+    start = (pageNo/maxPage) * maxPage + 1
+    end = (totalPages == 0) ? 1 : (start + (maxPage - 1) < totalPages ? start + (maxPage - 1) : totalPages)
+    paging()
 }
 
 function printInfo(infoitem){
@@ -82,6 +85,10 @@ fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj
              printAll(infoitem[j])
              }
     })
+    totalPages = totalCount/maxPage
+    start = (pageNo/maxPage) * maxPage + 1
+    end = (totalPages == 0) ? 1 : (start + (maxPage - 1) < totalPages ? start + (maxPage - 1) : totalPages)
+    paging()
 }
 
 function printAll(infoitem){
@@ -109,7 +116,7 @@ function paging(){
 
     for(var i = start;i <= end;i++){
         inner += '<li class="page-item" th:classappend="'
-        if(pageNo == page-1)
+        if(pageNo == i-1)
             inner += 'active'
         else
             inner += ''
@@ -129,7 +136,7 @@ function paging(){
     inner += '</li>'
 
     var li = document.getElementById("paging")
-    li.innerHTML += inner
+    li.innerHTML = inner
 }
 
-paging()
+allInfo();
