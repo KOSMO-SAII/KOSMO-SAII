@@ -34,6 +34,11 @@ public class Maincontroller extends HttpServlet {
         return "Mainpage";
     }
 
+    @RequestMapping("/aaa")
+    public String testError(){
+        return "adsfadffa";
+    }
+
     @RequestMapping("/option")
     public String option(){
         return "courseOption";
