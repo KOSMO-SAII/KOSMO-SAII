@@ -32,6 +32,11 @@ var title;
             makeMap();
             addMarker();
             traceMarker();
+                    $('.node').click(function(){
+                        console.log("node 클릭")
+//                        location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
+window.open('https://map.kakao.com/link/to/'+title+','+y+','+x+'')
+                    })
 
          })
 
@@ -117,13 +122,11 @@ var        marker = new kakao.maps.Marker({
         marker.setMap(map);
 
          kakao.maps.event.addListener(marker,'click',function(){
-            console.log("클릭 실행")
-            location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
+//            console.log("클릭 실행")
+//            location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
+            window.open('https://map.kakao.com/link/to/'+title+','+y+','+x+'')
          })
-        $('.node')[0].click(function(){
-            console.log("node 클릭")
-            location.href='https://map.kakao.com/link/to/'+title+','+y+','+x+'';
-        })
+
 }
 
 
