@@ -2,6 +2,7 @@ src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK
 
 var id = ""
 var c = ""
+var on=""
 var maxPage = 5
 var totalCount
 var totalPages
@@ -27,15 +28,16 @@ console.log(e.parentElement.parentElement.id)
  console.log(e + '    ' +e.parentElement + '   ' + id + '   ' +  c)
  var ul =$('.flnon')
  ul.empty()
- getInfo(id, c);
+ getInfo();
 })
 
 
 $("btn_all_active").click(function(event){
     id = ""
     c = ""
+    on= "r"
 })
-function getInfo(id,c,on){
+function getInfo(){
     var info;
     var infoitem=[];
     var param = ('&areaCode='+id+'&eventStartDate=2022'+c+'01&eventEndDate=2022'+c+'31')
@@ -48,6 +50,8 @@ function getInfo(id,c,on){
         info = data
         totalCount = data.response.body.totalCount
         infoitem=data.response.body.items.item
+        $('#totalCount')[0].innerText=totalCount
+
    if(true){
 
         for(var j=0; j<infoitem.length; j++){
@@ -78,6 +82,7 @@ fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj
         infoitem=data.response.body.items.item
         pageNo = data.response.body.pageNo
         totalCount = data.response.body.totalCount
+        $('#totalCount')[0].innerText=totalCount
         console.log(infoitem)
           var ul =$('.flnon');
                 ul.empty()
