@@ -754,3 +754,10 @@ function dateFormat(date){
     +'.'+((date.getDate()) < 9 ?"0"+(date.getDate()) : (date.getDate()) );
     return dateFormat;
 }
+
+//키워드 검색 내용 삭제
+function serchclose(){
+    removeMarker();
+    $('#placesList').children().remove()
+    $('#pagination').children().remove()
+}

@@ -25,9 +25,17 @@
   top:18px;
 }
 #pwValid{
-  border:none;
-  display:none;
-  width:400px;
+    border:none;
+    display:none;
+    width:400px;
+    outline:none;
+}
+#pwValid1{
+    border:none;
+    display:none;
+    width:400px;
+    outline:none;
+    color:red;
 }
 
 
