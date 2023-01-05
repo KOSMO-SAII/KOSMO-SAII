@@ -16,6 +16,14 @@
 <!--<p th:text="${c_id}"></p>-->
 <div class="body_wrap">
     <div class="my">
+        <form id="form" th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post">
+            <div class="formbox">
+                <th:block th:if="${createdBy==nowUser || param.mode == 'edit'}">
+                <button type="submit" class="submitbtn">코스 삭제</button>
+                </th:block>
+                <button type="button" class="submitbtn">리뷰 작성</button>
+            </div>
+        </form>
         <form th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post" >
             <div class="inputbox">
                 <div class="sidebar">
@@ -38,6 +46,7 @@
     <!--                    </th:bolck>-->
                     </select>
                 </div>
+
             </div>
             <input type="hidden" class="nickname" name="nickname" value="${sessionScope.nickname}" />
             <ul class="My_List 1">

@@ -15,6 +15,16 @@ form {
 	height: 100%;
 }
 
+#form{
+    height: 0%;;
+}
+
+.formbox{
+        position: absolute;
+        bottom: 84%;
+        left: 21%;
+}
+
 .body_wrap {
 	height: 100%;
 	display: flex;

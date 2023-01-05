@@ -29,6 +29,7 @@ if(mode=="edit"){
         addList()
         hideList(optVal)
         setEditsSchedul();
+        dragdrop();
         editmode=true;
 
         firstCheck=true;
@@ -177,7 +178,7 @@ $('.days').on('change',function(){
         var move =new kakao.maps.LatLng(schedul[schedulNum][0].mymarker.mymarker.getPosition().Ma,schedul[schedulNum][0].mymarker.mymarker.getPosition().La)
         map.panTo(move)
     }
-
+    dragdrop();
 })
 
 //팝업 열기
@@ -315,7 +316,7 @@ function popX(){
      addDays()
      addList()
      hideList(optVal)
-
+    dragdrop();
      if(firstCheck){
      }else{
         firstCheck=true;
@@ -327,7 +328,7 @@ function popX(){
 //메인메뉴 이동
 function  goMain(){
    $('#alertBoxp2')[0].innerText="저장하지 않고 나가시겠습니까?";
-   $('#alertBox2').css("z-index",1000)
+   $('#alertBox2').show()
    var modalBg = $('.mbg');
    $(modalBg).addClass('modal-bg');
 
@@ -416,13 +417,13 @@ function  goMain(){
     mapCenter = new kakao.maps.LatLng(xPoint, yPoint)
 
     if(title==''){
-        $('#alertBoxp2')[0].innerText="제목을 입력해주세요";
-        $('#alertBox2').css("z-index",1000)
+        $('#alertBoxp')[0].innerText="제목을 입력해주세요";
+        $('#alertBox').css("z-index",1002)
 
         return false;
     }else if(region=='없음'){
-        $('#alertBoxp2')[0].innerText="지역을 입력해주세요";
-        $('#alertBox2').css("z-index",1000)
+        $('#alertBoxp')[0].innerText="지역을 입력해주세요";
+        $('#alertBox').css("z-index",1002)
 
         return false;
     }
@@ -453,7 +454,7 @@ function  goMain(){
      addDays()
      addList()
      hideList(optVal)
-
+    dragdrop();
      if(firstCheck){
      }else{
         firstCheck=true;
@@ -760,4 +761,21 @@ function serchclose(){
     removeMarker();
     $('#placesList').children().remove()
     $('#pagination').children().remove()
+    soverlay.setMap(null)
+}
+
+function openUse(){
+    $('.div').show()
+
+        var modalBg = $('.mbg');
+
+        $(modalBg).addClass('modal-bg');
+}
+
+function closeUse(){
+    $('.div').hide()
+
+        var modalBg = $('.mbg');
+
+        $(modalBg).removeClass('modal-bg');
 }
