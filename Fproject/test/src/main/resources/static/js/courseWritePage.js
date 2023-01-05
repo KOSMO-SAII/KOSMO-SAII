@@ -77,6 +77,8 @@ function alertBoxClose(){
        popOpen()
        $('select[name=pregion]')[0].focus();
     }
+
+    $('#alertBoxp')[0].innerText=="def"
 }
 
 var modalBg = $('.mbg');
@@ -104,16 +106,21 @@ $('#alertBox2').css("z-index",-1)
 
 //==검색 사이드 바 드롭다운
 let subToggle=true;
+
 	$('.searchbtn').click(function(){
 		var menu=document.getElementById('menu_wrap_box');
 		if(subToggle){
-		//console.log(menu);
-		menu.style.height='90%';
-		//console.log($('#menu_wrap'));
-		//console.log($('#menu_wrap').style);
-		$('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"});
-		$('#arrow').text("▲")
-		//$('#arrow').attr("onclick","javascript:window.scrollTo(0,0)")
+
+		    if( $('#alertBoxp')[0].innerText!="검색 결과가 존재하지 않습니다."&&
+		        $('#alertBoxp')[0].innerText!="키워드를 입력해주세요!"){
+                //console.log(menu);
+                menu.style.height='90%';
+                //console.log($('#menu_wrap'));
+                //console.log($('#menu_wrap').style);
+                $('#menu_wrap').css({"overflow":"scroll", "overflow-x":"hidden"});
+                $('#arrow').text("▲")
+                //$('#arrow').attr("onclick","javascript:window.scrollTo(0,0)")
+		    }
 		}
 		subToggle=!subToggle;
 	})
@@ -172,12 +179,17 @@ function searchPlaces() {
      keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        $('#alertBoxp')[0].innerText="키워드를 입력해주세요!";
+          $('#alertBox').css("z-index",1000)
+             var modalBg = $('.mbg');
+             $(modalBg).addClass('modal-bg');
+//        alert('키워드를 입력해주세요!');
         return false;
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB);
+
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -191,8 +203,11 @@ function placesSearchCB(data, status, pagination) {
         displayPagination(pagination);
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-
-        alert('검색 결과가 존재하지 않습니다.');
+        $('#alertBoxp')[0].innerText="검색 결과가 존재하지 않습니다.";
+          $('#alertBox').css("z-index",1000)
+             var modalBg = $('.mbg');
+             $(modalBg).addClass('modal-bg');
+//        alert('검색 결과가 존재하지 않습니다.');
         return;
 
     } else if (status === kakao.maps.services.Status.ERROR) {

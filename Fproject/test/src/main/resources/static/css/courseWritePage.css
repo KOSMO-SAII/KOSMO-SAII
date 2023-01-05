@@ -76,7 +76,7 @@ form {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 250px;
+	width: 264px;
 	margin: 10px 0 30px 10px;
 	padding: 5px;
 	overflow-y: auto;
@@ -88,6 +88,20 @@ form {
 	list-style: none;
 	overflow: hidden;
 	transition: height ease-out 1s 0s;
+}
+
+#menu_wrap::-webkit-scrollbar {
+    width: 20px
+}
+#menu_wrap::-webkit-scrollbar-thumb{
+     background-color: #98dde3; /*스크롤바의 색상*/
+                    background-clip: padding-box;
+                    border: 4px solid transparent;
+                    border-top-left-radius: 50px;
+                    border-bottom-right-radius: 50px;
+}
+#menu_wrap::-webkit-scrollbar-track{
+    background-color: grey;
 }
 
 .bg_white {
@@ -361,10 +375,9 @@ form {
 }
 
 .submitbtn.use{
-    position: absolute;
+position: relative;
     top: 4%;
-    left: 21%;
-    z-index: 2;
+
     }
 .submitbtn.use:active{
     top: 5%;
