@@ -1,5 +1,6 @@
 .layout {
     width: 100vw;
+    margin-top: 50px;
 }
 
 .divIn{
@@ -47,6 +48,7 @@ tbody{
 }
 .divT{
     width:100%;
+    margin-bottom: 30px;
 }
 .divG{
     width:100%;
@@ -56,6 +58,7 @@ tbody{
     border-radius: 3px;
     background-color: #eee;
     text-align:center;
+    margin-top: 20px;
 }
 .Search{
     border: 1px solid #525252;
@@ -119,9 +122,10 @@ thead tr{
     width:69px;
     position:relative;
     text-align:center;
-    border:1px solid #0d6efd;
+    border:2px solid #0d6efd;
     border-radius:6px;
     background-color: white;
+    margin-bottom: 30px;
 }
 .btnWrite:hover{
     background-color:#0d6efd;
