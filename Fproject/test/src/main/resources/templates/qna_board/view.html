@@ -38,7 +38,9 @@
       <img th:src="${reply.member.picture}" class="replyImg">
       <span th:text="${reply.member.nickname}" class="replyNickname"></span><br>
       <input type="text" th:value="${reply.createDate}" class="replyCreate"><br>
+      <div style="width:80%;">
       <span th:text="${reply.content}" class="replyContent"></span>
+      </div>
       <form action="/reply_delete" method="post">
         <input type="hidden" th:value="${reply.id}" name="id">
         <input type="hidden" th:value="${reply.qnABoard.id}" name="qna_id">
