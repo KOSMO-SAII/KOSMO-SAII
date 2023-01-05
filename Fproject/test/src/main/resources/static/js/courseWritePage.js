@@ -1,7 +1,9 @@
 //임시 주석
 //제이쿼리 적용
 src="https://code.jquery.com/jquery-3.6.1.js"; integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="; crossorigin="anonymous";
-
+let list ;
+let currentItemIndex ;
+let currentItem ;
 //내가 저장한 핀 담을 배열
 var mymarkers=[];
 var mapCenter
@@ -1226,46 +1228,51 @@ $('#memobox .close').click(function(){
 		$('#memobox').addClass('none');
 	})
 //========드래그 앤 드랍
-const list = document.querySelector('.My_List');
-let currentItemIndex = null;
-let currentItem = null;
 
-list.addEventListener('dragstart', (e) => {
-  currentItem = e.target;
- //console.log("시작");
-  const listArr = [...currentItem.parentElement.children];
-  currentItemIndex = listArr.indexOf(currentItem);
-});
 
-list.addEventListener('dragover', (e) => {
-  e.preventDefault();
-});
+function dragdrop(){
+     list = $('.My_List.'+optVal+'');
+     currentItemIndex = null;
+     currentItem = null;
+    list.off()
+    list.on('dragstart', (e) => {
+      currentItem = e.target;
+     console.log("시작");
+      const listArr = [...currentItem.parentElement.children];
+      currentItemIndex = listArr.indexOf(currentItem);
+    });
 
-list.addEventListener('drop', (e) => {
-  e.preventDefault();
-//console.log("끝");
-  var currentDropItem=e.target;
+    list.on('dragover', (e) => {
+      e.preventDefault();
+    });
 
-  for(currentDropItem;currentDropItem.localName!="li";currentDropItem=currentDropItem.parentElement ){
-	}
+    list.on('drop', (e) => {
+      e.preventDefault();
+    //console.log("끝");
+      var currentDropItem=e.target;
 
-  const listArr = [...currentItem.parentElement.children];
+      for(currentDropItem;currentDropItem.localName!="li";currentDropItem=currentDropItem.parentElement ){
+        }
 
-  const dropItemIndex = listArr.indexOf(currentDropItem);
+      const listArr = [...currentItem.parentElement.children];
 
-  if (currentItemIndex < dropItemIndex) {
-   currentDropItem.after(currentItem);
-  } else {
-    currentDropItem.before(currentItem);
-  }
+      const dropItemIndex = listArr.indexOf(currentDropItem);
 
-  //내가 저장한 장소 배열 재설정
-   if(currentItemIndex==dropItemIndex){
-	//console.log("제자리 실행")
-	}else{
-  arraychange(currentItemIndex,dropItemIndex);
-	}
-});
+      if (currentItemIndex < dropItemIndex) {
+       currentDropItem.after(currentItem);
+      } else {
+        currentDropItem.before(currentItem);
+      }
+
+      //내가 저장한 장소 배열 재설정
+       if(currentItemIndex==dropItemIndex){
+        //console.log("제자리 실행")
+        }else{
+      arraychange(currentItemIndex,dropItemIndex);
+        }
+    });
+}
+
 
 //내가 저장한 장소 배열 재설정
 function arraychange(currentItemIndex,dropItemIndex){
@@ -1306,7 +1313,9 @@ function arraychange(currentItemIndex,dropItemIndex){
 	}
 	//console.log(mymarkers);
 	makeline(pathArr[schedulNum]);
+	if(checkmode2){
 	polylineArr[schedulNum].setMap(map);
+	}
 
 }
 	function moveRegion(){
