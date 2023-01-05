@@ -22,10 +22,11 @@ if(e.parentElement.id != ""){
  }
 }
 
+console.log("c: "+c+" id: "+id)
 
-console.log(e.parentElement.parentElement.id)
-
- console.log(e + '    ' +e.parentElement + '   ' + id + '   ' +  c)
+//console.log(e.parentElement.parentElement.id)
+//
+// console.log(e + '    ' +e.parentElement + '   ' + id + '   ' +  c)
  var ul =$('.flnon')
  ul.empty()
  getInfo();
@@ -43,6 +44,8 @@ function getInfo(){
     var param = ('&areaCode='+id+'&eventStartDate=2022'+c+'01&eventEndDate=2022'+c+'31')
     var listparam=('&arrange='+on)
     console.log(param);
+    console.log('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&'
+                            +'numOfRows=10&pageNo='+pageNo+'&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y'+param+listparam)
     fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&'
             +'numOfRows=10&pageNo='+pageNo+'&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y'+param+listparam)
     .then((response) => response.json())
@@ -50,6 +53,7 @@ function getInfo(){
         info = data
         totalCount = data.response.body.totalCount
         infoitem=data.response.body.items.item
+        console.log(infoitem)
         $('#totalCount')[0].innerText=totalCount
 
    if(true){
@@ -75,7 +79,7 @@ function printInfo(infoitem){
 }
 function allInfo(){
   var infoitem=[];
-fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=10&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=C&eventStartDate=20220101&eventEndDate=20221231')
+fetch('https://apis.data.go.kr/B551011/KorService/searchFestival?serviceKey=%2Bj0evNiGTyeurclaWudJiAx8TTZR7CIDuaVb7eKSqMRM8cgCFe%2BRjhZUNBZubBIRZhlHxVvK63mnQwy53w%2Bqxg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=C&eventStartDate=20220101&eventEndDate=20221231')
     .then((response) => response.json())
     .then((data) => {
         info = data;
