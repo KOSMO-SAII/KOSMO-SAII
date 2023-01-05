@@ -4,6 +4,7 @@ package com.example.test.controller;
 import com.example.test.entity.CourseList;
 import com.example.test.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class CoursePageController extends HttpServlet {
@@ -26,6 +28,22 @@ public class CoursePageController extends HttpServlet {
     @Autowired
     private CourseService courseService;
 
+      @PostMapping("/courseDelete")
+      public String courseDelete(Optional<Integer> page,Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal){
+          Long c_id =Long.parseLong(req.getParameter("c_id"));
+          courseService.deleteCourse(c_id);
+
+          PageRequest pageRequest = PageRequest.of(page.isPresent() ? page.get() : 0,3);
+          String searchStr = req.getParameter("searchStr");
+          if(searchStr == null){
+              searchStr = "";
+          }
+          model.addAttribute("lists", courseService.getList(searchStr, pageRequest));
+          model.addAttribute("pages", courseService.getPage(searchStr, pageRequest));
+          model.addAttribute("search", searchStr);
+          model.addAttribute("maxPage", 5);
+          return "course/courseList";
+      }
 
       @GetMapping("/courseViewPage/{num}")
     public String doGetView(@PathVariable("num") String num, Model model, HttpServletRequest req, HttpServletResponse resp, Principal principal) throws ServletException, IOException {

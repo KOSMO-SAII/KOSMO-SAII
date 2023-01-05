@@ -98,12 +98,14 @@ function alertBoxClose2(){
         var link = '/';
         location.href=link;
     }
+
 }
 
 function alertBoxClose3(){
 $('#alertBox2').hide()
     var modalBg = $('.mbg');
        $(modalBg).removeClass('modal-bg');
+
 }
 
 //==검색 사이드 바 드롭다운

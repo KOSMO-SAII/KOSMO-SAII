@@ -481,4 +481,20 @@ public class CourseService {
 
         return list;
     }
+
+    public void deleteCourse(Long c_id){
+        int count = courseDataRepository.countById(c_id);
+
+        List<CourseData> li =new Vector<CourseData>();
+        for(long i=1;i<=count;i++){
+            CourseDataId courseDataid=new CourseDataId();
+            courseDataid.setId(c_id);
+            courseDataid.setOrder(i);
+            courseDataRepository.deleteById(courseDataid);
+
+        }
+
+        courseListRepository.deleteById(c_id);
+        courseRepository.deleteById(c_id);
+    }
 }
