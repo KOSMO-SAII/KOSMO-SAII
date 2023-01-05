@@ -22,7 +22,7 @@
     </div>
     <div class="divProfile">
       <img th:src="${board.member.picture}" class="boardProfile"><span class="boardNickname" th:text="${board.member.nickname}"></span>
-      <input type="text" th:value="${board.createDate}" class="boardCreate">
+      <input type="text" th:value="${#temporals.format(board.createDate,'yyyy-MM-dd HH:mm')}" class="boardCreate">
     </div>
     <div class="divText">
       <p th:text="${board.content}">내용이 들어간 부분입니다.</p>
