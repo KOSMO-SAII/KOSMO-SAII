@@ -79,6 +79,32 @@ color: skyblue;}
 
 }
 
+.serchclose{
+    display: inline-block;
+                   *: ;
+                   display: inline;
+                   font-size: 13px;
+                   padding: -6px 15px;
+                   color: white;
+                   margin: 20px 8px 15px;
+                   border-radius: 6px;
+                   text-align: center;
+                   transition: top .01s linear;
+                   text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+                   text-decoration: none;
+                   background-color: #AEDBE1;
+                   /*box-shadow: 0 0 0 1px #94babf inset, 0 0 0 2px rgb(255 255 255 / 15%) inset, 0 4px 0 0 #9ec7cc, 0 4px 0 1px rgb(0 0 0 / 40%), 0 4px 4px 1px rgb(0 0 0 / 50%);*/
+                   margin: 0px;
+                   border: none;
+                   cursor: pointer;
+    position: relative;
+        left: 93%;
+}
+
+.serchclose:after{
+display: inline-block;content: "\00d7";     font-size: 14pt;
+                                            width: 18px;
+}
 #alertBox{
         top: 35%;
         left: 36%;
