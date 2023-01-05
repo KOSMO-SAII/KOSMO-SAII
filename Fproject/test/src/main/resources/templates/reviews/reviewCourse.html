@@ -36,12 +36,12 @@
 </form>
 
 <!-- 조건 글쓰기폼 이동 || 로그인시 이용 알림. -->
-<div>
-    <p sec:authorize="isAuthenticated()">
-        <button th:onclick="|location.href='@{/reviews/write}'|" class="writeBtn">글쓰기</button></p>
-    <p sec:authorize="isAnonymous()">
-        <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>
-</div>
+<!--<div>-->
+<!--    <p sec:authorize="isAuthenticated()">-->
+<!--        <button th:onclick="|location.href='@{/reviews/write}'|" class="writeBtn">글쓰기</button></p>-->
+<!--    <p sec:authorize="isAnonymous()">-->
+<!--        <button th:onclick="loginCheck()" class="writeBtn">글쓰기</button></p>-->
+<!--</div>-->
 
 <!-- 등록된 게시물이 없습니다. || 게시물출력 -->
 <div th:if="${#lists.isEmpty(reviewCourse)}">

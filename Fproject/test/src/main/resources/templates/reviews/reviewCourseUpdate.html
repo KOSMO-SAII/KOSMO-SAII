@@ -172,10 +172,10 @@ textarea:focus {
         <div class="card-body controll">
             <textarea id="content"  th:text="${reviewCourse.content}"></textarea></div>
     </form>
-
-    <a th:href="@{'/reviews/detail/' + ${reviewCourse.id}}">취소</a>
-    <input type="button" id="btn-update" onclick="reviewUpdate()" value="수정 완료">
-
+    <div class="divSubmit">
+        <button class="withdraw" id="btn-update" onclick="reviewUpdate()">수정 완료</button>
+        <a class="withdraw" id="btn-delete" th:href="@{'/reviews/detail/' + ${reviewCourse.id}}"><button>취소</button></a>
+    </div>
 </div>
 </div>
 
