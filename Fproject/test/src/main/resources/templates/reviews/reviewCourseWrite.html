@@ -135,7 +135,7 @@ textarea:focus {
     <div class="col-md-12">
         <form class="card">
             <div class="card-header">
-                <input type="text" id="course_id" placeholder="코스번호" ></div>
+                <input type="text" id="course_id" placeholder="코스번호" th:value="${param.c_id}" readonly></div>
             <div id="sub" class="card-header d-flex justify-content-between">
                 <input type="text" id="title" placeholder="제목을 입력하세요"></div>
             <div>

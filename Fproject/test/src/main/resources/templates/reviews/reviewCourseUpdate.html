@@ -166,15 +166,15 @@ textarea:focus {
             <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly></div>
             <input type="hidden" id="course_id" th:value="${reviewCourse.course_id}"></div>
         <div id="sub" class="card-header d-flex justify-content-between">
-            <input type="text" id="title"  th:value="${reviewCourse.title}"></div>
+            <input type="text" id="title"  th:value="${reviewCourse.title}" placeholder="제목을 입력하세요"></div>
         <div>
             <input type="hidden" id="writer"  th:value="${nickname}" readonly></div>
         <div class="card-body controll">
-            <textarea id="content"  th:text="${reviewCourse.content}"></textarea></div>
+            <textarea id="content"  th:text="${reviewCourse.content}" placeholder="내용을 입력하세요"></textarea></div>
     </form>
     <div class="divSubmit">
         <button class="withdraw" id="btn-update" onclick="reviewUpdate()">수정 완료</button>
-        <a class="withdraw" id="btn-delete" th:href="@{'/reviews/detail/' + ${reviewCourse.id}}"><button>취소</button></a>
+        <button class="withdraw" id="btn-delete" onclick="location.href='/reviews/detail/${reviewCourse.id}'">취소</button>
     </div>
 </div>
 </div>
