@@ -10,12 +10,16 @@
     <!--    Spring Security를 적용하는 경우 Http Request를 주고받을 때, 해당 요청의 헤더에 CSRF 토큰이 포함돼있는지 필터링.-->
     <!--    따라서, Post/Put/Delete Request 시 반드시 요청 헤더에 CSRF 토큰을 포함해야합니다.-->
     <!-- 제이쿼리    -->
+    <!-- 제이쿼리    -->
     <script th:inline="javascript" src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
 <style>
-    .body{
+ .body{
     width: 70%;
     margin: 40px auto 100px auto;
     }
@@ -121,10 +125,10 @@ textarea:focus {
 
 </style>
 </head>
-<div layout:fragment="content">
+<div class="body" layout:fragment="content">
 
 
-    <body>
+<body>
 <script th:inline="javascript">
     function reviewUpdate(){
         var data = {
@@ -155,15 +159,18 @@ textarea:focus {
             console.log(data.content);
     };
 
+    function goback(){
+        window.history.back();
+    }
 
 
 </script>
-<div class="body">
+<div>
 <h3 class="align" > 게시글 수정 </h3>
 <div class="col-md-12">
     <form class="card">
         <div class="card-header">
-            <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly></div>
+            <input type="hidden" id="id" th:value="${reviewCourse.id}" readonly>
             <input type="hidden" id="course_id" th:value="${reviewCourse.course_id}"></div>
         <div id="sub" class="card-header d-flex justify-content-between">
             <input type="text" id="title"  th:value="${reviewCourse.title}" placeholder="제목을 입력하세요"></div>
@@ -174,7 +181,7 @@ textarea:focus {
     </form>
     <div class="divSubmit">
         <button class="withdraw" id="btn-update" onclick="reviewUpdate()">수정 완료</button>
-        <button class="withdraw" id="btn-delete" onclick="location.href='/reviews/detail/${reviewCourse.id}'">취소</button>
+        <button class="withdraw" id="btn-delete" onclick="goback()">취소</button>
     </div>
 </div>
 </div>

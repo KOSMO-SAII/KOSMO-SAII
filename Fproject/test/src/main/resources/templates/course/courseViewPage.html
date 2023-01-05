@@ -16,7 +16,7 @@
 <!--<p th:text="${c_id}"></p>-->
 <div class="body_wrap">
     <div class="my">
-        <form id="reviewform" th:action="@{/reviews/write(c_id=${c_id})}" method="get" ></form>
+        <form id="reviewform" th:action="@{/reviews/write(c_id=${c_id})}" method="post" ></form>
         <form id="form" th:action="@{/courseDelete(c_id=${c_id})}" method="post" >
             <div class="formbox">
                 <th:block th:if="${nowUser!='Anonymous' || param.mode == 'edit'}">
