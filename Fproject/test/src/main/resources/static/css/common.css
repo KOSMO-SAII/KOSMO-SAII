@@ -1214,7 +1214,7 @@ footer .footer_mLogo{display: none;}
 
 /* 고도화 gnb */
 .main_gnb{position: relative;z-index: 103;}
-.main_gnb.sub{height:129px;}
+.main_gnb.sub{height:69px;}
 .main_gnb.sub.map{height:89px;z-index: 250;position: fixed;background: #fff;width: 100%;}
 .main_gnb.sub #gnbMain.fixed .top_menu{display:block;}
 .main_gnb.sub .db_gnb .home_btn{display:none;}
