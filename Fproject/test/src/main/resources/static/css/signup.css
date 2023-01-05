@@ -28,5 +28,6 @@ form {width: 400px; margin:auto; padding:30px; }
   display:none;
   width:400px;
   background-color:white;
+  outline:none;
 }
 

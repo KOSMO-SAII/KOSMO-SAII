@@ -80,7 +80,7 @@ window.onload = function(){
     <label th:for="checkPw" autoComplete="off">비밀번호 재확인</label><br/>
     <input type="password" th:field="*{checkPw}" class="form-control" placeholder="비밀번호를 재입력해주세요" id="pw2" onkeyup="passwordCheck()">
     <p th:if="${#fields.hasErrors('checkPw')}" th:errors="*{checkPw}" class="fieldError">Incorrect data</p>
-    <input type="text" id="pwValid">
+    <input type="text" id="pwValid" readonly>
 
   </div>
   <div class="form-group">
