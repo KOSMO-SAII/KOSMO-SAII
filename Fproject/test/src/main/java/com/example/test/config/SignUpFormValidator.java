@@ -30,7 +30,7 @@ public class SignUpFormValidator implements Validator {
         }
 
         if(memberRepository.existsByLoginId(memberDTO.getLoginId())){
-            errors.rejectValue("LoginId", "invalid.LoginId",
+            errors.rejectValue("loginId", "invalid.LoginId",
                     new Object[]{memberDTO.getLoginId()}, "이미 사용중인 아이디 입니다.");
         }
 //        if(memberDTO.getLoginPw()!=memberDTO.getCheckPw()){
