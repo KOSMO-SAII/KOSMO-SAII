@@ -5,7 +5,7 @@
     <title>뷰 페이지</title>
     <!--  css 파일 적용-->
     <link th:href="@{/css/courseViewPage.css}" rel="stylesheet" >
-
+    <link th:href="@{/css/rpopup.css}" rel="stylesheet" >
     <!-- 카카오 맵 api 불러오기 -->
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9298b59fe5fe509e6414c98642407c29&libraries=services"></script>
@@ -16,12 +16,13 @@
 <!--<p th:text="${c_id}"></p>-->
 <div class="body_wrap">
     <div class="my">
-        <form id="form" th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post">
+        <form id="reviewform" th:action="@{/reviews/write(c_id=${c_id})}" method="get" ></form>
+        <form id="form" th:action="@{/courseDelete(c_id=${c_id})}" method="post" >
             <div class="formbox">
+                <button type="button" class="submitbtn" onclick="review();">리뷰 작성</button>
                 <th:block th:if="${createdBy==nowUser || param.mode == 'edit'}">
-                <button type="submit" class="submitbtn">코스 삭제</button>
+                <button type="button" class="submitbtn" onclick="deleteCheck();">코스 삭제</button>
                 </th:block>
-                <button type="button" class="submitbtn">리뷰 작성</button>
             </div>
         </form>
         <form th:action="@{/courseWritePage(mode=edit,c_id=${c_id})}" method="post" >
@@ -82,6 +83,8 @@
     </div>
 
 </div>
+<div class="modal-bg mbg"></div>
+<div th:replace="~{course/alertModal::alert2}"></div>
 <script th:inline="javascript" type="text/javascript">
 		var paramObjs=[]; //장소 정보 객체 담는 배열
 		var days= /*[[${days}]]*/

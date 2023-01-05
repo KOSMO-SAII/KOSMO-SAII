@@ -65,3 +65,42 @@ function setSchedul(){
         }
 
 }
+
+function alertBoxClose2(){
+//    $('#alertBox2').hide()
+//    if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
+//    $('input[name=ptitle]')[0].focus();
+//    }
+//    if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
+//    $('select[name=pregion]')[0].focus();
+//    }
+//    if($('#alertBoxp2')[0].innerText=="저장하지 않고 나가시겠습니까?"){
+//        var link = '/';
+//        location.href=link;
+//    }
+//    if($('#alertBoxp2')[0].innerText="정말 삭제하시겠습니까??"){
+//        return true;
+//    }
+
+    var form = document.getElementById("form");
+      form.submit();
+}
+
+function alertBoxClose3(){
+    $('#alertBox2').hide()
+    var modalBg = $('.mbg');
+    $(modalBg).removeClass('modal-bg');
+
+}
+
+function deleteCheck(){
+    $('#alertBoxp2')[0].innerText="정말 삭제하시겠습니까??";
+       $('#alertBox2').show()
+       var modalBg = $('.mbg');
+       $(modalBg).addClass('modal-bg');
+}
+
+function review(){
+    var form = document.getElementById("reviewform");
+          form.submit();
+}
