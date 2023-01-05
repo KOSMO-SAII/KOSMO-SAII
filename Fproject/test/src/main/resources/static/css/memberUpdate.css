@@ -1,7 +1,7 @@
 .input_submit{
-   position:relative;
-   top:14px;
-    display: inline-block;
+    position:relative;
+    top:14px;
+    display: none;
     font-size: 13px;
     padding: 4px 15px;
     color: white;
@@ -10,16 +10,16 @@
     text-align: center;
     transition: top .01s linear;
     text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
-     text-decoration: none;
-       background-color: #AEDBE1;
-       box-shadow: 0 0 0 1px #94BABF inset,
-             0 0 0 2px rgba(255,255,255,0.15) inset,
-             0 4px 0 0 #9EC7CC,
-             0 4px 0 1px rgba(0,0,0,0.4),
-             0 4px 4px 1px rgba(0,0,0,0.5);
+    text-decoration: none;
+    background-color: #548bc1;
+    box-shadow: 0 0 0 1px #45719c inset,
+         0 0 0 2px rgba(255,255,255,0.15) inset,
+         0 4px 0 0 #45719c,
+         0 4px 0 1px rgba(0,0,0,0.4),
+         0 4px 4px 1px rgba(0,0,0,0.5);
 }
 .input_submit:active {
-  box-shadow: 0 0 0 1px #94BABF inset,
+  box-shadow: 0 0 0 1px #45719c inset,
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
   top:18px;
@@ -170,8 +170,37 @@ h2 {
    top: 100px;
    left: -250px;
 }
-#filebutton {
-   display: none;
+
+.profileCh{
+    position:relative;
+    top:93px;
+    left:-125px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+    color: white;
+    margin: 20px 8px 15px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+    text-decoration: none;
+    background-color: #AEDBE1;
+    box-shadow: 0 0 0 1px #94BABF inset,
+         0 0 0 2px rgba(255,255,255,0.15) inset,
+         0 4px 0 0 #9EC7CC,
+         0 4px 0 1px rgba(0,0,0,0.4),
+         0 4px 4px 1px rgba(0,0,0,0.5);
+}
+
+.profileCh:active {
+  box-shadow: 0 0 0 1px #94BABF inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+  top:97px;
+}
+#filebutton{
+    display:none;
 }
 
 .input_file_button{
@@ -255,7 +284,7 @@ a {
 .divProfile{
     position: absolute;
     left: 50%;
-    top:274px;
+    top:325px;
     margin-left:-427px;
 }
 .btn-3d.red1:hover {

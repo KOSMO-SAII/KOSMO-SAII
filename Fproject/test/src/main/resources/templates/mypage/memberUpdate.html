@@ -93,10 +93,10 @@ window.onload = function(){
   <div class="divProfile">
     <form enctype="multipart/form-data" action="/members/profile" method="post">
       <img id="preview" th:src="${info.picture}" width="120px" height="120px" style="border-radius: 50px" onclick="$('#filebutton').trigger('click');">
-      <img id="preview1" th:src="${info.picture}" onclick="imgoriginalhidden()">
       <!--  <label class="input_file_button" for="filebutton">사진선택</label>-->
+      <label class="profileCh" for="filebutton" id="imgToggle">프로필 선택</label>
       <input id="filebutton" type="file" name="picture" th:value="*{info.picture}" onchange="imgcg(this)" required><br>
-      <label class="input_submit" for="sub">프로필 적용</label>
+      <label class="input_submit" for="sub" id="imgToggle1">프로필 적용</label>
       <input id="sub" type="submit" value="프로필변경">
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
@@ -177,16 +177,11 @@ function imgcg(input){
         };
         // reader가 이미지 읽도록 하기
         reader.readAsDataURL(input.files[0]);
+        document.getElementById("imgToggle").style.display="none";
+        document.getElementById("imgToggle1").style.display="block";
    }else{
       document.getElementById("preview").src="/SAII/Storage/${dto.n_profile_img}";
    }
-}
-
-function imgoriginal(){
-      document.getElementById("preview1").style.display="block";
-   }
-function imgoriginalhidden(){
-   document.getElementById("preview1").style.display="none";
 }
 
 function passwordCheck(){
