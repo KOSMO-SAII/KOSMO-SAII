@@ -17,7 +17,7 @@
 
     <title>사이</title>
     <link th:href="@{/css/reviewCourseWrite.css}" rel="stylesheet" />
-<style>
+    <style>
 .body{
     width: 70%;
     margin: 40px auto 100px auto;
@@ -125,41 +125,42 @@ textarea:focus {
 </style>
 </head>
 <div layout:fragment="content">
-<body>
+    <body>
 
+    <div class="body">
+        <h3 class="align"> 게시글 작성 </h3>
+        <div>
+            <div class="col-md-12">
+                <form class="card">
+                    <div class="card-header">
+                        <input type="text" id="course_id"  th:value="${c_id}" readonly></div>
+                    <div id="sub" class="card-header d-flex justify-content-between">
+                        <input type="text" id="title" placeholder="제목을 입력하세요"></div>
+                    <div>
+                        <input type="hidden" id="writer" th:value="${nickname}" readonly></div>
+                    <div class="card-body controll">
+                        <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
+                    <div>
 
+                    </div>
+                </form>
+                <!--            <div class="files">-->
+                <!--                &lt;!&ndash;imageURL을 이용한 <img>태그 작성하는데, 업로드된 이미지를 보여줄 수 있는 div&ndash;&gt;-->
+                <!--                <input name="uploadFiles" type="file" multiple>-->
+                <!--                <button class="uploadBtn">Upload</button>-->
 
-<div class="body">
-<h3 class="align"> 게시글 작성 </h3>
-<div>
-    <div class="col-md-12">
-        <form class="card">
-            <div class="card-header">
-                <input type="text" id="course_id" placeholder="코스번호" th:value="${param.c_id}" readonly></div>
-            <div id="sub" class="card-header d-flex justify-content-between">
-                <input type="text" id="title" placeholder="제목을 입력하세요"></div>
-            <div>
-                <input type="hidden" id="writer" th:value="${nickname}" readonly></div>
-            <div class="card-body controll">
-                <textarea id="content" placeholder="내용을 입력하세요"></textarea></div>
-        </form>
-<!--            <div class="files">-->
-<!--                &lt;!&ndash;imageURL을 이용한 <img>태그 작성하는데, 업로드된 이미지를 보여줄 수 있는 div&ndash;&gt;-->
-<!--                <input name="uploadFiles" type="file" multiple>-->
-<!--                <button class="uploadBtn">Upload</button>-->
+                <!--                <div class="uploadResult">-->
 
-<!--                <div class="uploadResult">-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <div class="divSubmit">
+                    <button class="withdraw" id="btn-save" onclick="reviewSave()" >등록</button>
+                    <button class="withdraw" id="btn-delete" onclick="location.href='/reviews/course';">취소</button>
+                </div>
+            </div>
+        </div>
 
-<!--                </div>-->
-<!--            </div>-->
-    <div class="divSubmit">
-        <button class="withdraw" id="btn-save" onclick="reviewSave()" >등록</button>
-        <button class="withdraw" id="btn-delete" onclick="location.href='/reviews/course';">취소</button>
-    </div>
-</div>
-</div>
-
-<script th:inline="javascript">
+        <script th:inline="javascript">
     function reviewSave(){
         var data = {
                 title: $('#title').val(),
@@ -263,9 +264,9 @@ textarea:focus {
 
 </script>
 
-<!--마우스커서-->
-<style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
-<a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
-</body>
+        <!--마우스커서-->
+        <style type="text/css">* {cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym833.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym833.png), auto !important;}</style>
+        <a href="https://www.cursors-4u.com/cursor/2018/02/17/fast-beating-heart.html" target="_blank" title="Fast Beating Heart"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Fast Beating Heart" style="position:absolute; top: 0px; right: 0px;" /></a>
+    </body>
 </div>
 </html>

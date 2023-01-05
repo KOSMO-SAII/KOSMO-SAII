@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
@@ -36,10 +37,22 @@ public class IndexController {//페이지에 관련된 컨트롤러
     }
 
     @GetMapping("/reviews/write")
-    public String reviewWrite(Model model, Principal principal){
-
+    public String reviewWrite(Model model, Principal principal, HttpServletRequest req){
+        String c_id=req.getParameter("c_id");
+        System.out.println("체ㅔ크 "+c_id);
         Member member = memberService.getMember();
         model.addAttribute("nickname",member.getNickname());
+        req.setAttribute("c_id",c_id);
+        return "reviews/reviewCourseWrite";
+    }
+
+    @PostMapping("/reviews/write")
+    public String postreviewWrite(Model model, Principal principal, HttpServletRequest req){
+        String c_id=req.getParameter("c_id");
+        System.out.println("체ㅔ크 "+c_id);
+        Member member = memberService.getMember();
+        model.addAttribute("nickname",member.getNickname());
+        req.setAttribute("c_id",c_id);
         return "reviews/reviewCourseWrite";
     }
     //작성(저장)
