@@ -45,7 +45,7 @@
         <th:block th:each="list : ${reviewCourse}" >
             <a th:href="@{'/reviews/detail/' + ${list.id}}">
                 <li class="item">
-                    <p th:text="${list.id}"></p>
+                    <input type="hidden" th:value="${list.id}">
                     <div th:if="${true}">
                         <img class="image" src="/img/Doldam.jpg"></div>
 <!--                    <div th:unless="${not empty list.o_file}">-->

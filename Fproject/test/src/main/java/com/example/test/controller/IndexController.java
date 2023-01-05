@@ -100,12 +100,8 @@ public class IndexController {//페이지에 관련된 컨트롤러
         model.addAttribute("reviewCourse",dto);
         return "reviews/reviewCourseDetail";
     }
-//    @GetMapping("/reviews/detail/{id}")
-//    public String read(@PathVariable Long id,  Model model) {
-//        ReviewCourseResponseDTO dto = reviewCourseService.findById(id);
-//        model.addAttribute("reviewCourse",dto);
-//        return "reviews/reviewCourseDetail";
-//    }
+
+
     //조회
     @GetMapping("/reviews/search")
     public String search(@RequestParam(value="searchQuery") String keyword, Model model) {

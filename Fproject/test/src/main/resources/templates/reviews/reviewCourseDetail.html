@@ -235,7 +235,8 @@ input{
 
 <!-- 댓글 -->
 <div class="card">
-    <div class="card-header bi bi-chat-right-dots"> Write a Comment</div>
+
+    <div class="card-header bi bi-chat-right-dots"> Write a Comment </div>
     <!--    댓글작성 부분-->
     <form>
         <input type="hidden" id="postId" th:value="${reviewCourse.id}">
@@ -255,7 +256,7 @@ input{
 </div>
 <div class="card">
     <div class="card-header bi bi-chat-dots">
-<!--        <span th:text="${#lists.size(comments)}"></span> Comments</div>-->
+<!--        <span th:text="${#lists.size(comments.comment)}"></span> Comments</div>-->
     <div th:if="${#lists.isEmpty(comments)}">
         <h2>등록된 댓글이 없습니다.</h2>
     </div>
