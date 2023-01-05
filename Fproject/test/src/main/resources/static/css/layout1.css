@@ -30,7 +30,6 @@ head{ -ms-overflow-style: none;}
 .container {
     width : 90%;
     height: 100px;
-    margin: 20px;
     font-size: 20px;
     font-weight:bold;
     text-align: center;
