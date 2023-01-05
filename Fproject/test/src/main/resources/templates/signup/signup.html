@@ -30,7 +30,7 @@ window.onload = function(){
 <!--  <script type="text/javascript" src="js/signup.js" defer></script>-->
   <!-- 사용자 CSS 추가 -->
   <style>
-      .fieldError { 
+      .fieldError {
           color: #bd2130;
       }
   </style>
@@ -184,14 +184,14 @@ function numCheck() {
 }
 function nameCheck() {
     const name1=document.getElementById('name1').value;
-    const namemCheck=/^[가-힣]{2,6}$/;
+    const namemCheck=/^[가-힣]{2,8}$/;
     if(namemCheck.test(name1)) {
         document.getElementById('nameValid').style.display="none";
       	return true;
    	 }
     else if(!namemCheck.test(name1)){
       document.getElementById('nameValid').style.display="block";
-      document.getElementById('nameValid').value="2~20글자로 입력해주세요.";
+      document.getElementById('nameValid').value="한글로 2~8글자 입력해주세요.";
       document.getElementById('nameValid').style.color="red";
       return false;
     }

@@ -88,16 +88,19 @@ var modalBg = $('.mbg');
 
 function alertBoxClose2(){
     $('#alertBox2').hide()
-    if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
-    $('input[name=ptitle]')[0].focus();
-    }
-    if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
-    $('select[name=pregion]')[0].focus();
-    }
     if($('#alertBoxp2')[0].innerText=="저장하지 않고 나가시겠습니까?"){
         var link = '/';
         location.href=link;
+        return false
     }
+//    if($('#alertBoxp2')[0].innerText=="제목을 입력해주세요"){
+//    $('input[name=ptitle]')[0].focus();
+//        return false
+//    }
+//    if($('#alertBoxp2')[0].innerText=="지역을 입력해주세요"){
+//    $('select[name=pregion]')[0].focus();
+//    return false
+//    }
 
 }
 
