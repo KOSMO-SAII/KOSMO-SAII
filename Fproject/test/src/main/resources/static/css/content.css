@@ -1846,7 +1846,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 
 .detail_tab.menuFixed{width:940px;padding:0;background:#fff;position:fixed;top:0;z-index:102;}
 .detail_tab {padding:0 0 20px;overflow: hidden;top:0;transition:top .5s ease-in-out;}
-.detail_tab ul li{float:left;width:25%;text-align:center;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+.detail_tab ul li{float:left;width:30%;text-align:center;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
 .detail_tab ul li.on a{font-weight:800;color:#333;}
 .detail_tab ul li a{position:relative;display:block;line-height:63px;font-size:18px;color:#666;letter-spacing: -1px;}
 .detail_tab ul li a span{display:inline-block;padding:0 30px;position:relative;}

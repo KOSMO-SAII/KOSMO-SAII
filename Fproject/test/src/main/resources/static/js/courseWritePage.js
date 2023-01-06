@@ -172,10 +172,6 @@ let subToggle2=true;
 //-------------------------------------------------위는 기본 필수 코드
 //=================================================아래: 왼쪽 사이드 검색장소 핀 코드
 
-//키워드 저장 변수
-//var keyword ='';
-
-
 //검색 결과 클릭시 마커,오버레이 담을 변수 생성(임시)
 var soverlay ;
 var smarker;
@@ -190,7 +186,6 @@ function searchPlaces() {
           $('#alertBox').css("z-index",1000)
              var modalBg = $('.mbg');
              $(modalBg).addClass('modal-bg');
-//        alert('키워드를 입력해주세요!');
         return false;
     }
 
@@ -214,7 +209,6 @@ function placesSearchCB(data, status, pagination) {
           $('#alertBox').css("z-index",1000)
              var modalBg = $('.mbg');
              $(modalBg).addClass('modal-bg');
-//        alert('검색 결과가 존재하지 않습니다.');
         return;
 
     } else if (status === kakao.maps.services.Status.ERROR) {
@@ -524,7 +518,7 @@ var markerscId=[];
 
 //카테고리 요소 선택
 var li = document.querySelectorAll('#category-box li');
-	//console.log(li)
+
 //현재 카테고리명 담는 변수
 var currCategory= '';
 
@@ -852,13 +846,9 @@ function rsaveMyPin(myplace,myplaceinfo){
 //임시
 
 
-//좌측 마이스케줄 블럭에 내가 저장한 핀 정보 출력
+//좌측 마이스케줄에 내가 저장한 장소 정보 출력
 function addMySchedule(place){
-//    console.log("=======")
-//	console.log("addMySchedule실행")
-//	console.log("schdulnum= "+schedulNum+" listNum: "+listNum[schedulNum].num);
-    console.log(schedul[schedulNum][listNum[schedulNum].num])
-	//db에 전달할 정보
+	//db에 저장할 정보
 	schedul[schedulNum][listNum[schedulNum].num].data={data: place.placeCategoryCode+"|"+place.placeid+"|"+place.placeAddress+"|"+place.placeRaddress+"|"
 				+place.placePhone+"|"+place.placeName+"|"+place.placeUrl+"|"+place.placex+"|"+place.placey+"|"+optVal+"|",
 						memo:""}
@@ -884,23 +874,19 @@ function addMySchedule(place){
             '		 </button>' +
             '    	</div>' +
             '	 </div>';
-    //console.log("edit addmyschedul: "+paramObjinfo.day)
+
     if(editmode==true){
         var ul =$('.My_List.'+paramObjinfo.day+'');
         ul[0].appendChild(li);
-    }else if(editmode==false){
+    }
+     if(editmode==false){
         var ul =$('.My_List.'+optVal+'');
         ul[0].appendChild(li);
     }
 
-
 	li.setAttribute("draggable", "true");
 
 	$('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num].defaultValue=schedul[schedulNum][listNum[schedulNum].num].data.data
-//	console.log("선택한 리스트info")
-//	console.log($('.info.'+schedulNum+" "+'.data')[listNum[schedulNum].num])
-//	console.log("저장할 data내용")
-//	console.log(schedul[schedulNum][listNum[schedulNum].num].data.data)
     listNum[schedulNum].num+=1;
 
 

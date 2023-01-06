@@ -117,9 +117,8 @@ public class CoursePageController extends HttpServlet {
         String start=req.getParameter("start");
         String end=req.getParameter("end");
 
-        //courseWrite페이지에서 수정모드로 넘어온 값이 있을 시 db수정
+        //edit모드
         if(mode.equals( "edit")) {
-            System.out.println("edit모드");
             String title=req.getParameter("title");
             String region=req.getParameter("region");
 
@@ -128,22 +127,18 @@ public class CoursePageController extends HttpServlet {
             req.setAttribute("title", title);
             req.setAttribute("region", region);
             req.setAttribute("list", list);
-            System.out.println(list);
 
         }else if(mode.equals( "write")) {
 
-            //courseWrite페이지에서 작성모드로 넘어온 값이 있을 시 db저장
+            // write모드
             if(req.getParameterValues("data")!=null) {
                 List<Map<String, String>> list=courseService.writeMode(req);
 
                 String title = req.getParameter("title");
                 String region = req.getParameter("region");
-                //String nickname = req.getParameter("nickname");
-                //req.setAttribute("nickname", nickname);
                 req.setAttribute("title", title);
                 req.setAttribute("region", region);
                 req.setAttribute("list", list);
-                System.out.println(list);
             }
         }
         req.setAttribute("days",days);
