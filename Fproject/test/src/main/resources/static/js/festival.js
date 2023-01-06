@@ -10,6 +10,8 @@ var start
 var end
 
 $(".btn").click(function(event){
+ c = ""
+ id=""
 var e = event.target
 if(e.parentElement.parentElement.id == "monthlist"){
 if(e.parentElement.id != ""){
